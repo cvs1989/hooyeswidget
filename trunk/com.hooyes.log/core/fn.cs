@@ -5,7 +5,7 @@ using System.IO;
 namespace com.hooyes.log.core
 {
     /// <summary>
-    /// Widget Create By hooyes
+    /// Widget Create By hooyes .
     /// </summary>
     public class fn
     {
