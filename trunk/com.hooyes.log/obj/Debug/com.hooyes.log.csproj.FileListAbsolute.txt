@@ -6,3 +6,5 @@ E:\hooyes.me.Log\com.hooyes.log\com.hooyes.log\bin\Debug\Log.pdb
 E:\hooyes.me.Log\com.hooyes.log\com.hooyes.log\obj\Debug\Log.exe
 E:\hooyes.me.Log\com.hooyes.log\com.hooyes.log\obj\Debug\Log.pdb
 E:\hooyes.me.Log\com.hooyes.log\com.hooyes.log\obj\Debug\com.hooyes.log.Form1.resources
+E:\hooyes.me.Widget\hooyeswidget\com.hooyes.log\obj\Debug\Log.exe
+E:\hooyes.me.Widget\hooyeswidget\com.hooyes.log\obj\Debug\Log.pdb
