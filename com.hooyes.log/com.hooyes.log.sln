@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.hooyes.log", "com.hooyes.log\com.hooyes.log.csproj", "{3F0518CE-7A83-47BC-863F-A45CB5886152}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.hooyes.log", "com.hooyes.log.csproj", "{3F0518CE-7A83-47BC-863F-A45CB5886152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
