@@ -4,7 +4,9 @@ using System.Text;
 using System.IO;
 namespace com.hooyes.log.core
 {
-    
+    /// <summary>
+    /// Widget 
+    /// </summary>
     public class fn
     {
         private string Root = AppDomain.CurrentDomain.BaseDirectory;
