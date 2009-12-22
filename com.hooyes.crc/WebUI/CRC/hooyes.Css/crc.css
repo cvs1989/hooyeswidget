@@ -1,0 +1,85 @@
+﻿body { font-size:13px; margin:0px; padding:0px;}
+form{ margin:0px; padding:0px; border:0px}
+.CommonDiv{
+ width: 900px;
+ margin: 0px auto;
+
+ }
+ .RegisterTable{
+}
+.RegisterTitle{
+	 text-align:center;
+	 margin:0px auto;
+	 width:900px;
+}
+.RegisterTable_Td{
+	height:27px;
+	border-bottom:1px solid #8CB621;
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	line-height: 20px;
+
+
+}
+.RegisterInput{
+	 width:200px;
+}
+.RegisterInputShort{ width:120px;
+}
+.RegisterBtn{
+	 margin:0px auto;
+	 margin-top:20px;
+	 text-align:center;
+}
+.SuggestionInput{
+	 width:99%; height:100px;
+}
+
+.pageList{font-family: "Verdana", "Arial", "Helvetica", "sans-serif";  height:25px;  margin:0px;  padding:0px; list-style-type:none; }
+.pageList li{font-family: "Verdana", "Arial", "Helvetica", "sans-serif"; font-size:12px; width:40px;  text-align:center ; float:left; vertical-align:middle; border-left:solid 1px; 
+ margin-left:8px;}
+.pageList li a{font-family: "Verdana", "Arial", "Helvetica", "sans-serif"; font-size:13px;}
+.pageList li.pageIndex{ width:100px;}
+.pageList li.pageCount{ width:100px;}
+.pageList li.pagePer{ width:100px; }
+.ListTable{ width:100%}
+.ListHead{ background-color:Silver;}
+.ListTableTdA{ width:7%;}
+
+.tipDiv{border:1px solid #FFCC00; width: 900px;
+ margin: 0px auto; margin-top:1px; margin-bottom:1px;
+ height:20px; line-height:20px;
+ background-color: #FFFFF7
+}
+.highlight{ color:Red;}
+.LoginTable{ width:100%}
+.LoginTableA{ width:10%;}
+.LoginTableInput{ width:200px; height:21px;}
+.LoginTable td{ }
+#VistorDyncBtn{ cursor:pointer; width:100px; height:22px;
+ background-color: #FFFFF7; line-height:22px; color:Blue; margin-left:2px;
+ }
+ 
+ .Thankyou{
+ margin: 0px auto;
+ margin-bottom:20px;
+
+ text-align:center;
+ }
+ .ThankyouTitle
+ {margin: 0px auto; text-align:center; margin-top:20px;
+ }
+.ThankyouUrl{margin: 0px auto;  margin-top:10px;  height:30px;
+ }
+ .ThankyouUrl .UrlBack{ display:block; margin:2px; width:40%; float:left; text-align:right;}
+ .ThankyouUrl .UrlNext{display:block; margin:2px; width:40%; float:left; text-align:left; float:right}
+ .CenterPart{ width:631px;}
+
+ .textlink a{ color:#000;}
+ .textlink a:hover{ color:#8CB621}
+ .pageListSpan a{ text-decoration:none;}
+ .pay{ cursor:pointer; background-color:Green; border:solid 1px green; }
+ .unpay{ cursor:pointer; border:solid 1px green; }
+.uninvoice{ cursor:pointer;border:solid 1px green;}
+.invoice{ cursor:pointer;border:solid 1px green; background-color:Green;}
+.AdminTdA{ width:60%}
