@@ -128,9 +128,9 @@ namespace com.hooyes.crc.DAL
         }
         public List<CRCapply> ListModel()
         {
-           
+
             List<CRCapply> lt = new List<CRCapply>();
-            string sql = "select * from CRC_apply where pay=true order by ID desc";
+            string sql = "select * from CRC_apply order by ID desc";
             OleDbDataReader dr = AccessHelper.ExecuteReader(AccessHelper.conn, sql);
             while (dr.Read())
             {
@@ -161,7 +161,7 @@ namespace com.hooyes.crc.DAL
 
             return lt;
         }
-        public List<CRCapply> ListModel(int PageSize,int CurrentPage)
+        public List<CRCapply> ListModel(int PageSize, int CurrentPage)
         {
             int RecordsCount = count();
             PageSize = (PageSize > 0) ? PageSize : 1;
@@ -170,10 +170,10 @@ namespace com.hooyes.crc.DAL
             CurrentPage = (CurrentPage > PagesCount) ? PagesCount : CurrentPage;
             List<CRCapply> lt = new List<CRCapply>();
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("select top {0} * from CRC_apply where pay=true ", PageSize);
+            sb.AppendFormat("select top {0} * from CRC_apply ", PageSize);
             if (CurrentPage > 1)
             {
-                sb.AppendFormat(" and ID not in(select top {0} id from CRC_apply order by id desc)", (CurrentPage - 1) * PageSize);
+                sb.AppendFormat(" where ID not in(select top {0} id from CRC_apply order by id desc)", (CurrentPage - 1) * PageSize);
             }
             sb.Append(" order by ID desc");
             string sql = sb.ToString();
@@ -220,7 +220,7 @@ namespace com.hooyes.crc.DAL
                 List<CRCapply> lt = new List<CRCapply>();
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("select top {0} * from CRC_apply ", PageSize);
-                sb.AppendFormat(" where Pay=true and CompanyName like '%{0}%'", keyWord);
+                sb.AppendFormat(" where CompanyName like '%{0}%'", keyWord);
                 if (CurrentPage > 1)
                 {
                     sb.AppendFormat(" and ID not in(select top {0} id from CRC_apply order by id desc)", (CurrentPage - 1) * PageSize);
@@ -265,17 +265,17 @@ namespace com.hooyes.crc.DAL
         public int count()
         {
             int rValue = 0;
-            string sql = "select count(1) from CRC_apply where Pay=true";
-            rValue =Convert.ToInt32(AccessHelper.ExecuteScalar(AccessHelper.conn, sql));
+            string sql = "select count(1) from CRC_apply";
+            rValue = Convert.ToInt32(AccessHelper.ExecuteScalar(AccessHelper.conn, sql));
             return rValue;
         }
         public int count(string keyWord)
         {
             if (!string.IsNullOrEmpty(keyWord))
             {
-                keyWord = keyWord.Replace("'","");
+                keyWord = keyWord.Replace("'", "");
                 int rValue = 0;
-                string sql = "select count(1) from CRC_apply where Pay=true and CompanyName like '%{0}%'";
+                string sql = "select count(1) from CRC_apply where CompanyName like '%{0}%'";
                 sql = string.Format(sql, keyWord);
                 rValue = Convert.ToInt32(AccessHelper.ExecuteScalar(AccessHelper.conn, sql));
                 return rValue;
