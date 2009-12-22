@@ -1,0 +1,194 @@
+﻿.title {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 15px;
+	font-weight: bold;
+	color: #FF0000;
+	line-height: 28px;
+
+
+}
+.text {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: normal;
+
+
+
+}
+.title-1 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+	font-weight: bold;
+	color: #990000;
+	line-height: 32px;
+
+}
+.title-2 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	font-style: normal;
+	font-weight: bold;
+	color: #006600;
+
+
+
+}
+.title-3 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 24px;
+
+
+}
+.title-4 {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+
+}
+.menu {
+	font-family: "Times New Roman", "Times", "serif";
+	font-size: 14px;
+	color: #000000;
+	font-weight: normal;
+
+
+}
+.clock {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-weight: normal;
+	color: #FF0000;
+
+
+
+
+}
+.clock-en {
+	font-family: "Times New Roman", "Times", "serif";
+	font-size: 16px;
+	font-weight: bold;
+	color: #CC0000;
+	line-height: 25px;
+
+
+
+
+
+}
+.title-5 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	font-weight: normal;
+	text-decoration: underline;
+	color: #FF0000;
+	line-height: 20px;
+
+}
+.organizer1 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 10px;
+}
+.bottom{
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 11.5px;
+	COLOR: #666666;
+	LINE-HEIGHT: 180%;
+	FONT-FAMILY: "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+}
+A.bottom:hover {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 11.5px;
+	COLOR: #666666;
+	LINE-HEIGHT: 180%;
+	FONT-FAMILY: "Arial", "Helvetica", "sans-serif";
+	background-color: #ffffcc;
+	TEXT-DECORATION: none;
+	font-style: normal;
+}
+.textlink {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	line-height: 18px;
+	color: #000000
+}
+A.textlink:hover {
+	FONT-SIZE: 13px;
+	color: #ffffff
+    FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	text-decoration: none;
+}
+.leftbar {
+	font-family: "Times New Roman", "Times", "serif";
+	font-size: 14px;
+	line-height: 20px;
+	color: #666666;
+
+}
+A.leftbar:hover {
+	FONT-SIZE: 14px;
+	color: #666666;
+    font-family: "Times New Roman", "Times", "serif";  
+	background-color: #ffffcc;
+	text-decoration: none;
+}
+.top {
+	font-size: 12px;
+	line-height: normal;
+	font-family: "Arial", "Helvetica", "sans-serif";
+
+}
+td span
+{
+font-weight:normal;
+}
+h5
+{border-top:1px solid #FF9900;
+ background-color: #FFFFCC;
+ height:22px;
+ height: center;
+ font-size: 13px;
+ cursor:pointer;
+ margin:0px 0px 0px 0px;
+}
+/* hooyes 最新更新时间 14:42 2008-1-9 */
+/*--folding折叠图标--*/
+.folding
+{
+margin:9px auto;
+background: url(images/ico.gif);
+background-position:-528px -18px;
+float:left;
+width:15px;
+height:20px;
+cursor:pointer;
+}
+.unfolding
+{
+margin:9px auto;
+background: url(images/ico.gif);
+background-position:-560px -18px;
+float:left;
+width:15px;
+height:20px;
+cursor:pointer;
+}
+.text-en {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	line-height: 18px;
+}
+.bottomlink {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 13px;
+	color: #ffffff
+
+}
+A.textlink:hover {
+	FONT-SIZE: 13px;
+	color: #000000
+    FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	text-decoration: none;
+}
