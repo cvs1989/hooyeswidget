@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "WebUI\", "{9E8A23FB-A734-4A9E-A011-685F293D6BFC}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "WebUI", "{9E8A23FB-A734-4A9E-A011-685F293D6BFC}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "2.0"
 		ProjectReferences = "{E5CAD3B8-5C9C-4757-8554-62C3EA7A8123}|com.hooyes.crc.dll;"
