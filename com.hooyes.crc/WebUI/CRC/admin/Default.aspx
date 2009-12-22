@@ -17,6 +17,7 @@
          输入关键字：<asp:TextBox ID="KeyWordInput" runat="server"></asp:TextBox> 
        <asp:Button ID="ButtonSearch" runat="server" Text="查找" OnClick="ButtonSearch_Click"  /></div>
          <div class="tipDiv" id="tipDiv" runat="server" visible="false"></div>
+    
     <div class="CommonDiv" style="margin-bottom:0px;" >
          <asp:Literal ID="xLiteral1" runat="server"></asp:Literal>
     </div>
@@ -25,6 +26,9 @@
     <div class="CommonDiv" id="">
         <asp:Literal ID="pageLiteral1" runat="server"></asp:Literal>
     </div>
+    <div class="CommonDiv tipDiv" style="padding-left:2px;">
+   <a href="Export.aspx">导出公司注册信息 .csv</a>
+   </div>
     <div class="CommonDiv" id="footer" style="text-align:center; font-size:12px;" >&copy 2009 Powered by hooyes</div>
     </form>
  <script type="text/javascript" src="../hooyes.js/jquery-latest.pack.js"></script>

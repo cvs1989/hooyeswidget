@@ -31,16 +31,34 @@ public partial class CRC_admin_Export :PageBase
             {
                 if (!string.IsNullOrEmpty(vName[i]))
                 {
-                    string CSVLine = vName[i] + "," + vGender[i] + "," + vTitle[i] + "," + vPhone[i] + "," + vCellPhone[i];
+                    string CSVLine = vName[i] + "," + Sex(vGender[i]) + "," + vTitle[i] + "," + vPhone[i] + "," + vCellPhone[i];
                     CSVLine += "," + NoComma(cr.CompanyName) + "," + NoComma(cr.CompanyNameEn) + "," + NoComma(cr.Contact) + "," + NoComma(cr.CompanyType) + "," + NoComma(cr.ProductType) + "," + NoComma(cr.Email) + "," + NoComma(cr.Phone) + "," + NoComma(cr.CellPhone) + "," + NoComma(cr.Fax) + "," + NoComma(cr.CompanyAddress) + "," + NoComma(cr.PostCode);
                     CSVLine += "," + NoComma(cr.WebSite) + "," + NoComma(cr.Suggestion);
-                    CSVLine+= "," +cr.Invoice+","+cr.Pay+","+ NoComma(cr.RegisterTime.ToString("yyyy-MM-dd"));
+                    CSVLine+= "," + Invoice(cr.Invoice)+","+Pay(cr.Pay)+","+ NoComma(cr.RegisterTime.ToString("yyyy-MM-dd"));
                     sb.AppendLine(CSVLine);
                 }
             }
 
         }
        Export(sb.ToString());
+    }
+    protected string Sex(string str)
+    {
+        if (!string.IsNullOrEmpty(str))
+        {
+            if (str.ToLower() == "male")
+            {
+                return "男";
+            }
+            else
+            {
+                return "女";
+            }
+        }
+        else
+        {
+            return str;
+        }
     }
     protected string Pay(bool b)
     {
