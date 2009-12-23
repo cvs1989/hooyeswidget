@@ -38,7 +38,7 @@
             }
             catch (Exception exception)
             {
-                Console.WriteLine(string.Format("POST操作发生异常：{0}", exception.Message));
+                //Console.WriteLine(string.Format("POST操作发生异常：{0}", exception.Message));
                 throw exception;
             }
             string str = string.Empty;

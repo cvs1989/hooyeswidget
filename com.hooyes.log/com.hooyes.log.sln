@@ -23,6 +23,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "WebUI", "{234EE745
 		VWDPort = "3187"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.hooyes.widget", "..\com.hooyes.widget\com.hooyes.widget.csproj", "{56D348E2-E510-4031-9168-69A3827D3547}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -53,6 +55,16 @@ Global
 		{234EE745-23B6-45C0-9577-1D5F3628FFF7}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{234EE745-23B6-45C0-9577-1D5F3628FFF7}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{234EE745-23B6-45C0-9577-1D5F3628FFF7}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{56D348E2-E510-4031-9168-69A3827D3547}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Release|.NET.ActiveCfg = Release|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{56D348E2-E510-4031-9168-69A3827D3547}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

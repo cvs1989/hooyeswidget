@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using com.hooyes.widget;
 namespace com.hooyes.log.core
 {
     /// <summary>
@@ -27,6 +28,20 @@ namespace com.hooyes.log.core
             sw.Close();
             return true;
         }
+        public bool LogToGoogle(string msg)
+        {
+            try
+            {
+                string Data = "content=" + msg;
+                http.PostDataToUrl(Data, "http://hooyeslog.appspot.com/api");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         
     }
 }
