@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Net.NetworkInformation;
 using com.hooyes.log.core;
 using com.hooyes.widget;
 
@@ -17,18 +18,31 @@ namespace com.hooyes.log
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(LogTextBox.Text))
             {
+                string NetStatus = "";
                 fn f = new fn();
                 SendMsg s = new SendMsg(f.LogToTxt);
-                s += f.LogToGoogle;
+                PingReply reply = new Ping().Send("hooyeslog.appspot.com",3000);
+                if (reply.Status == IPStatus.Success)
+                {
+                    s += f.LogToGoogle;
+                    NetStatus = "网络良好";
+                }
+                else
+                {
+                    s -= f.LogToGoogle;
+                    NetStatus = "网络不通";
+                }
+
                 if (s(LogTextBox.Text))
                 {
-                    ShowMsg(LogTextBox.Text);
+                    ShowMsg( NetStatus+ "|"+ LogTextBox.Text);
                     LogTextBox.Text = "";
                 }
             }
