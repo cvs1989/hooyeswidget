@@ -1,22 +1,27 @@
 ﻿<html>
+<head>
+<title>My twitter</title>
+<style type="text/css">
+blockquote{ border:1px dotted gray; margin:1px; padding-left:10px}
+.date{ color:Gray;}
+</style>
+</head>
   <body>
-    <span>我正在做什么?</span>
+    <span>我正在做什么?</span> <a href="{{ url }}">{{ url_linktext }}</a>
     <form action="/sign" method="post">
       <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Sign Guestbook"></div>
+      <div><input type="submit" value="POST" /></div>
     </form>
 
     {% for greeting in greetings %}
-      {% if greeting.author %}
-        <b>{{ greeting.author.nickname }}</b>:
-      {% else %}
-       An anonymous perso: 
-      {% endif %}
-      {{greeting.date}}
+       Note:
+      <span class="date">{{greeting.date}}</span>
+      -<a href="del.aspx?key={{greeting.key}}" onclick="return confirm('del?');">del</a>
       <blockquote>{{ greeting.content|escape }}</blockquote>
     {% endfor %}
     
-    <a href="{{ url }}">{{ url_linktext }}</a>
-
+   
+   <div>&copy hooyes 2009</div>
+   
   </body>
 </html>

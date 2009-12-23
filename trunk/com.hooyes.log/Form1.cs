@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using com.hooyes.log.core;
+using com.hooyes.widget;
 
 namespace com.hooyes.log
 {
+
     public partial class Form1 : Form
     {
+        delegate bool SendMsg(string val);
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +24,9 @@ namespace com.hooyes.log
             if (!string.IsNullOrEmpty(LogTextBox.Text))
             {
                 fn f = new fn();
-                if (f.LogToTxt(LogTextBox.Text))
+                SendMsg s = new SendMsg(f.LogToTxt);
+                s += f.LogToGoogle;
+                if (s(LogTextBox.Text))
                 {
                     ShowMsg(LogTextBox.Text);
                     LogTextBox.Text = "";

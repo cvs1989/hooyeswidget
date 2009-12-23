@@ -1,6 +1,6 @@
 ﻿namespace com.hooyes.widget
 {
-    using Newtonsoft.Json;
+//using Newtonsoft.Json;
     using System;
     using System.Configuration;
     using System.Text.RegularExpressions;
@@ -52,20 +52,20 @@
             return list[num2].ChildNodes[0].InnerText;
         }
 
-        public static string translate(string q, string langpair, string hl)
-        {
-            q = HttpUtility.UrlEncode(q);
-            string url = "http://ajax.googleapis.com/ajax/services/language/translate";
-            string format = "q={0}&v=1.0&context=bar&langpair={1}&hl={2}";
-            string str3 = http.PostDataToUrl(string.Format(format, q, langpair, hl), url);
-            com.hooyes.widget.translate translate = new com.hooyes.widget.translate();
-            translate = JavaScriptConvert.DeserializeObject<com.hooyes.widget.translate>(str3);
-            if (null != translate.responseData)
-            {
-                return translate.responseData.translatedText;
-            }
-            return "";
-        }
+        //public static string translate(string q, string langpair, string hl)
+        //{
+        //    q = HttpUtility.UrlEncode(q);
+        //    string url = "http://ajax.googleapis.com/ajax/services/language/translate";
+        //    string format = "q={0}&v=1.0&context=bar&langpair={1}&hl={2}";
+        //    string str3 = http.PostDataToUrl(string.Format(format, q, langpair, hl), url);
+        //    com.hooyes.widget.translate translate = new com.hooyes.widget.translate();
+        //    translate = JavaScriptConvert.DeserializeObject<com.hooyes.widget.translate>(str3);
+        //    if (null != translate.responseData)
+        //    {
+        //        return translate.responseData.translatedText;
+        //    }
+        //    return "";
+        //}
     }
 }
 
