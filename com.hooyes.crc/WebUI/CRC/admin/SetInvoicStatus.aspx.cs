@@ -20,6 +20,7 @@ public partial class CRC_admin_SetInvoicStatus :PageBase
         {
             Response.Write("{flag:false,msg:'" + ex.Message + "'}");
         }
+        Response.End();
     }
     protected void Start()
     {
