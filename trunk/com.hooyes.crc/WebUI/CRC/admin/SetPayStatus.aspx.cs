@@ -21,6 +21,7 @@ public partial class CRC_admin_SetPayStatus : PageBase
         {
             Response.Write("{flag:false,msg:'"+ex.Message+"'}");
         }
+        Response.End();
     }
     protected void Start()
     {
