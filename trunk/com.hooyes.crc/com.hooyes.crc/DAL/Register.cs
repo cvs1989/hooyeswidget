@@ -285,6 +285,30 @@ namespace com.hooyes.crc.DAL
                 return count();
             }
         }
+        /// <summary>
+        /// 检测公司名称是否已存在
+        /// </summary>
+        /// <param name="CompanyName"></param>
+        /// <returns></returns>
+        public bool exist(string CompanyName)
+        {
+            bool Rvalue = false;
+            if (!string.IsNullOrEmpty(CompanyName))
+            {
+                CompanyName = CompanyName.Replace("'", "");
+
+                int xValue = 0;
+                string sql = "select count(1) from CRC_apply where CompanyName = '{0}'";
+                sql = string.Format(sql, CompanyName);
+                xValue = Convert.ToInt32(AccessHelper.ExecuteScalar(AccessHelper.conn, sql));
+                Rvalue = (xValue > 0);
+            }
+            else
+            {
+                Rvalue = true;
+            }
+            return Rvalue;
+        }
 
     }
 }
