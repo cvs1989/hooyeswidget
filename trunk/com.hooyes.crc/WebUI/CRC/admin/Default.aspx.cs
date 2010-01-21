@@ -49,6 +49,7 @@ public partial class CRC_admin_Default : PageBase
      <tr>
      <td class='ListTableTdA'><input name='sn' id=""Checkbox{0}"" value='{2}' type=""checkbox"" /></td>
      <td class='ListTableTdB'><a href='ModifyInfo.aspx?sn={2}' target='_blank'>{1}</a></td>
+     <td class='ListTableTdDate'>{9}</td>
      <td class='ListTableTdE'><span rel='{2}' pay='{6}' class='{5}'>{3}</span></td>
      <td class='ListTableTdF'><span rel='{2}' invoice='{7}' class='{8}'>{4}</span></td>
      <td class='ListTableTdC'><a href='Delete.aspx?sn={2}' onclick='return confirm(""确定要删除{1}吗?"")' >删除</a></td>
@@ -57,9 +58,10 @@ public partial class CRC_admin_Default : PageBase
         StringBuilder sb = new StringBuilder();
         sb.Append("<table class='ListTable'>");
         sb.Append(@"<tr class='ListHead'><td><input id=""CheckboxAllC"" onclick='JSCheckAll(this)' type=""checkbox"" />全选</td><td class='AdminTdA'>公司名称</td>
+        <td>报名时间</td>
         <td>交费状态</td><td>开发票</td>
         <td>删除</td><td>编辑</td></tr>");
-        object[] param = new object[9];
+        object[] param = new object[10];
         for (int i = 0; i < xList.Count; i++)
         {
             param[0] = i;
@@ -71,6 +73,7 @@ public partial class CRC_admin_Default : PageBase
             param[6] = xList[i].Pay;
             param[7] = xList[i].Invoice;
             param[8] = xList[i].Invoice ? "invoice" : "uninvoice";
+            param[9] = xList[i].RegisterTime.ToString("yyyy-MM-dd");
             sb.AppendFormat(HTMLTemplate, param);
         }
         sb.Append("</table>");
