@@ -1,6 +1,8 @@
 <?php echo $this->fetch('header.html'); ?>
 <?php echo $this->fetch('curlocal.html'); ?>
-
+<div class="ad_banner" area="banner" widget_type="area">
+    <?php $this->display_widgets(array('page'=>'index','area'=>'banner')); ?>
+</div>
 <div class="content">
     <div class="left">
         <div class="module_sidebar">
