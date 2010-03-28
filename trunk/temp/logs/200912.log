@@ -1,0 +1,5 @@
+Thu, 03 Dec 2009 14:25:11 +0000	[2]imagecopyresampled(): supplied argument is not a valid Image resource	\includes\libraries\image.func.php	98
+Thu, 10 Dec 2009 15:37:27 +0000	[2]mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Can't connect to MySQL server on 'localhost' (10061)	\eccore\model\mysql.php	94
+Thu, 10 Dec 2009 15:37:28 +0000	[2]mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Can't connect to MySQL server on 'localhost' (10061)	\eccore\model\mysql.php	94
+Sun, 13 Dec 2009 04:15:33 +0000	[2]mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Can't connect to MySQL server on 'localhost' (10061)	\eccore\model\mysql.php	94
+Sun, 13 Dec 2009 04:15:34 +0000	[2]mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Can't connect to MySQL server on 'localhost' (10061)	\eccore\model\mysql.php	94
