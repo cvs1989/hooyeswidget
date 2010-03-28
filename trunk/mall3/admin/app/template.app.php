@@ -311,6 +311,8 @@ class TemplateApp extends BackendApp
         return array(
             'index' => SITE_URL . '/index.php',
             'gcategory' => SITE_URL . '/index.php?app=category',
+			'scategory'=>SITE_URL.'/index.php?app=category&act=store',
+			 
         );
     }
 }

@@ -3,18 +3,15 @@
 return array (
   'widgets' => 
   array (
-    '_widget_392' => 
+    '_widget_135' => 
     array (
-      'name' => 'brand',
-      'options' => NULL,
-    ),
-    '_widget_991' => 
-    array (
-      'name' => 'advt',
+      'name' => 'newinfo',
       'options' => 
       array (
+        'start_date' => '2010-03-22',
+        'end_date' => '2010-03-31',
         'style' => 'code',
-        'html' => '广告',
+        'html' => 'afdfd',
       ),
     ),
   ),
@@ -22,8 +19,7 @@ return array (
   array (
     'right' => 
     array (
-      0 => '_widget_392',
-      1 => '_widget_991',
+      0 => '_widget_135',
     ),
   ),
 );
