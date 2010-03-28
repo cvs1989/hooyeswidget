@@ -1,0 +1,34 @@
+{include file="header.html"}
+<div id="rightTop">
+    <p>{$lang.mailtemplate}</p>
+    <ul class="subnav">
+        <li><span>{$lang.manage}</span></li>
+    </ul>
+</div>
+<div class="tdare info">
+    <table width="100%" cellspacing="0" class="dataTable">
+        <!--{if $mailtemplate}-->
+        <tr class="tatr1">
+            <td  class="firstCell" align="left">{$lang.description}</td>
+            <td class="handler">{$lang.handler}</td>
+        </tr>
+        <!--{/if}-->
+        <!--{foreach from=$mailtemplates key=code item=mailtemplate}-->
+        <tr class="tatr2">
+            <td class="firstCell" align="left">{$mailtemplate.description}</td>
+            <td class="handler">
+            <a href="index.php?app=mailtemplate&amp;act=edit&amp;code={$code}">{$lang.edit}</a>
+            </td>
+        </tr>
+        <!--{foreachelse}-->
+        <tr class="no_data">
+            <td colspan="3">{$lang.no_data}</td>
+        </tr>
+        <!--{/foreach}-->
+    </table>
+        <div id="dataFuncs">
+
+    </div>
+
+</div>
+{include file="footer.html"}
