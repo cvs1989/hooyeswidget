@@ -71,26 +71,26 @@ function query(name, value){
                     <th class="align1">{$lang.store}</th>
                     <th>{$lang.goods_num}</th>
                     <th class="width2">{$lang.seller}</th>
-                    <th><a id="credit_grade" href="javascript:void(0);">{$lang.credit_grade}</a></th>
+                    <!--<th><a id="credit_grade" href="javascript:void(0);">{$lang.credit_grade}</a></th>-->
                     <th>{$lang.region_name}</th>
                 </tr>
                 <!--{foreach from=$stores item=store}-->
                 <tr>
                     <td class="width1">
-                        <p class="ware_pic"><a href="{url app=store&id=$store.store_id}"><img src="{$store.store_logo}" width="65" height="65" /></a></p>
+<!--                        <p class="ware_pic"><a href="{url app=store&id=$store.store_id}"><img src="{$store.store_logo}" width="65" height="65" /></a></p>-->
                         <h3>
                             <a href="{url app=store&id=$store.store_id}">{$store.store_name|escape}</a>
                         </h3>
                     </td>
                     <td class="align2">{$store.goods_count}</td>
                     <td class="align2"><p class="name">{$store.user_name|escape}</p><a target="_blank" class="email" href="{$site_url}/index.php?app=message&amp;act=send&amp;to_id={$store.user_id}"><img src="{res file=images/web_mail.gif}" alt="{$lang.send_pm}" /></a></td>
-                    <td class="align2">
+                   <!-- <td class="align2">
                         <!--{if $store.credit_value ge 0}-->
                         <img src="{$store.credit_image}" />
                         <!--{else}-->
                         {$store.credit_value}
                         <!--{/if}-->
-                    </td>
+                    </td>-->
                     <td class="align2">{$store.region_name|escape}</td>
                 </tr>
                 <!--{/foreach}-->

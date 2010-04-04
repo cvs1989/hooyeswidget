@@ -47,8 +47,8 @@ ul, ol { list-style-type:none; }
  */
 
 #content { width: 1000px; margin: 0 auto; }
-#left { float: left; width: 208px; }
-#right { float: right; width: 780px; }
+#left { float:right; width: 208px; }
+#right { float:left; width: 780px; }
 
 .clear { clear: both; height: 0; font-size: 1px; }
 
