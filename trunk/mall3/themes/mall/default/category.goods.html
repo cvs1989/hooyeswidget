@@ -1,6 +1,11 @@
 {include file=header.html}
 {include file=curlocal.html}
 <div class="content">
+<div class="ad_banner" area="banner" widget_type="area">
+    <!--{widgets page=gcategory area=banner}-->
+</div>
+</div>
+<div class="content">
     <div class="commodity_assort">
         <div class="module_sidebar">
             <h2><b class="category" title="CATEGORY{$lang.gcategory}"></b></h2>
@@ -25,6 +30,17 @@
 
     <div class="ad_sidebar_list" area="right" widget_type="area">
         <!--{widgets page=gcategory area=right}-->
+    </div>
+	
+</div>
+<div class="clear"></div>
+<div class="content">
+    <div class="left" area="bottom_left" widget_type="area">
+        <!--{widgets page=gcategory area=bottom_left}-->
+    </div>
+
+    <div class="right" widget_type="area" area="bottom_right">
+        <!--{widgets page=gcategory area=bottom_right}-->
     </div>
 </div>
 {include file=footer.html}

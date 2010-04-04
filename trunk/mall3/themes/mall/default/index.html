@@ -13,11 +13,34 @@
 <div class="ad_banner" area="banner" widget_type="area">
     <!--{widgets page=index area=banner}-->
 </div>
-    <div class="left" area="top_left" widget_type="area">
+<!------------->
+    <div class="left1">
+        <div class="module_sidebar">
+            <h2><b class="gategory" title="CATEGORY{$lang.scategory}"></b></h2>
+            <div class="wrap">
+                <div class="wrap_child">
+                    <div class="recommend">
+                        <dl class="shop_assort">
+                            <!--{foreach from=$scategorys item=scategory}-->
+                            <dt class="bg_color1"><a href="{url app=search&act=store&cate_id=$scategory.id}">{$scategory.value|escape}</a></dt>
+                            <dd>
+                                <!--{foreach from=$scategory.children item=child}-->
+                                <a href="{url app=search&act=store&cate_id=$child.id}">{$child.value|escape}</a>
+                                <!--{/foreach}-->
+                            </dd>
+                            <!--{/foreach}-->
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!------------->
+    <div class="right1" area="top_left" widget_type="area">
         <!--{widgets page=index area=top_left}-->
     </div>
-
-    <div class="right">
+<div class="clear"></div>
+<!--    <div class="content2">
         <div class="main">
             <div id="module_middle" area="cycle_image" widget_type="area">
                 <!--{widgets page=index area=cycle_image}-->
@@ -28,16 +51,17 @@
             </div>
         </div>
 
-        <div area="top_right" widget_type="area">
-            <!--{widgets page=index area=top_right}-->
-        </div>
+        
 
     </div>
+</div>-->
+<div class="content">
+<div area="top_right" widget_type="area">
+            <!--{widgets page=index area=top_right}-->
+        </div>
 </div>
 <div class="clear"></div>
-<div class="ad_banner" area="banner" widget_type="area">
-    <!--{widgets page=index area=banner}-->
-</div>
+
 
 <div class="content">
     <div class="left" area="bottom_left" widget_type="area">
