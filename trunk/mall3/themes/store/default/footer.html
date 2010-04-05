@@ -1,6 +1,12 @@
 <div id="footer">
     <p>
         <a href="index.php">{$lang.index}</a>
+		| {$lang.foot_aboutus} 
+		| {$lang.foot_law} 
+		| {$lang.foot_net} 
+		| <a href="index.php?app=article&code=help">{$lang.foot_help}</a>
+		| {$lang.foot_contact} 
+		| <a href="{url lang=en}">{$lang.english}</a>
         <!--{foreach from=$navs.footer item=nav}-->
         | <a href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}</a>
         <!--{/foreach}-->

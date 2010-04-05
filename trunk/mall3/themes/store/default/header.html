@@ -11,7 +11,7 @@
 <script type="text/javascript" src="index.php?act=jslang"></script>
 <script type="text/javascript" src="{lib file=jquery.js}" charset="utf-8"></script>
 <script type="text/javascript" src="{lib file=ecmall.js}" charset="utf-8"></script>
-
+<script type="text/javascript" src="{res file=js/select.js}" charset="utf-8"></script>
 <script type="text/javascript">
 //<!CDATA[
 var SITE_URL = "{$site_url}";
@@ -25,36 +25,62 @@ $(function(){
         $("#float_layer").hide();
     });
 });
+
+$(function(){
+    var select_list = document.getElementById("select_list");
+    var float_list = document.getElementById("float_list");
+    select_list.onmouseover = function () {
+        float_list.style.display = "block";
+    };
+    select_list.onmouseout = function () {
+        float_list.style.display = "none";
+    };
+});
 //]]>
 </script>
 {$_head_tags}
 </head>
 
 <body>
-
+<div class="xBanner">
+   <div class="L">{$lang.tip_1}</div>
+   <div class="R">
+		
+        <ul class="subnav">
+		    <li class="line"> <p class="link1">
+            {$lang.hello},{$visitor.user_name|escape}
+            <!--{if !$visitor.user_id}-->
+            [<a href="{url app=member&act=login&ret_url=$ret_url}">{$lang.login}</a>]
+            [<a href="{url app=member&act=register&ret_url=$ret_url}">{$lang.register}</a>]
+            <!--{else}-->
+            [<a href="{url app=member&act=logout}">{$lang.logout}</a>]
+            <!--{/if}-->
+        </p></li>
+            <li id="select_list">
+                <a class="z_index" href="{url app=member}">{$lang.member_center}</a>
+                <ul id="float_list">
+                    <div class="adorn1"></div>
+                    <div class="adorn2"></div>
+                    <li><a href="{url app=buyer_order}">{$lang.my_order}</a></li>
+                    <li><a href="{url app=buyer_groupbuy}">{$lang.my_groupbuy}</a></li>
+                    <li><a href="{url app=my_question}">{$lang.my_question}</a></li>
+                </ul>
+            </li>
+            <li class="line"><a href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->({$new_message})<!--{/if}--></a></li>
+            <li class="line"><a href="{url app=article&code=$acc_help}">{$lang.help_center}</a></li>
+            <!--{foreach from=$navs.header item=nav}-->
+            <li class="line"><a href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}</a></li>
+            <!--{/foreach}-->
+			<li class="line"><a href="{url lang=chs}">{$lang.chinese}</a></li>
+			<li class="line"><a href="{url lang=en}">{$lang.english}</a></li>
+        </ul>
+   
+		</div>
+</div>
 <div id="head">
     <h1 title="{$site_title|escape}"><a href="index.php"><img src="{$site_logo}" alt="" /></a></h1>
 
-    <div id="subnav">
-        <p>
-        {$lang.hello},{$visitor.user_name|escape}
-        <!--{if !$visitor.user_id}-->
-        [<a href="{url app=member&act=login&ret_url=$ret_url}">{$lang.login}</a>]
-        [<a href="{url app=member&act=register&ret_url=$ret_url}">{$lang.register}</a>]
-        <!--{else}-->
-        [<a href="{url act=logout}">{$lang.logout}</a>]
-        <!--{/if}-->
-        </p>
-        <p>
-        <a class="shopping" href="{url app=cart}">{$lang.shopping_cart}</a> <span>|</span>
-        <a class="favorite" href="{url app=my_favorite}">{$lang.favorite}</a> <span>|</span>
-        <a class="note" href="{url app=message&act=newpm}">{$lang.pm}<!--{if $new_message}-->({$new_message})<!--{/if}--></a> <span>|</span>
-        <a class="help" href="{url app=article&code=help}">{$lang.help_center}</a>
-        <!--{foreach from=$navs.header item=nav}-->
-        <span>|</span> <a class="user_defined" href="{$nav.link}"{if $nav.open_new} target="_blank"{/if}>{$nav.title|escape}</a>
-        <!--{/foreach}-->
-        </p>
-    </div>
+   
 
     <!--<div id="topbtn">
         <div class="topbtn1"></div>
