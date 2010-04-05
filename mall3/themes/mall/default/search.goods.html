@@ -185,7 +185,7 @@ imgUping.src = upimg;
                                 </span>
                             </span>
                             <span class="price">{$goods.price|price}</span>
-                            <b>{$lang.sales}: {$goods.sales|default:0} {$lang.unit} | <a href="{url app=goods&act=comments&id=$goods.goods_id}" target="_blank">{$goods.comments|default:0} {$lang.comment}</a></b>
+                            <b><!--{$lang.sales}: {$goods.sales|default:0} {$lang.unit} | --><a href="{url app=goods&act=comments&id=$goods.goods_id}" target="_blank">{$goods.comments|default:0} {$lang.comment}</a></b>
                         </h3>
                     </li>
                     <!--{/foreach}-->
