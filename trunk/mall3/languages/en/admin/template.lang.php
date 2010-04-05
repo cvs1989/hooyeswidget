@@ -14,6 +14,7 @@ return array(
     'index' => '首页',
     'recommend_new' => '最新产品',
     'gcategory' => '产品分类页',
+	'scategory' => '企业分类页',
 );
 
 ?>
