@@ -14,7 +14,8 @@ return array(
     'view_all_brand' => '查看全部品牌',
     'board' => '公告栏',
     'sales' => '超特价',
-    'best_recommended' => '精品推荐',
+    'best_recommended' => '精品推荐'
+	
 );
 
 ?>

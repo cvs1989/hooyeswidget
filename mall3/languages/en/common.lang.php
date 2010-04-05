@@ -7,7 +7,7 @@ return array(
     'username'  =>  '用户名',
     'password'  =>  '密&nbsp;&nbsp;&nbsp;码',
     'captcha'   =>  '验证码',
-    'index'     =>  '首页',
+    'index'     =>  'Home Page',
     'my_ecmall'     => '会员信息管理',
     'overview'      => '账户概览',
     'member_center' => 'member center',
@@ -365,6 +365,11 @@ return array(
     'kaixinwang' => '开心网',
     'tags' => '标签(TAG)',
     'msg_instruction' => '短消息使用格式?',
+	'foot_aboutus'=>'About us',
+	'foot_law'=>'Privacy',
+	'foot_net'=>'Cooperate',
+	'foot_help'=>'Help Center',
+	'foot_contact'=>'Contact us'
 );
 
 ?>

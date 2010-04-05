@@ -122,7 +122,7 @@ return array(
     'store_add_time' => '创店时间',
     'certification' => '认证',
     'enter_store' => '逛逛企业联系人的企业',
-    'search_in_store' => '店内搜索',
+    'search_in_store' => '搜索本企业',
     'gcategory' => '产品分类',
     'scategory' => '企业分类',
     'goods_history' => '浏览历史',
@@ -365,6 +365,11 @@ return array(
     'kaixinwang' => '开心网',
     'tags' => '标签(TAG)',
     'msg_instruction' => '短消息使用格式?',
+	'foot_aboutus'=>'关于我们',
+	'foot_law'=>'法律声明',
+	'foot_net'=>'网络合作',
+	'foot_help'=>'帮助中心',
+	'foot_contact'=>'联系我们'
 );
 
 ?>

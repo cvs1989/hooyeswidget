@@ -36,7 +36,7 @@ return array(
     'sales' => '已售',
     'unit' => '件',
     'comment' => '评论',
-    'no_records' => '很抱歉! 没有找到相关产品',
+    'no_records' => '暂无产品',
     'down_arrow' => '↓',
     'up_arrow' => '↑',
     'view_all_category' => '查看全部分类',
