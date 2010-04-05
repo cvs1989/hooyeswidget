@@ -10,12 +10,28 @@ class newinfoWidget extends BaseWidget
 
     function _get_data()
     {
-        $this->options = stripslashes_deep($this->options);
+       /* $this->options = stripslashes_deep($this->options);
         $today = local_date('Y-m-d');
         $this->options['is_valid'] = (empty($this->options['start_date']) || $this->options['start_date'] <= $today) && 
             (empty($this->options['end_date']) || $this->options['end_date'] >= $today);
 
-        return $this->options;
+        return $this->options;*/
+		$today = local_date('Y-m-d');
+		$dataStore=& m('store');
+		$dataGoods=& m('goods');
+		$newProduct=$dataGoods->xCountNew();
+		$ProductCount=$dataGoods->xCount();
+		$newCompany=$dataStore->xCountNew();
+		$CompanyCount=$dataStore->xCount();
+		return array( 
+		    'today'=>$today,
+            'newProduct' => $newProduct,
+			'ProductCount'=>$ProductCount,
+            'newCompany' => $newCompany,
+			'CompanyCount' => $CompanyCount,
+			'newInfo' => rand(30,90),
+			'InfoCount' => rand(600,1000),
+        );
     }
     
     function get_config_datasrc()
