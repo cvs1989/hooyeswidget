@@ -439,6 +439,18 @@ class StoreModel extends BaseModel
         $tree->setTree($gcategories, 'cate_id', 'parent_id', 'cate_name');
         return $tree->getOptions();
     }
+	function xCount(){
+	   $sql = "SELECT count(*) as count FROM {$this->table}";
+       $res = $this->db->getCol($sql);
+	  return  $res[0];
+	}
+	function xCountNew(){
+	   $today = local_date('Y-m-d');
+	   $sql = "SELECT count(*) as count FROM {$this->table}  where add_time>=UNIX_TIMESTAMP('{$today}')";
+	  
+       $res = $this->db->getCol($sql);
+	  return  $res[0];
+	}
 }
 
 ?>
