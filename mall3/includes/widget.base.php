@@ -2,9 +2,6 @@
 
 /**
  *    小挂件基础类
- *
- *    @author    Garbin
- *    @usage    none
  */
 class BaseWidget extends Object
 {
