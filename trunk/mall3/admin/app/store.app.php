@@ -288,6 +288,7 @@ class StoreApp extends BackendApp
             $this->assign('scategories', $this->_get_scategory_options());
 
             $scates = $this->_store_mod->getRelatedData('has_scategory', $id);
+			//print_r ($scates);
             $this->assign('scates', array_values($scates));
 
             /* 导入jQuery的表单验证插件 */
@@ -343,11 +344,14 @@ class StoreApp extends BackendApp
             $this->_store_mod->edit($id, $data);
 
             $this->_store_mod->unlinkRelation('has_scategory', $id);
-            $cate_id = intval($_POST['cate_id']);
-            if ($cate_id > 0)
+            //$cate_id = intval($_POST['cate_id']);
+			$cate_id = $_POST['cate_id'];
+            if (!empty($cate_id))
             {
-                $this->_store_mod->createRelation('has_scategory', $id, $cate_id);
+                //$this->_store_mod->createRelation('has_scategory', $id, $cate_id);
+				 $this->_store_mod->createRelation('has_scategory', $id, $cate_id);
             }
+			
 
             /* 如果修改了企业状态，通知企业联系人 */
             if ($old_info['state'] != $data['state'])
