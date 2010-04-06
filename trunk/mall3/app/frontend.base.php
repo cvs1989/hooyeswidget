@@ -866,8 +866,8 @@ class StoreadminbaseApp extends MemberbaseApp
 /**
  *    企业控制器基础类
  *
- *    @author    Garbin
- *    @usage    none
+ *    @author   hooyes
+ *    Update 2010-04-07
  */
 class StorebaseApp extends FrontendApp
 {
