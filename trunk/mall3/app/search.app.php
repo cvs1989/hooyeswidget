@@ -181,6 +181,8 @@ class SearchApp extends MallbaseApp
         $this->assign('cate_id', $cate_id);
         $this->assign('scategorys', $scategorys);
         $this->assign('page_info', $page);
+		// 当前语言
+        $this->assign('cur_lang', LANG);
         $this->assign('page_title', Conf::get('site_title'));
         $this->display('search.store.html');
     }
