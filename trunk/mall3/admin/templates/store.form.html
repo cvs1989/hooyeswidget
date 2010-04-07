@@ -99,6 +99,10 @@ $(function(){
         <th class="paddingT15"> {$lang.store_name}:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="store_name" type="text" id="store_name" value="{$store.store_name|escape}"/>        </td>
       </tr>
+	   <tr>
+        <th class="paddingT15"> {$lang.store_name_en}:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="store_name_en" type="text" id="store_name_en" value="{$store.store_name_en|escape}"/>        </td>
+      </tr>
       {if $enabled_subdomain}
       <tr>
         <th class="paddingT15"> {$lang.subdomain}:</th>
@@ -107,13 +111,14 @@ $(function(){
       {/if}
       <tr>
         <th class="paddingT15">{$lang.scategory}:</th>
-        <td class="paddingT15 wordSpacing5" ><select name="cate_id[]" id="cate_idx" multiple="multiple" style="width:300px; min-height:200px;">
+        <td class="paddingT15 wordSpacing5" ><select name="cate_id[]" id="cate_idx" multiple="multiple" style="width:380px; height:250px !important;">
           <option value="0">{$lang.select_pls}</option>
                 {html_options options=$scategories  selected=$scates.0.cate_id}
         </select>
 		 <script type="text/javascript">
 		  <!--{foreach from=$scates item=cate}-->
 		   $('#cate_idx=>option[value="{$cate.cate_id}"]').attr("selected","selected");
+		  
 		   <!--{/foreach}-->
 		  </script>
 		</td>
@@ -142,6 +147,10 @@ $(function(){
         <th class="paddingT15">{$lang.address}:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="address" type="text" id="address" value="{$store.address|escape}"/></td>
       </tr>
+	  <tr>
+        <th class="paddingT15">{$lang.address_en}:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="address_en" type="text" id="address_en" value="{$store.address_en|escape}"/></td>
+      </tr>
       <tr>
         <th class="paddingT15">{$lang.zipcode}:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="zipcode" type="text" id="zipcode" value="{$store.zipcode|escape}" /></td>
@@ -149,6 +158,14 @@ $(function(){
       <tr>
         <th class="paddingT15">{$lang.tel}:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="tel" type="text" id="tel" value="{$store.tel|escape}" /></td>
+      </tr>
+	        <tr>
+        <th class="paddingT15">{$lang.fax}:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="fax" type="text" id="fax" value="{$store.fax|escape}" /></td>
+      </tr>
+	   <tr>
+        <th class="paddingT15">{$lang.website}:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="im_website" type="text" id="im_website" value="{$store.im_website|escape}" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> <label for="sgrade"> {$lang.sgrade}: </label>        </th>
