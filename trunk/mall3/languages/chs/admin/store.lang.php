@@ -2,6 +2,7 @@
 return array(
     'store' => '企业',
     'store_name' => '企业名称',
+	'store_name_en' => '企业英文名称',
     'region' => '所在地',
     'sgrade' => '所属等级',
     'state' => '状态',
