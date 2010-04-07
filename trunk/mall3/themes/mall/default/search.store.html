@@ -79,7 +79,14 @@ function query(name, value){
                     <td class="width1">
 <!--                        <p class="ware_pic"><a href="{url app=store&id=$store.store_id}"><img src="{$store.store_logo}" width="65" height="65" /></a></p>-->
                         <h3>
-                            <a href="{url app=store&id=$store.store_id}">{$store.store_name|escape}</a>
+                            <a href="{url app=store&id=$store.store_id}">
+							
+							<!--{if $cur_lang eq en}-->
+							{$store.store_name_en|escape}
+							 <!--{else}-->
+                            {$store.store_name|escape}
+                             <!--{/if}-->
+							</a>
                         </h3>
                     </td>
                     <td class="align2">{$store.goods_count}</td>
