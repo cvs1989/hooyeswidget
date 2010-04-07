@@ -320,13 +320,17 @@ class StoreApp extends BackendApp
 
             $data = array(
                 'store_name'   => $_POST['store_name'],
+				'store_name_en'   => $_POST['store_name_en'],
                 'owner_name'   => $_POST['owner_name'],
                 'owner_card'   => $_POST['owner_card'],
                 'region_id'    => $_POST['region_id'],
                 'region_name'  => $_POST['region_name'],
                 'address'      => $_POST['address'],
+				'address_en'      => $_POST['address_en'],
                 'zipcode'      => $_POST['zipcode'],
                 'tel'          => $_POST['tel'],
+				'fax'          => $_POST['fax'],
+				'im_website'   => $_POST['im_website'],
                 'sgrade'       => $_POST['sgrade'],
                 'end_time'     => empty($_POST['end_time']) ? 0 : gmstr2time(trim($_POST['end_time'])),
                 'state'        => $_POST['state'],

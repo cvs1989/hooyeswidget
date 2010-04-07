@@ -5,7 +5,7 @@ define('UPLOAD_DIR', 'data/files/mall/settings');
 /**
  *    基本设置控制器
  *
- *    @author    Hyber
+ *    @author   hooyes
  *    @usage    none
  */
 class SettingApp extends BackendApp
@@ -308,7 +308,11 @@ class SettingApp extends BackendApp
 
             /* 写入 */
             $model_setting->setAll($data);
-            file_put_contents($config_file, "<?php\r\n\r\nreturn {$new_config};\r\n\r\n?>");
+            /*
+			这里将不直接操修改文件了
+			file_put_contents($config_file, "<?php\r\n\r\nreturn {$new_config};\r\n\r\n?>");
+			
+			*/
 
             $this->show_message('edit_subdomain_setting_successed');
         }
