@@ -426,7 +426,7 @@ class cls_mysql
             echo "<b>MySQL server error report:</b><br />";
             echo "Error:",$error, "<br />";
             echo "Errno:", $error_no, "<br />";
-            echo '<a href="http://ecmall.shopex.cn/help/faq.php?type=mysql&amp;dberrno=' . $error_no . '&amp;dberror=' . urlencode($error) . '" target="_blank">'. Lang::get('mysql_error_report') . '</a>';
+            echo '<a href="http://www.hooyes.com/help/faq.php?type=mysql&amp;dberrno=' . $error_no . '&amp;dberror=' . urlencode($error) . '" target="_blank">'. Lang::get('mysql_error_report') . '</a>';
         }
 
         exit;
