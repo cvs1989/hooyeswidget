@@ -47,7 +47,8 @@ class ScategoryApp extends BackendApp
         $this->import_resource(array(
                                     'script' => 'jqtreetable.js,inline_edit.js',
                                     'style'  => 'res:style/jqtreetable.css'));
-        //$this->headtag('<link href="{res file=style/jqtreetable.css}" rel="stylesheet" type="text/css" /><script type="text/javascript" src="{lib file=jqtreetable.js}"></script>');
+        /*//$this->headtag('<link href="{res file=style/jqtreetable.css}" rel="stylesheet" type="text/css" /><script type="text/javascript" src="{lib file=jqtreetable.js}"></script>');
+		*/
         $this->display('scategory.index.html');
     }
 
@@ -69,6 +70,7 @@ class ScategoryApp extends BackendApp
         {
             $data = array(
                 'cate_name' => $_POST['cate_name'],
+				 'cate_name_en' => $_POST['cate_name_en'],
                 'parent_id' => $_POST['parent_id'],
                 'sort_order' => $_POST['sort_order'],
             );
@@ -140,6 +142,7 @@ class ScategoryApp extends BackendApp
         {
             $data = array(
                 'cate_name' => $_POST['cate_name'],
+				'cate_name_en' => $_POST['cate_name_en'],
                 'parent_id' => $_POST['parent_id'],
                 'sort_order' => $_POST['sort_order'],
             );
@@ -174,10 +177,10 @@ class ScategoryApp extends BackendApp
        $value  = isset($_GET['value']) ? trim($_GET['value']) : '';
        $data   = array();
 
-       if (in_array($column ,array('cate_name', 'sort_order')))
+       if (in_array($column ,array('cate_name','cate_name_en', 'sort_order')))
        {
            $data[$column] = $value;
-           if($column == 'cate_name')
+           if($column == 'cate_name' || $column == 'cate_name_en')
            {
                $scategory = $this->_scategory_mod->get_info($id);
 

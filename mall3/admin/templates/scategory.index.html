@@ -29,7 +29,9 @@ $(function()
         <thead>
         <tr>
             <th class="w30"><input id="checkall_1" type="checkbox" class="checkall" /></th>
-            <th width="50%"><span class="all_checkbox"><label for="checkall_1">{$lang.checkall}</label></span>{$lang.cate_name}</td>
+            <th width="50%"><span class="all_checkbox"><label for="checkall_1">{$lang.checkall}</label></span>{$lang.cate_name}
+			</th>
+			<th>{$lang.cate_name_en}</th>
             <th>{$lang.sort_order}</th>
             <th class="handler">{$lang.handler}</th>
         </tr>
@@ -39,6 +41,8 @@ $(function()
         <tr>
             <td class="align_center w30"><input type="checkbox" class="checkitem" value="{$scategory.cate_id}" /></td>
             <td class="node" width="50%"><span ectype="inline_edit" fieldname="cate_name" fieldid="{$scategory.cate_id}" required="1" title="{$lang.editable}" class="node_name editable">{$scategory.cate_name|escape}</span></td>
+			<td class="node" width="50%"><span ectype="inline_edit" fieldname="cate_name_en" fieldid="{$scategory.cate_id}" required="1" title="{$lang.editable}" class="node_name editable">{$scategory.cate_name_en|escape}</span></td>
+
             <td class="align_center"><span ectype="inline_edit" fieldname="sort_order" fieldid="{$scategory.cate_id}" datatype="pint" maxvalue="255" title="{$lang.editable}" class="editable">{$scategory.sort_order}</span></td>
             <td class="handler">
                 <span><a href="index.php?app=scategory&amp;act=edit&amp;id={$scategory.cate_id}">{$lang.edit}</a>
