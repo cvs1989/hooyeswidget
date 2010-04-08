@@ -94,7 +94,7 @@ return array(
     'contributor'  => '贡献者',
     'thanks_contributor'  => '非常感谢我们的贡献者',
     'statement'  => '相关声明',
-    'company_all_right_reserved'  => '<a href="http://www.shopex.cn">上海商派网络有限公司</a>&nbsp;拥有&nbsp;<a href="http://ecmall.shopex.cn">ECMall</a>&nbsp;的所有版权',
+    'company_all_right_reserved'  => '<a href="http://www.shopex.cn">上海商派网络有限公司</a>&nbsp;拥有&nbsp;<a href="http://www.hooyes.com">ECMall</a>&nbsp;的所有版权',
     'other_copyright'  => '本项目引用了以下开源项目&nbsp;:&nbsp;&nbsp;jQuery，jQuery UI，jQuery Validate，TinyMCE，Swfupload，jQtreetable，jQuery jQzoom，PHPMailer等。&nbsp;原作者拥有其所有版权',
     'warning'  => '警告！！！',
     'dangerous_initdata'  => '为了您的商城的安全，请立马删除商城根目录下的 ./initdata 目录',

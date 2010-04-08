@@ -5,7 +5,7 @@ return array(
     'hook' => 'on_run_action',
     'name' => '企业地址简写插件',
     'desc' => '本插件可以简化企业访问地址为“http://商城网址/?企业id”。',
-    'author' => 'ECMall Team',
+    'author' => 'hooyes',
     'version' => '1.0',
 );
 
