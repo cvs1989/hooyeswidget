@@ -11,7 +11,8 @@ class DefaultApp extends MallbaseApp
 
         /* 热门搜素 */
         $this->assign('hot_keywords', $this->_get_hot_keywords());
-
+        // 当前语言
+        $this->assign('cur_lang', LANG);
         $this->assign('page_title', Conf::get('site_title'));
         $this->assign('page_description', Conf::get('site_description'));
         $this->assign('page_keywords', Conf::get('site_keywords'));
@@ -31,7 +32,11 @@ class DefaultApp extends MallbaseApp
 
         import('tree.lib');
         $tree = new Tree();
-        $tree->setTree($scategories, 'cate_id', 'parent_id', 'cate_name');
+		if(LANG=='en'){
+		 $tree->setTree($scategories, 'cate_id', 'parent_id', 'cate_name_en');
+		}else{
+		 $tree->setTree($scategories, 'cate_id', 'parent_id', 'cate_name');
+		}		
         return $tree->getArrayList(0);
     }
 }
