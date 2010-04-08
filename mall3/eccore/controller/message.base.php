@@ -247,7 +247,7 @@ class Message extends MessageBase
             $tmp_arr = explode("\n", $msg, 2);
             $tmp_param = strtr($tmp_arr[0], array('MySQL Error['=>'dberrno=', ']: '=>'&dberror='));
             parse_str($tmp_param, $tmp_arr);
-            $url = 'http://ecmall.shopex.cn/help/faq.php?type=mysql&dberrno=' . $tmp_arr['dberrno'] . '&dberror=' .  urlencode($tmp_arr['dberror']);
+            $url = 'http://www.hooyes.com/help/faq.php?type=mysql&dberrno=' . $tmp_arr['dberrno'] . '&dberror=' .  urlencode($tmp_arr['dberror']);
 
             $this->add_link(Lang::get('mysql_error_report'), $url);
         }
