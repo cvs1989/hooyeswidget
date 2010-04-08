@@ -6,7 +6,7 @@ return array(
     'desc'      => Lang::get('bank_desc'),
     'is_online' => '0',
     'author'    => 'ECMall TEAM',
-    'website'   => 'http://ecmall.shopex.cn',
+    'website'   => 'http://www.hooyes.com',
     'version'   => '1.0',
     'currency'  => Lang::get('bank_currency'),
     'config'    => array(),
