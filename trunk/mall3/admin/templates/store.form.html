@@ -30,9 +30,9 @@ $(function(){
         },
         onkeyup    : false,
         rules : {
-            owner_name: {
-                required: true
-            },
+           // owner_name: {
+//                required: true
+//            },
             store_name: {
                 required : true,
                 remote : {
@@ -166,6 +166,10 @@ $(function(){
 	   <tr>
         <th class="paddingT15">{$lang.website}:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="im_website" type="text" id="im_website" value="{$store.im_website|escape}" /></td>
+      </tr>
+	   <tr>
+        <th class="paddingT15">{$lang.email}:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="im_email" type="text" id="im_email" value="{$store.im_email|escape}" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> <label for="sgrade"> {$lang.sgrade}: </label>        </th>
