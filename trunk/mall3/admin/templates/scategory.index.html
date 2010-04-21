@@ -47,7 +47,7 @@ $(function()
             <td class="handler">
                 <span><a href="index.php?app=scategory&amp;act=edit&amp;id={$scategory.cate_id}">{$lang.edit}</a>
                 |
-                <a href="javascript:if(confirm('{$lang.drop_confirm}'))window.location = 'index.php?app=scategory&amp;act=drop&amp;id={$scategory.cate_id}';">{$lang.drop}</a><!-- {if $scategory.layer lt 2} --> | <a href="index.php?app=scategory&amp;act=add&amp;pid={$scategory.cate_id}">{$lang.add_child}</a><!-- {/if} -->
+                <a href="javascript:if(confirm('{$lang.drop_confirm}'))window.location = 'index.php?app=scategory&amp;act=drop&amp;id={$scategory.cate_id}';">{$lang.drop}</a><!-- {if $scategory.layer lt 3} --> | <a href="index.php?app=scategory&amp;act=add&amp;pid={$scategory.cate_id}">{$lang.add_child}</a><!-- {/if} -->
                 </span>
                 </td>
         </tr>
