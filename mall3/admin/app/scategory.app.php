@@ -1,6 +1,6 @@
 <?php
 
-define('MAX_LAYER', 2);
+define('MAX_LAYER', 3);
 
 /* 企业分类控制器 */
 class ScategoryApp extends BackendApp
