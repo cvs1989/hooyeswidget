@@ -320,11 +320,14 @@ class StoreApp extends BackendApp
                     return;
                 }
             }
-
+            $sowner_name=$_POST['owner_name'];
+			if(empty($_POST['owner_name'])){
+			 $sowner_name=" ";
+			}
             $data = array(
                 'store_name'   => $_POST['store_name'],
 				'store_name_en'   => $_POST['store_name_en'],
-                'owner_name'   => $_POST['owner_name'],
+                'owner_name'   => $sowner_name,
                 'owner_card'   => $_POST['owner_card'],
                 'region_id'    => $_POST['region_id'],
                 'region_name'  => $_POST['region_name'],
