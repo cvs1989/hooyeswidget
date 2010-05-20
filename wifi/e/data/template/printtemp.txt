@@ -1,0 +1,74 @@
+<?php
+require("../class/connect.php");
+if(!defined('InEmpireCMS'))
+{
+	exit();
+}
+require("../class/db_sql.php");
+require("../class/q_functions.php");
+require("../data/dbcache/class.php");
+require LoadLang("pub/fun.php");
+$link=db_connect();
+$empire=new mysqlquery();
+$id=(int)$_GET['id'];
+$classid=(int)$_GET['classid'];
+if(empty($id)||empty($classid))
+{
+	printerror("ErrorUrl","history.go(-1)",1);
+}
+$mid=$class_r[$classid]['modid'];
+$tbname=$class_r[$classid][tbname];
+if(empty($tbname))
+{
+	printerror("ErrorUrl","history.go(-1)",1);
+}
+$r=$empire->fetch1("select * from {$dbtbpre}ecms_".$tbname." where id='$id' limit 1");
+if(empty($r[id])||$r[classid]!=$classid)
+{
+	printerror("ErrorUrl","history.go(-1)",1);
+}
+//副表
+$tbdataf=$emod_r[$mid]['tbdataf'];
+if($tbdataf&&$tbdataf<>',')
+{
+	$selectdataf=substr($tbdataf,1,strlen($tbdataf)-2);
+	$finfor=$empire->fetch1("select ".$selectdataf." from {$dbtbpre}ecms_".$tbname."_data_".$r[stb]." where id='$r[id]'");
+	$r=array_merge($r,$finfor);
+}
+//权限
+if($r[groupid])
+{
+	include('../data/dbcache/MemberLevel.php');
+	define('empirecms','wm_chief');
+	define('PageCheckLevel','wm_chief');
+	$check_tbname=$tbname;
+	$check_infoid=$id;
+	$check_classid=$classid;
+	$check_path="../../";
+	$checkinfor=$r;
+	@include("../class/CheckLevel.php");
+}
+$r[newstime]=date("Y-m-d H:i:s",$r[newstime]);
+//存文本
+$savetxtf=$emod_r[$mid]['savetxtf'];
+if($savetxtf&&$r[$savetxtf])
+{
+	$r[$savetxtf]=GetTxtFieldText($r[$savetxtf]);
+}
+$r[newstext]=stripSlashes($r[newstext]);
+//分页字段
+$pagef=$emod_r[$mid]['pagef'];
+if($pagef&&$r[$pagef])
+{
+	$r[$pagef]=str_replace('[!--empirenews.page--]','',$r[$pagef]);
+	$r[$pagef]=str_replace('[/!--empirenews.page--]','',$r[$pagef]);
+}
+$url=ReturnClassLink($r[classid])."&nbsp;>&nbsp;".$fun_r['zw'];
+//标题链接
+$titlelink=sys_ReturnBqTitleLink($r);
+?>
+<!--empire.print-->
+<?php
+db_close();
+$empire=null;
+?>
