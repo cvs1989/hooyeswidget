@@ -31,8 +31,8 @@ namespace hooyes.Web
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{a}_{b}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "{controller}/{action}/{a}/{b}/{id}", // URL with parameters
+                new { controller = "Home", action = "Index",a=UrlParameter.Optional,b=UrlParameter.Optional, id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

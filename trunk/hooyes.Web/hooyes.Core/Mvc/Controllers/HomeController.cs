@@ -21,6 +21,10 @@ namespace hooyes.Web.Controllers
         {
             return View();
         }
+        public ActionResult AboutUs()
+        {
+            return View("ViewName");
+        }
 
         public ActionResult Sum(int a, int b)
         {
