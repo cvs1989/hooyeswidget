@@ -1,5 +1,0 @@
-E:\MVC\hooyes.Web\hooyes.Core\bin\Debug\hooyes.Core.dll
-E:\MVC\hooyes.Web\hooyes.Core\bin\Debug\hooyes.Core.pdb
-E:\MVC\hooyes.Web\hooyes.Core\obj\Debug\ResolveAssemblyReference.cache
-E:\MVC\hooyes.Web\hooyes.Core\obj\Debug\hooyes.Core.dll
-E:\MVC\hooyes.Web\hooyes.Core\obj\Debug\hooyes.Core.pdb
