@@ -1,0 +1,7 @@
+E:\MVC\hooyes.Web\hooyes.Web\bin\hooyes.Web.dll
+E:\MVC\hooyes.Web\hooyes.Web\bin\hooyes.Web.pdb
+E:\MVC\hooyes.Web\hooyes.Web\bin\hooyes.Core.dll
+E:\MVC\hooyes.Web\hooyes.Web\bin\hooyes.Core.pdb
+E:\MVC\hooyes.Web\hooyes.Web\obj\Debug\ResolveAssemblyReference.cache
+E:\MVC\hooyes.Web\hooyes.Web\obj\Debug\hooyes.Web.dll
+E:\MVC\hooyes.Web\hooyes.Web\obj\Debug\hooyes.Web.pdb
