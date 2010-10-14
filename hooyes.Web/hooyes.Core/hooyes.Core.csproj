@@ -54,6 +54,8 @@
     <Compile Include="Configuretion\Route\RouteConfigurationSection.cs" />
     <Compile Include="Configuretion\Route\RoutingCollection.cs" />
     <Compile Include="Configuretion\Route\RoutingItem.cs" />
+    <Compile Include="Mvc\Controllers\HomeController.cs" />
+    <Compile Include="Mvc\Models\movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

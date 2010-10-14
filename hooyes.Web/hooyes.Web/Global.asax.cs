@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Configuration;
+using LevenBlog.Core.Configuretion.Route;
 
 namespace hooyes.Web
 {
@@ -14,11 +16,22 @@ namespace hooyes.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+
+            //RouteConfigurationSection section =
+            //    (RouteConfigurationSection)ConfigurationManager.GetSection("routeConfiguration");
+
+            //if (null == section)
+            //{
+            //    throw new Exception("Route规则未配置");
+            //}
+
+            //RouteTable.Routes.RegisterRoutes(section);
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
+                "{controller}/{action}/{a}_{b}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
