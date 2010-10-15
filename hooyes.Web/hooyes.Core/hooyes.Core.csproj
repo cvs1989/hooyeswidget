@@ -34,7 +34,9 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq" />
@@ -54,7 +56,12 @@
     <Compile Include="Configuretion\Route\RouteConfigurationSection.cs" />
     <Compile Include="Configuretion\Route\RoutingCollection.cs" />
     <Compile Include="Configuretion\Route\RoutingItem.cs" />
+    <Compile Include="Mvc\Controllers\CustomController.cs" />
+    <Compile Include="Mvc\CustomActionFilter.cs" />
     <Compile Include="Mvc\Controllers\HomeController.cs" />
+    <Compile Include="Mvc\CustomActionResult.cs" />
+    <Compile Include="Mvc\CustomExtends.cs" />
+    <Compile Include="Mvc\CustomHandleError.cs" />
     <Compile Include="Mvc\Models\movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
