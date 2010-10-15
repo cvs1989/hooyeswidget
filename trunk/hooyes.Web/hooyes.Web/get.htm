@@ -8,12 +8,23 @@
 //            alert(data.d.title);
         //        });
         $(function () {
+
+        });
+        function appClick() {
+
+            var params = { title: '阿凡达', director: '我',
+                actor: {
+                    name: '邱景林',
+                    age: '19'
+                }
+            };
+
             $.ajax({
-                url: 'home/MovieList',
-                method: 'GET',
-                data: { title: '你好', title: '你好1', director: '我', x: 'xxx' },
+                url: 'Custom/MovieList',
+                method: 'POST',
+
+                data: params,
                 success: function (x) {
-                    // alert(x[0].title);
                     $("#result1").html(x[0].title);
                     $("#result2").html(x[1].director);
                 },
@@ -21,11 +32,12 @@
                     alert("error");
                 }
             });
-        });
+        }
     </script>
 </head>
 <body>
 <div id="result1"></div>
 <div id="result2"></div>
+<button onclick="appClick()">获取</button>
 </body>
 </html>

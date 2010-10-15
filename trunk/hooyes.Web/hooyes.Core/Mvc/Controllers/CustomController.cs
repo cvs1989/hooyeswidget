@@ -1,39 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 using System.Web.Mvc;
 using hooyes.Core.Mvc.Models;
 using hooyes.Core;
 using hooyes.Core.Mvc;
-namespace hooyes.Web.Controllers
+namespace hooyes.Core.Mvc.Controllers
 {
-    
-    //[CustomHandleError]
-    public class HomeController : Controller
+    [CustomHandleError]
+    public class CustomController:Controller
     {
-        public ActionResult Index()
+        public ActionResult index()
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
-
-            return View();
+            return new CustomActionResult();
+        }
+        public ActionResult getCode(string img)
+        {
+            return new CodeResult();
+        }
+        public ActionResult md5(string s)
+        {
+            return Content(s.ToMD5());
+        }
+        public ActionResult error()
+        {
+            return ControllerExtensions.Code(this, "ss");
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-        public ActionResult AboutUs()
-        {
-            return View("ViewName");
-        }
-
-        [CustomActionFilter]
-        public ActionResult Sum(int a, int b)
-        {
-            int c = a + b;
-            return Content(c.ToString());
-        }
         public ActionResult MovieList(movie m)
         {
             //movie m = new movie();
@@ -43,8 +37,8 @@ namespace hooyes.Web.Controllers
             rt.Add(m);
 
             movie m2 = new movie();
-            m2.title = "ok";
-            m2.director = "sssssssss";
+            m2.title = "十面埋伏";
+            m2.director = "张艺谋";
             rt.Add(m2);
             return Json(rt, JsonRequestBehavior.AllowGet);
         }
