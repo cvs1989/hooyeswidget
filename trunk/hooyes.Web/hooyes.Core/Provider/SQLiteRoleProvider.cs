@@ -738,15 +738,15 @@ namespace hooyes.Core.Provider
 
         private void WriteToEventLog(SQLiteException e, string action)
         {
-            EventLog log = new EventLog();
-            log.Source = eventSource;
-            log.Log = eventLog;
+            //EventLog log = new EventLog();
+            //log.Source = eventSource;
+            //log.Log = eventLog;
 
-            string message = exceptionMessage + "\n\n";
-            message += "Action: " + action + "\n\n";
-            message += "Exception: " + e.ToString();
+            //string message = exceptionMessage + "\n\n";
+            //message += "Action: " + action + "\n\n";
+            //message += "Exception: " + e.ToString();
 
-            log.WriteEntry(message);
+            //log.WriteEntry(message);
         }
 
     }
