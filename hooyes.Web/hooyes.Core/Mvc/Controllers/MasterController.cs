@@ -35,9 +35,25 @@ namespace hooyes.Core.Mvc.Controllers
             FormsAuthentication.SignOut();
             return Content("ok");
         }
+        public ActionResult CreateRoles(string rolesName)
+        {
+            Roles.CreateRole(rolesName);
+            return Content(rolesName);
+        }
+        public ActionResult AddUserToRole(string userName)
+        {
+            Roles.AddUserToRole(userName, "users");
+            return Content(userName);
+        }
         public ActionResult R()
         {
             bool b = Request.IsAuthenticated;
+            return Content(b.ToString());
+        }
+        public ActionResult R2()
+        {
+            bool b = Roles.IsUserInRole("users");
+           
             return Content(b.ToString());
         }
     }
