@@ -32,11 +32,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq" />
@@ -56,14 +62,20 @@
     <Compile Include="Configuretion\Route\RouteConfigurationSection.cs" />
     <Compile Include="Configuretion\Route\RoutingCollection.cs" />
     <Compile Include="Configuretion\Route\RoutingItem.cs" />
+    <Compile Include="Mvc\Controllers\AccountController.cs" />
     <Compile Include="Mvc\Controllers\CustomController.cs" />
+    <Compile Include="Mvc\Controllers\MasterController.cs" />
     <Compile Include="Mvc\CustomActionFilter.cs" />
     <Compile Include="Mvc\Controllers\HomeController.cs" />
     <Compile Include="Mvc\CustomActionResult.cs" />
+    <Compile Include="Mvc\CustomAuthorize.cs" />
     <Compile Include="Mvc\CustomExtends.cs" />
     <Compile Include="Mvc\CustomHandleError.cs" />
+    <Compile Include="Mvc\Models\AccountModels.cs" />
     <Compile Include="Mvc\Models\movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\SQLiteMembershipProvider.cs" />
+    <Compile Include="Provider\SQLiteRoleProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

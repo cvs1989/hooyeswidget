@@ -27,7 +27,10 @@ namespace hooyes.Web.Controllers
         {
             return View("ViewName");
         }
-
+        public ActionResult Fobbiden()
+        {
+            return Content("无权访问");
+        }
         [CustomActionFilter]
         public ActionResult Sum(int a, int b)
         {

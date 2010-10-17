@@ -8,7 +8,7 @@ using hooyes.Core;
 using hooyes.Core.Mvc;
 namespace hooyes.Core.Mvc.Controllers
 {
-    [CustomHandleError]
+    //[CustomHandleError]
     public class CustomController:Controller
     {
         public ActionResult index()
@@ -41,6 +41,20 @@ namespace hooyes.Core.Mvc.Controllers
             m2.director = "张艺谋";
             rt.Add(m2);
             return Json(rt, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult json2(movie m)
+        {
+            return Json(m,JsonRequestBehavior.AllowGet);
+        }
+        [CustomAuthorize(isException=true)]
+        public ActionResult Admin()
+        {
+            return Content("Private content");
+        }
+        [Authorize]
+        public ActionResult A2()
+        {
+            return Content("it's ok");
         }
     }
 }
