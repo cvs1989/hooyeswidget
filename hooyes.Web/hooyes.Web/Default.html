@@ -2,8 +2,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <script src="Scripts/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
 </head>
 <body>
-
+ <div id="UsersList">
+   
+ </div>
+ <button id="getUsers">GetUsers</button>
+ <div>
+ <hr />
+   <input type="text"  id="username"/><br />
+   <input type="text" id="mail" /> <br />
+   <input type="password" id="pwd" /><br />
+   <button id="create">Create</button>
+ </div>
 </body>
+<script type="text/javascript">
+    var Users = {
+        list: function () {
+            $.ajax({
+                url: 'master/GetAllUsers',
+                dataType: 'json',
+                method: 'GET',
+                success: function (data) {
+                    //alert(data[0].UserName);
+                    GridUsers(data);
+                },
+                error: function () {
+                    alert(1);
+                }
+
+            });
+        },
+        //add Users
+        add: function (username, pwd,mail) {
+            var params = { UserName: username, UserPwd: pwd, email: mail };
+            $.ajax({
+                url: 'master/CreateUser',
+                dataType: 'json',
+                method: 'GET',
+                data: params,
+                success: function (data) {
+                    alert(data.UserName);
+                    // GridUsers(data);
+                },
+                error: function () {
+                    alert(1);
+                }
+
+            });
+        }
+    };
+    function GridUsers(data) {
+        $("#UsersList").empty();
+        $.each(data, function (i, n) {
+            $("#UsersList").append(n.UserName+"<hr />");
+        });
+    }
+    $("#getUsers").click(function () {
+        Users.list();
+    });
+    $("#create").click(function () {
+        Users.add($("#username").val(), $("#pwd").val(),$("#mail").val());
+    });
+</script>
 </html>
