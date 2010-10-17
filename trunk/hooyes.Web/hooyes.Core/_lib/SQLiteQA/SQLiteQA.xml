@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <profile>
   <section name="database">
-    <entry name="LastDatabase">C:\Users\hooyes\Downloads\20051119\Provider.db</entry>
+    <entry name="LastDatabase">E:\SqlLiteDB2.db</entry>
   </section>
   <section name="Layout">
     <entry name="FormLeft">-8</entry>
@@ -9,10 +9,10 @@
     <entry name="FormWidth">1296</entry>
     <entry name="FormHeight">776</entry>
     <entry name="FormWindowState">Maximized</entry>
-    <entry name="SideWidth">365</entry>
+    <entry name="SideWidth">421</entry>
     <entry name="SideHeight">457</entry>
     <entry name="MainQueryHeight">225</entry>
-    <entry name="MainMsgHeight">289</entry>
+    <entry name="MainMsgHeight">204</entry>
   </section>
   <section name="Options">
     <entry name="DataType">sql</entry>
