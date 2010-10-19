@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfManualService", "WcfManualService\WcfManualService.csproj", "{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserClient", "UserClient\UserClient.csproj", "{E0851136-4718-4AD6-8A69-623CFFED0F55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfManualHost", "WcfManualHost\WcfManualHost.csproj", "{80C1A8B3-883B-4C59-89F3-4904A1488B7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "服务", "服务", "{9DB54CA4-9190-4634-9DD7-CA8EF200D39E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "服务宿主", "服务宿主", "{377FC26C-2BAB-4635-BF22-6B6188352002}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "客户端", "客户端", "{B3F95956-8DEE-4C52-857F-3C5E9B47C1FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21}.Release|x86.ActiveCfg = Release|Any CPU
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Debug|x86.ActiveCfg = Debug|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Debug|x86.Build.0 = Debug|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Release|Any CPU.ActiveCfg = Release|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Release|x86.ActiveCfg = Release|x86
+		{E0851136-4718-4AD6-8A69-623CFFED0F55}.Release|x86.Build.0 = Release|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Debug|x86.ActiveCfg = Debug|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Debug|x86.Build.0 = Debug|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Release|Any CPU.ActiveCfg = Release|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Release|Mixed Platforms.Build.0 = Release|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Release|x86.ActiveCfg = Release|x86
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94111F6D-E3CD-44C2-9402-D3B34BDE1F21} = {9DB54CA4-9190-4634-9DD7-CA8EF200D39E}
+		{80C1A8B3-883B-4C59-89F3-4904A1488B7F} = {377FC26C-2BAB-4635-BF22-6B6188352002}
+		{E0851136-4718-4AD6-8A69-623CFFED0F55} = {B3F95956-8DEE-4C52-857F-3C5E9B47C1FC}
+	EndGlobalSection
+EndGlobal
