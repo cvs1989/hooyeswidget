@@ -51,5 +51,9 @@ namespace hooyes.Web.Controllers
             rt.Add(m2);
             return Json(rt, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }

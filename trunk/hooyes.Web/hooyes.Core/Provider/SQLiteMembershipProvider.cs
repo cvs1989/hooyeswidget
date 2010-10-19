@@ -1713,15 +1713,15 @@ namespace hooyes.Core.Provider
 
         private void WriteToEventLog(Exception e, string action)
         {
-            EventLog log = new EventLog();
-            log.Source = eventSource;
-            log.Log = eventLog;
+            //EventLog log = new EventLog();
+            //log.Source = eventSource;
+            //log.Log = eventLog;
 
-            string message = "An exception occurred communicating with the data source.\n\n";
-            message += "Action: " + action + "\n\n";
-            message += "Exception: " + e.ToString();
+            //string message = "An exception occurred communicating with the data source.\n\n";
+            //message += "Action: " + action + "\n\n";
+            //message += "Exception: " + e.ToString();
 
-            log.WriteEntry(message);
+            //log.WriteEntry(message);
         }
     }
 }
