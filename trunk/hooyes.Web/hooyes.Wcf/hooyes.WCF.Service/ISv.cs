@@ -10,5 +10,7 @@ namespace hooyes.WCF.Service
     {
        [OperationContract]
        string GetData(int value);
+       [OperationContract]
+       void UpLoad(byte[] file);
     }
 }
