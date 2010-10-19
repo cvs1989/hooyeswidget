@@ -11,9 +11,28 @@ namespace hooyes.Core.Mvc.Controllers
     //[CustomHandleError]
     public class CustomController:Controller
     {
+        private static CustomViewEngine Cv;
+        private static object lockObject = new object();
+        private static ViewEngineCollection Vengine = new ViewEngineCollection();
+        public CustomController()
+        {
+            if (Cv == null)
+            {
+                lock (lockObject)
+                {
+                    Cv = new CustomViewEngine("static");
+                   // Vengine.Add(Cv);
+                    ViewEngines.Engines.Add(Cv);
+                }
+            }
+        }
         public ActionResult index()
         {
             return new CustomActionResult();
+        }
+        public ActionResult Buy()
+        {
+            return View();
         }
         public ActionResult getCode(string img)
         {

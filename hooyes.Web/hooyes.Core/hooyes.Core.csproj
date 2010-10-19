@@ -71,6 +71,7 @@
     <Compile Include="Mvc\CustomAuthorize.cs" />
     <Compile Include="Mvc\CustomExtends.cs" />
     <Compile Include="Mvc\CustomHandleError.cs" />
+    <Compile Include="Mvc\CustomViewEngine.cs" />
     <Compile Include="Mvc\Models\AccountModels.cs" />
     <Compile Include="Mvc\Models\movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
