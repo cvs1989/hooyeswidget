@@ -9,13 +9,21 @@ namespace hooyes.WCF.Host
     {
         static void Main(string[] args)
         {
-            HostOpen();
+            SinaOpen();
         }
         static void HostOpen()
         {
             ServiceHost host = new ServiceHost(typeof(WCF.Service.Sv));
             host.Open();
-            Console.WriteLine("service");
+            Console.WriteLine("WCF Service is running");
+            Console.ReadKey();
+            host.Close();
+        }
+        static void SinaOpen()
+        {
+            ServiceHost host = new ServiceHost(typeof(WCF.Service.SinaApiService));
+            host.Open();
+            Console.WriteLine("Sina service is running...");
             Console.ReadKey();
             host.Close();
         }
