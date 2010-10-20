@@ -2,36 +2,40 @@
 <publishData>
   <publishProfile publishUrl="E:\WebSiteMVC" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="Views/Home/Index.aspx" publishTime="10/14/2010 13:39:24" />
-    <file relUrl="bin/hooyes.Web.pdb" publishTime="10/18/2010 13:07:57" />
+    <file relUrl="bin/hooyes.Web.pdb" publishTime="10/20/2010 16:59:27" />
     <file relUrl="bin/System.Data.SQLite.dll" publishTime="10/18/2010 09:35:40" />
     <file relUrl="Scripts/MicrosoftAjax.js" publishTime="10/14/2010 13:39:21" />
     <file relUrl="Global.asax" publishTime="10/14/2010 13:39:50" />
-    <file relUrl="bin/hooyes.Web.dll" publishTime="10/18/2010 13:07:58" />
+    <file relUrl="Views/Static/buy.html" publishTime="10/18/2010 14:23:05" />
+    <file relUrl="bin/hooyes.Web.dll" publishTime="10/20/2010 16:59:27" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="10/14/2010 13:39:21" />
     <file relUrl="Views/Shared/LogOnUserControl.ascx" publishTime="10/14/2010 13:39:23" />
     <file relUrl="Scripts/MicrosoftMvcAjax.debug.js" publishTime="10/14/2010 13:39:20" />
     <file relUrl="Scripts/MicrosoftMvcValidation.debug.js" publishTime="10/14/2010 13:39:21" />
-    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="10/14/2010 13:39:21" />
     <file relUrl="Scripts/jquery.validate.min.js" publishTime="10/14/2010 13:39:21" />
     <file relUrl="Config/Route.config" publishTime="10/14/2010 15:18:15" />
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="10/14/2010 13:39:22" />
+    <file relUrl="bin/hooyes.API.pdb" publishTime="10/20/2010 16:59:26" />
+    <file relUrl="t.html" publishTime="10/20/2010 17:17:32" />
     <file relUrl="Views/Account/ChangePassword.aspx" publishTime="10/14/2010 13:39:25" />
     <file relUrl="Scripts/jquery.validate.js" publishTime="10/14/2010 13:39:21" />
     <file relUrl="get.htm" publishTime="10/18/2010 09:35:20" />
     <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="10/14/2010 13:39:22" />
+    <file relUrl="Views/Home/About.aspx" publishTime="10/14/2010 13:39:24" />
     <file relUrl="Views/Account/LogOn.aspx" publishTime="10/14/2010 13:39:25" />
     <file relUrl="Views/Account/Register.aspx" publishTime="10/14/2010 13:39:25" />
     <file relUrl="Scripts/MicrosoftMvcAjax.js" publishTime="10/14/2010 13:39:21" />
-    <file relUrl="bin/hooyes.Core.pdb" publishTime="10/18/2010 12:54:17" />
+    <file relUrl="bin/hooyes.Core.pdb" publishTime="10/20/2010 16:59:26" />
     <file relUrl="Views/Account/ChangePasswordSuccess.aspx" publishTime="10/14/2010 13:39:25" />
     <file relUrl="Views/Shared/Site.Master" publishTime="10/14/2010 13:39:23" />
     <file relUrl="Default.html" publishTime="10/18/2010 09:35:20" />
+    <file relUrl="bin/hooyes.API.dll" publishTime="10/20/2010 16:59:26" />
     <file relUrl="Views/Shared/Error.aspx" publishTime="10/14/2010 13:39:23" />
-    <file relUrl="Web.config" publishTime="10/18/2010 13:08:03" />
+    <file relUrl="Web.config" publishTime="10/20/2010 17:08:27" />
     <file relUrl="Content/Site.css" publishTime="10/14/2010 13:39:30" />
-    <file relUrl="Views/Home/About.aspx" publishTime="10/14/2010 13:39:24" />
+    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="10/14/2010 13:39:21" />
     <file relUrl="Scripts/MicrosoftMvcValidation.js" publishTime="10/14/2010 13:39:21" />
-    <file relUrl="bin/hooyes.Core.dll" publishTime="10/18/2010 12:54:17" />
+    <file relUrl="bin/hooyes.Core.dll" publishTime="10/20/2010 16:59:27" />
     <file relUrl="Views/Web.config" publishTime="10/14/2010 13:39:26" />
     <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="10/14/2010 13:39:21" />
   </publishProfile>
