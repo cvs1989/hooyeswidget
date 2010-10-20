@@ -74,6 +74,7 @@
     <Content Include="Default.html" />
     <Content Include="get.htm" />
     <Content Include="Global.asax" />
+    <Content Include="t.html" />
     <Content Include="Views\Static\buy.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

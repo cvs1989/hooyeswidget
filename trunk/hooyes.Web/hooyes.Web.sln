@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hooyes.Web", "hooyes.Web\ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hooyes.Core", "hooyes.Core\hooyes.Core.csproj", "{89AA26ED-EAB5-4E4F-B804-4099CE9DABE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hooyes.API", "hooyes.API\hooyes.API.csproj", "{ECC6BCED-07C7-44AE-9245-7D21A669AA55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{89AA26ED-EAB5-4E4F-B804-4099CE9DABE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89AA26ED-EAB5-4E4F-B804-4099CE9DABE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89AA26ED-EAB5-4E4F-B804-4099CE9DABE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC6BCED-07C7-44AE-9245-7D21A669AA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC6BCED-07C7-44AE-9245-7D21A669AA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC6BCED-07C7-44AE-9245-7D21A669AA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC6BCED-07C7-44AE-9245-7D21A669AA55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

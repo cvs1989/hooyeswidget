@@ -78,6 +78,12 @@
     <Compile Include="Provider\SQLiteMembershipProvider.cs" />
     <Compile Include="Provider\SQLiteRoleProvider.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\hooyes.API\hooyes.API.csproj">
+      <Project>{ECC6BCED-07C7-44AE-9245-7D21A669AA55}</Project>
+      <Name>hooyes.API</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

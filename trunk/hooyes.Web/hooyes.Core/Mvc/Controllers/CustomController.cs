@@ -75,5 +75,19 @@ namespace hooyes.Core.Mvc.Controllers
         {
             return Content("it's ok");
         }
+
+
+        public ActionResult Send(string msg)
+        {
+            API.Sina sina = new API.Sina();
+            string rv= sina.update(msg);
+            return Json(rv, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult List()
+        {
+            API.Sina sina = new API.Sina();
+            string rv = sina.user_timeline();
+            return Content(rv);
+        }
     }
 }

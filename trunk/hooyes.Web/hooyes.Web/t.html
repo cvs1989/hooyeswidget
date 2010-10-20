@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function Send() {
+            var params = { msg: $("#t").val() };
+            $.ajax({
+                url: 'Custom/Send',
+                type: 'POST',
+                dataType: 'json',
+                data:params,
+                success: function (data) {
+                    var d=eval("("+data+")");
+                    alert(d.text);
+                },
+                error: function (data) {
+                    alert("error");
+                }
+            });
+        }
+        function List() {
+            //var params = { msg: $("#t").val() };
+            $("#twitter").empty();
+            $.ajax({
+                url: 'Custom/list',
+                type: 'GET',
+                cache:false,
+                success: function (data) {
+                    var d = eval("(" + data + ")");
+                    $.each(d, function (i, n) {
+                        $("#twitter").append("<li>" + n.text + "</li>");
+                    });
+                },
+                error: function (data) {
+                    alert("error");
+                }
+            });
+        }
+
+
+        $(function () {
+            $("#BtnSend").click(function () {
+                Send();
+            });
+            $("#BtnGet").click(function () {
+                List();
+            });
+        });
+    </script>
+</head>
+<body>
+ 内容:
+ <textarea rows="2" cols="60" id="t"></textarea><br />
+ <button id="BtnSend">Send</button>
+ <hr />
+ <div>
+  <ul id="twitter"></ul>
+ </div>
+ <button id="BtnGet">Get</button>
+</body>
+</html>
