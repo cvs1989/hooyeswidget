@@ -89,5 +89,30 @@ namespace hooyes.Core.Mvc.Controllers
             string rv = sina.user_timeline();
             return Content(rv);
         }
+
+        public ActionResult Factorial(int n)
+        {
+            decimal r = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                r = r * i;
+            }
+            return Content(r.ToString());
+        }
+        public ActionResult ArrayMx(int n)
+        {
+            int[] arr=new int[]{1, 2, 2, 2, 3};
+
+            int r = 0;
+
+            foreach (int i in arr)
+            {
+                if (i == n)
+                {
+                    r++;
+                }
+            }
+            return Content(r.ToString());
+        }
     }
 }
