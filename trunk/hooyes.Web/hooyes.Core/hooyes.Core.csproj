@@ -64,6 +64,7 @@
     <Compile Include="Configuretion\Route\RoutingItem.cs" />
     <Compile Include="Mvc\Controllers\AccountController.cs" />
     <Compile Include="Mvc\Controllers\CustomController.cs" />
+    <Compile Include="Mvc\Controllers\FileController.cs" />
     <Compile Include="Mvc\Controllers\MasterController.cs" />
     <Compile Include="Mvc\CustomActionFilter.cs" />
     <Compile Include="Mvc\Controllers\HomeController.cs" />
