@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.flickable-1.0b3.js" type="text/javascript"></script>
+    <style type="text/css">
+        body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
+h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
+h2 {font-size:2em;margin-bottom:0.75em;}
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:bold;}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+p {margin:0 0 1.5em;}
+p img.left {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
+p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
+
+      #flickable6 {
+        border: 1px solid #CCC;
+        width: 482px;
+        height: 322px;
+        overflow: hidden;
+      }
+      #flickable6 ul 
+      {
+        list-style: none;
+        width: 960px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+      #flickable6 ul li {
+        width: 440px;
+        margin: 0;
+        padding: 20px;
+        float: left;
+      }
+      #flickable6 h4 {
+        font-size: 1.75em; 
+      }
+     .x3{ width:400px; height:220px; background-color:Blue}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $('#flickable6').flickable({
+                section: 'li'
+               
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div>
+ <div id="flickable6">
+      <ul> 
+        <li>
+          <h4>Dummy Image</h4>
+          <img src="http://dummyimage.com/440x220/ccc/fff">
+        </li>
+        <li>
+          <h4>Dummy Form</h4>
+          <input value="1" type="checkbox"> checkbox
+          <br>
+          <input name="radio" type="radio"> radio1
+          <input name="radio" type="radio"> radio2
+          <br>
+          <select>
+            <option>select1</option>
+            <option>select2</option>
+            <option>select3</option>
+          </select>
+          <br>
+          <textarea style="width: 300px; height: 60px;"></textarea>
+          <br>
+          <button>button</button>
+        </li>
+      <li>
+      <h4>Dummy x</h4>
+      <div class="x3">
+       GOOD
+      </div>
+      </li>
+      </ul>
+      <div style="clear: both;"></div>
+
+ </div>
+</div>
+</body>
+</html>
