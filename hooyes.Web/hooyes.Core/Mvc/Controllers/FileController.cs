@@ -11,8 +11,7 @@ namespace hooyes.Core.Mvc.Controllers
     {
         public ActionResult Save()
         {
-            string FilePath = AppDomain.CurrentDomain.BaseDirectory;
-            FilePath = Path.Combine(FilePath, "App_Data");
+            string FilePath = CreateFilePath();
             string result = "";
 
             int l = Request.Files.Count;
@@ -31,6 +30,19 @@ namespace hooyes.Core.Mvc.Controllers
 
             }
             return Content(result);
+        }
+        [NonAction]
+        private string CreateFilePath()
+        {
+            string FilePath = AppDomain.CurrentDomain.BaseDirectory;
+            FilePath = Path.Combine(FilePath, "App_Data");
+
+            DirectoryInfo di = new DirectoryInfo(FilePath);
+            if (!di.Exists)
+            {
+                di.Create();
+            }
+            return FilePath;
         }
     }
 }
