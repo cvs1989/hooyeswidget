@@ -78,6 +78,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\SQLiteMembershipProvider.cs" />
     <Compile Include="Provider\SQLiteRoleProvider.cs" />
+    <Compile Include="Utility\AccessHelper.cs" />
+    <Compile Include="Utility\SQLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hooyes.API\hooyes.API.csproj">

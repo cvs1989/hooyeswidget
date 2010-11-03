@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+     <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.autopager-1.0.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+    $(function () {
+        $.autopager({
+            link: '#next',
+            load: function (current, next) {
+                $('#next').attr('href', next.url);
+            }
+        });
+
+        $('#click_load').click(function () {
+            $.autopager('autoLoad', false);
+            $('#next').click(function () {
+                $.autopager('load');
+                return false;
+            });
+
+            $(this).attr('disabled', true);
+            $('#auto_load').removeAttr('disabled');
+        });
+
+        $('#auto_load').click(function () {
+            $.autopager('autoLoad', true);
+            $('#next').unbind('click');
+
+            $(this).attr('disabled', true);
+            $('#click_load').removeAttr('disabled');
+        }).click();
+
+        $('#disable').click(function () {
+            $.autopager('disable');
+            $('#next').unbind('click');
+
+            $(this).attr('disabled', true);
+            $('#enable').removeAttr('disabled');
+        });
+
+        $('#enable').click(function () {
+            $.autopager('enable');
+
+            $(this).attr('disabled', true);
+            $('#disable').removeAttr('disabled');
+        }).click();
+    });
+  </script>
+
+  <p>
+    <input value="クリック読込みを有効にする / Enable click loading" id="click_load" type="button">
+    <input value="自動読込みを有効にする / Enable auto loading" id="auto_load" type="button">
+  </p>
+  <p>
+    <input value="autopagerを無効にする / Disable autopager" id="disable" type="button">
+    <input value="autopagerを有効にする / Enable autopager" id="enable" type="button">
+  </p>
+  <div class="content">
+    <p>7ページ目のコンテンツ<br>Contents of page 7</p>
+  </div>
+  <a href="/jquery/autopager/demo/toggle?page=8" id="next" rel="next">次のページ / Next</a>
+
+</body>
+</html>
