@@ -75,7 +75,10 @@
     <Content Include="FileUpload.html" />
     <Content Include="get.htm" />
     <Content Include="Global.asax" />
+    <Content Include="Html\autopager.html" />
+    <Content Include="Html\autopagerToggle.html" />
     <Content Include="Html\flick.html" />
+    <Content Include="Html\flick2.html" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.flickable-1.0b3.js" type="text/javascript"></script>
+    <style type="text/css">
+        body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
+h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
+h2 {font-size:2em;margin-bottom:0.75em;}
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:bold;}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+p {margin:0 0 1.5em;}
+p img.left {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
+p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
+      #flickable2 {
+        border: 1px solid #CCC;
+        width: 480px;
+        height: 170px;
+        overflow:hidden
+      }
+      #flickable2 ul {
+        list-style: none;
+        width:2425px;
+        margin: 0;
+        padding: 5px;
+      }
+      #flickable2 ul li {
+        width: 445px;
+        margin: 0;
+        padding: 10px 15px;
+        float: left;
+      }
+      #flickable2 .block {
+        color: #FFF;
+        width: 435px;
+        height: 110px;
+        padding: 5px;
+      }
+      #flickable2 h4 {
+        color: #FFF;
+      }
+      #flickable2 .ui-flickable-container {
+        cursor: pointer;
+      }
+    </style>
+    
+    <script type="text/javascript">
+        $(function () {
+            var el = $('#flickable2').flickable({
+                section: 'li',
+                dragStop: function () {
+                    // alert("ok");
+                }
+            });
+
+//            setTimeout(function () {
+//                el.flickable('select', 1);
+//                //element.flickable('select', index);
+//            }, 3000);
+
+        });
+    </script>
+
+
+</head>
+<body>
+<div>
+ <div id="flickable2">
+      <ul> 
+        <li><div class="block" style="background-color: rgb(0, 51, 102);"><h4>Section 1</h4><p>Aenean duis penatibus habitasse nascetur porttitor, nascetur aliquam dapibus augue vut vut, aliquet adipiscing odio? Pulvinar phasellus! Rhoncus? Et porta integer et ac ac turpis, diam nunc nunc non, tincidunt.</p></div></li>
+        <li><div class="block" style="background-color: rgb(102, 0, 51);"><h4>Section 2</h4><p>Dapibus adipiscing! Vut ac mauris integer nascetur dapibus, in aliquam, quis risus elementum mus elementum cum? Porta eros nisi ut. Vut sed vel ut et a porta magna lacus turpis.</p></div></li>
+        <li><div class="block" style="background-color: rgb(51, 102, 0);"><h4>Section 3</h4><p>Nisi lorem tincidunt, ultricies rhoncus purus odio lorem odio proin platea in dis odio, sed, etiam! Ridiculus, elit enim rhoncus elit augue facilisis turpis! Adipiscing sagittis? Dis ultricies. Natoque duis.</p></div></li>
+        <li><div class="block" style="background-color: rgb(51, 132, 0);"><h4>Section 4</h4><p>x</p></div></li>
+        <li><div class="block" style="background-color: rgb(51, 232, 0);"><h4>Section5</h4><p>x</p></div></li>
+      </ul>
+      <div style="clear: both;"></div>
+    </div>
+</div>
+</body>
+</html>
