@@ -79,6 +79,7 @@
     <Content Include="Html\autopagerToggle.html" />
     <Content Include="Html\flick.html" />
     <Content Include="Html\flick2.html" />
+    <Content Include="Html\test.html" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
