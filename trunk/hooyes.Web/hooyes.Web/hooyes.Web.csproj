@@ -71,8 +71,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\main-bg.gif" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\sprite_repeat_x_png.png" />
     <Content Include="Content\wallpaper.jpg" />
+    <Content Include="Content\wallpaper2.jpg" />
     <Content Include="Default.html" />
     <Content Include="FileUpload.html" />
     <Content Include="get.htm" />
