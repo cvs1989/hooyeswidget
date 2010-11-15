@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../Content/Menu.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var pIndex = 0;
+            var nIndex = 0;
+            $("#menu > ul > li").hover(function () {
+                setTimeout(function () { $("#test").show() }, 201);
+                $("#test").css("left", $(this).offset().left).hover(function () {
+                    log("OUT:PIndex:" + pIndex + ".NIndex:" + nIndex);
+                }, function () {
+                    var t = this;
+                    setTimeout(function () {
+                        log("xx");
+                        if (pIndex != nIndex) {
+                            $(t).fadeOut('slow');
+                            log(2);
+                        }
+                    }, 200);
+                });
+                $("#test").html($(this).index());
+                pIndex = nIndex;
+                nIndex = $(this).index();
+                log("ON:PIndex:" + pIndex + ".NIndex:" + nIndex);
+
+            }, function () {
+                //                pIndex = nIndex;
+                //                nIndex = $(this).index();
+                //                log("OUT:PIndex:" + pIndex + ".NIndex:" + nIndex);
+            });
+
+        });
+        function log(s) {
+            $("#log").append("<li>" + s + "</li>");
+        }
+    </script>
+</head>
+<body>
+<div id="menu">
+  <ul class="nav">
+     <li> Market </li>
+     <li>Sales|Signup</li>
+     <li> Dealer System </li>
+     <li  id="nav1"> Customer Support </li>
+     <li> Port-In PSTNs</li>
+     <li> Visit Back/Cancellation</li>
+     <li>  System </li>
+     <li>  NOC </li>
+  </ul>
+</div>
+<div id="test" class="box2 box-shadow2" style="display:none;">
+  hello
+</div>
+ <div>this is a italkbb menu</div>
+
+ <ul id="log">
+ 
+ </ul>
+
+ <!--<div class="border-circle-radius"></div>-->
+</body>
+</html>
