@@ -71,8 +71,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bg.gif" />
     <Content Include="Content\main-bg.gif" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\menu_black.css" />
+    <Content Include="Content\menu_red.css" />
     <Content Include="Content\sprite_repeat_x_png.png" />
     <Content Include="Content\wallpaper.jpg" />
     <Content Include="Content\wallpaper2.jpg" />
@@ -85,12 +88,17 @@
     <Content Include="Html\flick.html" />
     <Content Include="Html\flick2.html" />
     <Content Include="Html\Menu.htm" />
+    <Content Include="Html\Menu\Menu.htm" />
     <Content Include="Html\test.html" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.min.js" />
+    <Content Include="Scripts\jquery.hoverIntent.js" />
+    <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />
+    <Content Include="Scripts\mbMenu.js" />
+    <Content Include="Scripts\styleswitch.js" />
     <Content Include="t.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -151,11 +159,10 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2155</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>9500</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:9000/mvc</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
