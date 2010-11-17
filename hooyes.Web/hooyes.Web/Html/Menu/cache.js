@@ -4,7 +4,11 @@ var vSubIcon = new Array();
 var vSubLink = new Array();
 var vSubPopup = new Array();
 var vTabCurSel = -1;
-var gTag=5;
+var gTag = 5;
+var m = Request(location.href)["m"];
+if (m != null && m != "") {
+    gTag = m;
+}
 
 vSubMenu[0] = ['Sales Report', 'Bank Card Report', 'Cancellation Report', 'CC Trans Log', 'Plan Renew/Change', 'Reward Report', 'inDirect Sales Report', 'Hanyastar Report manage', 'Survey', 'Market Refund', 'AU Post Pay', 'Promotion Code', 'Ticket Report', 'NXX Request', 'Sales Rep Manage', 'TW DID Report', 'Profitablity & Usage Report', 'Ads Manage', 'Save Option Manage', 'Cancel Rate'];
 vSubMenu[1] = ['US BB', 'US HK', 'US-TW', 'US-DM', 'AU BB', 'AU Star BB', 'AU DSL', 'SG BB', 'iTalkLite CA', 'iTalkLite US', 'CA BB', 'Tai Seng', 'AU Plan Dealer Support Only', 'Pop Out Window', 'CA HK', 'Delivery', 'US-KR BB', 'US-KR JA BB', 'CA-KR BB', 'CA-KR JA BB', 'US IFD per minute', 'CA IFD', 'INT BB', 'US Hanya Signup', 'CA Hanya Signup', 'PA-IN', 'KR DAILY', 'Sales Inbound Register', 'SalesInboundReport', 'Call Report', 'Pre Signup Report', 'Customer Request Info'];
@@ -52,4 +56,20 @@ function wm(v, el) {
     st += '</td></tr></table>';
 
     $("#" + el).append(st);
+}
+
+function Request(url) {
+    var query = url.replace(/^[^\?]+\??/, '');
+    var Params = {};
+    if (!query) { return Params; } // return empty object
+    var Pairs = query.split(/[;&]/);
+    for (var i = 0; i < Pairs.length; i++) {
+        var KeyVal = Pairs[i].split('=');
+        if (!KeyVal || KeyVal.length != 2) { continue; }
+        var key = unescape(KeyVal[0]);
+        var val = unescape(KeyVal[1]);
+        val = val.replace(/\+/g, ' ');
+        Params[key] = val;
+    }
+    return Params;
 }
