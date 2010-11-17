@@ -1,9 +1,10 @@
-﻿var vSubMenu = new Array();
+﻿/// <reference path="../../Scripts/jquery-1.4.1-vsdoc.js" />
+var vSubMenu = new Array();
 var vSubIcon = new Array();
 var vSubLink = new Array();
 var vSubPopup = new Array();
 var vTabCurSel = -1;
-
+var gTag=5;
 
 vSubMenu[0] = ['Sales Report', 'Bank Card Report', 'Cancellation Report', 'CC Trans Log', 'Plan Renew/Change', 'Reward Report', 'inDirect Sales Report', 'Hanyastar Report manage', 'Survey', 'Market Refund', 'AU Post Pay', 'Promotion Code', 'Ticket Report', 'NXX Request', 'Sales Rep Manage', 'TW DID Report', 'Profitablity & Usage Report', 'Ads Manage', 'Save Option Manage', 'Cancel Rate'];
 vSubMenu[1] = ['US BB', 'US HK', 'US-TW', 'US-DM', 'AU BB', 'AU Star BB', 'AU DSL', 'SG BB', 'iTalkLite CA', 'iTalkLite US', 'CA BB', 'Tai Seng', 'AU Plan Dealer Support Only', 'Pop Out Window', 'CA HK', 'Delivery', 'US-KR BB', 'US-KR JA BB', 'CA-KR BB', 'CA-KR JA BB', 'US IFD per minute', 'CA IFD', 'INT BB', 'US Hanya Signup', 'CA Hanya Signup', 'PA-IN', 'KR DAILY', 'Sales Inbound Register', 'SalesInboundReport', 'Call Report', 'Pre Signup Report', 'Customer Request Info'];
@@ -17,8 +18,19 @@ vSubMenu[8] = ['BBS'];
 vSubMenu[9] = ['Tools'];
 vSubMenu[10] = ['新建员工', '查询员工', 'Rep Manage', 'Rep Team', 'Role Manage', 'Assignto List', 'Menu Edit', 'Assignto Center', 'Assignto Team', 'Assignto Role'];
 
-function wm(v) {
-    for (var s in v) {
-        document.write("<a>" + s + "</a>");
+function wm(v,el) {
+    var st = '<table style="border:0;" ><tr><td>';
+    var f = 0;
+    for (var i = 0; i < v.length; i++) {
+        if (f == gTag) {
+            st += "</td><td>";
+            f = 0;
+        }
+        st += '<a>' + v[i] + '</a>';
+        f++;
+        
     }
+    st += '</td></tr></table>';
+
+    $("#" + el).append(st);
 }
