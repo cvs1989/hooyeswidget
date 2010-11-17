@@ -76,6 +76,7 @@
     <Content Include="Content\Menu.css" />
     <Content Include="Content\menu_black.css" />
     <Content Include="Content\menu_red.css" />
+    <Content Include="Content\menu_red2.css" />
     <Content Include="Content\sprite_repeat_x_png.png" />
     <Content Include="Content\wallpaper.jpg" />
     <Content Include="Content\wallpaper2.jpg" />
@@ -102,6 +103,8 @@
     <Content Include="images\header_bgnd.jpg" />
     <Content Include="images\menuArrow.gif" />
     <Content Include="images\menuArrow_w.gif" />
+    <Content Include="Scripts\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
@@ -110,6 +113,7 @@
     <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />
     <Content Include="Scripts\mbMenu.js" />
+    <Content Include="Scripts\mbMenu2.js" />
     <Content Include="Scripts\styleswitch.js" />
     <Content Include="t.html" />
     <Content Include="Web.config">

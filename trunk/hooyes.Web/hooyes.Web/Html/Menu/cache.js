@@ -17,13 +17,32 @@ vSubMenu[7] = ['Category Edit', 'Noc Tickets', 'Noc Ticket Report', 'System Issu
 vSubMenu[8] = ['BBS'];
 vSubMenu[9] = ['Tools'];
 vSubMenu[10] = ['新建员工', '查询员工', 'Rep Manage', 'Rep Team', 'Role Manage', 'Assignto List', 'Menu Edit', 'Assignto Center', 'Assignto Team', 'Assignto Role'];
-
-function wm(v,el) {
-    var st = '<table style="border:0;" ><tr><td>';
+//http://italklite.com/LT/chtu/img/logo.gif
+//http://crm.italkcs.com/images/company_logo.gif
+function rnd() {
+    var i = Math.random() * 100;
+    return i;
+}
+//document.title = rnd();
+function wm(v, el) {
+    var fl = rnd();
     var f = 0;
+    f++;
+    var st = '<table style="border:0;" ><tr><td>';
+    if (fl >= 50) {
+        st += '<div style="height:40px"><img src="http://crm.italkcs.com/images/company_logo.gif" alt="patapage" width="150"></div>';
+    } else {
+        st += '<div style="height:60px"><img src="http://italklite.com/LT/chtu/img/logo.gif" alt="patapage" width="150"></div>';
+    }
+    
     for (var i = 0; i < v.length; i++) {
         if (f == gTag) {
             st += "</td><td>";
+//            if (fl >= 50) {
+//                st += '<div style="height:40px"><img src="http://crm.italkcs.com/images/company_logo.gif" alt="patapage" width="150"></div>';
+//            } else {
+//                st += '<div style="height:60px"><img src="http://italklite.com/LT/chtu/img/logo.gif" alt="patapage" width="150"></div>';
+//            }
             f = 0;
         }
         st += '<a>' + v[i] + '</a>';
