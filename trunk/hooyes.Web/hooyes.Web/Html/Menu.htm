@@ -11,26 +11,27 @@
             $("#menu > ul > li").hover(function () {
                 setTimeout(function () { $("#test").show() }, 201);
                 $("#test").css("left", $(this).offset().left).hover(function () {
-                    log("OUT:PIndex:" + pIndex + ".NIndex:" + nIndex);
+                    log("2-OVER:PIndex:" + pIndex + ".NIndex:" + nIndex);
                 }, function () {
-                    var t = this;
-                    setTimeout(function () {
-                        log("xx");
-                        if (pIndex != nIndex) {
-                            $(t).fadeOut('slow');
-                            log(2);
-                        }
-                    }, 200);
+//                    var t = this;
+//                    setTimeout(function () {
+//                        log("xx");
+//                        if (pIndex != nIndex) {
+//                            $(t).fadeOut('slow');
+//                            log(2);
+//                        }
+                    //                    }, 200);
+                    log("2-Out:PIndex:" + pIndex + ".NIndex:" + nIndex);
                 });
                 $("#test").html($(this).index());
                 pIndex = nIndex;
                 nIndex = $(this).index();
-                log("ON:PIndex:" + pIndex + ".NIndex:" + nIndex);
+                log("1-Over:PIndex:" + pIndex + ".NIndex:" + nIndex);
 
             }, function () {
-                //                pIndex = nIndex;
-                //                nIndex = $(this).index();
-                //                log("OUT:PIndex:" + pIndex + ".NIndex:" + nIndex);
+                                pIndex = nIndex;
+                                nIndex = $(this).index();
+                                log("1-Out:PIndex:" + pIndex + ".NIndex:" + nIndex);
             });
 
         });
