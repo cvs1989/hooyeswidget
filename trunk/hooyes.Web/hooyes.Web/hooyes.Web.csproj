@@ -90,7 +90,10 @@
     <Content Include="Html\flick2.html" />
     <Content Include="Html\Menu.htm" />
     <Content Include="Html\Menu\cache.js" />
+    <Content Include="Html\Menu\iframe.htm" />
     <Content Include="Html\Menu\Menu.htm" />
+    <Content Include="Html\Menu\menuV2.htm" />
+    <Content Include="Html\Menu\v1.htm" />
     <Content Include="Html\test.html" />
     <Content Include="images\bgnd_sel_1.jpg" />
     <Content Include="images\bgnd_sel_2.jpg" />

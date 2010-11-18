@@ -4,11 +4,15 @@ var vSubIcon = new Array();
 var vSubLink = new Array();
 var vSubPopup = new Array();
 var vTabCurSel = -1;
+
+var autoTag = true;
 var gTag = 5;
-var m = Request(location.href)["m"];
+var m = $_GET("m");
 if (m != null && m != "") {
     gTag = m;
 }
+var m2 = $_GET("auto");
+
 
 vSubMenu[0] = ['Sales Report', 'Bank Card Report', 'Cancellation Report', 'CC Trans Log', 'Plan Renew/Change', 'Reward Report', 'inDirect Sales Report', 'Hanyastar Report manage', 'Survey', 'Market Refund', 'AU Post Pay', 'Promotion Code', 'Ticket Report', 'NXX Request', 'Sales Rep Manage', 'TW DID Report', 'Profitablity & Usage Report', 'Ads Manage', 'Save Option Manage', 'Cancel Rate'];
 vSubMenu[1] = ['US BB', 'US HK', 'US-TW', 'US-DM', 'AU BB', 'AU Star BB', 'AU DSL', 'SG BB', 'iTalkLite CA', 'iTalkLite US', 'CA BB', 'Tai Seng', 'AU Plan Dealer Support Only', 'Pop Out Window', 'CA HK', 'Delivery', 'US-KR BB', 'US-KR JA BB', 'CA-KR BB', 'CA-KR JA BB', 'US IFD per minute', 'CA IFD', 'INT BB', 'US Hanya Signup', 'CA Hanya Signup', 'PA-IN', 'KR DAILY', 'Sales Inbound Register', 'SalesInboundReport', 'Call Report', 'Pre Signup Report', 'Customer Request Info'];
@@ -29,27 +33,26 @@ function rnd() {
 }
 //document.title = rnd();
 function wm(v, el) {
+    if (autoTag) {
+        gTag = AutoBreak(v.length);
+    }
+    $("#" + el).empty();
     var fl = rnd();
     var f = 0;
     f++;
     var st = '<table style="border:0;" ><tr><td>';
     if (fl >= 50) {
-        st += '<div style="height:40px"><img src="http://crm.italkcs.com/images/company_logo.gif" alt="patapage" width="150"></div>';
+        st += '<div style="height:40px"><img src="http://crm.italkcs.com/images/company_logo.gif" alt="patapage" width="200"></div>';
     } else {
-        st += '<div style="height:60px"><img src="http://italklite.com/LT/chtu/img/logo.gif" alt="patapage" width="150"></div>';
+        st += '<div style="height:60px"><img src="http://italklite.com/LT/chtu/img/logo.gif" alt="patapage" ></div>';
     }
     
     for (var i = 0; i < v.length; i++) {
         if (f == gTag) {
             st += "</td><td>";
-//            if (fl >= 50) {
-//                st += '<div style="height:40px"><img src="http://crm.italkcs.com/images/company_logo.gif" alt="patapage" width="150"></div>';
-//            } else {
-//                st += '<div style="height:60px"><img src="http://italklite.com/LT/chtu/img/logo.gif" alt="patapage" width="150"></div>';
-//            }
             f = 0;
         }
-        st += '<a>' + v[i] + '</a>';
+        st += '<a href="http://www.sina.com.cn" target="_blank">' + v[i] + '</a>';
         f++;
         
     }
@@ -72,4 +75,25 @@ function Request(url) {
         Params[key] = val;
     }
     return Params;
+}
+function $_GET(m) {
+    return Request(location.href)[m];
+}
+
+function AutoBreak(n) {
+    var r = 5;
+    if (n <= 7) {
+        r = 7;
+    }
+    if (n > 7 && n <= 14) {
+        if (n == 7) {
+            r = n;
+        } else {
+            r = (n / 2) + 1;
+        }
+    }
+    if (n > 14) {
+        r = 9;
+    }
+    return r;
 }
