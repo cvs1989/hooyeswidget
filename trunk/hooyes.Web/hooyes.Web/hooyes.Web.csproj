@@ -115,6 +115,7 @@
     <Content Include="Scripts\jquery.hoverIntent.js" />
     <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />
+    <Content Include="Scripts\jquery.hoverIntent.min.js" />
     <Content Include="Scripts\mbMenu.js" />
     <Content Include="Scripts\mbMenu2.js" />
     <Content Include="Scripts\styleswitch.js" />

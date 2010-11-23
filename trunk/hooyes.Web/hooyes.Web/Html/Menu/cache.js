@@ -97,3 +97,10 @@ function AutoBreak(n) {
     }
     return r;
 }
+$.extend({
+    _get: function () {
+        return "0";
+    }
+});
+
+
