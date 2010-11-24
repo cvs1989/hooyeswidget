@@ -4,16 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>iTalkBB 客户服务中心</title>
 <script src="../../Scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="cache.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../Scripts/jquery.metadata.js"></script>
-<script src="../../Scripts/jquery.hoverIntent.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../Scripts/mbMenu.js"></script>
+<script src="../../Scripts/jquery.fn.menu.js" type="text/javascript"></script>
+<script src="menu.data.cache.js" type="text/javascript"></script>
+
 <script type="text/javascript">
-    var delay = $_GET("delay");
+    var gTag = "auto";
+    var m = $.Request("m");
+    if (m != null && m != "") {
+        gTag = m;
+    }
+    var delay = $.Request("delay");
     if (delay == null || delay == "") {
         delay = 1;
     }
-    var aClick = $_GET("click");
+    var aClick = $.Request("click");
     if (aClick == null || aClick == "") {
         aClick = 1;
     }
@@ -28,51 +32,33 @@
     $(function () {
         bMenu();
         Clock();
-        initMenu();
     });
-
-
     function bMenu() {
-        $(".myMenu").buildMenu(
-    {
-        //template: "menuVoices.html",
-        //additionalData: "pippo=1",
-        menuWidth: 210,
-        openOnRight: false,
-        //menuSelector: ".menuContainer",
-        //iconPath: "ico/",
-        hasImages: true,
-        //        fadeInTime: 100,
-        //        fadeOutTime: 300,
-        adjustLeft: 2,
-        minZindex: "auto",
-        adjustTop: 10,
-        //opacity: .95,
-        shadow: false,
-        shadowColor: "#ccc",
-        hoverIntent: 0,
-        openOnClick: isClick,
-        closeOnMouseOut: iscloseOnMouseOut,
-        closeAfter: delay,
-        submenuHoverIntent: 0
-    });
-
+        var config = {
+            menuWidth: 210,
+            openOnRight: false,
+            hasImages: true,
+            adjustLeft: 2,
+            minZindex: "auto",
+            adjustTop: 10,
+            shadow: false,
+            shadowColor: "#ccc",
+            hoverIntent: 0,
+            openOnClick: isClick,
+            closeOnMouseOut: iscloseOnMouseOut,
+            closeAfter: delay,
+            submenuHoverIntent: 0,
+            submenuCols: gTag
+        }
+       // MenuCreateHtml(menu, "menuHolder", config);
+        $.SmartMenu(menu, "menuHolder", config);
     }
-
-    function initMenu() {
-        wm(vSubMenu[0], 'Div0');
-        wm(vSubMenu[1], 'Div1');
-        wm(vSubMenu[2], 'Div2');
-        wm(vSubMenu[3], 'Div3');
-        wm(vSubMenu[4], 'Div4');
-        wm(vSubMenu[5], 'Div5');
-        wm(vSubMenu[6], 'Div6');
-        wm(vSubMenu[7], 'Div7');
-    }
+    
+    /*  ---------Debug fn--------------------*/
     function ResetMenu(t) {
         autoTag = false;
         gTag = t;
-        initMenu();
+        bMenu();
         msg("done");
     }
     function ResetParams(a, b) {
@@ -86,8 +72,8 @@
         }, 1000);
     }
     function AutoMenu() {
-        autoTag = true;
-        initMenu();
+        gTag = "auto";
+        bMenu();
         msg("done!");
     }
     function msg(s) {
@@ -97,43 +83,19 @@
             $("#msg").fadeOut("slow");
         }, 1000);
 
-    } 
-   
+    }
 </script>
-<!--<link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />-->
-<link href="../../Content/menu_red.css" rel="stylesheet" type="text/css" media="screen"  />
-<!--<link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />-->
 
+<link href="../../Content/menu_red.css" rel="stylesheet" type="text/css" media="screen"  />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="../../Content/menu.ie.css" />
+<![endif]-->
 </head>
 <body class="clearType">
-<table  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="container">
-          <tr>
-            <td class="myMenu">
-              <!-- start horizontal menu -->
-              <table class="rootVoices" cellspacing='0' cellpadding='0' border='0'><tr>
-                <td class="rootVoice {menu: 'Div0'}" >Market</td>
-                <td class="rootVoice {menu: 'Div1'}" >Sales|Signup</td>
-                <td class="rootVoice {menu: 'Div2'}" >Dealer System</td>
-                <td class="rootVoice {menu: 'Div3'}" >Customer Support</td>
-                <td class="rootVoice {menu: 'Div4'}" >Port-In PSTNs</td>
-                <td class="rootVoice {menu: 'Div5'}" >Visit/Cancellation</td>
-                <td class="rootVoice {menu: 'Div6'}" >System</td>
-                <td class="rootVoice {menu: 'Div7'}" >NOC</td>
-                <!--<td class="rootVoice {menu: 'box_menu'}" onclick="showMessage('empty root menu')">empty menu</td>-->
-              </tr></table>
-              <!-- end horizontal menu -->
-            </td>
-          </tr>
- </table>
-<div id="Div0" class="mbmenu boxMenu"></div>
-<div id="Div1" class="mbmenu boxMenu"></div>
-<div id="Div2" class="mbmenu boxMenu"></div>
-<div id="Div3" class="mbmenu boxMenu"></div>
-<div id="Div4" class="mbmenu boxMenu"></div>
-<div id="Div5" class="mbmenu boxMenu"></div>
-<div id="Div6" class="mbmenu boxMenu"></div>
-<div id="Div7" class="mbmenu boxMenu"></div>
-<div id="Div8" class=""></div>
+<div id="menuHolder">
+
+</div>
+
 <br />
 <br />
 Test Button
@@ -144,7 +106,7 @@ Test Button
 <button onclick="ResetMenu(9)">9</button>
 <button onclick="ResetMenu(10)">10</button>
 <button onclick="ResetMenu(13)">13</button>
-<button onclick="AutoMenu()" >Auto</button>
+<button onclick="AutoMenu()" class="btn1" >Auto</button>
 <span id="msg"></span>
 <hr />
  <button onclick="$('[rel=stylesheet]').attr('href','../../Content/menu_red.css')">A</button>

@@ -74,6 +74,7 @@
     <Content Include="Content\bg.gif" />
     <Content Include="Content\main-bg.gif" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\menu.ie.css" />
     <Content Include="Content\menu_black.css" />
     <Content Include="Content\menu_red.css" />
     <Content Include="Content\menu_red2.css" />
@@ -91,7 +92,10 @@
     <Content Include="Html\Menu.htm" />
     <Content Include="Html\Menu\cache.js" />
     <Content Include="Html\Menu\iframe.htm" />
+    <Content Include="Html\Menu\menu.data.cache.js" />
     <Content Include="Html\Menu\Menu.htm" />
+    <Content Include="Html\Menu\menuDemo.htm" />
+    <Content Include="Html\Menu\menuLite.htm" />
     <Content Include="Html\Menu\menuV2.htm" />
     <Content Include="Html\Menu\v1.htm" />
     <Content Include="Html\test.html" />
@@ -112,6 +116,7 @@
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.min.js" />
+    <Content Include="Scripts\jquery.fn.menu.js" />
     <Content Include="Scripts\jquery.hoverIntent.js" />
     <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />
