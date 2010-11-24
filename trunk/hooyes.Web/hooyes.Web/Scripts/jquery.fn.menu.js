@@ -738,7 +738,7 @@ function SubMenuCreateHtml(data, Config) {
             cols = AutoBreak(v.length);
         }
         var f = 0;
-        f++;
+        //f++;
         var sb = new StringBuilder();
         sb.AppendFormat('<div id="{0}{1}" class="mbmenu boxMenu iebox">', id, k);
         sb.Append('<table style="border:0;" ><tr><td>');
