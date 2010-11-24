@@ -117,6 +117,7 @@
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.min.js" />
     <Content Include="Scripts\jquery.fn.menu.js" />
+    <Content Include="Scripts\jquery.fn.menu.min.js" />
     <Content Include="Scripts\jquery.hoverIntent.js" />
     <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />

@@ -689,7 +689,7 @@ function MenuCreateHtml(dataSouce, ContainerID, Config) {
         }
         if (dataSouce[i].single) {
            // sb.AppendFormat("<td class=\"rootVoice {menu: 'Div-Q-J-L{1}'} \" onmouseover=\"SingleOn(this)\" onmouseout=\"SingleOn(this,true)\" >{0}</td>", dataSouce[i].vMenu, i);
-            var target=Config.target ?  Config.target:"_self";
+            var target = Config ? (Config.target ? Config.target : "_self") : "_self";
             sb.AppendFormat("<td class=\"rootVoice {menu: 'empty'} \" ><a href='{1}' target='{2}' style='display:block'>{0}</a></td>", dataSouce[i].vMenu,dataSouce[i].vLink,target);
         } else {
             sb.AppendFormat("<td class=\"rootVoice {menu: 'Div-Q-J-L{1}'}\" >{0}</td>", dataSouce[i].vMenu, i);
@@ -752,7 +752,7 @@ function SubMenuCreateHtml(data, Config) {
                 sb.Append("</td><td>");
                 f = 0;
             }
-            var target=Config.target ?  Config.target:"_self";
+            var target = Config ? (Config.target ? Config.target : "_self") : "_self";
             sb.AppendFormat('<a href="{0}" target="{2}">{1}</a>', link[i],v[i],target);
             f++;
         }
