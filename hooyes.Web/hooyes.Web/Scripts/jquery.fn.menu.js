@@ -653,7 +653,13 @@
     }
   });
 })(jQuery);
-
+(function($){
+$.fn.extend({
+    SmartMenu: function (DataSouce, Config) {
+        MenuCreateHtml(DataSouce, this, Config);
+    }
+});
+})(jQuery);
 
 function StringBuilder() { this.hooyesStr = ""; }
 StringBuilder.prototype.Append = function (str) { this.hooyesStr += str; }
@@ -680,7 +686,16 @@ StringBuilder.prototype.ToString = function () { return this.hooyesStr; }
 
 
 function MenuCreateHtml(dataSouce, ContainerID, Config) {
-    $("#" + ContainerID).empty();
+    var id_SN="Div-Q-"+Math.ceil(rnd())+"-J-L";
+    
+    var ContainerObj = null
+    if (typeof ContainerID == "string") {
+        ContainerObj = $("#" + ContainerID);
+    } else {
+        ContainerObj = $(ContainerID);
+    }
+
+    ContainerObj.empty();
     var sb = new StringBuilder();
     sb.Append("<table class='rootVoices' cellspacing='0' cellpadding='0' border='0'><tr>");
     for (var i = 0; i < dataSouce.length; i++) {
@@ -692,13 +707,13 @@ function MenuCreateHtml(dataSouce, ContainerID, Config) {
             var target = Config ? (Config.target ? Config.target : "_self") : "_self";
             sb.AppendFormat("<td class=\"rootVoice {menu: 'empty'} \" ><a href='{1}' target='{2}' style='display:block'>{0}</a></td>", dataSouce[i].vMenu,dataSouce[i].vLink,target);
         } else {
-            sb.AppendFormat("<td class=\"rootVoice {menu: 'Div-Q-J-L{1}'}\" >{0}</td>", dataSouce[i].vMenu, i);
+            sb.AppendFormat("<td class=\"rootVoice {menu: '{2}{1}'}\" >{0}</td>", dataSouce[i].vMenu, i,id_SN);
         }
     }
     sb.Append("</tr></table>");
-    $("#" + ContainerID).append(sb.ToString());
-    var sub = SubMenuCreateHtml(dataSouce, Config)
-    $("#" + ContainerID).append(sub);
+    ContainerObj.append(sb.ToString());
+    var sub = SubMenuCreateHtml(dataSouce, Config,id_SN)
+    ContainerObj.append(sub);
     if (Config) {
         $(".rootVoices").buildMenu(Config);
     } else {
@@ -706,7 +721,7 @@ function MenuCreateHtml(dataSouce, ContainerID, Config) {
     }
 }
 
-function SubMenuCreateHtml(data, Config) {
+function SubMenuCreateHtml(data, Config,id_SN) {
     var cols;
     var autoCols = true;
     if (Config) {
@@ -720,7 +735,7 @@ function SubMenuCreateHtml(data, Config) {
         autoCols = false;
     }
     var subMenu = new StringBuilder();
-    var id = 'Div-Q-J-L';
+    var id = id_SN;
     var fl = rnd();
     for (var k = 0; k < data.length; k++) {
         if (!data[k].enable) {
