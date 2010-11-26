@@ -101,7 +101,7 @@
         buildMenu: function (options) {
             return this.each(function () {
                 var thisMenu = this;
-                thisMenu.id = !this.id ? "menu_" + Math.floor(Math.random() * 1000) : this.id;
+                thisMenu.id = !this.id ? "M-E-N-U_" + Math.floor(Math.random() * 1000) : this.id;
                 this.options = {};
                 $.extend(this.options, $.mbMenu.options);
                 $.extend(this.options, options);
@@ -686,8 +686,8 @@ StringBuilder.prototype.ToString = function () { return this.hooyesStr; }
 
 
 function MenuCreateHtml(dataSouce, ContainerID, Config) {
-    var id_SN="Div-Q-"+Math.ceil(rnd())+"-J-L";
-    
+    var id_SN="Div-Q-"+Math.floor(Math.random() * 100)+"-J-L";
+    var root_SN = "H-00-Y" + Math.floor(Math.random() * 100)+"-E-S";
     var ContainerObj = null
     if (typeof ContainerID == "string") {
         ContainerObj = $("#" + ContainerID);
@@ -697,7 +697,7 @@ function MenuCreateHtml(dataSouce, ContainerID, Config) {
 
     ContainerObj.empty();
     var sb = new StringBuilder();
-    sb.Append("<table class='rootVoices' cellspacing='0' cellpadding='0' border='0'><tr>");
+    sb.AppendFormat("<table class='{0} rootVoices' cellspacing='0' cellpadding='0' border='0'><tr>", root_SN);
     for (var i = 0; i < dataSouce.length; i++) {
         if (!dataSouce[i].enable) {
             continue;
@@ -715,9 +715,9 @@ function MenuCreateHtml(dataSouce, ContainerID, Config) {
     var sub = SubMenuCreateHtml(dataSouce, Config,id_SN)
     ContainerObj.append(sub);
     if (Config) {
-        $(".rootVoices").buildMenu(Config);
+        $("." + root_SN).buildMenu(Config);
     } else {
-        $(".rootVoices").buildMenu();
+        $("." + root_SN).buildMenu();
     }
 }
 
@@ -736,7 +736,7 @@ function SubMenuCreateHtml(data, Config,id_SN) {
     }
     var subMenu = new StringBuilder();
     var id = id_SN;
-    var fl = rnd();
+    var fl = Math.floor(Math.random() * 100);
     for (var k = 0; k < data.length; k++) {
         if (!data[k].enable) {
             continue;
@@ -798,7 +798,7 @@ function AutoBreak(n) {
     }
     return r;
 }
-function rnd() {
-    var i = Math.random() * 100;
-    return i;
-}
+//function rnd() {
+//    var i = Math.random() * 100;
+//    return i;
+//}
