@@ -315,19 +315,19 @@
                 position: "absolute",
                 opacity: op.options.opacity
             });
-            if (!$("#" + m).html()) {
-                $.ajax({
-                    type: "POST",
-                    url: op.options.template,
-                    cache: false,
-                    async: false,
-                    data: "menuId=" + m + (op.options.additionalData != "" ? "&" + op.options.additionalData : ""),
-                    success: function (html) {
-                        $("body").append(html);
-                        $("#" + m).hide();
-                    }
-                });
-            }
+//            if (!$("#" + m).html()) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: op.options.template,
+//                    cache: false,
+//                    async: false,
+//                    data: "menuId=" + m + (op.options.additionalData != "" ? "&" + op.options.additionalData : ""),
+//                    success: function (html) {
+//                        $("body").append(html);
+//                        $("#" + m).hide();
+//                    }
+//                });
+//            }
             $(this.menuContainer).attr("id", "mb_" + m).hide();
 
             //LITERAL MENU SUGGESTED BY SvenDowideit
@@ -720,7 +720,30 @@ function MenuCreateHtml(dataSouce, ContainerID, Config) {
         $("." + root_SN).buildMenu();
     }
 }
-
+function prop(n) { return n && n.constructor == Number ? n + 'px' : n; }
+function selectIE6(){
+ if ( $.browser.msie && /6.0/.test(navigator.userAgent) ) {
+ var s = {
+top: 'auto', // auto == .currentStyle.borderTopWidth
+left: 'auto', // auto == .currentStyle.borderLeftWidth
+width: 'auto', // auto == offsetWidth
+height: 'auto', // auto == offsetHeight
+opacity: true,
+src: 'about:blank'}
+var ie6hack = '<iframe class="bgiframe"frameborder="0"tabindex="-1" src="' + s.src + '"' +
+		    'style="display:block;position:absolute;z-index:-1;' +
+			    (s.opacity !== false ? 'filter:Alpha(Opacity=\'0\');' : '') +
+				'top:' + (s.top == 'auto' ? 'expression(((parseInt(this.parentNode.currentStyle.borderTopWidth)||0)*-1)+\'px\')' : prop(s.top)) + ';' +
+				'left:' + (s.left == 'auto' ? 'expression(((parseInt(this.parentNode.currentStyle.borderLeftWidth)||0)*-1)+\'px\')' : prop(s.left)) + ';' +
+				'width:' + (s.width == 'auto' ? 'expression(this.parentNode.offsetWidth+\'px\')' : prop(s.width)) + ';' +
+				'height:' + (s.height == 'auto' ? 'expression(this.parentNode.offsetHeight+\'px\')' : prop(s.height)) + ';' +
+		'"/>';
+   //alert(ie6hack);
+   return ie6hack;
+ }else{
+   return "";
+ }
+}
 function SubMenuCreateHtml(data, Config,id_SN) {
     var cols;
     var autoCols = true;
@@ -756,6 +779,7 @@ function SubMenuCreateHtml(data, Config,id_SN) {
         //f++;
         var sb = new StringBuilder();
         sb.AppendFormat('<div id="{0}{1}" class="mbmenu boxMenu iebox">', id, k);
+        sb.Append(selectIE6());
         sb.Append('<table style="border:0;" ><tr><td>');
 //        if (fl >= 50) {
 //            sb.Append('<div style="height:40px"><img src="http://crm.italkcs.com/images/company_logo.gif" alt="patapage" width="200"></div>');

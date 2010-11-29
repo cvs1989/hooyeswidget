@@ -6,7 +6,8 @@
     <script src="../../Scripts/jquery.fn.menu.js" type="text/javascript"></script>
     <script type="text/javascript">
         var menuJson = [
-        { enable: true,single:true, vMenu: "首页",vLink:"index.aspx" }
+        { enable: true, vMenu: "x", vSubMenu: ['香港号码管理', '申请保留号码', '转号状态', '韩国号码管理', '台湾号码管理', '950号码管理'], vSubLink: [] }
+        , { enable: true, single: true, vMenu: "首页", vLink: "index.aspx" }
         , { enable: true, single: true, vMenu: "通话记录", vLink: "index2.aspx" }
         , { enable: true, vMenu: "号码管理", vSubMenu: ['香港号码管理', '申请保留号码', '转号状态', '韩国号码管理', '台湾号码管理', '950号码管理'], vSubLink: [] }
         , { enable: true, vMenu: "号码管理2", vSubMenu: ['香港号码管理', '申请保留号码', '转号状态', '韩国号码管理', '台湾号码管理', '950号码管理'], vSubLink: [] }
@@ -14,10 +15,11 @@
 
         var config = {
             menuWidth: 210,
+            menuSelector: ".menuContainer",
             openOnRight: false,
             hasImages: true,
             adjustLeft: 2,
-            minZindex: "auto",
+            minZindex: 1000,
             adjustTop: 10,
             shadow: false,
             shadowColor: "#000",
@@ -32,20 +34,26 @@
 
 
         $(function () {
-            $("#Div2").SmartMenu(menuJson, config);
-            $("#Div1").SmartMenu(menuJson, config);
-            $("#Div3").SmartMenu(menuJson, config);
-            $("#Div4").SmartMenu(menuJson, config);
-            $("#Div5").SmartMenu(menuJson, config);
             $("#DivDemo").SmartMenu(menuJson, config);
+            // setTimeout(function () { $(".boxMenu").bgIframe(); }, 1000);
+            //            $("#Div1").SmartMenu(menuJson, config);
+            //            $("#Div3").SmartMenu(menuJson, config);
+            //            $("#Div4").SmartMenu(menuJson, config);
+            //            $("#Div5").SmartMenu(menuJson, config);
+            //            $("#DivDemo").SmartMenu(menuJson, config);
+
+            
         });
 
-
+        
+      
+      
     </script>
-    <link href="../../Content/menu_red.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/menu_red2.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="DivDemo"></div>
+<select style="width:450px;"><option>2</option><option>1</option></select>
 <hr />
 <div style="height:200px;"></div>
 <div id="Div2"></div>
