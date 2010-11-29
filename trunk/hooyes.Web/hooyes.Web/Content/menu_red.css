@@ -201,13 +201,13 @@ body{
 }
 
 .boxMenu td:hover{
-  background:#f3f3f3;
+ /* background:#f3f3f3;
   -moz-box-shadow:#666 2px 2px 4px;
-  -webkit-box-shadow:#666 2px 2px 4px;
+  -webkit-box-shadow:#666 2px 2px 4px;*/
 }
 
 .boxMenu td:hover a{
-  margin-right:3px;
+  /*margin-right:3px; */
   text-shadow:#fff 1px 1px 1px;
   color:#000;
 }
@@ -241,4 +241,10 @@ body{
 .boxMenu a img{
   border:0;
 }
- 
+ .T_iframe  
+{  
+    position: absolute;/*绝对定位保证iframe不会占用流布局空间*/  
+    width: 100%;    /*100%保证可以覆盖整个div*/  
+    height: 100%;  
+    z-index:-1; /*-1保证iframe显示在div下方*/  
+}   

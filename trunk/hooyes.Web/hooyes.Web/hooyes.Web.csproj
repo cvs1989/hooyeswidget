@@ -114,6 +114,9 @@
     <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
+    <Content Include="Scripts\jquery.bgiframe.js" />
+    <Content Include="Scripts\jquery.bgiframe.min.js" />
+    <Content Include="Scripts\jquery.bgiframe.pack.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.min.js" />
     <Content Include="Scripts\jquery.fn.menu.js" />
