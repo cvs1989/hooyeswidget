@@ -89,6 +89,7 @@
     <Content Include="Html\autopagerToggle.html" />
     <Content Include="Html\flick.html" />
     <Content Include="Html\flick2.html" />
+    <Content Include="Html\JSONP.html" />
     <Content Include="Html\Menu.htm" />
     <Content Include="Html\Menu\cache.js" />
     <Content Include="Html\Menu\iframe.htm" />
