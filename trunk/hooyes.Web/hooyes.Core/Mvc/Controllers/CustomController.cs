@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using hooyes.Core.Mvc.Models;
 using hooyes.Core;
 using hooyes.Core.Mvc;
+using hooyes.Web.Models;
+using System.Web.Security;
 namespace hooyes.Core.Mvc.Controllers
 {
     //[CustomHandleError]
@@ -14,8 +16,10 @@ namespace hooyes.Core.Mvc.Controllers
         private static CustomViewEngine Cv;
         private static object lockObject = new object();
         private static ViewEngineCollection Vengine = new ViewEngineCollection();
+        MembershipUser u;
         public CustomController()
         {
+            u = Membership.GetUser();
             if (Cv == null)
             {
                 lock (lockObject)
@@ -73,7 +77,55 @@ namespace hooyes.Core.Mvc.Controllers
         [Authorize]
         public ActionResult A2()
         {
-            return Content("it's ok");
+            MembershipUser u = Membership.GetUser();
+            
+            return Content(u.UserName);
+        }
+        public ActionResult CSS()
+        {
+           
+            if (u != null)
+            {
+                string s = "__{0}___欢迎进入客户服务中心";
+                s = string.Format(s, u.UserName);
+                return Content(s);
+            }
+            else
+            {
+                return Content("你未登录 <br />登录地址:<a id=\"loginUrl\" href=\"http://bb.cdn.hooyes.com/mvc/account/logon\" target='_parent'>http://bb.cdn.hooyes.com/mvc/account/logon</a><script>var url='http://bb.cdn.hooyes.com/mvc/Account/LogOn?ReturnUrl=' + top.location.href;document.getElementById('loginUrl').href=url;</script>");
+            }
+
+        }
+        //[Authorize]
+        public ActionResult getUser(string jsoncallback)
+        {
+            //MembershipUser u = Membership.GetUser();
+            if (u != null)
+            {
+                if (string.IsNullOrEmpty(jsoncallback))
+                {
+                    return Content(u.UserName);
+                }
+                else
+                {
+                    string rvalue = jsoncallback + "(" + "'" + u.UserName + "'" + ")";
+                    return Content(rvalue);
+
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(jsoncallback))
+                {
+                    return Content("未登录");
+                }
+                else
+                {
+                    string rvalue = jsoncallback + "(" + "'未登录'" + ")";
+                    return Content(rvalue);
+
+                }
+            }
         }
 
 
