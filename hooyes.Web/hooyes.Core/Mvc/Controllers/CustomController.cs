@@ -92,7 +92,7 @@ namespace hooyes.Core.Mvc.Controllers
             }
             else
             {
-                return Content("你未登录 <br />登录地址:<a id=\"loginUrl\" href=\"http://bb.cdn.hooyes.com/mvc/account/logon\" target='_parent'>http://bb.cdn.hooyes.com/mvc/account/logon</a><script>var url='http://bb.cdn.hooyes.com/mvc/Account/LogOn?ReturnUrl=' + top.location.href;document.getElementById('loginUrl').href=url;</script>");
+                return Content("你未登录 <br />登录地址:<a id=\"loginUrl\" href=\"http://bb.cdn.hooyes.com/mvc/Account/LogOn?ReturnUrl="+Request.UrlReferrer.ToString()+"\" target='_parent'>http://bb.cdn.hooyes.com/mvc/account/logon</a>");
             }
 
         }

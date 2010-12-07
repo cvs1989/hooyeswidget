@@ -29,7 +29,8 @@ namespace hooyes.WCF.Service
             {
                 if (_consumerKey.Length == 0)
                 {
-                    _consumerKey = "3472084219";
+                   // _consumerKey = "3472084219";
+                    _consumerKey = "1910711819";
                 }
                 return _consumerKey;
             }
@@ -42,7 +43,8 @@ namespace hooyes.WCF.Service
             {
                 if (_consumerSecret.Length == 0)
                 {
-                    _consumerSecret = "54cae7d23876c298eaaf5cb0d14d0cd9";
+                   // _consumerSecret = "54cae7d23876c298eaaf5cb0d14d0cd9";
+                    _consumerSecret = "8a6914d6c4634c211a1dce7a3fa057a4";
                 }
                 return _consumerSecret;
             }
@@ -348,9 +350,9 @@ namespace hooyes.WCF.Service
                 responseReader = new StreamReader(webRequest.GetResponse().GetResponseStream());
                 responseData = responseReader.ReadToEnd();
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
