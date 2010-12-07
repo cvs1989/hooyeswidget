@@ -11,6 +11,16 @@ namespace hooyes.WCF.Service
     public class SinaApiService : oAuthSina,ISinaApiService
     {
         //private oAuthSina _oauth = new oAuthSina();
+        private oAuthSina _oauth = new oAuthSina();
+        private bool isLogin { get; set; }
+        public SinaApiService()
+        {
+        }
+        public SinaApiService(string userid, string passwd)
+        {
+            //oAuthSina _oauth = new oAuthSina();
+            isLogin= oAuth(userid, passwd, _oauth);
+        }
         public bool oAuth(string userid, string passwd,oAuthSina _oauth)
         {
             try
@@ -169,6 +179,19 @@ namespace hooyes.WCF.Service
             }
             else
                 return null;
+        }
+        public string statuses_update(string format, string status)
+        {
+            if (isLogin)
+            {
+               
+                string url = "http://api.t.sina.com.cn/statuses/update." + format + "?";
+                return _oauth.oAuthWebRequest(oAuthSina.Method.POST, url, "status=" + HttpUtility.UrlEncode(status));
+            }
+            else
+            {
+                return "please login first";
+            }
         }
 
     }

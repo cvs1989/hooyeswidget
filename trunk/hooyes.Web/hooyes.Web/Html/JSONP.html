@@ -5,6 +5,7 @@
     <script src="../Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
     <script src="jquery-1.4.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+        //document.domain = "bb.cdn.hooyes.com";
         $(function () {
             setTimeout(function () {
                 getx();
@@ -12,7 +13,7 @@
 
             $("#loginUrl").attr("href", "http://bb.cdn.hooyes.com/mvc/Account/LogOn?ReturnUrl=" + location.href);
             $("#iframeurl").html(document.getElementById("ifra").src);
-
+            var ss = document.getElementById("ifra");
         });
         function getx() {
             $.ajax({

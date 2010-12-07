@@ -87,6 +87,9 @@
     <Content Include="Global.asax" />
     <Content Include="Html\autopager.html" />
     <Content Include="Html\autopagerToggle.html" />
+    <Content Include="Html\Cache.cookies.js" />
+    <Content Include="Html\Cookies.html" />
+    <Content Include="Html\Cookies_get.html" />
     <Content Include="Html\flick.html" />
     <Content Include="Html\flick2.html" />
     <Content Include="Html\JSONP.html" />
@@ -118,6 +121,7 @@
     <Content Include="Scripts\jquery.bgiframe.js" />
     <Content Include="Scripts\jquery.bgiframe.min.js" />
     <Content Include="Scripts\jquery.bgiframe.pack.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.min.js" />
     <Content Include="Scripts\jquery.fn.menu.js" />
