@@ -1,12 +1,16 @@
-﻿using System;
+﻿/*
+ This file was modified by Fatih YASAR at 27.11.2009
+ */
+
+using System;
 using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Text;
 using System.Web;
-
 namespace hooyes.Core.OAuth
 {
-    public class OAuthBase
+
+    public class oAuthBase
     {
 
         /// <summary>
@@ -81,6 +85,7 @@ namespace hooyes.Core.OAuth
         protected const string OAuthTimestampKey = "oauth_timestamp";
         protected const string OAuthNonceKey = "oauth_nonce";
         protected const string OAuthTokenKey = "oauth_token";
+        protected const string oAauthVerifier = "oauth_verifier";
         protected const string OAuthTokenSecretKey = "oauth_token_secret";
 
         protected const string HMACSHA1SignatureType = "HMAC-SHA1";
@@ -88,6 +93,28 @@ namespace hooyes.Core.OAuth
         protected const string RSASHA1SignatureType = "RSA-SHA1";
 
         protected Random random = new Random();
+
+        private string oauth_verifier;
+        public string Verifier
+        {
+            get {
+                if (MemCache.Get("oauth_verifier") != null)
+                {
+                    return MemCache.Get("oauth_verifier").ToString();
+                }
+                else
+                {
+                    return oauth_verifier;
+                }
+            
+            }
+            set { 
+                oauth_verifier = value;
+            MemCache.Save("oauth_verifier", value);
+            }
+
+        }
+
 
         protected string unreservedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~";
 
@@ -158,7 +185,7 @@ namespace hooyes.Core.OAuth
         /// </summary>
         /// <param name="value">The value to Url encode</param>
         /// <returns>Returns a Url encoded string</returns>
-        protected string UrlEncode(string value)
+        public string UrlEncode(string value)
         {
             StringBuilder result = new StringBuilder();
 
@@ -252,7 +279,14 @@ namespace hooyes.Core.OAuth
                 parameters.Add(new QueryParameter(OAuthTokenKey, token));
             }
 
+            if (!string.IsNullOrEmpty(Verifier))
+            {
+                parameters.Add(new QueryParameter(oAauthVerifier, Verifier));
+            }
+
+
             parameters.Sort(new QueryParameterComparer());
+
 
             normalizedUrl = string.Format("{0}://{1}", url.Scheme, url.Host);
             if (!((url.Scheme == "http" && url.Port == 80) || (url.Scheme == "https" && url.Port == 443)))
@@ -269,6 +303,7 @@ namespace hooyes.Core.OAuth
 
             return signatureBase.ToString();
         }
+
 
         /// <summary>
         /// Generate the signature value based on the given signature base and hash algorithm

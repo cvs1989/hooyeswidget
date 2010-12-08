@@ -114,6 +114,7 @@
     <Content Include="images\header_bgnd.jpg" />
     <Content Include="images\menuArrow.gif" />
     <Content Include="images\menuArrow_w.gif" />
+    <Content Include="OAuth\sina.html" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
@@ -133,6 +134,7 @@
     <Content Include="Scripts\mbMenu.js" />
     <Content Include="Scripts\mbMenu2.js" />
     <Content Include="Scripts\styleswitch.js" />
+    <Content Include="Startup.html" />
     <Content Include="t.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -166,6 +168,7 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <Content Include="xd.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
