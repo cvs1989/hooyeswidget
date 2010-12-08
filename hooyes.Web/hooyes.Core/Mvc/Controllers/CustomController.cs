@@ -166,5 +166,10 @@ namespace hooyes.Core.Mvc.Controllers
             }
             return Content(r.ToString());
         }
+        [CustomAuthorize]
+        public ActionResult BlueSky()
+        {
+            return Content("blue sky");
+        }
     }
 }

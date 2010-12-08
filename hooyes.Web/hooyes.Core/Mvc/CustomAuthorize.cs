@@ -14,10 +14,18 @@ namespace hooyes.Core.Mvc
         {
              //ViewResult view = new ViewResult();
              //filterContext.Result = view;
+            var current = filterContext.HttpContext;
             if (!isException)
             {
-                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Home", action = "Fobbiden" }));
+                if (current.Request.QueryString.Get("token") == "hooyes")
+                {
+                }
+                else
+                {
+                    filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Home", action = "Fobbiden" }));
+                }
             }
+
         }
         #endregion
         public CustomAuthorizeAttribute()

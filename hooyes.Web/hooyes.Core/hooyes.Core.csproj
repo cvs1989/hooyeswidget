@@ -66,6 +66,7 @@
     <Compile Include="Mvc\Controllers\CustomController.cs" />
     <Compile Include="Mvc\Controllers\FileController.cs" />
     <Compile Include="Mvc\Controllers\MasterController.cs" />
+    <Compile Include="Mvc\Controllers\oAuthController.cs" />
     <Compile Include="Mvc\CustomActionFilter.cs" />
     <Compile Include="Mvc\Controllers\HomeController.cs" />
     <Compile Include="Mvc\CustomActionResult.cs" />
@@ -75,7 +76,11 @@
     <Compile Include="Mvc\CustomViewEngine.cs" />
     <Compile Include="Mvc\Models\AccountModels.cs" />
     <Compile Include="Mvc\Models\movie.cs" />
+    <Compile Include="Mvc\OAuthAuthorize.cs" />
+    <Compile Include="OAuth\MemCache.cs" />
     <Compile Include="OAuth\OAuthBase.cs" />
+    <Compile Include="OAuth\oAuthSina.cs" />
+    <Compile Include="OAuth\SinaApiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\SQLiteMembershipProvider.cs" />
     <Compile Include="Provider\SQLiteRoleProvider.cs" />
