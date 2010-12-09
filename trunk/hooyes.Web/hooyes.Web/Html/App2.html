@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../Content/colorbox.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.colorbox.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.fn.oAuth.js" type="text/javascript"></script>
+     <script type="text/javascript">
+         var auth = new Auth();
+         auth.Init("#nav","/");
+
+         $(function () {
+             auth.Login(cl);
+         });
+         function cs(b) {
+             if (b) {
+                 alert("登录成功");
+             } else {
+                 alert("登录失败");
+             }
+                  }
+                  //alert(location.host);
+                  //alert(location.pathname);
+    </script>
+</head>
+<body>
+<div id="nav"></div>
+</body>
+</html>

@@ -5,6 +5,7 @@ function Auth() {
     this.AuthUrl = "";
     //this.Init();
     this.UserID = null;
+    this.AppPath = "/";
 }
 Auth.prototype.Login = function (fn) {
     var t = this;
@@ -28,7 +29,7 @@ Auth.prototype.CheckLogin = function (fn) {
 Auth.prototype.logout = function (fn) {
     var t = this;
     $.ajax({
-        url: '_oAuth/cl',
+        url: t.AppPath+'_oAuth/cl',
         dataType: 'html',
         type: 'POST',
         success: function (data) {
@@ -46,7 +47,7 @@ Auth.prototype.logout = function (fn) {
 
     t.cache("UserID", null, { expires: '2001-01-01' });
 }
-Auth.prototype.Init = function (nav) {
+Auth.prototype.Init = function (nav, appRoot) {
     $(function () {
 
         auth.Nav(nav);
@@ -57,14 +58,17 @@ Auth.prototype.Init = function (nav) {
             auth.logout(cl);
         });
 
-       
+
         auth.CheckLogin(cl);
 
     });
     var t = this;
+    if (appRoot != null) {
+        t.AppPath = appRoot;
+    }
     if (t.cache("UserID") == null) {
         $.ajax({
-            url: '_oAuth/GetAuthUrl',
+            url: t.AppPath + '_oAuth/GetAuthUrl',
             dataType: 'json',
             type: 'POST',
             success: function (data) {
@@ -83,7 +87,7 @@ Auth.prototype.Init = function (nav) {
 Auth.prototype.callbck = function (fn) {
     var t = this;
     $.ajax({
-        url: '_oAuth/getToken',
+        url: t.AppPath + '_oAuth/getToken',
         dataType: 'json',
         type: 'POST',
         success: function (data) {

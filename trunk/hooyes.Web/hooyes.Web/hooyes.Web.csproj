@@ -101,6 +101,7 @@
     <Content Include="FileUpload.html" />
     <Content Include="get.htm" />
     <Content Include="Global.asax" />
+    <Content Include="Html\App2.html" />
     <Content Include="Html\autopager.html" />
     <Content Include="Html\autopagerToggle.html" />
     <Content Include="Html\Cache.cookies.js" />
