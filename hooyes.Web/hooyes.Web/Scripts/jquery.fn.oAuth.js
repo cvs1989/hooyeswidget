@@ -13,7 +13,7 @@ Auth.prototype.Login = function (fn) {
             t.Login(fn);
         }, 200);
     } else {
-        $.colorbox({ href: this.AuthUrl, width: "40%", height: "80%", iframe: true, onClosed: function () {
+        $.colorbox({ href: this.AuthUrl, width: "50%", height: "85%", iframe: true, onClosed: function () {
             t.callbck(fn);
         }
         });
@@ -28,7 +28,7 @@ Auth.prototype.CheckLogin = function (fn) {
 Auth.prototype.logout = function (fn) {
     var t = this;
     $.ajax({
-        url: 'oAuth/cl',
+        url: '_oAuth/cl',
         dataType: 'html',
         type: 'POST',
         success: function (data) {
@@ -64,7 +64,7 @@ Auth.prototype.Init = function (nav) {
     var t = this;
     if (t.cache("UserID") == null) {
         $.ajax({
-            url: 'oAuth/GetAuthUrl',
+            url: '_oAuth/GetAuthUrl',
             dataType: 'json',
             type: 'POST',
             success: function (data) {
@@ -83,7 +83,7 @@ Auth.prototype.Init = function (nav) {
 Auth.prototype.callbck = function (fn) {
     var t = this;
     $.ajax({
-        url: 'oAuth/getToken',
+        url: '_oAuth/getToken',
         dataType: 'json',
         type: 'POST',
         success: function (data) {

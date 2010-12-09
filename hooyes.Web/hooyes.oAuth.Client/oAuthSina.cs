@@ -7,20 +7,23 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Text.RegularExpressions;
 
-namespace hooyes.Core.OAuth
+namespace hooyes.OAuth.Client
 {
 
     public class oAuthSina : oAuthBase
     {
         public enum Method { GET, POST, PUT, DELETE };
-        public const string REQUEST_TOKEN = "http://api.t.sina.com.cn/oauth/request_token";
-        public const string AUTHORIZE = "http://api.t.sina.com.cn/oauth/authorize";
-        public const string ACCESS_TOKEN = "http://api.t.sina.com.cn/oauth/access_token";
+        //public const string REQUEST_TOKEN = "http://api.t.sina.com.cn/oauth/request_token";
+        //public const string AUTHORIZE = "http://api.t.sina.com.cn/oauth/authorize";
+        //public const string ACCESS_TOKEN = "http://api.t.sina.com.cn/oauth/access_token";
 
         ////twitter
         //public const string REQUEST_TOKEN = "https://api.twitter.com/oauth/request_token";
         //public const string AUTHORIZE = "https://api.twitter.com/oauth/authorize";
         //public const string ACCESS_TOKEN = "https://api.twitter.com/oauth/access_token";
+        public  string REQUEST_TOKEN = Const.REQUEST_TOKEN;
+        public  string AUTHORIZE = Const.AUTHORIZE;
+        public  string ACCESS_TOKEN = Const.ACCESS_TOKEN;
 
 
         private string _consumerKey = "";
@@ -36,7 +39,7 @@ namespace hooyes.Core.OAuth
             {
                 if (_consumerKey.Length == 0)
                 {
-                    _consumerKey = "3472084219";
+                    _consumerKey = Const.ConsumerKey;
                     // _consumerKey = "1910711819";
                     //titter
                     //_consumerKey = "uCiQFJNSRnu3lvDBLhN2g";
@@ -52,7 +55,7 @@ namespace hooyes.Core.OAuth
             {
                 if (_consumerSecret.Length == 0)
                 {
-                    _consumerSecret = "54cae7d23876c298eaaf5cb0d14d0cd9";
+                    _consumerSecret = Const.ConsumerSecret;
                     // _consumerSecret = "8a6914d6c4634c211a1dce7a3fa057a4";
 
                     //tittwer

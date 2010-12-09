@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using hooyes.Core.Mvc.Models;
 using hooyes.Core;
 using hooyes.Core.Mvc;
+using hooyes.OAuth.Client;
 namespace hooyes.Web.Controllers
 {
     
