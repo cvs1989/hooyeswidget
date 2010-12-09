@@ -10,10 +10,16 @@
         var auth = new Auth();
         auth.Init("#nav");
 
-
-        $("#ch").click(function () {
-            alert(auth.isLogin);
+        $(function () {
+            auth.Login(cl);
         });
+       function cs(b) {
+                if (b) {
+                    alert("登录成功");
+                } else {
+                    alert("登录失败");
+                }
+            }
     </script>
 </head>
 <body>
