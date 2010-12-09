@@ -71,7 +71,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.html" />
     <Content Include="Content\bg.gif" />
+    <Content Include="Content\colorbox.css" />
+    <Content Include="Content\images\border.png" />
+    <Content Include="Content\images\controls.png" />
+    <Content Include="Content\images\internet_explorer\borderBottomCenter.png" />
+    <Content Include="Content\images\internet_explorer\borderBottomLeft.png" />
+    <Content Include="Content\images\internet_explorer\borderBottomRight.png" />
+    <Content Include="Content\images\internet_explorer\borderMiddleLeft.png" />
+    <Content Include="Content\images\internet_explorer\borderMiddleRight.png" />
+    <Content Include="Content\images\internet_explorer\borderTopCenter.png" />
+    <Content Include="Content\images\internet_explorer\borderTopLeft.png" />
+    <Content Include="Content\images\internet_explorer\borderTopRight.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\loading_background.png" />
+    <Content Include="Content\images\overlay.png" />
     <Content Include="Content\main-bg.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\menu.ie.css" />
@@ -82,6 +97,7 @@
     <Content Include="Content\wallpaper.jpg" />
     <Content Include="Content\wallpaper2.jpg" />
     <Content Include="Default.html" />
+    <Content Include="fi.htm" />
     <Content Include="FileUpload.html" />
     <Content Include="get.htm" />
     <Content Include="Global.asax" />
@@ -122,11 +138,14 @@
     <Content Include="Scripts\jquery.bgiframe.js" />
     <Content Include="Scripts\jquery.bgiframe.min.js" />
     <Content Include="Scripts\jquery.bgiframe.pack.js" />
+    <Content Include="Scripts\jquery.colorbox-min.js" />
+    <Content Include="Scripts\jquery.colorbox.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.js" />
     <Content Include="Scripts\jquery.flickable-1.0b3.min.js" />
     <Content Include="Scripts\jquery.fn.menu.js" />
     <Content Include="Scripts\jquery.fn.menu.min.js" />
+    <Content Include="Scripts\jquery.fn.oAuth.js" />
     <Content Include="Scripts\jquery.hoverIntent.js" />
     <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />

@@ -13,9 +13,15 @@ namespace hooyes.Core.OAuth
     public class oAuthSina : oAuthBase
     {
         public enum Method { GET, POST, PUT, DELETE };
-        public const string REQUEST_TOKEN = "http://api.t.sina.com.cn/oauth/request_token";
-        public const string AUTHORIZE = "http://api.t.sina.com.cn/oauth/authorize";
-        public const string ACCESS_TOKEN = "http://api.t.sina.com.cn/oauth/access_token";
+        //public const string REQUEST_TOKEN = "http://api.t.sina.com.cn/oauth/request_token";
+        //public const string AUTHORIZE = "http://api.t.sina.com.cn/oauth/authorize";
+        //public const string ACCESS_TOKEN = "http://api.t.sina.com.cn/oauth/access_token";
+
+        //twitter
+        public const string REQUEST_TOKEN = "https://api.twitter.com/oauth/request_token";
+        public const string AUTHORIZE = "https://api.twitter.com/oauth/authorize";
+        public const string ACCESS_TOKEN = "https://api.twitter.com/oauth/access_token";
+
 
         private string _consumerKey = "";
         private string _consumerSecret = "";
@@ -32,6 +38,8 @@ namespace hooyes.Core.OAuth
                 {
                     _consumerKey = "3472084219";
                     // _consumerKey = "1910711819";
+                    //titter
+                    _consumerKey = "uCiQFJNSRnu3lvDBLhN2g";
                 }
                 return _consumerKey;
             }
@@ -46,6 +54,9 @@ namespace hooyes.Core.OAuth
                 {
                     _consumerSecret = "54cae7d23876c298eaaf5cb0d14d0cd9";
                     // _consumerSecret = "8a6914d6c4634c211a1dce7a3fa057a4";
+
+                    //tittwer
+                    _consumerSecret = "bOjCeBKIAg1AjFdfcKL2soivZwgdgSlrdTIpRYU";
                 }
                 return _consumerSecret;
             }
