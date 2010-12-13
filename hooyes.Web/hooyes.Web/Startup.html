@@ -1,18 +1,27 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>X</title>
     <script src="Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
-    <script src="Scripts/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="Scripts/jquery.fn.oAuth.js" type="text/javascript"></script>
-    <link href="Content/colorbox.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.hooyes.com/cdn/colorbox/colorbox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         var auth = new Auth();
-        auth.Init("#nav");
+        auth.el_Nav = "nav";
+        auth.msg_Logout = "快快退出";
+        //auth.msg_UnLogin = "您好，你尚未登录请您登录后再说";
+        auth.ClientCallBack = function (islogin) {
+            alert(islogin);
+        }
+        if (document.domain == "bb.cdn.hooyes.com") {
+         auth.AppPath="/mvc/";
+        }
+        auth.Init();
+        $(function () {
 
-
-        $("#ch").click(function () {
-            alert(auth.isLogin);
+            $("#ch").click(function () {
+                alert(auth.AuthUrl);
+            });
         });
     </script>
 </head>

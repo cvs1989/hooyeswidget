@@ -3,15 +3,17 @@
 <head>
     <title></title>
     <script src="Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
-    <script src="Scripts/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="Scripts/jquery.fn.oAuth.js" type="text/javascript"></script>
     <link href="Content/colorbox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         var auth = new Auth();
-        auth.Init("#nav");
+        auth.Init("nav");
+        auth.ClientCallBack = function (x) {
+            cs(x);
+        }
 
         $(function () {
-            auth.Login(cl);
+            auth.Login();
         });
        function cs(b) {
                 if (b) {
