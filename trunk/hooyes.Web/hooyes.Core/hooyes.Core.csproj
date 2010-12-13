@@ -66,6 +66,7 @@
     <Compile Include="Mvc\Controllers\CustomController.cs" />
     <Compile Include="Mvc\Controllers\FileController.cs" />
     <Compile Include="Mvc\Controllers\MasterController.cs" />
+    <Compile Include="Mvc\Controllers\OAuthProviderController.cs" />
     <Compile Include="Mvc\CustomActionFilter.cs" />
     <Compile Include="Mvc\Controllers\HomeController.cs" />
     <Compile Include="Mvc\CustomActionResult.cs" />
