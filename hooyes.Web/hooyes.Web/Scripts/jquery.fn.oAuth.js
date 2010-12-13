@@ -17,6 +17,8 @@ function Auth() {
     this.el_login = "o_o_login";
     this.el_logout = "o_o_logout";
     this.el_user = "o_o_el_user";
+    this.el_win_width = "50%";
+    this.el_win_height = "85%";
     this.msg_UnLogin = "您还未登录，请登录";
     this.msg_Welcome = "您好:";
     this.msg_Logout = "退出";
@@ -26,7 +28,7 @@ Auth.prototype.Login = function () {
     if (t.isLogin) {
         return false;
     }
-    var boxConfig = { href: t.AuthUrl, width: "50%", height: "85%", iframe: true, onClosed: function () {
+    var boxConfig = { href: t.AuthUrl, width: t.el_win_width, height: t.el_win_height, iframe: true, onClosed: function () {
         t.callbck();
     }
     }
@@ -51,6 +53,7 @@ Auth.prototype.CheckLogin = function (fn) {
         fn(t.isLogin);
     }
     t.cl();
+    t.ClientCallBack(t.isLogin);
 }
 Auth.prototype.logout = function (fn) {
     var t = this;
@@ -98,21 +101,21 @@ Auth.prototype.Init = function (nav, appRoot) {
         t.AppPath = appRoot;
     }
     if (t.cache("UserID") == null) {
-        t.ajaxlock = true;
-        $.ajax({
-            url: t.AppPath + '_oAuth/GetAuthUrl',
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                t.AuthUrl = data.AuthUrl;
-            },
-            error: function () {
-                alert("error");
-            },
-            complete: function () {
-                t.ajaxlock = false;
-            }
-        });
+//        t.ajaxlock = true;
+//        $.ajax({
+//            url: t.AppPath + '_oAuth/GetAuthUrl',
+//            dataType: 'json',
+//            type: 'POST',
+//            success: function (data) {
+//                t.AuthUrl = data.AuthUrl;
+//            },
+//            error: function () {
+//                alert("error");
+//            },
+//            complete: function () {
+//                t.ajaxlock = false;
+//            }
+//        });
     } else {
         t.UserID = t.cache("UserID");
         t.isLogin = true;
