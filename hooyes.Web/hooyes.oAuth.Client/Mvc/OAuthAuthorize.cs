@@ -12,7 +12,7 @@ namespace hooyes.OAuth.Client
     {
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (MemCache.Get("_token") != null && MemCache.Get("_tokenSecret") != null && MemCache.Get("oauth_verifier") != null && MemCache.Get("_user_id")!=null)
+            if (OClient.IsAuthentication)
             {
 
             }
