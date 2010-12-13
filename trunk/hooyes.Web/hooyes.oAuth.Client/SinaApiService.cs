@@ -8,10 +8,10 @@ using System.Xml;
 using System.Web;
 namespace hooyes.OAuth.Client
 {
-    public class SinaApiService : oAuthSina
+    public class SinaApiService : OAuthClient
     {
         //private oAuthSina _oauth = new oAuthSina();
-        private oAuthSina _oauth = new oAuthSina();
+        private OAuthClient _oauth = new OAuthClient();
         private bool isLogin { get; set; }
         public SinaApiService()
         {
@@ -25,13 +25,13 @@ namespace hooyes.OAuth.Client
             //oAuthSina _oauth = new oAuthSina();
             isLogin= oAuth(userid, passwd, _oauth);
         }
-        public bool oAuth(string userid, string passwd,oAuthSina _oauth)
+        public bool oAuth(string userid, string passwd,OAuthClient _oauth)
         {
             try
             {
                 string authLink = _oauth.AuthorizationSinaGet();
                 authLink += "&userId=" + userid + "&passwd=" + passwd + "&action=submit&oauth_callback=none";
-                string html = _oauth.WebRequest(oAuthSina.Method.POST, authLink, null);
+                string html = _oauth.WebRequest(OAuthClient.Method.POST, authLink, null);
                 string pin = ParseHtml(html);
                 _oauth.Verifier = pin;
                 _oauth.AccessTokenGet(_oauth.Token);
@@ -50,11 +50,11 @@ namespace hooyes.OAuth.Client
         /*最新公共微博*/
         public string public_timeline(string userid, string passwd, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/public_timeline." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -62,11 +62,11 @@ namespace hooyes.OAuth.Client
         /*最新关注人微博*/
         public string friend_timeline(string userid, string passwd, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/friends_timeline." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -75,11 +75,11 @@ namespace hooyes.OAuth.Client
         /*用户发表微薄列表*/
         public string user_timeline(string userid, string passwd, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/user_timeline." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -87,11 +87,11 @@ namespace hooyes.OAuth.Client
         /*最新n条@我的微博*/
         public string mentions(string userid, string passwd, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/mentions." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -99,11 +99,11 @@ namespace hooyes.OAuth.Client
         /*最新评论*/
         public string comments_timeline(string userid, string passwd, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/comments_timeline." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -111,11 +111,11 @@ namespace hooyes.OAuth.Client
         /*发出的评论*/
         public string comments_by_me(string userid, string passwd, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/comments_by_me." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -123,11 +123,11 @@ namespace hooyes.OAuth.Client
         /* 单条评论列表*/
         public string comments(string userid, string passwd, string id, string format)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/comments." + format + "?id=" + id;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -135,11 +135,11 @@ namespace hooyes.OAuth.Client
         /*批量获取一组微博的评论数及转发数*/
         public string counts(string userid, string passwd, string format, string ids)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/counts." + format + "?ids=" + ids;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -151,11 +151,11 @@ namespace hooyes.OAuth.Client
         /*获取单条ID的微博信息*/
         public string statuses_show(string userid, string passwd, string format, string id)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/show/" + id + "." + format;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -163,11 +163,11 @@ namespace hooyes.OAuth.Client
         /*获取单条ID的微博信息*/
         public string statuses_id(string userid, string passwd, string id, string uid)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/" + uid + "/statuses/" + id;
-                return _oauth.oAuthWebRequest(oAuthSina.Method.GET, url, String.Empty);
+                return _oauth.oAuthWebRequest(OAuthClient.Method.GET, url, String.Empty);
             }
             else
                 return null;
@@ -175,11 +175,11 @@ namespace hooyes.OAuth.Client
         /*发布一条微博信息*/
         public string statuses_update(string userid, string passwd, string format, string status)
         {
-            oAuthSina _oauth = new oAuthSina();
+            OAuthClient _oauth = new OAuthClient();
             if (oAuth(userid, passwd, _oauth))
             {
                 string url = "http://api.t.sina.com.cn/statuses/update." + format + "?";
-                return _oauth.oAuthWebRequest(oAuthSina.Method.POST, url, "status=" + HttpUtility.UrlEncode(status));
+                return _oauth.oAuthWebRequest(OAuthClient.Method.POST, url, "status=" + HttpUtility.UrlEncode(status));
             }
             else
                 return null;
@@ -190,7 +190,7 @@ namespace hooyes.OAuth.Client
             {
                
                 string url = "http://api.t.sina.com.cn/statuses/update." + format + "?";
-                return _oauth.oAuthWebRequest(oAuthSina.Method.POST, url, "status=" + HttpUtility.UrlEncode(status));
+                return _oauth.oAuthWebRequest(OAuthClient.Method.POST, url, "status=" + HttpUtility.UrlEncode(status));
             }
             else
             {

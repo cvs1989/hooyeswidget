@@ -11,7 +11,7 @@ namespace hooyes.OAuth.Client.Controllers
 {
     public class _oAuthController: Controller
     {
-        oAuthSina _oAuth = new oAuthSina();
+        OAuthClient _oAuth = new OAuthClient();
         public ActionResult GetAuthUrl()
         {
             AuthLink Auth = new AuthLink();

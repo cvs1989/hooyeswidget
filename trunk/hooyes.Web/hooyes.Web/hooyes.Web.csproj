@@ -194,13 +194,17 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\Route.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\hooyes.Core\hooyes.Core.csproj">
       <Project>{89AA26ED-EAB5-4E4F-B804-4099CE9DABE1}</Project>
       <Name>hooyes.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Config\Route.config" />
+    <ProjectReference Include="..\hooyes.oAuth.Client\hooyes.OAuth.Client.csproj">
+      <Project>{6532E397-A57C-4313-9F87-B10EEDC0F93D}</Project>
+      <Name>hooyes.OAuth.Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
