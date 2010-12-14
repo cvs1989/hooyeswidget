@@ -80,7 +80,9 @@
     <Compile Include="Provider\SQLiteMembershipProvider.cs" />
     <Compile Include="Provider\SQLiteRoleProvider.cs" />
     <Compile Include="Utility\AccessHelper.cs" />
+    <Compile Include="Utility\MemCache.cs" />
     <Compile Include="Utility\SQLHelper.cs" />
+    <Compile Include="Utility\SQLiteHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hooyes.API\hooyes.API.csproj">
