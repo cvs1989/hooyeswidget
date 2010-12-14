@@ -28,6 +28,16 @@ namespace hooyes.Web.Controllers
             base.Initialize(requestContext);
         }
 
+        public ActionResult LogOnSimple()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LogOnSimple(LogOnModel model, string returnUrl)
+        {
+            return LogOn(model, returnUrl);
+        }
+
         // **************************************
         // URL: /Account/LogOn
         // **************************************
