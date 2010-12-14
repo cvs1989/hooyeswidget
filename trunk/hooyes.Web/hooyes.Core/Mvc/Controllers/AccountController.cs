@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using hooyes.Web.Models;
+using hooyes.Core.Utility;
+using com.hooyes.DBUtility;
 namespace hooyes.Web.Controllers
 {
 
@@ -45,6 +47,13 @@ namespace hooyes.Web.Controllers
                     FormsService.SignIn(model.UserName, model.RememberMe);
                     if (!String.IsNullOrEmpty(returnUrl))
                     {
+                        if (MemCache.Get("oauth_token") != null)
+                        {
+                            string token = (string)MemCache.Get("oauth_token");
+                            string sql = "update users set oauth_token='{0}' where username='{1}'";
+                            sql = string.Format(sql, token,model.UserName);
+                            SQLiteHelper.ExecuteSql(sql);
+                        }
                         return Redirect(returnUrl);
                     }
                     else
