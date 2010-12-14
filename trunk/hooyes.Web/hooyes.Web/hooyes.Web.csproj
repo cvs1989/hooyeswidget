@@ -156,6 +156,7 @@
     <Content Include="Scripts\styleswitch.js" />
     <Content Include="Startup.html" />
     <Content Include="t.html" />
+    <Content Include="Views\Account\LogOnSimple.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

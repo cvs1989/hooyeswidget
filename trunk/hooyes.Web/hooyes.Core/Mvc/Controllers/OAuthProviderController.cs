@@ -56,7 +56,7 @@ namespace hooyes.Core.Mvc.Controllers
             {
                 app += "/";
             }
-            return Redirect(app+"Account/LogOn?ReturnUrl=" + oauth_callback);
+            return Redirect(app + "Account/LogOnSimple?ReturnUrl=" + oauth_callback);
         }
         public ActionResult T()
         {
