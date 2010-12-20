@@ -111,6 +111,7 @@
     <Content Include="Html\flick2.html" />
     <Content Include="Html\jquery.validate.html" />
     <Content Include="Html\JSONP.html" />
+    <Content Include="Html\keyUp.html" />
     <Content Include="Html\Menu.htm" />
     <Content Include="Html\Menu\cache.js" />
     <Content Include="Html\Menu\iframe.htm" />
