@@ -72,6 +72,7 @@
       <HintPath>..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC RC\Assemblies\System.Web.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -83,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binders\OAuthBinder.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Filters\OAuthSecuredAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
