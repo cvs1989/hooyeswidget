@@ -5,12 +5,6 @@
 <title>jQuery accordion form with validation</title>
     <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.validate.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="../assets/demo_blue.css" type="text/css" />
-
-
-<script type="text/javascript" src="js/jquery.maskedinput-1.0.js"></script>
-<script type="text/javascript" src="js/ui.core.js"></script>
-<script type="text/javascript" src="js/ui.accordion.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -51,17 +45,23 @@
 
         // back buttons do not need to run validation
         $("#sf2 .prevbutton").click(function () {
-            accordion.accordion("activate", 0);
+            $("#sf1").show();
+            $("#sf2").hide();
+            $("#sf3").hide();
             current = 0;
         });
         $("#sf3 .prevbutton").click(function () {
-            accordion.accordion("activate", 1);
+            $("#sf1").hide();
+            $("#sf2").show();
+            $("#sf3").hide();
             current = 1;
         });
         // these buttons all run the validation, overridden by specific targets above
         $(".open2").click(function () {
             if (v.form()) {
                 //accordion.accordion("activate", 2);
+                $("#sf1").hide();
+                $("#sf2").hide();
                 $("#sf3").show();
                 current = 2;
             }
@@ -69,13 +69,17 @@
         $(".open1").click(function () {
             if (v.form()) {
                 // accordion.accordion("activate", 1);
+                $("#sf1").hide();
                 $("#sf2").show();
+                $("#sf3").hide();
                 current = 1;
             }
         });
         $(".open0").click(function () {
             if (v.form()) {
-                accordion.accordion("activate", 0);
+                $("#sf1").show();
+                $("#sf2").hide();
+                $("#sf3").hide();
                 current = 0;
             }
         });
