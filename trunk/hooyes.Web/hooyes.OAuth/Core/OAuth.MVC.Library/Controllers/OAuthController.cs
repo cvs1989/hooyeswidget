@@ -2,6 +2,7 @@ using System.Web.Mvc;
 using OAuth.Core;
 using OAuth.Core.Interfaces;
 using OAuth.MVC.Library.Results;
+using System.Web.Routing;
 
 namespace OAuth.MVC.Library.Controllers
 {
@@ -16,20 +17,20 @@ namespace OAuth.MVC.Library.Controllers
       _oAuthContextBuilder = oAuthContextBuilder;
       _oAuthProvider = oAuthProvider;
     }
-
     public ActionResult RequestToken()
     {
-      var oauthContext = _oAuthContextBuilder.FromHttpRequest(Request);
-      try
-      {
-        var token = _oAuthProvider.GrantRequestToken(oauthContext);
-        return new OAuthTokenResult(token);
-      }
-      catch (OAuthException e)
-      {
-        return new OAuthExceptionResult(e);
-        
-      }
+        var oauthContext = _oAuthContextBuilder.FromHttpRequest(HttpContext.Request);
+       // var oauthContext = _oAuthContextBuilder.FromHttpRequest(context.HttpContext.Request);
+        try
+        {
+            var token = _oAuthProvider.GrantRequestToken(oauthContext);
+            return new OAuthTokenResult(token);
+        }
+        catch (OAuthException e)
+        {
+            return new OAuthExceptionResult(e);
+
+        }
     }
     public ActionResult AccessToken()
     {
