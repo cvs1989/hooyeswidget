@@ -109,6 +109,7 @@
     <Content Include="Html\Cookies_get.html" />
     <Content Include="Html\flick.html" />
     <Content Include="Html\flick2.html" />
+    <Content Include="Html\index.html" />
     <Content Include="Html\jquery.validate.html" />
     <Content Include="Html\JSONP.html" />
     <Content Include="Html\keyUp.html" />
@@ -121,6 +122,7 @@
     <Content Include="Html\Menu\menuLite.htm" />
     <Content Include="Html\Menu\menuV2.htm" />
     <Content Include="Html\Menu\v1.htm" />
+    <Content Include="Html\jquery.validate.multi.html" />
     <Content Include="Html\test.html" />
     <Content Include="images\bgnd_sel_1.jpg" />
     <Content Include="images\bgnd_sel_2.jpg" />
