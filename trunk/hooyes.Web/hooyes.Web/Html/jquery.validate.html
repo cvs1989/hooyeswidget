@@ -2,23 +2,111 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src="../Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery.metadata.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery.validate-vsdoc.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function () {
-
-            $("#f1").validate({ meta: "validate" });
-
-        });
-    </script>
+   <style type="text/css">
+   #step2{ display:none;}
+   </style>
 </head>
 <body>
 <form id="f1" action="">
-<input id="Text1" type="text" class="required" /><br />
-<input id="File1" type="file" class="{validate:{required:true,accept:true}}" /><br />
+<input type="hidden" name="recordRequestPrimaryServiceID" id="recordRequestPrimaryServiceID" value="100" />
+<input type="hidden" name="recordClientServices" id="recordClientServices" value="1,3" />
+<div id="step1">
+<input type="checkbox" id="contactform_email" name="contactform_email" />
+<input id="name" name="name" type="text"  /><br />
+<div class="buttonWrapper"><input name="formNext1" id="formNext1" type="button" class="open1 nextbutton" value="Next" alt="Next" title="Next" /></div>
+</div>
+<div id="step2">
+
+<input id="email" name="email" type="text"  /><br />
+</div>
+
 <input id="Submit1" type="submit" value="submit" />
     
 </form>
+
+ <script src="../Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+  <script src="../Scripts/jquery.validate-vsdoc.js" type="text/javascript"></script>
+    <script type="text/javascript">
+     $(function () {
+    var current = 0;
+	
+	$.validator.addMethod("pageRequired", function(value, element) {
+		var $element = $(element)
+		function match(index) {
+			return current == index && $(element).parents("#step" + (index + 1)).length;
+		}
+		if (match(0) || match(1) || match(2)) {
+			return !this.optional(element);
+		}
+		return "dependency-mismatch";
+	}, $.validator.messages.required)
+        var cnmsg = {
+            required: "必选字段",
+            remote: "请修正该字段",
+            email: "请输入正确格式的电子邮件",
+            url: "请输入合法的网址",
+            date: "请输入合法的日期",
+            dateISO: "请输入合法的日期 (ISO).",
+            number: "请输入合法的数字",
+            digits: "只能输入整数",
+            creditcard: "请输入合法的信用卡号",
+            equalTo: "请再次输入相同的值",
+            accept: "请输入拥有合法后缀名的字符串",
+            maxlength: jQuery.format("请输入一个长度最多是 {0} 的字符串"),
+            minlength: jQuery.format("请输入一个长度最少是 {0} 的字符串"),
+            rangelength: jQuery.format("请输入一个长度介于 {0} 和 {1} 之间的字符串"),
+            range: jQuery.format("请输入一个介于 {0} 和 {1} 之间的值"),
+            max: jQuery.format("请输入一个最大为 {0} 的值"),
+            min: jQuery.format("请输入一个最小为 {0} 的值")
+        };
+        jQuery.extend(jQuery.validator.messages, cnmsg);
+       
+        var ss=    $("#f1").validate({
+            submitHandler: function(form) {
+      alert(form);
+   },
+                ignoreTitle:true,
+                rules: {
+                    // simple rule, converted to {required:true}
+                    name: {
+                    pageRequired:true,
+                     required: true
+                    },
+                    // compound rule
+                 email: {
+                     pageRequired: true,
+                        required: true,
+                        email: true
+//                        depends: function (element) {
+//                            return $("#contactform_email:checked")
+//                        }
+                    }
+                },
+                success: function(label) {
+     label.addClass("valid").text("Ok!")
+   },
+   highlight: function(element, errorClass) {
+     $(element).fadeOut(function() {
+       $(element).fadeIn();
+     });
+  }
+
+            });
+
+            //
+
+           $("#formNext1").click(function(){
+              if(ss.form()){
+
+              $("#step1").hide();
+              $("#step2").show();
+              current=1;
+
+              }
+
+           });
+
+        });
+    </script>
 </body>
 </html>
