@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binders\OAuthBinder.cs" />
-    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Filters\OAuthSecuredAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
