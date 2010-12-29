@@ -17,9 +17,9 @@ namespace OAuth.MVC.Library.Controllers
       _oAuthContextBuilder = oAuthContextBuilder;
       _oAuthProvider = oAuthProvider;
     }
-    public ActionResult RequestToken()
+    public ActionResult RequestToken(System.Web.HttpRequestBase b)
     {
-        var oauthContext = _oAuthContextBuilder.FromHttpRequest(HttpContext.Request);
+        var oauthContext = _oAuthContextBuilder.FromHttpRequest(b);
        // var oauthContext = _oAuthContextBuilder.FromHttpRequest(context.HttpContext.Request);
         try
         {
@@ -32,9 +32,9 @@ namespace OAuth.MVC.Library.Controllers
 
         }
     }
-    public ActionResult AccessToken()
+    public ActionResult AccessToken(System.Web.HttpRequestBase b)
     {
-      var oauthContext = _oAuthContextBuilder.FromHttpRequest(Request);
+      var oauthContext = _oAuthContextBuilder.FromHttpRequest(b);
       try
       {
         var token = _oAuthProvider.ExchangeRequestTokenForAccessToken(oauthContext);
