@@ -31,6 +31,10 @@ namespace OAuth.Core
             // to their url.
 
             string originalUrl = uri.OriginalString;
+            //Temp add for test hooyes
+            originalUrl = originalUrl + "&";
+            originalUrl = originalUrl.Replace("http://localhost:49192/O/index?", "http://api.t.sina.com.cn/oauth/request_token?");
+            //Temp add for test hooyes
             return originalUrl.EndsWith("&") ? new Uri(originalUrl.Substring(0, originalUrl.Length - 1)) : uri;
         }
         public IOAuthContext FromHttpRequest(HttpRequest request)

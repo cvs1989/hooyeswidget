@@ -56,7 +56,9 @@ namespace OAuth.Core.Signing
             byte[] dataBuffer = Encoding.ASCII.GetBytes(data);
             byte[] hashBytes = hashAlgorithm.ComputeHash(dataBuffer);
 
-            return Convert.ToBase64String(hashBytes);
+            string rv = Convert.ToBase64String(hashBytes);
+
+            return rv;
         }
     }
 }

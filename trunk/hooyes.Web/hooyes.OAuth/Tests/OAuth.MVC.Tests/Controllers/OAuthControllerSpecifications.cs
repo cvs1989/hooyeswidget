@@ -36,7 +36,7 @@ namespace OAuth.MVC.Tests.Controllers
         var controllerContext = new ControllerContext(httpContextMock, new RouteData(),controller);
         controller.ControllerContext = controllerContext;
         mocks.ReplayAll();
-        Result = controller.RequestToken();
+       // Result = controller.RequestToken();
 
       }
 
