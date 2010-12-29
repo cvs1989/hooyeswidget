@@ -15,7 +15,27 @@ namespace OAuth.MVC.Sample.Controllers
 {
     public class OController : Controller
     {
-        
+       private IOAuthContextBuilder oAuthContextBuilder;
+       private TokenRepository tr;
+       private ITokenStore tokenstore;
+       private IConsumerStore iCStore;
+       private IContextInspector Inspector;
+       private IOAuthProvider oAuthProvider;
+       private OAuthController target;
+        public OController()
+        {
+             oAuthContextBuilder = new OAuthContextBuilder();
+             tr = new TokenRepository();
+             tokenstore = new SampleMemoryTokenStore(tr);
+
+             iCStore = new SampleConsumerStore();
+
+             Inspector = new ConsumerValidationInspector(iCStore);
+
+
+             oAuthProvider = new OAuthProvider(tokenstore, Inspector);
+             target = new OAuthController(oAuthContextBuilder, oAuthProvider); 
+        }
         public ActionResult index()
         {
             IOAuthContext authContext = new OAuthContextBuilder().FromHttpRequest(Request);
@@ -31,19 +51,6 @@ namespace OAuth.MVC.Sample.Controllers
 
         public ActionResult RequestToken()
         {
-
-            IOAuthContextBuilder oAuthContextBuilder = new OAuthContextBuilder();
-            TokenRepository tr= new TokenRepository();
-            Core.Storage.Interfaces.ITokenStore tokenstore=new SampleMemoryTokenStore(tr);
-
-            IConsumerStore iCStore=new SampleConsumerStore();
-
-            IContextInspector Inspector=new ConsumerValidationInspector(iCStore);
-
-
-            IOAuthProvider oAuthProvider = new OAuthProvider(tokenstore, Inspector);
-            OAuthController target = new OAuthController(oAuthContextBuilder, oAuthProvider); // TODO: Initialize to an appropriate value
-            //ActionResult expected = null; // TODO: Initialize to an appropriate value
             ActionResult actual;
             actual = target.RequestToken(Request);
 
@@ -52,18 +59,7 @@ namespace OAuth.MVC.Sample.Controllers
 
         public ActionResult AccessToken()
         {
-            IOAuthContextBuilder oAuthContextBuilder = new OAuthContextBuilder();
-            TokenRepository tr = new TokenRepository();
-            Core.Storage.Interfaces.ITokenStore tokenstore = new SampleMemoryTokenStore(tr);
-
-            IConsumerStore iCStore = new SampleConsumerStore();
-
-            IContextInspector Inspector = new ConsumerValidationInspector(iCStore);
-
-
-            IOAuthProvider oAuthProvider = new OAuthProvider(tokenstore, Inspector);
-            OAuthController target = new OAuthController(oAuthContextBuilder, oAuthProvider); // TODO: Initialize to an appropriate value
-            //ActionResult expected = null; // TODO: Initialize to an appropriate value
+           
             ActionResult actual;
             actual = target.AccessToken(Request);
 
