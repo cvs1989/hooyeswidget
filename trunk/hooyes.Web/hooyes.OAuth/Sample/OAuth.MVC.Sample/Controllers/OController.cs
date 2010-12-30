@@ -16,7 +16,9 @@ namespace OAuth.MVC.Sample.Controllers
     public class OController : Controller
     {
        private IOAuthContextBuilder oAuthContextBuilder;
-       private TokenRepository tr;
+       //private TokenRepository tr;
+       //private ITokenStore tokenstore;
+       private MVC.Sample.Models.TokenRepository tr;
        private ITokenStore tokenstore;
        private IConsumerStore iCStore;
        private IContextInspector Inspector;
@@ -25,8 +27,8 @@ namespace OAuth.MVC.Sample.Controllers
         public OController()
         {
              oAuthContextBuilder = new OAuthContextBuilder();
-             tr = new TokenRepository();
-             tokenstore = new SampleMemoryTokenStore(tr);
+             tr = new MVC.Sample.Models.TokenRepository();
+             tokenstore = new MVC.Sample.Models.SampleMemoryTokenStore(tr);
 
              iCStore = new SampleConsumerStore();
 
