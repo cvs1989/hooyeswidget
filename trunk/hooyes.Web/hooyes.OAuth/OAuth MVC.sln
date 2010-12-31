@@ -14,15 +14,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.MVC.Library", "Core\O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.MVC.Sample", "Sample\OAuth.MVC.Sample\OAuth.MVC.Sample.csproj", "{486A560B-89E6-4EFB-8A51-7CBAEACE6C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.Web", "Core\OAuth.Web\OAuth.Web.csproj", "{B7C50FC5-DBD9-4360-B4B9-4D3CD8451AF0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.Core", "Core\OAuth.Core\OAuth.Core.csproj", "{EB32621B-F70A-481C-9DF0-A7E69312C5C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthProviderTesting", "OAuthProviderTesting\OAuthProviderTesting.csproj", "{E56ABCEF-EEE1-43E7-A6AC-D4156D2EBF01}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOF.OAuth.Client", "IOF.OAuth.Client\IOF.OAuth.Client.csproj", "{98A55F85-8BD5-4FD9-A05C-D3B5114C5F6D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOF.OAuth.Client.Script", "IOF.OAuth.Client.Script\IOF.OAuth.Client.Script.csproj", "{765F4E43-5BF2-4D00-B695-3A641710234D}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -41,10 +35,6 @@ Global
 		{486A560B-89E6-4EFB-8A51-7CBAEACE6C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{486A560B-89E6-4EFB-8A51-7CBAEACE6C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{486A560B-89E6-4EFB-8A51-7CBAEACE6C47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7C50FC5-DBD9-4360-B4B9-4D3CD8451AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7C50FC5-DBD9-4360-B4B9-4D3CD8451AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7C50FC5-DBD9-4360-B4B9-4D3CD8451AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7C50FC5-DBD9-4360-B4B9-4D3CD8451AF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB32621B-F70A-481C-9DF0-A7E69312C5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB32621B-F70A-481C-9DF0-A7E69312C5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB32621B-F70A-481C-9DF0-A7E69312C5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,14 +43,6 @@ Global
 		{E56ABCEF-EEE1-43E7-A6AC-D4156D2EBF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E56ABCEF-EEE1-43E7-A6AC-D4156D2EBF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E56ABCEF-EEE1-43E7-A6AC-D4156D2EBF01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98A55F85-8BD5-4FD9-A05C-D3B5114C5F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98A55F85-8BD5-4FD9-A05C-D3B5114C5F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98A55F85-8BD5-4FD9-A05C-D3B5114C5F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98A55F85-8BD5-4FD9-A05C-D3B5114C5F6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{765F4E43-5BF2-4D00-B695-3A641710234D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{765F4E43-5BF2-4D00-B695-3A641710234D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{765F4E43-5BF2-4D00-B695-3A641710234D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{765F4E43-5BF2-4D00-B695-3A641710234D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

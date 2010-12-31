@@ -30,6 +30,8 @@ namespace OAuth.MVC.Sample.Models
 
         public void SaveRequestToken(RequestToken token)
         {
+            
+           
             log.Debug<RequestToken>(token);
 
             _requestTokens[token.Token] = token;
@@ -39,8 +41,11 @@ namespace OAuth.MVC.Sample.Models
 
         public void SaveAccessToken(AccessToken token)
         {
+           
             _accessTokens[token.Token] = token;
         }
+
+
     }
     public class RequestToken : TokenBase
     {
