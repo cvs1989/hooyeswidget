@@ -104,10 +104,6 @@
       <Project>{EB32621B-F70A-481C-9DF0-A7E69312C5C0}</Project>
       <Name>OAuth.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OAuth.Web\OAuth.Web.csproj">
-      <Project>{B7C50FC5-DBD9-4360-B4B9-4D3CD8451AF0}</Project>
-      <Name>OAuth.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
