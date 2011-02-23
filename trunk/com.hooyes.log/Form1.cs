@@ -28,17 +28,17 @@ namespace com.hooyes.log
                 string NetStatus = "";
                 fn f = new fn();
                 SendMsg s = new SendMsg(f.LogToTxt);
-                PingReply reply = new Ping().Send("hooyeslog.appspot.com",3000);
-                if (reply.Status == IPStatus.Success)
-                {
-                    s += f.LogToGoogle;
-                    NetStatus = "网络良好";
-                }
-                else
-                {
-                    s -= f.LogToGoogle;
-                    NetStatus = "网络不通";
-                }
+                //PingReply reply = new Ping().Send("hooyeslog.appspot.com",3000);
+                //if (reply.Status == IPStatus.Success)
+                //{
+                //    s += f.LogToGoogle;
+                //    NetStatus = "网络良好";
+                //}
+                //else
+                //{
+                //    s -= f.LogToGoogle;
+                //    NetStatus = "网络不通";
+                //}
 
                 if (s(LogTextBox.Text))
                 {
