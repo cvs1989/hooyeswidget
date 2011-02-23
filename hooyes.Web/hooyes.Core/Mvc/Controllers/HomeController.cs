@@ -56,5 +56,10 @@ namespace hooyes.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult testing()
+        {
+            return Content("jquery 1.5");
+        }
     }
 }

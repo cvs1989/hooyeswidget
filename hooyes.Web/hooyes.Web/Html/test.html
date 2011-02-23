@@ -2,66 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <style type="text/css">
-    .alpha1,.alpha2{
-    width:100%;
-    height:auto;
-    min-height:250px;/* 必需 */
-    _height:250px;/* 必需 */
-    overflow:hidden;
-    background-color:#FF0000;/* 背景色 */
-}
-.alpha1{
-    filter:alpha(opacity=20); /* IE 透明度20% */
-}
-.alpha2{
-    background-color:#FFFFFF;
-    -moz-opacity:0.8; /* Moz + FF 透明度20%*/
-    opacity: 0.8; /* 支持CSS3的浏览器（FF 1.5也支持）透明度20%*/
-}
-.ap2{
-    position:absolute;
-}
-    </style>
-<script type="text/javascript">
-    function a() {
-        var i = 0;
-        function b() {
-            alert(++i);
-        }
-        return b;
-    }
-//    var c = a();
-//    c();
-//    c();
-    //    c();
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/javascript">
+//        $.getScript("http://dev.hooyes.com/hooyes.web/Scripts/jquery.cookie.js", function (d, s) {
+//           alert(s);
+//        });
 
-    
+//        setTimeout(function () {
+//            alert($.cookie);
 
-</script>
-    <script src="../Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery.metadata.js" type="text/javascript"></script>
+        //        }, 1000);
+
+
+      var a=  $.ajax("/hooyes.web/home/testing", { type: 'get',
+            error: function () {
+                alert("errrr");
+            },
+            success: function () {
+                alert("success");
+            },
+            statusCode: { 200: function () {
+                alert('s');
+            }, 404: function () { alert("page not found"); }
+            }
+        }).done(function () {
+            alert(1);
+            
+        }).fail(function () {
+            alert("fail");
+        });
+
+       
+    </script>
 </head>
 <body>
-<li class="someclass {some: 'data'} anotherclass">...</li>
-<input type="text" value="" data="{ann:1,xx:2}" id="x" />
-<div class="alpha1">
-  <div class="ap2">
-      <p>背景为红色(#FF0000)，透明度20%。</p>
-  </div>
-  <!--[if IE]><![if !IE]><![endif]--> <div class="alpha2"></div> <!--[if IE]><![endif]><![endif]-->
-</div>
-<input type="text" value="请输入" onfocus="this.value=''" />
-<script type="text/javascript">
-   var j=document.getElementById('x');
-    with (j) {
-        value = 'xxx';
-        style.backgroundColor = "red";
-    }
 
-    var a = $("li.someclass").metadata();
-
-    alert(a.some);
-</script>
 </body>
 </html>
