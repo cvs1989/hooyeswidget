@@ -97,6 +97,7 @@ namespace hooyes.Core.Mvc.Controllers
 
         }
         //[Authorize]
+        //[NonAction]
         public ActionResult getUser(string jsoncallback)
         {
             //MembershipUser u = Membership.GetUser();

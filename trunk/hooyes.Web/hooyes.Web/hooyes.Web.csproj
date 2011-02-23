@@ -49,16 +49,23 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -110,7 +117,9 @@
     <Content Include="Html\flick.html" />
     <Content Include="Html\flick2.html" />
     <Content Include="Html\index.html" />
+    <Content Include="Html\jquery.maskedinput.html" />
     <Content Include="Html\jquery.validate.html" />
+    <Content Include="Html\jquery.watermask.html" />
     <Content Include="Html\JSONP.html" />
     <Content Include="Html\keyUp.html" />
     <Content Include="Html\Menu.htm" />
@@ -138,6 +147,7 @@
     <Content Include="OAuth\sina.html" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.5.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.js" />
     <Content Include="Scripts\jquery.autopager-1.0.0.min.js" />
     <Content Include="Scripts\jquery.bgiframe.js" />
@@ -152,9 +162,12 @@
     <Content Include="Scripts\jquery.fn.menu.min.js" />
     <Content Include="Scripts\jquery.fn.oAuth.js" />
     <Content Include="Scripts\jquery.hoverIntent.js" />
+    <Content Include="Scripts\jquery.maskedinput-1.2.2.js" />
+    <Content Include="Scripts\jquery.maskedinput-1.2.2.min.js" />
     <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.upload.js" />
     <Content Include="Scripts\jquery.hoverIntent.min.js" />
+    <Content Include="Scripts\jquery.watermarkinput.js" />
     <Content Include="Scripts\mbMenu.js" />
     <Content Include="Scripts\mbMenu2.js" />
     <Content Include="Scripts\styleswitch.js" />
