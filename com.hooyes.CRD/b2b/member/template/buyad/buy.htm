@@ -1,0 +1,152 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">购买广告</td>
+        </tr>
+        <tr> 
+          <td class="middle" style="padding:5px;"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <form name="form1" method="post" action="?">
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告位名称:</td>
+                  <td align="left" width="79%">$rsdb[name]</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告类型:</td>
+                  <td align="left" width="79%">{$array_adtype[$rsdb[type]]}</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">审核类型:</td>
+                  <td align="left" width="79%">$rsdb[_ifyz]</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">费用:</td>
+                  <td align="left" width="79%">{$rsdb[moneycard]} (积分/天)</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">购买几天:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="atc_day" size="4" value="$rsdb[u_day]">
+                    天</td>
+                </tr>
+                <!--
+EOT;
+if($rsdb[type]=='code'){print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告代码:</td>
+                  <td align="left" width="79%"> 
+                    <textarea name="atc_code" cols="60" rows="10">$code</textarea>
+                  </td>
+                </tr>
+                <!--
+EOT;
+}elseif($rsdb[type]=='word'){print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告文字:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="atc_word" size="30" value="$word">
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告网址:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="atc_url" size="60" value="$linkurl">
+                  </td>
+                </tr>
+                <!--
+EOT;
+}elseif($rsdb[type]=='pic'){print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告图片:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="atc_img" size="60" value="$picurl" id="picurlid">
+                    <a href='javascript:' onclick='window.open("../do/upfile.php?fn=upfile&dir=ad&label=picurlid","","width=350,height=50,top=200,left=400")'>点击上传图片</a></td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告网址:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="atc_url" size="60" value="$linkurl">
+                  </td>
+                </tr>
+                <!--
+EOT;
+}elseif($rsdb[type]=='swf'){print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告FLASH:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="atc_url" size="60" value="$flashurl">
+                  </td>
+                </tr>
+                <!--
+EOT;
+}elseif($rsdb[type]=='duilian'){print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告左边的FLASH/图片源地址:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="l_src" size="60" value="$l_src">
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告左边的FLASH/图片链接地址:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="l_link" size="60" value="$l_link">
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">广告右边的FLASH/图片源地址:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="r_src" size="60" value="$r_src">
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%" height="32">广告右边的FLASH/图片链接地址:</td>
+                  <td align="left" width="79%" height="32"> 
+                    <input type="text" name="r_link" size="60" value="$r_link">
+                  </td>
+                </tr>
+                <!--
+EOT;
+}print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF"> 
+                  <td  align="left" width="21%">&nbsp;</td>
+                  <td align="left" width="79%"> 
+                    <input type="submit" name="Submit" value="提交">
+                    <input type="hidden" name="id" value="$id">
+                    <input type="hidden" name="action" value="$job">
+                    <input type="hidden" name="u_id" value="$u_id">
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,label){
+	document.getElementById(label).value=url; 
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,25 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td> [<a href="index.php?lfj=$lfj&job=listartic&only=$only&mid=$mid">辅栏目内容管理</a>] 
+      <!--
+EOT;
+if($fid){print <<<EOT
+-->
+      [<a href="../do/fulist.php?fid=$fid" target="_blank">浏览栏目</a>] [<a href="index.php?lfj=fu_sort&job=editsort&fid=$fid&only=$only&mid=$mid">栏目设置</a>] 
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      $sort_fid </td>
+	 
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

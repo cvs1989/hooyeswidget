@@ -1,0 +1,83 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=fu_artic&action=delete">
+    <tr align="center" class="head"> 
+      <td width="7%">ID</td>
+      <td width="40%">标 题</td>
+      <td width="12%">所在辅栏目</td>
+	   <td width="12%">原栏目</td>
+      <td width="8%">发布者</td>
+      <td width="4%">浏览</td>
+      <td width="4%">评论</td>
+      <td width="8%">发表日期</td>
+       
+      <td width="7%">移除</td>
+       
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td align="center">$rs[aid]</td>
+      <td > <a href="$webdb[www_url]/do/rss.php?fid=$rs[fid]&id=$rs[aid]" target="_blank"><img src="$webdb[www_url]/images/default/rss.gif" border="0"></a> 
+        <input type="checkbox" name="listdb[]" value="$rs[aid]-$rs[fid]">
+        <a href="$webdb[www_url]/bencandy.php?fid=$rs[fid2]&aid=$rs[aid]"  style="color:$rs[titlecolor];" target="_blank" title="原栏目:$rs[fname2]">$rs[title]</a></td>
+      <td align="center"><a href="$webdb[www_url]/do/fulist.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+	  <td align="center"><a href="$webdb[www_url]/list.php?fid=$rs[fid]" target="_blank">$rs[fname2]</a></td>
+      <td  align="center">$rs[username]</td>
+      <td  align="center">$rs[hits]</td>
+      <td   align="center"><a href="index.php?lfj=comment&job=list&aid=$rs[aid]">$rs[comments]</a></td>
+      <td  align="center">$rs[posttime]</td>
+      
+      <td   align="center"> &nbsp; <a href="index.php?lfj=$lfj&action=delete&listdb[]=$rs[aid]-$rs[fid]&only=$only&mid=$mid" title="移除"><img src="../member/images/icon_rubbish.gif" border="0"></a> 
+      </td>
+     
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> $showpage</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <input type="button" name="Submit3" value="删除" onclick="postdo('delete')">
+        <input type="hidden" name="jobs" value="0">
+        <input type="hidden" name="only" value="$only">
+        <input type="hidden" name="mid" value="$mid">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	if(va=='html'){
+		document.form_work.target='_blank';
+		document.form_work.action='?lfj=html&action=makehtml&fiddb[]=$fid&posttype=fromarticle';
+	}
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,33 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="96%" border="0" cellspacing="0" cellpadding="0" style="margin-left:15px;margin-top:15px;">
+
+              <tr> 
+                <td> 
+	              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+$target=$rs[target]?'_blank':'_self';
+$rs[title]=get_word($rs[full_title],48,0);
+print <<<EOT
+-->	
+
+				<div style="float:left;width:49%;height:28px;">¡¤<a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]' style="font-size:13px;{$rs[fontweight]}{$rs[fontcolor]}">$rs[title]</a> </div>
+
+<!--
+EOT;
+}print <<<EOT
+-->
+
+                </td>
+              </tr>
+            </table>
+            
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,59 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+  <tr>
+    <td style="background:url($webdb[www_url]/images/default/ch/ch_flash.jpg);height:25px;"></td>
+  </tr>
+</table>
+<!--
+EOT;
+foreach($listdb_moresort AS $key2=>$rss){
+print <<<EOT
+--> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable BigsortImg FlashBigsortImg" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="list.php?fid=$rss[fid]">$rss[name]</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="list.php?fid=$rss[fid]">更多...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!--
+EOT;
+$i=0;
+foreach($rss[article] AS $key1=>$rs){
+$i++;
+if($i>5)break;
+$rs[title]=get_word($rs[full_title],14);
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->
+      <div style="float:left;width:120px;padding-left:8px;padding-top:5px;"> <a style="display:block;width:120px;height:90px;border:1px solid #ccc;" href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title="$rs[full_title]" target="_blank"><img width="120" height="90" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'" style="border:2px solid #fff;" src="$rs[picurl]" border="0"></a> 
+        <b>名称:</b><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title="$rs[full_title]" style="{$rs[fontweight]}{$rs[fontcolor]}" target="_blank">$rs[title]</a> 
+        <br>
+        <b>浏览:</b> {$rs[hits]} 次 
+ </div>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

@@ -1,0 +1,250 @@
+<!--
+<?php
+if( $webdb[UseMoneyType]=='bbs' )$none='none';
+print <<<EOT
+--><script src="images/setday.js"></script>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="FORM" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2">修改用户</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">用户UID</td>
+      <td width="76%">$uid</td>
+    </tr>
+    <tr> 
+                        
+      <td width="28%" align="right">用户帐号:</td>
+                        
+      <td width="72%"> $cpDB[username]</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">企业名称(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpname" style="width:130px;" value="$cpDB[cpname]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">企业性质(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <SELECT name="cptype">
+                            <OPTION value="">请选择企业性质</OPTION>
+                            <OPTION value="个体工商户" {$cptype['个体工商户']}>个体工商户</OPTION>
+                            <OPTION 
+    value="私营独资企业" {$cptype['私营独资企业']}>私营独资企业</OPTION>
+                            <OPTION 
+    value="私营合伙企业" {$cptype['私营合伙企业']}>私营合伙企业</OPTION>
+                            <OPTION 
+    value="私营有限责任公司" {$cptype['私营有限责任公司']}>私营有限责任公司</OPTION>
+                            <OPTION 
+    value="私营股份有限公司" {$cptype['私营股份有限公司']}>私营股份有限公司</OPTION>
+                            <OPTION 
+    value="国有企业" {$cptype['国有企业']}>国有企业</OPTION>
+                            <OPTION 
+    value="集体企业" {$cptype['集体企业']}>集体企业</OPTION>
+                            <OPTION 
+    value="股份合作企业" {$cptype['股份合作企业']}>股份合作企业</OPTION>
+                            <OPTION 
+    value="联营企业" {$cptype['联营企业']}>联营企业</OPTION>
+                            <OPTION 
+    value="国有独资公司" {$cptype['国有独资公司']}>国有独资公司</OPTION>
+                            <OPTION 
+    value="其他有限责任公司" {$cptype['其他有限责任公司']}>其他有限责任公司</OPTION>
+                            <OPTION 
+    value="股份有限公司" {$cptype['股份有限公司']}>股份有限公司</OPTION>
+                            <OPTION 
+    value="其他内资企业" {$cptype['其他内资企业']}>其他内资企业</OPTION>
+                            <OPTION 
+    value="与港澳台商合资经营" {$cptype['与港澳台商合资经营']}>与港澳台商合资经营</OPTION>
+                            <OPTION 
+    value="与港澳台商合作经营" {$cptype['与港澳台商合作经营']}>与港澳台商合作经营</OPTION>
+                            <OPTION 
+    value="港澳台商独资" {$cptype['港澳台商独资']}>港澳台商独资</OPTION>
+                            <OPTION 
+    value="港澳台商投资股份有限公司" {$cptype['港澳台商投资股份有限公司']}>港澳台商投资股份有限公司</OPTION>
+                            <OPTION 
+    value="中外合资经营" {$cptype['中外合资经营']}>中外合资经营</OPTION>
+                            <OPTION 
+    value="中外合作经营" {$cptype['中外合作经营']}>中外合作经营</OPTION>
+                            <OPTION 
+    value="外商独资" {$cptype['外商独资']}>外商独资</OPTION>
+                            <OPTION 
+    value="外商投资股份有限公司" {$cptype['外商投资股份有限公司']}>外商投资股份有限公司</OPTION>
+                            <OPTION 
+    value="政府机构" {$cptype['政府机构']}>政府机构</OPTION>
+                            <OPTION 
+    value="非盈利组织" {$cptype['非盈利组织']}>非盈利组织</OPTION>
+                            <OPTION value=其他 {$cptype['其他']}>其他</OPTION>
+                          </SELECT>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">所属行业(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <select name="cptrade">
+                            <option value="">请选择所属行业</option>
+                            <!--
+EOT;
+$detail=explode("\r\n",$webdb[companyTrade]);
+foreach($detail AS $key=>$value){
+$ckk=$cpDB[cptrade]==$value?' selected ':' ';
+print <<<EOT
+-->
+                            <option value="$value" $ckk>$value</option>
+                            <!--
+EOT;
+}print <<<EOT
+-->
+                          </select>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">企业法人(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpfounder" style="width:130px;" value="$cpDB[cpfounder]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">注册资本:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpmoney" style="width:50px;" value="$cpDB[cpmoney]">
+                          万元 </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">成立日期:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpfoundtime" style="width:130px;" value="$cpDB[cpfoundtime]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">组织机构代码(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpcode" style="width:130px;" value="$cpDB[cpcode]">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="28%" align="right">企业形象LOGO图片(可留空):</td>
+                        <td width="72%">
+                          <input type="text" name="cplogo" style="width:330px;" value="$cpDB[cplogo]" id="cplogo">
+                          [<a href='javascript:' onClick='window.open("upfile.php?fn=upfile2&dir=cplogo","","width=350,height=50,top=200,left=400")'><font color="#0000FF">点击上传企业LOGO</font></a>] 
+                          <script language="JavaScript">
+<!--
+function upfile2(url,name,size,label){	
+	document.getElementById("cplogo").value=url;
+}	
+//-->
+</script>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">营业执照复印件:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cppermit" style="width:330px;" value="$cpDB[cppermit]" id="cppermit">
+                          [<a href='javascript:' onClick='window.open("upfile.php?fn=upfile&dir=cppermit","","width=350,height=50,top=200,left=400")'><font color="#0000FF">点击上传营业执照复印件</font></a>] 
+                          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,label){	
+	document.getElementById("cppermit").value=url;
+}	
+//-->
+</SCRIPT>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">员工人数:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpmannum" style="width:50px;" value="$cpDB[cpmannum]">
+                          人 </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">主营产品:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpproduct" style="width:330px;" value="$cpDB[cpproduct]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">所在城市(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/select_menu.js"></SCRIPT>
+                          <SCRIPT LANGUAGE="JavaScript">
+<!--
+var input_value='$cpDB[cpcity]';
+var input_name='cpcity';
+var select_type='2';
+var file='../do/ajax_select.php';
+var DIV_idb='DIV_idb'+Math.random();
+var input_idb='input_idb'+Math.random();
+document.write("<span id='"+DIV_idb+"'></span>");
+document.write("<input type='hidden' id='"+input_idb+"' name='"+input_name+"'  size='5' value='"+input_value+"'>");
+get_div_S(DIV_idb,DIV_idb,input_idb,select_type,'',input_value);
+//-->
+</SCRIPT>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">公司网址:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpweb" style="width:230px;" value="$cpDB[cpweb]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">公司电话(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <input type="text" name="cptelephone" style="width:130px;" value="$cpDB[cptelephone]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">公司传真:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpfax" style="width:130px;" value="$cpDB[cpfax]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">公司联系人:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cplinkman" style="width:130px;" value="$cpDB[cplinkman]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">联系手机:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpmobphone" style="width:130px;" value="$cpDB[cpmobphone]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">联系QQ:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpqq" style="width:130px;" value="$cpDB[cpqq]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">联系MSN:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpmsn" style="width:130px;" value="$cpDB[cpmsn]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">公司地址(<font color="#FF0000">*</font>):</td>
+                        <td width="72%"> 
+                          <input type="text" name="cpaddress" style="width:330px;" value="$cpDB[cpaddress]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" align="right">邮政编码:</td>
+                        <td width="72%"> 
+                          <input type="text" name="cppostcode" style="width:130px;" value="$cpDB[cppostcode]">
+                        </td>
+                      </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">&nbsp;</td>
+      <td width="76%"> 
+        <input type="submit" name="Submit" value="修 改">
+        <input type="hidden" name="uid" value="$cpDB[uid]">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

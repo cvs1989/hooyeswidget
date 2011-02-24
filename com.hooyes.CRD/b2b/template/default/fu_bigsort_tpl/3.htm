@@ -1,0 +1,49 @@
+<!--
+<?php
+foreach($listdb_moresort AS $key2=>$rss){
+print <<<EOT
+--> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="fulist.php?fid=$rss[fid]">$rss[name]</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="fulist.php?fid=$rss[fid]">¸ü¶à...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!--
+EOT;
+$i=0;
+foreach($rss[article] AS $key1=>$rs){
+$i++;
+if($webdb[listPicRows]&&$i>$webdb[listPicRows])break;
+$rs[title]=get_word($rs[full_title],40,0);
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->
+      <div style="float:left;width:125px;padding-left:11px;padding-top:5px;"> 
+        <a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" style="margin-left:6px;display:block;width:100px;height:75px;border:1px solid #ccc;" target="_blank"><img style="border:1px solid #fff;" width="100" height="75" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'" src="$rs[picurl]" border="0"></a> 
+        <a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" style="height:35px;display:block;{$rs[fontweight]}{$rs[fontcolor]}" title="$rs[full_title]" target="_blank">$rs[title]</a> 
+      </div>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

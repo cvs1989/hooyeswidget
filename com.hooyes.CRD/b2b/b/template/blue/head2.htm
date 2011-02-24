@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title] </title>
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/default.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/new.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/homepage_style/$homepage_style/default.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//导航菜单
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+//-->
+</SCRIPT>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<!--
+EOT;
+if($webdb[allNotice]){
+print <<<EOT
+-->
+<div style="  padding:5px; background-color:#FDE9EB; border-bottom:1px #CC0000 solid; color:#FF0000; font-size:12px; font-weight:bold; text-align:center;">
+$webdb[allNotice]
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+ 
+
+<table width="990" border="0" cellspacing="0" cellpadding="0"    align="center">
+<tr><td width="366" rowspan="2">
+<div class="logo" ><A HREF="$Mdomain/"><img src="$Murl/images/$STYLE/logo.gif" border=0></A></div>
+</td>
+
+<td width="624" align="right" valign="middle" class="homapage_top">
+ <span style="float:left;"></span>
+ <span style="float:right;">
+ <a href="$Mdomain">返回首页</a> | 
+<a href="$Mdomain/sortlist.php?ctype=1">找产品</a> | 
+	<a href="$Mdomain/sortlist.php?ctype=2">看求购</a> | 
+	<a href="$Mdomain/company.php">找商家</a> | 
+   
+    <a href="$Mdomain/jobs.php">人才招聘</a> | 
+    <a href="$Mdomain/zh.php">行业展会</a> |
+	<a href="$Mdomain/help.php">帮助</a>
+	
+	&nbsp;
+
+ </span></tr>
+<tr>
+  <td align="left" valign="middle" ><form action="$Mdomain/list.php" method="get" name="form1" id="form1"  onsubmit="return checksearch(this);" >
+    <table width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="97%" align="right"><div class="hp_head">
+            <!--select name="ctype" class="inpt">
+              <option value="1">搜索供应</option>
+              <option value="2">搜索求购</option>
+              <option value="company">搜索商家</option>
+            </select-->
+          <input name="keyword" type="text" id="keyword"   value="$keyword" size="30"  class="inpt"/>
+          <select name="fid"  class="inpt">
+              <option value="0">选择搜索栏目</option>
+<!--
+EOT;
+foreach($Fid_db[0] as $key=>$array){
+print <<<EOT
+-->
+	<option value="$key">{$Fid_db[name][$key]}</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </select>
+            <script language="JavaScript" type="text/javascript">
+	   function checksearch(myform){
+	   		if(myform.keyword.value==''){
+			 alert("请输入你要搜索的关键字");
+			 return false;
+			}else{
+			 return true;
+			}
+	   }
+	   </script>
+        </div></td>
+        <td width="3%"><input type="submit" name="button" id="button" value=" " class="sbt" /></td>
+      </tr>
+    </table>
+  </form></td>
+</tr>
+<tr>
+  <td colspan="2" >&nbsp;
+ </td>
+  </tr>
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('<div class="wrap">');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

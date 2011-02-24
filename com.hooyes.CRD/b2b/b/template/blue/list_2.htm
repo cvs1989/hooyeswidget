@@ -1,0 +1,345 @@
+<!--
+<?php
+$priceColordb["c$price1$price2"]='red';
+$orderColordb["$ordertype"]='red';
+
+
+$orderliststyle[1]="filter:Gray";
+$orderliststyle[2]="filter:Gray";
+$orderliststyle[3]="filter:Gray";
+$orderliststyle[4]="filter:Gray";
+$orderliststyle[5]="filter:Gray";
+$orderliststyle[6]="filter:Gray";
+$orderliststyle[$mylistorder]="";
+
+$listorderurl="buy_list.php?bid=$bid&fid=$fid&listarea=$listarea&price1=$price1&price2=$price2&ordertype=$ordertype&agent=$agent&vip=$vip&keyword=".urlencode($keyword);
+$agent_ck[$agent]=" checked";
+$vip_ck[$vip]=" checked";
+
+$brand_guide=$bid?" > <a href='#'>".$Brand_db[name][$bid]."</a>":"";
+print <<<EOT
+--> 
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  height="393" valign="top" class="Main"  style="padding-right:10px;"> 
+  
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="list_search">
+  <tr> 
+    <td style="padding:4px;"> <div><strong>分类</strong>：  <a href="$Mdomain/sell.php">求购</a> $guidefid
+		  <!--
+EOT;
+if(!isset($bcategory->categories[$fid])){
+print <<<EOT
+-->
+	<a href="$Mdomain/member/?main=post_buy.php?fid=$fid" target="_blank"><font color="blue">[在此发布信息]</font></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+
+
+	</div>
+  <table width="100%" cellspacing="0" cellpadding="0" class="sort" >
+ <tr>
+  <td>
+	  
+	  
+	   <div class="t2">
+        <!--
+EOT;
+foreach($sortArray AS $key=>$value){
+$color= $value['fid'] == $fid ? 'red' : '';
+print <<<EOT
+-->
+        <span><a href="$Mdomain/buy_list.php?fid={$value['fid']}&listarea=$listarea&ordertype=$ordertype&keyword=$keyword_code" style="color:$color;">{$value['name']}</a></span>
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+		<span><a href="$Mdomain/buy_list.php?fid=$fid&ctype=$ctype&listarea=$listarea&ordertype=$ordertype&keyword=$keyword_code" style="color:$color;">全部{$fidDB['name']}</a></span>
+</div>
+
+
+
+     </td></tr></table>
+	 
+	 <table width="100%" cellspacing="0" cellpadding="0" class="sort" >
+ <tr>
+  <td>
+	 <div  style="clear:both;">
+	 <strong>品牌</strong>： $brand_guide
+	 </div>
+		<div class="t2" style="clear:both; padding-top:5px;">
+
+<!--
+EOT;
+foreach($Brand_db[ownbyfid] as $key=>$fidarray){
+if(in_array($fid,explode(",",$fidarray))){
+$color=$key==$bid?'red':'';
+print <<<EOT
+-->
+ <span><a href="$Mdomain/buy_list.php?bid=$key&fid=$fid&ctype=$ctype&listarea=$listarea&ordertype=$ordertype&keyword=$keyword_code" style="color:$color;">{$Brand_db[name][$key]}</a></span>
+<!--
+EOT;
+}
+}
+print <<<EOT
+-->
+		<span><a href="$Mdomain/buy_list.php?fid=$fid&ctype=$ctype&listarea=$listarea&ordertype=$ordertype&keyword=$keyword_code" >全部品牌</a></span>
+
+		</div>				
+</td>
+</tr></table>
+
+	  
+     <div class="listsearch">
+              <form action="?" name="listform"  method="get">
+                <strong>在<font color="blue">$fidDB[name]</font>中筛选:</strong>&nbsp;关键字
+                      <input name="keyword" type="text" id="keyword" value="$keyword" size="10" />
+                      价格从
+                      <input name="price1" type="text" id="price1" value="$price1" size="5" />
+                      到
+                      <input name="price2" type="text" id="price2" value="$price2" size="5" />
+                      元，{$area_choose}
+					  <input name="agent" type="checkbox" value="1"  $agent_ck[1]/>代理商
+					  <input name="vip" type="checkbox" value="1"  $vip_ck[1]/>VIP商家
+						<input type="submit" name="button" id="button" value="搜索" />
+                      <input name="fid" type="hidden" id="fid" value="$fid" />
+					  <input name="bid" type="hidden" id="bid" value="$bid" />
+                      <input name="ctype" type="hidden" id="ctype" value="$ctype" />
+              </form>
+            </div>      </td>
+  </tr>
+</table>        
+      
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="redtitle" id="sort_list2">
+        <tr> 
+          <td class="head"><span class="title">求购信息 &gt; $fidDB[name]</span><span class="right"><strong style="float:left;">排序：</strong>
+				  	<a href="$listorderurl&mylistorder=1"><img src="$Murl/images/$STYLE/listorder2_1.jpg"  alt="新发布在前" style="$orderliststyle[1]" border="0"/></a>
+				    <a href="$listorderurl&mylistorder=2"><img src="$Murl/images/$STYLE/listorder2_2.jpg"  alt="新发布在后" style="$orderliststyle[2]" border="0"/></a>	
+				    <a href="$listorderurl&mylistorder=3"><img src="$Murl/images/$STYLE/listorder1_1.jpg"  alt="价格降序"   style="$orderliststyle[3]" border="0"/></a>
+				    <a href="$listorderurl&mylistorder=4"><img src="$Murl/images/$STYLE/listorder1_2.jpg"  alt="价格升序"   style="$orderliststyle[4]" border="0"/></a>
+<!--
+EOT;
+if(count($bcategory->categories[$fid]['categories'])<1){
+print <<<EOT
+-->
+	<a href="$Mdomain/member/?main=post_buy.php?fid=$fid" target="_blank"><img src="$Murl/images/$STYLE/listpub.gif"  border="0"/></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		  </span></td>
+        </tr>
+        <tr> 
+          <td class="content">
+
+ 
+          <form action="$Murl/action.php" name="gylist" id="gylist" method="post" target="_blank" >
+          <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="list">
+             
+              <tr> 
+              	
+                <td width="120" valign="middle"  style="padding:5px;"><a href="javascript:viod(0);" onclick="dosub()"><img  src="$Murl/images/$STYLE/betch_baojia.gif"  border="0"/></a></td>
+                <td valign="top" >&nbsp;
+				
+				</td>
+                <td width="100" align="right" valign="middle" >&nbsp;</td>
+                <td width="150" align="center" valign="middle" >商家认证</td>
+              </tr>
+            </table>
+                       <!--
+EOT;
+$i=1;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+$class=$rs[levels]?"list_best":"list";
+if(!$rs[bgcolor]){
+		$rs[bgcolor]=$i%2==0?'#F9F9F9':'#ffffff';
+    }
+    $i++;
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="$class" style="background-color:$rs[bgcolor]" >
+            <tr><td colspan="5" height="10"></td></tr>
+              <tr>
+               <td width="20" valign="middle" ><input type="checkbox" name="ids[]" value="$rs[id]" /></td>
+                <td width="9"> </td><td width="102" align="left">
+				<div  style="border:1px #CCCCCC solid; padding:5px; width:100px; height:100px; background-color:#FFFFFF" > <a href="$rs[url]" target="_blank" > <img onerror="this.src='$Murl/images/$STYLE/nopic.jpg'" src="$rs[picurl].gif"  border="0" width="100" height="100"  ></a> </div>
+</td><td style="padding-left:10px">
+<div  class="title">
+<a  href="$rs[url]" title='$rs[full_title]' target="_blank" style="color:$rs[titlecolor]; font-size:14px;"><strong>$rs[title]</strong></a>  $rs[services]</div>
+<div style="color:#565656; height:50px;word-break:break-all;overflow:auto; width:98%">[摘要] $rs[content]</div>
+
+				<div class="about" >
+
+				发布者:<a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank">{$rs[owner_name]}</a>  
+				
+                地区:{$area_DB[name][$city_DB[fup][$rs[city_id]]]}{$city_DB[name][$rs[city_id]]} <br />
+                发布日期:{$rs[posttime]}  
+				有效日期:{$rs[overtime]}               </div>
+			   </td>
+                <td width="100" align="left" class="pading10px" ><strong><font color="#FF3300">$rs[quantity_num]</font></strong>$rs[quantity_type]<br />
+                <a href="$Murl/action.php?action=form2&ids=$rs[id]" target="_blank"><img src="$Murl/images/$STYLE/diancibaojia.gif"  border="0"/></a><br />
+                已有<font color="#0000CC"><strong>$rs[baojia_num]</strong></font>次报价</td>
+                <td width="100" align="center" class="pading10px" >$rs[renzheng]</td>
+              </tr><tr><td colspan="5" height="10"></td></tr>
+            </table>
+<!--
+EOT;
+}
+if(count($listdb)<1){
+print <<<EOT
+-->
+	<div class="nolistdb"><strong>抱歉，暂无符合条件的内容!</strong>
+	<br />1.<a href="$Mdomain">点击这里进入首页</a>;
+	<br />2.<a href="$Mdomain/member/?main=post_buy.php" target="_blank">趁本栏目无内容，点击这里首批发布求购信息</a>;
+	</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+             
+ 			<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="list">
+             
+              <tr> 
+              	
+                <td width="466" valign="middle" height="30"  style="padding:5px;"><a href="javascript:viod(0);" onclick="dosub()"><img  src="$Murl/images/$STYLE/betch_baojia2.gif"  border="0"/></a>
+                <a href="#" ><img  src="$Murl/images/$STYLE/totop.gif"  border="0"/></a></td>
+                <td width="658" valign="top" >&nbsp;</td>
+                <td width="100" align="center" valign="middle" >&nbsp;</td>
+                <td width="150" align="center" valign="middle" >&nbsp;</td>
+              </tr>
+            </table>
+          
+            
+            <div class="page">$showpage</div>
+            <input type="submit"  id="dosubbtn" value="sub" style="display:none;"/>
+            <input type="hidden" name="action" value="form2" />
+            </form>
+            <script>
+            function dosub()
+			{
+				if(checkbetch()==false){
+					alert('至少选择一条信息');
+					return false;
+				}
+				try{
+					document.getElementById('gylist').submit();
+				}catch(e){
+					try{
+					document.gylist.submit();
+					}catch(e){
+					document.getElementById('dosubbtn').click();
+					}				
+				}
+				
+			}
+			function checkbetch()
+			{
+				try{
+					var ids=document.getElementsByName('ids[]');
+					for(var i=0;i<ids.length;i++){
+						if(ids[i].checked){
+							return true;	
+						}
+					}
+					return false;
+				}catch(e){
+					return false;
+				}
+			}
+            </script>          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>          </td>
+        </tr>
+      </table>    </td>
+    <td width="210" valign="top">
+	
+	<table width="210" border="0" cellspacing="0" cellpadding="0"  class="redtitle">
+        <tr>
+          <td class="head"><span class="title">商家推广&nbsp;</span><span class="right"><a href="$Mdomain/tg_buy.php?action=tgnew" target="_blank">>>>我也要出现在这里</a>&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td  class="content" height="30"><table width="100%" cellspacing="0" cellpadding="0"  >
+              <tr>
+                <td id="showtg_2">&nbsp;</td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr>
+          <td  class="foot"></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="redtitle">
+        <tr>
+          <td class="head"><span class="title">温馨提示&nbsp;</span><span class="right">&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td  class="content" height="30"><!--
+EOT;
+$webdb[list_notice]=nl2br($webdb[list_notice]);
+print <<<EOT
+-->
+            $webdb[list_notice] </td>
+        </tr>
+        <tr>
+          <td  class="foot"></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="redtitle">
+        <tr>
+          <td class="head"><span class="title">浏览历史&nbsp;</span><span class="right">最近$webdb[viewHistoryNums]次&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td  class="content" height="30">
+
+<!--
+EOT;
+foreach($hislistdb as $rs){
+$rs[title]=get_word(trim($rs[title]),26);
+print <<<EOT
+-->
+	<table title='$rs[title]' style='width:100%; height:50px;'><tr><td width="40"><a href='$Mdomain/buy_bencandy.php?id=$rs[id]&fid=$rs[fid]' target='_blank'><img src='$rs[picurl]' border=0  style='width:40px; height:40px; border:1px #CCCCCC solid;' onerror="this.src='$Murl/images/$STYLE/nopic.jpg'" /></a></td><td align="left"><a href='$Mdomain/buy_bencandy.php?id=$rs[id]&fid=$rs[fid]' target='_blank'>$rs[title]</a><br>($rs[my_price])</td></tr></table>
+<!--
+EOT;
+}
+print <<<EOT
+-->			  
+		  </td>
+        </tr>
+        <tr>
+          <td  class="foot"></td>
+        </tr>
+      </table>
+	  <div style="margin-top:5px;">{$label[list_2_1]}</div>
+	  <div style="margin-top:5px;">{$label[list_2_2]}</div>
+	  <div style="margin-top:5px;">{$label[list_2_3]}</div>
+	  <div style="margin-top:5px;">{$label[list_2_4]}</div>	
+	
+	</td>
+  </tr>
+</table>
+<script language="javascript">change_search_menu(2,'搜 求 购');</script>
+<script language="javascript" type="text/javascript" src="$Murl/tglist.php?from=list&ctype=$ctype&fid=$fid&rows=5&showdiv=showtg_2&page=$page&strlen=60"></script>  
+<script>
+	function showcity(m){
+		var fup=m.options[m.selectedIndex].value;
+		document.getElementById('frame_city').src='$Murl/job.php?job=getcity2&fup='+fup+'&name=listarea&showspan=city_span';
+	}
+	</script>
+<iframe id='frame_city' src='' style='height:1px; widht:1px; display:none' /></iframe>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,121 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+function upfile(url,name,size,label){
+	document.getElementById(label).value=url;
+	//ay=name.Split(".");
+	//alert(narray);
+	arr=name.split('.');
+	document.getElementById("name_"+label).value=arr[0];
+}
+function sub(form){
+	if(get_obj('batch_one').checked==true&&get_obj('title').value==''){
+		alert("图片主题不能为空");
+		form.title.focus();
+		return false;
+	}
+	if(form.fid.value==''||form.fid.value=='0'){
+		alert("请选择一个栏目");
+		form.fid.focus();
+		return false;
+	}
+}
+ //-->
+ </SCRIPT>
+<table width="98%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" bordercolor="#CCCCCC">
+  <form id="form8" name="form8" method="post" action="index.php?lfj=$lfj&action=$job" onsubmit="return sub(this);">
+    <tr   class="head" align="left"> 
+      <td colspan="2" height="25">快速发图</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%">系统分类:</td>
+      <td width="86%">$sort_fid</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="title_tr" style="display:none;">
+      <td width="14%">图片主题名称:</td>
+      <td width="86%">
+        <input type="text" name="title" id="title" size="30">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%">默认上传两张图片。<br>
+        你可以设置更多。<br>
+        增加 
+        <input type="text" size="3" name=nums value="2">
+        项 
+        <input type="button" name="Submit2" value="增加" onClick=showinput()>
+      </td>
+      <td width="86%"> <span class='t'>标题</span>: 
+        <input type="text" name="namedb[]" size="30" id="name_urla">
+        地址: 
+        <input type="text" name="photodb[]" size="40" id="urla">
+        [<a href='javascript:' onclick='window.open("upfile.php?label=urla","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传图片</font></a>]<br>
+        <span class='t'>标题</span>: 
+        <input type="text" name="namedb[]" size="30" id="name_urlb">
+        地址: 
+        <input type="text" name="photodb[]" size="40" id="urlb">
+        [<a href='javascript:' onClick='window.open("upfile.php?label=urlb","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传图片</font></a>]<br>
+        <div id="input"></div>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%">是否定义为组图</td>
+      <td width="86%"> 
+        <input type="radio" name="batch" value="1" id="batch_one" onclick="posttype('one')">
+        组图(同一篇文章,一张图占一页) 
+        <input type="radio" name="batch" value="0" checked onclick="posttype('more')">
+        非组图(指一张图一篇文章)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" height="28">&nbsp;</td>
+      <td width="86%" height="28"> 
+        <input type="submit" name="Submit" value="提交">
+        <script>
+totalnum=0;
+function showinput(){
+	var str=input.innerHTML;
+	var num=2;
+	num=document.form8.nums.value;
+	for(var i=1;i<=num;i++){
+		totalnum=totalnum+i;
+		str+=' <span class=t>标题</span>: <input type="text" name="namedb[]" size="30" id="name_url'+totalnum+'">  地址: <input type=text name=photodb[] size=40 id=url'+totalnum+'> [<a href=\'javascript:\' onClick=\'window.open("upfile.php?label=url'+totalnum+'","","width=350,height=50,top=200,left=400")\'><font color="#FF0000">点击上传图片</font></a>]<br>';
+	}
+	input.innerHTML=str;
+	set_name();
+}
+
+function posttype(t){
+	if(t=='more'){
+		get_obj("title_tr").style.display='none';
+	}else{
+		get_obj("title_tr").style.display='';
+	}
+	set_name();
+}
+function set_name(){
+	obj=document.body.getElementsByTagName("span");
+	for(var i=0;i< obj.length;i++ ){
+		if(obj[i].className=='t')
+		{
+			if(get_obj('batch_one').checked==true){
+				obj[i].innerHTML="介绍";
+			}else{
+				obj[i].innerHTML="标题";
+			}
+			
+		}
+	}
+}
+</script>
+        <input type="hidden" name="postdb[bak_id]" value="$bak_id">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

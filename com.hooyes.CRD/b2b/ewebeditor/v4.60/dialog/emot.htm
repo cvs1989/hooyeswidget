@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<script language="javascript" src="dialog.js"></script>
+<link href='dialog.css' type='text/css' rel='stylesheet'>
+<TITLE>插入表情图标</TITLE>
+
+<script language=javascript>
+
+function emotclick(){
+	if ("IMG"==event.srcElement.tagName.toUpperCase()) {
+		var url = relativePath2setPath(event.srcElement.getAttribute("src", 2).substr(3));
+		dialogArguments.insertHTML("<IMG id=eWebEditor_TempElement_Img SRC=" + url + ">");
+
+		var oTempElement = dialogArguments.eWebEditor.document.getElementById("eWebEditor_TempElement_Img");
+		oTempElement.src = url;
+		oTempElement.removeAttribute("id");
+
+		window.returnValue = null;
+		window.close();
+	}
+}
+document.onclick=emotclick;
+
+function InitDocument(){
+	adjustDialog();
+}
+</script>
+</HEAD>
+
+此项功能暂无!

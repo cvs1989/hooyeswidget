@@ -1,0 +1,155 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">修改分类</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"><font color="#FF0000">[<a href="$webdb[www_url]/do/listsp.php?fid=$fid" target="_blank">浏览前台</a>] 
+        </font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">当前分类:</td>
+      <td width="76%"> $sort_fid</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">修改后的分类名称:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">修改后属于哪个分类:</td>
+      <td width="76%"> $sort_fup</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:none;"> 
+      <td width="24%">性质：</td>
+      <td width="76%"> 
+        <input type="radio" name="postdb[type]" value="1" $typedb[1]>
+        专题/分类 
+        <input type="radio" name="postdb[type]" value="0" $typedb[0]>
+        专题中的小类别</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:none;"> 
+      <td width="24%">允许投稿的用户组,（不选择，则无权限.然而超级管理员默认有权限）:</td>
+      <td width="76%"> $group_post</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="24%">模板:<br>
+        (一般留空,即以默认为标准) </td>
+      <td width="76%"> 头部模板: 
+        <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+        $tpl_head<br>
+        底部模板: 
+        <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+        $tpl_foot<br>
+        专题列表模板: 
+        <input type="text" name="postdb[tpl][list]" value="{$tpl['list']}" id="tpl_list" size="40">
+        $tpl_list<br>
+        专题内容模板: 
+        <input type="text" name="postdb[tpl][bencandy]" value="$tpl[bencandy]" id="tpl_bencandy" size="40">
+        $tpl_bencandy</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">静态网页表现形式: <span help=1><br>
+        (留空则以系统默认为标准)<br>
+        系统默认是:<br>
+        列表页:<font color="#0000FF">$webdb[SPlist_filename]</font><br>
+        内容页:<font color="#0000FF">$webdb[SPbencandy_filename]</font><br>
+        你可以把<font color="#FF0000">html/</font>去除,则在本系统的根目录,<font color="#FF0000">{\$fid}</font>可以换成英文名,内容页也可以换成日期的组合,日期的格式是<br>
+        {\$time_Y} 年(如:2008) {\$time_y} 年(如:08)<br>
+        {\$time_m} 月 {\$time_d} 日 {\$time_W} 周(如:第21周)<br>
+        {\$time_H} 时 {\$time_i} 分 {\$time_s} 秒<br>
+        </span></td>
+      <td width="74%"> 
+        <p>列表页: 
+          <input type="text" name="postdb[list_html]" value="$rsdb[list_html]" id="list_html" size="50">
+          <span style="display:$smallsort"><br>
+          内容页: 
+          <input type="text" name="postdb[bencandy_html]" value="$rsdb[bencandy_html]" id="bencandy_html" size="50">
+          </span></p>
+        <p>选择样式: [<a href="javascript:choose_html();"><font color="#0000FF">默认</font></a>] 
+          <br>
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_html(){
+	var list="html/special{\$fid}/list{\$page}.htm";
+	var show="html/special{\$fid}/show{\$id}.htm";
+	
+	document.getElementById("bencandy_html").value=show;	
+	document.getElementById("list_html").value=list;
+}
+//-->
+</SCRIPT>
+          注意:内容页的{\$id}如果去除的话,必须把日期的时分秒都补上,不然的话,会有文件雷同<br>
+          自己修改样式注意的是,不能为汉字,确保内容页文件不能雷同</p>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="24%">风格:(仅对部分模板有效)</td>
+      <td width="76%">$style_select</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:none;"> 
+      <td width="24%">LOGO图片:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[logo]" value="$rsdb[logo]" size="60">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width="24%">SEO关键字:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[metakeywords]" value="$rsdb[metakeywords]" size="50">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="24%">SEO描述(支持HTML):</td>
+      <td width="76%"> 
+        <textarea name="postdb[descrip]" cols="70" rows="7">$rsdb[descrip]</textarea>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>头部模板,底部模板,内容模板,更表模板,你都可以自己做一个有个性的,然后在上面输入他们所在的目录即可调用显示.留空的话.将以默认为标准.<br>
+        或者你可以不做头部与底部模板.只做内容模板,此时上面的头部模板与底部模板就得选择&quot;头部白板&quot;,&quot;底部白板&quot;<br>
+        通过做出各种各样的模板,你就可以做出有个性的栏目列表页与内容页,等等.这会变得非常的轻松自如.</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

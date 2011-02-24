@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<style>
+.indexlistsort .smallsort{
+	color:blue;
+}
+.indexlistsort .bigsort a{
+	font-weight:bold;
+}
+.indexlistsort .smallsort a{
+	color:blue;
+}
+.indexlistsort .smallsort span{
+	display:block;
+}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" > <form name="form1" method="post" action="">
+        <tr> 
+          <td class="head">请选择要订阅的栏目</td>
+        </tr>
+        <tr> 
+          <td class="middle" style="padding:5px;"> 
+            <!--
+EOT;
+foreach($Fid_db[0] AS $key_2=>$array2){
+print <<<EOT
+-->
+            <table width="99%" border="0" cellspacing="0" cellpadding="0" class="indexlistsort" style="width:24%;float:left;">
+              <tr> 
+                <td> 
+                  <div class="bigsort"><a href="list.php?fid=$key_2">{$Fid_db[name][$key_2]}</a></div>
+                  <div class="smallsort"> 
+                    <!--
+EOT;
+$i=0;
+foreach($Fid_db[$key_2] AS $key_3=>$rs){
+$i++;
+if($webdb[Info_showsortnum]>0&&$i>$webdb[Info_showsortnum]){break;}
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+print <<<EOT
+-->
+                    <span>[<a href="../list.php?fid=$key_3" target="_blank">{$Fid_db[name][$key_3]}</a>]&nbsp;
+                    <input type="checkbox" name="fiddb[]" value="$key_3" style="border:0px solid;" {$fidcheck[$key_3]}>
+                    </span> 
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr>
+            <td class="middle" style="padding:5px;">请选择要订阅的城市(不选择,则为所有城市):{$city_fid} 
+              　　　　 
+              <input type="submit" name="Submit" value="提交">
+              <input type="hidden" name="step" value="2">
+            </td>
+        </tr>
+        <tr> 
+          <td class="foot"></td>
+        </tr> </form>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,141 @@
+<!--
+<?php
+print <<<EOT
+-->
+<b>查看详细认证信息</b> <a href="?">[返回]</a>
+<table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC" class="tablewidth">
+  <tr  class="head">
+        <td width="144" align="center" bgcolor="#EFEFEF"><strong>认证类别</strong></td>
+        <td width="224" align="center" bgcolor="#EFEFEF"><strong>状态</strong></td>
+        <td width="972" align="center" bgcolor="#EFEFEF"><strong>认证资料</strong></td>
+  </tr>
+      <tr>
+        <td align="center" valign="top" bgcolor="#FFFFFF"><p><img src='{$Mdomain}/images/{$STYLE}/jibenrenzheng.gif'  border='0'/></p>
+        <p>          初级认证</p></td><td align="center" valign="top"  bgcolor="#FFFFFF"><p>{$renzhengDB[1][yz_]}</p>
+            <p><a href="?jobs=ok&id={$renzhengDB[1][id]}" onclick="return confirm('确定要让此认证生效吗?');"><strong><font color="#990000">确认通过认证</font></strong></a></p>
+            <p><a href="?jobs=del&id={$renzhengDB[1][id]}" onclick="return confirm('如果此用户有更高级别的认证，此认证信息不能删除；>>>> 确定删除此认证吗?');">删除</a></p></td>
+        <td valign="top" bgcolor="#FFFFFF"><form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="18%">商家名称：</td>
+              <td width="82%">{$renzhengDB[1][company_name]}</td>
+            </tr>
+            <tr>
+              <td>基本条件:</td>
+              <td>1.完整真实的登记自己的商家信息；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>2.必须上传属于自己的供应信息10个；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>3.上传的供应信息必须真实可靠，完整详细。审核比重较大；</td>
+            </tr>
+            <tr>
+              <td>企业法人：</td>
+              <td>{$renzhengDB[1][content][faren]}</td>
+            </tr>
+            <tr>
+              <td>身份证号：</td>
+              <td>{$renzhengDB[1][content][sfz_num]}                 (企业法人的身份证号) </td>
+            </tr>
+            <tr>
+              <td>联系电话：</td>
+              <td>{$renzhengDB[1][content][telphone]}</td>
+            </tr>
+          </table>
+        </form>
+        
+        </td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" bgcolor="#FFFFFF"><p><img src='{$Mdomain}/images/{$STYLE}/yinpairenzheng.gif'  border='0'/></p>
+        <p>          高级认证</p></td>
+        <td align="center" valign="top" bgcolor="#FFFFFF"><p>{$renzhengDB[2][yz_]}</p>
+        <p> <p><a href="?jobs=ok&id={$renzhengDB[2][id]}" onclick="return confirm('确定要让此认证生效吗?');"><strong><font color="#990000">确认通过认证</font></strong></a></p></p><p><a href="?jobs=del&id={$renzhengDB[2][id]}" onclick="return confirm('如果此用户有更高级别的认证，此认证信息不能删除；>>>> 确定删除此认证吗?');">删除</a></p></td>
+        <td valign="top" bgcolor="#FFFFFF"><form action="?" method="post" enctype="multipart/form-data" name="form1" id="form2">
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="18%">商家名称：</td>
+              <td width="82%">{$renzhengDB[2][company_name]}</td>
+            </tr>
+            <tr>
+              <td>基本条件：</td>
+              <td>1.必须是通过初级认证的商家；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>2.上传以下内容，各个文件必须真实可靠，否则不予通过；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>(以下文件必须为JPG,GIF的证件扫描件或者照片，清晰可见)</td>
+            </tr>
+            <tr>
+              <td>营业执照：</td>
+              <td>{$renzhengDB[2][files][yyzz]}</td>
+            </tr>
+            <tr>
+              <td>税务登记证：</td>
+              <td>{$renzhengDB[2][files][swdj]}</td>
+            </tr>
+            <tr>
+              <td>组织机构代码证：</td>
+              <td>{$renzhengDB[2][files][jgdm]}</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </form></td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" bgcolor="#FFFFFF"><p><img src='{$Mdomain}/images/{$STYLE}/jinpairenzheng.gif'  border='0'/></p>
+          <p>实力认证<br />
+        </p></td>
+        <td align="center" valign="top" bgcolor="#FFFFFF"><p>{$renzhengDB[3][yz_]}</p>
+        <p> <p><a href="?jobs=ok&id={$renzhengDB[3][id]}" onclick="return confirm('确定要让此认证生效吗?');"><strong><font color="#990000">确认通过认证</font></strong></a></p></p><p><a href="?jobs=del&id={$renzhengDB[3][id]}" onclick="return confirm('如果此用户有更高级别的认证，此认证信息不能删除；>>>> 确定删除此认证吗?');">删除</a></p></td>
+        <td valign="top" bgcolor="#FFFFFF"><form action="?" method="post" enctype="multipart/form-data" name="form3" id="form3"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td width="18%">商家名称：</td>
+            <td width="82%">{$renzhengDB[3][company_name]}</td>
+          </tr>
+          <tr>
+            <td>基本条件：</td>
+            <td>1.必须是通过高级认证(银牌级)的商家；</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>2.上传以下内容，各个文件必须真实可靠，否则不予通过；</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>(以下文件必须是以word文档格式的文件*.doc,文件必须安全,如发现文件携带不安全内容，将永久取消认证资格)</td>
+          </tr>
+          <tr>
+            <td>年销售报表:</td>
+            <td>            {$renzhengDB[3][files][doc1]}</td>
+          </tr>
+          <tr>
+            <td>现行营销方案:</td>
+            <td>            {$renzhengDB[3][files][doc2]}</td>
+          </tr>
+          <tr>
+            <td>企业组织架构:</td>
+            <td>            {$renzhengDB[3][files][doc3]}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        </form>
+        </td>
+      </tr>
+</table>
+<!--
+EOT;
+?>
+-->

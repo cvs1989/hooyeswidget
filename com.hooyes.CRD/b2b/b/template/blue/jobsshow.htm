@@ -1,0 +1,174 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="240"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="jobssort">
+      <tr>
+        <td class="head"><span class="tab1">招聘单位</span></td>
+      </tr>
+      <tr>
+        <td align="center" class="list">
+		<img src="$companyData[picurl]"  width="200" onError="this.style.display='none';"/>
+		<p><a href="$Mdomain/homepage.php?uid=$companyData[uid]"  target="_blank"><strong>$jobs_data[companyname]</strong></a></p>
+		<p>$companyData[renzheng]</p>
+		</td>
+      </tr>
+    </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jobssort">
+        <tr>
+          <td class="head"><span class="tab1">其他职位</span></td>
+        </tr>
+        <tr>
+          <td class="list">
+<!--
+EOT;
+foreach($companyData[otherjobs] as $rs){
+print <<<EOT
+-->
+	<li><img src="$Murl/images/$STYLE/listico.gif" /> <a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]">$rs[title]</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	<li>&nbsp;</li>
+		  </td>
+        </tr>
+      </table>
+	  
+	  
+	  </td>
+    <td width="750">
+	
+	
+	
+	
+	<table width="99%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab2" >基本信息</span>
+<!--
+EOT;
+if($jobs_data[uid]==$lfjuid || $web_admin ){
+print <<<EOT
+-->		   
+		   <span class="more">
+		   <a href="$Mdomain/jobs_post.php?job=edit_jobs&jobs_id=$jobs_data[jobs_id]">修改</a> 
+		   <!--<a href="$Mdomain/jobs_post.php?job=del_jobs&jobs_id=$jobs_data[jobs_id]" onclick="return confirm('确定删除吗？');">删除</a>-->
+		  </span>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+       
+	    
+		   
+	      </td>
+	    </tr>
+		<tr>
+			<td class="list">
+			<table width="100%" cellspacing="0" cellpadding="0">
+			<tr><td width="21%" class="cols_name"><img src="$Murl/images/$STYLE/arrow_list.gif" />职位名称：</td><td width="57%"  class="cols_value"><strong class="title">$jobs_data[title]</strong></td>
+			  <td width="49%" rowspan="3" align="center" valign="middle"  class="cols_value">
+			  <br  clear="all"/>
+			  <a href="$Mdomain/jobs_post.php?job=postresume&jobs_id=$jobs_data[jobs_id]&sid=$jobs_data[sid]" target="_blank">
+			  <strong class="bigbtn">申请该职位</strong>
+			  </a>
+			 
+			  </td>
+			</tr>
+			<tr><td class="cols_name"><img src="$Murl/images/$STYLE/arrow_list.gif" />职位类别：</td><td  class="cols_value">$jobs_data[sid_all]&nbsp;</td>
+			  </tr>
+			<tr><td class="cols_name"><img src="$Murl/images/$STYLE/arrow_list.gif" />就职地点：</td><td  class="cols_value">$jobs_data[city]&nbsp;</td>
+			  </tr>
+			</table>
+			
+			
+			</td>
+		</tr>
+    </table>
+	
+	
+	
+	<table width="99%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab2" >基本要求</span></td>
+	    </tr>
+		<td class="list">
+			<div>
+			<table width="100%" cellspacing="0" cellpadding="0">
+			<tr><td width="21%"></td><td width="79%"></td></tr>
+			$jobs_show_template
+			</table>
+			</div>
+		  </td>
+    </table>
+	
+	
+	<table width="99%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab2" >岗位职责</span><span class="more"><a href="#">TOP</a></span></td>
+	    </tr>
+		<td class="list" height="100">
+			<div>
+			$jobs_data[hr_work]
+			</div>
+		  </td>
+    </table>
+		<table width="99%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab2" >具体要求</span><span class="more"><a href="#">TOP</a></span></td>
+		  </tr>
+		<td class="list" height="100">
+			<div>
+			$jobs_data[hr_info]
+			</div>
+		  </td>
+    </table>
+	
+	<table width="99%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab2" >联系方式</span><span class="more"><a href="#">TOP</a></span></td>
+	    </tr>
+		<td class="list" height="100">
+			<div>
+			$jobs_data[company_contact]
+			</div>
+		  </td>
+    </table>
+	
+	<table width="99%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab2" >公司介绍</span><span class="more">
+<!--
+EOT;
+if($companyData[rid]){
+print <<<EOT
+-->			  
+		  <a href="$Murl/homepage.php?uid=$companyData[uid]&m=hr" target="_blank">更多介绍</a> | 
+<!--
+EOT;
+}
+print <<<EOT
+-->			  
+		  <a href="#">TOP</a></span></td>
+	    </tr>
+		<tr>
+			<td class="list" height="100">
+			<div>
+			$jobs_data[companyintro]
+			</div>
+			</td>
+		</tr>
+    </table>
+	
+  </tr>
+</table>
+
+
+<!--
+EOT;
+?>
+-->

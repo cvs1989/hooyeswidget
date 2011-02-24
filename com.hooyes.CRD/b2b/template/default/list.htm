@@ -1,0 +1,175 @@
+<!--
+<?php
+$listdb || $hide_listnews='none';		//如果是大分类的话,就不存在标题,就把标题框隐藏
+!$listdb_moresort && !$listdb && !$fidDB[type] && $hide_listnews='';
+print <<<EOT
+--> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>$label[list_top_ad]</td>
+  </tr>
+</table>
+<div class="MainTable MainDivTable"> 
+  <div class="Main"> 
+    <!--php168
+EOT;
+//这是栏目介绍
+if($webdb[showsortlogo]&&($fidDB[logo]||$fidDB[descrip])){@include("$aboutsortTPL");}print <<<EOT
+php168-->
+    <!--php168
+EOT;
+//这是列出大分类里的小栏目部分标题
+if($listdb_moresort){@include("$bigsortTPL");}
+print<<<EOT
+php168-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable"  id="list_article" style="clear:both;display:$hide_listnews">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG"><a editurl='$webdb[www_url]/do/job.php?job=list&fid=$fid&act=do'>$fidDB[name]</a></span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" style="padding:0 0 0 0;"> 
+          <!--php168
+EOT;
+//小栏目的标题
+if($listdb){@include("$listTPL");}print<<<EOT
+php168-->
+          <div class="page">$showpage</div>
+        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="Side"> 
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sonSortName">
+      <tr> 
+        <td class="head" height="19"> 
+          <h3 class="L"></h3>
+          <span class="TAG">相关栏目</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" align="left"> 
+          <!--php168
+EOT;
+//相关栏目名称
+@include("$sortnameTPL");print<<<EOT
+php168-->        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td style="padding-top:5px;" align="right">{$label[list_page_mv]}</td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td style="padding-top:5px;" align="right">{$label[list_page_topad]}</td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head" height="19"> 
+          <h3 class="L"></h3>
+          <span class="TAG">热门{$fidDB[M_alias]}</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" align="left"> 
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="article_Hottopic">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=hot&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Hottopic" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG">推荐{$fidDB[M_alias]}</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" valign="top" align="left"> 
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="article_Comtopic">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=com&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Comtopic" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG">{$label[article_list_tag]}</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" valign="top" align="left"> {$label[article_list]} </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG">{$label[bbsifmark_tag]}</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" valign="top" align="left"> {$label[bbsifmark]} </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!--
+EOT;
+?>
+-->

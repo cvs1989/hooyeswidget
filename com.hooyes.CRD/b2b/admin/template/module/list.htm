@@ -1,0 +1,61 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=artic&job=work">
+    <tr align="center" class="head"> 
+      <td width="6%">ID</td>
+      <td width="15%">系统名称</td>
+      <td width="15%">数据表前缀/关键字</td>
+      <td width="10%">存放目录</td>
+      <td width="8%">系统类型</td>
+      <td width="11%">后台目录</td>
+      <td width="21%">管理员</td>
+      <td width="14%">修改</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="6%" align="center">$rs[id]</td>
+      <td width="15%" align="center"> <a href="$rs[url]"  style="color:$rs[titlecolor];" target="_blank">$rs[name]</a></td>
+      <td width="15%" align="center">$rs[pre]</td>
+      <td width="10%" align="center">$rs[dirname]</td>
+      <td width="8%" align="center">$rs[type]</td>
+      <td width="11%" align="center">$rs[admindir]</td>
+      <td width="21%" align="center">$rs[adminmember]</td>
+      <td width="14%" align="center"><a href="index.php?lfj=$lfj&job=mod&id=$rs[id]"><img alt='修改设置' src='../member/images/icon_manage2.gif' border=0></a> &nbsp;
+        <a href="index.php?lfj=$lfj&action=del&id=$rs[id]" onclick="return confirm('警告!除非你想彻底取消此模块系统,否则请别删除,否则会造成不可意料的后果,比如原系统设置的标签会失效,为防止误操作,这里删除,不会清空原系统的数据');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+      </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=artic&job=work">
+    <tr align="left" class="head"> 
+      <td>注意事项</td>
+    </tr>
+ 
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left">1.请确认以上每一项都正确.如果某个系统修改目录后或后台目录后,请必须修改以上设置,否则会造成不可意料的不能正常访问的问题存在<br>
+        2.二级域名的设置,需要同时修改域名供应商那里的指向,同时还要在服务器单独的绑定模块系统目录,才能正常使用用.否则必须留空<br>
+        3.V5版发布的图库(<font color="#0000FF">photo</font>),下载(<font color="#0000FF">down</font>),商城(<font color="#0000FF">shop</font>),FLASH(<font color="#0000FF">flash</font>),博客(<font color="#0000FF">blog</font>),视频(<font color="#0000FF">mv</font>),音乐(<font color="#0000FF">music</font>)等对一个整站系统而言,只能安装一份的,不能重复安装的,称之为<font color="#FF0000">固定系统</font>,括号的字母即为其关键字<br>
+        4.相反,在一个整站系统里,通过修改数据表前缀,而使得可以同时安装多份的模块系统,称之为<font color="#FF0000">自由系统</font>,如(<font color="#0000FF">万能分类系统</font>),对自由系统而言,他的关键字就是数据表前缀 
+      </td>
+    </tr>
+  
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

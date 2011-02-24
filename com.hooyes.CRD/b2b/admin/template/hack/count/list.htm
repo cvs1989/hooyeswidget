@@ -1,0 +1,115 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit22" value="管理设置" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=set')">
+      　　 
+      <input type="button" name="Submit2" value="今日流量分析" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=list')">
+      　　 
+      <input type="button" name="Submit23" value="最近详情分析" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=listmore')">
+      　　 
+      <input type="button" name="Submit232" value="本年度流量分析" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=listall')">
+    </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+    <tr class="head"> 
+      <td align="center" colspan="2"><font color="#FFFFFF">流量统计</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="50%" align="center">今日流量统计</td>
+      <td width="50%" align="center">昨日流量统计</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="50%">今日到访PV: $todydb[pv] 次<br>
+        今日到访UV: $todydb[uv] 人<br>
+        今日到访IP: $todydb[ip] 个</td>
+      <td width="50%">昨日到访PV: $yesterdaydb[pv] 次<br>
+        昨日到访UV: $yesterdaydb[uv] 人<br>
+        昨日到访IP: $yesterdaydb[ip] 个</td>
+    </tr>
+     
+  </form>
+</table>
+ 
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+    <tr class="head"> 
+      <td align="center"><font color="#FFFFFF">调用代码</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left">代码: <font color="#FF0000">&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot; 
+        src=&quot;$webdb[www_url]/do/count.php?fid=1&quot;&gt;&lt;/SCRIPT&gt; 
+        </font> ,你只须把这段代码放到有需要统计的foot.htm网页模板里边即可</td>
+    </tr>
+  </form>
+</table>
+<br>
+<form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  
+    <tr class="head"> 
+      <td align="center" width="8%"><font color="#FFFFFF">id</font></td>
+      <td align="center" width="5%">浏览</td>
+      <td align="center" width="7%">ip来源</td>
+      <td align="center" width="12%">操作系统</td>
+      <td align="center" width="10%">浏览器</td>
+      <td align="center" width="7%">语言</td>
+      <td align="center" width="10%">分辨率</td>
+      <td align="center" width="24%">来源页</td>
+      <td align="center" width="20%">最后停留页</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[lasturl]=$rs[lasturl]?$rs[lasturl]:$rs[weburl];
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="5%" align="center">
+        <input type="checkbox" name="iddb[]" value="$rs[id]" checked>
+        $rs[id]</td>
+      <td width="5%" align="center">$rs[hits]</td>
+      <td width="7%" align="center">$rs[ip]
+	  <br>$rs[ip_address]</td>
+      <td width="12%" align="center">$rs[windows_type]</td>
+      <td width="10%" align="center">$rs[ie_type]</td>
+      <td width="7%" align="center">$rs[windows_lang]</td>
+      <td width="10%" align="center">$rs[screen_size]</td>
+      <td width="24%" align="center">
+        <input type="text" name="textfield" value="$rs[fromurl]" title="$rs[fromurl],双击即可打开,$rs[lasttime],$rs[username]" onDblClick="window.open('$rs[fromurl]');">
+		<br>$rs[keyword]
+      </td>
+      <td width="20%" align="center">
+        <input type="text" name="textfield2" value="$rs[lasturl]" title="$rs[lasturl],双击即可打开,$rs[lasttime],$rs[username]" onDblClick="window.open('$rs[lasturl]');">
+      </td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+  
+</table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td align="center">$showpage</td>
+    </tr>
+    <tr>
+      <td align="center">
+        <input type="submit" name="Submit" value="清除以上选中的信息">
+      </td>
+    </tr>
+  </table>
+</form>
+<br>
+<!--
+EOT;
+?>
+-->

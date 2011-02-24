@@ -1,0 +1,249 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+<tr>
+  <td width="100%" height="200" valign="top" class="Main">
+<!--
+EOT;
+if(!$ms_id_num && (!$action || $action=='edit') ){
+print <<<EOT
+-->
+<table width="100%" cellspacing="0" cellpadding="0" id="guide"  style="margin-bottom:5px;">
+    <tr>
+      <td width="2%" rowspan="2" valign="top"><img src="$Murl/member/{$member_style}/notice.jpg"  border="0"/></td>
+      <td width="98%" height="30"><a href="$Murl/member/myinfosort.php">
+ 		<strong>您还没有添加自己的供应信息分类，点击这里添加。</strong>
+	  </a></td>
+    </tr>
+    <tr>
+      <td height="50" valign="top">
+      1.拥有自己设定的供应信息分类，客户更容易了解您的供应产品体系。<br />
+      2.设置恰当，客户更容易查找想要了解的供应产品信息。<br />
+     </td>
+    </tr>
+  </table>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+  
+  
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="redtitle dragTable">
+      <tr>
+        <td class="head"><span class="title"><strong>发布供应</strong></span> <span class="right"></span> </td>
+      </tr>
+      <tr>
+        <td>
+<!--
+EOT;
+if(!$action || $action=='edit'){ //输入
+print <<<EOT
+-->
+          <div style="display:none;">
+            <iframe width=1 height=1 src='' id="iframe_city" name="iframe_city"></iframe>
+            <form name="form1" method="post" action="" target="iframe_city" id="form_city">
+            </form>
+          </div>
+          <script src="$Murl/images/$STYLE/setday.js"></script>
+		  
+          <form action="?" enctype="multipart/form-data" method="post"  name="postdata" target="post_1" onsubmit="document.getElementById('postSubmit').disabled='disabled';" style="margin:0">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="postcontent">
+            
+             <!-- <tr>
+                <td width="17%" align="right" class="left"><font color="red">*</font>所属类目:</td>
+                <td colspan="2">$guidefid <a href="?ctype=$ctype&action_old=$action&id=$id"><font color="blue">[重选]</font></a> </td>
+              </tr>-->
+              <tr>
+                <td width="17%" align="right" class="left"><font color="red">*</font><strong> 产品全称</strong>:</td>
+                <td colspan="2"><input type="text" name="postdb[title]" id="atc_title" size="70" value="$rsdb[title]"/>(30个字内)<br /><font color="#999999">您的客户首先关注的产品名称，尽可能选用比较有说服力的形容词，请尽量完善产品的名称</font></td>
+              </tr>
+              <tr>
+                <td width="17%" align="right" class="left"><strong>缩 略 图</strong>:</td>
+                <td colspan="2"><input name="postfile" type="file" id="pic_url" size="30" /> <font color="#999999">图片只能是:gif,jpg,png格式，文件大小不能超过{$webdb[upfileMaxSize]}K.</font>
+                  <br />
+                  <input name="oldfile" type="hidden" id="oldfile" value="$picurl" />
+                  <img src="$picurl_show"  width="120" style="border:1px #999999 solid" onerror="this.style.display='none';"/></td>
+              </tr>
+              <tr>
+                <td align='right'  class="left"><font color=red>* </font><strong>产品型号</strong>:<br></td>
+                <td colspan="2" ><input type='text' name='postdb[my_ptype]' id='atc_my_ptype' size='30' value='$rsdb[my_ptype]'>                </td>
+              </tr>
+             
+			
+			  <tr>
+                <td align='right' class="left" valign="top"><font color=red>* </font><strong>供应分类</strong>:</td>
+                <td colspan="2" >
+
+<!--php168
+EOT;
+require('morechosefid.htm');
+print<<<EOT
+php168 -->                </td>
+              </tr>
+			  
+			  
+			  
+			   <tr>
+                <td align='right' valign="top"  class="left"><strong>交易条件</strong>:				</td>
+                <td colspan="2" >
+				 <span class="post_notice">推荐填写真实的价格，更有助于列表搜索，让客户更直观的选择产品，使其得到更高的成交率.也可以不填写，即为面议</span>
+				 
+				 		 <p>
+				 	<strong>计量单位</strong>:<input type='text' name='postdb[quantity_type]' id='atc_quantity_type' size='10' value='$rsdb[quantity_type]'>
+				<select onchange="document.getElementById('atc_quantity_type').value=this.value">
+				<option value="">请选择</option>
+<!--
+EOT;
+$webdb[post_danwei]=explode("|",$webdb[post_danwei]);
+foreach($webdb[post_danwei] as $val){
+print <<<EOT
+-->
+	<option value="$val">$val</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+				</select><font color="#999999"> 填写计量单位，如：千克等</font>
+				 <p>
+				 	<strong>产品价格</strong>: <input type='text' name='postdb[my_price]' id='atc_my_price' size='30' value='$rsdb[my_price]'> <font color="#999999">元/单位</font> 
+				 </p>
+				
+				
+				 </p>
+				
+				 <p>
+				 	<strong>最小起订</strong>: <input type='text' name='postdb[quantity_min]' id='atc_quantity_min' size='30' value='$rsdb[quantity_min]'> 
+				 	<font color="#999999">大于0的整数/单位</font>  <font color=red>* 必填</font>
+				 </p>	
+				 <p>
+					 <strong>最大供货</strong>:<input type='text' name='postdb[quantity_max]' id='atc_quantity_max' size='30' value='$rsdb[quantity_max]'> 
+					 <font color="#999999">大于'最小起订'的整数/每单位</font>
+				 </p>	
+			
+				 <p>
+				 <strong>发货期限</strong>:<select name='postdb[sent_limit]' id='atc_sent_limit'>
+                    <option value='3天以内发货' {$rsdb[sent_limit]['3天以内发货']} >3天以内发货</option>
+                    <option value='3-7天内发货' {$rsdb[sent_limit]['3-7天内发货']} >3-7天内发货</option>
+                    <option value='7-10天内发货' {$rsdb[sent_limit]['7-10天内发货']} >7-10天内发货</option>
+                    <option value='10天以上发货' {$rsdb[sent_limit]['10天以上发货']} >10天以上发货</option>
+                    <option value='待定发货期' {$rsdb[sent_limit]['待定发货期']} >待定发货期</option>
+                  </select>   <font color="#999999">指达成交易协议之后，发货给采购方时间</font>
+				 </p>	
+				 </td>
+              </tr>
+             
+            
+                        
+             
+              <tr>
+                <td align="right" valign="top"   class="left"><strong>插入图库里的图片</strong>:<br />
+                  (双击选择图片,删除图片)</td>
+                <td colspan="2"  height="auto">
+<!--php168
+EOT;
+	//导入绑定图片功能
+    include(PHP168_PATH.Mdirname.'/template/blue/bd_pics.htm');
+    
+print <<<EOT
+php168-->               <BR /> </td>
+              </tr>
+              <tr>
+                <td align='right'   class="left"><strong>我的分类</strong>:</td>
+                <td colspan="2" ><select name='ms_id' id='atc_ms_id' onchange="addnewmysort(this);">
+				
+                    <option value="0">===选择===</option><option value="new" style="color:red">添加新分类</option>
+                    
+                 {$ms_id_options}
+                 
+                    
+                  </select> <a href="$Murl/member/myinfosort.php"><font color="blue">点击这里管理我的分类</font></a>
+                 <div  id="new_sortname" style="display:none;"> 新分类名称:<input type="text" name="new_sortname" /></div>
+                  <script language="javascript">
+                 function addnewmysort(obj){
+				 	var myvalue=obj.options[obj.selectedIndex].value;
+					var ms_id_num=$ms_id_num;
+					var maxMysort=$webdb[maxMysort];
+					if(ms_id_num >= maxMysort){
+						obj.selectedIndex=0;
+						alert("抱歉，您已经添加了"+ms_id_num+"个自己的分类；");
+						return false;
+					}
+					if(myvalue=='new'){
+						document.getElementById('new_sortname').style.display='block';
+					}else{
+						document.getElementById('new_sortname').style.display='none';
+					}
+					
+				 }
+                 </script>                
+                  </td>
+              </tr>
+			  
+			  <tr>
+                <td align='right' valign="top"  class="left"><strong>详细介绍</strong>:
+                <input name='postdb[content]' id='atc_content' type='hidden' value='$rsdb[content]' /></td>
+                <td colspan="2" >
+				<div class="post_notice">介绍一下性能及优点、产品用途、售后服务、包装等</div>
+				<iframe id='eWebEditor1' src='$Murl/ewebeditor/ewebeditor.php?id=atc_content&style=standard&etype=simple' frameborder='0' scrolling='no' width='560' height='250'></iframe></td>
+			  </tr>
+              <tr>
+                <td width="17%" align='right'  class="left"><iframe frameborder="0" src="" name="post_1" style="display:none"></iframe>&nbsp;</td>
+                <td colspan="2"><div id="post_showmsg" style="color:#FF0000;"></div>            
+                  <input type="submit" name="Submit"  id="postSubmit" value="填写完成,提交" style="padding:5px; height:auto; background:none; background-color:#E8F3FC;font-size:16px;" >
+                
+<!--
+EOT;
+//只能在此判断
+if(!$action) $action='add'; 
+if($action=='edit') $action='edit_save';
+print <<<EOT
+-->
+                  <input name="action" type="hidden" id="action" value="$action" />
+                  <input name="fid_all" type="hidden" id="fid_all" value="$fid_all" />                </td>
+              </tr>
+            </table>
+          </form>
+          <!--
+EOT;
+}elseif($fid && $action=='ok'){ //操作结果
+print <<<EOT
+-->
+          <table width="80%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="36%" align="right" valign="top"><img src="$Murl/images/$STYLE/gougou.gif"  border="0"/></td>
+              <td width="64%"><br />
+                <div style="padding-left:100px; line-height:30px;">
+                  <h4 style="font-size:20px; color:#ff3300;">$msg</h4>
+                  <!--
+EOT;
+foreach($do as $key=>$val){
+print <<<EOT
+-->
+                  <p><img src="$Murl/images/$STYLE/article_elite.gif" border="0" /><a href="{$val[link]}"  style=" font-size:14px; line-height:40px;"  $val[target]>{$val[text]}</a></p>
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                  <p>&nbsp;</p>
+                </div></td>
+            </tr>
+          </table>
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+        </td>
+      </tr>
+    </table> 
+    <!--
+EOT;
+?>
+-->

@@ -1,0 +1,50 @@
+.rollpicobj{
+	FONT-SIZE: 12px;
+	margin: 0px;
+	padding: 0px;  
+	OVERFLOW: hidden;
+	TEXT-ALIGN: center;
+}
+.rollpicTB a,.rollpicTB a:visited{
+	color:#333;
+	TEXT-DECORATION: none;
+}
+.rollpicTB a:hover{
+	text-decoration: underline;
+}
+.rollpicobj img{
+	margin-bottom: 5px;
+	width: 100%;
+	border: #707070 1px solid;
+}
+.rollpicobj p{
+	LINE-HEIGHT: 1em;
+	LIST-STYLE-TYPE: none;
+	padding: 0px; 
+	padding-bottom: 5px; 
+	margin: 0px auto; 
+	width: 99%; 
+	border: #ccc 0px solid;
+	background-color: #F6F6F6;
+}
+.pager {
+	padding-right: 5px; 
+	Z-INDEX: 99; 
+	margin-bottom: -12px; 
+	bottom: 45px; 
+	POSITION: relative; 
+	TEXT-ALIGN: right;
+}
+.pager a{
+	border: 1px solid #ccc; 
+	padding-right: 5px; 
+	padding-left: 5px;
+	margin-right: 3px;
+	background-color: white;
+}
+.pager a.activeSlide {
+	font-weight: bold; 
+	border: 1px solid #646464; 
+	padding: 1px 5px 1px 5px; 
+	background: #E1ECFB;
+}

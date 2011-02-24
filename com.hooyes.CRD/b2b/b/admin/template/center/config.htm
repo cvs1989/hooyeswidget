@@ -1,0 +1,479 @@
+<!--
+<?php
+
+print <<<EOT
+--> 
+<style>
+.set td{ padding:8px;}
+</style>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth set" >
+  <form name="form1" method="post" action="?action=$job">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color='#FFFFFF'>核心设置</font></b></div>      </td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'> 
+      <div align="left">系统名称:</div>      </td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+      <input    type='text' name='webdbs[Info_webname]' size='50' value='$webdb[Info_webname]'>      </td>
+    </tr>
+    <!--
+EOT;
+if($userdb[groupid]==3){print <<<EOT
+-->
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'> 
+      <div align="left">网站热点关键词:</div>      </td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+      <input    type='text' name='webdbs[Info_metakeywords]' size='50' value='$webdb[Info_metakeywords]'> 
+      必须以空格隔开      </td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'> 
+      <div align="left">供应页面热门关键字:</div>      </td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+      <input    type='text' name='webdbs[Info_metakeywords_sale]' size='70' value='$webdb[Info_metakeywords_sale]'>
+      必须以空格隔开 </td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'> 
+      <div align="left">求购页面热门关键字:</div>      </td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+      <input    type='text' name='webdbs[Info_metakeywords_buy]' size='70' value='$webdb[Info_metakeywords_buy]'>
+      必须以空格隔开 </td>
+    </tr>
+    
+	<!--<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>当前使用的数据表前缀:</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[module_pre]" value="$webdb[module_pre]" readonly size="15">
+        (不可修改,仅供查看) </td>
+    </tr>-->
+    
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>网页风格:</td>
+      <td bgcolor='#FFFFFF' width="80%">$select_style</td>
+    </tr>
+	
+	<tr style="display:none"> 
+      <td width='20%' bgcolor='#FFFFFF'>商务中心风格:</td>
+      <td bgcolor='#FFFFFF' width="80%">
+	  <select name="webdbs[member_style]">
+	  <option value="">默认风格</option>
+<!--
+EOT;
+	foreach($member_style as $key=>$name){
+		$ckk=$key==$webdb[member_style]?" selected":"";
+print <<<EOT
+-->
+	<option value="$key" $ckk>$name</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	</select> 
+	  注意：整站核心设置优先	  </td>
+    </tr>
+	
+    
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>页面头部风格:</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[page_head_style]"   value="1" {$page_head_style[1]}  />
+        通用型
+          <input type="radio" name="webdbs[page_head_style]"   value="2" {$page_head_style[2]} />
+        商务型</td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>供求列表和商家列表等是否使用全屏:</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[listwidth]"   value="full" {$listwidth[full]}  />
+        全屏幕
+          <input type="radio" name="webdbs[listwidth]"   value="px990" {$listwidth[px990]} />
+        默认宽度</td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>列表页显示设置</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[InfoListRow]" size="7" value="$webdb[InfoListRow]">
+        条,每条 
+        <input type="text" name="webdbs[InfoListLeng]" size="7" value="$webdb[InfoListLeng]">
+        字节,一个汉字等于两个字节</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>列表页显示右侧温馨提示内容</td>
+      <td bgcolor='#FFFFFF' width="80%"><textarea name="webdbs[list_notice]"cols="60" rows="5">$webdb[list_notice]</textarea>      </td>
+    </tr><tr> 
+      <td width='20%' bgcolor='#FFFFFF'>用户商务中心客服信息</td>
+      <td bgcolor='#FFFFFF' width="80%"><textarea name="webdbs[kefuinfo]"cols="60" rows="5">$webdb[kefuinfo]</textarea>      </td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>全站信息维护通告</td>
+      <td bgcolor='#FFFFFF' width="80%"><textarea name="webdbs[allNotice]"cols="60" rows="5">$webdb[allNotice]</textarea>
+        <br />
+        为空时为没有通告，不显示；设置内容后，此信息在网站头部显示      </td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>全国统一客服热线</td>
+      <td bgcolor='#FFFFFF' width="80%"><input name="webdbs[hotline]" type="text" value="$webdb[hotline]" size="30" />
+      填写 800 或者400 等统一号码最佳 </td>
+    </tr>
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>浏览历史存储记录数</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[viewHistoryNums]" size="7" value="$webdb[viewHistoryNums]">
+        条</td>
+    </tr>
+	   <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>首页部分栏目子栏目数量</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[Info_showsortnum]" size="7" value="$webdb[Info_showsortnum]">        </td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>最热/最新/推荐信息显示设置</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[InfoIndexRow]" size="7" value="$webdb[InfoIndexRow]">
+        条,每条 
+        <input type="text" name="webdbs[InfoIndexLeng]" size="7" value="$webdb[InfoIndexLeng]">
+        字节,一个汉字等于两个字节</td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>供求列表显示多少天内的内容</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[showposttimelast]" size="7" value="$webdb[showposttimelast]">
+        天，不限制请输入"0"</td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>供求列表,商家缓存更新时间</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[gqlist_cache_time]" size="7" value="$webdb[gqlist_cache_time]">
+        分钟，默认为10分钟,
+        <a href="?job=gqlist_cache_remove" onclick="return confirm('清除后供求列表和商家列表将会重新建立缓存，确定要清除吗？');" ><font color="red">点此清除列表缓存</font></a></td>
+    </tr>
+	  <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>发布供求信息是否自动审核</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="radio" name="webdbs[postauto_yz]"   value="1" {$postauto_yz[1]}  />
+        自动审核
+          <input type="radio" name="webdbs[postauto_yz]"   value="0" {$postauto_yz[0]} />
+        需要管理员审核		</td>
+    </tr>
+	  <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>发布时，预设的计量单位</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+         <input type="text" name="webdbs[post_danwei]" size="40" value="$webdb[post_danwei]"> 多个单位用"|"隔开		</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>发布时供应求购等同类信息时，缩略图文件最大限制为</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+         <input type="text" name="webdbs[postfileMaxSize]" size="10" value="$webdb[postfileMaxSize]">K,默认是500k		</td>
+    </tr>
+      <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>每天免费发送询价单条数</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[freeSentform1]" size="7" value="$webdb[freeSentform1]">
+        条</td>
+    </tr>
+	
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>每天免费发送报价单条数</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[freeSentform2]" size="7" value="$webdb[freeSentform2]">
+        条</td>
+    </tr>
+	  <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家登记的商家信息是否自动审核</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="radio" name="webdbs[postcompanyauto_yz]"   value="1" {$postcompanyauto_yz[1]}  />
+        自动审核
+          <input type="radio" name="webdbs[postcompanyauto_yz]"   value="0" {$postcompanyauto_yz[0]} />
+        需要管理员审核		</td>
+    </tr>
+       <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家自定义信息分类最多个数</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[maxMysort]" size="7" value="$webdb[maxMysort]">
+        个</td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家联系方式是否全部开放</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="radio" name="webdbs[company_lxfs]"   value="1" {$company_lxfs[1]}  />
+        全部开放
+          <input type="radio" name="webdbs[company_lxfs]"   value="0" {$company_lxfs[0]} />
+        需要登陆后才能查看		</td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>初级认证商家必须发布的供应产品数</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[renzheng_infonum]" size="7" value="$webdb[renzheng_infonum]">
+        个</td>
+    </tr>
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家发布的新闻在产品详细页面显示数量</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[company_news_shownum]" size="5" value="$webdb[company_news_shownum]">
+        条</td>
+    </tr>
+	  <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家推广信息司最小单位消耗的积分</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[tg_permoney]" size="5" value="$webdb[tg_permoney]">
+        积分</td>
+    </tr>
+    	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家推广是否自动审核</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="radio" name="webdbs[autoyz_tg]"   value="1" {$autoyz_tg[1]}  />
+        是
+          <input type="radio" name="webdbs[autoyz_tg]"   value="0" {$autoyz_tg[0]} />
+        否		</td>
+    </tr>
+	  <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>登记商家信息奖励积分</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[company_add_money]" size="5" value="$webdb[company_add_money]">
+        积分</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家发布一条信息奖励积分</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[post_add_money]" size="5" value="$webdb[post_add_money]">
+        积分,包括供应、求购、招聘信息、展会、展览馆、</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家LOGO文件大小</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[homepage_ico_size]" size="5" value="$webdb[homepage_ico_size]">
+       k</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家页面通栏图片(banner)文件大小</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[homepage_banner_size]" size="5" value="$webdb[homepage_banner_size]">
+       k</td>
+    </tr>
+		<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家图集最多</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[company_picsort_Max]" size="5" value="$webdb[company_picsort_Max]">
+       个</td>
+    </tr>
+		<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家图库上传时，图片同时上传的数目</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[company_upload_max]" size="5" value="$webdb[company_upload_max]">
+       张，不推荐较大的数字,一般8张即可。</td>
+    </tr>
+    	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家图库最多图片数量</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[company_uploadnum_max]" size="5" value="$webdb[company_uploadnum_max]">
+       张</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家图库上传时，(图片)文件大小</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[company_uploadsize_max]" size="5" value="$webdb[company_uploadsize_max]">
+       k</td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家<strong>VIP</strong>服务购买最小时间单位</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[vip_min_long]" size="5" value="$webdb[vip_min_long]">        
+        月，一月按照30天计算
+       (为避免不必要的麻烦，此项设为大于1的正整数)</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家<strong>VIP</strong>服务购买最小时间单位单价</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[vip_par_payfor]" size="5" value="$webdb[vip_par_payfor]">
+        元人民币
+       (为避免不必要的麻烦，此项设为大于1的正整数)</td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>是否开启<strong>VIP</strong>商家二级域名服务<br />
+        (此功能对于安装版无效)</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+   
+	    <input type="radio" name="webdbs[vipselfdomain]"   value="1" {$vipselfdomain[1]}  />
+        是
+          <input type="radio" name="webdbs[vipselfdomain]"   value="0" {$vipselfdomain[0]} />
+        否
+		(<font color="#FF0000">注意：</font>开启此功能之前，请先确认您的域名是否支持泛域名解析，也就是*.your.com类似的都可以访问,如果不支持，请不要开启此功能.)
+	   
+       <br />	   </td>
+    </tr>
+	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>VIP商家二级域名被限制设置的主机头</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[vipselfdomaincannot]" size="50" value="$webdb[vipselfdomaincannot]">
+        
+       (多个主机头以逗号(,)隔开)</td>
+    </tr>
+	
+	
+    	<tr> 
+      <td width='20%' bgcolor='#FFFFFF'>指定信息绑定图库图片数量</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[info_bd_picnum]" size="5" value="$webdb[info_bd_picnum]">
+       张</td>
+    </tr>
+
+  <!--  <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>商家图库上传时，自动通过验证</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+         <input type="radio" name="webdbs[auto_userpostpic]"   value="1" {$auto_userpostpic[1]}  />
+        是
+          <input type="radio" name="webdbs[auto_userpostpic]"   value="0" {$auto_userpostpic[0]} />
+        否
+       </td>
+    </tr>-->
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>实力认证(金牌级)需上传的三个文件的名称</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="text" name="webdbs[renzheng3doc]" size="50" value="$webdb[renzheng3doc]">
+        以空格隔开</td>
+    </tr>
+	
+		 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>申请作为供应商的资格</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+        <input type="radio" name="webdbs[vendorRenzheng]"   value="1" {$vendorRenzheng[1]}  />
+        必须是认证过的商家
+          <input type="radio" name="webdbs[vendorRenzheng]"   value="0" {$vendorRenzheng[0]} />
+        不限制，任何商家都可申请		</td>
+    </tr>
+	 
+    <!-- <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>网站头部通栏导航自定义链接</td>
+      <td bgcolor='#FFFFFF' width="80%"><textarea name="webdbs[myLinks]"cols="80" rows="5">$webdb[myLinks]</textarea>
+        <br />
+        请注意格式：链接词语|链接地址 一行表示一个链接；</td>
+    </tr>
+    -->
+      <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>网页头部搜索栏左边空白处内容</td>
+      <td bgcolor='#FFFFFF' width="80%"><textarea name="webdbs[search_left]"cols="80" rows="5" id="webdbs[search_left]">$webdb[search_left]</textarea>
+        <br />
+        支持HTML</td>
+    </tr>
+    
+      <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>网页头部搜索栏右边空白处内容</td>
+      <td bgcolor='#FFFFFF' width="80%"><textarea name="webdbs[search_right]"cols="80" rows="5" id="webdbs[search_right]">$webdb[search_right]</textarea>
+        <br />
+        支持HTML</td>
+    </tr>
+    
+    	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>是否开放评论</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[forbidComment]"   value="0" {$forbidComment[0]}  />
+        允许
+          <input type="radio" name="webdbs[forbidComment]"   value="1" {$forbidComment[1]} />
+        禁止</td>
+    </tr>
+    
+    	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>是否允许游客评论</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[allowGuestComment]"   value="1" {$allowGuestComment[1]}  />
+        允许
+          <input type="radio" name="webdbs[allowGuestComment]"   value="0" {$allowGuestComment[0]} />
+        禁止</td>
+    </tr>
+    
+    	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>评论自动审核</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[allowGuestCommentPass]"   value="1" {$allowGuestCommentPass[1]}  />
+        允许
+          <input type="radio" name="webdbs[allowGuestCommentPass]"   value="0" {$allowGuestCommentPass[0]} />
+        禁止</td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>是否允许未登记商家的会员发布招聘信息</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[allowUserPostJob]"   value="1" {$allowUserPostJob[1]}  />
+        允许
+          <input type="radio" name="webdbs[allowUserPostJob]"   value="0" {$allowUserPostJob[0]} />
+        禁止</td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>招聘信息自动审核</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[checkUserPostJob]"   value="1" {$checkUserPostJob[1]}  />
+        允许
+          <input type="radio" name="webdbs[checkUserPostJob]"   value="0" {$checkUserPostJob[0]} />
+        禁止</td>
+    </tr>
+       <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>用户最多可以发布多少条招聘信息</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[usersJobsMax]"   value="$webdb[usersJobsMax]"  size="5" />条        </td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>个人简历自动审核</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="radio" name="webdbs[checkUserPostResume]"   value="1" {$checkUserPostResume[1]}  />
+        允许
+          <input type="radio" name="webdbs[checkUserPostResume]"   value="0" {$checkUserPostResume[0]} />
+        禁止</td>
+    </tr>
+	
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>个人简历照片文件大小限制</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[iconMaxUserPostResume]"   value="$webdb[iconMaxUserPostResume]"  size="5" />k        </td>
+    </tr>
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>个人简历联系方式被查看的条件</td>
+      <td bgcolor='#FFFFFF' width="80%">
+	  <input type="radio" name="webdbs[resumeView_contact]"   value="1"  {$resumeView_contact[1]} /> 完全公开
+	  <input type="radio" name="webdbs[resumeView_contact]"   value="0"  {$resumeView_contact[0]} /> 登录后可见        </td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>人才招聘中心列表每页显示的条数</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[zhaopin_listnum]"   value="$webdb[zhaopin_listnum]"  size="5" />条        </td>
+    </tr>
+      <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>用户最多可以创建多少份简历</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[usersRresumeMax]"   value="$webdb[usersRresumeMax]"  size="5" />份        </td>
+    </tr>
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>多少天内，同一份简历只能投递到同一招聘信息(同加入人才库)</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[postresumeMaxDay]"   value="$webdb[postresumeMaxDay]"  size="5" />天        </td>
+    </tr>
+        <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>多少小时内，同一份简历更新发布时间一次</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[updateresumeMaxHour]"   value="$webdb[updateresumeMaxHour]"  size="5" />小时        </td>
+    </tr>
+	   <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>发布展会时，是否自动审核<br />
+        (同发布展览馆)</td>
+      <td bgcolor='#FFFFFF' width="80%"> <input type="radio" name="webdbs[postzhCheck]"   value="1"  {$postzhCheck[1]} /> 自动审核(不推荐)
+	  <input type="radio" name="webdbs[postzhCheck]"   value="0"  {$postzhCheck[0]} /> 不自动，需要管理员审核(推荐)        </td>
+    </tr>
+	   <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>发布展会时，自定义内容项目数<br />
+        (同发布展览馆)</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[postzhDiyNum]"   value="$webdb[postzhDiyNum]"  size="5" />条        </td>
+    </tr>
+	 <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>展会形象图片大小限制<br />
+       (同发布展览馆)</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[iconMaxUserPostZh]"   value="$webdb[iconMaxUserPostZh]"  size="5" />k        </td>
+    </tr>
+     <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>展会列表条数<br />
+       (同展览馆)</td>
+      <td bgcolor='#FFFFFF' width="80%"><input type="text" name="webdbs[zhListNum]"   value="$webdb[zhListNum]"  size="5" />条        </td>
+    </tr>
+    <tr> 
+      <td width='20%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="80%"> 
+      <input    type='submit' name='w' value='保存设置'>      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

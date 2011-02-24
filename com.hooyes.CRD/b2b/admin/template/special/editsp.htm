@@ -1,0 +1,158 @@
+<!--
+<?php
+$onlyshow=='style' && $display='none;';
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	get_obj("imgurl").value=url;
+}
+function upbanner(url,name,size,p){
+	get_obj("banner").value=url;
+}
+//-->
+</SCRIPT>
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">专题修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"><font color="#FF0000">[<a href="$webdb[www_url]/do/showsp.php?fid=$rsdb[fid]&id=$rsdb[id]" target="_blank">浏览前台</a>] 
+        </font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="21%">专题名称:</td>
+      <td width="79%"> 
+        <input type="text" name="postdb[title]" value="$rsdb[title]" size="50">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display"> 
+      <td width="21%">所属分类:</td>
+      <td width="79%"> $sort_fid</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="21%">模板: (如留空,即以默认为标准) </td>
+      <td width="79%"> 
+        <div style="display:none;"> 头部模板: 
+          <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+          $tpl_head<br>
+          底部模板: 
+          <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+          $tpl_foot<br>
+          内容模板:</div>
+        <input type="text" name="postdb[tpl][bencandy]" value="$tpl[bencandy]" id="tpl_bencandy" size="40">
+        {$tpl_bencandy} [<A HREF='#' onclick="window.open('index.php?lfj=template&job=maketpl&type=11&obj_id=tpl_bencandy','','width=650,height=500')" style='color:blue;'>上传一个新模板</A>]</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="21%">专题风格:(仅对部分模板有效)</td>
+      <td width="79%">$style_select</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="21%">专题LOGO图片:(尽量不要留空)</td>
+      <td width="79%"> 
+        <input type="text" name="postdb[picurl]" value="$rsdb[picurl]" size="60" id="imgurl">
+        [<a href='javascript:' onClick='window.open("upfile.php?dir=special","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传图片</font></a>] 
+        <a href="javascript:" class="style30"  onClick="javascript:cutimg();">[<font color="#FF0000">剪裁图片</font>]</a> 
+        宽 
+        <input type="text" name="width" size="4" value="250">
+        高 
+        <input type="text" name="height" size="4" value="187">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="21%">banner横幅图片:<br>
+        (如留空,则以默认为标准) </td>
+      <td width="79%"> 
+        <input type="text" name="postdb[banner]" value="$rsdb[banner]" size="60" id="banner">
+        [<a href='javascript:' onClick='window.open("upfile.php?dir=special&fn=upbanner","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传图片</font></a>] 
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display">
+      <td width="21%">SEO关键字:</td>
+      <td width="79%">
+        <input type="text" name="postdb[keywords]" value="$rsdb[keywords]" size="50">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display"> 
+      <td width="21%">专题描述(支持HTML):</td>
+      <td width="79%"> 
+        <textarea name="postdb[content]" cols="70" rows="7">$rsdb[content]</textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="21%">个性静态页文件名：</td>
+      <td width="79%"> 
+        <input type="text" name="postdb[htmlname]" value="$rsdb[htmlname]" size="30">
+        (.htm结尾的文件名,只能是英文或数字或下画线,不允许汉字,) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display"> 
+      <td width="21%">允许哪些用户组投稿:<br>
+        (不选择,将不作限制,而管理员与创建者默认有权限)</td>
+      <td width="79%">$allowpost </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display"> 
+      <td width="21%">是否设置为文章基本属性:</td>
+      <td width="79%"> 
+        <input type="radio" name="postdb[ifbase]" value="1" $ifbase[1]>
+        是 
+        <input type="radio" name="postdb[ifbase]" value="0" $ifbase[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display"> 
+      <td width="21%">列表页排序号:</td>
+      <td width="79%"> 
+        <input type="text" name="postdb[list]" size="10" value="$rsdb[list]">
+        (注:数值越大,在列表页越靠前) </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+        [<a href="index.php?lfj=special&job=edit_atc&id=$id"><font color="#FF0000">修改此专题下的内容</font></a>] 
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+   
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td>你可以自己建一个专题模板,然后压缩成ZIP格式上传即可.<br>
+      设置为文章基本属性的时候,将会在发表界面&quot;相关设置&quot;那里显示,作为文章的基本属性</td>
+    </tr>
+</table>
+         <script language="javascript">
+function cutimg() 
+{
+	var img=get_obj("imgurl").value;
+	var cw=document.form1.width.value;
+	var ch=document.form1.height.value;
+	if(cw==''){
+		document.form1.width.focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.form1.height.focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	if(img.indexOf("http://")==-1){
+		img="$webdb[www_url]/$webdb[updir]/"+img;
+	}
+	window.open("cutimg.php?job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+}else{
+	get_obj("imgurl").focus();
+	alert('图片地址不存在');
+}
+}
+</script>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,277 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" id="grouptr">
+  <form name="form1" method="post" action="?lfj=$lfj&action=$job">
+    <tr class=head> 
+      <td colspan="2">修改“{$rsdb[grouptitle]}”用户组的模型相关权限</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%">用户组名称:</td>
+      <td width="70%"> $rsdb[grouptitle] </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="5">只允许搜索哪方面的内容:</td>
+      <td width="70%" height="5"> 
+        <input type="radio" name="powerdb[SearchArticleType]" value="1" $SearchArticleType[1]>
+        标题+其它(不包括内容) 
+        <input type="radio" name="powerdb[SearchArticleType]" value="2" $SearchArticleType[2]>
+        标题+其它+内容(所有,很影响效率) 
+        <input type="radio" name="powerdb[SearchArticleType]" value="0" $SearchArticleType[0]>
+        禁止搜索</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="5">发表评论是否需要验证码:<span help=1>管理员默认不需要</span></td>
+      <td width="70%" height="5"> 
+        <input type="radio" name="powerdb[CommentArticleYzImg]" value="1" $CommentArticleYzImg[1]>
+        需要 
+        <input type="radio" name="powerdb[CommentArticleYzImg]" value="0" $CommentArticleYzImg[0]>
+        不需要</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%" height="5">收藏夹最多只允许收藏多少条:</td>
+      <td width="70%" height="5"> 
+        <input type="text" name="powerdb[CollectArticleNum]" size="5" value="$powerdb[CollectArticleNum]">
+        留空或为0时,则默认50条内容</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%" height="5">最多只能创建多少个专题:</td>
+      <td width="70%" height="5"> 
+        <input type="text" name="powerdb[CreatSpecialNum]" size="5" value="$powerdb[CreatSpecialNum]">
+        留空或为0时,则不能创建</td>
+    </tr> <tr bgcolor="#FFFFFF"  guest=1> 
+      <td width="30%" height="1">创建专题是否自动通过审核:<span help=1> (超级管理员与前台管理员默认自动通过审核)</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[PassContributeSP]" value="1" $PassContributeSP[1]>
+        自动通过审核 
+        <input type="radio" name="powerdb[PassContributeSP]" value="0" $PassContributeSP[0]>
+        管理员审核</td>
+    </tr>
+    <tr class="head" align="center"> 
+      <td colspan="2">发表内容(投稿)的相关权限</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">投稿是否需要填写验证码:<span help=1> (防止有人恶意狂投稿,超级管理员与前台管理员不需要)</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[PostArticleYzImg]" value="1" $PostArticleYzImg[1]>
+        需要 
+        <input type="radio" name="powerdb[PostArticleYzImg]" value="0" $PostArticleYzImg[0]>
+        不需要</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">投稿是否自动通过审核:<span help=1> (超级管理员与前台管理员发表的文章默认自动通过审核)</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[PassContribute]" value="1" $PassContribute[1]>
+        自动通过审核 
+        <input type="radio" name="powerdb[PassContribute]" value="0" $PassContribute[0]>
+        人工审核</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="0">人工审核时,审核过的是否允许修改：<span help=1> 如果新发表时，自动通过审核的话，这里设置无效，这里只针对新发表需要手工审核的用户组有效。</span></td>
+      <td width="70%" height="0"> 
+        <input type="radio" name="powerdb[EditPassPower]" value="0" $EditPassPower[0]>
+        可以修改,没影响 
+        <input type="radio" name="powerdb[EditPassPower]" value="1" $EditPassPower[1]>
+        可以修改,但修改后变为未审核状态 
+        <input type="radio" name="powerdb[EditPassPower]" value="2" $EditPassPower[2]>
+        审核后不能再修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" >
+      <td width="30%" height="0">发表内容时,是否过滤iframe,javascript代码:<span help=1>对于普通会员,请必须过滤,否则存在安全隐患.而对于管理员,如有需要,可以开放.</span></td>
+      <td width="70%" height="0">
+        <input type="radio" name="powerdb[PostNoDelCode]" value="0" $PostNoDelCode[0]>
+        过滤 
+        <input type="radio" name="powerdb[PostNoDelCode]" value="1" $PostNoDelCode[1]>不过滤
+        </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许使用投票功能:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetVote]" value="1" $SetVote[1]>
+        允许 
+        <input type="radio" name="powerdb[SetVote]" value="0" $SetVote[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置标题为彩色与加粗:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetTileColor]" value="1" $SetTileColor[1]>
+        允许 
+        <input type="radio" name="powerdb[SetTileColor]" value="0" $SetTileColor[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容收费:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetSellArticle]" value="1" $SetSellArticle[1]>
+        允许 
+        <input type="radio" name="powerdb[SetSellArticle]" value="0" $SetSellArticle[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许选择内容风格:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SelectArticleStyle]" value="1" $SelectArticleStyle[1]>
+        允许 
+        <input type="radio" name="powerdb[SelectArticleStyle]" value="0" $SelectArticleStyle[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许选择内容模板:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SelectArticleTpl]" value="1" $SelectArticleTpl[1]>
+        允许 
+        <input type="radio" name="powerdb[SelectArticleTpl]" value="0" $SelectArticleTpl[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容模板:<span help=1>比上面的选择模板权限更大,可以手工设置任何模板,上面的只能是选择列表当中的.</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleTpl]" value="1" $SetArticleTpl[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleTpl]" value="0" $SetArticleTpl[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容的发表日期:<span help=1>并不是指定期发布,而是说修改内容的发布日期,比如你明明比别的网站晚发布的新闻,却要作弊证明比别人早,就可以修改内容的发布日期.</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticlePosttime]" value="1" $SetArticlePosttime[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticlePosttime]" value="0" $SetArticlePosttime[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置文章的浏览日期限制:<span help=1>可做为定期发布,可以设置某篇文章具体哪段日期允许浏览</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleViewtime]" value="1" $SetArticleViewtime[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleViewtime]" value="0" $SetArticleViewtime[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容的点击量:<span help=1>普通会员最好不要给此权限</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleHitNum]" value="1" $SetArticleHitNum[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleHitNum]" value="0" $SetArticleHitNum[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容的查看密码:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticlePassword]" value="1" $SetArticlePassword[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticlePassword]" value="0" $SetArticlePassword[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置附件的下载权限:<span help=1>比如设置允许哪些用户组才可以下载内容中的附件</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleDownGroup]" value="1" $SetArticleDownGroup[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleDownGroup]" value="0" $SetArticleDownGroup[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容的浏览权限:<span help=1>比如设置允许哪些用户组才可以查看内容</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleViewGroup]" value="1" $SetArticleViewGroup[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleViewGroup]" value="0" $SetArticleViewGroup[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容跳转到其它网址:<span help=1>实现地址转向功能,设置点击标题就跳到其他指定的网址.</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleJumpurl]" value="1" $SetArticleJumpurl[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleJumpurl]" value="0" $SetArticleJumpurl[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容框架其它网址:<span help=1>类似大旗那样,设置框架其他指定的网址,而不显示内容</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleIframeurl]" value="1" $SetArticleIframeurl[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleIframeurl]" value="0" $SetArticleIframeurl[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容简介/导读:</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleDescription]" value="1" $SetArticleDescription[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleDescription]" value="0" $SetArticleDescription[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许设置内容置顶与推荐:<span help=1>普通会员最好禁止</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetArticleTopCom]" value="1" $SetArticleTopCom[1]>
+        允许 
+        <input type="radio" name="powerdb[SetArticleTopCom]" value="0" $SetArticleTopCom[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%" height="1">是否允许自定义内容页文件名:<span help=1>出于安全考虑,普通会员最好禁止</span></td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[SetHtmlName]" value="1" $SetHtmlName[1]>
+        允许 
+        <input type="radio" name="powerdb[SetHtmlName]" value="0" $SetHtmlName[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%">允许在前台投稿的栏目:(不选择则无权限,然而超级管理员与对应的栏目管理员默认有权限)<br>
+        按住键盘Ctrl键可以多选 </td>
+      <td width="70%">{$sort_fid}</td>
+    </tr>
+    <!--
+EOT;
+if($module_db){print <<<EOT
+ 
+    <tr bgcolor="#FFFFFF" > 
+      <td width="30%">允许选择投稿的模块有:<span help=1>(不选择则无权限,然而超级管理员与对应的栏目管理员默认有权限) 
+        </span></td>
+      <td width="70%"> 
+       
+EOT;
+foreach($module_db AS $key=>$rs){print <<<EOT
+ 
+        <input type="checkbox" name="module_db[]" value="$rs[id]" $rs[checked]>
+        $rs[name] 
+        
+EOT;
+}print <<<EOT
+ 
+      </td>
+    </tr>
+    
+EOT;
+}print <<<EOT
+-->
+    <tr align="center" bgcolor="#FFFFFF" > 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="gid" value="$gid">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function showguest(gid){
+	oo=get_obj("grouptr").getElementsByTagName("TR");
+	for(var i=0;i<oo.length;i++){
+		if(gid=='2'&&oo[i].getAttribute("guest")=='1'){
+			oo[i].style.display="none";
+		}
+	}
+}
+showguest('$gid');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

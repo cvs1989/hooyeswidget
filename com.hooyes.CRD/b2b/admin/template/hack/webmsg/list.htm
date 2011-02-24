@@ -1,0 +1,120 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit22" value="选择类型" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=list')">
+      　　 
+      <input type="button" name="Submit2" value="获取调用代码" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=getcode')">
+      　　 </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+    <tr class="head"> 
+      <td align="center" colspan="2"><font color="#FFFFFF">请选择</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:none;"> 
+      <td width="17%" >选择要统计的信息</td>
+      <td width="83%" > 
+        <input type="checkbox" name="Stype[article]" value="1" $Stype[article]>
+        文章主题数量 
+        <input type="checkbox" name="Stype[sort]" value="1" $Stype[sort]>
+        文章栏目数量 
+<!--
+EOT;
+if($SystemModule[down]){
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[down_software]" value="1" $Stype[down_software]>
+        下载文件数量 
+<!--
+EOT;
+}
+if($SystemModule[photo]){
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[photo_pic]" value="1" $Stype[photo_pic]>
+        图片数量 
+<!--
+EOT;
+}
+if($SystemModule[mv]){
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[mv_video]" value="1" $Stype[mv_video]>
+        视频数量 
+<!--
+EOT;
+}
+if($SystemModule[music]){
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[music_song]" value="1" $Stype[music_song]>
+        音乐数量 
+<!--
+EOT;
+}
+if($SystemModule[log]){
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[log_article]" value="1" $Stype[log_article]>
+        日志数量 
+<!--
+EOT;
+}
+if($SystemModule[flash]){
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[flash_swf]" value="1" $Stype[flash_swf]>
+        FLASH数量 
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+		<input type="checkbox" name="Stype[memberdata]" value="1" $Stype[memberdata]>
+        会员数量 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%" >&nbsp;</td>
+      <td width="83%" > 
+        <textarea name="postdb[tplcode]" cols="80" rows="8" id="webmsgtpl">$tplcode</textarea>
+        [<a href="#" onclick="choose('webmsgtpl');">恢复默认模板</a>]</td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width="17%" >缓存多久更新一次统计</td>
+      <td width="83%" >
+        <input type="text" name="postdb[cktime]" size="6" value="$cktime">
+        分钟 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td style="padding-left:200px;" colspan="2"> 
+        <input type="submit" name="Submit" value="生成网页调用代码">
+      </td>
+    </tr>
+  </form>
+</table>
+<div style='display:none'><iframe name="Iframe" id="Iframe" src="about:blank"></iframe></div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose(type){
+	window.open("index.php?lfj=hack&hack=$hack&job=choose&$timestamp&type="+type,target="Iframe");
+}
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function showcode(msg){
+	get_obj("webmsgtpl").value=msg;
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

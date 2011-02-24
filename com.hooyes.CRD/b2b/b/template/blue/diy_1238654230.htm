@@ -1,0 +1,665 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<style>
+.ab{
+   background:url($Murl/images/baojia/b1.gif) no-repeat;width:10px;
+}
+.baob{
+ background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:3px;
+}
+.baob div{
+  margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;
+}
+.baob1{
+background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:3px;
+}
+.baob1 div{
+margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;
+}
+.bt{
+background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;
+}
+.bt div{
+margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;
+}
+.ab1{
+background:url($Murl/images/baojia/b2.gif) repeat-x;height:290px;width:100%;
+}
+.biaoge{
+margin-left:1px;
+  margin-top:3px;
+}
+.biaoge td{
+   background:#ffffff;
+   border:1px #E4EBFF solid;
+   text-align:center;
+}
+.rou{margin:7px; border-bottom:1px #CCE70B dotted;}
+.rou span{
+font-weight:bold;font-size:12px;
+}
+.rou div{
+  margin-top:5px;margin-bottom:8px;
+}
+#nei{
+border:1px #9DA9CF solid; margin:6px; margin-top:0px;
+}
+.nr{margin:1px; border:1px #0996EE solid;background:url($Murl/images/baojia/11.gif) repeat-x;height:31px;}
+.nr1{float:left;margin-left:5px;margin-top:10px;}
+.nr2{float:left;margin:8px;font-size:14px;color:#0075C6;font-weight:bold;}
+.gd{float:right;margin-right:3px;margin-top:10px;}
+.gd a{color:#6E7FAA;}
+.gd a:link {
+	color: #333333;
+	text-decoration: none;
+}
+.gd a:visited {
+	text-decoration: none;
+	color: #6E7FAA;
+}
+.gd a:hover {
+	text-decoration: underline;
+	color:#6E7FAA;
+}
+.gd a:active {
+	text-decoration: none;
+}
+.gd1{float:right;margin-right:3px;margin-top:5px;}
+.gd1 a{
+   color:#6E7FAA;
+}
+</style>
+
+<table width="990" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;">
+  <tr>
+    <td width="20%" height="60" align="left">$label[inde_top_ad1]</td>
+    <td width="20%" align="center">$label[inde_top_ad2]</td>
+    <td width="20%" align="center">$label[inde_top_ad3]</td>
+    <td width="20%" align="center">$label[inde_top_ad4]</td>
+    <td width="20%" align="right">$label[inde_top_ad5]</td>
+  </tr>
+</table>
+<!--
+EOT;
+if($jobs=='show'){
+print <<<EOT
+-->
+<div id="banner_ad" style="margin-top:8px; margin-bottom:3px;" > 
+<div style="height:33px;">$label[banner_ad]</div>
+<div style="height:33px;">$label[banner_ad2]</div>
+<div style="height:33px;">$label[banner_ad3]</div>
+</div>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<div id=demo style="OVERFLOW: hidden; HEIGHT: 33px; margin-top:8px;margin-bottom:3px;"><div id=demo1>
+<div style="height:33px;">$label[banner_ad]</div>
+<div style="height:33px;">$label[banner_ad2]</div>
+<div style="height:33px;">$label[banner_ad3]</div>
+</div><div id=demo2></div></div>
+<script> 
+  var speed  = 1;//滚动速度
+  var rows  = 33;//每行高度
+  var stim  = 100; //停留时间倍数 * speed
+  var stop  = 0; //初始化值，不管
+  var demo2=document.getElementById('demo2');
+  var demo1=document.getElementById('demo1');
+  var demo=document.getElementById('demo');
+  demo2.innerHTML = demo1.innerHTML
+  function Marquee(){
+    if(demo.scrollTop%rows==0 && stop<=stim){
+      stop++;
+      return;
+    }
+    stop = 0;
+    if(demo2.offsetTop-demo.scrollTop<=0)
+      demo.scrollTop-=demo1.offsetHeight
+    else{
+      demo.scrollTop++
+    }
+  }
+  var MyMar    = setInterval(Marquee,speed);
+</script>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+
+
+<table width="990" cellspacing="0" style="margin-top:8px;">
+  <tr>
+    <td width="184" valign="top"><table width="182" cellspacing="0" style="border:1px #1B9DF1 solid;background:#E4EBFF">
+      <tr>
+        <td width="188" style="border:1px #fff solid;"><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:10px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:13px;margin-bottom:13px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div></td>
+      </tr>
+    </table></td>
+    <td width="578" valign="top" >
+	
+	
+	<table width="570" cellspacing="0" style="margin-left:8px;">
+      <tr>
+        <td valign="top"  class="ab">&nbsp;</td>
+		<td  valign="top" class="ab1"><table width="100%" cellspacing="0" style="margin-top:5px;">
+          <tr>
+            <td width="280" ><img src="$Murl/images/baojia/hd.gif" width="285" height="181" /></td>
+          </tr>
+        </table>
+		  <table width="100%" cellspacing="0" style="margin-top:5px;">
+            <tr>
+              <td height="90" valign="top" style="line-height:170%">{$label[diy_3]}</td>
+            </tr>
+          </table></td>
+        <td width="255" valign="top" style="background:url($Murl/images/baojia/b2.gif) repeat-x;height:290px;width:100%;"><table width="255" cellspacing="0" style="margin-top:5px;">
+          <tr>
+            <td height="280" valign="top" style="line-height:170%">{$label[diy_2]}</td>
+          </tr>
+        </table></td>
+        <td valign="top" style="background:url($Murl/images/baojia/bb.gif) no-repeat right;width:10px;height:290px;" >&nbsp;</td>
+      </tr>
+    </table>
+	
+	
+	</td>
+    <td width="220" align="right" valign="top"><table width="220" cellspacing="0" style="border:1px #AFD3F5 solid;margin-left:8px;">
+      <tr>
+        <td style="background:url($Murl/images/baojia/b3.gif) repeat-x; height:23px;"><div style="float:left;margin-left:3px;;"><img src="$Murl/images/baojia/08.gif" width="17" height="16" /></div><div style="float:left;margin:3px;font-size:12px;color:#0075C6;">北京钢价</div>
+          <div class="gd1"><a href="#">更多&gt;&gt;</a></div></td>
+      </tr>
+      <tr>
+        <td height="263" valign="top">{$label[diy_1]}</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="990" cellspacing="0" style="margin-top:8px; margin-bottom:8px;">
+  <tr>
+    <td width="182"><img src="$Murl/images/baojia/tu.gif" width="182" height="83" /></td>
+    <td width="782"><div align="right" style="margin-left:3px;"><img src="$Murl/images/baojia/tu1.gif" width="804" height="83" /></div></td>
+  </tr>
+</table>
+<table width="990" cellspacing="0" style="margin-top:8px;">
+  <tr>
+    <td width="183" valign="top"><table width="182" cellspacing="0" style="border:1px #1B9DF1 solid;">
+      <tr>
+        <td bgcolor="E4EBFF" style="border:1px #fff solid; border-right:0px;"><table width="100%" cellspacing="0">
+          <tr>
+            <td ><div class="baob">
+          <div >每日价格播报</div>
+        </div></td>
+          </tr>
+          <tr>
+            <td><table width="100%" cellspacing="0" class="biaoge">
+              <tr>
+                <td>北京</td>
+                <td>上海</td>
+                <td>天津</td>
+                <td>湖南</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+        </table>
+		<table width="100%" cellspacing="0" style="margin-top:7px;">
+          <tr>
+            <td ><div  class="baob1">
+          <div >每日价格播报</div>
+        </div></td>
+          </tr>
+          <tr>
+            <td><table width="100%" cellspacing="0" class="biaoge">
+              <tr>
+                <td>北京</td>
+                <td>上海</td>
+                <td>天津</td>
+                <td>湖南</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+        </table><table width="100%" cellspacing="0" style="margin-top:7px;">
+          <tr>
+            <td ><div class="baob1">
+          <div >每日价格播报</div>
+        </div></td>
+          </tr>
+          <tr>
+            <td><table width="100%" cellspacing="0" class="biaoge">
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              
+              
+              
+            </table></td>
+          </tr>
+        </table><table width="100%" cellspacing="0" style="margin-top:7px;">
+          <tr>
+            <td ><div class="baob1">
+          <div >每日价格播报</div>
+        </div></td>
+          </tr>
+          <tr>
+            <td><table width="100%" cellspacing="0" class="biaoge">
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              
+            </table></td>
+          </tr>
+        </table><table width="100%" cellspacing="0" style="margin-top:7px;">
+          <tr>
+            <td ><div class="baob1">
+          <div >每日价格播报</div>
+        </div></td>
+          </tr>
+          <tr>
+            <td><table width="100%" cellspacing="0" class="biaoge">
+              <tr>
+                <td>北京</td>
+                <td>上海</td>
+                <td>天津</td>
+                <td>湖南</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              
+            </table></td>
+          </tr>
+        </table><div style="background:url($Murl/images/baojia/a.gif);height:26px;width:170px;margin-left:5px;margin-top:17px;">
+          <div style="margin-left:30px;margin-top:7px;color:#FFFFFF;font-weight:bold;">每日价格播报</div>
+        </div><div class="bt">
+          <div >每日价格播报</div>
+        </div><div class="bt">
+          <div >每日价格播报</div>
+        </div><div class="bt" style="margin-bottom:13px;">
+          <div >每日价格播报</div>
+        </div></td>
+      </tr>
+    </table></td>
+    <td width="290" valign="top"><table width="580" cellspacing="0" >
+      <tr>
+        <td   ><table width="275" cellspacing="0"  id="nei">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj1]}</td>
+          </tr>
+        </table>
+		<table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:6px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">上海钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj3]}</td>
+          </tr>
+        </table>
+		<table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:7px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">南京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj5]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:6px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">重庆钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj7]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:6px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj9]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:6px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">上海钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj11]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:5px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2"> 重庆钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj13]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid; margin:6px;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj15]}</td>
+          </tr>
+        </table></td>
+        <td valign="top"   ><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;">
+          <tr>
+            <td><table width="280" cellspacing="0" style="margin:1px; border:1px #0996EE solid;background:url($Murl/images/baojia/11.gif) repeat-x;height:31px;">
+              <tr>
+                <td><div style="float:left;margin-left:5px;margin-top:10px;"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div style="float:left;margin:8px;font-size:14px;color:#0075C6;font-weight:bold;">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj2]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj4]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj6]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj8]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj10]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj12]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj14]}</td>
+          </tr>
+        </table><table width="275" cellspacing="0" style="border:1px #9DA9CF solid;margin-top:8px;">
+          <tr>
+            <td><table width="280" cellspacing="0" class="nr">
+              <tr>
+                <td><div class="nr1"><img src="$Murl/images/baojia/xx.gif" width="5" height="9" /></div><div class="nr2">北京钢价</div>
+                  <div class="gd"><a href="#">更多&gt;&gt;</a></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style="line-height:170%">{$label[diy_bj16]}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+    <td width="212" align="right" valign="top"><table width="202" cellspacing="0" style="margin-left:5px;" >
+      <tr>
+        <td ><img src="$Murl/images/baojia/aa.gif" width="202" height="95" /></td>
+      </tr>
+      
+    </table>
+      <table width="202" cellspacing="0" style="margin-top:8px; margin-left:5px;">
+        <tr>
+          <td align="left"  style="background:url($Murl/images/baojia/as1.gif) no-repeat;height:28px"><div style="margin-left:50px;margin-top:7px;font-weight:bold;">艾瑞网赞助商</div></td>
+        </tr>
+        <tr>
+          <td bgcolor="#FAFFEF" style="border:1px #CCCCCC solid;border-top:0px;backgroud:#FAFFEF"><table width="181" cellspacing="0" style="margin:7px; border-bottom:1px #CCE70B dotted;">
+            <tr>
+              <td><span style="font-weight:bold;font-size:12px;">网络媒体报告：</span></td>
+            </tr>
+            <tr>
+              <td ><div style="margin-top:5px;margin-bottom:8px;"><img src="$Murl/images/baojia/tu.gif" width="182" height="83" /></div></td>
+            </tr>
+          </table><table width="181" cellspacing="0" class="rou">
+            <tr>
+              <td><span >网络营销栏目赞助商：</span></td>
+            </tr>
+            <tr>
+              <td ><div ><img src="$Murl/images/baojia/tr.gif" width="180" height="59" /></div></td>
+            </tr>
+          </table><table width="181" cellspacing="0" class="rou">
+            <tr>
+              <td><span >网络门户栏目赞助商：</span></td>
+            </tr>
+            <tr>
+              <td ><div ><img src="$Murl/images/baojia/123.gif" width="179" height="79" /></div></td>
+            </tr>
+          </table><table width="181" cellspacing="0" class="rou">
+            <tr>
+              <td><span >网络广告栏目赞助商：</span></td>
+            </tr>
+            <tr>
+              <td ><div ><img src="$Murl/images/baojia/12.gif" width="180" height="80" /></div></td>
+            </tr>
+          </table>
+          <table width="181" cellspacing="0" class="rou">
+            <tr>
+              <td><span >品牌广告营销栏目赞助商：</span></td>
+            </tr>
+            <tr>
+              <td ><div><img src="$Murl/images/baojia/122.gif" width="181" height="80" /></div></td>
+            </tr>
+          </table>
+          <table width="181" cellspacing="0" style="margin:7px; ">
+            <tr>
+              <td><div style="float:right;color:#0033CC">&gt;&gt;赞助联系</div></td>
+            </tr>
+            
+          </table></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

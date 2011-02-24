@@ -1,0 +1,145 @@
+<!--
+<?php
+
+if(!$action){
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work1" method="post" action="?action=$action">
+    <tr  class="head"> 
+    <td>供求关系管理</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    关键字:
+      <input name="keyword" type="text" id="keyword" value="$keyword" />      
+     搜索目标：
+     <select name="stype" id="stype">
+		 <option value="0">采购方和供应方</option>
+		 <option value="B.title" {$stype_sel2['B.title']} >仅采购方</option>
+		 <option value="C.title" {$stype_sel2['C.title']} >仅供应方</option>
+     </select>
+       <input type="submit" name="button" id="button" value="搜索" />
+      </td>
+    </tr>
+  </form>
+</table>
+  
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      
+      <td colspan="2" align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />
+      采购方</td>
+      <td width="510" align="left">供应方</td>
+      <td width="146" align="left">开始时间</td>
+      <td width="147" align="left">状态</td>
+      <td width="135">解除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+     
+      <td width="20"> 
+        <input type="checkbox" name="listdb[]" value="$rs[vid]"></td>
+      <td width="396"><a href="../homepage.php?uid=$rs[owner_uid]" target="_blank">$rs[owner_title]</a>($rs[owner_username])</td>
+      <td><a href="../homepage.php?uid=$rs[owner_uid]" target="_blank">$rs[title]</a>($rs[username])</td>
+	  <td>$rs[posttime]</td>
+      <td> $rs[yz] </td>
+      <td align="center" width="135"><a href="?action=del&vid=$rs[vid]"  onclick="return confirm('确定解除供求关系吗？');">解除供求关系</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7">	 </td>
+    </tr>
+  </form>
+</table>    
+
+
+
+
+
+
+
+<!--
+EOT;
+}elseif($action=='want'){
+print <<<EOT
+-->
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      
+      <td colspan="2" align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />
+      寻求方</td>
+      <td width="257" align="left">要求条件</td>
+      <td width="135" align="left">开始时间</td>
+      <td width="129" align="left">结束时间</td>
+      <td width="91" align="center">状态</td>
+      <td width="270">操作</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+     
+      <td width="20"> 
+        <input type="checkbox" name="listdb[]" value="$rs[vid]"></td>
+      <td width="439"><a href="../homepage.php?uid=$rs[uid]" target="_blank">$rs[w_title]</a>($rs[username])</td>
+      <td>$rs[tiaojian]</td>
+	  <td>$rs[starttime]</td>
+      <td>$rs[endtime]</td>
+      <td align="center"> $rs[is_show] </td>
+      <td align="center" width="270"><a href="?action=close_want&wv_id=$rs[wv_id]"  onclick="return confirm('确定隐藏吗？');">隐藏</a>|<a href="?action=open_want&wv_id=$rs[wv_id]"  onclick="return confirm('确定开启吗？');">开启</a>|<a href="?action=levels_want&wv_id=$rs[wv_id]" title="点击推荐或取消推荐">$rs[is_levels]</a>|<a href="?action=del_want&wv_id=$rs[wv_id]"  onclick="return confirm('确定删除吗？');">删除</a>	  </td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8">	 </td>
+    </tr>
+  </form>
+</table>  
+<!--
+EOT;
+
+}
+print <<<EOT
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+function postdo(va){
+	document.form_work.action.value=va
+	document.form_work.submit();
+}
+function CheckAll(name,my){
+	var ckbox=document.getElementsByName(name);
+
+	for (var i=0;i<ckbox.length;i++){
+		ckbox[i].checked=my.checked;
+	}
+}
+</SCRIPT> 
+<!--
+EOT;
+    
+?>-->

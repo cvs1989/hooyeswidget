@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit22" value="管理设置" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=set')">
+      　　 
+      <input type="button" name="Submit2" value="今日流量分析" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=list')">
+      　　 
+      <input type="button" name="Submit23" value="最近详情分析" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=listmore')">
+      　　 
+      <input type="button" name="Submit232" value="本年度流量分析" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=listall')">
+    </td>
+  </tr>
+</table>
+<br>
+<form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr class="head"> 
+      <td align="center" width="28%"><font color="#FFFFFF">{$rs[year]}年/{$rs[year]}月/{$rs[month]}日</font></td>
+      <td align="center" width="26%">PV</td>
+      <td align="center" width="23%">UV</td>
+      <td align="center" width="23%">IP</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="28%" align="center"> $rs[year]/$rs[month]/$rs[day]</td>
+      <td width="26%" align="center">$rs[pv]</td>
+      <td width="23%" align="center">$rs[uv]</td>
+      <td width="23%" align="center">$rs[ip]</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+  </table>
+  </form>
+<br>
+<!--
+EOT;
+?>
+-->

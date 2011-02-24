@@ -1,0 +1,73 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job&id=$id">
+    <tr class="head"> 
+      <td colspan="2">创建频道</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%">频道页名称(可以中文):</td>
+      <td width="70%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>频道页目录名(英文或数字): </td>
+      <td width="70%"> 
+        <input type="text" name="postdb[path]" value="{$rsdb[path]}" size="40">
+        比如: news 或 news/start</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%">&nbsp;</td>
+      <td width="70%"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job&id=$id">
+    <tr class="head"> 
+      <td>帮助</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>创建频道,系统将自动创建对应的频道目录,并且自动创建四个文件,分别是index.php(首页),list.php(列表页),bencandy.php(内容页),global.php(公共文件)<br>
+        系统如果不能自动创建目录与复制文件,请手工创建目录,并且手工创建文件文件内容如下:<br>
+        index.php(首页) 
+        <textarea name="textarea4" cols="80" rows="4"><?php
+require_once("global.php");
+require_once(THIS_PATH."index.php");
+?></textarea>
+        <br>
+        list.php(列表页) 
+        <textarea name="textarea4" cols="80" rows="4"><?php
+require_once("global.php");
+require_once(THIS_PATH."list.php");
+?></textarea>
+        <br>
+        bencandy.php(内容页) 
+        <textarea name="textarea4" cols="80" rows="4"><?php
+require_once("global.php");
+require_once(THIS_PATH."bencandy.php");
+?></textarea>
+        <br>
+        global.php(公共文件) 
+        <textarea name="textarea4" cols="80" rows="4"><?php
+defined("THIS_PATH") || define("THIS_PATH","../");
+\$ch=103;
+require_once(THIS_PATH."global.php");	
+?></textarea>
+        <br>
+        其中关键点\$ch=103;即是频道创建后分配到的ID,../为1级目录频道,2级目录频道就为../../以此类推<br>
+        <br>
+        以后如要删除频道.请手工删除目录 </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

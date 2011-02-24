@@ -1,0 +1,36 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=html&action=make_SPhtml" target="_blank">
+    <tr align="center" class="head"> 
+      <td width="5%">ID</td>
+      <td width="70%">专题名称</td>
+      <td width="25%">更新标签</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td align="center" width="5%">$rs[id]</td>
+      <td width="70%"> <a href="$webdb[www_url]/do/showsp.php?fid=$rs[fid]&id=$rs[id]"  style="color:$rs[titlecolor];" target="_blank">$rs[title]</a></td>
+      <td align="center" width="25%"><a href="$webdb[www_url]/do/showsp.php?fid=$rs[fid]&id=$rs[id]&jobs=show"><img src="images/icon_updatalabel.gif" border="0"></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="3" align="center">$showpage<a href="?lfj=$lfj&action=delete&id=$rs[id]" onClick="return confirm('你确实要删除吗?不可恢复');"></a></td>
+    </tr>
+  </form>
+</table>
+
+ 
+<!--
+EOT;
+?>
+-->

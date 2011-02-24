@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+-->  
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2">字符批量替换</td>
+    </tr>
+    <tr bgcolor="#F7F7F7"> 
+      <td width="15%">原字符串(被替换的字符)</td>
+      <td width="85%"> 
+        <input type="text" name="oldword" size="70" value="$rsdb[oldword]">
+      </td>
+    </tr>
+    <tr bgcolor="#F7F7F7"> 
+      <td width="15%">目标字符串</td>
+      <td width="85%"> 
+        <input type="text" name="newword" size="70" value="$rsdb[newword]">
+      </td>
+    </tr>
+    <tr bgcolor="#F7F7F7"> 
+      <td width="15%">&nbsp;</td>
+      <td width="85%"> 
+        <input type="checkbox" name="field_db[]" value="content" checked>
+        内容/介绍 
+        <input type="checkbox" name="field_db[]" value="title">
+        标题/名称 
+        <input type="checkbox" name="field_db[]" value="picurl">
+        缩略图地址 
+        <input type="checkbox" name="field_db[]" value="username">
+        发表者 
+        <input type="checkbox" name="field_db[]" value="author">
+        作者 
+        <input type="checkbox" name="field_db[]" value="copyfrom">
+        来源 
+        <input type="checkbox" name="field_db[]" value="copyfromurl">
+        来源地址</td>
+    </tr>
+    <tr bgcolor="#F7F7F7"> 
+      <td width="15%">&nbsp;</td>
+      <td width="85%"> 
+        <input type="submit" name="Submit2" value="提 交">
+        <input type="hidden" name="Table" value="article">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>说明</td>
+    </tr>
+    <tr bgcolor="#F7F7F7"> 
+      <td>在这里,你可以批量替换内容或标题中的一些字符<br>
+        <font color="#FF0000">比较常用的是:当你的网站更换目录后,附件地址可能会不对,此时你就可以在这里批量的替换成正确的地址</font></td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose(obj_id){
+	oo=document.body.getElementsByTagName("SPAN");
+	for(var i=0;i<oo.length;i++){
+		if(oo[i].className=="morefiled"){
+			if(oo[i].id==obj_id){
+				oo[i].style.display="";
+			}else{
+				oo[i].style.display="none";
+			}
+		}
+	}
+}
+choose('');
+//-->
+</SCRIPT>
+  <!--
+EOT;
+?>
+-->

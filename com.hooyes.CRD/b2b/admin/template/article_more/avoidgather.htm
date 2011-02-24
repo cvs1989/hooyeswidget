@@ -1,0 +1,53 @@
+<!--
+<?php
+print <<<EOT
+-->
+ 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr  class="head"> 
+      <td colspan="2"> 
+        <div align='center'><b><font color="#FFFFFF"> 内容防机器人采集设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="15%"> 
+        <p>是否防复制网页内容:</p>
+      </td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="85%"> 
+        <input type="radio" name="webdbs[AvoidCopy]" value="1" $AvoidCopy[1]>
+        启用防复制网页内容 
+        <input type="radio" name="webdbs[AvoidCopy]" value="0" $AvoidCopy[0]>
+        禁用防复制网页内容</td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="15%">是否防采集:</td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="85%"> 
+        <input type="radio" name="webdbs[AvoidGather]" value="1" $AvoidGather[1]>
+        启用防采集 
+        <input type="radio" name="webdbs[AvoidGather]" value="0" $AvoidGather[0]>
+        禁用防采集 </td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="15%">判别符:</td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="85%"> 
+        <input type="text" name="webdbs[AvoidGatherPre]" value="$webdb[AvoidGatherPre]">
+        请输入三个以上任意数字或字母,为防止破解,你可以定时更换判别符</td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="15%">干扰字符:</td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="85%"> 
+        <textarea name="webdbs[AvoidGatherString]" cols="50" rows="8">$webdb[AvoidGatherString]</textarea>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td bgcolor='#FFFFFF' id="setindex" colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

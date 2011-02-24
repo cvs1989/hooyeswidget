@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="content">
+  <tr> 
+    <td rowspan="2" width="5%" class="img"> <A target="_blank" HREF="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]"><img src='$rs[icon]' onerror="this.src='$webdb[www_url]/images/default/nobody.gif'" width="60" height="60" border=0></A></td>
+    <td width="95%" class="word" valign="top"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word">
+        <tr> 
+          <td>$rs[content]</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="95%" class="info">³Æºô:<A target="_blank" HREF="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]">$rs[username]</A> ÈÕÆÚ:$rs[posttime]
+<!--
+EOT;
+if($web_admin||($lfjuid&&$rs[uid]==$lfjuid)){
+print <<<EOT
+-->
+<A HREF="javascript:getcomment('{$webdb[www_url]}/do/special_comment_ajax.php?action=del&cid=$cid&id=$rs[id]')">É¾³ý</A>
+<!--
+EOT;
+}print <<<EOT
+-->
+	</td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page">$showpage</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

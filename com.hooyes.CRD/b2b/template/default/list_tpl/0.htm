@@ -1,0 +1,78 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="98%" border="0" cellspacing="0" cellpadding="0" style="margin-left:5px;margin-top:10px;">
+              <!--
+EOT;
+$i=0;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->
+              <tr> 
+                <td style="line-height:27px;padding-left:3px;color:#666;"><span style="float:left;">¡¤<a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]' style="font-size:14px;color:#07519A;{$rs[fontweight]}{$rs[fontcolor]}">$rs[title]</a> 
+                  <!--
+EOT;
+if($webdb[ListShowIcon]&&$rs[picurl]){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/img_ico.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$rs[levels]){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/good_ico.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$rs['list']>$timestamp){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/top_icon.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$webdb[hotArticleNum]&&$rs['hits']>$webdb[hotArticleNum]){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/hot_icon.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$webdb[newArticleTime]&&($timestamp-$rs['full_posttime'])<$webdb[newArticleTime]*3600){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/new_ico.gif"> 
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                  </span><span style="float:right;font-size:14px;">({$rs[posttime]})</span> </td>
+              </tr>
+
+                  <!--
+EOT;
+$i++;
+if($i%5==0){print <<<EOT
+-->
+                 <tr> <td><hr style="height:1px;width:99%;border-top:1px dotted #ccc;margin:4px 0 0px 4px;"></td>
+              </tr>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+            
+<!--
+EOT;
+?>
+-->

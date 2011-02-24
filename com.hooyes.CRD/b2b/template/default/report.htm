@@ -1,0 +1,74 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic">
+        <form name="form1" method="post" action="?job=$job&step=2">
+          <tr> 
+            <td class="head"> 
+              <h3 class="L"></h3>
+              <span class="TAG">举报文章</span> 
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+          <tr> 
+            <td class="middle" align="center"> 
+              <table width="100%" border="0" cellspacing="9" cellpadding="0">
+                <tr> 
+                  <td align="left" height="42" colspan="2">文章标题:<b>$rsdb[title]</b></td>
+                </tr>
+                <tr> 
+                  <td align="left" width="18%">举报类型：</td>
+                  <td align="left" width="82%"> 
+                    <select name="Type"><option value="">请选择一种类型</option>
+                      <option value="精彩文章">精彩文章</option>
+                      <option value="与栏目不相关">与栏目不相关</option>
+                      
+                      <option value="违法反动文章">违法反动文章</option>
+                      <option value="垃圾文章">垃圾文章</option>
+                      <option value="内容文字有误">内容文字有误</option>
+                      <option value="其它问题">其它问题</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="left" width="18%">你的称呼：</td>
+                  <td align="left" width="82%">
+                    <input type="text" name="myname" size="30" value="$lfjid">
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="left" width="18%">你的留言：</td>
+                  <td align="left" width="82%">
+                    <textarea name="content" cols="70" rows="8"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" width="18%">&nbsp;</td>
+                  <td align="left" width="82%">
+                    <input type="submit" name="Submit" value="提交">
+                    <input type="hidden" name="id" value="$id">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"> 
+              <h3 class="L"></h3>
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+        </form>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

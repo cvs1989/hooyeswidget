@@ -1,0 +1,302 @@
+<!--
+<?php
+if($job=='mylist'){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  valign="top" class="Main" > 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">
+          	<strong>已发布的招聘信息</strong>：
+          </td>
+        </tr>
+      </table>
+   </td>
+  </tr>
+
+  <tr> 
+    <td   valign="top"> 
+	
+	<table width="100%" border="0" cellspacing="1" cellpadding="3" >
+        <tr align="center" class="head_in"> 
+                  <td width="21%">招聘职位名称</td>
+                  <td width="16%">分类</td>
+                  <td width="13%">收到简历</td>
+                  <td width="7%">点击</td>
+				   <td width="14%">发布时间</td>             
+              
+                   <td width="9%">审核</td>
+                  <td width="20%">操作</td>
+              </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'" height="25"> 
+                <td  align="left"><a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]" target="_blank" title="$rs[title]">$rs[title]</a>  $rs[best]               </td> 
+                <td  align="left">$rs[sname]</td>
+                <td  align="center"><a href="?job=myyplist&jobs_id=$rs[jobs_id]">$rs[resume_num] 份</a></td>
+                <td align="center">$rs[hits]</td>            
+                  <td align="center">$rs[posttime]</td>
+				  <td align="center">$rs[check]</td>
+				  <td align="center">
+				 <a href="$Mdomain/jobs_post.php?job=update_posttime_jobs&jobs_id=$rs[jobs_id]"  target="_blank"  onclick="return confirm('确定更新发布时间为当前时间吗?');">更新</a>
+				  /
+				  <a href="$Mdomain/jobs_post.php?job=edit_jobs&jobs_id=$rs[jobs_id]" target="_blank">修改</a>
+				  /
+				   <a href="?job=del_jobs&jobs_id=$rs[jobs_id]"  onclick="return confirm('确定删除吗?');">删除</a></td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="8">$showpage </td>
+                </tr>
+            </table>
+   </td>
+  </tr>
+  
+  
+</table>
+<!--
+EOT;
+}elseif($job=='myyplist'){
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  valign="top" class="Main" > 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">
+          	<strong>我收到的应聘意向</strong>：
+          </td>
+        </tr>
+      </table>
+   </td>
+  </tr>
+
+  <tr> 
+    <td   valign="top"> 
+	
+	<table width="100%" border="0" cellspacing="1" cellpadding="3" >
+        <tr align="center" class="head_in"> 
+                  <td width="23%">对应职位</td>
+				  <td width="19%">投简历者</td>                 
+                  <td width="16%">查看简历</td>
+			      <td width="13%">投递时间</td>
+       			  <td width="29%">操作</td>
+        </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                <td height="25"  align="center">$rs[jobs_title]</td> 
+                <td  align="center">$rs[re_title]</td>
+			                        
+                  <td align="center"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]&print=1" target="_blank"><font color="green">点击查看简历</font></a>&nbsp;</td>
+				     <td align="center">$rs[posttime] </td> 
+				  <td align="center">
+				   <a href="?job=add_mytdlist&td_id=$rs[td_id]"  onclick="return confirm('确定放人才库吗?');">放入人才库</a>
+				  /
+				   <a href="?job=del_mytd&amp;td_id=$rs[td_id]"  onclick="return confirm('确定删除吗?');">删除</a></td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="7">$showpage </td>
+                </tr>
+      </table>
+   </td>
+  </tr>
+  
+  
+</table>
+
+<!--
+EOT;
+}elseif($job=='mytdlist'){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  valign="top" class="Main" > 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">
+          	<strong>我的人才库</strong>：
+          </td>
+        </tr>
+      </table>
+   </td>
+  </tr>
+
+  <tr> 
+    <td   valign="top"> 
+	
+	<table width="100%" border="0" cellspacing="1" cellpadding="3" >
+        <tr align="center" class="head_in"> 
+                  <td width="23%">人才名称</td>
+            
+                  <td width="20%">查看简历</td>
+			      <td width="19%">加入时间</td>
+       			  <td width="18%">操作</td>
+        </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                <td  align="center">$rs[re_title]</td>
+			                        
+                  <td align="center"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]&print=1" target="_blank"><font color="green">点击查看简历</font></a>&nbsp;</td>
+				     <td align="center">$rs[posttime] </td> 
+				  <td align="center">
+				 
+				   <a href="?job=del_mytd&td_id=$rs[td_id]"  onclick="return confirm('确定删除吗?');">删除</a></td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="7">$showpage </td>
+                </tr>
+      </table>
+   </td>
+  </tr>
+  
+  
+</table>
+<!--
+EOT;
+}elseif($job=='mytds'){
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  valign="top" class="Main" > 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">
+          	<strong>我的求职经历</strong>：
+          </td>
+        </tr>
+      </table>
+   </td>
+  </tr>
+
+  <tr> 
+    <td   valign="top"> 
+	
+	<table width="100%" border="0" cellspacing="1" cellpadding="3" >
+        <tr align="center" class="head_in"> 
+                  <td width="23%">职位所在单位</td>
+				  <td width="19%">职位名称</td>                 
+                  <td width="19%">我的简历</td>
+			      <td width="20%">投递时间</td>
+       			  
+        </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                <td height="25"  align="center"><a href="$homepage/?uid=$rs[uid]" target="_blank">$rs[companyname]</a>&nbsp;</td> 
+                <td  align="center"><a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]" target="_blank">$rs[jobs_title]</a></td>
+			                        
+                  <td align="center"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]&print=1" target="_blank"></a>$rs[re_title]&nbsp;</td>
+				     <td align="center">$rs[posttime] </td> 
+				 
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="6">$showpage </td>
+                </tr>
+      </table>
+   </td>
+  </tr>
+  
+  
+</table>
+<!--
+EOT;
+}elseif($job=='myresume'){
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  valign="top" class="Main" > 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">
+          	<strong>我的个人简历</strong>：
+          </td>
+        </tr>
+      </table>
+   </td>
+  </tr>
+
+  <tr> 
+    <td   valign="top"> 
+	
+	<table width="100%" border="0" cellspacing="1" cellpadding="3" >
+        <tr align="center" class="head_in"> 
+                  <td width="19%">名称</td>
+				  <td width="16%">求职意向</td>                 
+                  <td width="13%">审核</td>
+                  <td width="14%">浏览量</td>
+				   <td width="14%">发布时间</td>
+                  <td>操作</td>
+        </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                <td height="25"  align="center">$rs[truename]</td> 
+                <td  align="center">$rs[job_name]</td>
+			                        
+                  <td  align="center">$rs[check]</td>
+                  <td  align="center">$rs[hits]</td>
+				  <td  align="center">$rs[posttime]</td>
+                  <td align="center"><a href="$Mdomain/jobs_post.php?job=update_posttime&re_id=$rs[re_id]"  target="_blank"  onclick="return confirm('确定更新发布时间为当前时间吗?');">更新</a>
+				  /
+				  <a href="$Mdomain/jobs_post.php?job=edit_resume&re_id=$rs[re_id]" target="_blank">编辑</a>
+				  /
+				  <a href="?job=del_myresume&re_id=$rs[re_id]"  onclick="return confirm('确定删除吗?')">删除</a></td>
+		        </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="7">&nbsp;</td>
+                </tr>
+      </table>
+   </td>
+  </tr>
+  
+  
+</table>
+
+<!--
+EOT;
+}
+?>
+-->

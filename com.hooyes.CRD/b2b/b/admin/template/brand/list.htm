@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<form id="form1" name="form1" method="post" action="?" style="margin:5px">
+  关键字搜索：
+  <input name="keyword" type="text" id="keyword" value="$keyword" />
+  <input name="submit" type="submit" id="submit" value="搜索" />
+</form>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr align="center" class="head"> 
+	<td colspan="2" align="left"><strong>LOGO</strong></td>
+     <td width="20%"><strong>品牌名称</strong></td>
+	 <td width="10%"><strong>提交类型</strong></td>
+     <td width="6%"><strong>排序</strong></td>
+     <td width="10%"><strong>生成静态</strong></td>
+     <td width="10%"><strong>删除静态</strong></td>
+     <td width="8%"><strong>验证</strong></td>
+     <td width="7%"><strong>操作</strong></td>
+     <td width="20%">&nbsp;</td>
+    </tr><form id="form_work" name="form_work" method="post" action="?action=listorder">
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" onmouseover="this.style.backgroundColor='#f9f9f9'"  onmouseout="this.style.backgroundColor='#ffffff'"> 
+     <td width="2%"><input type="checkbox" name="listdb[{$rs[bid]}]" value="$rs[bid]" />      </td>
+     <td width="7%"><img src="$rs[picurl]"  style="border:1px #CCCCCC solid; width:90px; height:30px;" onerror="this.src='images/nopic.jpg';"/></td>
+     <td height="40" align="left">$rs[name]</td>
+	<td height="40" align="center">$rs[posttype]</td>
+    <td height="40" align="center">
+        <input name="listorder[$rs[bid]]" type="text" id="listorder[$rs[bid]]" value="$rs[listorder]" size="5" />      </td>
+    <td height="40" align="center"><a href="?action=ishtml&amp;bid=$rs[bid]">$rs[is_html]</a></td>
+    <td height="40" align="center"><a href="?action=delhtml&amp;bid=$rs[bid]">删除</a></td>
+    <td height="40" align="center"><a href="?action=yz&amp;bid=$rs[bid]">$rs[yz]</a></td>
+    <td height="40" align="center" ><a href="?action=level&amp;bid=$rs[bid]">$rs[level]</a></td>
+	<td height="40" align="center" ><a href="?job=setsort&bid=$rs[bid]"><font color="#1A5DB0">分类设置</font></a> | <a href="?job=edit&bid=$rs[bid]">编辑</a> | <a href="?action=del&bid=$rs[bid]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+
+	 <tr align="center"> 
+	<td align="center" colspan="10"><a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a>  
+	<input type="submit" name="Submit" value="批量修改排序" onclick="document.form_work.action='?action=listorder';" />
+	<input type="submit" name="Submit" value="批量静态化" onclick="document.form_work.action='?action=makehtml';" />
+	<input type="submit" name="Submit" value="更新缓存" onclick="document.form_work.action='?action=updatecache';" />	</td>
+    </tr>
+     </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

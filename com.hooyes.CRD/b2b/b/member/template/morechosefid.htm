@@ -1,0 +1,180 @@
+<?php
+print <<<EOT
+-->
+<style>
+.pub_cate_menu{ 
+border:1px #CCCCCC solid; 
+background-color:#f9f9f9;
+color:#333333;
+width:130px;
+height:150px;
+float:left;
+overflow-Y:auto;
+overflow-X:hidden;
+margin-right:5px; 
+padding:5px;
+}
+.pub_cate_menu a{
+color:#343434;
+line-height:150%;
+}
+.pub_cate_menu .selected{
+ font-weight:bold; color:#FF3300; padding-right:20px; background:url($Murl/images/default/icn_ok.gif) right no-repeat;
+}
+.pub_cate_menu unselected{
+}
+
+.choosedok{ width:500px;}
+
+</style>
+<!--
+EOT;
+if(!$post_company){
+print <<<EOT
+--> 
+<div style="height:30px; clear:both">您经常使用的类别：<select name="select" onchange="setOldFid(this,'$Murl')">
+<option value="0">==快速选择常用类别==</option>
+<!--
+EOT;
+foreach($userpost_fid_history as $k => $v){
+	$parents = $bcategory->get_parents($k);
+	$fid_str = '';
+	foreach($parents as $vv){
+		$fid_str .= isset($bcategory->categories[$vv['fid']]) ? $bcategory->categories[$vv['fid']]['name'] .' &gt; ' : '';
+	}
+	$fid_str .= isset($bcategory->categories[$k]) ? $bcategory->categories[$k]['name'] : '';
+print <<<EOT
+-->
+	<option value="$k" style="color:#FF0000">$fid_str</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</select></div>
+<!--
+EOT;
+}
+//是否隐藏选择类目框
+if($fid && !$post_company){
+	$guidefid=$guidefid."  <a href='javascript:;' onclick=\"document.getElementById('cate_menu').style.display='block';parent.SetCwinHeight();\"  ><font color='blue'>[重选]</font></a>";
+	$re_choose="none";
+}else{
+	$re_choose="block";
+}
+print <<<EOT
+-->
+<div id="cate_menu" style="display:$re_choose">
+<div class="pub_cate_menu" id="cate_menu_1">
+<!--
+EOT;
+foreach($categories as $v){
+$ctype=$ctype?$ctype:0;
+$nextdo = isset($v['categories']) ? 'true' : 'false';
+print <<<EOT
+--> 
+	<div><a href="javascript:;" onclick="changeClassName(1,this,{$v['fid']},$nextdo,$ctype,'$Murl');">{$v['name']}</a></div>
+<!--
+EOT;
+}
+unset($categories);
+print <<<EOT
+--> 
+</div>
+
+<div class="pub_cate_menu" id="cate_menu_2"></div>
+<div class="pub_cate_menu" id="cate_menu_3"></div>
+<div class="pub_cate_menu" id="cate_menu_4"></div>
+</div>
+
+<iframe id="likeajaxform" src="about:blank" style="display:none;"></iframe>
+<script language="javascript" type="text/javascript" src="$Murl/post.js"></script>
+<input type="hidden" value="$fid" id="fid"  name="fid"/>
+<input name="ctype" type="hidden" id="ctype" value="$ctype" />
+<input name="id" type="hidden" id="id" value="$id" />
+<!--
+EOT;
+if(!$post_company){
+print <<<EOT
+-->
+<div style="clear:both; padding:8px 8px 8px 0;"><span  id="choosed" class="post_notice" style="color:#FF0000; ">您当前选择的是：$guidefid</span> <input type="button"  id="nextdo" name="nextdo" value="0"   style="display:none"  /></div>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<div style="clear:both;  padding:5px 8px 8px 35px;background:url($Murl/images/default/jiantou.jpg) left no-repeat;"  class="jiantou">
+<span id="choosed" class="post_notice " >您当前选择的是:</span> &nbsp; 
+ <input type="button"  value="↓ 添加" id="nextdo" disabled="disabled" style="background:none;background-color:#E8F3FC; height:auto; color:#FF0000" onclick="addFid();"/>
+</div>
+<div class="pub_cate_menu choosedok">
+<strong>已经选择好的分类</strong>：(最多添加$webdb[maxCompanyFidNum]个分类,<input name="no" type="checkbox" value="0" /><font color="blue">取消勾选即为移除对应分类</font>)
+<div id="fiddb">
+<!--
+EOT;
+//如果有预定变量就预设啦
+	foreach($fids as $fid){
+		$parents = $bcategory->get_parents($fid);
+		$str = '';
+		foreach($parents as $v) $str .= $v['name'] .' &gt ';
+		$str .= $bcategory->categories[$fid]['name'];
+			
+print <<<EOT
+-->
+	<div id='div_$fid'><input type='checkbox' name='fids[]' value='$fid' checked onclick='removeFid(this);'> $str</div>
+<!--
+EOT;
+	}
+print <<<EOT
+-->
+</div>
+
+</div>
+
+
+<script language="javascript">
+function addFid(){
+	var fid=document.getElementById('fid').value;
+	var str=document.getElementById('choosed').innerHTML.replace("您当前选择的是:"," ");
+	var fiddb=document.getElementById('fiddb');
+	try{
+		var fiddbname=fiddb.getElementsByTagName('input');
+		if(fiddbname.length>=10){
+			alert('最多添加$webdb[maxCompanyFidNum]个分类');
+			return false;
+		}
+		for(var i=0;i<fiddbname.length;i++){
+			if(fiddbname[i].value==fid){
+				alert('不能重复添加!');
+				return false;
+			}
+		}		
+	}catch(e){
+		
+	}
+	var onestr="<div id='div_"+fid+"'><input type='checkbox' name='fids[]' value='"+fid+"' checked onclick='removeFid(this);'> "+str+"</div>";
+	fiddb.innerHTML=fiddb.innerHTML+onestr;
+}
+function removeFid(me){
+	if(!confirm('确定放弃此项吗?')){
+		me.checked=' checked';
+		return false;
+	}else{
+		
+		document.getElementById("div_"+me.value).innerHTML="";	
+		document.getElementById("div_"+me.value).outerHTML="";	
+		
+	}
+}
+</script>
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<!--
+EOT;
+?>
+

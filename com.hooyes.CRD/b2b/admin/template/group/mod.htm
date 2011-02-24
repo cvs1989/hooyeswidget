@@ -1,0 +1,116 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" id="grouptr">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2">修改用户组</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%">现有用户组:</td>
+      <td width="70%"> $select_group </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%">用户组名称:</td>
+      <td width="70%"> 
+        <input type="text" name="postdb[grouptitle]" value="$rsdb[grouptitle]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%">是否允许登录后台管理:</td>
+      <td width="70%"> 
+        <input type="radio" name="postdb[allowadmin]" value="1" $allowadmin[1]>
+        允许 
+        <input type="radio" name="postdb[allowadmin]" value="0" $allowadmin[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%">用户组类型:</td>
+      <td width="70%"> 
+        <input type="radio" name="postdb[gptype]" value="0" $rsdb_gptype[0]>
+        普通用户组 
+        <input type="radio" name="postdb[gptype]" value="1" $rsdb_gptype[1]>
+        系统用户组 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%">升级最少{$webdb[moneyname]}(只对会员组有效):</td>
+      <td width="70%"> 
+        <input type="text" name="postdb[levelnum]" value="$rsdb[levelnum]" size="10">
+        <input type="hidden" name="gid" value="$gid">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%">空间大小:</td>
+      <td width="70%"> 
+        <input type="text" name="postdb[totalspace]" size="10" value="$rsdb[totalspace]">
+        M </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width="30%">是否允许无限制上传文件:<span help=1>当允许无限制上传文件的话,就取消统计用户上传文件占用空间大小.一般只对管理员.才推荐这么做.</span></td>
+      <td width="70%">
+        <input type="radio" name="powerdb[AllowUploadMax]" value="1" $AllowUploadMax[1]>
+        允许
+        <input type="radio" name="powerdb[AllowUploadMax]" value="0" $AllowUploadMax[0]>
+        不允许 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%" height="2">上传的文件类型:(留空将以系统默认为标准)</td>
+      <td width="70%" height="2"> 
+        <input type="text" name="powerdb[upfileType]" size="70" value="$powerdb[upfileType]">
+        多个请用英文空格分开,如:.rar .jpg</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="30%" height="1">每上传一个文件不能超过多大:(留空或为0时将以系统默认为标准)</td>
+      <td width="70%" height="1"> 
+        <input type="text" name="powerdb[upfileMaxSize]" size="10" value="$powerdb[upfileMaxSize]">
+        K </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%" height="1">投稿是否自动通过审核:<br>
+        (超管与前台管理员默认有权限)</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[PassContribute]" value="1" $PassContribute[1]>
+        是 
+        <input type="radio" name="powerdb[PassContribute]" value="0" $PassContribute[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%" height="1">如果上面设置投稿不自动通过审核,那么审核过的文章是否允许修改</td>
+      <td width="70%" height="1"> 
+        <input type="radio" name="powerdb[EditPassPower]" value="0" $EditPassPower[0]>
+        可以修改,没影响 
+        <input type="radio" name="powerdb[EditPassPower]" value="1" $EditPassPower[1]>
+        可以修改,但修改后变为未审核状态 
+        <input type="radio" name="powerdb[EditPassPower]" value="2" $EditPassPower[2]>
+        审核后不能再修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" guest=1> 
+      <td width="30%">允许在前台投稿的栏目:(不选择则无权限,然而超级管理员与对应的栏目管理员默认有权限)<br>
+        按住键盘Ctrl键可以多选 </td>
+      <td width="70%">{$sort_fid}</td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" guest=1> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function showguest(gid){
+	oo=get_obj("grouptr").getElementsByTagName("TR");
+	for(var i=0;i<oo.length;i++){
+		if(gid=='2'&&oo[i].getAttribute("guest")==null){
+			oo[i].style.display="none";
+		}
+	}
+}
+showguest('$gid');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

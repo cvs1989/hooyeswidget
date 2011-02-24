@@ -1,0 +1,45 @@
+<!--
+<?php
+foreach($listdb_moresort AS $key2=>$rss){
+print <<<EOT
+--> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="list.php?fid=$rss[fid]">$rss[name]</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="list.php?fid=$rss[fid]">¸ü¶à...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!--
+EOT;
+foreach($rss[article] AS $key1=>$rs){
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->
+      <div style="clear:both;border-bottom:1px dotted #eee;padding-top:5px;height:21px;width:99%;"> 
+        <span style="float:left;color:#666;">¡¤<a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" style="font-size:14px;{$rs[fontweight]}{$rs[fontcolor]}" target="_blank">$rs[full_title]</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">{$rs[posttime]}</span> 
+      </div>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

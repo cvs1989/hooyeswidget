@@ -1,0 +1,26 @@
+<!--
+<?php
+$i=0;
+foreach($listdb AS $key=>$rs){
+$i++;
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+$background=$i%2==0?'#F2F2F2':'#fff';
+$rs[content]=get_word($rs[content],$fidDB[config][listContentNum]>0?$fidDB[config][listContentNum]:210);
+$target=$rs[target]?'_blank':'_self';
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background:$background;border-bottom:1px dotted #ccc;">
+             
+			  <tr> 
+                <td style="line-height:30px;padding-left:10px;padding-top:8px;"><a style="color:#0044DD;font-size:13px;{$rs[fontweight]}{$rs[fontcolor]}" href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]'><b>$rs[title]</b></a></td>
+              </tr>
+              <tr> 
+                <td style="padding-left:10px;padding-bottom:8px;line-height:200%;text-indent:2em;">{$rs[content]}  ({$rs[posttime]}) </td>
+              </tr>
+                 
+            </table> <!--
+EOT;
+}
+?>
+-->

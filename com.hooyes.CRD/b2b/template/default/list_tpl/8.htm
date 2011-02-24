@@ -1,0 +1,74 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="96%" border="0" cellspacing="0" cellpadding="0" style="margin-left:15px;margin-top:15px;">
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+if($key==0&&$page<2){
+$rs[content]=get_word($rs[content],190);
+print <<<EOT
+-->
+<tr> <td style="background:url($webdb[www_url]/images/default/flea_line.gif) repeat-x bottom;">
+<div style="padding-left:1px;padding-top:5px;"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" style="{$rs[fontweight]}{$rs[fontcolor]}font-size:16px;font-weight:bold;">$rs[title]</a></div>
+<div style="text-indent:2em;margin-bottom:5px;width:98%;padding-left:8px;color:#666;">{$rs[content]} [<A HREF="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="_blank">ÔÄ¶ÁÈ«ÎÄ</A>]</div></td></tr>
+      <!--
+EOT;
+}else{print <<<EOT
+-->
+              <tr> 
+                <td style="line-height:33px;background:url($webdb[www_url]/images/default/flea_line.gif) repeat-x bottom;color:#666;"><span style="float:left;">¡¤<a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]' style="font-size:13px;{$rs[fontweight]}{$rs[fontcolor]}">$rs[title]</a> 
+                  <!--
+EOT;
+if($webdb[ListShowIcon]&&$rs[picurl]){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/img_ico.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$rs[levels]){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/good_ico.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$rs['list']>$timestamp){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/top_icon.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$webdb[hotArticleNum]&&$rs['hits']>$webdb[hotArticleNum]){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/hot_icon.gif"> 
+                  <!--
+EOT;
+}
+if($webdb[ListShowIcon]&&$webdb[newArticleTime]&&($timestamp-$rs['full_posttime'])<$webdb[newArticleTime]*3600){
+print <<<EOT
+-->
+                   &nbsp;<img src="$webdb[www_url]/images/default/new_ico.gif"> 
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                  </span><span style="float:right;">[{$rs[posttime]}]</span> </td>
+              </tr>
+              <!--
+EOT;
+}}print <<<EOT
+-->
+            </table>
+            
+<!--
+EOT;
+?>
+-->

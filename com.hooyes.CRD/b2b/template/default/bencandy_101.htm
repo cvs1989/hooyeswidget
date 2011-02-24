@@ -1,0 +1,266 @@
+<!--
+<?php
+$backdb[subject] || ($backdb[subject]="没有了") && ($backdb[click]="return false;");
+$nextdb[subject] || ($nextdb[subject]="没有了") && ($nextdb[click]="return false;");
+if(date("W",$rsdb[hits_time])!=date("W",$timestamp))$rsdb[week_hits]="0";
+if(date("md",$rsdb[hits_time])!=date("md",$timestamp))$rsdb[day_hits]="0";
+if(date("m",$rsdb[hits_time])!=date("m",$timestamp))$rsdb[month_hits]="0";
+$rsdb[hits_time]&&$rsdb[hits_time]=date("Y-m-d H:i:s",$rsdb[hits_time]);
+print <<<EOT
+--> 
+<!--<script src='http://pstatic.xunlei.com/js/webThunderDetect.js'></script>-->
+<script src='$webdb[www_url]/images/default/xunlei.js'></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable viewcontent" id="viewdownload">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"><a editurl='$webdb[www_url]/do/job.php?job=bencandy&fid=$fid&id=$id&act=do'>TOP</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td width="15%" class="a1">{$fidDB[M_alias]}名称:</td>
+                <td width="85%">{$rsdb[title]}</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td width="15%" class="a1" bgcolor="#FFFFFF">提交者:</td>
+                <td width="45%" bgcolor="#FFFFFF">{$rsdb[username]}</td>
+                <td rowspan="7" width="40%" bgcolor="#FFFFFF" align="center" valign="middle"><br>
+                  <img src="$rsdb[picurl]" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'" width="160" height="120"></td>
+              </tr>
+              <tr> 
+                <td class="a1">提交日期:</td>
+                <td>{$rsdb[posttime]}</td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">浏览量:</td>
+                <td bgcolor="#FFFFFF"><font id="hits">{$rsdb[hits]}</font></td>
+              </tr>
+              <tr> 
+                <td class="a1">总下载量:</td>
+                <td ><font id="total_hits">{$rsdb[total_hits]}</font> 次</td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">本月下载量:</td>
+                <td bgcolor="#FFFFFF"><font id="month_hits">{$rsdb[month_hits]}</font> 次</td>
+              </tr>
+              <tr> 
+                <td class="a1">本周下载量:</td>
+                <td><font id="week_hits">{$rsdb[week_hits]}</font> 次</td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">今日下载量:</td>
+                <td bgcolor="#FFFFFF"><font id="day_hits">{$rsdb[day_hits]}</font> 次</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td width="15%" class="a1">最后下载日期:</td>
+                <td width="85%"><font id="hits_time">{$rsdb[hits_time]}</font></td>
+              </tr>
+              <tr id='tr_my_author'> <td class='a1 b1'>软件作者:</td> <td class='a2 b1'>{$rsdb[my_author]}&nbsp;</td></tr><tr id='tr_my_copyfromurl'> <td class='a1 b2'>厂商主页:</td> <td class='a2 b2'>{$rsdb[my_copyfromurl]}&nbsp;</td></tr><tr id='tr_my_demo'> <td class='a1 b1'>演示网址:</td> <td class='a2 b1'>{$rsdb[my_demo]}&nbsp;</td></tr><tr id='tr_operatingsystem'> <td class='a1 b2'>运行环境:</td> <td class='a2 b2'>{$rsdb[operatingsystem]}&nbsp;</td></tr><tr id='tr_softlanguage'> <td class='a1 b1'>软件语言:</td> <td class='a2 b1'>{$rsdb[softlanguage]}&nbsp;</td></tr><tr id='tr_copyright'> <td class='a1 b2'>授权形式:</td> <td class='a2 b2'>{$rsdb[copyright]}&nbsp;</td></tr><tr id='tr_softsize'> <td class='a1 b1'>文件大小:</td> <td class='a2 b1'>{$rsdb[softsize]}&nbsp;M</td></tr><tr id='tr_softurl'> <td class='a1 b2'>软件地址:</td> <td class='a2 b2'>{$rsdb[softurl]}&nbsp;</td></tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">{$fidDB[M_alias]}介绍:</td>
+                <td bgcolor="#FFFFFF">{$rsdb[content]}</td>
+              </tr>
+              <tr> 
+                <td class="a1">下载说明:</td>
+                <td >☉如果下载设置了收费等权限,则无法使用迅雷,快车下载。<br>
+                  ☉推荐使用迅雷下载本站软件，使用 WinRAR v3.10 以上版本解压本站软件。 <br>
+                  ☉如果这个软件总是不能下载的请联系我们,谢谢合作!!<br>
+                  ☉下载本站资源，如果服务器暂不能下载请过一段时间重试！<br>
+                  ☉如果遇到什么问题，请到本站论坛去咨寻，我们将在那里提供更多 、更好的资源！<br>
+                  ☉本站提供的一些商业软件是供学习研究之用，如用于商业用途，请购买正版。 </td>
+              </tr>
+            </table><!--
+EOT;
+if($rsdb[ifvote]){print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="content_vote">
+  <tr>
+    <td><SCRIPT src="$webdb[www_url]/do/vote.php?job=js&aid=$rsdb[aid]"></SCRIPT></td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+            
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <!--php168
+EOT;
+if($webdb[showComment] && $fidDB[allowcomment] && !$rsdb[forbidcomment]){@include(html("bencandy_tpl/comment"));}print <<<EOT
+php168-->    </td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sonSortName">
+        <tr> 
+          <td class="head" height="19"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关栏目</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--php168
+EOT;
+//相关栏目名称
+@include("$sortnameTPL");print<<<EOT
+php168-->           </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">最新{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Newtopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=new&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Newtopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">热门{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Hottopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=hot&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Hottopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">推荐{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Comtopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=com&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Comtopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Liketopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=like&id=$id&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Liketopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">广告位</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left"> {$AD_label['article_show']}
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<script src='http://ufile.kuaiche.com/Flashget_union.php?fg_uid=$webdb[FlashGet_ID]'></script>
+<SCRIPT LANGUAGE='JavaScript'>
+document.getElementById('xunlei_flashget').style.display='';
+function ConvertURL2FG(url,fUrl,uid){try{FlashgetDown(url,uid);}catch(e){location.href = fUrl;}}
+function Flashget_SetHref(obj,uid){obj.href = obj.fg;}
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,83 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?lfj=$lfj&job=work">
+    <tr align="center" class="head"> 
+      <td width="16%">订单号</td>
+      <td width="11%">顾客称呼</td>
+      <td width="13%">帐号</td>
+      <td width="16%">联系手机</td>
+      <td width="14%">订单日期</td>
+      <td width="9%">支付情况</td>
+      <td width="9%">发货与否</td>
+      <td width="5%">详情</td>
+      <td width="7%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="center" width="16%">{$rs[Id]}</td>
+      <td width="11%" align="center" >$rs[truename]</td>
+      <td width="13%" align="center" >$rs[username]</td>
+      <td align="center" width="16%"  >$rs[mobphone] </td>
+      <td  align="center" width="14%">$rs[posttime]</td>
+      <td  align="center" width="9%">$rs[ifpay]</td>
+      <td align="center" width="9%">$rs[ifsend]</td>
+      <td align="center" width="5%"><a href="?lfj=$lfj&job=view&orderid=$rs[id]"><img alt='浏览' src='../member/images/icon_view.gif' border=0></a></td>
+      <td align="center" width="7%"> <a href="?lfj=$lfj&action=del&id=$rs[id]" onclick="return confirm('你确认要删除吗?');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage}</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT><br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="?lfj=$lfj&job=$job">
+    <tr class="head"> 
+      <td><font color="#FFFFFF">订单搜索</font></td>
+    </tr>
+    <tr> 
+      <td align="center"> 关键字 
+        <input type="text" name="keyword">
+        <select name="type">
+          <option value="id">订单号</option>
+          <option value="buyer">顾客称呼</option>
+        </select>
+        <input type="submit" name="Submit7" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

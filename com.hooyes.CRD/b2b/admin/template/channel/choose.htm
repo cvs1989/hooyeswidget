@@ -1,0 +1,45 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <tr class="head"> 
+    <td align="center">请选择</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <form name="form1" method="post" action="index.php?lfj=$lfj&action=$action">
+      <td align="center"> 
+        <!--
+EOT;
+if($label_type=='bencandy'){
+print <<<EOT
+-->
+        内容页ID: 
+        <input type="text" name="aid" value="$aid" size="5">(默认即可)<br>
+<!--
+EOT;
+}
+print <<<EOT
+--> 与哪个栏目共用标签:{$sort_fup} (一般不必选择)
+
+        <br>
+        <input type="submit" name="Submit" value="下一步">
+        <input type="hidden" name="fid" value="$fid">
+        <input type="hidden" name="label_type" value="$label_type">
+        <input type="hidden" name="step" value="2">
+      </td>
+    </form>
+    <form name="form2" method="post" action="index.php?lfj=$lfj&action=updatelabel">
+    </form>
+  </tr>
+  <tr bgcolor="#FFFFFF" align="left"> 
+    <td>注意:<br>
+      1.一般情况是留空,不必选择,那将是同样的模板使用同样的标签内容。<br>
+      2.你也可以特别指定与哪个栏目共用标签参数,不过有个前提是必须与那个栏目具有相同的模板,否则选择了栏目也没意义.<br>
+      3.选择本身栏目的话.将以独立的标签参数显示.</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

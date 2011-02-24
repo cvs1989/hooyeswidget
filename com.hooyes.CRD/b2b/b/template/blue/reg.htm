@@ -1,0 +1,332 @@
+<!--
+<?php
+print <<<EOT
+-->
+<script language="javascript" type="text/javascript" src="$Murl/images/$STYLE/inc.js"></script>
+<style type="text/css">
+.reg_showinfo{ border:1px #FF6600 solid; padding:3px 3px 3px 27px; color:#FF6600; background:url($Murl/images/$STYLE/reg_showinfo.gif) no-repeat; display:none}
+.reg_Input{ height:22px; width:200px;}
+</style>
+<table width="100%" border="0" cellspacing="1" cellpadding="1" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="regform" >
+<!--
+EOT;
+
+$_fromurl=urlencode($_fromurl);
+if($step!=2 && $step!=3){
+print <<<EOT
+-->      
+	    <tr> 
+          <td class="head"><h3 class="L"></h3>
+            <span class="TAG">注册步骤：<strong>1.填写信息</strong> > 2.注册成功 > 3.完善公司信息</span>
+            <h3 class="R"></h3></td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+
+              
+
+     <table width="100%" border="0" cellspacing="5" cellpadding="5">
+			<form name="form1" method="post" action="?f" onsubmit="return regpost();">
+              <tr>
+                <td height="25">
+                    <table width="90%" border="0" align="center" cellpadding="6" cellspacing="1">
+                      <tr> 
+                        <td colspan="4" class="linetitle">帐号基本信息(必填)</td>
+                      </tr>
+<!--
+EOT;
+if($webdb[RegCompany]){print <<<EOT
+-->
+					<!--  <tr style="display:none;"> 
+                        <td width="20%" align="right"><strong><font color="red">*</font> 会员类型</strong>:</td>
+                        <td width="80%"> 
+                          <input type="radio" name="grouptype" value="0" style="border:0px;" checked>
+                          个人用户 
+                          <input type="radio" name="grouptype" value="1" style="border:0px;">
+                        企业用户</td>
+                      </tr>-->
+<!--
+EOT;
+}
+print <<<EOT
+-->
+					  
+                      <tr> 
+                        <td width="18%" align="right" valign="middle"><strong><font color="red">*</font> 帐号</strong>:</td>
+                        <td colspan="2"> 
+                          <input name="username" type="text" id="reg_username" class="reg_Input" onblur="ckdata('reg_username','username_msg','name')" onfocus="document.getElementById('showinfo_username').style.display='block';" />
+                          <span  id="username_msg"></span>                     </td>
+                        <td><div class="reg_showinfo" id="showinfo_username">帐号只能是3-30个字,请避免特殊符号</div></td>
+                      </tr>
+                      <tr> 
+                        <td width="18%" align="right" valign="middle"><strong><font color="red">*</font> 邮箱</strong>:</td>
+                        <td colspan="2"> 
+                          <input name="email" type="text" id="reg_email" class="reg_Input" onblur="ckdata('reg_email','email_msg','email')"   onfocus="document.getElementById('showinfo_email').style.display='block';" />
+                          <span id="email_msg"></span>                        </td>
+                        <td><div class="reg_showinfo" id="showinfo_email">请输入有效的电子邮箱</div></td>
+                      </tr>
+                      <tr> 
+                        <td width="18%" align="right" valign="middle"><strong><font color="red">*</font> 密码</strong>:</td>
+                        <td colspan="2"> 
+                          <input type="password" name="password" class="reg_Input" id="reg_password" onblur="ckdata('reg_password','password_msg','pwd')" onfocus="document.getElementById('showinfo_password').style.display='block';" />
+						  <span id="password_msg"></span>                        </td>
+                        <td><div class="reg_showinfo" id="showinfo_password">6-30个字符,推荐您数字和字母混合设置</div></td>
+                      </tr>
+                      <tr> 
+                        <td width="18%" align="right" valign="middle"><strong><font color="red">*</font> 重复输入密码</strong>:</td>
+                        <td colspan="2"> 
+                          <input type="password" name="password2" class="reg_Input" id="reg_password2" />                      </td>
+                        <td>&nbsp;</td>
+                      </tr>       <!--
+EOT;
+if($webdb[yzImgReg]){
+print <<<EOT
+-->
+                      <tr>
+                        <td width="18%" align="right"><strong><font color="red">*</font> 验 证 码</strong>:</td>
+                        <td width="15%"><input type="text" name="yzimg" size="8" style="float:left;"  onfocus="document.getElementById('showinfo_yzimg').style.display='block';"  onblur="document.getElementById('showinfo_yzimg').style.display='none';" />&nbsp;</td>
+                        <td width="29%"><img border="0" name="imageField" src="$webdb[www_url]/do/yzimg.php" style="float:left; cursor: pointer;" alt="点击刷新验证码" onclick="this.src='$webdb[www_url]/do/yzimg.php?'+Math.random();" /></td>
+                        <td width="38%"><div class="reg_showinfo" id="showinfo_yzimg">输入图片中显示的数字</div></td>
+                      </tr>          <!--
+EOT;
+}
+print <<<EOT
+-->
+                    </table>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var filed_id='';
+var filed_name='';
+function ckregdata(a,b){
+	filed_id=a;
+	filed_name=b;
+}
+function ckregdatapost(){
+	id_array=filed_id.split(',');
+	name_array=filed_name.split(',');
+	for(var i=0;i<id_array.length;i++){
+		if(id_array[i]!=''&&document.getElementById(id_array[i]).value==''){
+			alert("“"+name_array[i]+'”不能为空');
+			document.getElementById(id_array[i]).focus();
+			return false;
+		}
+	}
+}
+document.write('<script src="$webdb[www_url]/images/$STYLE/setday.js"><\/script>');
+/*如要为页面布局考虑的话，你可以把template\default\regfield.htm里边的内容复制过来，然后把以下两行删除即可*/
+document.write('<div id="showRegDiv"></div>');
+AJAX.get("showRegDiv","$webdb[www_url]/do/regfield.php?job=reg");
+function ckdata(a,b,c){
+	document.getElementById(a.replace('reg_','showinfo_')).style.display='none';
+	AJAX.get(b,"$webdb[www_url]/do/job.php?job=ckreg&name="+document.getElementById(a).value+"&type="+c);
+}
+
+//-->
+</SCRIPT>
+                    <table width="90%" border="0" align="center" cellpadding="6" cellspacing="1">
+                      <tr> 
+                        <td colspan="3" class="linetitle">公司名称和联系方式</td>
+                      </tr>
+   					  <tr> 
+                        <td width="18%" align="right"><strong><font color="red">*</font> 贵公司名称</strong>:</td>
+                        <td width="44%"> 
+                        <input type="text" name="company_db[title]"  size="40" class="reg_Input"
+                         onfocus="document.getElementById('showinfo_title').style.display='block';"  
+                         onBlur="document.getElementById('showinfo_title').style.display='none';"
+                         id="company_db_title">                        </td>
+                        <td width="38%"><div class="reg_showinfo" id="showinfo_title">此项可以是某公司，某单位，某商行等名称</div></td>
+					  </tr>
+					   <tr> 
+                        <td width="18%" align="right"><strong><font color="red">*</font> 真实姓名</strong>:</td>
+                        <td width="44%"> 
+                         <input type="text" name="company_db[qy_contact]"  size="20" class="reg_Input"
+                       onfocus="document.getElementById('showinfo_qy_contact').style.display='block';"  
+                         onBlur="document.getElementById('showinfo_qy_contact').style.display='none';"                    
+                        id="company_db_qy_contact" >                        </td>
+                        <td width="38%"><div class="reg_showinfo" id="showinfo_qy_contact">推荐填写公司负责人的真实姓名</div></td>
+				      </tr>
+					   <tr> 
+                        <td width="18%" align="right">职位:</td>
+                        <td width="44%"> 
+                         <input type="text" name="company_db[qy_contact_zhiwei]" class="reg_Input"  size="20">                        </td>
+                        <td width="38%">&nbsp;</td>
+				      </tr>
+					    <tr> 
+                        <td width="18%" align="right">性别:</td>
+                        <td width="44%"> 
+                         
+<input type="radio" checked="checked" value="1" name="company_db[qy_contact_sex]" />
+先生
+<input type="radio" value="0" name="company_db[qy_contact_sex]" />
+女士              </td>
+                        <td width="38%">&nbsp;</td>
+				      </tr>
+					     <tr> 
+                        <td width="18%" align="right">联系电话:</td>
+                        <td width="44%"> 
+                          <input type="text" name="company_db[qy_contact_tel]" class="reg_Input"  size="20"> 区号-号码-分机                        </td>
+                        <td width="38%">&nbsp;</td>
+				      </tr>
+					       <tr> 
+                        <td width="18%" align="right">移动电话号码:</td>
+                        <td width="44%"> 
+                          <input type="text" name="company_db[qy_contact_mobile]" class="reg_Input" size="20">                        </td>
+                        <td width="38%">&nbsp;</td>
+			          </tr>
+					        <tr> 
+                        <td width="18%" align="right">传真:</td>
+                        <td width="44%"> 
+                          <input type="text" name="company_db[qy_contact_fax]" class="reg_Input"  size="20">                        </td>
+                        <td width="38%">&nbsp;</td>
+			          </tr>
+                    </table>
+                    <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="20%" align="center">&nbsp;</td>
+                        <td width="80%" height="50" align="left" valign="middle"><br />
+                          <input type="submit" name="Submit3" value="同意注册协议，提交注册信息" class="button" />
+                          <input type="hidden" name="step" value="2" />
+                          <input type="hidden" value="$_fromurl" name="jumpto" />
+                          <script language="JavaScript">
+<!--
+function regpost(){
+	if(document.getElementById('reg_username').value==''){
+		alert('用户名不能为空');
+		document.getElementById('reg_username').focus();
+		return false;
+	}
+	if(document.getElementById('reg_email').value==''){
+		alert('邮箱不能为空');
+		document.getElementById('reg_email').focus();
+		return false;
+	}
+	if(document.getElementById('reg_password').value==''){
+		alert('密码不能为空');
+		document.getElementById('reg_password').focus();
+		return false;
+	}
+	if(document.getElementById('reg_password2').value==''){
+		alert('重复密码不能为空');
+		document.getElementById('reg_password2').focus();
+		return false;
+	}
+	
+	if(document.getElementById('company_db_title').value==''){
+		alert('公司名称不能为空');
+		document.getElementById('company_db_title').focus();
+		return false;
+	}
+	if(document.getElementById('company_db_qy_contact').value==''){
+		alert('公司负责人真实姓名不能为空');
+		document.getElementById('company_db_qy_contact').focus();
+		return false;
+	}
+	
+	if(ckregdatapost()==false){
+		return false;
+	}
+}
+
+//-->
+                          </script>
+                      </td>
+                      </tr>
+                    </table>
+                  </td>
+              </tr> </form>
+            </table>
+			<table width="90%" align="center" cellpadding="5" cellspacing="5" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <tr> 
+                <td align="left">
+				<strong>在注册前请先阅读以下协议</strong> 
+				<div style="overflow-Y:scroll;overflow-X:hidden; height:100px; border:1px #cccccc solid; padding:5px; line-height:180%;">
+                  <p>一、不得利用本站危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益，不得利用本站制作、复制和传播下列信息： 
+                  </p>
+                  <p>（一）煽动抗拒、破坏宪法和法律、行政法规实施的；<br>
+                    （二）煽动颠覆国家政权，推翻社会主义制度的；<br>
+                    （三）煽动分裂国家、破坏国家统一的；<br>
+                    （四）煽动民族仇恨、民族歧视，破坏民族团结的；<br>
+                    （五）捏造或者歪曲事实，散布谣言，扰乱社会秩序的；<br>
+                    （六）宣扬封建迷信、淫秽、色情、赌博、暴力、凶杀、恐怖、教唆犯罪的；<br>
+                    （七）公然侮辱他人或者捏造事实诽谤他人的，或者进行其他恶意攻击的；<br>
+                    （八）损害国家机关信誉的；<br>
+                    （九）其他违反宪法和法律行政法规的；<br>
+                    （十）发布黄色反动文章</p>
+                  <p>二、互相尊重，对自己的言论和行为负责。</p>
+                 </div>
+				  
+                </td>
+                </tr>
+            </table>
+    </td></tr>
+         
+<!--
+EOT;
+
+}
+elseif($step==3){
+print <<<EOT
+-->
+	<tr> 
+          <td class="head"><h3 class="L"></h3>
+            <span class="TAG">注册步骤：1.填写信息 > <strong>2.注册成功</strong> > 3.完善公司信息</span>
+            <h3 class="R"></h3></td>
+   </tr>
+   
+   <tr> 
+     <td class="middle" align="center"><br />
+       <table width="70%" align="center" cellpadding="5" cellspacing="5" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+    <tr> 
+     <td width="33%" align="right"><img src="$Murl/images/$STYLE/gougou2.gif" border="0" /></td>
+	 <td width="67%" align="left" valign="middle"><strong style=" font-size:20px; line-height:40px;"><font color="red">$lfjid 恭喜您,注册成功啦!</font></strong></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" ><div class="regnotice" align="center"><b style="font-size:18px;">请您继续完善公司信息</b>
+<!--
+EOT;
+if($jastgoctrl){
+print <<<EOT
+-->
+	<p>·您的公司资料库已经建立，可以在商铺控制中心继续修改完善.</p>
+	<p>·如果您暂时不想维护公司信息，点击这里直接<strong><a href="$Mdomain/myhomepage.php">进入我的商铺</a></strong>.</p>
+    <!--
+EOT;
+}else{
+print <<<EOT
+-->
+	<p>·您的公司资料库还未建立，您可以会员中心登记您的公司信息.</p>
+	<p>·如果您不想登记公司信息，可以点击这里直接<strong><a href="$Mdomian/member/">进入会员中心</a></strong></p>
+    <!--
+EOT;
+}
+print <<<EOT
+-->  
+	  </div></td>
+      </tr>
+    <tr>
+      <td align="center">&nbsp;</td>
+      <td align="left"><a href="$jastgourl" target="_blank"><img src="$Murl/images/$STYLE/company_info_goon.jpg"  border="0"/></a></td>
+    </tr>
+</table>
+	
+
+     </td></tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

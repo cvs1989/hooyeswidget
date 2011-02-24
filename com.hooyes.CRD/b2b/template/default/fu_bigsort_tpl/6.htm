@@ -1,0 +1,95 @@
+<!--
+<?php
+print <<<EOT
+--> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="AutoRows">
+        <!--
+EOT;
+$moreline=2;
+$array=array_chunk($listdb_moresort,$moreline);
+$moretdwidth=floor(100/$moreline)."%";
+$moreline>1&&$moretimedisplay='none';
+foreach($array AS $key2=>$array2){
+print <<<EOT
+-->
+        <tr> 
+          <!--
+EOT;
+$iii=0;
+foreach($array2 AS $key=>$rss){
+$iii++;
+if($moreline>1&&$iii%$moreline==1){
+$tbstyle=" style='padding-right:2px;' ";
+}elseif($moreline>1&&$iii%$moreline==0){
+$tbstyle=" style='padding-left:2px;' ";
+}else{
+$tbstyle=" ";
+}
+print <<<EOT
+-->
+          <td width="$moretdwidth" $tbstyle> 
+            <table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+              <tr> 
+                <td class="head"> 
+                  <h3 class="L"></h3>
+                  <span class="TAG"><a href="fulist.php?fid=$rss[fid]">$rss[name]</A></span> 
+                  <h3 class="R"></h3>
+                  <span class="more" style="float:right;"><a href="fulist.php?fid=$rss[fid]">更多...</A></span> 
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:3px 0 8px 0;">
+                    <!--
+EOT;
+foreach($rss[article] AS $key1=>$rs){
+$rs[posttime]=date("m-d",$rs[full_posttime]);
+$rs[title]=get_word($rs[full_title],44,0);
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+if($key1==0){
+$rs[content]=get_word($rs[content],86);
+print <<<EOT
+-->
+<tr> <td>
+                  <div style="padding-left:1px;padding-top:5px;"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" style="font-size:15px;font-weight:bold;{$rs[fontcolor]}" target="_blank">$rs[title]</a></div>
+<div style="text-indent:2em;border-bottom:1px dotted #ccc;margin-bottom:5px;width:97%;padding-left:8px;color:#666;">{$rs[content]} [<A HREF="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="_blank">阅读全文</A>]</div></td></tr>
+                    
+      <!--
+EOT;
+}else{print <<<EOT
+-->
+                    <tr> 
+                      <td style="padding-top:6px;">
+                  <div style="background:url($webdb[www_url]/images/default/arrow_list.gif) no-repeat 0 2px;padding-left:14px;"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title="$rs[full_title]" style="font-size:14px;{$rs[fontweight]}{$rs[fontcolor]}" target="_blank">$rs[title]</a></div>
+                </td>
+                    </tr>
+                    <!--
+EOT;
+}}print <<<EOT
+-->
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td class="foot"> 
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </tr>
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </table>
+<!--
+EOT;
+?>
+-->

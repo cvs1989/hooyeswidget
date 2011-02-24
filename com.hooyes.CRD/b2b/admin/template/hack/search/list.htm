@@ -1,0 +1,60 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit22" value="选择类型" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=list')">
+      　　 
+      <input type="button" name="Submit2" value="获取调用代码" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=getcode')">
+      　　 </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+    <tr class="head"> 
+      <td align="center" colspan="2"><font color="#FFFFFF">请选择</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%" > 选择类型</td>
+      <td width="83%" > 
+        <input type="radio" name="postdb[systemType]" value="web168" {$systemTypeDB[web168]} onclick="choose('web168');">
+        站内搜索 
+        <input type="radio" name="postdb[systemType]" value="baidu" {$systemTypeDB[baidu]} onclick="choose('baidu');">
+        百度搜索</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%" >显示内容</td>
+      <td width="83%" > 
+        <textarea name="postdb[searchcode]" cols="80" rows="8" id="searchcode">$searchcode</textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td style="padding-left:200px;" colspan="2"> 
+        <input type="submit" name="Submit" value="生成网页调用代码">
+      </td>
+    </tr>
+  </form>
+</table>
+<div style='display:none'><iframe name="Iframe" id="Iframe" src="about:blank"></iframe></div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose(type){
+	window.open("index.php?lfj=hack&hack=$hack&job=choose&$timestamp&type="+type,target="Iframe");
+}
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function showcode(msg){
+	get_obj("searchcode").value=msg;
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

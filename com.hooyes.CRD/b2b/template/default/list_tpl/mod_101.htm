@@ -1,0 +1,28 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+$rs[content]=get_word($rs[content],$fidDB[config][listContentNum]>0?$fidDB[config][listContentNum]:150);
+$target=$rs[target]?'_blank':'_self';
+print <<<EOT
+-->
+            
+<table width="97%" border="0" cellspacing="0" cellpadding="0" style="margin-left:10px;margin-top:7px;border-bottom:1px dotted #ccc;">
+  <tr> 
+    <td height="7"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]' style="color:#0472BC;font-size:14px;{$rs[fontweight]}{$rs[fontcolor]}"><b>$rs[title]</b></a></td>
+  </tr>
+  <tr>
+    <td>日期: {$rs[posttime]} 归类:{$rs[fname]} 大小:{$rs[softsize]}{$fidDB[M_config][field_db][softsize][form_units]} 环境: 
+      {$rs[operatingsystem]} 授权: {$rs[copyright]}</td>
+  </tr>
+  <tr> 
+    <td style="padding-left:20px;color:#666;">{$rs[content]}</td>
+  </tr>
+</table>
+
+<!--
+EOT;
+}
+?>
+-->

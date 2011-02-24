@@ -1,0 +1,189 @@
+<!--
+<?php
+if($field_name&&in_array($field_name,$ForbidDo[$id])){$readonly=" readonly style='border:0px'";
+$readonly2=' onbeforeactivate="return false" onfocus="this.blur()" onmouseover="this.setCapture()" onmouseout="this.releaseCapture()" ';
+}
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td>[<a href="index.php?lfj=$lfj&job=list">模型列表(创建模型)</a>] 
+	
+[<a href="index.php?lfj=$lfj&job=editmodule&id=$id">模型设置</a>] 
+	[<a href="index.php?lfj=$lfj&job=editsort&id=$id">管理模型字段</a>] 
+	[<a href="?lfj=$lfj&job=addfield&id=$id">添加字段</a>]
+      [<a href="index.php?lfj=$lfj&job=tpl&id=$id">本模型生成模板</a>]
+	  
+	  </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="?lfj=$lfj&action=$job">
+    <tr class="head" align="left"> 
+      <td colspan="2">字段管理</td>
+    </tr>
+    <tr> 
+      <td width="37%">当前模型名称:</td>
+      <td width="63%"> $rsdb[name] </td>
+    </tr>
+    <tr> 
+      <td width="37%">字段名称:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[title]" value="$_rs[title]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">数据库字段ID:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_name]" value="$_rs[field_name]" $readonly>
+        (必须为3个字母以上,字母后面可以跟数字) </td>
+    </tr>
+    <tr> 
+      <td width="37%">数据库字段存放数据类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select $readonly2 name="postdb[field_type]" onChange="field_choose(this.options[this.selectedIndex].value)">
+          <option value="varchar" {$field_type[varchar]}>255个字符串以内</option>
+          <option value="int" {$field_type[int]}>10位以内纯数字</option>
+          <option value="mediumtext" {$field_type[mediumtext]}>文本文档</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="field_leng_tr"> 
+      <td width="37%">数据库字段长度:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_leng]" value="$_rs[field_leng]" size="5">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">用户填写的表单类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select $readonly2 name="postdb[form_type]"  onChange="form_choose(this.options[this.selectedIndex].value)">
+          <option value="text" {$form_type[text]}>单行文本框</option>
+          <option value="textarea" {$form_type[textarea]}>多行文本框</option>
+          <option value="select" {$form_type[select]}>下拉菜单</option>
+          <option value="radio" {$form_type[radio]}>单选框</option>
+          <option value="checkbox" {$form_type[checkbox]}>复选框</option>
+		  <option value="time" {$form_type[time]}>日期选择框</option>
+          <option value="ieedit" {$form_type[ieedit]}>可视化编辑器</option>
+          <option value="upfile" {$form_type[upfile]}>单文件上传</option>
+          <option value="upmorepic" {$form_type[upmorepic]}>多图片</option>
+          <option value="upmorefile" {$form_type[upmorefile]}>多附件下载</option>
+		  <option value="upmoremv" {$form_type[upmoremv]}>多集连续剧</option>
+		  <option value="upplay" {$form_type[upplay]}>单个影音直播</option>
+		  <option value="pingfen" {$form_type[pingfen]}>用户评分</option>
+        </select>
+      </td>
+    </tr><tr id="field_inputleng_tr"> 
+      <td width="37%">表单输入框长度:</td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_inputleng]" value="$_rs[field_inputleng]" size="5">
+        个字 </td>
+    </tr>
+    <tr id="form_set_tr"> 
+      <td width="37%">表单参数选项:<br>
+        (适用下拉菜单/单选框/复选框,每个值换一行,每行你也可以这样设置<font color="#0000FF">“值</font><font color="#FF0000">|<font color="#0000FF">描述”</font></font>，默认“值”等同于“值|值”) 
+      </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_set]" cols="50" rows="5">$_rs[form_set]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单默认值:<br>
+        (一般为空,如果是多选框多个的话,用<b><font color="#FF0000">/</font></b>线隔开,不能换行) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_value]" cols="50" rows="3">$_rs[form_value]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单字段单位名称：<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <input type="text" name="postdb[form_units]" size="5" value="$_rs[form_units]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单附注文字:<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_title]" cols="50" rows="4">$_rs[form_title]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">是否为必填选项:<br>
+      </td>
+      <td width="63%"> 
+        <input type="radio" name="postdb[mustfill]" value="0" $mustfill[0]>
+        不限制 
+        <input type="radio" name="postdb[mustfill]" value="1" $mustfill[1]>
+        必填 <!--
+        <input type="radio" name="postdb[mustfill]" value="2" $mustfill[2]>
+        隐藏(不提供给用户填写，可作为二次开发使用) --></td>
+    </tr>
+    <tr > 
+      <td width="37%">是否启用此字段的搜索功能:<br>
+        (一般为不启用) </td>
+      <td width="63%"> 
+        <input type="radio" name="postdb[search]" value="0" $search[0]>
+        不启用 
+        <input type="radio" name="postdb[search]" value="1" $search[1]>
+        启用</td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+        <input type="hidden" name="field_name" value="$field_name">
+        <input type="hidden" name="list" value="$_rs[list]">
+        <input type="hidden" name="postdb[orderlist]" value="$_rs[orderlist]">
+      </td>
+    </tr>
+  </form>
+</table> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function field_choose(t){
+	if(t=='mediumtext'){
+		get_obj('field_leng_tr').style.display='none';
+	}else{
+		get_obj('field_leng_tr').style.display='';
+	}
+}
+field_choose('$_rs[field_type]');
+
+
+function form_choose(t){
+	if(t=='select'||t=='radio'||t=='checkbox'||t=='select'||t=='pingfen'){
+		get_obj('form_set_tr').style.display='';
+	}else{
+		get_obj('form_set_tr').style.display='none';
+	}
+	if(t=='text'){
+		get_obj('field_inputleng_tr').style.display='';
+	}else{
+		get_obj('field_inputleng_tr').style.display='none';
+	}
+}
+form_choose('$_rs[form_type]');
+//-->
+</SCRIPT><table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  
+    <tr class="head" align="left"> 
+ 
+    <td>帮助说明:</td>
+  </tr>
+  <tr>
+    <td>1.添加或修改字段,需要重新生成模板才能生效,他生成的模板会替换以下文件:<br>
+      前台发表页:/php168/member_tpl/post_$id.htm <br>
+      后台发表页:/php168/admin_tpl/post_$id.htm <br>
+      内容页: /template/default/bencandy_$id.htm<br>
+      对于内容页而言,如果你自己新建了风格如/template/abc/bencandy_$id.htm的话,那就需要手工修改或添加一下变量名<br>
+      2.要把字段设置为下载专用,请选择多文件上传.不要选择单文件上传.单文件上传不是给下载专用的.它的应用很广,比如说可以上传图片或视频,然后在模板那里提取这个变量放到图片地址或视频地址那里,如<br>
+      &lt;img src=变量名&gt;或&lt;swf src=变量名&gt;等等,这是举例说明他的扩展性.<br>
+      3.要想在列表页也调用显示的话.可以使用\$rs[变量名] <br>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

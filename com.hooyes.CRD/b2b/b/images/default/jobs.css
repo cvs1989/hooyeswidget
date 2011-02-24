@@ -1,0 +1,71 @@
+/*
+*首页类目样式
+*/
+.jobssort{ margin-top:5px; width:230px; border:1px #5D96D4 solid;}
+.jobssort .head{ background:url(job_sort_bg.jpg); background-repeat:repeat-x;}
+.jobssort .head .tab1{ color:#07519A; line-height:32px; background:url(job_sort_bg_r1_c2.jpg); width:98px; height:32px; text-align:center;  background-repeat:no-repeat; float:left; font-size:12px; font-weight:bold;}
+.jobssort .head .tab2{ color:#ffffff; line-height:32px; width:98px; height:32px; text-align:center; float:left; font-size:12px; font-weight:bold;}
+.jobssort .head .more{ color:#000000; line-height:32px; width:50px; height:32px; text-align:center; float:right; font-size:12px; }
+.jobssort .list{ 
+padding:5px;
+ line-height:180%;
+ background-color:#F1F8FF;
+ } 
+ .harf{ width:48%; float:left;}
+
+
+/**
+search 搜索框
+**/
+.searchjobs{margin-top:5px; height:180px; line-height:24px; width:100%}
+.searchjobs .searchjobs_title{border-top:1px #999999 solid; background-color:#FDF4F5;}
+
+
+
+/*
+*容器
+*/
+.job_div{ margin-top:5px;border:1px #AACCEF solid; width:100%;}
+.job_div .head{ background:url(job_div_headbg.gif); height:28px; background-repeat:repeat-x;}
+.job_div .head .tab1{ border-right:1px #AACCEF solid; background-color:#FFFFFF; padding:0 20px 0 20px; color:#075198; float:left; line-height:28px; font-weight:bold; width:120px; text-align:center;}
+.job_div .head .tab2{ border-right:1px #AACCEF solid; padding:0 20px 0 20px; color:#075198; float:left; line-height:28px;font-weight:bold; width:120px; text-align:center;}
+
+.job_div .head a{ color:#075198; text-decoration:none;}
+.job_div .head .more{float:right; padding:0 10px 0 10px; line-height:28px;}
+.job_div .list{ padding:5px;line-height:24px;}
+.job_div .list .tr2{ background-color:#F5F9FC; height:24px; line-height:24px;}
+.job_div .list .tr1{ background-color:#ffffff; height:24px; line-height:24px;}
+.job_div .list .tr_title{ background-color:#ffffff; height:30px; line-height:30px; font-weight:bold; }
+.job_div .list .tr_title td{border-bottom:1px #CCCCCC solid;}
+.job_div .list .title {font-size:14px; font-weight:bold; color:#075198; line-height:150%}
+.job_div .cols_name{  background-color:#F4F9FD; line-height:150%; border-bottom:1px #CCCCCC dotted;padding:5px; border-top:1px #FFFFFF solid;}
+.job_div .cols_value{ background-color:#ffffff; line-height:150%; border-bottom:1px #CCCCCC dotted; padding:5px;}
+
+.job_div .bigbtn{padding:10px; color:#FF3300; border:1px #CCCCCC solid; font-size:14px;background-color:#f5f5f5}
+/*
+*POST
+*/
+.jobs_post{ line-height:28px; margin-top:5px;}
+.jobs_post .title{ border-bottom:1px  #CCCCCC solid;}
+.jobs_post .btn{ padding:10px;}
+
+/*
+*列表。按钮
+*/
+.btn_list{background:url(imgbtn.gif); height:21px; width:69px; text-align:center;  color:#333333; border:0px; font-size:12px;}
+
+
+/**
+首页推荐
+**/
+.tj{ border:1px #F1AFB0 solid;  background-color:#FBE6E5; clear:both}
+.tj .menu1{ height:30px; width:50%; background:url(jobs_tj_menu1.jpg) no-repeat; color:#520100; background-position:right;cursor:hand; line-height:30px; text-align:center;
+padding:0 0 0 10px;}
+.tj .menu2{ height:30px; width:50%; background:url(jobs_tj_menu2.jpg) no-repeat; color:#520100; background-position:right;cursor:hand; line-height:30px; text-align:center;
+padding:0 0 0 10px;}
+.tj .content{background:url(jobs_tj_1.jpg); padding:5px 10px 5px 10px; height:138px; text-align:left}
+
+/*
+*招聘地区列表
+*/
+.jobs_area{ float:left; width:70px; height:25px; line-height:25px; border:1px #CCCCCC solid; text-align:center; background-color:#f9f9f9; margin:5px;}

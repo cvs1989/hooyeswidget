@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+$listwidth=$listwidth?$listwidth:"width:990px";  //设置是否全屏 值为:width:99%;margin:0 5px 0 5px
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]</title>
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/default.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/css.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/new.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/jobs.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/zh.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]">
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//导航菜单
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+//-->
+
+
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" src="$Murl/images/$STYLE/inc.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$Murl/images/$STYLE/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/$STYLE/swfobject.js"></SCRIPT>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<!--
+EOT;
+if($webdb[allNotice]){
+print <<<EOT
+-->
+<div style=" padding:5px; background-color:#FDE9EB; border-bottom:1px #CC0000 solid; color:#FF0000; font-size:12px; font-weight:bold;  text-align:center; " align="center">
+$webdb[allNotice]
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div  id="header_top">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="$listwidth">
+  <tr>
+    <td width="65%"> 
+      <span class="login">
+        <SCRIPT src="$webdb[www_url]/do/hack.php?hack=login&job=js"></SCRIPT>
+      </span>
+</td><td>
+		<span class="Time">
+<!--
+EOT;
+if($webdb[hotline]!=''){
+print <<<EOT
+-->
+		<strong>全国统一客服热线：<font color="#FF3300">$webdb[hotline]</font></strong>&nbsp;&nbsp;&nbsp;
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        <a class=top      onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('$webdb[www_url]');" href="#">设为首页</a>
+		<a class=top   href="javascript:window.external.AddFavorite('$webdb[www_url]','$webdb[webname]')">加入收藏</a>
+		</span>
+    </td>
+  </tr>
+</table>
+</div>
+<div class="index_fullad" align="center" id="index_fullad" style="height:20px; display:none;"></div>
+<!--
+EOT;
+if($webdb[page_head_style]==1 || !$webdb[page_head_style]){
+print <<<EOT
+-->
+
+<table width="990" border="0" cellspacing="0" cellpadding="0" align="center" style="$listwidth">
+<tr><td>
+<div class="logo"><A HREF="./"><img src="$Murl/images/$STYLE/logo.gif" border=0></A></div>
+</td>
+<td align="center" valign="middle" style="line-height:20px">
+<div class="top_menu">
+<a href="$Mdomain/myhomepage.php" target="_blank">我的商铺</a>  | 
+<a href="$Mdomain/member/" target="_blank" id="businesscenter">商务中心</a>  |
+<a href="$Mdomain/member/index.php?main=myform1.php" target="_blank">报价单</a>  |
+<a href="$Mdomain/member/index.php?main=myform2.php" target="_blank">询价单</a>  |
+
+</div>
+</td>
+<td align="right" valign="middle" style="line-height:20px; padding-top:8px"><a href="$Mdomain/member/?main=post_sell.php" target="_blank"><img src="$Murl/images/$STYLE/pub_gy.gif" border="0" /></a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="$Mdomain/member/?main=post_buy.php"  target="_blank"><img src="$Murl/images/$STYLE/pub_qg.gif" border="0" /></a></td>
+</tr>
+</table>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="new_headtop" style="$listwidth">
+<tr>
+<td colspan="3" height="1" style="background-color:#FFFFFF;"><img src="$Murl/images/$STYLE/990.gif"  width="990" border="0" height="1"/></td>
+</tr>
+  <tr>
+    <td height="38" class="left">&nbsp;</td>
+    <td><table width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="3" class="topmenu">
+<a href="$Mdomain">首页</a> | 
+	<a href="$Mdomain/sell.php">找产品</a> | 
+	<a href="$Mdomain/buy.php">看求购</a> | 
+	<a href="$Mdomain/company.php">找商家</a> |
+	
+    <a href="$Mdomain/jobs.php">人才招聘</a> | 
+    <a href="$Mdomain/zh.php">行业展会</a> | 
+	 <a href="$Mdomain/news.php">资讯中心</a> |
+
+
+<!--
+EOT;
+if($diyPage_db){
+$i=1;
+foreach($diyPage_db as $key=>$lnk){ if($i>3) break;
+print <<<EOT
+-->
+<a href="$lnk[url]">$lnk[name]</a> | 
+<!--
+EOT;
+$i++;
+}}
+print <<<EOT
+-->	
+		 
+		 <a href="$Mdomain/help.php">帮助中心</a>			</td>
+      </tr>
+      <tr>
+        <td class="showwebdb">$webdb[search_left]</td>
+        <td class="showsearch">
+		<form name="form1" method="get" action="$Mdomain/sell_list.php"  onsubmit="return checksearch(this);" id="main_serach">
+		  <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td  class="keyword"><input name="keyword" type="text" id="keyword"  value="$keyword"/></td>
+              <td class="ctype"><select name="ctype"   id="ctype" onchange="change_search_menu(this.options[this.selectedIndex].value,'找 '+this.options[this.selectedIndex].text)">
+		  <option value="1">供 应</option>
+		  <option value="2">求 购</option>
+		  <option value="company">商 家</option>
+		  <option value="jobs">工 作</option>
+		  <option value="zh">展 会</option>
+		
+		 </select></td>
+              <td class="subbtn"><input type="submit" name="Submit" id="subbtn" value="  搜 索 "  /></td>
+            </tr>
+          </table>
+		
+		
+		
+		</form>
+
+	   
+		</td>
+        <td class="showwebdb">$webdb[search_right]</td>
+      </tr>
+	
+    </table></td>
+    <td class="right">&nbsp;</td>
+  </tr>
+  
+</table>
+	<script language="javascript">
+           function change_search_menu(id,words){
+		   		var search_menu=document.getElementById('search_menu');
+				document.getElementById('subbtn').value=words;
+				
+				if(id=='company'){
+					document.getElementById('keyword').name="keyword";
+					document.getElementById('main_serach').action="$Mdomain/clist.php?";
+				}else if(id=="jobs"){
+					document.getElementById('keyword').name="keywords";
+					document.getElementById('main_serach').action="$Mdomain/jobslist.php?";
+				}else if(id=="zh"){
+					document.getElementById('keyword').name="keyword";
+					document.getElementById('main_serach').action="$Mdomain/zh_list.php?";
+				}else{
+					document.getElementById('keyword').name="keyword";
+					document.getElementById('main_serach').action="$Mdomain/list.php";
+					document.getElementById('ctype').selectedIndex=(Number(id)-1);
+				}
+				
+		   }
+           </script>
+<!--
+EOT;
+}elseif($webdb[page_head_style]==2){
+print <<<EOT
+-->
+
+
+
+
+
+<table width="990" border="0" cellspacing="0" cellpadding="0" align="center" style="$listwidth">
+
+<tr><td>
+<div class="logo"><A HREF="$Mdomain/"><img src="$Murl/images/$STYLE/logo.gif" border=0></A></div>
+</td>
+<td align="center" valign="middle">
+<div class="top_menu">
+
+<a href="$Mdomain/myhomepage.php" target="_blank">我的商铺</a>  | 
+<a href="$Mdomain/member/" target="_blank" id="businesscenter">商务中心</a>  |
+<a href="$Mdomain/member/index.php?main=myform1.php" target="_blank">报价单</a>  |
+<a href="$Mdomain/member/index.php?main=myform2.php" target="_blank">询价单</a>  |
+
+</div>
+</td>
+<td align="right" valign="middle" style="line-height:20px; padding-top:8px"><a href="$Mdomain/member/?main=post_sell.php"  target="_blank"><img src="$Murl/images/$STYLE/pub_gy.gif" border="0" /></a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="$Mdomain/member/?main=post_buy.php"  target="_blank"><img src="$Murl/images/$STYLE/pub_qg.gif" border="0" /></a></td>
+</tr>
+</table>
+
+
+<table width="990" border="0" cellspacing="0" cellpadding="0" align="center" style="$listwidth" class="hc_headmenu">
+  <tr>
+    <td class="left" width="4"></td>
+    <td class="middle" align="center">
+
+
+    
+
+<table border="0" cellspacing="0" cellpadding="0" align="center" class="tabmenu" id="tabmenu" bgcolor="#006699">
+  <tr>
+    <td><a href="$Mdomain/index.php">首页</a></td>
+    <td class="ck" id="tabmenu_1" onmouseover="change_search_menu(1,'找产品')"><a href="$Mdomain/sell.php">产品</a></td>
+	 <td id="tabmenu_company" onmouseover="change_search_menu('company','找商家')"><a href="$Mdomain/company.php">企业</a></td>
+    <td id="tabmenu_2" onmouseover="change_search_menu(2,'找求购')"><a href="$Mdomain/buy.php">求购</a></td>
+    <td id="tabmenu_jobs" onmouseover="change_search_menu('jobs','找人才')"><a href="$Mdomain/jobs.php">人才</a></td>
+    <td id="tabmenu_zh" onmouseover="change_search_menu('zh','看展会')"><a href="$Mdomain/zh.php">展会</a></td>
+  </tr>
+</table>    
+
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="200" class="showwebdb">$webdb[search_left]&nbsp;</td>
+    <td align="center">   
+  <form  name="form2" method="get" action="$Mdomain/sell_list.php" id="main_serach" onsubmit="return checksearch(this)">
+<table  border="0" cellspacing="0" cellpadding="0"  class="searchform">
+  <tr>
+    <td height="31" width="352"><input type="text" value="$keyword" name="keyword" id="keyword" class="inputkeyword" />
+      
+        <input name="ctype" type="hidden" id="ctype" value="$ctype" />
+      
+      </td>
+    <td><input type="submit" name="Submit" id="subbtn" value="  搜 索 "  class="btn"  /></td>
+  </tr>
+</table></form>
+   
+    </td>
+    <td width="200" class="showwebdb">$webdb[search_right]&nbsp;</td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="menus">
+  <tr>
+    <td align="left">
+ <a href="$Mdomain">
+ <strong>首页</strong></a> | 
+	<a href="$Mdomain/sell.php">找产品</a> | 
+	<a href="$Mdomain/buy.php">看求购</a> | 
+	<a href="$Mdomain/company.php">找商家</a> | 
+	
+    <a href="$Mdomain/jobs.php">人才招聘</a> | 
+    <a href="$Mdomain/zh.php">行业展会</a> | 
+	<a href="$Mdomain/news.php">资讯中心</a> |
+
+
+<!--
+EOT;
+if($diyPage_db){
+$i=1;
+foreach($diyPage_db as $key=>$lnk){ if($i>3) break;
+print <<<EOT
+-->
+<a href="$lnk[url]">$lnk[name]</a> | 
+<!--
+EOT;
+$i++;
+}}
+print <<<EOT
+-->	
+		  
+		 <a href="$Mdomain/help.php">帮助中心</a>    </td>
+  </tr>
+</table>
+    
+    
+    </td>
+    <td class="right" width="5"></td>
+  </tr>
+</table>
+
+	<script language="javascript">
+           function change_search_menu(id,words){
+		   		var search_menu=document.getElementById('search_menu');
+				document.getElementById('keyword').name="keyword";
+				document.getElementById('main_serach').action="$Mdomain/sell_list.php";
+				document.getElementById('ctype').value=id;
+				document.getElementById('subbtn').value=words;
+				
+				var alinks=document.getElementById('tabmenu').getElementsByTagName('td');
+				for(var i=0;i<alinks.length;i++){
+					alinks[i].className='';
+				}								
+					
+				document.getElementById('tabmenu_'+String(id)).className='ck';
+				if(id=='2'){
+					document.getElementById('main_serach').action="$Mdomain/buy_list.php?";
+				}else if(id=='company'){
+					document.getElementById('main_serach').action="$Mdomain/clist.php?";
+				}else if(id=='jobs'){
+					document.getElementById('keyword').name="keywords";
+					document.getElementById('main_serach').action="$Mdomain/jobslist.php?";
+				}else if(id=='zh'){
+					document.getElementById('keyword').name="keyword";
+					document.getElementById('main_serach').action="$Mdomain/zh_list.php?";
+				}
+				
+		   }
+           </script>
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+	
+		   <script language="javascript">
+	   function checksearch(myform){
+	   		if(myform.keyword.value==''){
+			 alert("请输入你要搜索的关键字");
+			 return false;
+			}else{
+			 return true;
+			}
+	   }
+	   </script>
+
+
+
+
+<!--
+EOT;
+if($GuideFid[$fid]){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="nav_guide" align="center">
+  <tr> 
+          
+    <td>当前位置：<a href="$webdb[www_url]/">{$webdb[webname]}</a> $GuideFid[$fid] </td>
+  </tr>
+</table>
+	   <!--
+EOT;
+}
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+//businesscenter
+var color_index=0;
+window.onload=function(){
+	setTimeout("changebusinesscentercolor()",1);
+
+}
+function changebusinesscentercolor(){
+	
+	try{
+		var mycolor=new Array('#000','blue','red','green');
+		if(color_index >= mycolor.length) {
+			color_index=0;
+		}
+		document.getElementById('businesscenter').style.color=mycolor[color_index];
+		color_index++;
+		setTimeout("changebusinesscentercolor()",300);
+	}catch(e){
+		document.getElementById('businesscenter').style.color='red';
+	}
+}
+ 
+//目的是为了做风格方便
+document.write('<div class="wrap" style="$listwidth" >');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

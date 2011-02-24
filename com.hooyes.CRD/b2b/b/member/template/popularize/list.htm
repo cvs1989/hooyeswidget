@@ -1,0 +1,54 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">我的信息</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <tr align="center" class="head_in"> 
+                <td width="54%">标 题</td>
+                <td width="11%">栏 目 </td>
+                <td width="8%">待展示</td>
+                <td width="10%">已展示</td>
+                <td width="6%">查看</td>
+                <td width="11%">站外广告</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+              <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                <td  align="left" width="54%">{$rs[id]}、<a href="../bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank" title="$rs[full_title]">$rs[title]</a> 
+                </td>
+                <td align="center" width="11%"><a href="../list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+                <td align="center" width="8%">$rs[num1] </td>
+                <td align="center" width="10%">{$rs[num2]}次</td>
+                <td align="center" width="6%"><a href="?job=view&id=$rs[id]">查看</a></td>
+                <td align="center" width="11%"><a href="?job=buy&id=$rs[id]">购买</a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <tr align="center"> 
+                <td colspan="7">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

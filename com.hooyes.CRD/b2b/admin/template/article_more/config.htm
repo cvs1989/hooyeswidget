@@ -1,0 +1,465 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF"> 内容模型基本设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>创建/修改子栏目是否允许选择任意模型(分类绑定多模型子栏目)：</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[SortUseOtherModule]" value="1" $SortUseOtherModule[1]>
+        允许 
+        <input type="radio" name="webdbs[SortUseOtherModule]" value="0" $SortUseOtherModule[0]>
+        不允许 </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>内容里的附件(如图片等)是否只存在远程服务器：<span help=1>如果把附件存放到远程服务器的话,请必须先配置好FTP设置,远程服务器最好跟本网站的服务器同一个机房,以确保网络通信质量.如果不在同一个机房的话,会因网络通信质量不好,而导致附件传输太慢,上传失败.</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[ArticleDownloadUseFtp]" value="1" $ArticleDownloadUseFtp[1]>
+        远程服务器(需要先配置好FTP) 
+        <input type="radio" name="webdbs[ArticleDownloadUseFtp]" value="0" $ArticleDownloadUseFtp[0]>
+        本服务器(推荐)</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>内容里的附件是否按日期划分目录：<span help=1>如果你的附件太多的话.就有必要按日期划分目录,以提高服务器的磁盘效率.如果单个栏目的附件少于3000个的话,就没必要划分.</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[ArticleDownloadDirTime]" value="0" $ArticleDownloadDirTime[0]>
+        不划分 
+        <input type="radio" name="webdbs[ArticleDownloadDirTime]" value="Ym" $ArticleDownloadDirTime[Ym]>
+        每月划分 
+        <input type="radio" name="webdbs[ArticleDownloadDirTime]" value="YW" $ArticleDownloadDirTime[YW]>
+        每周划分 
+        <input type="radio" name="webdbs[ArticleDownloadDirTime]" value="Yd" $ArticleDownloadDirTime[Yd]>
+        每天划分 </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>用户发表内容时,如果大于此尺寸的图片将自动缩小(单位像素): <span help=1>宽与高必须同时设置才生效.如果你不想自动缩小的话,就把宽与高留空.如果你的网站很多用户上传数码相片的话,就有必要自动缩小用户上传的图片.</span> 
+      </td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 宽: 
+        <input type="text" name="webdbs[ArticlePicWidth]" size="4" value="$webdb[ArticlePicWidth]">
+        高: 
+        <input type="text" name="webdbs[ArticlePicHeight]" size="4" value="$webdb[ArticlePicHeight]">
+      </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>未审核的内容是否允许浏览:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[viewNoPassArticle]" value="1" $viewNoPassArticle[1]>
+        允许 
+        <input type="radio" name="webdbs[viewNoPassArticle]" value="0" $viewNoPassArticle[0]>
+        不允许 </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>新发表时,重复(雷同)标题是否禁止发表:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[ForbidRepeatTitle]" value="1" $ForbidRepeatTitle[1]>
+        禁止重复 
+        <input type="radio" name="webdbs[ForbidRepeatTitle]" value="0" $ForbidRepeatTitle[0]>
+        允许重复 </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>内容缩略图不符合比例时,是否用白色填充:<span help=1>截取部分图片,存在一个问题就是,有可能截取到半个人头;而按比例缩小的话,就会使用白色填充,一般推荐使用此方法</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[autoCutSmallPic]" value="1" $autoCutSmallPic[1]>
+        截取部分图片(不推荐) 
+        <input type="radio" name="webdbs[autoCutSmallPic]" value="0" $autoCutSmallPic[0]>
+        按比例缩小后用白色填充(推荐)</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>新发布内容时是否自动获取内容里的图片作为缩略图:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[autoGetSmallPic]" value="1" $autoGetSmallPic[1]>
+        是 
+        <input type="radio" name="webdbs[autoGetSmallPic]" value="0" $autoGetSmallPic[0]>
+        否</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>新发表内容时是否自动获取内容标题作为关键字:<span help=1><br>
+        (只有当用户没有设置关键字才会自动提取,否则不做处理.有极少部分服务器可能不支持,设置后文章发表不成功,因为设置的内存太小.) </span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[autoGetKeyword]" value="1" $autoGetKeyword[1]>
+        是 
+        <input type="radio" name="webdbs[autoGetKeyword]" value="0" $autoGetKeyword[0]>
+        否</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>列表页的标题后面是否显示(图片/置顶/最新/推荐/热门)之类的小图标</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[ListShowIcon]" value="1" $ListShowIcon[1]>
+        显示 
+        <input type="radio" name="webdbs[ListShowIcon]" value="0" $ListShowIcon[0]>
+        不显示 </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>列表页最近几小时内发表的内容归为最新,即有图标显示:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="text" name="webdbs[newArticleTime]" value="$webdb[newArticleTime]" size="3">
+        小时</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>浏览多少次以上的内容归为热门,即有图标显示:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="text" name="webdbs[hotArticleNum]" value="$webdb[hotArticleNum]" size="3">
+        次</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>推荐为精华可得{$webdb[MoneyName]}:<span help=1>注意:取消推荐或删除的话,都要扣除对应的积分,防止作弊现象</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[comArticleMoney]' name='webdbs[comArticleMoney]'>
+        $webdb[MoneyDW]</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>新发表可得{$webdb[MoneyName]}:<span help=1>注意:只有审核通过的内容,才能有积分,也就是说,如果用户发表的内容是自动通过审核的,那么将自动获取相应的积分,如果是管理员人工审核的话,只有审核的时候,才奖励积分,而发表之后,没审核前,是不奖励积分的.防止作弊情况.另外还有一点要注意的是:取消审核的话,要扣除对应的积分</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[postArticleMoney]' name='webdbs[postArticleMoney]'>
+        $webdb[MoneyDW]</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>删除主题扣除{$webdb[MoneyName]}:<span help=1>发表时,如果是人工审核的话,这里可以自由设置(建议为0)，而不易出现作弊现象，因为没审核的内容是不会受到奖励的。新发表内容，自动通过审核的话,如果不使用回收站,建议跟新发表时扣除的对应相等,这样才好防止作弊现象.</span><br>
+        扣除要写负数,如-2 </td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[deleteArticleMoney]' name='webdbs[deleteArticleMoney]'>
+        $webdb[MoneyDW]</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>当多页时,是否为标题自动添加页码:<span help=1>如《PHP168 
+        V6版本功能截图（一）》《PHP168 V6版本功能截图（二）》</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[AutoTitleNum]" value="1" $AutoTitleNum[1]>
+        标题自动添加页码 
+        <input type="radio" name="webdbs[AutoTitleNum]" value="0" $AutoTitleNum[0]>
+        不添加</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>是否使用回收站功能:<span help=1>使用回收站的话,用户删除的内容将自动放进回收站,不会彻底删除,管理员还可以复原.如果不使用回收站的话,所有删除操作都将一次性清空,不可复原.</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[ForceDel]" value="1" $ForceDel[1]>
+        不使用回收站 
+        <input type="radio" name="webdbs[ForceDel]" value="0" $ForceDel[0]>
+        使用回收站</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>内容页是否启用顶客插件:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[UseArticleDigg]" value="1" $UseArticleDigg[1]>
+        启用 
+        <input type="radio" name="webdbs[UseArticleDigg]" value="0" $UseArticleDigg[0]>
+        不启用</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>是否启用心情插件:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[UseArticleHeart]" value="1" $UseArticleHeart[1]>
+        启用 
+        <input type="radio" name="webdbs[UseArticleHeart]" value="0" $UseArticleHeart[0]>
+        不启用</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>是否必须参与心情投票才能看结果:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="radio" name="webdbs[heart_noRecord]" value="1" $heart_noRecord[1]>
+        是 
+        <input type="radio" name="webdbs[heart_noRecord]" value="0" $heart_noRecord[0]>
+        否</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>重复发表心情投票的时间间隔:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="text" name="webdbs[heart_time]" size="5" value="$webdb[heart_time]">
+        分钟 ,留空或为0,则是10分钟</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>查看文章后的心情种类设置:<span help=1><br>
+        格式如下:<br>
+        心情一|图片1<br>
+        心情二|图片2 </span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <textarea name="webdbs[ArticleHeart]" cols="30" rows="8">$webdb[ArticleHeart]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>列表页,最终页的栏目显示样式<span help=1><br>
+        模板存放在此目录/template/default/side_sort/<br>
+        你可以参考现有的模板做更多的样式模板放在此目录即可.<br>
+        或者你可以到官方站下载更多的资源,<a href="http://www.php168.com/downdata.php?job=side_sort" target="_blank"><font color="#FF0000">下载</font></a></span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="hidden" name="webdbs[SideSortStyle]" id="List_S_ShowType" value="$webdb[SideSortStyle]">
+        $get_S_LabelTpl 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+var upfile_S_PicNumId=0;
+
+function show_S_MorePic(todo){
+	if(todo==1){
+		upfile_S_PicNumId++;
+	}else if(todo==-1){
+		upfile_S_PicNumId--;
+	}
+	if(upfile_S_PicNumId<0){
+		alert("已经是第一个了!");
+		upfile_S_PicNumId=0;
+	}
+	if( upfile_S_PicNumId>(Img_S_Links.length-1) ){
+		alert("已经是最后一个了!");
+		upfile_S_PicNumId=Img_S_Links.length-1;
+	}
+	if(todo==-1||todo==1){
+		show_S_TplDiv(true);
+	}else{
+		show_S_TplDiv(false);
+	}
+	
+	NUM=upfile_S_PicNumId;//+2;
+	document.getElementById("select_S_Tyls").options[NUM].selected = true;
+
+}
+show_S_MorePic()
+
+function select_S_Tpl(selObj){
+	n=selObj.selectedIndex;
+	value=selObj.options[n].value
+	if(value=='-2'){
+		window.open("index.php?lfj=template&job=maketpl2&filepath=side_sort/$timestamp.htm&filecode=side_sort/0.htm");
+		return ;
+	}
+	if(n==1){
+		//makenew();
+	}
+	if(n<2){
+		//return;
+	}
+	upfile_S_PicNumId=n;//-2;
+	show_S_TplDiv(true);
+}
+
+function show_S_TplDiv(t){
+	get_obj("upfile__S_PicNum").innerHTML="<font color=red>"+(upfile_S_PicNumId+1)+"</font>/"+Img_S_Links.length;
+	get_obj("upfile_s_PicUrl").src=get_obj("show_S_PicID").href=Img_S_Links[upfile_S_PicNumId];
+	get_obj("upfile_s_PicUrl").alt=Img_S_Title[upfile_S_PicNumId];
+	
+	if(t==true){
+		arr=Img_S_Links[upfile_S_PicNumId].split('template/default/');
+		arr2=arr[1].split('.jpg');
+		get_obj('List_S_ShowType').value=arr2[0];
+	}
+}
+
+function load_S_tpl(){
+	for(var i=0;i<Img_S_Links.length;i++){
+		arr=Img_S_Links[i].split('template/default/');
+		arr2=arr[1].split('.jpg');
+		if(get_obj("List_S_ShowType").value==arr2[0]){
+			upfile_S_PicNumId=i;
+		}
+	}
+	NUM=upfile_S_PicNumId;//+2;
+	document.getElementById("select_S_Tyls").options[NUM].selected = true;
+	show_S_TplDiv();
+}
+load_S_tpl();
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>列表页,最终页的最新文章,热门标题,推荐标题显示样式<span help=1><br>
+        模板存放在此目录/template/default/side_tpl/<br>
+        你可以参考现有的模板做更多的样式模板放在此目录即可.<br>
+        或者你可以到官方站下载更多的资源,<a href="http://www.php168.com/downdata.php?job=side_tpl" target="_blank"><font color="#FF0000">下载</font></a></span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input type="hidden" name="webdbs[SideTitleStyle]" id="ListShowType" value="$webdb[SideTitleStyle]">
+        $getLabelTpl 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+var upfile_PicNumId=0;
+
+function show_MorePic(todo){
+	if(todo==1){
+		upfile_PicNumId++;
+	}else if(todo==-1){
+		upfile_PicNumId--;
+	}
+	if(upfile_PicNumId<0){
+		alert("已经是第一个了!");
+		upfile_PicNumId=0;
+	}
+	if( upfile_PicNumId>(ImgLinks.length-1) ){
+		alert("已经是最后一个了!");
+		upfile_PicNumId=ImgLinks.length-1;
+	}
+	if(todo==-1||todo==1){
+		showTplDiv(true);
+	}else{
+		showTplDiv(false);
+	}
+	
+	NUM=upfile_PicNumId;//+2;
+	document.getElementById("selectTyls").options[NUM].selected = true;
+
+}
+show_MorePic()
+
+function selectTpl(selObj){
+	n=selObj.selectedIndex;
+	value=selObj.options[n].value
+	if(value=='-2'){
+		window.open("index.php?lfj=template&job=maketpl2&filepath=side_tpl/$timestamp.htm&filecode=side_tpl/0.htm");
+		return ;
+	}
+	if(n==1){
+		//makenew();
+	}
+	if(n<2){
+		//return;
+	}
+	upfile_PicNumId=n;//-2;
+	showTplDiv(true);
+}
+
+function showTplDiv(t){
+	get_obj("upfile_PicNum").innerHTML="<font color=red>"+(upfile_PicNumId+1)+"</font>/"+ImgLinks.length;
+	get_obj("upfile_PicUrl").src=get_obj("showPicID").href=ImgLinks[upfile_PicNumId];
+	get_obj("upfile_PicUrl").alt=ImgTitle[upfile_PicNumId];
+	
+	if(t==true){
+		arr=ImgLinks[upfile_PicNumId].split('template/default/');
+		arr2=arr[1].split('.jpg');
+		get_obj('ListShowType').value=arr2[0];
+	}
+}
+
+function loadtpl(){
+	for(var i=0;i<ImgLinks.length;i++){
+		arr=ImgLinks[i].split('template/default/');
+		arr2=arr[1].split('.jpg');
+		if(get_obj("ListShowType").value==arr2[0]){
+			upfile_PicNumId=i;
+		}
+	}
+	NUM=upfile_PicNumId;//+2;
+	document.getElementById("selectTyls").options[NUM].selected = true;
+	showTplDiv();
+}
+loadtpl();
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'> 
+        <div align="left">列表页,最终页的最新文章,热门标题,推荐标题显示设置</div>
+      </td>
+      <td bgcolor='#FFFFFF'> 几行: 
+        <input type="text" size="10" name="webdbs[JsListRows]" value="$webdb[JsListRows]">
+        <br>
+        每行多少个字符 
+        <input type="text" size="10" name="webdbs[JsListLeng]" value="$webdb[JsListLeng]">
+        <br>
+        一个汉字相当于两个字符</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页/首页为大分类时.显示每个子栏目的标题设置</td>
+      <td bgcolor='#FFFFFF'>几行: 
+        <input type="text" size="10" name="webdbs[ListSonRows]" value="$webdb[ListSonRows]">
+        <br>
+        每行多少个字符 
+        <input type="text" size="10" name="webdbs[ListSonLeng]" value="$webdb[ListSonLeng]">
+        <br>
+        一个汉字相当于两个字符</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页,相关栏目,一行显示几个子栏目名称</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="2" name="webdbs[Listsortnameline]" value="$webdb[Listsortnameline]">
+        个</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页每个标题显示多少个字节</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="5" name="webdbs[ListLeng]" value="$webdb[ListLeng]">
+        默认50个,一个汉字相当于两个字节</td>
+    </tr>
+    <!--
+    <tr> 
+      <td bgcolor='#FFFFFF' height="15">列表页的图片主题显示几张</td>
+      <td bgcolor='#FFFFFF' height="15"> 
+        <input type="text" size="5" name="webdbs[listPicRows]" value="$webdb[listPicRows]">
+        默认4张,有的风格不一定生效</td>
+    </tr>-->
+    <tr> 
+      <td bgcolor='#FFFFFF' height="16">如果栏目有介绍或LOGO是否在列表页显示:</td>
+      <td bgcolor='#FFFFFF' height="16"> 
+        <input type="radio" name="webdbs[showsortlogo]" value="1" $showsortlogo[1]>
+        显示 
+        <input type="radio" name="webdbs[showsortlogo]" value="0" $showsortlogo[0]>
+        不显示 </td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>投稿注意事项:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> <iframe id="eWebEditor1" name="eWebEditor1"  src="ewebeditor/ewebeditor.php?id=PostNotice&style=standard&etype=1" frameborder="0" scrolling="no" width="450" height="150"></iframe> 
+        <input name="webdbs[PostNotice]" type="hidden" id="PostNotice" value='$webdb[PostNotice]'>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' height="7">免费收看的视频,是否提供下载:<span help=1>此功能仅针对于视频频道.为了保护站长利益,收费视频不提供下载</span></td>
+      <td bgcolor='#FFFFFF' height="7"> 
+        <input type="radio" name="webdbs[allowDownMv]" value="1" $allowDownMv[1]>
+        提供下载 
+        <input type="radio" name="webdbs[allowDownMv]" value="0" $allowDownMv[0]>
+        不提供下载</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' height="3">是否自动播放第一个视频:<span help=1>免费收看的视频才可以自动播放器.仅针对视频功能</span></td>
+      <td bgcolor='#FFFFFF' height="3"> 
+        <input type="radio" name="webdbs[autoPlayFirstMv]" value="1" $autoPlayFirstMv[1]>
+        自动播放 
+        <input type="radio" name="webdbs[autoPlayFirstMv]" value="0" $autoPlayFirstMv[0]>
+        不播放</td>
+    </tr>
+
+
+    <tr>
+      <td bgcolor='#FFFFFF' height="3">管理员后台发表文章的编辑器类型:<span help=1>
+	  
+	  如果你是企业或单位,经常要复制Word文档资料发布,就请选择ewebeditor编辑器,否则就请选择kindeditor编辑器.
+这两个编辑器各有优缺点,kindeditor编辑器的优点是兼容多个浏览器,不足之处就是对word格式支持不太好.ewebeditor编辑器的优点是对word格式支持比较好,但只能在IE浏览器下使用.
+	  
+	  </span></td>
+      <td bgcolor='#FFFFFF' height="3">
+         <input type="radio" name="webdbs[EditSystem]" value="0" $EditSystem[0]>
+        kindeditor(支持多个浏览器,但对Word支持不好) 
+       <input type="radio" name="webdbs[EditSystem]" value="1" $EditSystem[1]>
+        ewebeditor(仅支持IE,但对Word支持较好)</td>
+    </tr>
+
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>讯雷联盟ID号:</td>
+      <td bgcolor='#FFFFFF' width="71%"> 
+        <input type="text" name="webdbs[XunLei_ID]" size="8" value="$webdb[XunLei_ID]">
+        如果你没有申请联盟,请点击申请,<a href="http://union.xunlei.com/web/register.htm"><font color="#0000FF">申请</font></a> 
+        ,申请联盟就有利润分成.</td>
+    </tr>
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>快车联盟ID号:</td>
+      <td bgcolor='#FFFFFF' width="71%"> 
+        <input type="text" name="webdbs[FlashGet_ID]" size="8" value="$webdb[FlashGet_ID]">
+        如果你没有申请联盟,请点击申请,<a href="http://union.flashget.com/register.php"><font color="#0000FF">申请</font></a> 
+        ,申请联盟就有利润分成.</td>
+    </tr>
+    <tr> 
+      <td width='48%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="52%"> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

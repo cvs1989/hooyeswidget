@@ -1,0 +1,123 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="196" valign="top" class="Main"> 
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"><a editurl='$webdb[www_url]/do/job.php?job=bencandy&fid=$fid&id=$id&act=do'>TOP</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:8px;">
+              <tr> 
+                <td style="color:#990000;font-weight:bold;font-size:14px;" align="center">$rsdb[title]</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0"  style="margin-bottom:8px;border-bottom:1px solid #ccc;">
+              <tr> 
+                <td align="center"> [ 录入者:{$rsdb[username]} |&nbsp;时间:{$rsdb[posttime]} 
+                  | 作者:{$rsdb[author]} | 来源:<a href="$rsdb[copyfromurl]" target="_blank">{$rsdb[copyfrom]}</a> 
+                  | 浏览:<font id="hits">{$rsdb[hits]}</font>次 ] </td>
+              </tr>
+            </table>
+            <table class="content" width="100%" cellspacing="0" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'>
+              <tr> 
+                <td align="left" class="content_word">$rsdb[content]</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <tr> 
+                <td colspan="2" align="center" class="page">$showpage</td>
+              </tr>
+              <tr> 
+                <td width="50%" align="left">[<a href="bencandy.php?fid=$backdb[fid]&id=$backdb[aid]">上一篇</a>]<a href="bencandy.php?fid=$backdb[fid]&id=$backdb[aid]" title="$backdb[title]">$backdb[subject]</a></td>
+                <td width="50%" align="right">[<a href="bencandy.php?fid=$nextdb[fid]&id=$nextdb[aid]">下一篇</a>]<a href="bencandy.php?fid=$nextdb[fid]&id=$nextdb[aid]" title="$nextdb[title]">$nextdb[subject]</a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" style="float:left;width:33%;">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">最新文章</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=new&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]"></script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" style="float:left;width:33%;margin-left:4px;">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">热门文章</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=hot&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]"></script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" style="float:right;width:33%;">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">推荐文章</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=com&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]"></script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <!--php168
+EOT;
+if($webdb[showComment] && $fidDB[allowcomment] && !$rsdb[forbidcomment]){@include(html("bencandy_tpl/comment"));}print <<<EOT
+php168--></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

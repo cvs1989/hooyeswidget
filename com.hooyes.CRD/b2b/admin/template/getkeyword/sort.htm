@@ -1,0 +1,120 @@
+<!--
+<?php
+print<<<EOT
+-->
+ <script src="images/setday.js"></script>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="?lfj=$lfj&action=getword">
+  <tr> 
+    <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑栏目</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">本功能可以智能提取标题中的词语作为关键字.但有可能把一些生僻词也提取出来.</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head"> 
+            <td width="6%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;">栏目名称</td>
+          </tr>
+          <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;"> 
+              <input type="checkbox" name="fiddb[]" value="{$rs[fid]}" style="border:0px;" checked>
+              $rs[icon]【<a href='../list.php?fid=$rs[fid]' target="_blank">{$rs[name]}</a>】 
+            </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center">
+[<a href="javascript:CheckAll('all');">全选</a>] [<a href="javascript:CheckAll('');">反选</a>] 
+          <input type="radio" name="maketype" value="all" onClick="choose('all');" checked>
+          提取全部
+<input type="radio" name="maketype" value="part" onClick="choose('part');">
+          提取部分 
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="?lfj=$lfj&action=editlist";
+	}else{
+		document.formlist.action="?lfj=$lfj&job=batch_edit";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(e.name=='maketype')continue;
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+          <table width="70%" border="0" cellspacing="0" cellpadding="0" id="makeshow" style="display:none;">
+            <tr> 
+              <td width="27%">最早发表的日期</td>
+              <td width="73%"> 
+                <input type="text" name="beginTime" onclick="setday(this)">
+                (注:留空则最早,格式2007-07-16 22:29:50)</td>
+            </tr>
+            <tr> 
+              <td width="27%">最后发表的日期</td>
+              <td width="73%"> 
+                <input type="text" name="endTime" onclick="setday(this)">
+                (注:留空则最晚,格式2007-07-16 22:29:50) </td>
+            </tr>
+            <tr> 
+              <td width="27%">内容的开始ID</td>
+              <td width="73%"> 
+                <input type="text" name="beginId">
+              </td>
+            </tr>
+            <tr> 
+              <td width="27%">内容的结束ID</td>
+              <td width="73%">
+                <input type="text" name="endId">
+              </td>
+            </tr>
+          </table>
+          <table width="59%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="center"> <br>
+                <input type="submit" name="Submit" value="开始提取关键字">
+                <br>
+                <br>
+                注:已有关键字的内容将不会再重复提取 </td>
+            </tr>
+          </table>
+         <SCRIPT LANGUAGE="JavaScript">
+ <!--
+ function choose(t){
+	if(t=='all'){
+		document.getElementById("makeshow").style.display='none';
+	}else{
+		document.getElementById("makeshow").style.display='';
+	}
+ }
+ //-->
+ </SCRIPT>
+ 		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

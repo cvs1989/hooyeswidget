@@ -1,0 +1,345 @@
+ <!--
+<?php
+print <<<EOT
+--> 
+<LINK href="images/default/hack/oicq/im.css" type=text/css rel=stylesheet>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit22" value="详细设置" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=edit')">
+      　　 
+      <input type="button" name="Submit2" value="获取调用代码" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=getcode')">
+      　　 </td>
+  </tr>
+</table>
+<br>
+<table width="100%" cellspacing="1" cellpadding="3"  class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+    <tr class="head"> 
+      <td> 
+        <div align="center"><font color="#FFFFFF">QQ插件</font></div>
+      </td>
+    </tr>
+    <tr bgcolor=#EEEEEE align="center"> 
+      <td width="5%" bgcolor="#FFFFFF"> 
+        <TABLE cellSpacing=0 cellPadding=0 width=571 border=0>
+          <TBODY> 
+          <TR> 
+            <TD colSpan=3>&nbsp;</TD>
+          </TR>
+          <TR> 
+            <TD width=7></TD>
+            <TD width=557> 
+              <TABLE cellSpacing=0 cellPadding=0 width=557 border=0>
+                <TBODY> 
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <INPUT type=radio   value=1 name=qq_style $qq_styledb[1]>
+                  </TD>
+                  <TD align=left width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格一</TD>
+                  <TD align=right width=89>在线状态：&nbsp;</TD>
+                  <TD align=left width=130><IMG height=23 
+            src="images/default/hack/oicq/01_online.gif" width=74></TD>
+                  <TD align=right width=90>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=23 src="images/default/hack/oicq/01_offline.gif" 
+            width=74></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=34> 
+                    <input type=radio value=2 name=qq_style $qq_styledb[2]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格二</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=23 src="images/default/hack/oicq/02_online.gif" 
+            width=74></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=23 src="images/default/hack/oicq/02_offline.gif" 
+            width=74></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=34> 
+                    <input type=radio value=3 name=qq_style $qq_styledb[3]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格三</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=23 src="images/default/hack/oicq/03_online.gif" 
+            width=74></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=23 src="images/default/hack/oicq/03_offline.gif" 
+            width=74></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=34> 
+                    <input type=radio value=4 name=qq_style $qq_styledb[4]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格四</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=24 src="images/default/hack/oicq/04_online.gif" 
+            width=44></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=24 src="images/default/hack/oicq/04_offline.gif" 
+            width=44></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=5 name=qq_style $qq_styledb[5]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格五</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=15 src="images/default/hack/oicq/05_online.gif" 
+            width=61></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=15 src="images/default/hack/oicq/05_offline.gif" 
+            width=61></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new6-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=34> 
+                    <input type=radio value=6 name=qq_style $qq_styledb[6]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格六</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=29 src="images/default/hack/oicq/6_online.gif" 
+          width=68></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=29 src="images/default/hack/oicq/6_offline.gif" 
+            width=68></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new7-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=7 name=qq_style $qq_styledb[7]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格七</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=24 src="images/default/hack/oicq/7_online.gif" 
+          width=71></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=24 src="images/default/hack/oicq/7_offline.gif" 
+            width=71></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new8-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=8 name=qq_style $qq_styledb[8]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格八</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=16 src="images/default/hack/oicq/8_online.gif" 
+          width=60></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=16 src="images/default/hack/oicq/8_offline.gif" 
+            width=51></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new9-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=9 name=qq_style $qq_styledb[9]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格九</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=16 src="images/default/hack/oicq/9_online.gif" 
+          width=57></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=16 src="images/default/hack/oicq/9_offline.gif" 
+            width=51></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new10-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=10 name=qq_style $qq_styledb[10]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格十</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=16 src="images/default/hack/oicq/10_online.gif" 
+            width=61></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=16 src="images/default/hack/oicq/10_offline.gif" 
+            width=51></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new11-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=11 name=qq_style $qq_styledb[11]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格十一</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=66 src="images/default/hack/oicq/11_online.gif" 
+            width=65></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=66 src="images/default/hack/oicq/11_offline.gif" 
+            width=65></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new12-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=12 name=qq_style $qq_styledb[12]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格十二</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=34 src="images/default/hack/oicq/12_online.gif" 
+            width=82></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=34 src="images/default/hack/oicq/12_offline.gif" 
+            width=82></TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=1></TD>
+                  <TD bgColor=#d8d8d8 colSpan=4 height=1></TD>
+                </TR>
+                <!-- new13-->
+                <TR> 
+                  <TD align=right width=30 background=images/default/hack/oicq/index_right_newbg01.gif 
+          height=31> 
+                    <input type=radio value=13 name=qq_style $qq_styledb[13]>
+                  </TD>
+                  <TD width=70 
+            background=images/default/hack/oicq/index_right_newbg01.gif>&nbsp;&nbsp;风格十三</TD>
+                  <TD align=right>在线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=29 src="images/default/hack/oicq/13_online.gif" 
+            width=138></TD>
+                  <TD align=right>离线状态：&nbsp;</TD>
+                  <TD align=left><IMG height=29 src="images/default/hack/oicq/13_offline.gif" 
+            width=138></TD>
+                </TR>
+                </TBODY> 
+              </TABLE>
+            </TD>
+            <TD width=7></TD>
+          </TR>
+          <TR> 
+            <TD colSpan=3>&nbsp;</TD>
+          </TR>
+          </TBODY> 
+        </TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width=571 border=0>
+          <TBODY> 
+          <TR> 
+            <TD colSpan=3>&nbsp;</TD>
+          </TR>
+          <TR> 
+            <TD>&nbsp;</TD>
+            <TD width=559 height=144> 
+              <TABLE cellSpacing=0 cellPadding=0 width="95%" align=center border=0>
+                <TBODY> 
+                <TR> 
+                  <TD width=120 height=35>QQ/TM号码：<br>
+                    (一行填一个号码)</TD>
+                  <TD> 
+                    <textarea style="BORDER-RIGHT: #c2c0c0 1px solid; BORDER-TOP: #c2c0c0 1px solid; BORDER-LEFT: #c2c0c0 1px solid; BORDER-BOTTOM: #c2c0c0 1px solid" name="qq_num" cols="25" rows="5">$qq_num</textarea>
+                  </TD>
+                  <TD>例如：80000816</TD>
+                </TR>
+                <TR> 
+                  <TD height=35>留言的网站名称：</TD>
+                  <TD> 
+                    <INPUT 
+            style="BORDER-RIGHT: #c2c0c0 1px solid; BORDER-TOP: #c2c0c0 1px solid; BORDER-LEFT: #c2c0c0 1px solid; BORDER-BOTTOM: #c2c0c0 1px solid" 
+            name=web_name value="$web_name">
+                  </TD>
+                  <TD>例如：PHP168整站</TD>
+                </TR>
+                <TR> 
+                  <TD height=35>图片旁的留言：</TD>
+                  <TD> 
+                    <INPUT onblur="if (value ==''){value='点击这里给我发消息'}" 
+            style="BORDER-RIGHT: #c2c0c0 1px solid; BORDER-TOP: #c2c0c0 1px solid; BORDER-LEFT: #c2c0c0 1px solid; BORDER-BOTTOM: #c2c0c0 1px solid" 
+           
+            name=pic_alt value="$pic_alt">
+                  </TD>
+                  <TD>例如：有事点这里</TD>
+                </TR>
+                <TR> 
+                  <TD colSpan=2 height=35 align="center"><font color="#107199"> 
+                    </font> 
+                    <input type="submit" name="Submit" value="提交">
+                  </TD>
+                  <TD align=left height=35>&nbsp;</TD>
+                </TR>
+                </TBODY> 
+              </TABLE>
+            </TD>
+            <TD>&nbsp;</TD>
+          </TR>
+          <TR> 
+            <TD colSpan=3>&nbsp;</TD>
+          </TR>
+          </TBODY> 
+        </TABLE>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

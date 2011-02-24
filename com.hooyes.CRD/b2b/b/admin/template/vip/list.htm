@@ -1,0 +1,56 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form id="form1" name="form1" method="post" action="?" style="margin:5px">
+  关键字搜索：
+  <input name="keyword" type="text" id="keyword" value="$keyword" />
+  <input name="submit" type="submit" id="submit" value="搜索" />
+</form>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr align="center" class="head"> 
+	<td width="16%" align="left"><strong>来自</strong></td>
+     <td width="18%"><strong>VIP服务时间</strong></td>
+	<td width="14%"><strong>费用计算</strong></td>
+    <td width="11%" align="center"><strong>支付状态</strong></td>
+    <td width="12%"><strong>服务状态</strong></td>
+    <td width="20%"><strong>时间记录</strong></td>
+    <td width="9%" align="center"><strong>操作</strong></td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+	$rs[contact_info][url_link]=$rs[contact_info][url];
+	$rs[contact_info][url]=$rs[contact_info][url]?"点击查看...":"";
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+     <td height="80"><a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank">$rs[companyName]</a></td>
+    <td height="80" align="center">$webdb[vip_min_long]月 * $rs[how_long]个单位=<strong><font color="#ff0000">$rs[all_how_long]</font></strong>个月</td>
+	<td align="center">$rs[per_payfor]元 * $rs[how_long]个单位=<strong><font color="#ff0000">$rs[all_pay]</font></strong>元</td>
+    <td align="center"><span style="line-height:16px;">$rs[pay_type]</span><br />
+      $rs[pay_status]<br />
+$rs[pay_act]</td>
+    
+    <td align="center">$rs[vip_status]</td>
+    <td style="line-height:16px;"><span style="line-height:20px;">提交：$rs[posttime]<br />
+支付：$rs[pay_time]<br />
+开通：<font color="#FF0000">$rs[start_time]</font><br />
+结束：<font color="#FF0000">$rs[end_time]</font></span></td>
+	<td align="center"><a href="?action=del&vo_id=$rs[vo_id]" onclick="return confirm('删除后无法恢复,确定要删除吗？');">删除</a>&nbsp;<br />
+	<a href="?action=offline_pay&vo_id=$rs[vo_id]" onclick="return confirm('您确定已经收到对方的汇款了吗，？');">$rs[enter_pay]</a>
+	</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> {$showpage}</td>
+    </tr>
+</table>
+
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,74 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <tr  class="head"> 
+    <td> 
+      <div align='center'><font color='#FFFFFF'>更新缓存</font></div>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> <form name="form1" method="post" action="index.php?lfj=$lfj&action=cache">
+    <td align="center"> 
+        <p>&nbsp;</p>
+        <p> 
+          <input type='submit' name='Submit' value='一键更新网站所有缓存'>
+        </p>
+        <p>&nbsp;</p>
+      </td> </form>
+  </tr>
+</table>
+<br>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <tr  class="head"> 
+    <td> 
+      <div align='center'><font color="#FFFFFF">数据修复</font></div>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <form name="form1" method="post" action="index.php?lfj=$lfj&action=repair">
+      <td align="center"> 
+        <input type='submit' name='Submit' value='点击修复'>
+      </td>
+    </form>
+  </tr>
+  <tr bgcolor='#FFFFFF'>
+    <td align="left">1.你可以修复有错的图片新闻,比如有些图片新闻明明存在,但是却不在图片新闻列表那显示<br>
+      2.你可以修复出错的文章分页数,回复数,与文章的栏目名称</td>
+  </tr>
+</table>
+<br>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <tr  class="head"> 
+    <td> 
+      <div align='center'><font color="#FFFFFF">数据库修复</font></div>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <form name="form1" method="post" action="index.php?lfj=$lfj&action=repair_table">
+      <td align="center"> 
+        <input type='submit' name='Submit' value='点击修复数据表'>
+        <br>
+        <input type="checkbox" name="OPTIMIZE" value="1">
+        是否同时优化数据表 </td>
+    </form>
+  </tr>
+  <tr bgcolor='#FFFFFF'>
+    <td align="left">1.如果突然断电,或服务器突然重启,易造成数据表文件损坏,此时你就需要修复一下数据库,就能解决问题</td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>当前台页面显示不正常的时候,你就需要点击更新缓存来解决此问题</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

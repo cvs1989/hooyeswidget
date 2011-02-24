@@ -1,0 +1,32 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" method="post" action="?lfj=$lfj&action=$job">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA" align="center">&nbsp;</td>
+      <td class="head" bgcolor="#EAEAEA" align="center">来源站点</td>
+      <td class="head" bgcolor="#EAEAEA" align="center">排序值</td>
+      <td class="head" bgcolor="#EAEAEA" align="center">操作</td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="17%">来源站点: </td>
+      <td bgcolor=#FFFFFF align="left" width="30%"> 
+        <input type="text" name="keywords" value="$rsdb[name]" size="30">
+      </td>
+      <td bgcolor=#FFFFFF align="center" width="31%"> 
+        <input type="text" name="list" size="10" value="$rsdb[list]">
+      </td>
+      <td bgcolor=#FFFFFF align="center" width="22%"> 
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

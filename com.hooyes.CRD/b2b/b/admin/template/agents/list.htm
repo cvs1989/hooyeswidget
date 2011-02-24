@@ -1,0 +1,62 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form id="form1" name="form1" method="post" action="?" style="margin:5px">
+  关键字搜索：
+  <input name="keyword" type="text" id="keyword" value="$keyword" />
+  <input name="submit" type="submit" id="submit" value="搜索" />
+</form>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr align="center" class="head"> 
+	<td width="16%"><strong>来自</strong></td>
+     <td width="19%"><strong>代理商名称</strong></td>
+	<td width="9%"><strong>代理等级</strong></td>
+    <td width="4%" align="center"><strong>证书</strong></td>
+    <td width="11%" align="center"><strong>提交时间</strong></td>
+    <td width="12%"><strong>当前状态</strong></td>
+    <td width="20%"><strong>联系方式</strong></td>
+    <td width="9%" align="center"><strong>操作</strong></td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+	$rs[contact_info][url_link]=$rs[contact_info][url];
+	$rs[contact_info][url]=$rs[contact_info][url]?"点击查看...":"";
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+     <td height="80"><a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank">$rs[companyName]</a></td>
+    <td height="80" align="center">$rs[ag_name] <br /><br />品牌:$rs[brand_name]</td>
+	<td align="center">$rs[ag_level]</td>
+    <td align="center"><a href="$rs[ag_cert]" target="_blank">预览</a></td>
+    
+    <td align="center">$rs[posttime]</td>
+    <td align="center">
+	<a href="?action=yz&ag_id=$rs[ag_id]" onclick="return confirm('确定要操作此记录吗？');"><font color="#FF3300">$rs[status]</font></a><br />
+	$rs[cancel]	
+	</td>
+    <td style="line-height:16px;">
+	  联 系 人：{$rs[contact_info][name]}<br />
+      联系电话：{$rs[contact_info][tel]}<br />
+      传真号码：{$rs[contact_info][fax]}<br />
+      邮箱地址：{$rs[contact_info][email]}<br />
+      详细地址：{$rs[contact_info][address]}<br />
+	  参考网址：<a href="{$rs[contact_info][url_link]}" target="_blank">{$rs[contact_info][url]}</a>	
+	  </td>
+	<td align="center"><a href="?action=del&ag_id=$rs[ag_id]" onclick="return confirm('删除后无法恢复,确定要删除吗？');">删除</a>&nbsp;</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage}</td>
+    </tr>
+
+</table>
+
+<!--
+EOT;
+?>
+-->

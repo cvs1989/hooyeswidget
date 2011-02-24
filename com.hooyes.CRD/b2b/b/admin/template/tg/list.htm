@@ -1,0 +1,114 @@
+<!--
+<?php
+
+if(!$action){
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work1" method="post" action="?action=$action">
+    <tr  class="head"> 
+    <td>商家推广 </td>
+    </tr>
+        <tr> 
+    <td>
+    
+    标题关键字:
+      <input name="keyword" type="text" id="keyword" value="$keyword" />
+	   <input name="ctype" type="hidden" value="$ctype" />
+      <input type="submit" name="button" id="button" value="搜索" />
+	  <input type="button" name="button2" id="button2" value="清除已经结束的推广信息" onclick="if(confirm('确定清除已经结束的推广信息吗?')){window.location='tg.php?action=betch_over'}" />
+      </td>
+    </tr>
+  </form>
+</table>
+  
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      
+      <td align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('tg_myids[]',this);" /></td>
+      <td width="373" align="left">标题</td>
+      <td width="105" align="left">积分</td>
+      <td width="105" align="left">小时</td>
+      <td width="325" align="left">商家</td>
+      <td width="195" align="left">开始时间</td>
+      <td width="84" align="left">状态</td>
+      <td width="127" align="right">审核/删除</td>
+    </tr>
+<!--
+EOT;
+$bencandy = array(1 => 'sell_bencandy.php', 2 => 'buy_bencandy.php');
+
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+     
+      <td width="20"> 
+        <input type="checkbox" name="tg_myids[]" value="$rs[tg_myid]"></td>
+      <td><a href="../{$bencandy[$rs[ctype]]}?id=$rs[tg_id]&fid=$rs[tg_fid]" target="_blank">$rs[tg_title]</a><br /><font color="#ababab">$rs[posttime]</font>&nbsp;</td>
+      <td>$rs[tg_howmuch]</td>
+      <td>$rs[tg_howlong]</td>
+      <td><a href="../homepage.php?uid=$rs[tg_uid]" target="_blank">$rs[company_title]</a>($rs[username])</td>
+	  <td>$rs[tg_posttime]</td>
+      <td> $rs[status] </td>
+      <td align="right" width="127">
+      <a href="?action=yz&tg_myid=$rs[tg_myid]" >$rs[yz]</a>
+      /
+      <a href="?action=del&tg_myid=$rs[tg_myid]"  onclick="return confirm('确定删除推广信息吗？');">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9" align="left">	<p>
+        <input type="submit" name="Submit" value="批量删除" />
+        <input type="submit" name="Submit" value="批量审核" onclick="document.getElementById('action').value='yz';" />
+        <input type="submit" name="Submit" value="批量取消审核" onclick="document.getElementById('action').value='unyz';" />
+         <input name="action" type="hidden" id="action" value="del" />
+		 <input name="ctype" type="hidden" id="action" value="$ctype" />
+      </p>
+       <p>1.在推广自动审核状态下，开始之间就是提交时间； <br />
+         2.在非自动审核状态下，开始时间是审核时间；<br />
+          3.在已经审核状态下，取消审核的话。开始时间将被清零,即重置；<br />
+          4.相关积分在用户提交时扣除，现不做退还积分处理；<br />
+       </p></td>
+    </tr>
+  </form>
+</table>    
+
+
+
+
+
+
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+function postdo(va){
+	document.form_work.action.value=va
+	document.form_work.submit();
+}
+function CheckAll(name,my){
+	var ckbox=document.getElementsByName(name);
+
+	for (var i=0;i<ckbox.length;i++){
+		ckbox[i].checked=my.checked;
+	}
+}
+</SCRIPT> 
+<!--
+EOT;
+    
+?>-->

@@ -1,0 +1,45 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=makehtml">
+    <tr class="head"> 
+      <td width="5%" align="center">序号</td>
+      <td width="11%" align="center">频道/专题页名称</td>
+      <td align="center" width="20%">涉及栏目</td>
+      <td width="15%" align="center">PHP程序文件</td>
+      <td width="17%" align="center">静态文件名</td>
+      <td width="20%" align="center">操作</td>
+      <td width="12%" align="center">&nbsp;</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="5%" align="center">$rs[id]</td>
+      <td width="11%"> $rs[name] </td>
+      <td align="center" width="20%">$rs[fids]</td>
+      <td align="center" width="15%"> {$rs[phpname]}</td>
+      <td align="center" width="17%">{$rs[htmlname]}</td>
+      <td align="center" width="20%"> <a href="$webdb[www_url]/{$rs[phpname]}?&ch=$rs[id]&chtype=0&jobs=show">更新(标签)内容</a> 
+        / <a href="$webdb[www_url]/{$rs[phpname]}?&ch=$rs[id]&MakeIndex=1" target="_blank">静态化</a> 
+        / <a href="$webdb[www_url]/$rs[phpname]?&ch=$rs[id]" target="_blank">查看</a></td>
+      <td width="12%" align="center"><a href="?lfj=$lfj&action=delete&id=$rs[id]">删除</a> 
+        / <a href="index.php?lfj=$lfj&job=edit&id=$rs[id]">修改</a></td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+   
+  </form>
+</table>
+ 
+<!--
+EOT;
+?>
+-->

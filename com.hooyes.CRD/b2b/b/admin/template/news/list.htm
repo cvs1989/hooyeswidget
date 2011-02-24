@@ -1,0 +1,211 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">帮助文档内容</font></span></td>
+  </tr>
+  <tr> <form action="?action=news" method=POST>
+    <td bgcolor=#FFFFFF> 
+      
+        <span class=bold>搜索--</span>&nbsp;标题 
+        <input name="keyword" type="text" value="$keyword" size="25" id="keyword" />
+        归属
+        <select name="fid">
+          <!--
+EOT;
+if($fid){
+print <<<EOT
+--> <option value="$fid">$rsdb[name]</option>
+          <!--
+EOT;
+}print <<<EOT
+-->
+          <option value="0">顶级栏目</option>{$fup_select}
+        </select>
+        <input type=submit value="搜 索" name="submit">
+        <input name="job" type="hidden" id="job" value="news" />
+        <input type="button" name="button" id="button" value="添加帮助文档"  onclick="window.location='?job=addnews'" /></td>
+    </form>
+  </tr>
+     
+</table>
+<!--
+EOT;
+if($job=='news'){
+print <<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="?action=editlist">
+  <tr> 
+    <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">帮助文档内容列表</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+
+     <ul>
+	 <li><strong>调用</strong>:<br /><font color="#FF0000">&lt;script language="javascript" type="text/javascript" src="$Mdomain/help_js.php?keyw=关键字&fid=文档类目FID&listnum=显示条数&length=显示标题长度"&gt;&lt;/script&gt;</font>
+		  <br /><font color="#0000FF">把以上代码处理后粘贴在模版文件中需要显示帮助文档的地方即可(提示：FID不能是一级分类)</font></li>
+	 </ul>
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head"> 
+            <td  style="border-right:1px solid #fff;" width="51%">标题</td>
+            <td width="28%"  style="border-right:1px solid #fff;">栏目</td>
+            <td width="8%" style="border-right:1px solid #fff;">置顶</td>            
+            <td width="6%" style="border-right:1px solid #fff;">修改</td>
+            <td width="7%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td width="51%" style="border-bottom:1px dotted #ccc;"> 
+              <input type="checkbox" name="newsdb[{$rs[id]}]" value="$rs[id]" style="border:0px;">
+            【<a href='../help.php?id=$rs[id]' target="_blank" style="color:$rs[color]">{$rs[title]}</a>】{$rs[ispic]}</td>
+                 <td  align="center" style="border-bottom:1px dotted #ccc;"><a href='?job=news&fid=$rs[fid]'><font color=red>$rs[fname]</font></a></td>
+
+            <td width="8%" align="center" style="border-bottom:1px dotted #ccc;">[<a href='?job=setlevels&id=$rs[id]'><font color=red>$rs[levels]</font></a>]</td>
+            <td width="6%"  align="center" style="border-bottom:1px dotted #ccc;">[<a href='?job=editnews&id=$rs[id]' >修改</a>]</td>
+
+            <td width="7%"  align="center" style="border-bottom:1px dotted #ccc;">[<a href="?job=deletenews&id=$rs[id]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a>]</td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div>$showpage</div>
+        <div align="center"> 
+          <a href="javascript:" onClick="CheckAll('all')"> </a><a href="javascript:" onClick='CheckAll()'></a>
+<!--          
+          <input type="button" name="Submit2" value="修改栏目排序" onclick="postlist('order')">-->
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='order'){
+		document.formlist.action="?job=editorder";
+		
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+	    </div>
+      </td>
+  </tr> </form>
+</table>
+
+<!--
+EOT;
+}elseif($job=='addnews' || $job=='editnews'){
+print <<<EOT
+-->
+             <table width="100%" border="0" cellspacing="1" cellpadding="3" class="borderTable tablewidth">
+                    <tr class="head">
+                      <td>添加修改文档内容</td>
+                    </tr>
+                    <form name="FORM" id="FORM" method="post" action="?job=save$job">
+                      <tr bgcolor="#FFFFFF" class="basetr"> 
+                        <td colspan="2">
+                        
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#FFFFFF" class="basetr">
+    <td >当前栏目：</td>
+    <td>   <select name="fid">
+          <option value="0">顶级栏目</option>{$fup_select}
+        </select>
+      不能选择第一级分类； </td>
+  </tr>
+  <tr bgcolor="#FFFFFF" class="basetr">
+    <td ><font color="#FF0000">标　题：</font></td>
+    <td><input type="text" name="postdb[title]" size="50" value="$rsdb[title]" id="title" />    </td>
+  </tr>
+ <!-- <tr bgcolor="#FFFFFF" class="basetr">
+    <td >关联供求：</td>
+    <td><select name="fid2">
+          <option value="0">==选择,可以不选==</option>{$select_sort}
+        </select>       </td>
+  </tr>-->
+  <tr bgcolor="#FFFFFF" class="basetr"> 
+            <td  width="15%">文章作者：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[author]" size="15" value="$rsdb[author]">            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="basetr"> 
+            <td  width="15%">来源网址：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[copyfromurl]" size="40" value="$rsdb[copyfromurl]">            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="basetr"> 
+            <td  width="15%">跳转到网址：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[jumpurl]" size="60" value="$rsdb[jumpurl]"> 
+              跳转优先；            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="basetr"> 
+            <td  width="15%" valign="top">缩略图：      <SCRIPT LANGUAGE="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	get_obj('picurl').value=url;
+}
+function upfile(url,name,size,b){
+	document.getElementById(b).value=url;
+}
+//-->
+</SCRIPT></td>
+            <td width="85%"> 
+              <input type="text" name="postdb[picurl]" size="50" value="$rsdb[picurl]" id="picurl">
+              <br />
+              <iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='$webdb[www_url]/upfile.php?fn=uppic&dir=business/news&ISone=1' width=310></iframe>                     </td>
+          </tr>
+            <tr bgcolor="#FFFFFF" id="contenttr"> 
+            <td  width="15%" valign="top">内容: </td>
+            <td  width="85%"><iframe id="eWebEditor1" name="eWebEditor1"  src="$webdb[www_url]/ewebeditor/ewebeditor.php?id=content&style=standard" frameborder="0" scrolling="no" width="100%" height="450"></iframe> 
+              <input name="postdb[content]" type="hidden" id="content" value='$rsdb[content]'>            </td>
+          </tr>
+           <tr bgcolor="#FFFFFF" id="contenttr"> 
+            <td  width="15%">&nbsp; </td>
+            <td  width="85%"> <input type="button" name="Submit" value=" 提 交 " onclick="post();">
+            <input type="hidden" name="job" value="save$job" />
+             <input name="id" type="hidden" id="id" value="$id" /></td>
+          </tr>
+</table>
+
+
+			</td>
+            </tr></form></table>      <SCRIPT>
+
+
+function post(){
+	if(document.getElementById("title")!=null&&get_obj('title').value==''){
+		alert("标题不能为空");
+		get_obj('title').focus();
+		return false;
+	}
+	
+	get_obj("FORM").submit();
+	
+}
+  </SCRIPT>
+<!--
+EOT;
+}
+
+?>
+-->
+
+ 

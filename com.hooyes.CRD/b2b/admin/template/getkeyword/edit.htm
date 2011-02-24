@@ -1,0 +1,41 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" method="post" action="?lfj=$lfj&action=$job">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA" align="center" width="17%">关键字</td>
+      <td class="head" bgcolor="#EAEAEA" align="center" width="9%">出现个数</td>
+      <td class="head" bgcolor="#EAEAEA" align="center" width="26%">链接地址</td>
+      <td class="head" bgcolor="#EAEAEA" align="center" width="26%">在文章中显示与否</td>
+      <td class="head" bgcolor="#EAEAEA" align="center" width="22%">操作</td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="17%"> 
+        <input type="text" name="keywords" value="$rsdb[keywords]" size="30">
+      </td>
+      <td bgcolor=#FFFFFF align="left" width="9%"> 
+        <input type="text" name="num" size="10" value="$rsdb[num]">
+      </td>
+      <td bgcolor=#FFFFFF align="center" width="26%">
+        <input type="text" size="40" name="url" value="$rsdb[url]">
+        <span help=1>可留空,留空的话,将去查找包含此关键字的文章,但你可以指定点击文章中的关键字跳转到其他页面,比如专题页面.只有系统启用文章内容突出显示关键字才生效</span> 
+      </td>
+      <td bgcolor=#FFFFFF align="center" width="26%">
+        <input type="radio" name="ifhide" value="0" $ifhide[0]>
+        显示 
+        <input type="radio" name="ifhide" value="1" $ifhide[1]>
+        不显示 <span help=1>如果系统没有启用文章内容突出显示关键字的话,这里设置显示也没效果</span></td>
+      <td bgcolor=#FFFFFF align="center" width="22%"> 
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

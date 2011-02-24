@@ -1,0 +1,653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!---->
+<head>
+<title>新闻中心 - PHP168整站系统                                                   Powered By www.php168.com</title>
+<link rel="stylesheet" type="text/css" href="http://192.168.2.138/busi_test/b//images/default/new.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.2.138/busi_test/images/default/style.css">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="  php168 news bbs board php mysql forums">
+<meta name="description" content="">
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+//屏蔽可忽略的js脚本错误
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+</SCRIPT>
+<!---->
+<SCRIPT LANGUAGE="JavaScript" src="http://192.168.2.138/busi_test/images/default/inc.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="http://192.168.2.138/busi_test/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="http://192.168.2.138/busi_test/images/default/swfobject.js"></SCRIPT>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+
+<table width="990" border="0" cellspacing="0" cellpadding="0"    align="center">
+<tr><td width="366" rowspan="2">
+<div class="logo" ><A HREF="/"><img src="http://192.168.2.138/busi_test/b//images/default/logo.gif" border=0></A></div>
+</td>
+
+<td width="624" align="right" valign="middle" class="homapage_top">
+<a href="/myhomepage.php" target="_blank"><img src="http://192.168.2.138/busi_test/b//images/default/homepage_top1.gif"  border="0" class="ico"/> 我的商铺</a>  &nbsp;  
+<a href="/member/" target="_blank"><img src="http://192.168.2.138/busi_test/b//images/default/homepage_top2.gif"  border="0" class="ico"/> <font color="red">商务中心</font></a>                   &nbsp; 
+<a href="/member/?main=myform1.php" target="_blank"><img src="http://192.168.2.138/busi_test/b//images/default/homepage_top3.gif"  border="0" class="ico"/> 报价单</a>    &nbsp; 
+<a href="/member/?main=myform2.php" target="_blank"><img src="http://192.168.2.138/busi_test/b//images/default/homepage_top4.gif"  border="0" class="ico"/> 询价单</a>    &nbsp;
+<a href="/member/?main=post_company.php">登记商家<img src="http://192.168.2.138/busi_test/b//images/default/free.gif" border="0"  /></a></td>
+</tr>
+<tr>
+  <td align="left" valign="middle" ><form action="/list.php" method="get" name="form1" id="form1"  onsubmit="return checksearch(this);" >
+    <table width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="97%" align="right"><div class="hp_head">
+            <select name="ctype" class="inpt">
+              <option value="1">搜索供应</option>
+              <option value="2">搜索求购</option>
+            </select>
+          <input name="keyword" type="text" id="keyword"   value="" size="30"  class="inpt"/>
+          <select name="fid"  class="inpt">
+              <option value="0">选择搜索栏目</option>
+<!---->
+	<option value="1">新闻中心</option>
+<!---->
+	<option value="29">产品库</option>
+<!---->
+	<option value="9">图片中心</option>
+<!---->
+	<option value="11">下载中心</option>
+<!---->
+	<option value="13">影视频道</option>
+<!---->
+	<option value="15">商城频道</option>
+<!---->
+	<option value="17">FLASH频道</option>
+<!---->
+	<option value="36">社会专题</option>
+<!---->
+	<option value="40">ff</option>
+<!---->
+	<option value="41">真的不能创建？</option>
+<!---->
+            </select>
+            <script language="JavaScript" type="text/javascript">
+	   function checksearch(myform){
+	   		if(myform.keyword.value==''){
+			 alert("请输入你要搜索的关键字");
+			 return false;
+			}else{
+			 return true;
+			}
+	   }
+	   </script>
+        </div></td>
+        <td width="3%"><input type="submit" name="button" id="button" value=" " class="sbt" /></td>
+      </tr>
+    </table>
+  </form></td>
+</tr>
+<tr>
+  <td colspan="2" class="hp_menu">
+  
+ <span style="float:left;">
+  当前位置：<a href="http://192.168.2.138/busi_test/">PHP168整站系统</a>  -&gt; <a  href='http://192.168.2.138/busi_test/html/1/' class='guide_menu'>新闻中心</a> 
+ 
+ </span>
+ <span style="float:right;">
+<a href="/sortlist.php?ctype=1">找产品</a> | 
+	<a href="/sortlist.php?ctype=2">看求购</a> | 
+	<a href="/company.php">找商家</a> | 
+   
+    <a href="/jobs.php">人才招聘</a> | 
+    <a href="/zh.php">行业展会</a>&nbsp;
+
+ </span> </td>
+  </tr>
+</table>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('<div style="clear:both;"></div><div class="wrap">');
+//-->
+</SCRIPT>
+<!---->
+<!--
+--> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><SCRIPT LANGUAGE='JavaScript' src='http://192.168.2.138/busi_test/ad.php?job=js&ad_id=AD_list_topad'></SCRIPT></td>
+  </tr>
+</table>
+<div class="MainTable MainDivTable"> 
+  <div class="Main"> 
+    
+    <!--
+--> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="http://192.168.2.138/busi_test/html/3/">社会新闻</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="http://192.168.2.138/busi_test/html/3/">更多...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!---->
+
+      <div style="padding-left:8px;padding-top:5px;"><a href="http://192.168.2.138/busi_test/html/3/610.htm" style="font-size:14px;font-weight:bold;" target="_blank">我是一个标题党，手机大卖特卖啦，杭州车祸1</a></div>
+<div style="text-indent:2em;border-bottom:1px dotted #ccc;margin-bottom:5px;width:97%;padding-left:8px;color:#666;">432 <span style="color:#C3C3C3;">共有<a style="color:#CC0000;">4</a>人关注 评论<a style="color:#CC0000;">0</a>条</span> [<A href="http://192.168.2.138/busi_test/html/3/610.htm" target="_blank">阅读全文</A>]</div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/609.htm" style="font-size:14px;" target="_blank">标题党，杭州车祸， 卖手机，今天被撞了</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-08-11</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/608.htm" style="font-size:14px;" target="_blank">我是一个标题党，手机大卖特卖啦，杭州车祸</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-08-11</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/599.htm" style="font-size:14px;" target="_blank">深圳万科员工泼油自焚 疑因不满离职金过低</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/598.htm" style="font-size:14px;" target="_blank">调查称中国20岁至29岁的女性中27.3%做过人流</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/597.htm" style="font-size:14px;" target="_blank">八旬老翁强奸智障女邻居致其怀孕</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/596.htm" style="font-size:14px;" target="_blank">泌乳素失调 女子被43斤巨乳所累举步维艰</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/595.htm" style="font-size:14px;" target="_blank">讲义气酒风豪爽 结果喝酒喝得膀胱都“炸掉”了</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/3/594.htm" style="font-size:14px;" target="_blank">“人鬼情未了”男星患癌拒抢救 希望有尊严地离去</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!----> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="http://192.168.2.138/busi_test/html/4/">IT业界</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="http://192.168.2.138/busi_test/html/4/">更多...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!---->
+
+      <div style="padding-left:8px;padding-top:5px;"><a href="http://192.168.2.138/busi_test/html/4/583.htm" style="font-size:14px;font-weight:bold;" target="_blank">产品经理的前世今生（职业规划）</a></div>
+<div style="text-indent:2em;border-bottom:1px dotted #ccc;margin-bottom:5px;width:97%;padding-left:8px;color:#666;">
+根据我个人对互联网产品经理（以下简称PM）的理解，画了上面这个草图，想表达几方面的内容：
+1、蓝色箭头指向代表PM在工作过程中要接触到的对象。
+2、蓝色箭头以PM为中心，指向周围的各.. <span style="color:#C3C3C3;">共有<a style="color:#CC0000;">6</a>人关注 评论<a style="color:#CC0000;">0</a>条</span> [<A href="http://192.168.2.138/busi_test/html/4/583.htm" target="_blank">阅读全文</A>]</div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/582.htm" style="font-size:14px;" target="_blank">韩国购物网站走出“门户阴影”</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/581.htm" style="font-size:14px;" target="_blank">东芝遭遇公司历史上最大净亏损 约合35亿美元</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/580.htm" style="font-size:14px;" target="_blank">一季度中国网民新增1620万人 总数已达3.16亿</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/579.htm" style="font-size:14px;" target="_blank">暴雪弃九城基于财务原因 网易每年多给9000万</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/577.htm" style="font-size:14px;" target="_blank">移动OPhone手机5月将面市对抗iPhone</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/576.htm" style="font-size:14px;" target="_blank">成都夫妇投资“高回报”网站 被骗64万元</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/575.htm" style="font-size:14px;" target="_blank">通信管理局：代办网站备案均违规 或将被断网</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/4/574.htm" style="font-size:14px;" target="_blank">eBay重金购Gmarket 意在重返中国电子商务市场</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!----> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="http://192.168.2.138/busi_test/html/35/">奇闻趣事</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="http://192.168.2.138/busi_test/html/35/">更多...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!---->
+
+      <div style="padding-left:8px;padding-top:5px;"><a href="http://192.168.2.138/busi_test/html/35/600.htm" style="font-size:14px;font-weight:bold;" target="_blank">莫斯科女大学生醉卧街头 被流氓轮奸抢劫</a></div>
+<div style="text-indent:2em;border-bottom:1px dotted #ccc;margin-bottom:5px;width:97%;padding-left:8px;color:#666;">为了制止妇女酗酒现象和维护莫斯科的社会秩序，市政府在市中心建立了第一家妇女醒酒所。醒酒所设有21个床位，以供酗酒者醒酒之用。被送入莫斯科妇女醒酒所的妇女年龄相差悬殊，最小的16岁，.. <span style="color:#C3C3C3;">共有<a style="color:#CC0000;">9</a>人关注 评论<a style="color:#CC0000;">0</a>条</span> [<A href="http://192.168.2.138/busi_test/html/35/600.htm" target="_blank">阅读全文</A>]</div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/591.htm" style="font-size:14px;" target="_blank">农夫中千万大奖后厄运缠身 投资破产孙子被枪杀</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/590.htm" style="font-size:14px;" target="_blank">哈尔滨工地发现国内最大“太岁” 重达130公斤</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/589.htm" style="font-size:14px;" target="_blank">13岁女孩感冒后变身“蛇娃” 蛇般蠕动爬行</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/588.htm" style="font-size:14px;" target="_blank">63岁老太一分钟做97个俯卧撑(图)</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/587.htm" style="font-size:14px;" target="_blank">72岁老汉得子 自称一周保持5次性生活(图)</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/586.htm" style="font-size:14px;" target="_blank">美国母亲欲提取亡儿精子续香火</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/35/585.htm" style="font-size:14px;" target="_blank">中国首次发现距今两千多年前的战国晚期韩王陵</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!----> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="http://192.168.2.138/busi_test/html/38/">一语惊人</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="http://192.168.2.138/busi_test/html/38/">更多...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!---->
+
+      <div style="padding-left:8px;padding-top:5px;"><a href="http://192.168.2.138/busi_test/html/38/584.htm" style="font-size:14px;font-weight:bold;" target="_blank">殡仪馆弄错遗体致六姐弟哭错爹 赔偿1.2万元</a></div>
+<div style="text-indent:2em;border-bottom:1px dotted #ccc;margin-bottom:5px;width:97%;padding-left:8px;color:#666;">遗体告别厅内，儿女们带着一大帮亲戚朋友围着逝去老父亲的遗体做最后的告别，谁知就在极度悲伤的泪眼朦胧中，惊见棺中的遗体竟不是老父亲。昨日，成都市一蒲姓六姐弟就在东郊殡仪馆遇此怪事.. <span style="color:#C3C3C3;">共有<a style="color:#CC0000;">2</a>人关注 评论<a style="color:#CC0000;">0</a>条</span> [<A href="http://192.168.2.138/busi_test/html/38/584.htm" target="_blank">阅读全文</A>]</div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/38/573.htm" style="font-size:14px;" target="_blank">明长城测量最新数据发布 总长度为8851.8千米</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/38/572.htm" style="font-size:14px;" target="_blank">女性应关注文胸产品质量状况</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/38/571.htm" style="font-size:14px;" target="_blank">上海车展被刷车模大曝光——长成这样也刷</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/38/570.htm" style="font-size:14px;" target="_blank">大四女生求职——做您的专职太太</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!----> 
+<table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+  <tr> 
+    <td class="head"> 
+      <h3 class="L"></h3>
+      <span class="TAG"><a href="http://192.168.2.138/busi_test/html/39/">web新闻</A></span> 
+      <h3 class="R"></h3>
+      <span class="more" style="float:right;"><a href="http://192.168.2.138/busi_test/html/39/">更多...</A></span> 
+    </td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+      <!---->
+
+      <div style="padding-left:8px;padding-top:5px;"><a href="http://192.168.2.138/busi_test/html/39/604.htm" style="font-size:14px;font-weight:bold;" target="_blank">4月20日公测期间，PHPwind官方论坛为PHP168  V6第二公测现场</a></div>
+<div style="text-indent:2em;border-bottom:1px dotted #ccc;margin-bottom:5px;width:97%;padding-left:8px;color:#666;">鉴于前几轮公测时用户访问量大，为了保障公测顺利进行，防止意外情况。
+
+PHP168官方决定，在PHP168官方论坛发布公测的同时，在PHPWIND官方论坛的PHP168专区也同步发布V6公测。
+
+大家同时.. <span style="color:#C3C3C3;">共有<a style="color:#CC0000;">50</a>人关注 评论<a style="color:#CC0000;">0</a>条</span> [<A href="http://192.168.2.138/busi_test/html/39/604.htm" target="_blank">阅读全文</A>]</div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/603.htm" style="font-size:14px;" target="_blank">“软硬兼施”助力企业信息化---------速腾数据携手PHP168</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-20</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/578.htm" style="font-size:14px;" target="_blank">戴志康：和我一样创业的年轻人别浮躁</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/569.htm" style="font-size:14px;" target="_blank">婚庆门户三大巨头瓜分天下 市场前景巨大</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/568.htm" style="font-size:14px;" target="_blank">晒工资网站盛行为跳槽作参考，你曾经跳过几次槽</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/567.htm" style="font-size:14px;" target="_blank">电子商务成功运作四大要素，不要都去做马云</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/566.htm" style="font-size:14px;" target="_blank">新手站长必须知道的50个问题，让你顺利成为草根站长</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+
+      <div style="clear:both;padding-top:5px;height:21px;width:99%;"> <span style="float:left;color:#666;">·<a href="http://192.168.2.138/busi_test/html/39/565.htm" style="font-size:14px;" target="_blank">三大学生试水校园电子商务　引来央视关注</a></span> 
+        <span style="float:right;color:#666;padding-right:5px;font-size:14px;color:#777;">2009-04-19</span> 
+      </div>
+      <!---->
+    </td>
+  </tr>
+  <tr> 
+    <td class="foot"> 
+      <h3 class="L"></h3>
+      <h3 class="R"></h3>
+    </td>
+  </tr>
+</table>
+<!---->
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable"  id="list_article" style="clear:both;display:none">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG"><a editurl='http://192.168.2.138/busi_test/do/job.php?job=list&fid=1&act=do'>新闻中心</a></span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" style="padding:0 0 0 0;"> 
+          
+          <div class="page"></div>
+        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="Side"> 
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sonSortName">
+      <tr> 
+        <td class="head" height="19"> 
+          <h3 class="L"></h3>
+          <span class="TAG">相关栏目</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" align="left"> 
+          <table width="98%" border="0"    cellspacing="5" cellpadding="5" align="center" style="margin:4px 0 4px 0;">
+<!--
+-->
+<tr>
+<!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/3/">社会新闻</a></div></td>
+  <!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/4/">IT业界</a></div></td>
+  <!---->
+  </tr>
+<!---->
+<tr>
+<!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/31/">新闻头条</a></div></td>
+  <!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/32/">推荐新闻</a></div></td>
+  <!---->
+  </tr>
+<!---->
+<tr>
+<!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/33/">图片新闻</a></div></td>
+  <!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/34/">热点事件</a></div></td>
+  <!---->
+  </tr>
+<!---->
+<tr>
+<!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/35/">奇闻趣事</a></div></td>
+  <!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/38/">一语惊人</a></div></td>
+  <!---->
+  </tr>
+<!---->
+<tr>
+<!---->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="http://192.168.2.138/busi_test/html/39/">web新闻</a></div></td>
+  <!---->
+  </tr>
+<!---->
+</table>        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td style="padding-top:5px;" align="right"><div class='player'>
+<SCRIPT LANGUAGE='JavaScript' src='http://192.168.2.138/busi_test/do/job.php?job=playurl&urlstring=XkYREVgeTUZaB0lTQU1JWkFdRB8CCQtMQg9WQQAWSEheQkoSC1VNbnkiZU5+N1sAeVxWDE4QSBBFBQ==70b13b812b'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+p8_player(playurl,'290','210','swf','false');
+</SCRIPT>
+</div>
+<div style="line-height:170%;text-align:center;padding-top:8px;"><A href="http://192.168.2.138/busi_test/html/14/601.htm" target='_blank'  style=";" title='刘德华1996年演唱会'>刘德华1996年演唱会</a></div></td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td style="padding-top:5px;" align="right"><SCRIPT LANGUAGE='JavaScript' src='http://192.168.2.138/busi_test/ad.php?job=js&ad_id=list_page_topad'></SCRIPT></td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head" height="19"> 
+          <h3 class="L"></h3>
+          <span class="TAG">热门文章</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" align="left"> 
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="article_Hottopic"><img alt="内容加载中,请稍候..." src="http://192.168.2.138/busi_test/images/default/ico_loading3.gif"></span>');
+document.write('<div style="display:none;"><iframe src="http://192.168.2.138/busi_test/do/jsarticle.php?gethtmlurl=1&fid=1&type=hot&rows=5&leng=36&iframeID=article_Hottopic" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG">推荐文章</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" valign="top" align="left"> 
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="article_Comtopic"><img alt="内容加载中,请稍候..." src="http://192.168.2.138/busi_test/images/default/ico_loading3.gif"></span>');
+document.write('<div style="display:none;"><iframe src="http://192.168.2.138/busi_test/do/jsarticle.php?gethtmlurl=1&fid=1&type=com&rows=5&leng=36&iframeID=article_Comtopic" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+        </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG">广告位</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" valign="top" align="left"> <SCRIPT LANGUAGE='JavaScript' src='http://192.168.2.138/busi_test/ad.php?job=js&ad_id=article_list'> </SCRIPT> </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+      <tr> 
+        <td class="head"> 
+          <h3 class="L"></h3>
+          <span class="TAG">论坛优秀贴</span> 
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+      <tr> 
+        <td class="middle" valign="top" align="left">  </td>
+      </tr>
+      <tr> 
+        <td class="foot"> 
+          <h3 class="L"></h3>
+          <h3 class="R"></h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!---->
+<!--
+-->
+<!--- 营销模块改动部分  -->
+ 
+<div id="bottom"></div>
+<!--- 营销模块改动部分  -->
+<div style="clear:both;"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="footer">
+  <tr> 
+    <td align="center"><br>
+      Copyright@http://192.168.2.138/busi_test all rights reserved <a href="http://www.miibeian.gov.cn" target="_blank">京ICP备050453号</a> 
+      <br>
+      Powered by <a href="http://www.php168.com" target="_blank">PHP168 V6.0</a> 
+      Code &copy; 2003-08 <a href="http://www.php168.com/bbs" target="_blank">PHP168cms</a> 
+    </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('</div>');
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+clickEdit.init();
+//-->
+</SCRIPT><SCRIPT LANGUAGE="JavaScript" src="http://192.168.2.138/busi_test/do/count.php?fid=1"></SCRIPT>
+<!--营销模块改动部分-->
+<!--CNZZ站点统计-->
+</body>
+</html>

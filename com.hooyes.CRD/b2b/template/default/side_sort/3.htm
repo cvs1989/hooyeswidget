@@ -1,0 +1,13 @@
+<div style="width:100%;padding-top:5px;height:45px;"><!--
+<?php
+$array=is_array($Fid_db[$fid])?$Fid_db[$fid]:$Fid_db[$fidDB[fup]];
+foreach($array AS $key=>$value){
+$value=get_word($value,16,0);
+print <<<EOT
+-->
+            <div style="width:46%;background:url($webdb[www_url]/images/default/iicon1.gif) no-repeat 0.3em 4px;padding-left:0.3em;text-indent:1.5em;float:left;margin-left:4px;line-height:21px;"><a style="font-weight:bold;text-decoration: underline;" href="list.php?fid=$key">$value</a></div>
+            <!--
+EOT;
+}
+?>
+--></div>

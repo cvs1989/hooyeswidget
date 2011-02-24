@@ -1,0 +1,13 @@
+<div style="width:100%;padding-top:5px;height:45px;background:#F9F9F9;"><!--
+<?php
+$array=is_array($Fu_Fid_db[$fid])?$Fu_Fid_db[$fid]:$Fu_Fid_db[$fidDB[fup]];
+foreach($array AS $key=>$value){
+$value=get_word($value,16,0);
+print <<<EOT
+-->
+            <div style="width:46%;background:url($webdb[www_url]/images/default/article_elite.gif) no-repeat 0.3em 0;padding-left:0.3em;text-indent:1.5em;float:left;margin-left:4px;line-height:21px;"><a style="font-weight:bold;" href="fulist.php?fid=$key">$value</a></div>
+            <!--
+EOT;
+}
+?>
+--></div>

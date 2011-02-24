@@ -1,0 +1,97 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form_spid" method="post" action=""  target="spiframe">
+          <tr> 
+            <td class="head">本专题“<b><font color="#FF0000">{$rsdb[title]}</font></b>”现有贴子如下</td>
+          </tr>
+          <tr> 
+            <td class="middle"> 
+              <div style="width:100%;height:200px;overflow-y:scroll;"> 
+                <div id="sp_atclist"> </div>
+              </div>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td align="center"> 
+                    <input type="button" name="Submit" value="修改以上排序" onclick="change_orderid()">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">你可以选择以下贴子添加到以上专题</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div style="width:100%;height:200px;overflow-y:scroll;"> 
+              <div id="show_myatc"></div>
+            </div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td  align="left" width="5%" valign="middle"  >筛选:</td>
+                <td width="45%"> 
+                  <div id="show_myatc_fid"></div>
+                </td>
+                <td class=page width="50%"> 
+                  <div id="show_myatc_page"></div>
+                </td>
+              </tr>
+            </table><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><form name="form1" method="post" action="special.php?job=show_BBSiframe&id=$id&type=myatc" target='spiframe'>
+                  <td>搜索: 关键字 
+                    <input type="text" name="keywords">
+                    <input type="submit" name="Submit2" value="搜索">
+                  </td>
+                </form>
+  </tr>
+</table>
+          
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table><div style="display:none;"><iframe src="special.php?job=show_BBSiframe&id=$id&type=all" width=0 height=0 id="spiframe" name="spiframe"></iframe> 
+  <form name="formsp" method="post" action="" target="spiframe">
+  </form>
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function closedo(obj){
+	obj.style.display='none';
+}
+function fid_jumpMenu(selObj){
+	document.formsp.action="special.php?job=show_BBSiframe&id=$id&ismy=$ismy&type=myatc&fid="+selObj.options[selObj.selectedIndex].value;
+	document.formsp.submit();
+}
+function change_orderid(){
+	document.form_spid.action="special.php?job=show_BBSiframe&id=$id&type=list_atc&act=order";
+	document.form_spid.submit();
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

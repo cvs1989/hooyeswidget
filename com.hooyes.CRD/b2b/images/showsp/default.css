@@ -1,0 +1,248 @@
+/*****************************************************************
+******************************************************************
+以下为所有风格通用样式
+margin: 0;padding: 0;设置外边距,内边距空隙都为0
+font-size: 12px;为字体大小.一般表格内的,不受他控制
+li,ul设置list-style: none;主要是取消默认的小圆点.不太好看
+******************************************************************
+*****************************************************************/
+
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+li,ul{
+	list-style: none;
+}
+
+/******************************************
+TD中的color: #333333;为没有超级链接的字体颜色
+VERTICAL-ALIGN: top;表格里的内容居顶
+text-align:left;表格里的内容居左
+*******************************************/
+
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+}
+
+/******************************************
+border:1px solid #ccc; 表单边框为1个像素的实线,
+要为虚线改solid为dotted,要换颜色改#ccc
+可以自定义背景颜色
+background:#eee;
+*******************************************/
+
+input,textarea{
+	border:1px solid #ccc;
+}
+
+/******************************************
+网页整体宽度
+******************************************/
+.wrap{
+	width:960px;
+	margin:auto;
+}
+
+/******************************************
+font-size: 12px;超级链接字体大小
+color:字体颜色
+text-decoration: none;没有下画线.要有下画线.改none为underline
+a 为统一超级链接,
+a:link没有点击过的超级链接样式
+a:visited 被点击过的超级链接样式
+a:hover 鼠标指向时的超级链接样式
+a:active 被用户激活(在鼠标点击与释放之间发生的事件)时的样式.少用
+*******************************************/
+
+a {
+	font-size: 12px;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+
+body{
+	background:url(areabg.gif) repeat-y center;
+}
+#nav{
+	height:35px;
+	background:url(navbg.gif);
+}
+
+#nav .logo a{
+	display:block;
+	width:70px;
+	height:25px;
+	background:url(menulogo.gif) no-repeat 5px 0px;
+	text-indent:-100px;
+	margin-top:3px;
+}
+#nav .logo{
+	float:left;
+}
+#nav .menu{
+	float:left;
+	padding-top:12px;
+}
+
+.guide{
+	border-left:1px solid #1D50A3;
+	margin:5px 0px 5px 0px;
+	line-height:20px;
+	padding-left:10px;
+}
+
+.headline{
+	border-top:5px solid #1D50A3;
+	line-height:10px;
+	border-bottom:1px solid #1D50A3;
+}
+
+#main{
+	margin-top:10px;
+	height:500px;
+}
+
+#main #left{
+	width:250px;
+	border:#ccc solid 1px;
+	background:#F7F7F7;
+	padding:10px;
+	
+}
+
+#main #right{
+	width:220px;
+	border:#ccc solid 1px;
+	background:#F7F7F7;
+	padding:10px;
+}
+#main .side{
+	margin-bottom:10px;
+}
+#main .side .head{
+	background:#E1E1E1;
+	height:20px;
+	font-size:14px;
+	color:#5F5F5F;
+	font-weight:bold;
+	padding-top:6px;
+	padding-left:4px;
+}
+#main .side .m{
+	padding-top:8px;
+	line-height:150%;
+	color:#5F5F5F;
+}
+#main #center .side{
+	width:92%;
+}
+#main #center .side .head{
+	background:#F3F3F3;
+}
+#main #center .side .m div{
+	border-bottom:#ccc dotted 1px;
+	line-height:200%;
+}
+
+#footimg{
+	margin-top:10px;
+	height:55px;
+	border:1px solid #ccc;
+}
+#footimg .L{
+	width:91px;
+	background:url(footbg1.gif);
+}
+#footimg .R{
+	width:493px;
+	background:url(footbg2.gif);
+}
+#footimg .C{
+	padding-top:20px;
+	padding-left:5px;
+}
+#commenttable{
+	border:1px solid #ccc;
+	margin-top:10px;
+	height:200px;
+	background:url(comment.gif) no-repeat 20px 10px;
+	
+}
+
+#commenttable .td{
+	padding:50px 25px 25px 25px;
+}
+
+#footer{
+	border-top:#CBCBCB solid 1px;
+	margin-top:15px;
+}
+#footer td{
+	padding:1em 0 1em 0;
+}
+
+
+#comment .content{
+	width:99%;
+	border:dotted 1px #ddd;
+	margin-bottom:10px;
+}
+#comment .content .word{
+	border-bottom:solid 1px #ddd;
+	padding-left:5px;
+	height:50px;
+}
+#comment .content .img{
+	border-right:dotted 1px #ddd;
+	padding:1em;
+}
+#comment .content .info{
+	padding:2px 0 0 5px;
+}
+
+/***************/
+
+.Side .middle .t{
+	line-height:150%;
+}
+
+#picsubject .listpic{
+	padding-top:5px;
+	line-height:230%;
+	text-align:center;
+	float:left;
+	width:150px;
+}
+#picsubject .listpic a.img{
+	width:130px;
+	height:95px;
+	display:block;
+	border:1px solid #ccc;
+}
+#picsubject .listpic img{
+	border:2px solid #fff;
+	width:130px;
+	height:95px;
+}
+#picsubject .listpic a.title{
+	text-decoration: underline;
+}
+#picsubject .listpic a.title:hover{
+	text-decoration: none;
+}

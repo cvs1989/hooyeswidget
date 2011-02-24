@@ -1,0 +1,56 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form action="index.php?lfj=$lfj&action=addsort" method=POST>
+    <tr class="head"> 
+      <td colspan="2"> <span class=bold><font color="#FFFFFF">添加栏目/分类</font></span></td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF width="23%"> 名称:<br>
+        注:要想一次批量创建多个栏目,每个栏目名称换一行.</td>
+      <td bgcolor=#FFFFFF width="77%"> 
+        <textarea name="name" cols="40" rows="5"></textarea>
+      </td>
+    <tr> 
+      <td bgcolor=#FFFFFF width="23%">所属分类</td>
+      <td bgcolor=#FFFFFF width="77%">{$sort_fup}(不选择将成为一级分类) </td>
+    
+    <tr> 
+      <td bgcolor=#FFFFFF width="23%">本栏目归属于哪个模型:</td>
+      <td bgcolor=#FFFFFF width="77%">$module_id</td>
+    
+    <tr> 
+      <td bgcolor=#FFFFFF width="23%">设置为大分类/小栏目/单篇文章:</td>
+      <td bgcolor=#FFFFFF width="77%"> 
+        <input type="radio" name="postdb[type]" value="1" $typedb[1]>
+        大分类(不可发内容) 
+        <input type="radio" name="postdb[type]" value="0" $typedb[0]>
+        小栏目
+<input type="radio" name="postdb[type]" value="2" $typedb[2]>
+        单篇文章(一个栏目即一篇文章，适合于作公司联系方式，公司介绍等)</td>
+    <tr align="center"> 
+      <td bgcolor=#FFFFFF colspan="2"> 
+        <input type=submit value="提 交" name="submit">
+        <input type="hidden" name="only" value="$only">
+        <input type="hidden" name="mid" value="$mid">
+      </td>
+  </form>
+</table>
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>注意</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>1、大分类不可发表内容，大分类下需要再继续创建小栏目，或者单篇文章，大分类下，可以再创建大分类<br>
+        2、小栏目与单篇文章下面不可再创建大分类，也不可以创建小栏目，也不可以创建单篇文章。 </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

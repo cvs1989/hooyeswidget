@@ -1,0 +1,117 @@
+TD {
+	FONT-SIZE: 12px
+}
+BODY {
+	FONT-SIZE: 12px
+}
+INPUT {
+	FONT-SIZE: 12px
+}
+SELECT {
+	FONT-SIZE: 12px
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.fb {
+	FONT-WEIGHT: bold
+}
+.fb14 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+.i0 {
+	BORDER-RIGHT: #00a9e1 1px solid; BORDER-TOP: #00a9e1 1px solid; BORDER-LEFT: #00a9e1 1px solid; BORDER-BOTTOM: #00a9e1 1px solid
+}
+.i1 {
+	BORDER-RIGHT: #cfcfcf 1px solid; BORDER-TOP: #cfcfcf 1px solid; BORDER-LEFT: #cfcfcf 1px solid; BORDER-BOTTOM: #cfcfcf 1px solid
+}
+.i2 {
+	COLOR: #ffffff; BACKGROUND-COLOR: #357bb6
+}
+.whi01 {
+	COLOR: #ffffff; LINE-HEIGHT: 20px
+}
+.whi01 TD {
+	COLOR: #ffffff; LINE-HEIGHT: 20px
+}
+.whi01 A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.whi01 A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.whi01 A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.bla01 {
+	COLOR: #000000; LINE-HEIGHT: 20px
+}
+.bla01 TD {
+	COLOR: #000000; LINE-HEIGHT: 20px
+}
+.bla01 A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.bla01 A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.bla01 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.gra01 {
+	COLOR: #5f5f5f; LINE-HEIGHT: 18px
+}
+.gra01 TD {
+	COLOR: #5f5f5f; LINE-HEIGHT: 18px
+}
+.gra01 A:link {
+	COLOR: #5f5f5f; TEXT-DECORATION: none
+}
+.gra01 A:visited {
+	COLOR: #5f5f5f; TEXT-DECORATION: none
+}
+.gra01 A:hover {
+	COLOR: #5f5f5f; TEXT-DECORATION: underline
+}
+.gra02 {
+	COLOR: #5f5f5f; LINE-HEIGHT: 15px
+}
+.gra02 TD {
+	COLOR: #5f5f5f; LINE-HEIGHT: 15px
+}
+.gra02 A:link {
+	COLOR: #5f5f5f; TEXT-DECORATION: underline
+}
+.gra02 A:visited {
+	COLOR: #5f5f5f; TEXT-DECORATION: underline
+}
+.gra02 A:hover {
+	COLOR: #5f5f5f; TEXT-DECORATION: none
+}
+.blu01 {
+	COLOR: #357bb6; LINE-HEIGHT: 15px
+}
+.blu01 TD {
+	COLOR: #357bb6; LINE-HEIGHT: 15px
+}
+.blu01 A:link {
+	COLOR: #357bb6; TEXT-DECORATION: none
+}
+.blu01 A:visited {
+	COLOR: #357bb6; TEXT-DECORATION: none
+}
+.blu01 A:hover {
+	COLOR: #357bb6; TEXT-DECORATION: underline
+}
+.slidemover {
+	CURSOR: e-resize
+}
+.handler_style {
+	Z-INDEX: 9; BACKGROUND-COLOR: #ffffff
+}
+.scaletext {
+	BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 9pt; BACKGROUND: #ffffff; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #333333; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 16px; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0px; FONT-VARIANT: normal; solid: 
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}

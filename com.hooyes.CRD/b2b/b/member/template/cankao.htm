@@ -1,0 +1,123 @@
+<!--
+<?php
+
+if(!$action){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main" >
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head">
+ 	<strong>以下是您在别的网站的参考资料,</strong><strong>&nbsp;&nbsp;&nbsp;<a href="?action=add">添加新的<font color="#ff2200">[商家站外参考]</font></a></strong></span>
+	  </td>
+        </tr>
+ 
+        <tr  class="trA"> 
+          <td height="80" align="left" valign="middle" style="padding:10px;">	  
+	  
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr class="head_in"> 
+   
+    <td width="32%" align="center"><strong>站外参考名称</strong></td>
+	<td width="37%" align="left"><strong>描述</strong></td>
+    <td width="11%" align="center"><strong>状态</strong></td>
+	<td width="20%" align="center"><strong>操作</strong></td>
+    </tr>
+<!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->	 
+   <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'">
+    
+    <td height="50" align="center"><font color="blue">$rs[title]</font><br />
+      <a href="$rs[url]" target="_blank">$rs[url]</a></td>
+	<td align="left">$rs[description]</td>
+    <td align="center">$rs[yz]</td>
+	  <td align="center" style="line-height:16px;"><a href="?action=add&amp;ck_id=$rs[ck_id]">编辑</a> | <a href="?action=del&amp;ck_id=$rs[ck_id]" onclick="return confirm('删除后不能恢复，确定要继续吗？')">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+	
+<p>$showpage</p>
+	
+		  </td>
+        </tr>
+      </table>	
+
+
+        
+	 
+	</td>
+</tr> 
+</table>
+  <p >
+	<script language="javascript" type="text/javascript" src="$Murl/help_js.php?keyw=站外参考&fid=&listnum=5&length=60"></script>
+	</p>
+
+<!--
+EOT;
+}elseif($action=='add'){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main" >
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head">
+		 站外参考资料
+		  </td>
+		</tr>
+	</table>
+	
+	
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+      <tr  class="trA">
+        <td height="80" align="left" valign="middle"  style="padding:10px;" width="54%"><form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1" >
+            <input name="action" type="hidden" id="action" value="save_add" />
+            <table width="726" cellspacing="0" cellpadding="5">
+              <tr>
+                <td width="21%" height="20" align="right">站外参考资料名称：</td>
+                <td width="38%" align="left" valign="top"><input name="title" type="text" id="title" value="$rsdb[title]" size="40" /></td>
+                <td width="41%" align="left" valign="top">比如：*****网*****级商家 (最多40个字符) </td>
+              </tr>
+              <tr>
+                <td height="20" align="right">参考地址：</td>
+                <td align="left" valign="top"><input name="url" type="text" id="url" value="$rsdb[url]" size="40" /></td>
+                <td align="left" valign="top">http://开头 </td>
+              </tr>
+              <tr>
+                <td height="20" align="right">本参考描述：</td>
+                <td align="left" valign="top"><textarea name="description" cols="40" rows="5" id="description">$rsdb[description]</textarea></td>
+                <td align="left" valign="top">简单描述，最多400个字符</td>
+              </tr>
+
+              <tr>
+                <td colspan="3" align="center"><input type="submit" name="Submit" value="提交保存" onclick="return confirm('保存之后都要接受新的审核，确定继续吗?');" />
+                    <input type="button" name="Submit2" value="放 弃"  onclick="window.location='?';"/>
+                    <input name="action" type="hidden" id="action" value="save_add" />
+                    <input name="ck_id" type="hidden" id="ck_id" value="$ck_id" /></td>
+                </tr>
+            </table>
+			<script language="JavaScript" type="text/javascript" src="$Murl/help_js.php?keyw=站外参考&fid=&listnum=10&length=60"></script>
+        </form></td>
+        </tr>
+     
+    </table></td>
+  </tr>
+</table>
+    
+<!--
+EOT;
+}
+?>
+-->	  

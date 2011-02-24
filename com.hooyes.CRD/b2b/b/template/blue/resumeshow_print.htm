@@ -1,0 +1,129 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>$titleDB[title]     powered by www.php168.com</title>
+<link rel="stylesheet" type="text/css" href="images/$STYLE/default.css">
+<link rel="stylesheet" type="text/css" href="images/$STYLE/css.css">
+<link rel="stylesheet" type="text/css" href="images/$STYLE/new.css">
+<link rel="stylesheet" type="text/css" href="images/$STYLE/jobs.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--//导航菜单
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+//-->
+</SCRIPT>
+</head>
+<body bgcolor="#FFFFFF" text="#45454545" leftmargin="0" topmargin="0" style="font-size:12px;">
+<center><h2>个人简历</h2></center>
+<style>
+td{ padding:5px; line-height:150%; font-size:12px;}
+</style>
+<table width="770" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#999999">
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="0">
+			
+			<tr><td width="21%" class="cols_name"><img src="images/$STYLE/arrow_list.gif" />真实姓名：</td>
+			<td width="57%"  class="cols_value"><strong class="title">$resume_data[truename]</strong>&nbsp;$resume_data[eng_name]</td>
+			
+			  <td width="49%" rowspan="100" align="center" valign="top" >
+			  <img src="$webdb[www_url]/$webdb[updir]/$Imgdirname_resume/$resume_data[icon]"  width="150" style="border:1px #CCCCCC solid" onerror="this.src='images/$STYLE/nobody.gif';"/>			  </td>
+			</tr>
+			<tr><td class="cols_name"><img src="images/$STYLE/arrow_list.gif" />期望岗位：</td><td  class="cols_value"><strong class="title">$resume_data[job_name]</strong>&nbsp;</td>
+			  </tr>
+			
+			<tr><td class="cols_name"><img src="images/$STYLE/arrow_list.gif" />所在地区：</td><td  class="cols_value">$resume_data[city]&nbsp;</td>
+			  </tr>
+			
+			$resume_show_template 
+			  
+			</table></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><strong>自我介绍</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><div>
+			$resume_data[myinfo]
+			</div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><strong>工作经历</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><div>
+			$resume_data[work_his]
+			</div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><strong>教育背景</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">	<div>
+			$resume_data[edu_his]
+			</div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><strong>联系方式</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><div>
+<!--
+EOT;
+if(!$webdb[resumeView_contact] && !$lfjuid){
+print <<<EOT
+-->
+&nbsp;登录后可见：
+<div class="login">
+        <SCRIPT src="$webdb[www_url]/hack.php?hack=login&job=js"></SCRIPT>
+</div>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+			<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="cols_name" width="21%">居住地址：&nbsp;</td>
+    <td class="cols_value" width="79%">$resume_data[address]&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="cols_name">联系电话：&nbsp;</td>
+    <td class="cols_value">$resume_data[phones]&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="cols_name">邮箱地址：&nbsp;</td>
+    <td class="cols_value">$resume_data[email]&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="cols_name">个人主页：&nbsp;</td>
+    <td class="cols_value">$resume_data[website]&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+
+}
+print <<<EOT
+-->	
+			</div></td>
+  </tr>
+</table>
+<br />
+<br />
+</body>
+</html>
+
+
+<!--
+EOT;
+?>
+-->

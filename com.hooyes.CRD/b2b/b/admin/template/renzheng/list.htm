@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      <td width="7%">用户</td>
+      <td width="24%">商家名称</td>
+      <td width="9%">认证类别</td>
+      <td width="9%">状态</td>
+      <td width="14%"> 提交时间</td>
+      <td width="12%">处理时间</td>
+      <td width="9%">详情</td>
+      <td width="8%">通过认证</td>
+      <td width="8%">删除申请</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="7%" align="center">$rs[username]</td>
+      <td width="24%" align="center"><a href="$Mdomain/$homepage.php?uid=$rs[uid]" target="_blank">$rs[company_name]</a></td>
+      <td width="9%" align="center">$rs[level]</td>
+      <td width="9%" align="center">$rs[yz]</td>
+      <td width="14%" align="center"> $rs[post_time]</td>
+      <td width="12%" align="center">$rs[yz_time]</td>
+      <td align="center"><a href="?jobs=view&viewuid=$rs[uid]">点击查看</a></td>
+      <td align="center" width="8%"><a href="?jobs=ok&id=$rs[id]" onclick="return confirm('确定要让此认证生效吗?');">确认</a></td>
+      <td align="center" width="8%"><a href="?jobs=del&id=$rs[id]" onclick="return confirm('如果此用户有更高级别的认证，此认证信息不能删除；>>>> 确定删除此认证吗?');">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage}</td>
+    </tr>
+  </form>
+</table>
+
+<!--
+EOT;
+?>
+-->

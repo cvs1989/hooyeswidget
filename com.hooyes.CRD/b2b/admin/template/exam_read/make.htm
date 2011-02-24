@@ -1,0 +1,45 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td align="center" colspan="2"> <span class=bold><font color="#FFFFFF">添加题目</font></span></td>
+  </tr>
+  <form action="?lfj=$lfj&action=$job" method=POST>
+    <tr> 
+      <td bgcolor=#FFFFFF width="30%"> 科目:</td>
+      <td bgcolor=#FFFFFF width="70%">$sort_fid</td>
+    <tr>
+      <td bgcolor=#FFFFFF width="30%">名称:</td>
+      <td bgcolor=#FFFFFF width="70%">
+        <input type="text" name="atc_name" size="50" value="$rsdb[name]">
+      </td>
+    <tr> 
+      <td bgcolor=#FFFFFF width="30%">测试类型:</td>
+      <td bgcolor=#FFFFFF width="70%"> 
+        <input type="radio" name="atc_type" value="1" $typedb[1]>
+        考试 
+        <input type="radio" name="atc_type" value="2" $typedb[2]>
+        作业 
+        <input type="radio" name="atc_type" value="3" $typedb[3]>
+        练习 </td>
+    <tr id="answer_tr"> 
+      <td bgcolor=#FFFFFF width="30%">是否共享:</td>
+      <td bgcolor=#FFFFFF width="70%"> 
+        <input type="radio" name="atc_ifshare" value="1" $ifsharedb[1]>
+        是 
+        <input type="radio" name="atc_ifshare" value="0"  $ifsharedb[0]>
+        否 </td>
+    <tr> 
+      <td bgcolor=#FFFFFF width="30%">&nbsp;</td>
+      <td bgcolor=#FFFFFF width="70%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+      </td>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

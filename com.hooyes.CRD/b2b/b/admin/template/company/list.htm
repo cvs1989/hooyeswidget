@@ -1,0 +1,54 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form action="?" method="get">
+  关键字搜索
+  <input name="keyword" type="text" id="keyword" value="$keyword" />
+  <input type="submit" name="Submit" value="搜索" />
+</form>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      <td width="7%">用户</td>
+      <td width="29%">商家名称</td>
+      <td width="11%">认证类别</td>
+      <td width="5%">状态</td>
+      <td width="5%">推荐</td>
+      <td width="12%"> 提交时间</td>
+      <td width="13%">地区</td>
+      <td width="5%">代理</td>
+      <td width="5%">VIP</td>
+      <td width="8%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="7%" height="20" align="center">$rs[username]</td>
+      <td width="29%" align="center"><a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank">$rs[title]</a></td>
+      <td width="11%" align="center"><a href="renzheng.php?jobs=view&viewuid=$rs[uid]">$rs[level]</a></td>
+      <td width="5%" align="center"><a href="?jobs=yz&rid=$rs[rid]" onclick="return confirm('确定操作此商家吗?');">$rs[yz]</a></td>
+      <td width="5%" align="center"><a href="?jobs=levels&amp;rid=$rs[rid]">$rs[levels]</a></td>
+      <td width="12%" align="center"> $rs[posttime]</td>
+      <td width="13%" align="center">$rs[city_id]</td>
+      <td align="center">$rs[agent]</td>
+      <td align="center">$rs[vip]</td>
+      <td align="center" width="8%"><a href="?jobs=del&rid=$rs[rid]" onclick="return confirm('建议您取消审核，尽量不要删除商家信息，因为删除后不可恢复，且此商家所有信息将被清空，请谨慎操作;确定删除此商家吗?');">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="10"> {$showpage}</td>
+    </tr>
+  </form>
+</table>
+
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,145 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>会员操作平台                                                              powerby www.php168.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="images/style.css" type="text/css">
+</head>
+<body bgcolor="#0B55D2" text="#000000" leftmargin="0" topmargin="0" style="background-color:#0B55D2" >
+<div id="leftmenu"> 
+  
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu_top' width="100%">
+  <tr>
+    <td  height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td> 
+		<div class="show">
+		  <!--<br>
+          级别: {$ltitle[$userdb[groupid]]} -->
+		  <a href="main.php"  target=main ><strong><font color="#0F42A6">管理首页</font></strong></a> |  <a href="index.php?action=quite" target="_parent"><strong><font color="#0F42A6">退出</font></strong></a><br>
+		  <a href="../" target="_blank"><b>预览前台首页</b></a><br>
+		  <a href="javascript:" onClick="return showmenu('open')" >全部展开</a> 
+          <a href="javascript:" onClick="return showmenu('close')" >全部收缩</a> 
+		  <br>
+		   帐号:$userdb[username]
+     	 </div> 
+    </td>
+  </tr> 
+</table>
+<!--
+EOT;
+foreach($menudb AS $SortName=>$array){
+//$display=$jj>0?"none":"";
+$display='none';
+$jj++;
+
+print<<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablewidth_menu">
+  <tr>
+    <td class="head_menu"><a href='javascript:' onclick='showson("s$jj")'>$SortName</a></td>
+  </tr>
+  <tr>
+    <td class="c_menu">
+	
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style='display:$display' id='s$jj' ><tr>
+          <td >
+          <div style="margin-top:-15px; line-height:150%; padding-left:15px;">
+<!--
+EOT;
+foreach($array AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if($array2[line]){
+	$style="border-bottom:1px #999999 dotted;";
+}else{
+	$style="";
+}
+if($array2[up]){
+print<<<EOT
+-->
+        <A HREF='$array2[link]' target=main class="link"  style='padding-left:15px;height:20px; line-height:20px; $style'>$MenuName</A>
+        
+<!--
+EOT;
+}else{
+print<<<EOT
+-->
+        <br><A HREF='$array2[link]' target=main class="link"  style='padding-left:15px;height:20px; line-height:20px;$style'>$MenuName</A>
+<!--
+EOT;
+}
+
+}print<<<EOT
+-->
+</div>
+</td>
+        </tr>
+      </table>
+	 </td>
+  </tr>
+  <tr>
+     <td class="foot"></td>
+  </tr>
+</table>
+<!--
+EOT;
+}print<<<EOT
+-->
+<table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class="head_menu"><a href='javascript:' onclick='showson("s98")' style="color:#666;">版权所有</a></td>
+    </tr>
+    <tr> 
+      <td class="c_menu"> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id='s98'>
+          <tr> 
+            <td style='padding:10px 20px 10px 20px;line-height:16px;color:#666;'>系统版本:$php168_Edition<br>
+              系统设计:PHP168技术一部<br>
+              支持团队:PHP168团队<br>
+              技术支持:<A HREF="http://bbs.php168.com/" style="color:#666;" target="_blank">PHP168论坛</A>
+			  <A HREF="http://www.php168.com/" style="color:#666;" target="_blank"><img src="images/left_7.jpg" width="130" border="0"></A>
+            </td>
+          </tr>
+        </table>
+		&nbsp;
+      </td>
+    </tr>
+  </table>
+
+		
+</div>
+
+	   
+</body>
+<!--
+EOT;
+?>
+-->
+<SCRIPT language=javascript>
+function showson(ss){
+	if (document.getElementById(ss).style.display == 'none'){
+		document.getElementById(ss).style.display = '';
+	}else{
+		document.getElementById(ss).style.display = 'none';
+	}
+}
+function showmenu(ss){
+	for(i=0;i<100;i++){
+		obj=document.getElementById("s"+i);	
+		if(ss=='open'){
+			if(obj && obj.style.display=="none"){
+				obj.style.display="";
+			}
+		}else{
+			if(obj && obj.style.display==""){
+				obj.style.display="none";
+			}
+		}
+	}
+}
+</script>
+</html>

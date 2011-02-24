@@ -1,0 +1,60 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="200" valign="top" class="Main"> 
+      
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+  <tr> 
+          <td height="21" class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$fidDB[name]</span> 
+            <h3 class="R"></h3>
+           </td>
+        </tr>
+        <tr> 
+          <td height="50" class="middle" valign="top"> 
+		    <table width="99%" border="0" cellspacing="1" cellpadding="3" bgcolor="#dddddd" class="formlist_table">
+              <tr align="center" class="formlist_head"> 
+                <td width="9%" style="padding:2px;">性质</td>
+                <td width="15%" style="padding:2px;">分类</td>
+                <td width="64%" style="padding:2px;">名称</td>
+                <td style="padding:2px;" width="12%">参与</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+              <tr bgcolor="#FFFFFF" class="formlist_tr"> 
+                <td width="9%" align="center" style="padding:2px;">$rs[type]</td>
+                <td width="15%" align="center" style="padding:2px;">$rs[fname]</td>
+                <td width="64%" style="padding:2px;">$rs[name]</td>
+                <td align="center" style="padding:2px;" width="12%"><a href="exam_write.php?id=$rs[id]" target="_blank"><u>参与</u></a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+            <table width="99%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->
