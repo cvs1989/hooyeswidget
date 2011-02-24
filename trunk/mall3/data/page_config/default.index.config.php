@@ -21,22 +21,13 @@ return array (
         'num' => '15',
       ),
     ),
-    '_widget_268' => 
+    '_widget_317' => 
     array (
-      'name' => 'image_ad',
+      'name' => 'image_google',
       'options' => 
       array (
-        'ad_image_url' => 'data/files/mall/template/201004040508072463.jpg',
-        'ad_link_url' => 'http://www.hooyes.com',
-      ),
-    ),
-    '_widget_658' => 
-    array (
-      'name' => 'image_ad',
-      'options' => 
-      array (
-        'ad_image_url' => 'data/files/mall/template/201004040508365973.jpg',
-        'ad_link_url' => 'http://www.hooyes.com',
+        'ad_image_url' => '',
+        'ad_link_url' => '',
       ),
     ),
   ),
@@ -51,13 +42,9 @@ return array (
       0 => '_widget_454',
       1 => '_widget_130',
     ),
-    'bottom_left' => 
+    'top_right' => 
     array (
-      0 => '_widget_268',
-    ),
-    'bottom_right' => 
-    array (
-      0 => '_widget_658',
+      0 => '_widget_317',
     ),
   ),
 );

@@ -1,6 +1,6 @@
 ﻿html {
 	text-align: center;
-	
+	background: #EDEDED url(../images/main_bg.jpg) repeat-x left top;
 }
 body {
 	width: 940px;
@@ -60,7 +60,7 @@ a:hover {
 
 /** 导航 **/
 .nav {
-	background: url(../images/navbgnew1125.gif) repeat-x left top;
+	background: url(../images/nav_bg.jpg) repeat-x left top;
 }
 .nav .nav_global {
 }
@@ -76,7 +76,7 @@ a:hover {
 	line-height: 33px;
 	font-weight: bold;
 	color: #FFF;
-	/* background: url(../images/nav_line.jpg) no-repeat right top; */
+	background: url(../images/nav_line.jpg) no-repeat right top;
 	padding-right: 2px;
 }
 .nav .nav_global li a {
@@ -89,12 +89,9 @@ a:hover {
 	color: #000!important;
 	text-decoration: none;
 }
-.nav .nav_global li.curr{
-  width:88px
-} 
 .nav .nav_global li.curr a {
 	color: #000;
-	background: url(../images/navbutton.gif) repeat-x center bottom;
+	background: url(../images/nav_li_hover.jpg) repeat-x center top;
 }
 .nav_sub {
 	padding: 6px;

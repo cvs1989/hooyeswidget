@@ -195,8 +195,11 @@ ul, ol { list-style-type:none; }
 .xBanner .subnav .z_index { display: block; padding: 0 15px; margin-right: 10px; position: relative; z-index: 1; background: url(../images/gif.gif) no-repeat right 2px; }
 .xBanner .subnav .z_index { +background: url(../images/gif.gif) no-repeat right 0; }
 .xBanner .subnav .line { padding: 0 10px; background: url(../images/subnav_line.gif) no-repeat left center; }
-#head { width: 1000px; height: 70px; padding-top: 15px; margin: 0 auto; }
+#head { width: 1000px; height: 100px; padding-top: 15px; margin: 0 auto; }
 #head h1 { float: left; }
+.head_index { width: 1000px; height: 170px !important; padding-top: 15px; margin: 0 auto; }
+.head_index h1 { float:none; width:100%; text-align:center;}
+.head_index h1 img { height:170px;}
 #head .menu { float: right; word-spacing: 4px; position: relative; z-index: 100; }
 #head .link1 { letter-spacing: 1px; }
 #head .link1 a { color: #666; }
