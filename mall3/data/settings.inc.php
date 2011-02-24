@@ -1,7 +1,7 @@
 <?php 
 return array (
   'subdomain_reserved' => 'www',
-  'subdomain_length' => '3-12',
+  'subdomain_length' => '3-15',
   'site_name' => '中国橡胶企业大全',
   'site_title' => '中国橡胶企业大全',
   'site_description' => '中国橡胶企业大全',
@@ -18,8 +18,8 @@ return array (
   'sitemap_enabled' => true,
   'sitemap_frequency' => 1,
   'rewrite_enabled' => false,
-  'guest_comment' => true,
-  'site_logo' => 'data/files/mall/settings/site_logo.gif',
+  'guest_comment' => false,
+  'site_logo' => 'data/files/mall/settings/site_logo.jpg',
   'default_store_logo' => 'data/files/mall/settings/default_store_logo.gif',
 );
 ?>
