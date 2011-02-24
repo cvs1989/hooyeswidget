@@ -1,0 +1,132 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job&id=$id">
+    <tr class="head"> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+
+<!--
+EOT;
+if($id!=1){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%"> 频道页名称:</td>
+      <td width="78%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">程序文件名: </td>
+      <td width="78%"> 
+        <input type="text" name="postdb[phpname]" value="{$rsdb[phpname]}" size="40">
+        (注:一般不修改)</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">静态文件名: </td>
+      <td width="78%"> 
+        <input type="text" name="postdb[htmlname]" value="{$rsdb[htmlname]}" size="50">
+<!--
+EOT;
+if($id==1){
+print <<<EOT
+-->
+(注:一般情况是<font color="#FF0000">index.htm</font>,你也可以改成<font color="#FF0000">index.html</font>)
+        
+<!--
+EOT;
+}else{print <<<EOT
+-->
+(注:可随时修改,也可改成二级目录文件比如<font color="#FF0000">news/new.htm</font>)
+		
+	<!--
+EOT;
+}print <<<EOT
+-->	</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">模板(一般留空)</td>
+      <td width="78%">网页头部: 
+        <input type="text" name="postdb[head_tpl]" size="50" value="$rsdb[head_tpl]" id="head_tpl">
+        {$tpl_head} <br>
+        网页中间: 
+        <input type="text" name="postdb[main_tpl]" size="50" value="$rsdb[main_tpl]" id="main_tpl">
+        {$tpl_main} <br>
+        网页底部: 
+        <input type="text" name="postdb[foot_tpl]" size="50" value="$rsdb[foot_tpl]" id="foot_tpl">
+        {$tpl_foot}</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">风格</td>
+      <td width="78%">{$style_select}(有些模板可能无效)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" height="102">频道页内的栏目:</td>
+      <td width="78%" height="102"> $sort_fid <br>
+        [<a href="index.php?lfj=$lfj&job=order&id=$id" onclick="return confirm('如果修改过当前设置,请先保存再点确认')"><font color="#FF0000">修改栏目排序</font></a>]<br>
+        首页显示栏目文章的排序如下,你可以点击上面修改栏目排序方式: <br>
+        <div style="border:1px dotted #ccc;">$fid_name </div></td>
+    </tr>
+	<tr bgcolor="#FFFFFF"> 
+      <td width="22%" height="50">每行显示几个子栏目:</td>
+      <td width="78%" height="50"> 
+        <input type="text" name="atc_line" size="2" value="$line">个
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" height="50">每个栏目显示多少行:</td>
+      <td width="78%" height="50"> 
+        <input type="text" name="atc_rows" size="6" value="$rows">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" height="25">每行显示几个字符:<br>
+        (一个中文相当于两个字符)</td>
+      <td width="78%" height="25"> 
+        <input type="text" name="atc_leng" size="6" value="$leng">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" height="25">排序方式:</td>
+      <td width="78%" height="25"> 
+        <select name="atc_order">
+           <option value="list" {$orderdb["list"]}>发表时间</option>
+          <option value="hits" {$orderdb["hits"]}>浏览量</option>
+          <option value="rand()" {$orderdb["rand()"]}>随机(数据多时,很影响效率)</option>
+        </select>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">&nbsp;</td>
+      <td width="78%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[path]" value="$rsdb[path]">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>头部模板,底部模板,内容模板,你都可以自己做一个有个性的,然后在上面输入他们所在的目录即可调用显示.留空的话.将以默认为标准.<br>
+        或者你可以不做头部与底部模板.只做内容模板,此时上面的头部模板与底部模板就得选择&quot;头部白板&quot;,&quot;底部白板&quot;<br>
+        通过做出各种各样的模板,你就可以做出有个性的主页或专题页,等等.这会变得非常的轻松自如.<br>
+        如果你想节省服务器资源加快页面浏览速度的话,可以生成静态,静态页面名称可以自由定义,当然可以定义成多级目录的形式,系统会自动创建目录的</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+
+print <<<EOT
+-->
+<head>
+<title>会员中心                           powered by www.php168.com</title>
+<link rel="stylesheet" type="text/css" href="{$member_style}/css.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="php168 news bbs board php mysql forums">
+<meta name="description" content="整站系统"> 
+</head>
+<script type="text/javascript">
+function SetCwinHeight(){
+	var obj=document.getElementById("member_mainiframe"); //iframe id
+	
+	if (document.getElementById){
+		if (obj && !window.opera){
+			
+			if (obj.contentDocument && obj.contentDocument.body.scrollHeight){
+				obj.height = obj.contentDocument.body.scrollHeight;
+			}else if(obj.Document && obj.Document.body.scrollHeight){
+				obj.height = obj.Document.body.scrollHeight;
+			}
+			if(obj.height<600){
+				obj.height=600;
+			}
+		}else {
+			obj.height = 8000;
+		}
+		
+		//navigator.userAgent.toLowerCase().indexOf("msie 8.0") != -1
+		//obj.document.getElementById("footer").style.display='none';
+	}
+}
+</script>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<div id="Iframe">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="header">
+  <tr>
+    <td>	   
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="24%" height="75" align="left" valign="top"><div class="logo"><a href="index.php?SystemId=$SystemId"><img src="{$member_style}/logo.jpg" border="0"></a></div></td>
+    <td width="76%" valign="top">
+	<form name="form1" method="GET" action="$webdb[www_url]/list.php"  onsubmit="return checksearch(this);" style="margin:0px; color:#FFFFFF" target="_blank">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr align="right" >
+    <td height="35" colspan="2" valign="middle">
+	
+	
+	
+	
+	<a href="$webdb[www_url]" target="_blank">网站首页</a>   | 
+	<a href="$webdb[www_url]/myhomepage.php" target="_blank">我的商铺</a>   |
+	<a href="$webdb[www_url]/member/homepage_ctrl.php" target="member_mainiframe">商铺管理</a>	&nbsp;&nbsp;&nbsp;
+	<!--
+EOT;
+foreach($base_menudb AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if(strstr($array2[link],'../')||strstr($array2[link],'homepage.php')){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}print<<<EOT
+-->
+              <A HREF='$array2[link]' onclick="self.scroll(0,0);" target='$target'>$MenuName</A>  | 
+<!--
+EOT;
+}
+
+print <<<EOT
+-->
+
+
+&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+  <tr>
+    <td width="88%" align="right"><input name="keyword" type="text" id="keyword"   value="$keyword" size="30"/>
+      <select name="ctype">
+	  <option  value="1">供应信息</option>
+	  <option  value="2">求购信息</option>
+
+      </select>&nbsp;</td>
+    <td width="12%" align="left"><input type="image" src="images2/0_search.jpg" name="button" id="button" value="搜索" /></td>
+  </tr>
+</table>
+  <script language="javascript">
+	   function checksearch(myform){
+	   		if(myform.keyword.value==''){
+			 alert("请输入你要搜索的关键字");
+			 return false;
+			}else{
+			 return true;
+			}
+	   }
+	   </script>
+</form>	</td>
+  </tr>
+  <tr>
+    <td height="23"  colspan="2" valign="bottom">
+<div  class="word"><b><font color="#FF9900">$lfjid</font></b> 
+       欢迎登陆$webdb[webname]商务中心.&nbsp;&nbsp;[ <a href="../do/login.php?action=quit">退出</a> ]	  
+       
+       
+<!--
+EOT;
+if($pmNUM>0){
+print <<<EOT
+-->
+	<a href="$webdb[www_url]/member/pm.php?job=list" target="member_mainiframe"><font color="red">[新短消息($pmNUM)]</font></a>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+	<a href="$webdb[www_url]/member/pm.php?job=list" target="member_mainiframe">[ 短消息 ]</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->   
+        </div>
+
+
+	  <div class="guide">
+  <div class="more"><IMG id="more_left" style="MARGIN-BOTTOM: 0px" 
+      onclick="show_more_menu('left');" src="images/more_l1.gif" border=0></div>
+  <div class="more"><IMG id="more_right" style="MARGIN-BOTTOM: 0px" 
+      onclick="show_more_menu('right');" src="images/more_r1.gif" border=0></div>
+   <DIV id=top_menu_div></DIV>
+      </div></td>
+    </tr></table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td  valign="top" id="Lmeun">
+       <div class="start"><img src="images2/0ico1.jpg" /> <a href="?"  style="font-size:14px;">商务中心起始页</a></div>
+<!--
+EOT;
+foreach($menudb AS $SortName=>$array){
+$jj++;
+print<<<EOT
+-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="drage">
+          <tr> 
+            <td class="top"  onclick="open_closeDIV('$jj')"  style="font-size:14px;"><img src="images2/0ico1.jpg"  id="img$jj"/> $SortName</td>
+          </tr>
+          <tr id="div$jj" style="display:none;"> 
+            <td class="middle"   style="height:auto;">
+<!--
+EOT;
+foreach($array AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if(strstr($array2[link],'../')){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}
+print<<<EOT
+-->
+              <div ><img src="images2/0ico3.jpg" /> <A HREF='$array2[link]' onclick="self.scroll(0,0);" target='$target'  style="font-size:14px;">$MenuName</A></div>
+<!--
+EOT;
+}print<<<EOT
+-->
+			</td>
+          </tr>
+        </table>
+        <!--
+EOT;
+}print<<<EOT
+-->
+        <!--
+EOT;
+foreach($menu_GpartDB AS $SortName=>$array){
+$jj++;
+print<<<EOT
+-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="drage">
+          <tr> 
+            <td class="top" onclick="open_closeDIV('$jj')" style="font-size:14px;"><img src="images2/0ico1.jpg"  id="img$jj" /> $array[name]</td>
+          </tr>
+          <tr   id="div$jj" style="display:none;"> 
+            <td class="middle" style="height:auto;" > 
+              <!--
+EOT;
+foreach($array[son] AS $k2=>$rs){
+if($rs[target]){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}
+print<<<EOT
+-->
+         <div><img src="images2/0ico3.jpg" /> <a href='$rs[linkurl]' onclick="self.scroll(0,0);" target='$target'  style="font-size:14px;">$rs[name]</a></div>
+              <!--
+EOT;
+}print<<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+}print<<<EOT
+-->
+
+	<script language="javascript">
+	function open_closeDIV(jj){
+		var mdiv=document.getElementById("div"+jj);
+		var mimg=document.getElementById("img"+jj);
+		if(mdiv.style.display=='none'){
+			mdiv.style.display='block';
+			mimg.src='images2/0ico2.jpg';
+		}else{
+			mdiv.style.display='none';
+			mimg.src='images2/0ico1.jpg';
+		}
+	}
+	</script>
+	
+	<div>
+	<img src="$webdb[www_url]/images/global/ser.gif" />
+	</div>
+	
+      </td>
+      <td width="99%" valign="top" id="Rmain" style="padding:5px 5px 0 5px"><iframe width="100%" name="member_mainiframe" id="member_mainiframe" height="100"  onload="Javascript:SetCwinHeight();self.scroll(0,0);" scrolling="no" marginwidth=0 marginheight=0 frameborder="0" src=""></iframe></td>    </tr>
+  </table></div>
+<SCRIPT language=JavaScript>
+<!--
+var menu_array=new Array(
+'会员中心|index.php|left.php'
+$topmenu
+);
+var start_id=0;
+var select_id=0;
+function show_top_menu(){
+	var str='';
+	var last_str='';
+	var jj=-1;
+	for(var i=start_id;i<menu_array.length;i++){
+		jj++;
+		var ar=menu_array[i].split('|');
+		str+='<span id="span'+i+'"><a href="'+ar[1]+'" onclick="sethighlight('+jj+','+i+');">'+ar[0]+'</a></span>';
+		document.getElementById("top_menu_div").innerHTML=str;
+
+		var len=0;
+		var lis = document.getElementById("top_menu_div").getElementsByTagName('span');
+		for(var j = 0; j < lis.length; j++) {
+			len=len+lis[j].offsetWidth;
+		}
+		if(len>=600){
+			document.getElementById("top_menu_div").innerHTML=last_str;
+			break;
+		}
+		last_str=str;
+	}
+	show_more_icon();
+	sethigh__light();
+}
+show_top_menu();
+
+function sethighlight(n,m) {
+	var lis = document.getElementById("top_menu_div").getElementsByTagName('span');
+	for(var i = 0; i < lis.length; i++){
+		lis[i].className = '';
+	}
+	select_id=m;
+	lis[n].className = 'menuon';
+}
+
+function sethigh__light() {
+	var lis = document.getElementById("top_menu_div").getElementsByTagName('span');
+	for(var i = 0; i < lis.length; i++){
+		if(lis[i].id=='span'+select_id){
+			lis[i].className = 'menuon';
+		}else{
+			lis[i].className = '';
+		}
+	}
+}
+
+function show_more_menu(t){
+	if(t=='left')
+	{
+		if(start_id<(menu_array.length-1)){
+			start_id++;
+		}
+		show_top_menu();
+	}
+	else if(t=='right')
+	{
+		if(start_id>0){
+			start_id--;
+		}
+		show_top_menu();
+	}
+}
+
+function show_more_icon(){
+	document.getElementById("more_left").style.cursor='';
+	document.getElementById("more_right").style.cursor='';
+	if(start_id==(menu_array.length-1)){
+		document.getElementById("more_left").src="images/more_l1.gif";
+		document.getElementById("more_right").style.cursor='hand';
+		document.getElementById("more_right").src="images/more_r2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_right").style.cursor='pointer';
+		}else{
+			document.getElementById("more_right").style.cursor='hand';
+		}
+	}else if(start_id==0){
+		document.getElementById("more_right").src="images/more_r1.gif";
+		document.getElementById("more_left").src="images/more_l2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_left").style.cursor='pointer';
+		}else{
+			document.getElementById("more_left").style.cursor='hand';
+		}
+		
+	}else{
+		document.getElementById("more_left").src="images/more_l2.gif";
+		document.getElementById("more_right").src="images/more_r2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_left").style.cursor='pointer';
+			document.getElementById("more_right").style.cursor='pointer';
+		}else{
+			document.getElementById("more_left").style.cursor='hand';
+			document.getElementById("more_right").style.cursor='hand';
+		}
+	}
+}
+
+function load_window(a,b){
+	sethighlight(a,b);
+	start_id=b;
+	select_id=a;
+	show_top_menu();
+	//var ar=menu_array[0].split('|');
+	member_mainiframe.location="$MainUrl";
+	///parent.menu.location=ar[2];
+}
+load_window($select_id,$start_id);
+//-->
+</SCRIPT>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

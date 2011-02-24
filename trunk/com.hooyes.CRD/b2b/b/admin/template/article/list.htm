@@ -1,0 +1,100 @@
+<!--
+<?php
+
+if(!$action || $action=='zhlist'){
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work1" method="post" action="?action=$action">
+    <tr  class="head"> 
+    <td>企业新闻管理</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    关键字:
+      <input name="keyword" type="text" id="keyword" value="$keyword" />      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" name="button" id="button" value="搜索" />
+      </td>
+    </tr>
+  </form>
+</table>
+  
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      
+      <td colspan="2" align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />
+      新闻标题</td>
+      <td width="349" align="left">企业名称</td>
+      <td width="125" align="left">发布时间</td>
+      <td width="124">推荐</td>
+      <td width="110">审核</td>
+      <td width="106">删除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+     
+      <td width="20"> 
+        <input type="checkbox" name="listdb[]" value="$rs[id]"></td>
+      <td width="507"><a href="../homepage.php?uid=$rs[uid]&m=newsview&id=$rs[id]" target="_blank">$rs[title] </a></td>
+      <td><a href="../homepage.php?uid=$rs[uid]" target="_blank">$rs[company_name]</a></td>
+	  <td align="left">$rs[posttime]</td>
+      <td align="center"><a href="?action=$rs[levels_a]&id=$rs[id]">$rs[levels]</a></td>
+      <td align="center"><a href="?action=$rs[yz_a]&id=$rs[id]">$rs[yz]</a></td>
+      <td align="center" width="106"><a href="?action=del&amp;id=$rs[id]"  onclick="return confirm('确定删除吗？');">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8">   
+      选中项目：
+      <input type="submit" name="button2" id="button2" value="审核" onclick="postdo('zhyz')" />  
+      <input type="submit" name="button3" id="button3" value="取消审核"  onclick="postdo('zhunyz')" />
+      <br />
+        <input name="action" type="hidden" id="action" value="zhlist" /></td>
+    </tr>
+  </form>
+</table>    
+
+
+
+
+
+
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+function postdo(va){
+	document.form_work.action.value=va
+	document.form_work.submit();
+}
+function CheckAll(name,my){
+	var ckbox=document.getElementsByName(name);
+
+	for (var i=0;i<ckbox.length;i++){
+		ckbox[i].checked=my.checked;
+	}
+}
+</SCRIPT> 
+<!--
+EOT;
+    
+?>-->

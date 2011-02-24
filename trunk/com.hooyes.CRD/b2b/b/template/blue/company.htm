@@ -1,0 +1,233 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable" id="Itable">
+  <tr> 
+    <td align="left"   valign="top"   class="Side"  style="padding-top:5px;">
+
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="290"><div>
+    $label[info1001]
+</div></td>
+    <td style="padding-left:10px">
+<div>
+    $label[info1002]
+</div>
+
+	</td>
+  </tr>
+</table>
+	
+
+	
+<!--类目列表-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="redtitle">
+  <tr>
+    <td class="head"><span class="title">商家分类</span><span class="right"><a href="$Mdomain/member/?main=post_company.php">我要登记</a>&nbsp;&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td  class="content" >	
+<div class="listsearch listsearch_border_bottom">
+       <form action="clist.php" name="listform"  method="get">
+         
+            在
+<select name="fid">
+<!--
+EOT;
+foreach($bcategory->categories as $v){
+print <<<EOT
+-->
+		<option value="{$v['fid']}">{$v['name']}</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+				 </select>
+			中搜索：关键字
+      <input name="keyword" type="text" id="keyword" value="$keyword" size="10" />
+      <select name="renzheng" id="renzheng">
+        <option value="0">全部认证情况</option>
+        <option value="1" $rezheng_s[1]>普通认证商家</option>
+        <option value="2" $rezheng_s[2]>银牌认证商家</option>
+        <option value="3" $rezheng_s[3]>金牌认证商家</option>
+        </select>    {$area_choose} 
+		<input name="agent" type="checkbox" value="1"  $agent_ck[1]/>代理商
+					  <input name="vip" type="checkbox" value="1"  $vip_ck[1]/>VIP商家
+        <input type="submit" name="button" id="button" value="搜索" />
+  
+        <input name="ctype" type="hidden" id="ctype" value="3" />
+      </form></div> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="Infosort" style="margin:0; border:0px">
+              <tr> 
+          <td class="middle"> 
+          
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="indexlistsort">
+ <!--
+EOT;
+
+
+$i = 0;
+foreach($bcategory->categories as $v){
+	$class = $i%2==0 ? 'c2' : 'c1';
+print <<<EOT
+-->
+			<tr> 
+			    <td  class="$class" height="110"> 
+				   <!--hooyes-->
+                   <div class="bigsort cSortB"><a href="$Mdomain/clist.php?fid={$v['fid']}&ctype=3" style="font-size:14px;"><img src="$Murl/images/$STYLE/adtitle_ico.gif" border="0" /> {$v['name']}</a>
+                  <span class="cSortS"> 
+<!--
+EOT;
+
+	if(isset($v['categories']))
+	$j=0;
+	foreach($v['categories'] as $vv){
+	    if($j>=7){break;}
+		$j++;
+		if($vv['best']) $vv['name'] = '<font color="red">'. $vv['name'] .'</font>';
+print <<<EOT
+-->
+                   | <a href="$Mdomain/clist.php?fid={$vv['fid']}&ctype=3" >{$vv['name']} </a>
+<!--
+EOT;
+	}
+print <<<EOT
+-->
+                  </span></div>
+				  <div>
+				  <!---->
+				  <table width="100%">
+				  
+              <tr> 
+                <td class="content" align="left">
+			
+<!--
+EOT;
+$CC=$v['fid'];
+$listdb=get_companylistV2($fid=$CC,$levels=0,$rows=6,$leng=50,$content_leng=100);
+$areaList=select_whereV2($type='province',$name='fup',$ck='',$fup='0',$max=12,$fid=$CC);
+$ii=0;
+foreach($listdb AS $key2=>$rs){
+if($ii<1){
+print <<<EOT
+-->
+<div class="sLeft">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td  rowspan="2" width="70"><img src="$rs[picurl]" width="60" height="60"  class="imgborder" onerror="this.src='$Murl/images/$STYLE/nopic.jpg';" /></td>
+    <td width="269"  >·<a href="$Mdomain/homepage.php?uid=$rs[uid]" title="$rs[full_title]" target="_blank"><strong>$rs[title]</strong></a></td>
+  </tr>
+  <tr>
+    <td height="40" valign="top"><font color="#999999">[简介] $rs[content]</font></td>
+  </tr>
+  <tr>
+   <td>主营产品:</td>
+   <td>$rs[qy_pro_ser]</td>
+  </tr>
+  <tr>
+  <td colspan="2">$rs[qy_website]</td>
+  </tr>
+  
+</table>
+ </div>        
+ $areaList
+<!--
+EOT;
+$ii++;}else{
+
+print <<<EOT
+-->
+		  <div class="sRight">
+        ·<a href="$Mdomain/homepage.php?uid=$rs[uid]" title="$rs[full_title]" target="_blank">$rs[title]</a>
+		   ( $rs[qy_pro_ser] )
+		  </div>
+                  
+<!--
+EOT;
+}
+}print <<<EOT
+-->
+
+
+  
+				  </table>
+				  
+				  </div>
+				  
+				  
+				  </td>
+              </tr>
+           <!--
+EOT;
+	$i++;
+}
+
+print <<<EOT
+--> </table>          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>          </td>
+        </tr>
+      </table>	
+</td>
+  </tr>
+  <tr>
+    <td  class="foot"></td>
+  </tr>
+</table>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="redtitle">
+<tr>
+    <td class="head"><span class="title"> <strong>最新供应关系</strong></span><span class="right"> </span></td>
+  </tr><tr>
+  <td bgcolor="#FFFFFF" class="content">
+<!--
+EOT;
+$getnewvendorlist=getnewvendorlist(10,50);
+foreach($getnewvendorlist as $rs){
+print <<<EOT
+-->
+            <div>
+			<font color="#999999">[$rs[yztime]]</font>
+			<a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank"><font color='blue'>{$rs[title]}</font></a>
+			成为
+			<a href="$Mdomain/homepage.php?uid=$rs[owner_uid]" target="_blank"><font color='blue'>{$rs[ownere_title]}</font></a>
+			的供应商
+            </div>
+          <!--
+EOT;
+}
+print <<<EOT
+--> 
+
+</td>
+	</tr>
+	  <tr>
+    <td  class="foot"></td>
+  </tr>
+</table>
+
+
+
+<div>$label[page3_sortlist_left1]</div>
+<div>$label[page3_sortlist_left2]</div>
+ 
+</td>
+
+    </tr>
+</table>
+<script language="javascript">change_search_menu('company','寻 商 家');</script>
+
+
+<!--
+EOT;
+?>
+-->

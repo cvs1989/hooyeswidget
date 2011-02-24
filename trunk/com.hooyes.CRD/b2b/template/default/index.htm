@@ -1,0 +1,651 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="padding-top:4px;" width="55%">$label[bodyad2]</td>
+    <td style="padding-top:4px;" width="45%" align="right">$label[bodyad33]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable" id="Index_Search">
+  <tr> 
+    <td width="75%" height="60" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+	  <form name="form1" id="form_search" method="post" action="$webdb[www_url]/do/search.php" target="_blank">
+
+        <tr> 
+          <td class="middle" align="left" valign="top"> 
+            <div class="top"><span style="float:left;padding-top:2px;">
+              <select name='mid'>
+                <option value='0'  style='color:#aaa;'>全站搜索</option>
+                <option value='100'>图片模型</option>
+                <option value='101'>下载模型</option>
+                <option value='102'>视频模型</option>
+                <option value='103'>商城模型</option>
+                <option value='104'>FLASH模型</option>
+                <option value='105'>产品型模</option>
+				<option value='-39'>健康知识</option>
+              </select>
+                <input type="text" name="keyword" class="input" id="search_keyword">
+              </span> <a href='#' onclick="post_search();" class="s_bt">搜索</a><span class="right"> <a href="$webdb[www_url]/do/search.php" target="_blank">高级搜索</a> 
+              </span></div>
+              <div class="hotkey">$label[index_search] 
+              </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function post_search(){
+	if(document.getElementById("search_keyword").value==''){
+		alert("关键字不能为空");
+		return false;
+	}
+	document.getElementById("form_search").submit();
+}
+//-->
+</SCRIPT>
+          </td>
+        </tr></form>
+      </table>
+    </td>
+    <td width="25%" height="60" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="middle" align="left" valign="top">$label[showinfo]</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div style="clear:both;width:990px;margin-top:5px;">
+<div style="width:260px;float:left;padding-right:5px;">
+<div style="margin-top:5px;">$label[indexrollpic]</div>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" style="margin-top:8px;">
+              <tr> 
+                <td class="head"> 
+                  <h3 class="L"></h3>
+                  <span class="TAG">$label[Title02]</span> 
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle" align="left">$label[comarticle] </td>
+              </tr>
+              <tr> 
+                <td class="foot"> 
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+          
+</div>
+<div style="width:477px;float:left;padding-right:5px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="IndexMainNews" style="margin-top:5px;">
+              <tr> 
+                <td class="L"></td>
+                <td class="C">&nbsp;$label[mainnews]$label[mainnews2]</td>
+                <td class="R"></td>
+              </tr>
+            </table>
+         
+		   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" style="margin-top:10px;">
+              <tr> 
+                <td class="head"> 
+                  <h3 class="L"></h3>
+                  <span class="TAG">图片主题</span> 
+                  <h3 class="R"></h3>
+                  <table border="0" cellspacing="0" cellpadding="0" style="float:right;" class="rmenu">
+                    <tr>
+                      <td class="LL"></td>
+                      <td class="CC">
+                        <div class="ch" id="showpicmu1" onclick="showpic(1)">文章</div>
+                        <div id="showpicmu2" onclick="showpic(2)">图片</div>
+                        <div id="showpicmu3" onclick="showpic(3)">影视</div>
+                        <div id="showpicmu4" onclick="showpic(4)">商城</div>
+                        <div class="f" id="showpicmu5" onclick="showpic(5)">Flash</div>
+                      </td>
+                      <td class="RR"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle" align="left"> 
+                  <div id="showpic1">$label[listpic] </div>
+                  <div id="showpic2">$label[listpic2] </div>
+                  <div id="showpic3">$label[listpic3] </div>
+                  <div id="showpic4">$label[listpic4] </div>
+                  <div id="showpic5">$label[listpic5] </div>
+                  <SCRIPT LANGUAGE="JavaScript">
+<!--
+function showpic(t){
+	for(var i=1;i<6 ;i++ ){
+		if(i==t){
+			document.getElementById("showpic"+i).style.display='';			
+			if(i==5){
+				document.getElementById("showpicmu"+i).className='ch f';
+			}else{
+				document.getElementById("showpicmu"+i).className='ch';
+			}
+		}else{
+			document.getElementById("showpic"+i).style.display='none';			
+			if(i==5){
+				document.getElementById("showpicmu"+i).className='f';
+			}else{
+				document.getElementById("showpicmu"+i).className='';
+			}
+		}
+	}
+}
+showpic(1);
+//-->
+</SCRIPT>
+                </td>
+              </tr>
+              <tr> 
+                <td class="foot"> 
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+           
+</div>
+<div style="width:243px;float:left;">      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title01]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[hotarticle] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:3px;">
+        <tr> 
+          <td align="right">$label[indexad1]</td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title_jinjaad]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[jinjaad] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+</div>
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  style="clear:both;">
+  <tr> 
+    <td style="padding-top:3px;">$label[bodyad]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable" style="clear:both;">
+  <tr> 
+    <td width="25%" height="100" valign="top" class="Side"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title1]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[a1] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title4]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[c2] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title3]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[c1] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="50%" height="100" valign="top" class="Main" align="center"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title2]</span> 
+            <h3 class="R"></h3>
+            <div style="float:right;" class="bmenu"> <span class="a1" id="showblogmu1" onclick="showblg(1)">企业招聘</span> 
+              <span class="a2" id="showblogmu2" onclick="showblg(2)">个人求职</span> 
+            </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <div id="blogshow1">$label[b02] $label[b022]</div>
+            <div id="blogshow2" style="display:none;">$label[bb1]$label[bb2]</div>
+            <SCRIPT LANGUAGE="JavaScript">
+<!--
+function showblg(t){
+	document.getElementById("showblogmu1").style.color='#707070';
+	document.getElementById("showblogmu2").style.color='#707070';
+	if(t==1){
+		document.getElementById("blogshow1").style.display='';
+		document.getElementById("blogshow2").style.display='none';
+		document.getElementById("showblogmu1").style.color='#990000';	
+	}else{
+		document.getElementById("blogshow1").style.display='none';
+		document.getElementById("blogshow2").style.display='';
+		document.getElementById("showblogmu2").style.color='#990000';			
+	}
+}
+//-->
+</SCRIPT>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title5]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[b2] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title05]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left" style="padding:0px;">$label[show_34]</td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%" height="100" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title04d]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[c02d] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title6]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[a2] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="padding-top:4px;" width="83%">$label[index_ad3]</td>
+    <td style="padding-top:4px;" width="17%" align="right">$label[index_ad4]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="" class="MainTable">
+  <tr> 
+    <td width="25%" height="100" valign="top" class="Side"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title4d]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[c2d] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:3px;">
+        <tr> 
+          <td>$label[c2de] </td>
+        </tr>
+      </table>
+    </td>
+    <td width="50%" height="100" valign="top" class="Main" align="center"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title5d]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[b2d] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%" height="100" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[Title04]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">$label[c02] </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:0px;" class="MainTable">
+  <tr> 
+    <td height="40" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$label[bjsptitle]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div class="bj_special"> $label[bjspecial] </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:0px;" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <!--****************************首页推荐栏目开始****************************-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="AutoRows" class="AutoRows">
+        <!--
+EOT;
+$moreline=$chdb[config][line]>0?$chdb[config][line]:2;
+$array=array_chunk($fiddb_article,$moreline);
+$moretdwidth=floor(100/$moreline)."%";
+foreach($array AS $key2=>$array2){
+print <<<EOT
+-->
+        <tr> 
+          <!--
+EOT;
+$iii=0;
+foreach($array2 AS $key=>$rss){
+$iii++;
+if($moreline>1&&$iii%$moreline==1){
+$tbstyle=" style='padding-right:7px;' ";
+}elseif($moreline>1&&$iii%$moreline==0){
+$tbstyle=" style='padding-left:7px;' ";
+}else{
+$tbstyle=" ";
+}
+print <<<EOT
+-->
+          <td width="$moretdwidth" $tbstyle> 
+            <table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+              <tr> 
+                <td class="head"> 
+                  <h3 class="L"></h3>
+                  <span class="TAG"><a href="list.php?fid=$rss[fid]" target="_blank">$rss[name]</A></span> 
+                  <h3 class="R"></h3>
+                  <span class="more" style="float:right;"><a href="list.php?fid=$rss[fid]" target="_blank">更多...</A></span> 
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:5px 0px 5px 0px;">
+                    <!--
+EOT;
+foreach($rss[article] AS $key1=>$rs){
+$rs[title]=get_word($rs[full_title],44,0);
+print <<<EOT
+-->
+                    <tr class="list_tr"> 
+                      <td class="list_title"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="_blank" title="$rs[full_title]">$rs[title]</a></td>
+                    </tr>
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td class="foot"> 
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </tr>
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </table>
+      <!--****************************首页推荐栏目结束****************************-->
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:0px;" class="MainTable">
+  <tr> 
+    <td height="40" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="friendlink">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"><a href="$webdb[www_url]/do/friendlink.php?job=apply">友情链接 && 合作伙伴</a></span> 
+            <h3 class="R"></h3>
+            <div style="float:right;" class="linkmenu"> <span class="a1"><a href="$webdb[www_url]/do/friendlink.php?job=apply">申请链接</a></span> 
+              <span class="a2"><a href="$webdb[www_url]/do/friendlink.php" target="_blank">查看更多</A></span> 
+            </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div class="imgfriendlink"> 
+              <!--
+EOT;
+foreach($friendlinkDB[1] AS $key=>$rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target=_blank><img alt="名称:$rs[name]\r\n描述:$rs[descrip]" src="$rs[logo]" width="88" height="31" border=0></A> 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </div>
+            <div class="wordfriendlink"> 
+              <!--
+EOT;
+foreach($friendlinkDB[0] AS $key=>$rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A>&nbsp; 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </div>
+            <table width="99%" border="0" cellspacing="4" cellpadding="0" style="margin-top:5px;border-top:1px solid #eee;">
+              <tr> 
+                <td width="71" valign="top" style="line-height:170%;"><font color="#FF0000">合作伙伴：</font></td>
+                <td width="1147" style="line-height:170%;" valign="top"> 
+                  <!--
+EOT;
+foreach($friendlink_DB[3][0] AS $key=>$rs){
+print <<<EOT
+-->
+                  <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A>&nbsp; 
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                </td>
+              </tr>
+              <tr> 
+                <td width="71" valign="top" style="line-height:170%;"><font color="#FF0000">友情链接：</font></td>
+                <td width="1147" style="line-height:170%;" valign="top"> 
+                  <!--
+EOT;
+foreach($friendlink_DB[2][0] AS $key=>$rs){
+print <<<EOT
+-->
+                  <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A>&nbsp; 
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

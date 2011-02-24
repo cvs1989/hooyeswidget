@@ -1,0 +1,278 @@
+<!--
+<?php
+$backdb[subject] || ($backdb[subject]="没有了") && ($backdb[click]="return false;");
+$nextdb[subject] || ($nextdb[subject]="没有了") && ($nextdb[click]="return false;");
+if(date("W",$rsdb[hits_time])!=date("W",$timestamp))$rsdb[week_hits]="0";
+if(date("md",$rsdb[hits_time])!=date("md",$timestamp))$rsdb[day_hits]="0";
+if(date("m",$rsdb[hits_time])!=date("m",$timestamp))$rsdb[month_hits]="0";
+$rsdb[autoplay]=($webdb[autoPlayFirstMv]&&!$Mrsdb[mvurl][fen][0])?player($Mrsdb[mvurl][url][0],500,400,'false',$Mrsdb[mvurl][type][0]):"";
+print <<<EOT
+-->
+<!--<script src='http://pstatic.xunlei.com/js/webThunderDetect.js'></script>-->
+<script src='$webdb[www_url]/images/default/xunlei.js'></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable viewcontent" id="viewmv">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"><a editurl='$webdb[www_url]/do/job.php?job=bencandy&fid=$fid&id=$id&act=do'>TOP</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td width="15%" class="a1">{$fidDB[M_alias]}名称:</td>
+                <td width="85%">{$rsdb[title]}</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td width="15%" class="a1" bgcolor="#FFFFFF">提交者:</td>
+                <td width="45%" bgcolor="#FFFFFF">{$rsdb[username]}</td>
+                <td rowspan="7" width="40%" bgcolor="#FFFFFF" align="center" valign="middle"><br>
+                  <img src="$rsdb[picurl]" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'" width="160" height="120"></td>
+              </tr>
+              <tr> 
+                <td class="a1">提交日期:</td>
+                <td>{$rsdb[posttime]}</td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">点击:</td>
+                <td bgcolor="#FFFFFF"><font id="hits">{$rsdb[hits]}</font></td>
+              </tr>
+              <tr> 
+                <td class="a1">总观看量:</td>
+                <td ><font id="total_hits">{$rsdb[total_hits]}</font> 次</td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">本月观看量:</td>
+                <td bgcolor="#FFFFFF"><font id="month_hits">{$rsdb[month_hits]}</font> 次</td>
+              </tr>
+              <tr> 
+                <td class="a1">本周观看量:</td>
+                <td><font id="week_hits">{$rsdb[week_hits]}</font> 次</td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF">今日观看量:</td>
+                <td bgcolor="#FFFFFF"><font id="day_hits">{$rsdb[day_hits]}</font> 次</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td width="15%" class="a1">是否收费:</td>
+                <td width="85%"><!--
+EOT;
+if($rsdb[money]||strstr($rsdb[mvurl],'收费:')){print <<<EOT
+-->
+收费
+<!--
+EOT;
+}else{print <<<EOT
+-->
+免费
+<!--
+EOT;
+}print <<<EOT
+--></td>
+              </tr>
+              <tr id='tr_mvurl'> <td class='a1 b1'>在线观看:</td> <td class='a2 b1'>{$rsdb[mvurl]}&nbsp;</td></tr><tr id='tr_my_role'> <td class='a1 b2'>领衔主演:</td> <td class='a2 b2'>{$rsdb[my_role]}&nbsp;</td></tr><tr id='tr_my_lang'> <td class='a1 b1'>语言:</td> <td class='a2 b1'>{$rsdb[my_lang]}&nbsp;</td></tr> 
+              <tr> 
+                <td class="a1">{$fidDB[M_alias]}介绍:</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr bgcolor="#FFFFFF"> 
+                <td  colspan="2">
+                  <table width="100%" cellspacing="3" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+                    <tr> 
+                      <td>{$rsdb[content]}<br>
+                          <br>
+                           <div align="center">$rsdb[autoplay]</div></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table><!--
+EOT;
+if($rsdb[ifvote]){print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="content_vote">
+  <tr>
+    <td><SCRIPT src="$webdb[www_url]/do/vote.php?job=js&aid=$rsdb[aid]"></SCRIPT></td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+            
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <!--php168
+EOT;
+if($webdb[showComment] && $fidDB[allowcomment] && !$rsdb[forbidcomment]){@include(html("bencandy_tpl/comment"));}print <<<EOT
+php168-->    </td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sonSortName">
+        <tr> 
+          <td class="head" height="19"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关栏目</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--php168
+EOT;
+//相关栏目名称
+@include("$sortnameTPL");print<<<EOT
+php168--> </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">最新{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Newtopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=new&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Newtopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">热门{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Hottopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=hot&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Hottopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">推荐{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Comtopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=com&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Comtopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Liketopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=like&id=$id&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Liketopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">广告位</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left"> {$AD_label['article_show']}
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE='JavaScript'>
+function ConvertURL2FG(url,fUrl,uid){try{FlashgetDown(url,uid);}catch(e){location.href = fUrl;}}
+function Flashget_SetHref(obj,uid){obj.href = obj.fg;}
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

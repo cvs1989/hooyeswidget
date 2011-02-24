@@ -1,0 +1,371 @@
+<!--
+<?php
+$showtype || $showtype=1;
+print <<<EOT
+--> 
+<style type="text/css">
+<!--
+
+-->
+</style>
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth" id="editsort">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">栏目修改</td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td><font color="#FF0000">[<a href="$webdb[www_url]/do/fulist.php?fid=$fid" target="_blank">浏览前台</a>] 
+              [<a href="index.php?lfj=fu_artic&job=listartic&fid=$fid&only=$only&mid=$mid" target="_blank">管理内容</a>] 
+              </font> $sort_fid</td>
+          </tr>
+          <tr> 
+            <td class="mtop"><a href="#" onclick="choosetb(1)" class="cht" id="tbm1">基本设置</a> <a href="#" onclick="choosetb(2)" id="tbm2">风格样式</a> 
+              <a href="#" onclick="choosetb(3)" id="tbm3">权限设置</a> <a href="#" onclick="choosetb(4)" id="tbm4">其它设置</a></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="4" style="background:#F5F5F5;" id="tb1" >
+          <tr bgcolor="#FFFFFF"> 
+            <td width="40%">名称:</td>
+            <td width="60%"> 
+              <input type="text" name="postdb[name]" value="$rsdb[name]">
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="40%">所属类型:<br>
+              (栏目与分类的区别如下,栏目下是文章,分类不可有文章,分类里可创建分类或栏目,但栏目里不可创建栏目也不能创建分类,如不遵循此规则,则易出问题) 
+            </td>
+            <td width="60%"> 
+              <input type="radio" name="postdb[type]" value="0" $typedb[0]>
+              栏目 
+              <input type="radio" name="postdb[type]" value="1" $typedb[1]>
+              分类 </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="40%">所属分类:</td>
+            <td width="60%"> $sort_fup</td>
+          </tr>
+          <!--
+EOT;
+if($rsdb[type]==0){print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF"> 
+            <td width="40%">允许发表内容到此栏目的用户组<br>
+              （不选择，则默认都有权限.然而超级管理员与栏目管理员强制有权限）:</td>
+            <td width="60%"> $group_post</td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">是否禁止在父分类下显示本栏目的内容:<br>
+              (当父分类下有很多子栏目的时候,就没必要全部显示出来)</td>
+            <td width="60%"> 
+              <input type="radio" name="postdb[forbidshow]" value="0" $forbidshow[0]>
+              显示 
+              <input type="radio" name="postdb[forbidshow]" value="1" $forbidshow[1]>
+              不显示 </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">列表页每页显示多少条内容:</td>
+            <td width="60%"> 
+              <input type="text" name="postdb[maxperpage]" size="5" value="$rsdb[maxperpage]">
+              条 (留空则以默认为标准)</td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">列表页内容排序方式:</td>
+            <td width="60%"> 
+              <select name="postdb[listorder]">
+                <option value="0" $listorder[0]>默认</option>
+                <option value="1" $listorder[1]>发表时间降序</option>
+                <option value="2" $listorder[2]>发表时间升序</option>
+                <option value="3" $listorder[3]>点击率降序</option>
+                <option value="4" $listorder[4]>点击率升序</option>
+                <option value="5" $listorder[5]>最近浏览</option>
+                <option value="7" $listorder[7]>顶的次数降序</option>
+                <option value="8" $listorder[8]>顶的时间降序</option>
+                <option value="6" $listorder[6]>随机显示(数据大时，很影响速度)</option>
+              </select>
+            </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+          <!--
+EOT;
+if($rsdb[type]==1){print <<<EOT
+-->
+           
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td>每个子栏目显示多少条内容:</td>
+            <td width="60%"> 
+              <input type="text" name="sonTitleRow" size="5" value="{$rsdb[config][sonTitleRow]}">
+              条 (留空则以默认为标准) </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td>子栏目中每个标题显示多少个字节(一汉字相当于两个字节)</td>
+            <td width="60%"> 
+              <input type="text" name="sonTitleLeng" size="5" value="{$rsdb[config][sonTitleLeng]}">
+              个 (留空则以默认为标准) </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">子栏目内容排序方式:</td>
+            <td width="60%"> 
+              <select name="sonListorder">
+                <option value="0" $sonListorder[0]>默认(效率很高)</option>
+                <option value="1" $sonListorder[1]>发表时间降序</option>
+                <option value="2" $sonListorder[2]>点击率降序</option>
+                <option value="3" $sonListorder[3]>最近浏览</option>
+                <option value="4" $sonListorder[4]>随机显示（数据大时，极其影响速度）</option>
+              </select>
+            </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" style="background:#F5F5F5;display:none;" id="tb2">
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="26%">风格:(仅对部分模板有效)</td>
+            <td width="74%">$style_select</td>
+          </tr>          <!--
+EOT;
+if($rsdb[type]==1){print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="26%">子栏目显示样式:<br>
+              (文章模型,可自由选择,非文章模型,请尽量保留默认) <span help=1><br>
+              模板存放在此目录/template/default/bigsort_tpl/<br>
+              你可以参考现有的模板做更多的样式模板放在此目录即可.mod_开头的文件名,是模型专用模板,一般不使用mod_做开头的文件名<br>
+              或者你可以到官方站下载更多的资源,<a href="http://www.php168.com/downdata.php?job=bigsort_tpl" target="_blank"><font color="#FF0000">下载</font></a></span></td>
+            <td width="74%"> 
+               
+              <input type="hidden" name="ListShowBigType" id="ListShowType" value="{$rsdb[config][ListShowBigType]}">
+              $getLabelTpl </td>
+          </tr>
+          
+<!--
+EOT;
+}elseif($rsdb[type]==0){print <<<EOT
+-->  
+		  <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="26%">列表页的内容显示样式:<span help=1><br>
+              模板存放在此目录/template/default/list_tpl/<br>
+              你可以参考现有的模板做更多的样式模板放在此目录即可.mod_开头的文件名,是模型专用模板,一般不使用mod_做开头的文件名<br>
+              或者你可以到官方站下载更多的资源,<a href="http://www.php168.com/downdata.php?job=list_tpl" target="_blank"><font color="#FF0000">下载</font></a></span></td>
+            <td width="74%">
+              <input type="hidden" name="ListShowType" id="ListShowType" value="{$rsdb[config][ListShowType]}">
+              
+              $getLabelTpl<br>
+              如果上面显示内容简介,那么内容显示几个字节 
+              <input type="text" name="listContentNum" size="5" value="{$rsdb[config][listContentNum]}">
+              个   </td>
+          </tr> <!--
+EOT;
+}print <<<EOT
+--><SCRIPT LANGUAGE="JavaScript">
+<!--
+var upfile_PicNumId=0;
+
+function show_MorePic(todo){
+	if(todo==1){
+		upfile_PicNumId++;
+	}else if(todo==-1){
+		upfile_PicNumId--;
+	}
+	if(upfile_PicNumId<0){
+		alert("已经是第一个了!");
+		upfile_PicNumId=0;
+	}
+	if( upfile_PicNumId>(ImgLinks.length-1) ){
+		alert("已经是最后一个了!");
+		upfile_PicNumId=ImgLinks.length-1;
+	}
+	if(todo==-1||todo==1){
+		showTplDiv(true);
+	}else{
+		showTplDiv(false);
+	}
+	
+	NUM=upfile_PicNumId;//+2;
+	document.getElementById("selectTyls").options[NUM].selected = true;
+
+}
+show_MorePic()
+
+function selectTpl(selObj){
+	n=selObj.selectedIndex;
+	value=selObj.options[n].value
+	if(value=='-2'){
+		var typesort='$rsdb[type]'
+		if(typesort=='0'){
+			window.open("index.php?lfj=template&job=maketpl2&filepath=list_tpl/$timestamp.htm&filecode=list_tpl/0.htm");
+		}else if(typesort=='1'){
+			window.open("index.php?lfj=template&job=maketpl2&filepath=bigsort_tpl/$timestamp.htm&filecode=bigsort_tpl/0.htm");
+		}
+		return ;
+	}
+	if(n==1){
+		//makenew();
+	}
+	if(n<2){
+		//return;
+	}
+	upfile_PicNumId=n;//-2;
+	showTplDiv(true);
+}
+
+function showTplDiv(t){
+	get_obj("upfile_PicNum").innerHTML="<font color=red>"+(upfile_PicNumId+1)+"</font>/"+ImgLinks.length;
+	get_obj("upfile_PicUrl").src=get_obj("showPicID").href=ImgLinks[upfile_PicNumId];
+	get_obj("upfile_PicUrl").alt=ImgTitle[upfile_PicNumId];
+	
+	if(t==true){
+		arr=ImgLinks[upfile_PicNumId].split('template/default/');
+		arr2=arr[1].split('.jpg');
+		get_obj('ListShowType').value=arr2[0];
+	}
+}
+
+function loadtpl(){
+	for(var i=0;i<ImgLinks.length;i++){
+		arr=ImgLinks[i].split('template/default/');
+		arr2=arr[1].split('.jpg');
+		if(get_obj("ListShowType").value==arr2[0]){
+			upfile_PicNumId=i;
+		}
+	}
+	NUM=upfile_PicNumId;//+2;
+	document.getElementById("selectTyls").options[NUM].selected = true;
+	showTplDiv();
+}
+loadtpl();
+//-->
+</SCRIPT>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="26%">栏目模板:<br>
+              (一般留空,即以默认为标准) </td>
+            <td width="74%"> 头部模板: 
+              <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+              $tpl_head<br>
+              底部模板: 
+              <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+              $tpl_foot<br>
+              列表模板: 
+              <input type="text" name="postdb[tpl][list]" value="{$tpl['list']}" id="tpl_list" size="40">
+              {$tpl_list}[<A HREF='#' onclick="window.open('index.php?lfj=template&job=maketpl&type=2&obj_id=tpl_list','','width=650,height=500')" style='color:blue;'>上传一个新模板</A>]<br>
+              <!--
+EOT;
+if($rsdb[type]==0){print <<<EOT
+-->
+              内容模板: 
+              <input type="text" name="postdb[tpl][bencandy]" value="$tpl[bencandy]" id="tpl_bencandy" size="40">
+              {$tpl_bencandy}[<A HREF='#' onclick="window.open('index.php?lfj=template&job=maketpl&type=3&obj_id=tpl_bencandy','','width=650,height=500')" style='color:blue;'>上传一个新模板</A>]
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+          
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" style="background:#F5F5F5;display:none;" id="tb3">
+          <!--
+EOT;
+if($rsdb[type]==0){print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">栏目管理员,如有多位,请用英文逗号,隔开:</td>
+            <td width="60%"> 
+              <input type="text" name="postdb[admin]" value="$rsdb[admin]" size="60">
+              <input type="hidden" name="old_admin" value="$rsdb[admin]">
+            </td>
+          </tr>
+          <!--
+EOT;
+}else{print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td colspan="2" align="center">提示:大分类不需要设置权限!!</td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" style="background:#F5F5F5;display:none;" id="tb4">
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">跳转到外部地址:<br>
+              (输入其它地址后,将不会显示本栏目) </td>
+            <td width="60%"> 
+              <input type="text" name="postdb[jumpurl]" value="$rsdb[jumpurl]" size="60">
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">栏目LOGO装饰图片:</td>
+            <td width="60%"> 
+              <input type="text" name="postdb[logo]" value="$rsdb[logo]" id="sortlogo" size="60">
+              <a href='javascript:' onClick='window.open("upfile.php?lfj=$lfj&dir=sortlogo&label=sortlogo","","width=350,height=50,top=200,left=400")'>点击上传图片</a> 
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	document.getElementById(p).value=url;
+}
+//-->
+</SCRIPT>
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">SEO关键字:</td>
+            <td width="60%"> 
+              <input type="text" name="postdb[metakeywords]" value="$rsdb[metakeywords]" size="60">
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"  class="hidetr"> 
+            <td width="40%">SEO栏目描述(支持HTML):</td>
+            <td width="60%"> 
+              <textarea name="postdb[descrip]" cols="50" rows="7">$rsdb[descrip]</textarea>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choosetb(t){
+	for(var i=1;i<5 ;i++ ){
+		if(t==i){
+			document.getElementById("tb"+i).style.display='';
+			document.getElementById("tbm"+i).className='cht';
+		}else{
+			document.getElementById("tb"+i).style.display='none';
+			document.getElementById("tbm"+i).className='';
+		}
+	}
+}
+choosetb($showtype);
+//-->
+</SCRIPT>
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>头部模板,底部模板,内容模板,更表模板,你都可以自己做一个有个性的,然后在上面输入他们所在的目录即可调用显示.留空的话.将以默认为标准.<br>
+        或者你可以不做头部与底部模板.只做内容模板,此时上面的头部模板与底部模板就得选择&quot;头部白板&quot;,&quot;底部白板&quot;<br>
+        通过做出各种各样的模板,你就可以做出有个性的栏目列表页与内容页,等等.这会变得非常的轻松自如.</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

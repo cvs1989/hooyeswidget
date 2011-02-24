@@ -1,0 +1,125 @@
+<!--
+<?php
+
+if($action=='zlglist'){
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work1" method="post" action="?action=$action">
+    <tr  class="head"> 
+    <td>展会管理</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    关键字:
+      <input name="keyword" type="text" id="keyword" value="$keyword" />      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归属：
+      <select name="province_id" id="province_id">
+      <option  value="0">全部地区</option>
+<!--
+EOT;
+foreach($area_DB[0] as $key=>$array){
+$ck=$province_id==$key?" selected":"";
+print <<<EOT
+-->
+<option value="$key" $ck>{$area_DB[name][$key]}</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+      </select>
+       <input type="submit" name="button" id="button" value="搜索" />
+      </td>
+    </tr>
+  </form>
+</table>
+  
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      
+      <td colspan="2" align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />
+      展览馆名称</td>
+      <td width="130" align="left">区域</td>
+      <td width="127" align="left">发布时间</td>
+      <td width="127" align="left">发布者</td>
+      <td width="111">推荐</td>
+      <td width="100">审核</td>
+      <td width="158">删除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+     
+      <td width="20"> 
+        <input type="checkbox" name="listdb[]" value="$rs[sr_id]"></td>
+        <td width="561"><a href="../zh_showroom.php?sr_id=$rs[sr_id]" target="_blank">$rs[title] </a></td>
+        <td width="130" align="left">$rs[area]</td>
+	  <td width="127" align="left">$rs[posttime]</td>
+      <td width="127" align="left"><a href="$rs[home]" target="_blank">$rs[username]</a></td>
+      <td align="center"><a href="zh.php?action=$rs[levels_a]&sr_id=$rs[sr_id]">$rs[levels]</a></td>
+      <td align="center"><a href="zh.php?action=$rs[yz_a]&sr_id=$rs[sr_id]">$rs[yz]</a></td>
+      <td align="center" width="158">
+      <a href="../zh_post.php?job=editzlg&sr_id=$rs[sr_id]" target="_blank">编辑</a> | 
+      <a href="zh.php?action=zlgdel&sr_id=$rs[sr_id]"  onclick="return confirm('确定删除吗？');">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="11"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="11">   
+      选中项目：
+      <input type="submit" name="button2" id="button2" value="审核" onclick="postdo('zlgyz')" />  
+      <input type="submit" name="button3" id="button3" value="取消审核"  onclick="postdo('zlgunyz')" /> | 
+      
+      
+        <input type="submit" name="button4" id="button4" value="推荐" onclick="postdo('zlglevels')" />
+        <input type="submit" name="button5" id="button5" value="取消推荐" onclick="postdo('zlgunlevels')" /> 
+        
+       
+        <br />
+        <input name="action" type="hidden" id="action" value="zhlist" /></td>
+    </tr>
+  </form>
+</table>    
+
+
+
+
+
+
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+function postdo(va){
+	document.form_work.action.value=va
+	document.form_work.submit();
+}
+function CheckAll(name,my){
+	var ckbox=document.getElementsByName(name);
+
+	for (var i=0;i<ckbox.length;i++){
+		ckbox[i].checked=my.checked;
+	}
+}
+</SCRIPT> 
+<!--
+EOT;
+    
+?>-->

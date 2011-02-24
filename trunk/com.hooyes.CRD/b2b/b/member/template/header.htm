@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+--> 
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<link rel="stylesheet" type="text/css" href="$Murl/member/{$member_style}/style.css">
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR>
+<script language="javascript">
+function autorefresh(){
+	try{
+	window.refresh();
+	}catch(e){
+	window.location="?";
+	}
+}
+window.onload=function(){
+	setTimeout("autorefresh()",60000);
+}
+</script>
+</HEAD>
+<BODY>
+<TABLE class=topmenubg id=menu_td cellSpacing=0 cellPadding=0 width="100%" border=0>
+
+  <TR> 
+    <TD width=32 height="77" align=center vAlign=top  style="padding-right:10px;"><A HREF="$Mdomain" target=_blank><img src={$member_style}/logo.jpg border=0></A></TD>  
+    <TD     align=left vAlign=middle>
+
+ <form name="form1" method="GET" action="$Mdomain/list.php"  onsubmit="return checksearch(this);" style="margin:0px; color:#FFFFFF" target="_blank">
+      <table width="500" border="0" align="right" cellpadding="0" cellspacing="0">
+  <tr align="right" >
+    <td height="20" colspan="2" align="center" valign="middle" class="search_form">
+
+	<a href="$Mdomain" target="_blank">网站首页</a>   | 
+	<a href="$Mdomain/myhomepage.php" target="_blank">我的商铺</a>   |
+	<a href="$Mdomain/member/homepage_ctrl.php" target="main">商铺管理</a>&nbsp;&nbsp;</td>
+    </tr>
+  <tr>
+    <td width="63%" align="right"><input name="keyword" type="text" id="keyword"   value="$keyword" size="30"/>&nbsp;      <select name="ctype">
+        <option  value="1">供应信息</option>
+        <option  value="2">求购信息</option>
+
+          </select></td>
+    <td width="37%" align="left"> &nbsp;<input type="image" src="{$member_style}/0_search.jpg" name="button" id="button" value="搜索"  style="border:0px;"/></td>
+  </tr>
+</table>
+  <script language="javascript">
+	   function checksearch(myform){
+	   		if(myform.keyword.value==''){
+			 alert("请输入你要搜索的关键字");
+			 return false;
+			}else{
+			 return true;
+			}
+	   }
+	   </script>
+</form>
+
+	</TD>
+  </TR>
+  <TR> 
+    <TD  colspan="2">
+	
+<table width="100%" cellspacing="0" cellpadding="0" id="top_bottom">
+  <tr>
+    <td width="30%" ><DIV class=topmenu> 
+        <UL>
+          <DIV id=top_menu_div>
+		    &nbsp; &nbsp;欢迎:<strong>$lfjdb[username]</strong>  ,    &nbsp;
+		  $MSG &nbsp; |  &nbsp; 
+		  <a href="main.php" target="main">起始页</a> &nbsp; |  &nbsp; 
+		 <!-- <a href="$webdb[www_url]/member/userinfo.php?uid=$lfjuid" target="_blank">用户资料</a>&nbsp; |  &nbsp; -->
+		  <a href="$webdb[www_url]/member/userinfo.php?job=edit" target="main">修改用户资料</a> &nbsp;|   &nbsp;
+		 
+		
+<!--
+EOT;
+
+if($rt){
+print <<<EOT
+-->
+		  &nbsp;<a href="$Mdomain/homepage.php?uid=$lfjuid" target="_blank">浏览我的商铺</a> &nbsp;|   &nbsp;
+		
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+		  &nbsp;<a href="$Mdomain/member/post_company.php" target="main">登记商家</a> &nbsp;|   &nbsp;
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		   <a href="$webdb[www_url]/do/login.php?action=quit" target="_parent">安全退出</a></DIV> 
+        </UL>
+      </DIV>
+	
+	
+		 </td>
+  </tr>
+</table>
+
+  </td>
+  </TR>
+
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>
+<!--
+EOT;
+?>
+-->

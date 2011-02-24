@@ -1,0 +1,63 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=gb2312'>
+<style type="text/css">
+body{background: #0651D1;}
+body, td{
+	margin: 0px;
+	font: 12px Arial, Helvetica, sans-serif;
+	text-align: left;
+	
+}
+.topmenubg {
+	background: url(images/bg_header.gif) repeat-x;
+}
+a {
+	text-decoration: none;
+	color: #555555
+}
+a:hover {
+	text-decoration: underline;
+}
+ 
+
+.topmenubg {
+	background: url(images/bg_header.gif) repeat-x;
+}
+
+.topmenuss{ padding-bottom:5px; text-align:right; padding-right:120px; color:#FFFFFF;}
+.topmenuss a{ color:#FFFFFF;}
+.topmenuss .username{ color:#FFFF00}
+.topmenuss .groupid{ color:#FFFF00}
+.topmenuss .ck{ padding:0px 10px 0 10px;border:1px #038BB9 solid;  margin-right:2px; background:url(images/left_5.jpg) repeat-x;  line-height:23px; float:right}
+.topmenuss .unck{ padding:0px 10px 0 10px; border:1px #038BB9 solid;  margin-right:2px; background:url(images/left_6.jpg) repeat-x;  line-height:23px; float:right} 
+.topmenuss .ck a{ color:#FFFB00;}
+.topmenuss .unck a{ color:#ffffff;}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="topmenubg" id="menu_td">
+<tr>
+<td rowspan="3"    align="left" valign="bottom">
+ <a href="http://www.php168.com/" target="_blank"><img src="images/bg_logo.gif" class="logoimg" border="0"/></a> </td>
+
+<td  valign="bottom" class="topmenuss">
+用户名：<strong class="username">$userdb[username]</strong>&nbsp;&nbsp;角色：<font class="groupid">{$ltitle[$userdb[groupid]]}</font> &nbsp;&nbsp;<a href="index.php?action=quite" target="_parent" class="username" >退出登陆</a> &nbsp;&nbsp;<a href="../" target="_parent" class="username">网址首页</a></td>
+</tr>
+<tr>
+  <td  valign="bottom" class="topmenuss"><li class="unck"><a href="../../admin" target="_parent">整站系统管理中心</a></li>
+<li class="ck"><a href="index.php" target="_parent"  >商务系统管理中心</a></li></td>
+</tr>
+</table>
+
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

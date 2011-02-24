@@ -1,0 +1,68 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=make">
+    <tr class="head"> 
+      <td colspan="2" align="center"> 修改设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="left"> 
+      <td colspan="2" style="width:25%;">1.以下请认真填写,带*号的,创建后不可修改<br>
+        2.前期发布的图库(<font color="#0000FF">photo</font>),下载(<font color="#0000FF">down</font>),商城(<font color="#0000FF">shop</font>),FLASH(<font color="#0000FF">flash</font>),博客(<font color="#0000FF">blog</font>),视频(<font color="#0000FF">mv</font>),音乐(<font color="#0000FF">music</font>)等对一个整站系统而言,只能安装一份的,不能重复安装的,称之为<font color="#FF0000">固定系统</font>,括号的字母即为其关键字<br>
+        3.相反,在一个整站系统里,通过修改数据表前缀,而使得可以同时安装多份的模块系统,称之为<font color="#FF0000">自由系统</font>,对自由系统而言他的关键字就是数据表前缀<br>
+        4.填写以下表单前,请确认系统已安装好,否则请先安装系统</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="center" style="width:25%;">关键字/数据表前缀:(*)</td>
+      <td width="75%"> 
+        <input type="text" name="postdb[pre]">
+        (创建后不能再修改) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td  align="center" style="width:25%;">系统性质:</td>
+      <td width="75%"> 
+        <input type="radio" name="postdb[type]" value="0">
+        固定系统 
+        <input type="radio" name="postdb[type]" value="1" checked>
+        自由系统 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="center" style="width:25%;">系统名称:</td>
+      <td width="75%"> 
+        <input type="text" name="postdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="center" style="width:25%;">系统存放目录:</td>
+      <td width="75%"> 
+        <input type="text" name="postdb[dirname]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="25%" align="center">系统后台目录:</td>
+      <td width="75%"> 
+        <input type="text" name="postdb[admindir]">
+        如果没修改过后台目录请留空,即是admin</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="25%" align="center">二级域名:</td>
+      <td width="75%"> 
+        <input type="text" name="postdb[domain]" size="50">
+        一般留空即可,以<font color="#FF0000">http://</font>开头,结尾不能加斜杠<font color="#FF0000">/</font> 
+        ,如 http://news.php168.com</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="25%" align="center">&nbsp;</td>
+      <td width="75%"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<!--
+EOT;
+?>
+-->

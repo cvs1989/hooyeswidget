@@ -1,0 +1,227 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" method="post" action="index.php?lfj=$lfj&action=editlist">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑辅栏目</font></td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td style="padding:5px;">
+<!--
+EOT;
+if($show_guide){print<<<EOT
+-->
+$show_guide
+<!--
+EOT;
+}else{print<<<EOT
+-->
+			你可以设置只显示以下部分栏目 [<a href="?lfj=$lfj&job=showsort&step=1&only=$only&mid=$mid" style="color:$article_show_step[1]">1级</a>] 
+              [<a href="?lfj=$lfj&job=showsort&step=2&only=$only&mid=$mid" style="color:$article_show_step[2]">2级以内</a>] 
+              [<a href="?lfj=$lfj&job=showsort&step=3&only=$only&mid=$mid" style="color:$article_show_step[3]">3级以内</a>] 
+              [<a href="?lfj=$lfj&job=showsort&step=4&only=$only&mid=$mid" style="color:$article_show_step[4]">4级以内</a>] 
+              [<a href="?lfj=$lfj&job=showsort&step=5&only=$only&mid=$mid"  style="color:$article_show_step[5]">5级以内</a>] 
+              [<a href="?lfj=$lfj&job=showsort&step=0&only=$only&mid=$mid"  style="color:$article_show_step[0]">全部</a>] 
+<!--
+EOT;
+}print<<<EOT
+-->
+
+
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id='list_sort'>
+          <tr align="center" class="head"> 
+            <td width="4%" style="border-right:1px solid #fff;">FID</td>
+            <td width="34%" style="border-right:1px solid #fff;">栏目名称</td>
+			<td width="6%" style="border-right:1px solid #fff;">类型</td>
+			<td width="4%" style="border-right:1px solid #fff;">记录</td>
+			<td width="6%" style="border-right:1px solid #fff;">&nbsp;</td>
+			<td width="6%" style="border-right:1px solid #fff;">&nbsp;</td>
+            <td width="6%" style="border-right:1px solid #fff;">更改</td>
+            <td width="6%" style="border-right:1px solid #fff;">内容</td>
+            <td width="6%" style="border-right:1px solid #fff;">创建</td> 
+            <td width="6%" style="border-right:1px solid #fff;">标签</td>
+            <td width="6%" style="border-right:1px solid #fff;">删除</td>
+            <td width="6%" style="border-right:1px solid #fff;">排序</td>
+          </tr>
+          <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+if($only&&$rs[fmid]!=$mid){continue;}
+//非本模型的栏目灰色字体显示
+$tr_class='';
+if($_GET[only]&&$webdb[SortUseOtherModule]&&$rs[fmid]!=$mid){$tr_class='disableTR';}
+print <<<EOT
+-->
+          <tr class="trA $tr_class" onmouseover="this.className='trB $tr_class'" onmouseout="this.className='trA $tr_class'"> 
+            <td width="4%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td width="34%" bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;"> 
+              <a href="$webdb[www_url]/do/rss.php?fid=$rs[fid]" target="_blank"><img src="$webdb[www_url]/images/default/rss.gif" border="0"></a> 
+              <input type="checkbox" name="fiddb[{$rs[fid]}]" value="$rs[name]" style="border:0px;">
+              $rs[icon]【<a href='$webdb[www_url]/do/fulist.php?fid=$rs[fid]' target="_blank">{$rs[name]}</a>】<span class='sort_span'></span></td>
+			  
+            <td width="6%" bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;" align="center" class="big_sort"> 
+              <!--
+EOT;
+if($rs[type]==2){print <<<EOT
+-->
+              <font color="#0000FF">文章</font> 
+              <!--
+EOT;
+}elseif($rs[type]==1){print <<<EOT
+-->
+              <a href="index.php?lfj=$lfj&job=$job&only=$only&mid=$mid&fid=$rs[fid]">大分类</a>
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              子栏目 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="4%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <!--
+EOT;
+if(!$rs[type]){print <<<EOT
+-->
+              <a href="index.php?lfj=fu_artic&job=listartic&fid=$rs[fid]">{$rs[NUM]}条</a>	
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              &nbsp; 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">&nbsp; 
+            </td>
+			<td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">&nbsp;</td>
+			<td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href='?lfj=$lfj&job=editsort&fid=$rs[fid]&only=$only&mid=$mid'><img alt='点击修改栏目设置' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <!--
+EOT;
+if(!$rs[type]){print <<<EOT
+-->
+              <a href='index.php?lfj=fu_artic&job=listartic&fid=$rs[fid]&only=$only&mid=$mid'><img alt='管理内容' src='../member/images/art_icon.gif' border=0></a> 
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              &nbsp; 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <!--
+EOT;
+if($rs[type]==1){print <<<EOT
+-->
+              <a href='index.php?lfj=$lfj&job=addsort&fup=$rs[fid]&only=$only&mid=$mid'><img alt='创建子栏目' src='../member/images/post_icon.gif' border=0></a> 
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              &nbsp; 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+              <!--
+<td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">
+            
+EOT;
+if(!$rs[config][channelDir]){
+print <<<EOT
+ 
+              [<a href='?lfj=$lfj&job=creat_channel&fid=$rs[fid]'>创建</a>]
+              
+EOT;
+}else{
+print <<<EOT
+ 
+              [<a href='?lfj=$lfj&job=edit_channel&fid=$rs[fid]' style="color:blue;">修改</a>]
+              
+EOT;
+}print <<<EOT
+</td>-->
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="../do/fulist.php?fid=$rs[fid]&jobs=show" target="_blank"><img alt='更新标签内容' src='images/icon_updatalabel.gif' border=0></a></td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="?lfj=$lfj&action=delete&fid=$rs[fid]&only=$only&mid=$mid" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table><div align="center" style="margin:10px;">$showpage</div>
+        <div align="center"><br>
+          <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+          <input type="button" name="Submit2" value="更改排序" onclick="postlist('list')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="index.php?lfj=$lfj&action=editlist";
+	}else if(t=='edit'){
+		document.formlist.action="index.php?lfj=$lfj&job=batch_edit";
+	}else if(t=='html'){
+		document.formlist.target='_blank';
+		document.formlist.action="index.php?lfj=html&action=makehtml&posttype=fromsort";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+          <script language="JavaScript" src="images/sort.js"></script>
+          <script language="JavaScript">
+<!--
+load_sort_td($webdb[article_show_step]);
+//-->
+</script>
+          <input type="hidden" name="only" value="$only">
+          <input type="hidden" name="mid" value="$mid">
+        </div>
+      </td>
+    </tr>
+  </form>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>注意:<font color="#FF0000">栏目排序的规则是,数值大的排在前面,只能是同一级的进行排序</font></td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

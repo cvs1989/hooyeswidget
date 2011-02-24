@@ -1,0 +1,70 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" method="post" action="?lfj=$lfj&action=del">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA" width="31%" align="center"><font color="#FFFFFF">来源站点</font></td>
+      <td class="head" bgcolor="#EAEAEA" width="47%" align="center">排序值</td>
+      <td class="head" bgcolor="#EAEAEA" width="22%" align="center">操 作</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="31%"> 
+        <input type="checkbox" name="iddb[]" value="{$rs[id]}" style="border:0px;">
+        {$rs[name]}</td>
+      <td bgcolor=#FFFFFF align="center" width="47%"> 
+        $rs[list]
+      </td>
+      <td bgcolor=#FFFFFF align="center" width="22%"><a href="?lfj=$lfj&iddb[]={$rs[id]}&action=del"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+        &nbsp; <a href="?lfj=$lfj&id={$rs[id]}&job=edit"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+--> <tr align="center">
+      <td bgcolor=#FFFFFF colspan="3">$showpage</td>
+    </tr>
+    <tr align="center"> 
+      <td bgcolor=#FFFFFF colspan="3"> [<a href="javascript:CheckAll('all');">全选</a>] 
+        [<a href="javascript:CheckAll('');">反选</a>] 
+        <input type="submit" name="Submit" value="删除">
+        <script language="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="?lfj=$lfj&action=editlist";
+	}else{
+		document.formlist.action="?lfj=$lfj&job=batch_edit";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(e.name=='maketype')continue;
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</script>
+      </td>
+    </tr>
+   
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

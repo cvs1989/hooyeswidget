@@ -1,0 +1,29 @@
+<table width="98%" border="0"    cellspacing="5" cellpadding="5" align="center" style="margin:4px 0 4px 0;">
+<!--
+<?php
+$array=is_array($Fid_db[$fid])?$Fid_db[$fid]:$Fid_db[$fidDB[fup]];
+foreach($array AS $key=>$value){
+	$array[$key]=array($key,$value);
+}
+$array=array_chunk($array,2);
+foreach($array AS $key2=>$array2){
+print <<<EOT
+-->
+<tr>
+<!--
+EOT;
+foreach($array2 AS $key2=>$array2){
+print <<<EOT
+-->
+    <td><div style="margin:3px;background:#eee;border:1px solid #ccc;line-height:25px;text-align:center;"><a style="font-size:14px;" href="list.php?fid=$array2[0]">$array2[1]</a></div></td>
+  <!--
+EOT;
+}print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}
+?>
+-->
+</table>

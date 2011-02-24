@@ -1,0 +1,94 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="1" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="regform" >
+<!--
+EOT;
+$_fromurl=urlencode($_fromurl);
+print <<<EOT
+-->      
+	    <tr> 
+          <td class="head"><h3 class="L"></h3>
+            <span class="TAG"><strong>会员操作的项目，需要您的"登陆"才能继续...</strong></span>
+            <h3 class="R"></h3></td>
+        </tr>
+        <tr> 
+          <td class="middle" align="center"> 
+
+              
+            <table width="80%" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="50%" align="center">
+                    <img src="$Murl/images/$STYLE/login1.gif"  border="0"/><br />
+                    <img src="$Murl/images/$STYLE/login2.gif"  border="0"/><br />
+                    <img src="$Murl/images/$STYLE/login3.gif"  border="0"/><br />
+                    <img src="$Murl/images/$STYLE/login4.gif"  border="0"/><br />
+                    <img src="$Murl/images/$STYLE/login5.gif"  border="0"/><br />
+					<br />
+                </td>
+                <td width="50%" align="center">
+				<table width="320" border="0" cellspacing="0" cellpadding="0" class="mylogin">
+                  <tr>
+                    <td class="left">&nbsp;</td>
+                    <td class="loginform">
+					<p>&nbsp;</p>
+					<p><strong>已经是会员，请登陆</strong></p>
+					<form name="form1" method="post" action="?f">
+					<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="24%" align="center" style="height:30px"><strong>帐号</strong>:</td>
+    <td width="41%" height="25"><input type="text" name="username" style="width:130px;height:14px;" /></td>
+    <td width="35%"><a href="reg.php">注册新帐号</a></td>
+  </tr>
+  <tr>
+    <td width="24%" align="center" style="height:30px"><strong>密码</strong>:</td>
+    <td width="41%"><input type="password" name="password" style="width:130px;height:14px;" /></td>
+    <td><a href="$webdb[www_url]/do/sendpwd.php">忘记密码?</a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" name="Submit" value="登 陆" style="padding:5px;" />
+	  <input type="hidden" name="step" value="2">
+      <input type="hidden" name="fromurl" value="$FROMURL">
+	  <input type="hidden" name="cookietime" value="315360000">
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+
+</table></form>
+
+					<p>&nbsp;</p>
+					<p><img src="$Murl/images/$STYLE/login10.jpg"  border="0"/></p>
+					<p>&nbsp;</p>
+					
+					<p><strong>想免费发布信息？免费注册:</strong></p>
+					<p>&nbsp;</p>
+					<p><a href="$Mdomain/reg.php"><img src="$Murl/images/$STYLE/login9.jpg"  border="0"/></a></p>
+					</td>
+                    <td class="right">&nbsp;</td>
+                  </tr>
+                </table>
+				
+				</td>
+              </tr>
+            </table>			</td></tr>
+         
+<!--
+EOT;
+
+
+print <<<EOT
+-->
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

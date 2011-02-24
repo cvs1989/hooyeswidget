@@ -1,0 +1,469 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<p class="guide"><a href="$Mdomain/">首页</a> &gt; <a href="$Mdomain/sell.php">供应信息</a> $guidefid</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="75%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="redtitle" id="viewarticle">
+        <tr> 
+          <td class="head"> 
+            
+            <span class="title"> 【供应】 </span> 
+           <span class="right"  style="line-height:25px;"> <a href="$Mdomain/job.php?job=report&ctype=1&id=$id" target="_blank"><img src="$Murl/images/$STYLE/jbc.GIF"  border="0"/>举报该信息</a> 
+              <a href="$Mdomain/job.php?job=collect&id=$id&ctype=1" target="_blank"><img src="$Murl/images/$STYLE/gif-0645.gif"  border="0"/>加入收藏夹</a>&nbsp; </span>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div class="baseinfo"> 
+              <div id="show_title"> <span class="L">$rsdb[title]</span> <span class="R"> </span> </div>
+              <div id="baseinfo">地区：{$rsdb[showarea]}   　 　浏览量：{$rsdb[hits]}次   
+			    <span id="bencandy_ctrl"></span>
+</div>
+ <!--正文-->
+
+
+<div class="content_canshu">
+   
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="37%"><span>产品型号:</span>{$rsdb[my_ptype]}</td>
+    <td width="61%"><span>产品价格:</span>{$rsdb[my_price]}</td>
+    <td width="2%" rowspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><span>最小起订:</span>{$rsdb[quantity_min]}{$rsdb[quantity_type]}</td>
+    <td><span>最大供货:</span>{$rsdb[quantity_max]}{$rsdb[quantity_type]}</td>
+    </tr>
+  <tr>
+    <td><span>发货期限:</span>{$rsdb[sent_limit]}</td>
+    <td >&nbsp;</td>
+    </tr>
+   <tr>
+    <td><a href="$Mdomain/action.php?action=form1&ids=$rsdb[id]" target="_blank"><img src="$Murl/images/$STYLE/diancixunjia_big.gif"  border="0"/></a></td>
+    <td>&nbsp;</td>
+    </tr>
+</table>
+
+</div>
+
+     
+            </div>
+
+</div>
+            </div>   
+    
+<!--
+EOT;
+if($rsdb[picurl]){
+print <<<EOT
+-->   
+    
+<div class="infopic">                 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><a class="pic" href="$rsdb[picurl]" target="_blank"><img src='$rsdb[picurl].gif' onerror="this.src='$Murl/images/$STYLE/nopic.jpg'" border="0"></a> </td>
+  </tr>
+  <tr>
+    <td>&nbsp; </td>
+  </tr>
+</table>
+ </div>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+
+  <div class="contentshowform">
+目前为止，对此供应信息已有<b>{$rsdb[xunjia_num]}</b>次询价；
+  </div>
+  
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="infocontent">
+  <tr>
+     <td class="a">详细信息</td>
+  </tr>
+ <tr>
+ <td class="b">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="c">
+  $rsdb[content]
+
+ {$show_bd_pics}
+
+
+	</td>
+  </tr>
+
+</table>
+
+
+
+<br />
+<table   border="0" cellspacing="0" cellpadding="0"  class="base_table card" align="center">
+              <tr> 
+                <td colspan="2" valign="middle" class="h t"><strong>联系方式</strong></td>
+              </tr>
+              
+              <tr><td width="300" height="100" align="left" valign="middle" class="m"><strong>$base[title]</strong><br />
+                  <font size="+2">$base[qy_contact]</font> $base[qy_contact_zhiwei]<br />
+                
+                <a href="$Mdomain/homepage.php?uid=$base[uid]&m=contactus" target="_blank"><img src="$Murl/images/$STYLE/click_conentme.gif"  border="0"/></a></td>
+                <td width="100" height="100" align="center" valign="middle" class="m">$base[renzheng]</td>
+              </tr>
+            </table>
+                            
+            
+           
+           
+            <!--
+EOT;
+if($foods){
+print <<<EOT
+-->
+			<div class="wyfood"><div>网友推荐:</div>
+			$foods
+			</div>
+                    <!--
+EOT;
+}if(!$webdb[forbidComment]){
+print <<<EOT
+-->
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="wydianping">
+  <tr>
+                <td class="a">网友评论({$rsdb[comments]}条)</td>
+  </tr>
+  <tr>
+                <td class="b">排序：最新评论</td>
+  </tr>
+  <tr>
+    <td class="c"><div id="comment"></div></td>
+  </tr>
+</table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;' class="base_table">
+              <tr> 
+                <td class="h">添加评论</td>
+              </tr>
+              <tr> 
+                <td class="m">                   
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                     
+                    <!--
+EOT;
+if($lfjid){$none='none';}
+print <<<EOT
+--><tr style="display:$none;">
+					  <td width="16%"><span class="L">称　　呼:</span><span class="R"></span></td><td width="84%"><span class="R"> 
+                        <input type="text" name="textfield2" id="comment_username" value="$lfjid">
+                        </span></td>
+                    </tr>
+                    
+ 
+                    <!--
+EOT;
+if($webdb[Info_GroupCommentYzImg]&&in_array($groupdb['gid'],explode(",",$webdb[Info_GroupCommentYzImg]))){
+$webdb[yzImgComment]=1;
+print <<<EOT
+-->
+                    <tr> 
+                      <td width="16%"><span class="L">验 证 码:</span></td>
+                      <td width="84%"> 
+                        <input id="yzImgNum" type="text" name="yzimg" size="8">
+                        <img border="0" id="yz_Img" name="imageField" src="$webdb[www_url]/yzimg.php"> 
+                      </td>
+                    </tr>
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                    <tr> 
+                      <td width="16%"><span class="L">内　　容:</span></td>
+                      <td width="84%"><span class="R"> 
+                        <textarea name="textfield" cols="70" rows="8" id="comment_content" onKeyDown="quickpost(event)"></textarea>
+                        </span></td>
+                    </tr>
+                    <tr> 
+                      <td width="16%"> 
+                        <script language="JavaScript">
+<!--
+
+getcomment("$Murl/comment_ajax.php?fid=$fid&id=$id&ctype=1");
+cnt = 0;
+function quickpost(event)
+{
+	if((event.ctrlKey && event.keyCode == 13)||(event.altKey && event.keyCode == 83))
+	{
+		cnt++;
+		if (cnt==1){
+			post_comment();
+		}else{
+			alert('内容正在提交...');
+		}
+	}	
+}
+
+function post_comment(){
+	postcomment('$Murl/comment_ajax.php?action=post&ctype=1&id=$id','$webdb[yzImgComment]');
+}
+//-->
+</script>
+                      </td>
+                      <td width="84%"><span class="R"> 
+                        <input type="button" id="comment_submit" name="Submit" value="提交" onclick="post_comment();">
+                        </span></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%" height="393" valign="top" class="Side" align="right" style="padding-left:5px;"> 
+
+
+	  
+  
+	  
+	
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="redtitle">
+        <tr> 
+          <td class="head"> 
+            
+            <span class="title">商家信息</span> 
+            <span class="right"><a href="$Mdomain/homepage.php?uid=$base[uid]" target="_blank">查看商家</a>&nbsp;</span> 
+          </td>
+        </tr>
+        <tr> 
+          <td class="content" valign="top" align="left"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="36%"><a href="$Mdomain/homepage.php?uid=$base[uid]" target="_blank"><img src="$base[picurl]" onerror="this.src='$Murl/images/$STYLE/nopic.jpg'" width="80"  border="0"></a></td>
+                <td width="64%" align="left" valign="top">
+                  <strong><a href="$Mdomain/homepage.php?uid=$base[uid]" target="_blank">$base[title]</a></strong>$base[renzheng]<br />$base[services]<br />
+                  主营:$base[qy_pro_ser]  <p> <span style="line-height:28px;">$base[qy_contact]</span> $base[qy_contact_zhiwei]</p>
+                 </td>
+              </tr>
+              <tr>
+                <td colspan="2"  align="center">
+<a href="$Mdomain/homepage.php?uid=$base[uid]" target="_blank"><img src="$Murl/images/$STYLE/chakanshangjiashangpu.gif" border="0"  /></a>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="redtitle">
+        <tr> 
+          <td class="head"> 
+            
+            <span class="title">在线联系</span> 
+			<span class="right"> <a href="$Mdomain/homepage.php?uid=$base[uid]&m=contactus" target="_blank">详细联系方式</a> </span>
+          </td>
+        </tr>
+        <tr> 
+          <td class="content" valign="top" align="left"> 
+	
+<p>$base[qq]</p>
+<p>$base[msn]</p>
+<p>$base[ww]</p>
+
+
+
+		  
+	     </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>	  
+		   
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="redtitle">
+        <tr> 
+          <td class="head"> 
+            
+            <span class="title">短信留言</span> 
+            <span class="right"><a href="$Mdomain/member/?main=$webdb[www_url]/member/pm.php?job=list" target="_blank">我的站内信</a>&nbsp;</span> 
+          </td>
+        </tr>
+        <tr> 
+          <td class="content" valign="top" align="left"> 
+		  
+		    <form id="form1" name="form1" method="post" action="$Murl/pm.php" target="postmsg" onsubmit="this.postSubmit.disabled='disabled';">
+		   
+		      <table width="100%" cellspacing="0" cellpadding="0">
+              <tr>
+                <td colspan="3" align="center"><textarea name="content" cols="25" rows="5"></textarea>
+                  <br />
+                  <font color="#999999">留言内容限100个汉字,最少5个汉字;<br />
+                  请留下联系方式，我们会尽快联系你。</font></td>
+                </tr>
+              <tr>
+                <td width="48%" height="25" align="right"><strong><font color="#FF0000">*</font> </strong>发信者名：</td>
+                <td colspan="2" align="left"><input name="sender" type="text" size="15" /></td>
+              </tr>
+              <tr>
+                <td height="25" align="right">联系电话：</td>
+                <td colspan="2" align="left"><input name="tel" type="text" size="15" /></td>
+              </tr>
+              <tr>
+                <td height="25" align="right"><strong><font color="#FF0000">*</font> </strong>邮箱地址：</td>
+                <td colspan="2" align="left"><input name="email" type="text" size="15" /></td>
+              </tr>
+              <tr>
+                <td height="25" align="right"><strong><font color="#FF0000">*</font> </strong>验 证 码：</td>
+                <td width="13%" align="left"><input name="yzimg" type="text" id="yzimg" size="6" />                  </td>
+                <td width="39%" align="left"><img src="$webdb[www_url]/yzimg.php" id="yzimgnum" border="0" alt="点击刷新验证码" onclick="this.src='$webdb[www_url]/do/yzimg.php?'+Math.random();" style="cursor: pointer;" /></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="left"><input name="postSubmit" type="submit" id="postSubmit" style="padding:3px;" value="发 送" />
+                  <input name="job" type="hidden" id="job" value="postmsg" />
+                  <input name="touid" type="hidden" id="touid" value="$rsdb[uid]" />
+                  <input name="about" type="hidden" id="about" value="$rsdb[title]" /></td>
+              </tr>
+            </table>
+			<iframe src="" frameborder="1" name="postmsg" style="display:none" width="200"></iframe>
+            </form> </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>		  
+		  
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">商家推荐</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+<!--
+EOT;
+$listdb=Get_Info($type='hot',$webdb[InfoListRow]?$webdb[InfoListRow]:10,$webdb[InfoListLeng]?$webdb[InfoListLeng]:30,$fid,$mid=0);
+foreach($listdb AS $rs){
+print <<<EOT
+-->
+            ·<A HREF="$rs[url]" target='_blank'>$rs[title]</a><br>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关商品</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+<!--
+EOT;
+$listdb=Get_Info($type='level',$webdb[InfoListRow]?$webdb[InfoListRow]:10,$webdb[InfoListLeng]?$webdb[InfoListLeng]:30,$fid,$mid=0);
+foreach($listdb AS $rs){
+print <<<EOT
+-->
+            ·<A HREF="$rs[url]" target='_blank'>$rs[title]</a><br>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+
+<!--
+EOT;
+if(count($newslistdb)>0){
+print <<<EOT
+-->  
+ <table width="100%" cellspacing="0" cellpadding="0"  class="redtitle">
+  <tr>
+    <td  class="head"><span class="title">公司资讯</span><span class="right"></span>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="content">
+
+<!--
+EOT;
+foreach($newslistdb as $rs){
+print <<<EOT
+-->
+	·<a href="$Mdomain/homepage.php?m=newsview&uid=$rs[uid]&id=$rs[id]"  title="$rs[title_full]" target="_blank">$rs[title]</a><br>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	
+</td>
+  </tr>
+  <tr>
+    <td class="foot">&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+print <<<EOT
+-->     
+      
+      
+    </td>
+  </tr>
+</table>
+<script src="$Murl/bencandy_ctrl.php?rsdb[uid]=$rsdb[uid]&fid=$rsdb[fid]&id=$id&ctype=$ctype" language="javascript" type="text/javascript"></script>
+<!--
+EOT;
+?>
+-->

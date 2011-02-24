@@ -1,0 +1,63 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job" enctype="multipart/form-data">
+    <tr class="head"> 
+      <td colspan="2">模板查看</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$none;"> 
+      <td width="16%">&nbsp;</td>
+      <td width="84%"> 
+        <input type="radio" name="usecode" $usecodeDB[0] value="0" onclick="window.location.href='index.php?lfj=template&job=$job&id=$id&bid=$bid&notop=$notop&usecode=0'">
+        可视化方式浏览 
+        <input type="radio" name="usecode" $usecodeDB[1] value="1" onclick="window.location.href='index.php?lfj=template&job=$job&id=$id&bid=$bid&notop=$notop&usecode=1'">
+        代码方式浏览</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$none;">
+      <td width="16%">日期:</td>
+      <td width="84%">$rsdb[posttime]</td>
+    </tr>
+    <!--
+EOT;
+if($usecode){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" style="display:$none;" id="edittpl"> 
+      <td>模板:</td>
+      <td> 
+        <textarea name="postdb[code]" cols="120" rows="25">$code</textarea>
+      </td>
+    </tr>
+    <!--
+EOT;
+}else{
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" style="display:$none;" id="edittpl"> 
+      <td>模板:</td>
+      <td> <iframe id="eWebEditor1" src="ewebeditor/ewebeditor.php?id=content&style=standard" frameborder="0" scrolling="no" width="100%" height="500"></iframe> 
+        <input name="postdb[code]" type="hidden" id="content" value='$code'>
+      </td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+  </form>
+</table>
+<div style="display:none;"><iframe id="Iframe" name="Iframe" src="about:blank"></iframe></div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_type(type){
+	window.open("index.php?lfj=$lfj&job=$job&type="+type+"&filepath="+get_obj('filepath').value,target='_self');
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

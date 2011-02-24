@@ -1,0 +1,56 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=makehtml">
+    <tr class="head"> 
+      <td width="6%" align="center">序号</td>
+      <td width="11%" align="center">频道页名称</td>
+      <td align="center" width="16%">涉及栏目</td>
+      <td width="13%" align="center">PHP程序文件</td>
+      <td width="15%" align="center">静态文件名</td>
+      <td width="29%" align="center">标签 / 静态化 / 查看</td>
+      <td width="10%" align="center">删除 修改</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="6%" align="center">$rs[id]</td>
+      <td width="11%"> $rs[name] </td>
+      <td align="center" width="16%">$rs[fids]</td>
+      <td align="center" width="13%"> {$rs[phpname]}</td>
+      <td align="center" width="15%">{$rs[htmlname]}</td>
+      <td align="center" width="29%"> <a href="$webdb[www_url]/{$rs[phpname]}?&ch=$rs[id]&chtype=0&jobs=show"><img alt='更新标签内容' src='images/icon_updatalabel.gif' border=0></a> 
+        / <a href="$webdb[www_url]/{$rs[phpname]}?&ch=$rs[id]&MakeIndex=1" target="_blank"><img alt='生成静态网页' src='images/plub.gif' border=0></a> 
+        / <a href="$webdb[www_url]/$rs[phpname]?&ch=$rs[id]" target="_blank"><img alt='浏览' src='../member/images/icon_view.gif' border=0></a></td>
+      <td width="10%" align="center"><a href="?lfj=$lfj&action=delete&id=$rs[id]"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+        &nbsp; <a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+   
+  </form>
+</table>
+ 
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+     <tr class="head"> 
+      <td align="left">帮助</td>
+    </tr> 
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td align="left">如何定制频道页模板风格?<br>
+      新建一个模板htm在里边插入标签$label[abc],然后放在模板目录template里边,最后在后台“风格/模板设置-&gt;模板设置-&gt;增加页面”。添加完后，再回到此页面，修改首页或专题，选择你做的模板。具体模板制作可以参考/template/default/index.htm,建议是复制此模板。然后修改之</td>
+    </tr> 
+</table>
+<!--
+EOT;
+?>
+-->

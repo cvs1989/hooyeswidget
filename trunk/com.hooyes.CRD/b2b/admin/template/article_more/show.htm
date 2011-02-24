@@ -1,0 +1,84 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=show">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF"> 页面显示设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'> 
+        <div align="left">列表页,最终页的最新文章,热门标题,推荐标题显示设置</div>
+      </td>
+      <td bgcolor='#FFFFFF'> 几行: 
+        <input type="text" size="10" name="webdbs[JsListRows]" value="$webdb[JsListRows]">
+        <br>
+        每行多少个字符 
+        <input type="text" size="10" name="webdbs[JsListLeng]" value="$webdb[JsListLeng]">
+        <br>
+        一个汉字相当于两个字符</td>
+    </tr>
+<!--
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页大分类下一行显示几个子栏目</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="2" name="webdbs[ListSonline]" value="$webdb[ListSonline]">
+        如果这里显示2个或2个以上,那么下面每行的字符请控制在40个字以内较好</td>
+    </tr>
+-->
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页/首页为大分类时.显示每个子栏目的标题设置</td>
+      <td bgcolor='#FFFFFF'>几行: 
+        <input type="text" size="10" name="webdbs[ListSonRows]" value="$webdb[ListSonRows]">
+        <br>
+        每行多少个字符 
+        <input type="text" size="10" name="webdbs[ListSonLeng]" value="$webdb[ListSonLeng]">
+        <br>
+        一个汉字相当于两个字符</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页,相关栏目,一行显示几个子栏目名称</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="2" name="webdbs[Listsortnameline]" value="$webdb[Listsortnameline]">
+        个</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>列表页每个标题显示多少个字节</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="5" name="webdbs[ListLeng]" value="$webdb[ListLeng]">
+        默认50个,一个汉字相当于两个字节</td>
+    </tr><!--
+    <tr> 
+      <td bgcolor='#FFFFFF' height="15">列表页的图片主题显示几张</td>
+      <td bgcolor='#FFFFFF' height="15"> 
+        <input type="text" size="5" name="webdbs[listPicRows]" value="$webdb[listPicRows]">
+        默认4张,有的风格不一定生效</td>
+    </tr>-->
+    <tr> 
+      <td bgcolor='#FFFFFF' height="16">如果栏目有介绍或LOGO是否在列表页显示:</td>
+      <td bgcolor='#FFFFFF' height="16"> 
+        <input type="radio" name="webdbs[showsortlogo]" value="1" $showsortlogo[1]>
+        显示 
+        <input type="radio" name="webdbs[showsortlogo]" value="0" $showsortlogo[0]>
+        不显示 </td>
+    </tr><!--
+    <tr> 
+      <td bgcolor='#FFFFFF'>隐藏栏目:<br>
+        <font color="#666666">注:选择需要隐藏的栏目,此栏目的名称将不会自动在首页显示,并且可以通过标签设置栏目的标题也不要在首页显示</font></td>
+      <td bgcolor='#FFFFFF'>$select_news</td>
+    </tr>-->
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

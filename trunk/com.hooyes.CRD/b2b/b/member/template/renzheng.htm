@@ -1,0 +1,236 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main" > 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">
+          	<strong>查看我的认证情况</strong>：
+          </td>
+        </tr>
+      </table>
+<!--
+EOT;
+ if($rt){
+ $webdb[renzheng_infonum]=$webdb[renzheng_infonum]?$webdb[renzheng_infonum]:10;
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">
+      <tr>
+        <td width="144" align="center" bgcolor="#EFEFEF"><strong>认证类别</strong></td>
+        <td width="224" align="center" bgcolor="#EFEFEF"><strong>状态</strong></td>
+        <td width="972" align="center" bgcolor="#EFEFEF"><strong>认证资料</strong></td>
+      </tr>
+      <tr>
+        <td height="200" align="center" valign="top" bgcolor="#FFFFFF"><p><img src='{$Murl}/images/{$STYLE}/jibenrenzheng.gif'  border='0'/></p>
+          <p>          初级认证</p></td><td align="center" valign="top"  bgcolor="#FFFFFF">{$renzhengDB[1][yz_]}</td>
+        <td valign="top" bgcolor="#FFFFFF"><form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="18%">商家名称：</td>
+              <td width="82%"><input name="company_name" type="text" id="company_name" value="$rt[title]" size="40" /></td>
+            </tr>
+            <tr>
+              <td>基本条件:</td>
+              <td>1.完整真实的登记自己的商家信息；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>2.必须上传属于自己的供应信息{$webdb[renzheng_infonum]}个；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>3.上传的供应信息必须真实可靠，完整详细。审核比重较大；</td>
+            </tr>
+            <tr>
+              <td>企业法人：</td>
+              <td><input name="content[faren]" type="text" id="content[faren]" size="10"  value="{$renzhengDB[1][content][faren]}"/></td>
+            </tr>
+            <tr>
+              <td>身份证号：</td>
+              <td><input name="content[sfz_num]" type="text" id="content[sfz_num]" size="30" value="{$renzhengDB[1][content][sfz_num]}" />
+                (企业法人的身份证号) </td>
+            </tr>
+            <tr>
+              <td>联系电话：</td>
+              <td><input type="text" name="content[telphone]" id="content[telphone]" value="{$renzhengDB[1][content][telphone]}" /> 
+                区号+号码+分机 或 手机号码</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+<!--
+EOT;
+if(!$renzhengDB[1][id]){
+print <<<EOT
+-->
+              <input type="submit" name="button" id="button" value="提 交" /> <input name="level" type="hidden" id="level" value="1" />
+                <input name="action" type="hidden" id="action" value="renzheng" />
+<!--
+EOT;
+}
+print <<<EOT
+-->           
+               </td>
+            </tr>
+          </table>
+        </form>
+        
+        </td>
+      </tr>
+      <tr>
+        <td height="200" align="center" valign="top" bgcolor="#FFFFFF"><p><img src='{$Murl}/images/{$STYLE}/yinpairenzheng.gif'  border='0'/></p>
+          <p>          高级认证</p></td>
+        <td align="center" valign="top" bgcolor="#FFFFFF">{$renzhengDB[2][yz_]}</td>
+        <td valign="top" bgcolor="#FFFFFF"><form action="?" method="post" enctype="multipart/form-data" name="form1" id="form2">
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="18%">商家名称：</td>
+              <td width="82%"><input name="company_name" type="text" id="company_name" size="40" value="$rt[title]"/></td>
+            </tr>
+            <tr>
+              <td>基本条件：</td>
+              <td>1.必须是通过初级认证的商家；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>2.上传以下内容，各个文件必须真实可靠，否则不予通过；</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>(以下文件必须为JPG,GIF的证件扫描件或者照片，清晰可见)</td>
+            </tr>
+            <tr>
+              <td>营业执照：</td>
+              <td><input name="yyzz" type="file" id="yyzz" size="40" />{$renzhengDB[2][files][yyzz]}</td>
+            </tr>
+            <tr>
+              <td>税务登记证：</td>
+              <td><input name="swdj" type="file" id="swdj" size="40" />{$renzhengDB[2][files][swdj]}</td>
+            </tr>
+            <tr>
+              <td>组织机构代码证：</td>
+              <td><input name="jgdm" type="file" id="jgdm" size="40" />{$renzhengDB[2][files][jgdm]}</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+<!--
+EOT;
+if(!$renzhengDB[2][id]){
+print <<<EOT
+-->
+              <input type="submit" name="button2" id="button2" value="提 交" /><input name="level" type="hidden" id="level" value="2" />
+                <input name="action" type="hidden" id="action" value="renzheng" />
+<!--
+EOT;
+}
+
+print <<<EOT
+-->
+
+                </td>
+            </tr>
+          </table>
+        </form></td>
+      </tr>
+      <tr>
+        <td height="200" align="center" valign="top" bgcolor="#FFFFFF"><p><img src='{$Murl}/images/{$STYLE}/jinpairenzheng.gif'  border='0'/></p>
+          <p>实力认证<br />
+            </p></td>
+        <td align="center" valign="top" bgcolor="#FFFFFF">{$renzhengDB[3][yz_]}</td>
+        <td valign="top" bgcolor="#FFFFFF"><form action="?" method="post" enctype="multipart/form-data" name="form3" id="form3"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td width="18%">商家名称：</td>
+            <td width="82%"><input name="company_name" type="text" id="company_name" size="40" value="$rt[title]"/></td>
+          </tr>
+          <tr>
+            <td>基本条件：</td>
+            <td>1.必须是通过高级认证(银牌级)的商家；</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>2.上传以下内容，各个文件必须真实可靠，否则不予通过；</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>(以下文件必须是以word文档格式的文件*.doc,文件必须安全,如发现文件携带不安全内容，将永久取消认证资格)</td>
+          </tr>
+
+          <tr>
+            <td>{$renzheng3docname[0]}:</td>
+            <td><input name="doc1" type="file" id="doc1" size="40" />
+            {$renzhengDB[3][files][doc1]}</td>
+          </tr>
+          <tr>
+            <td>{$renzheng3docname[1]}:</td>
+            <td><input name="doc2" type="file" id="doc2" size="40" />
+            {$renzhengDB[3][files][doc2]}</td>
+          </tr>
+          <tr>
+            <td>{$renzheng3docname[2]}:</td>
+            <td><input name="doc3" type="file" id="doc3" size="40" />
+            {$renzhengDB[3][files][doc3]}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>
+<!--
+EOT;
+if(!$renzhengDB[3][id]){
+print <<<EOT
+-->
+              <input type="submit" name="button3" id="button3" value="提 交" /><input name="level" type="hidden" id="level" value="3" />
+              <input name="action" type="hidden" id="action" value="renzheng" />
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+              </td>
+          </tr>
+        </table></form>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <li>注意，请您珍惜每一次认证机会，一个会员一个登记只有一次认证机会;</li>
+    <li>对于恶意提交认证的，我们将取消其认证资格，以后将不能通过任何认证;</li>
+    </p>
+        
+<!--
+EOT;
+}else{
+print <<<EOT
+ --> 
+ <table width="100%" cellspacing="0" cellpadding="0" id="guide"  >
+    <tr>
+      <td width="2%" rowspan="2" valign="top"><img src="$Murl/member/{$member_style}/notice.jpg"  border="0"/></td>
+      <td width="98%" height="30"><a href="$Murl/member/post_comapny.php" target="_blank">
+ 		<strong>抱歉，您还没有登记商家，[点此登记您的商家信息]</strong>
+	  </a></td>
+    </tr>
+    <tr>
+      <td height="50" valign="top">
+      1.登记商家后，您可以展示您的企业信息到本网。<br />
+      2.更多商机，更多渠道，更多业务。<br />
+    </td>
+    </tr>
+  </table>
+
+<!--
+EOT;
+}
+print <<<EOT
+--></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

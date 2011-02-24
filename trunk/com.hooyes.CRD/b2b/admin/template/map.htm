@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="images/style.css" type="text/css">
+
+</head>
+<body style="background:url(images/main_1.jpg) repeat-x" > <!--
+<?php
+print <<<EOT
+--> 
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 style="background:none">
+  <TBODY> 
+  <TR> 
+    <TD width=323 rowspan="3"><img src="images/main_2.jpg"></TD>
+    <TD width="1031" rowspan="3" align="left"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" style="background:none">
+        <tr> 
+          <td width="43%"><img src="images/img_u.gif" 
+      align=absMiddle>文章共有：<font color="#FF0000">{$Article}</font> 篇</td>
+            <td width="57%">&nbsp;<img src="images/img_u.gif" 
+      align=absMiddle>网友评论：<font color="#FF0000">{$Comment}</font> 条</td>
+          </tr>
+        <tr> 
+          <td width="43%"><img src="images/img_u.gif" 
+      align=absMiddle>待审文章：<font color="#FF0000">{$Article0}</font> 篇</td>
+            <td width="57%"> &nbsp;<img src="images/img_u.gif" 
+      align=absMiddle>待审评论：<font color="#FF0000">{$Comment0}</font> 条</td>
+          </tr>
+        <tr> 
+          <td width="43%"><img src="images/img_u.gif" 
+      align=absMiddle>共有会员：<font color="#FF0000">{$Member}</font> 位</td>
+            <td width="57%"> &nbsp;<img src="images/img_u.gif" 
+      align=absMiddle>网友留言：<font color="#FF0000">{$Guestbook}</font> 条</td>
+          </tr>
+      </table></TD>
+    <TD width=20 height="25">&nbsp;</TD>
+  </TR>
+  <TR> 
+    <TD>&nbsp;</TD>
+  </TR>
+  <TR> 
+    <TD background="">&nbsp;</TD>
+  </TR>
+  </TBODY> 
+</TABLE>
+ 
+ 
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<div align="center">');
+//-->
+</SCRIPT>
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head"> 
+      
+    <td height="23">欢迎使用PHP168建站系统</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td> 
+      <table width="51%" border="0" cellspacing="0" cellpadding="0" class="map">
+        <tr> 
+          <td class="maphead"> 使用技巧</td>
+        </tr>
+        <tr>
+          <td class="middle" valign="top"> 1、如要对首页进行重大修改，请手工修改模板文件/template/default/index.htm<br>
+2、如果忘记密码不能进入后台的话，请手工修改文件/admin/global.php,查找\$ForceEnter=0;改为\$ForceEnter=1;即能进入后台,重新设置管理员密码<br>
+3、数据库配置文件是/php168/mysql_config.php,更换数据库帐号后,请修改此文件<br>
+4、要想更换创始人帐号,请修改文件/php168/admin.php<br>
+            5、如有更多不懂的问题，请上官方论坛提问。<br>
+            6、第一次安装的仅是整站核心+文章系统，你可以上官方站下载更多的模块系统进行安装</td>
+        </tr>
+      </table>
+      
+      <table width="51%" border="0" cellspacing="0" cellpadding="0" class="map">
+        <tr> 
+          <td class="maphead"> 新手入门指南</td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 1、要安装更多的网站风格,<a href="http://www.php168.com/list-4-1.htm" target="_blank">请点击</a><br>
+            2、要学习如何制作网站风格,<a href="http://bbs.php168.com/thread-bbs-fid-10270.html" target="_blank">请点击</a><br>
+            3、要学习采集网站内容数据,<a href="http://bbs.php168.com/thread-bbs-fid-10271.html" target="_blank">请点击</a><br>
+            4、遇到更多的问题,无法解决,<a href="http://bbs.php168.com/thread-bbs-fid-10274.html" target="_blank">请点击</a></td>
+        </tr>
+      </table>
+      <table width="51%" border="0" cellspacing="0" cellpadding="0" class="map">
+        <tr> 
+          <td class="maphead">官方重要公告</td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"><marquee direction="up" scrollamount="1" height="35" onmouseout='if(document.all!=null){this.start()}' onmouseover='if(document.all!=null){this.stop()}'>$OfficialNotice</marquee></td>
+        </tr>
+      </table>
+    </td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td height="23" colspan="2">服 务 器 信 息</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">服务器端信息： $systemMsg[SERVER_SOFTWARE]</td>
+    <td width="50%">邮件支持模式： $systemMsg[sys_mail]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">PHP程式版本： $systemMsg[sysversion]</td>
+    <td width="50%">服务器IP： $systemMsg[SERVER_ADDR]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">MYSQL 版本： $systemMsg[mysqlVersion]</td>
+    <td width="50%">服务器端口: $systemMsg[SERVER_PORT]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">最大上传限制： $systemMsg[max_upload] (<a href="http://bbs.php168.com/read-bbs-tid-202361.html" target="_blank">查看如何改为更大</a>)</td>
+    <td width="50%">服务器所在时间： $systemMsg[systemtime]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">最大执行时间： $systemMsg[max_ex_time]</td>
+    <td width="50%">网站所在磁盘物理位置： $systemMsg[DOCUMENT_ROOT]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否允许打开远程文件(采集数据): $systemMsg[allow_url_fopen]</td>
+    <td width="50%">当前文件: $systemMsg[SCRIPT_FILENAME]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">图像GD支持与否: $systemMsg[gdpic]</td>
+    <td width="50%">你的IP： $systemMsg[onlineip]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">Zend Optimizer版本(PHP加密解释器):$systemMsg[zendVersion]</td>
+    <td width="50%">当前域名： $systemMsg[SERVER_NAME]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td height="23">开 发 团 队</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td>官方网站： <a href="http://www.php168.com" target="_blank">http://www.php168.com</a> 
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td bgcolor="#FFFFFF">技术支持： <a href="http://bbs.php168.com" target="_blank">http://bbs.php168.com</a> 
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td bgcolor="#FFFFFF">系统版本： $php168_Edition</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td>系统设计： 骏龙</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td>团队管理： 骏龙、lisheng51</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td>特别鸣谢： <a href="http://bbs.php168.com/profile-bbs-action-show-uid-81067.html" target="_blank">lisheng51</a>、 
+      <a href="http://www.zxx6.com/" target="_blank">toopd</a> 
+      <a href="http://ok175.com/" target="_blank"></a>等等</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

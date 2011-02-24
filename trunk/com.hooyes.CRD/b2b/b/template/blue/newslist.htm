@@ -1,0 +1,493 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/onlyindex/i.css" charset="gbk">
+<div style="margin-top:5px;">$label[banner_ad_news]</div>
+<table width="990" align="center" cellpadding="0" cellspacing="0"  class="mainTB">
+  <tr>
+    <td valign="top"  class="left"><table width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="300" height="250" valign="top">
+
+	<div >$label[srcolllist]</div>
+
+        <table width="100%" cellspacing="0" cellpadding="0" class="newstable marginTop5px" >
+          <tr>
+            <td class="head"><span class="title">$label[cpdg1]</span><span class="r">$label[cpdg2]</span> </td>
+          </tr>
+          <tr>
+            <td height="50" align="left" valign="top" class="content">$label[cpdg3]</td>
+          </tr>
+        </table>
+        
+        </td>
+        <td valign="top" style="padding-left:5px;">
+		
+<table width="100%" cellspacing="0" cellpadding="0" class="newslisttable" >
+  <tr>
+    <td class="head">
+	<span class="title">行情快递</span>
+	<span class="right">$label[hangqingkuaidi]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" style=" padding-bottom:5px;">
+
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="Tabinfolist" style="margin-top:0px;">
+      <tr>
+        <td class="head">
+		<span class="ck"   id="key1_tabmenu1" onMouseover="changInfoTab(1,6,'key1')">$label[News_tabmenu1]</span>
+		<span class="unck" id="key1_tabmenu2" onMouseover="changInfoTab(2,6,'key1')">$label[News_tabmenu2]</span>
+		<span class="unck" id="key1_tabmenu3" onMouseover="changInfoTab(3,6,'key1')">$label[News_tabmenu3]</span>
+		<span class="unck" id="key1_tabmenu4" onMouseover="changInfoTab(4,6,'key1')">$label[News_tabmenu4]</span>
+		<span class="unck" id="key1_tabmenu5" onMouseover="changInfoTab(5,6,'key1')">$label[News_tabmenu5]</span>
+		<span class="unck" id="key1_tabmenu6" onMouseover="changInfoTab(6,6,'key1')">$label[News_tabmenu6]</span>
+		</td>
+      </tr>
+      <tr>
+        <td class="content" height="180">
+		<div style="display:block" id="key1_content1">$label[News_tabcontent1]</div>
+		<div style="display:none"  id="key1_content2">$label[News_tabcontent2]</div>
+		<div style="display:none"  id="key1_content3">$label[News_tabcontent3]</div>
+		<div style="display:none"  id="key1_content4">$label[News_tabcontent4]</div>
+		<div style="display:none"  id="key1_content5">$label[News_tabcontent5]</div>
+		<div style="display:none"  id="key1_content6">$label[News_tabcontent6]</div>
+		</td>
+      </tr>
+</table>	
+	
+	</td>
+  </tr>
+</table>
+<div class="marginTop5px">$label[news_ad1]</div>
+
+		</td>
+      </tr>
+    </table></td>
+	
+<td width="270" valign="top" class="right">
+
+<table width="100%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[hotnews1]</span><span class="r">$label[hotnews2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="215">
+$label[hotnews3]
+	</td>
+   </tr>
+  </table>
+  <div class="marginTop5px">$label[news_ad2]</div>
+</td>
+  </tr>
+</table>
+
+
+<table width="990" align="center" cellpadding="0" cellspacing="0"  class="mainTB">
+  <tr>
+    <td  class="left"><table width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="300">
+<div style="height:60px">$label[news_ad3]</div>	  
+<table width="100%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">本网动态</span><span class="r">$label[benwangdongtai]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="165">
+$label[benwangdongtai_list]
+	</td>
+   </tr>
+  </table>
+	  
+	  </td>
+   <td class="conent" style=" padding-bottom:5px; padding-left:5px;">
+   
+ <table width="100%" cellspacing="0" cellpadding="0" class="newslisttable" >
+  <tr>
+    <td class="head">
+	<span class="title">市场分析</span>
+	<span class="right">{$label[shichangfenxi]}</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content">
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="Tabinfolist" style="margin-top:0px;">
+      <tr>
+        <td class="head">
+		<span class="ck"   id="key2_tabmenu1" onMouseover="changInfoTab(1,6,'key2')">$label[News_tabmenu11]</span>
+		<span class="unck" id="key2_tabmenu2" onMouseover="changInfoTab(2,6,'key2')">$label[News_tabmenu22]</span>
+		<span class="unck" id="key2_tabmenu3" onMouseover="changInfoTab(3,6,'key2')">$label[News_tabmenu33]</span>
+		<span class="unck" id="key2_tabmenu4" onMouseover="changInfoTab(4,6,'key2')">$label[News_tabmenu44]</span>
+		<span class="unck" id="key2_tabmenu5" onMouseover="changInfoTab(5,6,'key2')">$label[News_tabmenu55]</span>
+		<span class="unck" id="key2_tabmenu6" onMouseover="changInfoTab(6,6,'key2')">$label[News_tabmenu66]</span>
+		</td>
+      </tr>
+      <tr>
+        <td class="content" height="190">
+		<div style="display:block" id="key2_content1">$label[News_tabcontent11]</div>
+		<div style="display:none"  id="key2_content2">$label[News_tabcontent22]</div>
+		<div style="display:none"  id="key2_content3">$label[News_tabcontent33]</div>
+		<div style="display:none"  id="key2_content4">$label[News_tabcontent44]</div>
+		<div style="display:none"  id="key2_content5">$label[News_tabcontent55]</div>
+		<div style="display:none"  id="key2_content6">$label[News_tabcontent66]</div>
+		</td>
+      </tr>
+</table>
+	
+		</td>
+	</tr>
+</table>
+	  
+	  </td>
+    </tr>
+  </table>	
+  
+  </td>
+	  <td width="270" class="right">
+
+<table width="100%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy1_1]</span><span class="r">$label[diy1_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="225">
+$label[diy1_3]
+	</td>
+   </tr>
+  </table>
+
+
+	</td>
+  </tr>
+</table>
+
+
+<table width="990" align="center" cellpadding="0" cellspacing="0"  class="mainTB2">
+  <tr>
+    <td width="300" class="left_td" >
+	<div >$label[news_ad4]</div>	  
+	<div  class="marginTop5px">$label[news_ad6]</div>
+	
+
+
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable marginTop5px" >
+  <tr>
+    <td class="head" align="left">
+	<span class="title">钢铁市场</span><span class="r"></span>
+	</td>
+  </tr>
+  <tr>
+    <td height="850" align="left" valign="top" bgcolor="#E9F4F8" class="content">
+
+<!--
+EOT;
+$i=0;
+foreach($area_DB[0] as $k=>$p){
+if($k){
+if($i>5)break;
+else{
+print <<<EOT
+-->
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style=" clear:both;line-height:25px; border-bottom:1px #919CA0 dashed;">
+<span style="float:left;font-weight:bold; font-size:14px; background:url(images/default/arrow.gif) left no-repeat ; padding-left:10px">  {$area_DB[name][$k]}市场</span>
+<span style="float:right; padding-right:10px;">
+<!--
+EOT;
+$j=1;
+foreach($city_DB[$k] as $k2=>$pp){
+	if($j>3) break;
+print <<<EOT
+-->
+	<a href="$Mdomain/list.php?ctype=3&listarea=$k2">{$city_DB[name][$k2]}</a>
+<!--
+EOT;
+$j++;
+}
+print <<<EOT
+-->
+</span>
+	
+	</td>
+  </tr>
+  <tr>
+    <td  style=" clear:both;  margin-bottom:10px; padding-left:8px; height:110px">
+<!--
+EOT;
+$listdb=get_best_company_fromarea($k,6,1,34);
+$o=1;
+foreach($listdb as $rs){
+if($o<=3){
+print <<<EOT
+-->	
+	<span style="height:18px;"><font color="#4E74A1">[$rs[cityname]]</font> <a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank" title="$rs[full_title]" style="color:#565656">$rs[title]</a></span><br />
+<!--
+EOT;
+}else{
+	print <<<EOT
+-->	
+	<a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank" title="$rs[full_title]" >
+	<img src="$rs[picurl]" border="0"  width="70" height="70" style="border:1px #CCCCCC solid;  margin-right:15px;"/></a>
+<!--
+EOT;
+}
+$o++;
+}
+print <<<EOT
+-->		
+	
+	</td>
+  </tr>
+</table>
+
+
+
+
+	
+
+
+
+<!--
+EOT;
+$i++;
+}
+}
+}
+print <<<EOT
+-->
+	</td>
+   </tr>
+  </table>
+	
+
+
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable marginTop5px" >
+  <tr>
+    <td class="head" align="left">
+	<span class="title">{$label[diy12_1]}</span><span class="r">{$label[diy12_2]}</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="200" align="left">
+{$label[diy12_3]}
+	</td>
+   </tr>
+  </table>
+	<p  class="marginTop5px">$label[news_ad8]</p>	  
+	<p  class="marginTop5px">$label[news_ad9]</p>
+
+	</td>
+    <td   class="right_td"  valign="top">     
+	  <div>$label[news_ad5]</div>
+
+	  <table width="100%" cellspacing="0" cellpadding="0" class="marginTop5px">
+        <tr>
+          <td align="left"  valign="top">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy2_1]</span><span class="r">$label[diy2_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="225">
+$label[diy2_3]
+	</td>
+   </tr>
+  </table>		  
+		  
+		  </td>
+          <td align="right"  valign="top">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy3_1]</span><span class="r">$label[diy3_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td height="225" align="left" class="content">
+$label[diy3_3]	</td>
+   </tr>
+  </table>		  
+		  
+		  </td>
+        </tr>
+      </table>
+	  
+	  
+<table width="100%" cellspacing="0" cellpadding="0" class="newstable marginTop5px" >
+  <tr>
+    <td class="head">
+	<span class="pictitle">$label[diypic_1]</span><span class="r">$label[diypic_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="120" style="padding:1px;">
+$label[diypic_3]
+	</td>
+   </tr>
+  </table>	
+  
+  <table width="100%" cellspacing="0" cellpadding="0" class="marginTop5px">
+        <tr>
+          <td align="left"  valign="top">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy4_1]</span><span class="r">$label[diy4_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="225">
+$label[diy4_3]
+	</td>
+   </tr>
+  </table>			  
+		  
+		  </td>
+          <td align="right"  valign="top">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy5_1]</span><span class="r">$label[diy5_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td height="225" align="left" class="content">
+$label[diy5_3]	</td>
+   </tr>
+  </table>		  
+		  
+		  </td>
+        </tr>
+      </table>
+  
+	  <div   class="marginTop5px" >$label[news_ad7]</div>
+	  
+	  <table width="100%" cellspacing="0" cellpadding="0" class="marginTop5px newstable " >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy6_1]</span><span class="r">$label[diy6_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="220">
+$label[diy6_3]
+	</td>
+   </tr>
+  </table>  
+	
+	
+	
+	<table width="100%" cellspacing="0" cellpadding="0" class="marginTop5px">
+        <tr>
+          <td align="left"  valign="top">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy7_1]</span><span class="r">$label[diy7_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="225">
+$label[diy7_3]
+	</td>
+   </tr>
+  </table>		  
+		  
+		  </td>
+          <td align="right"  valign="top">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy8_1]</span><span class="r">$label[diy8_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td height="225" align="left" class="content">
+$label[diy8_3]	</td>
+   </tr>
+  </table>		  
+		  
+		  </td>
+        </tr>
+      </table>
+  
+	  <div  class="marginTop5px">$label[news_ad10]</div>
+	  
+	  <table width="100%" cellspacing="0" cellpadding="0" class="marginTop5px">
+        <tr>
+          <td align="left"  valign="top" width="50%">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy9_1]</span><span class="r">$label[diy9_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td class="content" height="222">
+$label[diy9_3]	</td>
+   </tr>
+  </table>	  
+		  
+		  </td>
+          <td align="right"  valign="top" width="50%">
+		  
+<table width="99%" cellspacing="0" cellpadding="0" class="newstable" >
+  <tr>
+    <td class="head">
+	<span class="title">$label[diy10_1]</span><span class="r">$label[diy10_2]</span>
+	</td>
+  </tr>
+  <tr>
+    <td height="222" align="left" class="content">
+$label[diy10_3]	</td>
+   </tr>
+  </table>		  
+		  
+		  </td>
+        </tr>
+      </table>
+  
+ 
+
+	</td>
+	
+  </tr>
+ </table>
+
+
+
+<script language="javascript">
+	function changInfoTab(ind,allnum,pre){
+		
+		for(var i=1;i<=allnum;i++){
+			document.getElementById(pre+'_tabmenu'+String(i)).className='unck';
+			document.getElementById(pre+'_content'+String(i)).style.display='none';
+		}
+		document.getElementById(pre+'_tabmenu'+String(ind)).className='ck';
+		document.getElementById(pre+'_content'+String(ind)).style.display='block';	
+		
+	}
+	</script>
+<script language="javascript">//change_search_menu(4,'查 资 讯');</script>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,78 @@
+<!--
+<?php
+
+print <<<EOT
+-->
+<title>打印预览</title>
+<!--
+EOT;
+if($viewtype=='window' || !$viewtype){
+foreach($printlistdb as $rs){
+print <<<EOT
+-->
+<table width="600" align="center" cellpadding="3" cellspacing="1" bgcolor="#666666" style="font-size:12px; margin-bottom:30px;" >
+  <tr>
+    <td width="72%" height="30" align="left" bgcolor="#F6F6F6"><strong>$rs[formtitle]</strong></td>
+    <td width="28%" height="30" align="center" bgcolor="#FFFFFF">$rs[posttime]</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top" bgcolor="#FFFFFF"><table width="100%" cellspacing="0" cellpadding="5" style="font-size:12px; " >
+      <tr>
+        <td width="13%" align="left" valign="top">供 应 方：</td>
+        <td width="37%" align="left" valign="top">$rs[owner]</td>
+        <td width="13%" align="left" valign="top">供应数量：</td>
+        <td width="37%" align="left" valign="top"><strong>$rs[quantity]</strong></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">希望回复：</td>
+        <td align="left" valign="top">在$rs[hopereply_time]之前</td>
+        <td align="left" valign="top">供应价格：</td>
+        <td align="left" valign="top"><strong>$rs[put_price]</strong>元</td>
+      </tr>
+      <tr>
+        <td height="40" align="left" valign="top">内容补充：</td>
+        <td colspan="3" align="left" valign="top">$rs[add_content]</td>
+        </tr>
+      
+    </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="5"  style="font-size:12px;  height:120px; border-top:1px #CCCCCC solid; background:url($rs[gz]) right no-repeat; " >
+        <tr>
+          <td width="68" align="left">联系人：</td>
+          <td width="213">$contact_info[truename]</td>
+          <td width="69" align="left">职位：</td>
+          <td width="210" >$contact_info[qy_contact_zhiwei]</td>
+        </tr>
+        <tr>
+          <td align="left">公司名称：</td>
+          <td>$contact_info[company_name]</td>
+          <td align="left">固定电话：</td>
+          <td>$contact_info[qy_contact_tel]</td>
+        </tr>
+        <tr>
+          <td align="left">移动电话：</td>
+          <td>$contact_info[qy_contact_mobile]</td>
+          <td align="left">邮箱地址：</td>
+          <td>$contact_info[qy_contact_email]</td>
+        </tr>
+        <tr>
+          <td align="left">传 真：</td>
+          <td>$contact_info[qy_contact_fax]</td>
+          <td align="left">Q Q：</td>
+          <td>$contact_info[qq]</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+
+}elseif($viewtype=='list'){
+print <<<EOT
+-->
+
+<!--
+EOT;
+}
+?>
+-->

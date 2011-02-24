@@ -1,0 +1,49 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">展示记录</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <tr align="center" class="head_in"> 
+                <td width="19%">访问IP</td>
+                <td width="43%">访问地区</td>
+                <td width="19%">浏览时间</td>
+                <td width="19%">网页快照</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+              <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'" align="center"> 
+                <td width="19%">$rs[v_ip]</td>
+                <td width="43%">$rs[v_address]</td>
+                <td width="19%">$rs[v_time]</td>
+                <td width="19%"><a href="?job=viewlog&v_id=$rs[v_id]">查看快照</a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <tr align="center"> 
+                <td colspan="5">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,352 @@
+<!--
+<?php
+$backdb[subject] || ($backdb[subject]="没有了") && ($backdb[click]="return false;");
+$nextdb[subject] || ($nextdb[subject]="没有了") && ($nextdb[click]="return false;");
+$unsetdb[]=$rsdb[photourl];	//不需要再显示
+print <<<EOT
+--><body onload="gallery()">
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/pic.css">
+<script src="$webdb[www_url]/images/default/jquery-1.2.6.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+gallery = function() {
+	var current = 1;
+	var total = $('.entry').length;
+		$('.entry').hide();
+		$('#pic1').fadeIn('slow');
+		$('#imageNumber').html('1 of ' + total );
+		setHeight(1);
+		$('img.first').click(function(){
+			var prev  = 1;
+			if (current != 1) {
+				$('#pic' + current).fadeOut('slow');
+				setHeight(prev)
+				$('#pic' + prev).fadeIn('slow');
+				current = 1;
+				$('#imageNumber').html(current + ' of ' + total)
+			}
+		return false;
+		});
+
+
+$('img.previous').click(function(){
+var prev  = current - 1;
+if (prev < 1) prev = 1;
+if (current != 1) {
+$('#pic' + current).fadeOut('slow');
+$('#pic' + prev).fadeIn('slow');
+current = prev;
+setHeight(current)
+$('#imageNumber').html(current + ' of ' + total)
+}
+return false;
+});
+
+$('img.next').click(function(){
+var next = current + 1;
+if (next > total) next = total;
+if (current != total) {
+$('#pic' + current).fadeOut('slow');
+$('#pic' + next).fadeIn('slow');
+current = next;
+setHeight(current)
+$('#imageNumber').html(current + ' of ' + total)
+}
+return false;
+});
+
+$('img.last').click(function(){
+var next  = total;
+if (current != total) {
+$('#pic' + current).fadeOut('slow');
+$('#pic' + next).fadeIn('slow');
+current = total;
+setHeight(current)
+$('#imageNumber').html(current + ' of ' + total)
+}
+return false;
+});
+
+function setHeight(current) {
+var entryHeight = $('#pic' + current).outerHeight() + 20;
+$('#slideshow').animate({ height: entryHeight + 'px'}, 500 );
+}
+
+}
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable viewcontent" id="viewphoto">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"><a editurl='$webdb[www_url]/do/job.php?job=bencandy&fid=$fid&id=$id&act=do'>TOP</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+              <tr> 
+                <td align="center" class="a1" style="padding-left:5px;padding-top:2px;"><b>$rsdb[title]</b></td>
+              </tr>
+              <tr> 
+                <td class="a1" bgcolor="#FFFFFF" align="left" style="padding:5px;"> 
+
+
+<div id="stus-slideshow">
+	<div id="nav">
+		<img class="first" src="$webdb[www_url]/images/default/first.png" alt="第一张" />
+		<img class="previous" src="$webdb[www_url]/images/default/prev.png" alt="上一张" />
+		<h2 id="imageNumber">1 of 1</h2> 
+		<img class="next" src="$webdb[www_url]/images/default/next.png" alt="下一张" />
+		<img class="last" src="$webdb[www_url]/images/default/last.png" alt="最后一张" />
+	</div>
+
+	<div id="slideshow">
+<!--
+EOT;
+foreach($Mrsdb[photourl][url] AS $key=>$value){
+$_key=$key+1;
+print <<<EOT
+-->
+		<div id="pic$_key" class="entry"><img class="next" src="$value" alt="{$pictitledb[$key]}" onload="this.width='550'" />
+			<h1>{$Mrsdb[photourl][name][$key]}</h1>
+			<p><p>[<a href="$value" target="_blank"><u>点击查看原图</u></a>]</p><p></p>
+		</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+	</div>
+</div>
+ 
+ 
+
+<!--
+EOT;
+if($rsdb[ifvote]){print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="content_vote">
+  <tr>
+    <td><SCRIPT src="$webdb[www_url]/do/vote.php?job=js&aid=$rsdb[aid]"></SCRIPT></td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+            
+                </td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF" bgcolor="#F9F9F9">
+              <tr> 
+                <td class="a1" style="padding-left:5px;padding-top:2px;"> <b>{$fidDB[M_alias]}介绍</b></td>
+              </tr>
+             
+              <tr> 
+                <td  bgcolor="#FFFFFF">
+                  <table width="100%" cellspacing="3" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+                    <tr> 
+                <td>{$rsdb[content]}</td></tr></table></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关信息</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+              
+              <tr> 
+                <td width="15%">浏览人次:</td>
+                <td width="85%"><font id="hits">{$rsdb[hits]}</font></td>
+              </tr>
+              <tr> 
+                <td width="15%">发 布 者:</td>
+                <td width="85%">{$rsdb[username]} </td>
+              </tr>
+              <tr> 
+                <td width="15%">发布日期:</td>
+                <td width="85%">{$rsdb[posttime]}</td>
+              </tr> 
+               
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+      <!--php168
+EOT;
+if($webdb[showComment] && $fidDB[allowcomment] && !$rsdb[forbidcomment]){@include(html("bencandy_tpl/comment"));}print <<<EOT
+php168--></td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sonSortName">
+        <tr> 
+          <td class="head" height="19"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关栏目</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--php168
+EOT;
+//相关栏目名称
+@include("$sortnameTPL");print<<<EOT
+php168-->           </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">最新{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Newtopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=new&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Newtopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">热门{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Hottopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=hot&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Hottopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">推荐{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Comtopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=com&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Comtopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关{$fidDB[M_alias]}</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <script language="JavaScript">
+<!--
+document.write('<div id="article_Liketopic">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/jsarticle.php?fid=$fid&type=like&id=$id&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]&iframeID=article_Liketopic" width=0 height=0></iframe></div>');
+//-->
+</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">广告位</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left"> {$AD_label['article_show']}
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

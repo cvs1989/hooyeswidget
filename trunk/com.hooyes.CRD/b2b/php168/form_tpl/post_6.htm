@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+--> <script src="images/default/setday.js"></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$fidDB[name]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script>
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+</script><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="padding-bottom:10px;">$fidDB[about]</td>
+  </tr>
+</table>
+            <table width="99%" border="0" cellspacing="5" cellpadding="5" id="bigtable">
+              <form name="FORM" method="post" action="?action=$atc" enctype="multipart/form-data">
+                
+<!--
+EOT;
+if($fidDB[usetitle]){print <<<EOT
+-->
+				<tr> 
+                  <td width="18%">标题:<font color=red>(必填)</font></td>
+                  <td width="82%"> 
+                    <input type="text" name="postdb[title]" id="atc_title" size="50" value="$rsdb[title]">
+                  </td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+                <tr> <td >求职岗位:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[workposition]' id='atc_workposition' size='30' value='$rsdb[workposition]'> </td></tr><tr> <td >姓名:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[truename]' id='atc_truename' size='10' value='$rsdb[truename]'> </td></tr><tr> <td >性别:<font color=red>(必填)</font><br></td> <td ><input style='border:0px;' type='radio' name='postdb[sex]' value='1' {$rsdb[sex]['1']}>男<input style='border:0px;' type='radio' name='postdb[sex]' value='2' {$rsdb[sex]['2']}>女<input style='border:0px;' type='radio' name='postdb[sex]' value='0' {$rsdb[sex]['0']}>保密</td></tr><tr> <td >年龄:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[myage]' id='atc_myage' size='2' value='$rsdb[myage]'> 岁</td></tr><tr> <td >学历:<br></td><td > <select name='postdb[schoo_age]' id='atc_schoo_age'><option value='初中' {$rsdb[schoo_age]['初中']}>初中</option><option value='中专' {$rsdb[schoo_age]['中专']}>中专</option><option value='高中' {$rsdb[schoo_age]['高中']}>高中</option><option value='大专' {$rsdb[schoo_age]['大专']}>大专</option><option value='本科' {$rsdb[schoo_age]['本科']}>本科</option><option value='硕士' {$rsdb[schoo_age]['硕士']}>硕士</option><option value='博士' {$rsdb[schoo_age]['博士']}>博士</option><option value='MBA' {$rsdb[schoo_age]['MBA']}>MBA</option></select></td> </tr><tr> <td >毕业学校:<br></td> <td > <input type='text' name='postdb[graduateschool]' id='atc_graduateschool' size='15' value='$rsdb[graduateschool]'> </td></tr><tr> <td >专业:<br></td> <td > <input type='text' name='postdb[specialty]' id='atc_specialty' size='20' value='$rsdb[specialty]'> </td></tr><tr> <td >特长:<br></td> <td > <input type='text' name='postdb[skill]' id='atc_skill' size='20' value='$rsdb[skill]'> </td></tr><tr> <td >工作年限:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[workyear]' id='atc_workyear' size='2' value='$rsdb[workyear]'> 年</td></tr><tr><td >工作经验:<font color=red>(必填)</font><br></td><td ><textarea name='postdb[experience]' id='atc_experience' cols='70' rows='8'>$rsdb[experience]</textarea></td></tr><tr> <td >期望月薪:<br></td><td > <select name='postdb[wage]' id='atc_wage'><option value='面议' {$rsdb[wage]['面议']}>面议</option><option value='1000元以下' {$rsdb[wage]['1000元以下']}>1000元以下</option><option value='1000元-2000元' {$rsdb[wage]['1000元-2000元']}>1000元-2000元</option><option value='2000元-3000元' {$rsdb[wage]['2000元-3000元']}>2000元-3000元</option><option value='3000元-4000元' {$rsdb[wage]['3000元-4000元']}>3000元-4000元</option><option value='4000元以上' {$rsdb[wage]['4000元以上']}>4000元以上</option></select></td> </tr><tr> <td >当前居住地:<br></td> <td > <input type='text' name='postdb[address]' id='atc_address' size='70' value='$rsdb[address]'> </td></tr><tr> <td >联系电话:<br></td> <td > <input type='text' name='postdb[telephone]' id='atc_telephone' size='10' value='$rsdb[telephone]'> </td></tr><tr> <td >联系邮箱:<br></td> <td > <input type='text' name='postdb[email]' id='atc_email' size='20' value='$rsdb[email]'> </td></tr><tr> <td >QQ号码:<br></td> <td > <input type='text' name='postdb[oicq]' id='atc_oicq' size='9' value='$rsdb[oicq]'> </td></tr><tr> <td >到岗日期:<font color=red>(必填)</font><br></td> <td ><input style='border:0px;' type='radio' name='postdb[worktime]' value='随时' {$rsdb[worktime]['随时']}>随时<input style='border:0px;' type='radio' name='postdb[worktime]' value='1周内' {$rsdb[worktime]['1周内']}>1周内<input style='border:0px;' type='radio' name='postdb[worktime]' value='2周内' {$rsdb[worktime]['2周内']}>2周内<input style='border:0px;' type='radio' name='postdb[worktime]' value='3周内' {$rsdb[worktime]['3周内']}>3周内<input style='border:0px;' type='radio' name='postdb[worktime]' value='1个月内' {$rsdb[worktime]['1个月内']}>1个月内</td></tr> 
+                <tr> 
+                  <td width="18%">&nbsp;</td>
+                  <td width="82%"> 
+                    <input type="submit" name="Submit" value="提 交" >
+                    <input type="hidden" name="mid" value="$mid">
+                    <input type="hidden" name="id" value="$id">
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

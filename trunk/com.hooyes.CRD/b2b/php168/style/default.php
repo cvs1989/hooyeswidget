@@ -1,0 +1,12 @@
+<?php	
+		$styledb['name']='¹Ù·½·ç¸ñ';
+		$styledb['keywords']='default';
+		$styledb['bodybgcolor']='';
+		$styledb['bodyBgImg']='';
+		$styledb['wrapWidth']='';
+		$styledb['fontColor']='';
+		$styledb['tableBorderColor']='';
+		$styledb['tableBgcolor']='';
+		$styledb['tableHeadBgColor']='';
+		$styledb['tableHeadBgImg']='';
+		$styledb['tableHeadFontColor']='';

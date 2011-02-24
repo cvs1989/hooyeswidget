@@ -1,0 +1,69 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:0px;" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">会员列表</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+
+ 
+<!--
+EOT;
+foreach($listdb AS $rs){
+$rs[icon]=tempdir($rs[icon]);
+$rs[regdate]=date("Y-m-d",$rs[regdate]);
+if($rs[sex]==2){$rs[sex]='女';}
+if($rs[sex]==1){$rs[sex]='男';}
+if($rs[sex]==0){$rs[sex]='保密';}
+print <<<EOT
+-->
+            <div style="width:280px;padding:3px 0 3px 4px;float:left;text-align:center; background:#FAFAFA;border:#C7C8C9 dotted 1px;margin-left:8px;margin-bottom:12px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="1%" style="padding-right:1em;"><A target="_blank" HREF="member/userinfo.php?uid=$rs[uid]" style="display:block;width:100px;height:100px;text-align:center;border:1px solid #C3CECD;"><img style="border:1px solid #fff;width:100px;height:100px;" src='$rs[icon]' onerror="this.src='images/default/nobody.gif'"></A></td>
+                  <td width="99%" align="left" valign="top" style="line-height:18px;">昵称:<A HREF="member/userinfo.php?uid=$rs[uid]" target="_blank">$rs[username]</A><br>
+                    注册:$rs[regdate]<br>
+                    性别:$rs[sex]<br>
+                    级别:{$ltitle[$rs[groupid]]}<br>
+                    发贴:{$rs[postnum]} 篇<br>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+        <tr> 
+          <td class="page">$showpage</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

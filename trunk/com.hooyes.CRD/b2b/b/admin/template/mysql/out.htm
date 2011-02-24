@@ -1,0 +1,132 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+ <form name="form1" method="post" action="?lfj=$lfj&action=out"> <tr class="head"> 
+      <td width='11%'> 
+        <div align='center'><font color="#FFFFFF">序号</font></div>
+    </td>
+      <td width='32%'> 
+        <div align='center'><font color="#FFFFFF">表的名称</font></div>
+    </td>
+    <td width='17%'> 
+      <div align='center'><font color="#FFFFFF">记录数(条)</font></div>
+    </td>
+    <td width='21%'> 
+      <div align='center'><font color="#FFFFFF">占用空间</font></div>
+    </td>
+    <td width='19%'> 
+      <div align='center'><font color="#FFFFFF"> 请选择</font></div>
+    </td>
+  </tr>
+<!--
+EOT;
+if($breakbak){
+print <<<EOT
+-->
+  <tr>
+    <td colspan=5 height=30 style="background:#FF0000;">
+      <div align=center><A HREF="$breakbak"><b><font color=ffffff>上次备份被中断是否继续,点击继续</font></b></A></div>
+    </td>
+  </tr>
+  
+<!--
+EOT;
+}
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor='#FFFFFF' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width='11%'> 
+        <div align='center'>$rs[j]</div>
+    </td>
+      <td width='32%'> $rs[Name]</td>
+    <td width='17%'> 
+      <div align='center'>$rs[Rows]</div>
+    </td>
+    <td      width='21%'> 
+      <div    align='center'>{$rs[Data_length]} K</div>
+    </td>
+    <td width='19%'> 
+      <div align='center'> 
+        <input type='checkbox' name='tabledb[]' value='{$rs[Name]}' checked>
+        　<A HREF=index.php?lfj=$lfj&job=do&step=yh&table=$rs[Name]>优化</A>　 <A HREF=index.php?lfj=$lfj&job=do&step=xf&table=$rs[Name]>修复</A></div>
+    </td>
+  </tr>
+  <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF' align="center"> 
+      <td colspan='5'> 备份方式: 
+        <input type="radio" name="baktype" value="s">
+        特殊备份(将本频道数据作为安装新频道使用) 
+        <input type="radio" name="baktype" value="n" checked>
+        普通备份(常用,数据仅适合本频道还原使用)<br>
+        (总共占用空间 {$totalsize} <b><font color='#0000FF' size=5>M</font></b>) 
+        <input type='button' onclick=CheckAll(this.form) name='Submit' value='全选'>
+        <input type='submit' name='Submit' value='立刻备份'>
+        每卷大小 
+        <input name="baksize" type="text" id="baksize" value="1024" size="5">
+        K 是否同时优化数据表 
+        <input type="radio" name="repair" value="2">
+        是(占资源) 
+        <input type="radio" name="repair" value="0">
+        否 <br>
+        备份速度,每次取几条数据
+        <input type="text" name="rowsnum" size="5" value="200">
+        数值越大.备份越快,但越占服务器资源,如果你的服务器做了限制备份失败,只能把这个数值改为更小,比如50<br>
+        备份类型: 
+        <input type="radio" name="mysqlversion" value="old" onclick="choose_type('');">
+        4.0.x低版本数据库专用 
+        <input type="radio" name="mysqlversion" value="new" onclick="choose_type('new');">
+        4.1.x-5.x高版本数据库专用 
+        <input type="radio" name="mysqlversion" value="0" checked onclick="choose_type('');">
+        默认<br>
+		<div id="Charset_type" style='display:none;'>
+        高版本数据库使用的编码格式: 
+        <input type="radio" name="Charset" value="gbk">
+        中国GBK 
+        <input type="radio" name="Charset" value="utf8">
+        国际UTF8 
+        <input type="radio" name="Charset" value="big5">
+        繁体BIG5 
+        <input type="radio" name="Charset" value="latin1" checked>
+          默认latin1(<font color="#FF0000">最好选择这个</font>)<br>
+          
+        </div><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              
+            <td><b><font color="#FF0000">注意:</font></b><br>
+              1. 选择特殊备份的目的是把数据备份出来,然后可以给送他人全新安装此频道.也相当于克隆一份本频道给别人使用,这种方式生成的备份文件目录名为install存放于本频道的cache\mysql_bak目录里,你需要把他移到频道目录里,然后在地址栏目输入http://频道目录/install/即可按操作新安装.<br>
+              2.这里特殊备份会把标签一起备份,所以如果你有调用其他频道的数据的标签,最好先清空,因为别人不一定装有那个频道.即使装有.也易出错.</td>
+            </tr>
+          </table>
+      </td>
+  </tr> </form>
+</table>
+<script language=JavaScript>
+function CheckAll(form){
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		e.checked == true ? e.checked = false : e.checked = true;
+	}
+}
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_type(type){
+	if(type=='new'){
+		get_obj('Charset_type').style.display='';
+	}else{
+		get_obj('Charset_type').style.display='none';
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

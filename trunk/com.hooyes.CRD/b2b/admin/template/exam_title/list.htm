@@ -1,0 +1,98 @@
+ <!--
+<?php
+print <<<EOT
+--> 
+<table width="99%" border="0" cellspacing="1" cellpadding="3" >
+  <tr>
+    <td align="center" bgcolor="#eeeeee">请选择一个分类:{$sort_fid}</td>
+  </tr>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form_work" method="post" action="?lfj=$lfj&action=$job" onsubmit="return postdo();">
+    <tr bgcolor='#FFFFFF' class="head" align="center"> 
+      <td width="15%">题目类型 </td>
+      <td width="56%">题目名称</td>
+      <td width="14%">所属分类</td>
+      <td width="8%">修改</td>
+      <td width="7%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF' align="center"> 
+      <td width="15%">{$paperType[$rs[type]]}</td>
+      <td width="56%" align="left"> 
+        <input type="checkbox" name="listdb[]" value="$rs[id]">
+        $rs[question]</td>
+      <td width="14%">$rs[fname]</td>
+      <td width="8%"><a href="?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+      <td width="7%"><a href="?lfj=$lfj&action=delete&id=$rs[id]"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF' align="center"> 
+      <td colspan="5"> <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <a href="?action=delete&id=$rs[id]"></a> 
+        <input type="radio" name="ctype" value="del">
+        删除 
+        <input type="radio" name="ctype" value="put" checked id="ctype_put">
+        录入到问卷{$select_exam} 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="sortid" value="$sortid">
+      </td>
+    </tr>
+  </form>
+</table>
+<table width="99%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td align="center">$showpage</td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+     <tr bgcolor='#FFFFFF' class="head" > 
+    <td>帮助说明:</td>
+  </tr>
+  <tr>
+    <td>1.创建问卷或试卷表单的方法,第一步:添加题目、创建表单。第二步:把题目录入到问卷表单。<br>
+      2.题库的目的是为了实现题目共享给多个表单，多次反复使用。</td>
+  </tr>
+</table>
+<script language="JavaScript">
+<!--
+function MM_jumpMenu(selObj){
+  if (selObj.options[selObj.selectedIndex].value!=''){
+		window.location.href="?job=list&sortid="+selObj.options[selObj.selectedIndex].value;
+  }
+}
+function postdo(){
+	if(document.form_work.examid.value==''&&get_obj('ctype_put').checked==true){
+		alert("不能为空,请选择一张试卷");
+		document.form_work.examid.focus();
+		return false;
+	}
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</script>
+<!--
+EOT;
+?>
+-->

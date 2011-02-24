@@ -1,0 +1,39 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="">
+  <tr class="head"> 
+    <td width="36%" align="center">栏 目</td>
+    <td width="20%" align="center">列表页</td>
+    <td width="17%" align="center">生成的内容页</td>
+    <td width="8%" align="center">点用空间</td>
+    <td width="10%" align="center">查看</td>
+    <td width="9%" align="center"> 删除</td>
+  </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="36%"> 
+        <input type="checkbox" name="checkbox" value="checkbox">$rs[name]
+         </td>  
+      <td width="20%" align="center">&nbsp;</td>
+      <td width="17%" align="center">&nbsp;</td>
+      <td width="8%" align="center">&nbsp;</td>
+      <td width="10%" align="center"><a href="$rs[htmlLink]" target="_blank">静态页</a>/<a href="$webdb[www_url]/list.php?fid=$rs[fid]" target="_blank">动态页</a></td>
+      <td width="9%" align="center">&nbsp;</td>
+  </tr>  
+<!--
+EOT;
+}print <<<EOT
+-->
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

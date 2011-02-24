@@ -1,0 +1,393 @@
+/*****************************************************************
+******************************************************************
+以下为所有风格通用样式
+margin: 0;padding: 0;设置外边距,内边距空隙都为0
+font-size: 12px;为字体大小.一般表格内的,不受他控制
+li,ul设置list-style: none;主要是取消默认的小圆点.不太好看
+******************************************************************
+*****************************************************************/
+
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+li,ul{
+	list-style: none;
+}
+
+/******************************************
+TD中的color: #333333;为没有超级链接的字体颜色
+VERTICAL-ALIGN: top;表格里的内容居顶
+text-align:left;表格里的内容居左
+*******************************************/
+
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+}
+
+/******************************************
+border:1px solid #ccc; 表单边框为1个像素的实线,
+要为虚线改solid为dotted,要换颜色改#ccc
+可以自定义背景颜色
+background:#eee;
+*******************************************/
+
+input,textarea{
+	border:1px solid #ccc;
+}
+
+/******************************************
+网页整体宽度
+******************************************/
+.wrap{
+	width:990px;
+	margin:auto;
+}
+
+/******************************************
+font-size: 12px;超级链接字体大小
+color:字体颜色
+text-decoration: none;没有下画线.要有下画线.改none为underline
+a 为统一超级链接,
+a:link没有点击过的超级链接样式
+a:visited 被点击过的超级链接样式
+a:hover 鼠标指向时的超级链接样式
+a:active 被用户激活(在鼠标点击与释放之间发生的事件)时的样式.少用
+*******************************************/
+
+a {
+	font-size: 12px;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+
+#header{
+	width:990px;
+}
+
+/********************************************/
+.continue {
+width:990px;
+
+margin:0 auto;
+text-align:left;
+}
+.continue  .head{
+height:25px;
+overflow:hidden;
+line-height:25px;
+
+}
+.continue  .head div{
+float:left;
+width:87px;
+
+text-align:center;
+border-bottom:0;
+margin-right:5px;
+}
+.continue  .head .more{
+float:right;
+width:100px;
+border:0;
+color:#055E94;
+}
+.continue  .head .more a{
+    text-decoration: none;
+    color:#055E94;
+}
+.continue  .head .more a:hover{
+    text-decoration: none;
+    color:red;
+}
+.continue .cont{
+border:#DDDDDD solid 1px;
+ 
+
+}
+.md .cont td{
+     padding:10px;
+}
+.md .cont .ly{
+     width:340px;
+	 margin:auto;
+}
+.continue .cont td{
+    
+    text-align:center;
+	line-height:25px;
+
+}
+.continue .cont td a{
+           color:#004499;
+		  
+}
+.continue .cont td a:hover{
+              font-weight:bold;
+              color:#004499;
+               text-decoration: none;
+}
+.continue  .head .Out1{
+background:url(a.gif) no-repeat;
+height:25px
+width:87px;
+}
+.continue  .head .Out1 a{
+                  font-weight:bold;
+
+}
+.continue  .head .Out1 a:hover{
+                    color:#fff;
+					font-weight:bold;
+}
+.continue  .head .Over1{
+background:url(a1.gif) left no-repeat;
+}
+.continue  .head .Over1 a{
+                  font-weight:bold;
+
+}
+.continue  .head .Over1 a:hover{
+                    color:#fff;
+					font-weight:bold;
+}
+/******************************************/
+.ad{
+    margin-top:10px;
+}
+.ad img{
+    margin-left:4px;
+}
+/******************************************/
+.zuo{
+   border:1px #FF9900 solid;
+   width:238px;
+   
+   
+}
+.zuo td{
+    padding:10px 5px 5px 8px;
+}
+.x{
+width:100%;margin-top:10px;line-height:25px;text-align:center;
+}
+.zuo td .x a{
+  color:#004BBC;
+}
+.zuo1{
+    margin-top:10px;
+    width:238px;
+	border:1px #8EB4CE solid;
+}
+.tt td{
+   background:url(l.gif) repeat-x;
+   line-height:25px;
+   
+}
+.conten td{
+     line-height:21px;
+	
+}
+.zuo2{
+    margin-top:10px;
+    width:238px;
+	border:1px #AEDEF2 solid;
+}
+.tt1{
+    line-height:23px;
+    background:url(dw.gif) repeat-x;
+	
+}
+/***************************************/
+.md{
+   background:url(a2.gif) center top no-repeat;
+   width:367px;
+}
+.title td{
+     height:25px;
+	 padding:5px 0px 0px 5px;
+	 
+}
+.bt{
+     float:left; color:#003399;font-weight:bold;
+}
+.more{
+     float:right;
+	 padding-right:10px;
+	 
+}
+.md .cont{
+   line-height:21px;
+    background:url(a2.gif) center bottom no-repeat;
+}
+.md1{
+   margin-left:10px;
+   background:url(a3.gif) center top no-repeat;
+   width:363px;
+}
+.cont1 td{
+   padding:5px;
+   line-height:21px;
+   background:url(a3.gif) center bottom no-repeat;
+}
+.da{
+    width:330px;
+    text-align:center;
+	font-size:16px;
+	color:#003366;
+	font-weight:bold;
+	margin:10px 0 10px 0;
+}
+ .da1{
+    width:330px;
+	margin:5px 0 5px 0;
+}
+.da1 .h1{
+      float:left;
+      font-weight:bold;
+	  width:70px;
+}
+.da1 .h2{
+      width:250px;
+      float:left;
+	  background:url(dian.gif) repeat-x;
+	  margin-top:10px;
+}
+.md2{
+   margin-left:10px;
+   margin-top:10px;
+   width:740px;
+   background:url(a4.gif) center top no-repeat;
+}
+.cont2{
+   line-height:21px;
+   background:url(a4.gif) center bottom no-repeat;
+}
+.ad1{
+   margin-left:10px;
+   margin-top:10px;
+}
+.md3{
+   
+   background:url(a5.gif) center top no-repeat;
+   width:365px;
+}
+.cont3{
+   line-height:21px;
+   background:url(a5.gif) center bottom no-repeat;
+}
+.cont3 td{
+    padding-left:5px;
+}
+.md4{
+    margin-top:10px;
+	margin-left:10px;
+    background:url(a7.gif) center top no-repeat;
+    width:740px;
+} 
+.cont4 td{
+    padding:10px 10px 10px 10px;
+    line-height:21px;
+    background:url(a7.gif) center bottom no-repeat;
+}
+.cont4 td div{
+      height:70px;
+	  width:90px;
+	  float:left;
+	  margin-left:10px;
+	  border:1px #CCCCCC solid;
+	  text-align:center;
+	  padding:5px 0 0 0;
+	  
+}
+.xtu{
+   float:left;
+   padding:5px 0px 0px 5px;
+}
+.h{
+   float:left;
+   padding-left:5px;
+   color:red;
+   font-weight:bold;
+   padding-top:1px;
+}
+.more1{
+    float:right;
+	padding-right:10px;
+}
+.rong{
+    width:340px;
+    line-height:21px;
+	margin-top:10px;
+    color:#003399;
+}
+.rong a{
+      color:#003399;
+}
+.rong a:hover{
+      color:#003399;
+}
+.biaoti td{
+     line-height:23px;
+	 padding-left:10px;
+	 font-weight:bold;
+	 color:#666666;
+}
+.conty td{
+      color:#004499;
+      padding:5px 5px 5px 10px;; 
+}
+.conty td a{
+     color:#004499;
+}
+/*************************************/
+.ph{
+border-bottom:1px #AEDEF2 solid;
+
+}
+.ph div{
+   float:left;
+   width:56px;
+
+text-align:center;
+
+margin-right:5px;
+}
+.ph .Out1{
+   background:#ffffff;
+   height:26px
+   width:56px; 
+   background:url(1.gif) left no-repeat;
+}
+.ph .Out1 a:hover{
+           color:#F75E00;
+		   font-weight:bold;
+}
+.ph .Over1{
+   background:url(1.gif) left no-repeat;
+   height:26px
+   width:56px;  
+}
+.ph .Over1 a:hover{
+           color:#F75E00;
+		   font-weight:bold;
+}
+.hk div{
+   line-height:21px;
+   padding:5px 5px 5px 5px;
+}

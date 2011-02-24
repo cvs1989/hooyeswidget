@@ -1,0 +1,25 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+$rs[content]=get_word($rs[content],$fidDB[config][listContentNum]>0?$fidDB[config][listContentNum]:200);
+$target=$rs[target]?'_blank':'_self';
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->
+            <table width="96%" border="0" cellspacing="0" cellpadding="0" style="margin-left:18px;margin-top:10px;border-bottom:1px dotted #ccc;">
+             
+			  <tr> 
+                <td style="line-height:28px;"><a style="color:#003399;font-size:14px;{$rs[fontweight]}{$rs[fontcolor]}" href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]'><b><u>$rs[title]</u></b></a></td>
+              </tr>
+              <tr> 
+                <td style="color:#666;line-height:200%;">{$rs[content]} </td>
+              </tr>
+                 <tr> 
+                <td style="color:#666;line-height:35px">录入者：<a style="color:#FF6600;">{$rs[username]}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发表于：<a style="color:#FF6600;">{$rs[posttime]}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 　点击：<a style="color:#FF6600;">{$rs[hits]}</a>&nbsp;&nbsp;&nbsp;&nbsp; 　评论：<a style="color:#FF6600;">{$rs[comments]}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target"><u>查阅全文...</u></A>  </td>
+              </tr>
+            </table> <!--
+EOT;
+}
+?>
+-->

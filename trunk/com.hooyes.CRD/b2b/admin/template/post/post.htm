@@ -1,0 +1,857 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form name="FORM" id="FORM" method="post" action="?lfj=$lfj&job=$job&step=post" onsubmit="return post();">
+<table width="100%" border="0"  cellspacing="1" cellpadding="3" class="tablewidth" align="center"  >
+
+  <tr> 
+    <td class="head" align="center">$MSG</td>
+  </tr>
+  <tr> 
+    <td class="middle"> 
+ 
+            <style>
+.basetr{
+	display:$basetr;
+}
+
+</style>
+            <SCRIPT LANGUAGE="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	get_obj('picurl').value=url;
+}
+function upfile(url,name,size,b){
+	document.getElementById(b).value=url;
+}
+//-->
+</SCRIPT>
+            <script src="../images/default/setday.js"></script>
+            <SCRIPT>
+function foreColor_font()
+{
+  
+  var arr = showModalDialog('../images/default/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  get_obj('titlecolor').value=arr;
+  else  get_obj('titlecolor').focus();
+  get_obj('titlecolor').style.background=arr;
+}
+
+function post(){
+	if(document.getElementById("postfid")!=null&&(get_obj('postfid').value==''||parseInt(get_obj('postfid').value)<1)){
+		alert("请选择一个栏目");
+		choosetable('base');
+		get_obj('postfid').focus();
+		return false;
+	}
+	if(document.getElementById("title")!=null&&get_obj('title').value==''){
+		alert("标题不能为空");
+		choosetable('base');
+		get_obj('title').focus();
+		return false;
+	}
+	if(document.getElementById("yzimg")!=null)
+	{	
+		if(document.getElementById("yzimg").value==''){
+			alert("请输入正确验证码");
+			choosetable('base');
+			get_obj('yzimg').focus();
+			return false;
+		}
+	}
+	//get_obj("FORM").submit();
+	
+}
+  </SCRIPT>
+            <script>
+function javashowpic(values)
+{
+	if(values!= '') {	
+		document.images.myface.src='../$webdb[updir]/'+values;
+		document.images.myface.width=100;
+	}else{
+		document.images.myface.src='../images/default/pot.gif';
+		document.images.myface.width=5;
+	}
+	get_obj('picurl').value=values;
+}
+function Addpicnews(strFileName){
+	var arrName=strFileName.split('.');
+	var FileExt=arrName[1];
+	if (FileExt=='gif'||FileExt=='GIF'||FileExt=='JPG'||FileExt=='jpg'||FileExt=='bmp'){
+		get_obj('DefaultPicList').options[get_obj('DefaultPicList').length]=new Option(strFileName,strFileName);
+		get_obj('DefaultPicList').selectedIndex+=1;
+		javashowpic(strFileName);
+	}
+}
+</script>
+            <div id="post_top"><span id="button_base" onclick="choosetable('base')">基本信息</span><span id="button_other" onclick="choosetable('other')">其它设置</span> 
+              <!--
+EOT;
+if(($groupdb[SetVote]||$web_admin)&&($job=="postnew"||($job=="edit"&&$rsdb[ifvote]))){print <<<EOT
+-->
+              <span id="button_vote" onclick="choosetable('vote')">投票设置</span> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+            
+              <table width="100%" border="0" cellspacing="1" cellpadding="3" class="borderTable" id="basetable">
+                <!--
+EOT;
+if($job=="postnew"||$job=="edit"){
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td width="15%" >所属栏目：(<font color="#FF0000">*</font>) </td>
+                  <td width="85%"> 
+                    <select name="fid" onChange="choosefid(this,'$rsdb[aid]','$only')" id="postfid">
+                      <option value=''>请选择一个栏目</option>$select_fid
+                    </select>
+                    <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choosefid(selObj,aid,only){
+	//如果指定模型发表时,就没必要跳转了
+	if(only=='1'){
+		return ;
+	}
+	fid=selObj.options[selObj.selectedIndex].value;
+	if(fid==='0'){
+		alert('你不能选择大分类,请选择一个黑色字体的子栏目');
+		return false;
+	}else if(fid===''){
+		alert('请选择一个子栏目');
+		return false;
+	}
+	//新发表的时候
+	if(aid==''){
+		window.location.href="?lfj=$lfj&job=postnew&fid="+fid;
+	}
+}
+//-->
+</SCRIPT>
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td width="15%" > 
+                    <!--
+EOT;
+if($m_config[moduleSet][title_name]){
+print <<<EOT
+-->
+                    {$m_config[moduleSet][title_name]}： 
+                    <!--
+EOT;
+}else{
+print <<<EOT
+-->
+                    标题： 
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                    (<font color="#FF0000">*</font>) </td>
+                  <td width="85%"> 
+                    <input type="text" name="postdb[title]" size="60" value="$rsdb[title]" id="title">
+                    &nbsp;&nbsp; <span close="0$web_admin$groupdb[SetTileColor]"> 
+                    颜色: 
+                    <input type="text" name="postdb[titlecolor]" style="background:$rsdb[titlecolor];" size="7" value="$rsdb[titlecolor]" id="titlecolor" onClick="foreColor_font();">
+                    加粗: 
+                    <input type="checkbox" name="postdb[fonttype]" value="1" $fonttype>
+                    </span>禁用评论:<input type="checkbox" name="postdb[forbidcomment]" value="1" $forbidcomment> </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td  width="15%">关键字(标签)：</td>
+                  <td  width="85%"> 
+                    <input type="text" name="postdb[keywords]" size="50" value="$rsdb[keywords]" id="keyword_s">
+                    <select name="select2" onChange="MM_keyword(this)">
+                      <option value='' selected>常用关键字</option>
+		  $keywords
+                    </select>
+                    <script language="JavaScript">
+<!--
+function MM_keyword(selObj){ //v3.0
+  va=selObj.options[selObj.selectedIndex].value
+  if (va!=''){
+  	if(get_obj('keyword_s').value==''){
+		get_obj('keyword_s').value=va;
+	}else{
+		vb=get_obj('keyword_s').value;
+		arr = vb.split(' ');
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==va){
+				alert(va+",已经存在了,不能雷同");
+				return ;
+			}
+		}
+		get_obj('keyword_s').value+=" "+va;
+	}
+  } 
+}
+//-->
+</script>
+                    作为相关文章的索引,如多个用空格隔开 </td>
+                </tr>
+                <!--
+EOT;
+if(!$m_config[moduleSet][no_author]){
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td  width="15%">作者：</td>
+                  <td  width="85%"> 
+                    <input type="text" name="postdb[author]" size="15" value="$rsdb[author]">
+                  </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <!--
+EOT;
+if(!$m_config[moduleSet][no_from]){
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td  width="15%">来源：</td>
+                  <td  width="85%"> 
+                    <input type="text" name="postdb[copyfrom]" size="20" value="$rsdb[copyfrom]" id="copyfrom">
+                    <select name="select" onChange="MM_copyfrom(this)">
+                      <option value='' selected>常用来源站点</option>
+		  $copyfroms
+                    </select>
+                    <span close="0$web_admin"> 
+                    <input type="checkbox" name="postdb[addcopyfrom]" value="1">
+                    入库 [<a href="$webdb[admin_url]/index.php?lfj=copyfrom&job=list" target="_blank">来源管理</a>] 
+                    </span> 
+                    <script language="JavaScript">
+<!--
+function MM_copyfrom(selObj){ //v3.0
+  va=selObj.options[selObj.selectedIndex].value
+  if (va!=''){
+  	get_obj('copyfrom').value=va;
+  } 
+}
+//-->
+</script>
+                    &nbsp;&nbsp;来源网址: 
+                    <input type="text" name="postdb[copyfromurl]" size="40" value="$rsdb[copyfromurl]">
+                  </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td  width="15%">缩略图：</td>
+                  <td width="85%"> 
+                    <input type="text" name="postdb[picurl]" size="40" value="$rsdb[picurl]" id="picurl">
+                <!--
+EOT;
+if($lfjdb){
+print <<<EOT
+-->
+                    <input type="radio" name="postdb[automakesmall]" value="1" onclick="get_obj('cutimg_title').style.display='none';" checked>
+                    系统自动截图 
+                    <input type="radio" name="postdb[automakesmall]" value="0" onclick="get_obj('cutimg_title').style.display='';">
+                    手工截图 宽: 
+                    
+              <input type="text" name="picWidth" id="picWidth" size="3" value="300">
+                    高: 
+                    
+              <input type="text" name="picHeight" id="picHeight" size="3" value="225">
+                    <a href="javascript:" style="display:none;color:red;" id="cutimg_title" onClick="javascript:cutimg();">[手工剪裁图片]</a> 
+                    <br>
+                    <iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='../do/upfile.php?fn=uppic&dir=article/$fid&ISone=1' width=370></iframe> 
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+					<script language="javascript">
+function cutimg() 
+{
+	var img=get_obj("picurl").value;
+	var cw=get_obj("picWidth").value;
+	var ch=get_obj("picHeight").value;
+	if(cw==''){
+		get_obj("picWidth").focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		get_obj("picHeight").focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	if(img.indexOf("http://")==-1){
+		img="$webdb[www_url]/$webdb[updir]/"+img;
+	}
+	//get_obj("automakesmall").checked=false;
+	window.open("cutimg.php?job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+}else{
+	get_obj("picurl").focus();
+	alert('图片地址不存在');
+}
+}
+</script>
+                  </td>
+                </tr>
+                    <!--
+EOT;
+if(!$m_config[moduleSet][description]){
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr" close="0$web_admin$groupdb[SetArticleDescription]"> 
+                  <td  width="15%" height="102">内容简介：</td>
+                  <td  width="85%" height="102"> 
+                    <textarea name="postdb[description]" cols="100" rows="5">$rsdb[description]</textarea>
+                  </td>
+                </tr>
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td  width="15%">相关设置：</td>
+                  <td  width="85%"> <span close="0$web_admin$groupdb[PassContribute]"> 
+                    <input type="checkbox" name="postdb[yz]" value="1" $yz>
+                    审核 </span> <span close="0$web_admin$groupdb[SetArticleTopCom]"> 
+                    <input type="checkbox" name="postdb[top]" value="1" $top>
+                    置顶 
+                    <input type="checkbox" name="postdb[levels]" value="1" $levels>
+                    推荐 </span> 
+                    <input type="checkbox" name="postdb[target]" value="1" $target>
+                    新窗口打开 $baseSpecial</td>
+                </tr>
+                <SCRIPT LANGUAGE="JavaScript">
+<!--
+function addvote(){
+	var str='';
+	num=document.getElementById('addnum').value;
+	num=parseInt(num);
+	n=document.getElementById('num_s').value;
+	document.getElementById('num_s').value=num+parseInt(n);
+	min=parseInt(n)+1;
+	max=parseInt(n)+num+1;
+	for(var i=min;i<max;i++){
+		//if(parent.document.getElementById("main")!=null)parent.document.getElementById("main").height=parseInt(parent.document.getElementById("main").height)+18;
+		str+='<br>第'+i+'个 选项名称:<input type="text" size="20" name="votesdb['+i+'][title]"> 图片:<input type="text" size="15" name="votesdb['+i+'][img]" id="img'+i+'"><a href=\'javascript:\' onClick=\'window.open("../do/upfile.php?fn=upfile&dir=vote&label=img'+i+'","","width=350,height=50,top=200,left=400")\'>上传</a>,描述:<input type="text" name="votesdb['+i+'][describes]" size="5"> 链接:<input type="text" name="votesdb['+i+'][url]" size="5">';
+	}
+	document.getElementById('morevote').innerHTML+=str;
+}
+//-->
+</SCRIPT>
+                <!--
+EOT;
+}print <<<EOT
+-->
+                $Article_Module 
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td  width="15%">工具箱：</td>
+                  <td  width="85%"> 
+                    <SCRIPT LANGUAGE="JavaScript">
+<!--
+function ExplodePage_type(t){
+	get_obj('ExplodePage_auto').style.display='none';
+	get_obj('ExplodePage_hand').style.display='none';
+	if(t=='1'){
+		get_obj('ExplodePage_auto').style.display='';
+	}else if(t=='-1'){
+		get_obj('ExplodePage_hand').style.display='';
+	}
+}
+function CopyText(obj) {
+	ie = (document.all)? true:false
+	if (ie){
+		var rng = document.body.createTextRange();
+		rng.moveToElementText(obj);
+		rng.scrollIntoView();
+		rng.select();
+		rng.execCommand("Copy");
+		rng.collapse(false);
+		alert(obj.innerText+'被复制成功');
+	}
+}
+//-->
+</SCRIPT>
+                    <!--
+EOT;
+if(!$m_config[moduleSet][morepage]){
+print <<<EOT
+-->
+                    <input type="radio" name="ExplodePage" value="1" onclick="ExplodePage_type('1')">
+                    自动分页 
+                    <input type="radio" name="ExplodePage" value="-1"  onclick="ExplodePage_type('-1')">
+                    手工分页 <span id="ExplodePage_auto" style="display:none;">自动分页时,每页不超过 
+                    <input type="text" name="PageNum" size="5" value="3000">
+                    个字数</span> <span id="ExplodePage_hand"  style="display:none;">请在需要分隔的地方插入 
+                    [-page-] 这个分页符即可</span><br>
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                    <input type="checkbox" name="GetOutPic" value="1">
+                    是否将内容中的外部图片采集回来（网速慢时，很影响速度）<br>
+                    <input type="checkbox" name="DelLink" value="1">
+                    是否将内容中的超级链接去除</td>
+                </tr>
+                <!--
+EOT;
+if($groupdb[PostArticleYzImg]&&!$web_admin){
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="basetr"> 
+                  <td width="15%" >请输入验证码：(<font color="#FF0000">*</font>) </td>
+                  <td width="85%"> 
+                    <input type="text" name="yzimg" size="8" id="yzimg">
+                    <img border="0" name="imageField" src="$webdb[www_url]/do/yzimg.php"> 
+                  </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" id="contenttr" class="basetr"> 
+                  <td  width="15%"> 
+                    <!--
+EOT;
+if($m_config[moduleSet][content_name]){
+print <<<EOT
+-->
+                    {$m_config[moduleSet][content_name]}： 
+                    <!--
+EOT;
+}else{
+print <<<EOT
+-->
+                    内容: 
+                    <!--
+EOT;
+}
+$m_config[moduleSet][edit_w]=$m_config[moduleSet][edit_w]?$m_config[moduleSet][edit_w]:'100%';
+$m_config[moduleSet][edit_h]=$m_config[moduleSet][edit_h]?$m_config[moduleSet][edit_h]:'450';
+!$lfjid && $m_config[moduleSet][etype]='simple';
+$simpleEdit=$m_config[moduleSet][etype]?",items : ['source', 'undo', 'redo', 'fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline','removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist','link', 'unlink']":"";
+print <<<EOT
+-->
+                    (<font color="#FF0000">*</font>) </td>
+                  <td  width="85%"> 
+                    <!--<iframe id="eWebEditor1" name="eWebEditor1"  src="../ewebeditor/ewebeditor.php?id=content&style=standard&etype={$m_config[moduleSet][etype]}" frameborder="0" scrolling="no" width="{$m_config[moduleSet][edit_w]}" height="{$m_config[moduleSet][edit_h]}"></iframe> 
+                    <input name="postdb[content]" type="hidden" id="content" value='$rsdb[content]'>-->
+<!--
+EOT;
+if($mid||!$webdb[EditSystem]){print <<<EOT
+-->
+<script type="text/javascript" charset="utf-8" src="../ewebeditor/3.1.1/kindeditor.js"></script>
+<script type="text/javascript">
+KE.handpage=true;
+KE.systype='article';
+    KE.show({
+        id : 'content1',
+        cssPath : '../ewebeditor/common.css'{$simpleEdit}
+    });
+</script>
+<textarea id="content1" name="postdb[content]" style="width:99%;height:{$m_config[moduleSet][edit_h]}px;visibility:hidden;">$rsdb[content]</textarea>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+<textarea style="display:none;" id="content1" name="postdb[content]">$rsdb[content]</textarea>
+<iframe ID="eWebEditor1" src="../ewebeditor/v4.60/ewebeditor.php?id=content1&style=coolblue" frameborder="0" scrolling="no" width="750" HEIGHT="400"></iframe>
+<!--
+EOT;
+}print <<<EOT
+-->
+</td>
+                </tr>
+                <tr bgcolor="#FFFFFF"> 
+                  <td colspan="2"> 
+                    <div align="center"><br>
+                      <input type="submit" name="Submit" value=" 提 交 ">
+                      <input type="hidden" name="postdb[bak_id]" value="$bak_id">
+                      <input type="hidden" name="mid" value="$mid">
+                      <input type="hidden" name="i_id" value="$i_id">
+                      <input type="hidden" name="aid" value="$aid">
+                      <input type="hidden" name="rid" value="$rid">
+                      <input type="hidden" name="only" value="$only">
+                      <br>
+                      <br>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" class="borderTable" id="othertable">
+          <!--
+EOT;
+if($job=="postnew"||$job=="edit"){
+if($job=="postnew"&&!$only){
+print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF"  class="othertr"> 
+            <td colspan="2" >你可以选择本文属于哪个模型： [<a href="?job=postnew&fid=$fid&mid=0&only=$only" style="color:$moduledb_color[0];">文章模型</a>] 
+              <!--
+EOT;
+foreach($moduledb AS $key=>$rs){
+print <<<EOT
+-->
+              [<a href="?job=postnew&fid=$fid&mid=$rs[id]&only=$only" style="color:{$moduledb_color[$rs[id]]};">$rs[name]</a>] 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF" class="basetr"> 
+            <td  width="15%">简短标题：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[smalltitle]" size="30" value="$rsdb[smalltitle]">
+              (填写后,只是列表页显示.而内容页不显示.当主题太长时,有需要) </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr"> 
+            <td  width="15%">所属专题：</td>
+            <td  width="85%"> 
+              <div style="width:100%;height:100px;overflow-y:scroll;">$specials</div>
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr">
+            <td  width="15%">所属辅栏目:</td>
+            <td  width="85%">$fu_sort</td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetHtmlName]"> 
+            <td  width="15%">自定义文件名：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[htmlname]" size="30" value="$rsdb[htmlname]">
+              (只有把文章生成静态后,才能生效) </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SelectArticleTpl]$groupdb[SetArticleTpl]"> 
+            <td  width="15%">模板选择：</td>
+            <td  width="85%">网页头部： 
+              <input type="text" {$readonly} name="postdb[tpl][head]" size="50" id="head_tpl" value="$value_tpl_head">
+              {$tpl_head}<br>
+              网页尾部： 
+              <input type="text" {$readonly} name="postdb[tpl][foot]" size="50" id="foot_tpl" value="$value_tpl_foot">
+              {$tpl_foot} <br>
+              网页中间： 
+              <input type="text" {$readonly} name="postdb[tpl][bencandy]" size="50" id="main_tpl" value="$value_tpl_show">
+              {$tpl_show} </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SelectArticleStyle]"> 
+            <td  width="15%">风　格：</td>
+            <td  width="85%">$style_select</td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetArticlePosttime]"> 
+            <td width="15%" >日　期：</td>
+            <td width="85%"> 
+              <input type="text" name="postdb[posttime]" size="20" value="$rsdb[posttime]"  onClick="setday(this)" >
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetArticleViewtime]"> 
+            <td width="15%" >浏览日期：</td>
+            <td width="85%">开始浏览日期： 
+              <input type="text" name="postdb[begintime]" size="20" value="$rsdb[begintime]"  onClick="setday(this)" >
+              (0或留空,则不做限制.否则日期未到或超过了就不能看)<br>
+              结束浏览日期： 
+              <input type="text" name="postdb[endtime]" size="20" value="$rsdb[endtime]"  onClick="setday(this)" >
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetArticleHitNum]"> 
+            <td width="15%" >点　击：</td>
+            <td width="85%"> 
+              <input type="text" name="postdb[hits]" size="10" value="$rsdb[hits]">
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetArticlePassword]"> 
+            <td width="15%" >密 码：</td>
+            <td width="85%"> 
+              <input type="text" name="postdb[passwd]" size="20" value="$rsdb[passwd]">
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetSellArticle]"> 
+            <td width="15%" >收费({$webdb[MoneyName]})： </td>
+            <td width="85%"> 
+              <input type="text" name="postdb[money]" size="8" value="$rsdb[money]">
+              {$webdb[MoneyDW]} </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetArticleDownGroup]"> 
+            <td  width="15%">允许下载附件的用户组:<br>
+              (不选择则不作限制,管理员默认有权限) </td>
+            <td  width="85%">$group_allowdown</td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" close="0$web_admin$groupdb[SetArticleViewGroup]"> 
+            <td  width="15%">允许浏览内容的用户组:<br>
+              (不选择则不作限制,管理员默认有权限) </td>
+            <td  width="85%">$group_allowview</td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="basetr" id="jumptr" close="0$web_admin$groupdb[SetArticleJumpurl]"> 
+            <td  width="15%">跳转地址：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[jumpurl]" size="50" value="$rsdb[jumpurl]" id="jumpurl"  disabled>
+              <input type="checkbox" name="ckjump" id="ckjump" value="checkbox" onClick="changpost('jump',0);">
+              (选中后,将不显示内容而跳转到此网址) </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" class="othertr" id="iframetr" close="0$web_admin$groupdb[SetArticleIframeurl]"> 
+            <td  width="15%">框架地址：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[iframeurl]" size="50" value="$rsdb[iframeurl]" id="iframeurl" disabled>
+              <input type="checkbox" name="ckiframe" id="ckiframe" value="checkbox" onClick="changpost('iframe',0);">
+              (选中后,将不显示内容而套用框架此网址) </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF" class="othertr"> 
+            <td  width="15%">副标题：</td>
+            <td  width="85%"> 
+              <input type="text" name="postdb[subhead]" size="80" value="$rsdb[subhead]">
+            </td>
+          </tr>
+        </table>
+              <table width="100%" border="0" cellspacing="1" cellpadding="3" class="borderTable" id="votetable">
+                <!--
+EOT;
+if($job=="postnew"||$job=="edit"){
+print <<<EOT
+-->
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td width="16%">投票项目名称: </td>
+                  <td width="84%"> 
+                    <input type="text" name="vote_db[name]" value="$votedb[name]" size="40">
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td width="16%">投票选项:</td>
+                  <td width="84%"> 
+                    <input type="radio" name="vote_db[type]" value="1" {$votedb[_type][1]}>
+                    单选 
+                    <input type="radio" name="vote_db[type]" value="2" {$votedb[_type][2]}>
+                    多选 </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td width="16%">是否做时间限制:<br>
+                    不做限制请输入0,否则请输入限制每次投票的时间间隔</td>
+                  <td width="84%"> 
+                    <input type="text" name="vote_db[limittime]" value="$votedb[limittime]" size="4">
+                    分钟 </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td width="16%">是否限制IP重复投票:</td>
+                  <td width="84%"> 
+                    <input type="radio" name="vote_db[limitip]" value="1" {$votedb[_limitip][1]}>
+                    限制 
+                    <input type="radio" name="vote_db[limitip]" value="0" {$votedb[_limitip][0]}>
+                    不限制</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td width="16%">是否禁止游客投票:</td>
+                  <td width="84%"> 
+                    <input type="radio" name="vote_db[forbidguestvote]" value="1" {$votedb[_forbidguestvote][1]}>
+                    限制 
+                    <input type="radio" name="vote_db[forbidguestvote]" value="0" {$votedb[_forbidguestvote][0]}>
+                    不限制</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td width="16%">投票时间的期限:<br>
+                    (留空不做限制)</td>
+                  <td width="84%">开始日期: 
+                    <input type="text"  onclick="setday(this,0)" name="vote_db[begintime]" value="$votedb[begintime]" size="20">
+                    格式:2007-02-02 12:12:23<br>
+                    结束日期: 
+                    <input type="text" onclick="setday(this,0)" name="vote_db[endtime]" value="$votedb[endtime]" size="20">
+                    格式:2007-02-02 12:12:23 </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td> 投票描述及详细介绍:</td>
+                  <td> 
+                    <textarea name="vote_db[about]" cols="60" rows="5">$votedb[about]</textarea>
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td>投票类型:</td>
+                  <td> 
+                    <input type="radio" name="vote_db[votetype]" value="0" {$votedb[_votetype][0]}>
+                    普通投票 
+                    <input type="radio" name="vote_db[votetype]" value="1" {$votedb[_votetype][1]}>
+                    人物/图片展示投票 
+                    <input type="radio" name="vote_db[votetype]" value="2" {$votedb[_votetype][2]}>
+                    PK投票</td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td colspan="2">投票选项 
+                    <input type="text" name="textfield" value="1" size="5" id="addnum">
+                    <input type="button" name="Submit3" value="增加几项" onclick="addvote();">
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td colspan="2"> 
+                    <!--
+EOT;
+$nums=count($votelistdb);
+foreach($votelistdb AS $key=>$rs){
+print <<<EOT
+-->
+                    第{$key}个 选项名称: 
+                    <input type="text" name="votesdb[{$key}][title]" value="$rs[title]" size="20">
+                    图片: 
+                    <input type="text" name="votesdb[{$key}][img]" value="$rs[img]" size="15" id="img$key">
+                    <a href='javascript:' onClick='window.open("../do/upfile.php?fn=upfile&dir=vote&label=img$key","","width=350,height=50,top=200,left=400")'>上传</a>, 
+                    描述: 
+                    <input type="text" name="votesdb[{$key}][describes]" size="5" value="$rs[describes]">
+                    链接: 
+                    <input type="text" name="votesdb[{$key}][url]" size="5" value="$rs[url]">
+                    排序: 
+                    <input type="text" name="votesdb[{$key}][list]" size="2" value="$rs[list]">
+                    <input type="hidden" name="votesdb[{$key}][id]" value="$rs[id]">
+                    <!--
+EOT;
+if($job!='postnew'){
+print <<<EOT
+-->
+                    <a href="../do/job.php?job=delete_vote&id=$rs[id]">删除</a>&nbsp;&nbsp; 
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                    <br>
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                    <input type="hidden" name="hiddenField" value="$nums" id="num_s">
+                    <div id="morevote"></div>
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="votetr"> 
+                  <td colspan="2"><b><font color="#0000FF">注意:</font></b><font color="#0000FF"> 
+                    如选择普通投票的话,图片、描述、链接这三项可留空。</font></td>
+                </tr>
+                 
+                <!--
+EOT;
+}print <<<EOT
+-->
+              </table>
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+function changpost(va,num){
+	if(va=="jump"){
+		if(get_obj("ckjump").checked==true||num==1){
+			if(num==1){get_obj("ckjump").checked=true}
+			get_obj("jumpurl").disabled=false;
+			get_obj("iframeurl").disabled=true;
+			get_obj("ckiframe").checked=false;
+			get_obj("contenttr").style.display="none";
+		}else{
+			get_obj("jumpurl").disabled=true;
+			get_obj("ckiframe").checked=false;
+			get_obj("contenttr").style.display="";
+		}
+	}else{
+		if(get_obj("ckiframe").checked==true||num==1){
+			if(num==1){get_obj("ckiframe").checked=true}
+			get_obj("iframeurl").disabled=false;
+			get_obj("jumpurl").disabled=true;
+			get_obj("ckjump").checked=false;
+			get_obj("contenttr").style.display="none";
+		}else{
+			get_obj("iframeurl").disabled=true;
+			get_obj("ckjump").checked=false;
+			get_obj("contenttr").style.display="";
+		}
+	}
+}
+
+//判断用户组是否有权限使用此表单元素
+function set_close(){
+	var obj=document.body.getElementsByTagName("tr");
+	for(var i=0;i<obj.length;i++){
+		va=obj[i].getAttribute("close");
+		va=parseInt(va);
+		if(va==0){
+			obj[i].style.display='none';	
+		}
+	}
+	var obj=document.body.getElementsByTagName("span");
+	for(var i=0;i<obj.length;i++){
+		va=obj[i].getAttribute("close");
+		va=parseInt(va);
+		if(va==0){
+			obj[i].style.display='none';	
+		}
+	}
+}
+
+
+function choosetable(t){
+	get_obj("button_base").className="";
+	get_obj("button_other").className="";
+	if(document.getElementById("button_vote")!=null)get_obj("button_vote").className="";
+	get_obj("basetable").style.display="none";
+	get_obj("othertable").style.display="none";
+	get_obj("votetable").style.display="none";
+	
+	get_obj("button_"+t).className="choosebutton";
+	get_obj(t+"table").style.display="";
+	set_close();
+}
+choosetable('base');
+//-->
+</SCRIPT>
+              <!--
+EOT;
+if($rsdb[jumpurl]){print <<<EOT
+-->
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+changpost('jump',1);
+//-->
+</SCRIPT>
+              <!--
+EOT;
+}elseif($rsdb[iframeurl]){print <<<EOT
+-->
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+show_more(1);
+changpost('iframe',1);
+//-->
+</SCRIPT>
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+function ck_iframe(user){
+	if(user!=''&&window.self==window.top){
+		window.location.href='index.php?main=post.php?job=postnew&fid=$fid';
+	}
+}
+//ck_iframe('$lfjid');
+//-->
+</SCRIPT>
+           
+    </td>
+  </tr> 
+</table>
+</form>
+<!--
+EOT;
+?>
+-->

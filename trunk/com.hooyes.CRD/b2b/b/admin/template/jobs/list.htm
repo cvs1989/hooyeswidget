@@ -1,0 +1,272 @@
+<!--
+<?php
+
+if(!$job){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?job=addsort">
+    <tr  class="head"> 
+    <td>添加类目</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    类目名称:
+      <textarea name="sname" cols="40" rows="1" id="sname"></textarea>
+      (<input type="checkbox" name="checkbox" id="checkbox" onclick="if(this.checked){document.getElementById('sname').rows=5;}else{document.getElementById('sname').rows=1;}" />
+      多行输入) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归属：
+      <select name="sup" id="sup">
+      <option  value="0">顶级分类</option>
+      {$sup_select}
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排序：    
+      <input name="order_sort" type="text" id="order_sort" value="0" size="3" /> <input type="submit" name="button" id="button" value="提 交" /></td>
+    </tr>
+  </form>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      <td width="59">SID</td>
+      <td align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />类目名称</td>
+      <td width="60">排序</td>
+      <td width="60">推荐</td>
+      <td width="60">职位库</td>
+      <td width="60">人才库</td>
+      <td width="60">修改</td>
+
+      <td width="60">删除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+      <td width="59" align="center">$rs[hr_sid]</td>
+      <td width="510"> 
+        <input type="checkbox" name="listdb[]" value="$rs[hr_id]">
+        $rs[icon]        $rs[sname]	 </td>
+      <td width="60" align="center"><input name="order_sort[{$rs[hr_sid]}]" type="text" id="order_sort" value="$rs[order_sort]" size="5" /></td>
+      <td width="60" align="center"><a href="jobs.php?job=setbest&hr_sid=$rs[hr_sid]">$rs[best]</a></td>
+      <td width="60" align="center"><a href="jobs.php?job=zhiwei&hr_sid=$rs[hr_sid]">点击查看</a></td>
+      <td width="60" align="center"><a href="jobs.php?job=rencai&hr_sid=$rs[hr_sid]">点击查看</a></td>
+      <td align="center" width="60"><a href="jobs.php?job=edit&hr_sid=$rs[hr_sid]">修改</a></td>
+	  
+      <td align="center" width="60"><a href="jobs.php?job=del&hr_sid=$rs[hr_sid]"  onclick="return confirm('确定删除吗？');">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+     
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8">   <input type="submit" name="button2" id="button2" value="批量修改排序" /> <br />
+注意：排序数字越大越靠后；批量修改排序只针对同级分类，切排序前请先选择；
+       <input name="job" type="hidden" id="job" value="betch_sort" /></td>
+    </tr>
+  </form>
+</table>
+
+<!--
+EOT;
+}elseif($job=='edit'){
+print <<<EOT
+-->
+    <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?job=edit">
+    <tr  class="head"> 
+    <td>编辑类目</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    类目名称:
+      <input name="sname" type="text" id="sname" value="$data[sname]" />      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归属：
+      <select name="sup" id="sup">
+      <option  value="0">顶级分类</option>
+      {$sup_select}
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排序：    
+      <input name="order_sort" type="text" id="order_sort" value="$data[order_sort]" size="3" /> <input type="submit" name="button" id="button" value="提 交" />
+      <input name="step" type="hidden" id="step" value="1" />
+      <input name="hr_sid" type="hidden" id="hr_sid" value="$hr_sid" /></td>
+    </tr>
+  </form>
+  </table>
+    
+<!--
+EOT;
+}elseif($job=='zhiwei'){	
+
+print <<<EOT
+-->
+ <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?job=zhiwei">
+    <tr  class="head"> 
+    <td>职位库</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    关键字:
+      <input name="keyword" type="text" id="keyword" value="$keyword" />      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归属：
+      <select name="sup" id="sup">
+      <option  value="0">全部分类</option>
+      {$sup_select}
+      </select>
+       <input type="submit" name="button" id="button" value="搜索" />
+      <input name="step" type="hidden" id="step" value="1" />
+      </td>
+    </tr>
+  </form>
+</table>
+  
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+     
+      <td width="337" align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />职位名称</td>
+      <td width="209" align="left">公司/单位</td>
+      <td width="181" align="left">分类</td>
+      <td width="158">发布时间</td>
+      <td width="146">推荐</td>
+      <td width="106">审核</td>
+      <td width="88">编辑</td>
+	   <td width="92">删除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+    
+      <td> 
+        <input type="checkbox" name="listdb[]" value="$rs[jobs_id]">
+      $rs[title]	 </td>
+      <td>$rs[companyname]</td>
+      <td>$rs[sname]</td>
+      <td width="158" align="center">$rs[posttime]</td>
+      <td align="center"><a href="jobs.php?job=job_setbest&jobs_id=$rs[jobs_id]">$rs[best]</a></td>
+      <td align="center"><a href="jobs.php?job=job_check&jobs_id=$rs[jobs_id]">$rs[check]</a></td>
+     <td align="center"><a href="../jobs_post.php?job=edit_jobs&jobs_id=$rs[jobs_id]" target="_blank">编辑</a></td>
+	  <td align="center" width="92"><a href="jobs.php?job=job_del&jobs_id=$rs[jobs_id]"  onclick="return confirm('确定删除吗？');">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+     
+      <br />
+     
+       <input name="job" type="hidden" id="job" value="betch_sort" /></td>
+    </tr>
+  </form>
+</table>    
+<!--
+EOT;
+
+}elseif($job=='rencai'){
+print <<<EOT
+-->
+ <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?job=zhiwei">
+    <tr  class="head"> 
+    <td>才人库(简历中心)</td>
+    </tr>
+        <tr> 
+    <td>
+    
+    关键字:
+      <input name="keyword" type="text" id="keyword" value="$keyword" />      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归属：
+      <select name="sup" id="sup">
+      <option  value="0">全部分类</option>
+      {$sup_select}
+      </select>
+       <input type="submit" name="button" id="button" value="搜索" />
+      <input name="step" type="hidden" id="step" value="1" />
+      </td>
+    </tr>
+  </form>
+</table>
+  
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      
+      <td width="220" align="left"><input name="chackall" type="checkbox" value="1" onclick="CheckAll('listdb[]',this);" />
+      工作职位</td>
+      <td width="302" align="left">姓名</td>
+      <td width="218" align="left">分类</td>
+      <td width="213">发布时间</td>
+      <td width="140">推荐</td>
+      <td width="121">审核</td>
+      <td width="110">删除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr style="background-color:#FFFFFF;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='#ffffff';"> 
+     
+      <td> 
+        <input type="checkbox" name="listdb[]" value="$rs[re_id]">
+      $rs[job_name]	 </td>
+      <td>$rs[truename]</td>
+	  <td>{$hrFid_db[name][$rs[sid]]}</td>
+      <td width="213" align="center">$rs[posttime]</td>
+      <td align="center"><a href="jobs.php?job=resume_setbest&re_id=$rs[re_id]">$rs[best]</a></td>
+      <td align="center"><a href="jobs.php?job=resume_check&re_id=$rs[re_id]">$rs[check]</a></td>
+      <td align="center" width="110"><a href="jobs.php?job=resume_del&re_id=$rs[re_id]"  onclick="return confirm('确定删除吗？');">删除</a></td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> {$showpage}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8">   <input type="submit" name="button2" id="button2" value="批量审核" />  <br />
+        <input name="job" type="hidden" id="job" value="resume_check" /></td>
+    </tr>
+  </form>
+</table>    
+<!--
+EOT;
+}
+
+
+print <<<EOT
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(name,my){
+	var ckbox=document.getElementsByName(name);
+
+	for (var i=0;i<ckbox.length;i++){
+		ckbox[i].checked=my.checked;
+	}
+}
+</SCRIPT> 
+<!--
+EOT;
+    
+?>-->

@@ -1,0 +1,72 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">现有广告位列表</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="10" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <tr align="center" class="head_in"> 
+                <td width="37%" style="line-height:23px;">广告位名称</td>
+                <td width="18%">售价(金币/天)</td>
+                <td width="15%">状态</td>
+                <td width="14%">是否需要审核</td>
+                <td width="9%">预览</td>
+                <td width="7%">购买</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+              <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                <td  align="left" width="37%" style="padding-left:8px;">$rs[name]</td>
+                <td  align="center" width="18%">$rs[moneycard]</td>
+                <td align="center" width="15%">$rs[state]</td>
+                <td align="center" width="14%">$rs[_ifyz]</td>
+                <td align="center" width="9%"><a href="$rs[demourl]" target="_blank"><img src="images/icon_view.gif" border="0"></a></td>
+                <td align="center" width="7%"><a href="?job=buy&id=$rs[id]" style="color:$rs[color];" onclick="$rs[alert]">购买</a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">相关信息</td>
+        </tr>
+        <tr> 
+          <td class="middle">
+            <table width="100%" border="0" cellspacing="5" cellpadding="0" style="margin:20px 0 20px 5px;">
+              <tr> 
+                <td>1.购买以上广告,只能使用金币购买.<br><br>
+2.你当前拥有的金币数是:<b><font color="#FF0000">{$lfjdb[moneycard]}</font></b>个，金币不足的话，你可以选择在线即时充值,以增加你的金币数 
+                  <a href="money.php?job=list"><b><font color="#FF0000">立即冲值</font></b></a></td>
+              </tr>
+            </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!--
+EOT;
+?>
+-->

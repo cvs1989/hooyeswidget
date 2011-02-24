@@ -1,0 +1,107 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="homepage_top">
+
+  <tr>
+    <td height="120" colspan="2" class="banner" $conf[banner] >$rsdb[company_name_big]</td>
+  </tr>
+  <tr>
+    <td  height="30" class="menu">
+    <a href="$Mdomain/homepage.php?uid=$uid">商家首页</a>
+   
+	
+    <a href="$Mdomain/homepage.php?uid=$uid&m=selllist">供应信息</a>
+    <a href="$Mdomain/homepage.php?uid=$uid&m=buylist">求购信息</a>
+	
+	 <a href="$Mdomain/homepage.php?uid=$uid&m=info">公司介绍</a>
+	<a href="$Mdomain/homepage.php?uid=$uid&m=pics">图库资质</a>
+	
+	<a href="$Mdomain/homepage.php?uid=$uid&m=news">公司新闻</a>
+    <a href="$Mdomain/homepage.php?uid=$uid&m=contactus">联系我们</a>
+	
+    <a href="$Mdomain/homepage.php?uid=$uid&m=hr">人才招聘</a>
+    <a href="$Mdomain/homepage.php?uid=$uid&m=zh">展会信息</a>
+    
+    
+    
+    <a href="$Mdomain/homepage.php?uid=$uid&m=msg">留 言 本</a>   
+<!--
+EOT;
+if($uid==$lfjuid){
+print <<<EOT
+-->    
+   <a href="$Mdomain/member/?main=homepage_ctrl.php" ><strong><font color="#FF0000">商铺管理</font></strong></a>
+  
+<!--
+EOT;
+}
+print <<<EOT
+-->    
+  
+
+  </td>
+  </tr>
+  
+</table>
+
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="homepage">
+  <tr>
+    <td width="300"  class="homepage_left" align="left"><!--主体-左边部分-->
+<!--
+EOT;
+$mod_in='left';
+foreach($conf[index_left] as $file){
+	
+	if(file_exists(Mpath."/homepage_php/".$file.".php")){
+    	require(Mpath."/homepage_php/".$file.".php");
+    }
+}
+print <<<EOT
+-->  
+    </td>
+    <td  class="homepage_right" align="right"><!--主体-右边部分-->
+   
+<!--
+EOT;
+$mod_in='right';
+if(!$m){
+	
+    foreach($conf[index_right] as $file){
+        if(file_exists(Mpath."/homepage_php/".$file.".php")){
+            require(Mpath."/homepage_php/".$file.".php");
+        }
+    }
+}else{
+	
+	if(file_exists(Mpath."/homepage_php/".$m.".php")){
+            require(Mpath."/homepage_php/".$m.".php");
+    }
+}
+print <<<EOT
+-->     
+    
+    
+    </td>
+  </tr>
+</table>
+
+<!--
+EOT;
+
+
+
+
+
+print <<<EOT
+--> 
+
+
+<!--
+EOT;
+?>
+-->

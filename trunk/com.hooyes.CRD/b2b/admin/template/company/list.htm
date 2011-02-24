@@ -1,0 +1,69 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td width="6%" align="center">UID</td>
+    <td width="17%" align="center">用户名</td>
+    <td align="center">企业名称 </td>
+    <td width="17%" align="center">电子邮箱</td>
+    <td width="12%" align="center">用户权限</td>
+    <td width="9%" align="center">修改/删除</td>
+    <td width="10%" align="center">审核与否</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF"> 
+    <td width="6%" align="center">$rs[uid]</td>
+    <td width="17%"> <a href="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]" onclick="$rs[alert]" target="_blank">$rs[username]</a></td>
+    <td align="center"> <a href="../member/company.php?job=view&uid=$rs[uid]" target="_blank">$rs[cpname]</a></td>
+    <td width="17%" align="center">$rs[email]</td>
+    <td width="12%" align="center">{$ltitle[$rs[groupid]]}</td>
+    <td width="9%" align="center"> 
+      <!--
+EOT;
+if($rs[groupid]){
+print <<<EOT
+-->
+      <a href="index.php?lfj=$lfj&job=editmember&uid=$rs[uid]" onclick="$rs[alert]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+      &nbsp; <a href="index.php?lfj=$lfj&action=delete&uid=$rs[uid]" onclick="{$rs[alert]};return confirm('你确实要删除此企业资料吗?不可恢复,你要考虑清楚。会员普通资料不会一起删除')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+    </td>
+    <td width="10%" align="center">$rs[yz]</td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF"> 
+    <td colspan="7" align="center">$showpage<a href="index.php?lfj=$lfj&action=delete&uid=$rs[uid]"></a></td>
+  </tr>
+  <form name="form1" method="post" action="index.php?lfj=$lfj&job=$job">
+    <tr bgcolor="#FFFFFF" align="left"> 
+      <td colspan="7">只列出指定用户组的用户$select_group<br>
+        <br>
+        搜索&gt;&gt; 关键字<a href="index.php?lfj=$lfj&action=delete&uid=$rs[uid]"></a> 
+        <input type="text" name="keywords">
+        <select name="type">
+          <option value="cpname">企业名称</option>
+          <option value="username">用户帐号</option>
+          <option value="uid">用户uid</option>
+        </select>
+        <input type="submit" name="Submit" value="搜索">
+        [<a href="index.php?lfj=$lfj&job=$job">查看全部企业</a>] </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

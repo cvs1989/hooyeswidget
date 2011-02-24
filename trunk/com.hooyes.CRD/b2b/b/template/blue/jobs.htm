@@ -1,0 +1,333 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<div>$label[jobs_banner]</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="500" align="left" valign="top" width="240" ><!--左边-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jobssort">
+        <tr>
+          <td class="head"><span class="tab1">职位分类</span></td>
+        </tr>
+        <tr>
+          <td class="list"><!--
+EOT;
+foreach($hrFid_db[0] AS $key_1=>$array){
+print <<<EOT
+-->
+            <table width="99%" border="0" cellspacing="3" cellpadding="3">
+              <tr>
+                <td width="76%" style="font-weight:bold;border-bottom:1px #ccc dotted;"><a href="$Mdomain/jobslist.php?hr_sid=$key_1"><img src="$Murl/images/$STYLE/arrow_list.gif" border="0">{$hrFid_db[name][$key_1]}</a></td>
+                <td width="24%" style="border-bottom:1px #ccc dotted;"><a href="$Mdomain/jobslist.php?hr_sid=$key_1"><font color="#999999">更多...</font></a></td>
+              </tr> 
+              <tr>
+                <td colspan="2"><!--
+EOT;
+$i=0;
+foreach($hrFid_db[$key_1] AS $key=>$rs){
+
+if($i==10)break;
+$hrFid_db[name][$key]=get_word($hrFid_db[name][$key],16);
+$i++;
+print <<<EOT
+-->
+                  <li class="harf"> <a href="$Mdomain/jobslist.php?hr_sid=$key">{$hrFid_db[name][$key]}</a></li>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                </td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top:5px;">{$label[jobs_left_btm]}</div>
+      </td>
+    <td align="right" valign="top" width="750"><div class="searchjobs">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="69%" align="left" >             
+         
+              <img src="$Murl/images/$STYLE/jobs_search.gif" />
+              <table width="98%" cellspacing="0" cellpadding="0"  class="searchjobs_title">
+                <tr>
+                  <td height="100" align="left" valign="middle"> <form id="form2" name="form2" method="post" action="$Mdomain/jobslist.php"><table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="17%" height="20">搜索目的：</td>
+                        <td width="83%"><input type="radio" name="search_type" id="radio" value="jobs"  checked="checked"/>
+                          找工作
+                          <input type="radio" name="search_type" id="radio2" value="resume" />
+                          招人才 </td>
+                      </tr>
+                      <tr>
+                        <td width="17%" height="20">类 &nbsp; &nbsp;目：</td>
+                        <td width="83%"><span id="show_jobs_sort_1" >$jobs_sort_1</span></td>
+                      </tr>
+                      <tr>
+                        <td height="20">地&nbsp;  &nbsp; 区：</td>
+                        <td>$province_fid<span id="showcity"></span>
+                          <script language="JavaScript" type="text/javascript">
+<!--
+function choose_where(fup,fid,typeid){
+	var url="$Murl/job.php?job=getcity&typeid="+typeid+"&fup="+fup+"&fid="+fid;
+	var target=typeid+'iframe_city';
+	try{
+	document.getElementById(typeid+"form_city").action=url;
+	document.getElementById(typeid+"form_city").target=target;
+	document.getElementById(typeid+"form_city").submit();
+	}catch(e){
+	document.getElementById(typeid+"iframe_city").src=url;
+	}
+}
+choose_where("$province_id","$city_id",'');
+function choose_jobSort(sid,step){
+	var url="$Murl/job.php?job=getjob_sort&step="+step+"&sid="+sid;
+	if(sid==0) return false;
+	try{
+	document.getElementById("form_city").action=url;
+	document.getElementById("form_city").target='iframe_city';
+	document.getElementById("form_city").submit();
+	}catch(e){
+	document.getElementById("iframe_city").src=url;
+	}
+}
+//-->
+  </script>                       </td>
+                      </tr>
+                      <tr>
+                        <td height="20">关 键 字：</td>
+                        <td><input type="text" name="keywords" id="keywords" />
+                          <input type="submit" name="button" id="button" value="搜索" /></td>
+                      </tr>
+                       <tr>
+                        <td height="20"><strong>个 &nbsp;&nbsp;人：</strong></td>
+                        <td height="20">如果您还没有创建个人简历，<strong><a href="$Mdomain/jobs_post.php?job=resume"><font color="#FF0000">点此创建个人简历</font></a>; </strong></td>
+                       </tr>
+                        <tr>
+                        <td height="20"> <strong>单&nbsp;&nbsp; 位</strong>：</td>
+                        <td height="20">如果您还没有发布招聘信息，<strong><a href="$Mdomain/jobs_post.php?job=jobs"><font color="#FF0000">点此发布招聘信息</font></a>;</strong></td>
+                        </tr>
+                    </table>
+                   
+                    </form>
+                    <div style="display:none;">
+                            <iframe width=1 height=1 src='' id="iframe_city" name="iframe_city"></iframe>
+                            <form name="form1" method="post" action="" target="iframe_city" id="form_city">
+                            </form>
+                    </div>
+                  
+                  </td>
+                </tr>
+              </table>
+              
+          	</td>
+              <td width="1%" align="right">
+              </td>
+              <td width="30%" align="right">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tj">
+  <tr>
+    <td align="center" valign="middle" class="menu1" id="tj_menu1" onclick="changTj(this,2);"><a href="#"> <strong>推 荐 人 才</strong></a></td>
+    <td align="center" valign="middle" class="menu2" id="tj_menu2" onclick="changTj(this,1);"><a href="#"> <strong>热 门 职 位</strong></a></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="content">
+    <div id="tj_1">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!--
+EOT;
+$getrencailist=getrencailist($hr_sid=0,$hot=1,$rows=6,$leng=18);
+foreach($getrencailist as $rs){
+$rs[job_name]=get_word($rs[job_name],12);
+print <<<EOT
+-->
+  <tr>
+    <td width="65%"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]" target="_blank">$rs[job_name]($rs[truename])</a></td>
+    <td align="right">$rs[posttime]</td>
+  </tr>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+</table>
+    
+    </div>
+    <div id="tj_2" style="display:none">
+    
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!--
+EOT;
+$getzhiweilist=getzhiweilist($hr_sid=0,$hot=1,$rows=6,$leng=18);
+foreach($getzhiweilist as $rs){
+print <<<EOT
+-->
+  <tr>
+    <td width="65%"><a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]" target="_blank">$rs[title]</a></td>
+    <td align="right">$rs[posttime]</td>
+  </tr>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+</table>
+
+    </div>
+    </td>
+    </tr>
+</table>
+<script language="javascript">
+function changTj(my,id){
+	my.className='menu1';
+	document.getElementById('tj_menu'+String(id)).className='menu2';
+	if(id==2){
+		document.getElementById('tj_1').style.display='block';
+		document.getElementById('tj_2').style.display='none';
+	}else{
+		document.getElementById('tj_1').style.display='none';
+		document.getElementById('tj_2').style.display='block';
+	}
+}
+</script>
+              </td>
+          </tr>
+        </table>
+      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head">
+          <span class="tab2">招 聘 地 区</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="list" align="left">
+<!--
+EOT;
+foreach($area_DB[0] AS $province_id=>$val){
+print <<<EOT
+-->         
+          <a href="$Mdomain/jobslist.php?province_id=$province_id" class="jobs_area">$val</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+               
+        </td>
+        </tr>
+      </table>
+      <div style="margin-top:5px;">$label[job_index]</div>
+      <!--
+EOT;
+foreach($hrFid_db[0] AS $hr_sid=>$val){
+if($hrFid_db[hot][$hr_sid]){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="job_div">
+        <tr>
+          <td class="head"><span class="tab1" id="table_{$hr_sid}_1"><a href="javascript:;" onclick="changetable('$hr_sid',1);">{$val}职位库</a></span> <span class="tab2" id="table_{$hr_sid}_2"><a href="javascript:;"  onclick="changetable('$hr_sid',2);">{$val}人才库</a></span> <span class="more"><a href="$Mdomain/jobslist.php?hr_sid=$hr_sid">更多...</a></span> </td>
+        </tr>
+        <tr>
+          <td class="list"  height="180">
+		  <div  id="tablelist_{$hr_sid}_1">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr  class="tr_title">
+                <td width="28%" align="left">职位名称</td>
+                <td width="42%" align="left">招聘公司</td>
+                <td width="15%" align="left">地区</td>
+               
+                <td width="15%" align="left">发布时间</td>
+              </tr>
+              <!--
+EOT;
+$getzhiweilist=getzhiweilist($hr_sid,$hot=0,$rows=8,$leng=25);
+$i=0;
+foreach($getzhiweilist AS $rs){
+$tr=$i%2==0?"tr2":"tr1"; $i++;
+$js=$rs[rid]?"return true;":"alert('该公司还未登记');return false;";
+print <<<EOT
+-->
+              <tr  class="$tr">
+                <td align="left"><a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]" target="_blank">$rs[title]</a></td>
+                <td align="left"><a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank" onclick="$js">$rs[companyname]</a></td>
+                <td align="left"><a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]" target="_blank">$rs[cityname]</a></td>
+               
+                <td align="left"><a href="$Mdomain/jobsshow.php?id=$rs[jobs_id]" target="_blank">$rs[posttime]</a></td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table></div>
+			<div style="display:none;"  id="tablelist_{$hr_sid}_2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+              <tr  class="tr_title">
+                <td width="28%" align="left">姓名</td>
+                <td width="42%" align="left">期望职位</td>
+                <td width="15%" align="left">所在地</td>
+          
+                <td width="15%" align="left">发布时间</td>
+              </tr>
+              <!--
+EOT;
+$getrencailist=getrencailist($hr_sid,$hot=0,$rows=8,$leng=25);
+$i=0;
+foreach($getrencailist AS $rs){
+$tr=$i%2==0?"tr2":"tr1"; $i++;
+print <<<EOT
+-->
+              <tr  class="$tr">
+                <td align="left"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]" target="_blank">$rs[truename]</a></td>
+                <td align="left"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]" target="_blank">$rs[job_name]</a></td>
+                <td align="left"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]" target="_blank">$rs[cityname]</a></td>
+               
+                <td align="left"><a href="$Mdomain/resumeshow.php?id=$rs[re_id]" target="_blank">$rs[posttime]</a></td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table></div></td>
+        </tr>
+      </table>
+      <!--
+EOT;
+}}
+print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<script language="javascript">
+<!--
+	function changetable(hr_sid,tab){
+		//unshow
+		if(hr_sid=='') return false;
+		if(tab==1 || tab==2){
+		document.getElementById("table_"+hr_sid+"_1").className='tab2';
+		document.getElementById("table_"+hr_sid+"_2").className='tab2';
+		document.getElementById("tablelist_"+hr_sid+"_1").style.display='none';
+		document.getElementById("tablelist_"+hr_sid+"_2").style.display='none';
+		//show		
+		
+		document.getElementById("table_"+hr_sid+"_"+String(tab)).className='tab1';
+		document.getElementById("tablelist_"+hr_sid+"_"+String(tab)).style.display='block';	
+		}
+	
+	}
+//-->
+</script>
+<script language="javascript">change_search_menu(4,'找 工 作');</script>
+<!--
+EOT;
+?>
+-->

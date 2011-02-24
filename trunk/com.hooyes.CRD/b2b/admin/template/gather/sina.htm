@@ -1,0 +1,140 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function sub(){
+	n=ckform(document.formse,'newsdb[]');
+	if(n==0){
+		alert('请选择要导入哪条新闻,如果还没开始采集,请先点击页底下的“开始采集”采集你需要的哪个日期的新闻');
+	return false;
+	}
+}
+function ckform(form,name){
+	var num=0;
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		var ek = e.checked;
+		var en = e.name;
+		if(en==name&&ek==true){
+			num++;
+		}
+	}
+	return num;
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="tablewidth">
+  <form name="formse" id="formse" method="post" action="index.php?lfj=gather&action=copysina" >
+    <tr class="head"> 
+      <td height="26" colspan="2"> 
+        <div align="center"></div>
+        <div align="center"><font color="#FFFFFF">《新浪新闻采集》当前新闻发布时间是:$y_-$m_-$d_</font></div>
+      </td>
+    </tr>
+<!--
+EOT;
+if($listdb){
+print <<<EOT
+-->
+    <tr class=tableborder2> 
+      <td width="10%"> 
+        <div align="center">选择</div>
+      </td>
+      <td width="90%"> 
+        <div align="center">标题</div>
+      </td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td> 
+        <div align='center'> 
+          <input type=checkbox name=newsdb[{$rs[url]}] value='$rs[title]' checked>
+        </div>
+      </td>
+      <td>{$rs[j]}、<A HREF='$rs[url]' target=_blank>$rs[title]</A></td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"> 
+        <div align="center">请选择导入哪个栏目{$sort_fid} 
+          <input type="radio" name="copypic" value="1">
+          图片采回本机 
+          <input type="radio" name="copypic" value="0" checked>
+          不采集到本地 
+          <input type='button' name='chkall' value='反 选' onClick='CheckAll(this.form)'>
+          <input type='submit' name='Submit22' value='导入'>
+          &nbsp; </div>
+      </td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </form>
+  <form name="form1" method="post" action="index.php?lfj=gather&job=copysina&step=2">
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"> 
+        <div align="center">类型 
+          <select name="newtype" size="1" id="select">
+            <option value='http://news.sina.com.cn/china/" target="_blank">更多'>国内新闻</option>
+            <option value='http://news.sina.com.cn/world/" target="_blank">更多'>国际新闻</option>
+            <option value='http://news.sina.com.cn/society/" target="_blank">更多'>社会新闻</option>
+			<option value='http://sports.sina.com.cn/" target="_blank">更多'>体育新闻</option>
+            <option value='http://tech.sina.com.cn" target="_blank">更多'>科技新闻</option>
+            <option value='http://finance.sina.com.cn" target="_blank">更多'>财经新闻</option>
+			<option value='http://ent.sina.com.cn" target="_blank">更多'>娱乐新闻</option>
+            <option value='http://mil.news.sina.com.cn" target="_blank">更多'>军事新闻</option>
+            
+          </select>
+          年份 
+          <select name="y_" size="1" id="y_">
+		  <option value="2009" >2009</option> 
+		   <option value="2010" >2010</option> 
+		   <option value="2011" >2011</option> 
+          </select>
+          &nbsp;&nbsp;&nbsp;月份 
+          <select name="m_" size="1" id="m_">
+            <option value="">月份 </option>
+            {$showmonth}
+          </select>
+          &nbsp;&nbsp;&nbsp;日期 
+          <select name="d_" size="1" id="d_">
+            <option value="">日期 </option>
+            {$showday}
+          </select>
+          <input type="submit" name="Submit" value="开始采集">
+        </div>
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0"  cellpadding="3" cellspacing="1" class="tablewidth">
+  <tr>
+    <td>1.如果采集失败,出错信息包含php_network_getaddresses这样的字符串,那代表你的服务器本机的DNS没配置好,不能解释域名的IP,请检查服务器DNS配置<br>
+      2.如果采集失败,出错信息包含URL file-access is disabled这样的字符串,那代表你的服务器PHP设置禁用了allow_url_fopen,请修改服务器php.ini把allow_url_fopen 
+      = Off改成allow_url_fopen = On然后重启服务器即可</td>
+  </tr>
+</table>
+<script language=JavaScript>
+function CheckAll(form){
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		e.checked == true ? e.checked = false : e.checked = true;
+	}
+}
+</script>
+<!--
+EOT;
+?>
+-->

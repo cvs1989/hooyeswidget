@@ -1,0 +1,40 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td style="padding:5px 0px 0px 5px;">
+                  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+$rs[title]=get_word($rs[full_title],14);
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->	<table border="0" cellspacing="0" cellpadding="0" style="width:135px;float:left;border-bottom:1px dotted #ccc;border-right:1px dotted #ccc;">
+              <tr>                       
+                <td align="center" style="padding-top:5px;"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title='$rs[full_title]' style="{$rs[fontweight]}{$rs[fontcolor]}"><b>$rs[title]</b></a></td>
+              </tr>
+              <tr>
+                <td align="center"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title='$rs[full_title]'><img width="120" height="90" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'" src="$rs[picurl]" border="0"></a></td>
+              </tr>
+              <tr> 
+                <td style="padding-left:5px;">市场价：{$rs[martprice]} {$fidDB[M_config][field_db][martprice][form_units]}<br>
+                  会员价：{$rs[nowprice]} {$fidDB[M_config][field_db][nowprice][form_units]}<br>
+                  型号：{$rs[shoptype]}</td>
+              </tr>
+            </table>
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                </td>
+              </tr>
+            </table>
+<!--
+EOT;
+?>
+-->

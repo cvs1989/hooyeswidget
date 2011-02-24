@@ -1,0 +1,344 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!--<div>{$label[zh_index_banner]}</div>-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="leftMain"><div class="notitle"  style=" padding:5px;">
+<!--
+EOT;
+$listdb=list_zh(array('titlelength'=>40,'limit'=>10 ,'orderlist'=>'  order by A.levels desc,A.hits desc,A.posttime desc'));
+$i=1;
+foreach($listdb as $rs){
+if($i==1){
+	$rs[title]=get_word($rs[title_full],36);
+	$big="big";
+}else{
+ 	$big='';
+}
+print <<<EOT
+-->
+<div class="line" style="background:url($Murl/images/$STYLE/i/$i.gif) no-repeat left; padding-left:20px;">   <a href="$Mdomain/zhshow.php?zh_id=$rs[zh_id]" class="$big">$rs[title]</font></a></div>
+<!--
+EOT;
+$i++;
+}
+print <<<EOT
+-->
+</div>
+    </td>
+    <td valign="middle"  class="rightMain">
+
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="383">
+    <div style="height:150px; margin-top:5px; table-layout:fixed;">{$label[info1003]}</div>
+	</td>
+    <td width="371" align="right" valign="middle">
+	<div class="zhpost">
+	<!--<p class="postzh"><a href="$Mdomain/zh_post.php?job=postzh"><img src="$Murl/images/$STYLE/addzh.gif" border="0" /></a><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;发布展会预告，招揽参展商，提高展会知名度。
+	</p>
+	<p class="postzlg"><a href="$Mdomain/zh_post.php?job=postzlg"><img src="$Murl/images/$STYLE/addzlg.gif" border="0" /></a><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;登记展览馆信息，提高举办展会次数与质量。
+	</p>-->
+	<form id="form1" name="form1" method="get" action="zh_list.php?">
+        <ul>
+		<li><span>关&nbsp;键&nbsp;字:</span><input name="keyword" type="text" id="keyword" value="$keyword" size="10" /></li>
+		<li><span>开展时间:</span><select name="opentime" id="opentime">
+              <option value="0">请选择开展时间</option>
+<!--
+EOT;
+$y=intval(date("Y"));
+for($i=$y;$i<=($y+1);$i++){
+	for($j=1;$j<=12;$j++){
+	
+print <<<EOT
+-->
+	<option value="$i-$j">{$i}年-{$j}月</option>
+	
+<!--
+EOT;
+	
+	}
+}
+print <<<EOT
+-->
+              </select>
+            </li>
+		<li><span>行业类型:</span><select name="sid" id="sid">
+              <option value="0">请选择行业</option>
+<!--
+EOT;
+foreach($bcategory->categories as $v){
+print <<<EOT
+-->
+<option value="{$v['fid']}">{$v['name']}</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </select> 
+			</li>
+			<li><span>会展地区:</span><select name="province_id" id="province_id">
+              <option value="0">请选择地区</option>
+<!--
+EOT;
+	foreach($area_DB[name] as $key=>$val){
+print <<<EOT
+-->
+	<option value="$key">$val</option>
+<!--
+EOT;
+	}
+print <<<EOT
+-->
+                                    </select> 
+			   </li>
+			  
+            <li><input type="submit" name="button" id="button" value="搜索展会" /></li>
+        </ul>
+      
+      </form>
+	</div>
+	</td>
+  </tr>
+</table>
+	
+	
+
+     <!--搜索区域-->
+     <div class="notitle form">
+      
+    </div>
+	<div class="notitle form">
+	<form id="form2" name="form2" method="get" action="zh_showroomlist.php?">
+	 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="15%"><strong>&nbsp;展览馆搜索：</strong></td>
+
+           
+            <td width="14%" align="left"><select name="province_id" id="province_id">
+              <option value="0">请选择地区</option>
+              <!--
+EOT;
+	foreach($area_DB[name] as $key=>$val){
+    $ck=$key==$province_id?" selected":"";
+print <<<EOT
+-->
+              <option value="$key" $ck>$val</option>
+              <!--
+EOT;
+	}
+print <<<EOT
+-->
+            </select></td>
+            <td width="11%" align="right">关键字：</td>
+            <td width="15%"><input name="keyword" type="text" id="keyword" value="$keyword" size="10" /></td>
+            <td width="45%"><input type="submit" name="button" id="button" value="搜索展览馆" /></td>
+            </tr>
+        </table>
+	</form>
+	</div>
+    </td>
+  </tr>
+</table>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="leftMain" bgcolor="#f5f5f5">
+    
+<div>{$label[zh_left1]}</div>	
+    
+<table width="100%" cellspacing="0" cellpadding="0" class="leftDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">按照时间查询</span><span class="R">&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td  class="content">
+
+	
+	 
+<!--
+EOT;
+$y=intval(date("Y"));
+for($i=$y;$i<=($y+1);$i++){
+	for($j=1;$j<=12;$j++){
+	
+print <<<EOT
+-->
+	<a href="$Mdomain/zh_list.php?opentime=$i-$j" style="width:45%; float:left;background:url($Murl/images/$STYLE/listico.gif) no-repeat left; padding-left:15px;">  {$i}年-{$j}月</a>
+<!--
+EOT;
+	
+	}
+}
+print <<<EOT
+-->
+ </td>
+  </tr>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="0" class="leftDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">按照区域查询</span><span class="R">&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td  class="content">
+
+	
+	 
+<!--
+EOT;
+	foreach($area_DB[name] as $key=>$val){
+print <<<EOT
+-->
+	<div><a href="$Mdomain/zh_list.php?province_id=$key" style="width:45%; float:left;background:url($Murl/images/$STYLE/listico.gif) no-repeat left; padding-left:15px;"> $val</a></div>
+<!--
+EOT;
+	}
+print <<<EOT
+-->
+ </td>
+  </tr>
+</table>
+	<div>{$label[zh_left2]}</div>	
+	
+<table width="100%" cellspacing="0" cellpadding="0" class="leftDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">推荐展览馆</span><span class="R">&nbsp;</span> <span class="more"><a href="$Mdomain/zh_showroomlist.php">>>>更多展览馆</a></span></td>
+  </tr>
+  <tr>
+    <td  class="content">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+
+<!--
+EOT;
+foreach($showrommTopdb as $rs){
+print <<<EOT
+-->
+  <tr>
+    <td width="110"><a href="$Mdomain/zh_showroom.php?sr_id=$rs[sr_id]" target="_blank"><img src="$rs[picurl]" width="100" height="75" border="0"    onerror="this.src='$Murl/images/$STYLE/nopic.jpg';"/></a></td>
+    <td><a href="$Mdomain/zh_showroom.php?sr_id=$rs[sr_id]" target="_blank"><strong>$rs[title]</strong></a><br />$rs[area]<br />$rs[address]</td>
+  </tr>	
+  <tr>
+    <td width="110" height="10"></td>
+    <td></td>
+  </tr>	
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</table>	
+ </td>
+  </tr>
+</table>
+	  
+    </td>
+    <td class="rightMain" >
+
+
+<!--
+EOT;
+foreach($bcategory->categories as $v){
+$listdb=list_zh(array('sid'=>$v['fid'],'titlelength'=>46,'limit'=>10));
+$picclistdb=list_zh(array('sid'=>$v['fid'],'pic'=>1,'limit'=>3));
+
+print <<<EOT
+-->
+
+<table width="100%" cellspacing="0" cellpadding="0"  class="rightDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">{$v['name']}展会</span><span class="R">&nbsp;</span><span class="more"><a href="$Mdomain/zh_list.php?sid=$key" title="点击更多">更多...</a></span></td>
+  </tr>
+  <tr>
+    <td class="content">
+
+	  
+		
+<table width="100%" align="left" cellpadding="0" cellspacing="0">
+
+<tr>
+    <td colspan="3" height="100">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="trA">
+    <td width="47%">展会名称</td>
+    <td width="25%">展览馆</td>
+    <td width="15%">地区</td>
+    <td width="13%">开展时间</td>
+  </tr>
+
+
+
+<!--
+EOT;
+
+$i=1;
+foreach($listdb as $rs){
+$trclass=$i%2==0?"trB":"trC";
+print <<<EOT
+-->    
+    
+    <tr class="$trclass">
+    <td><a href="$Mdomain/zhshow.php?zh_id=$rs[zh_id]" target="_blank" title="$rs[title_full]"><img src="$Murl/images/$STYLE/title_icon3.gif" border="0" /> $rs[title]</a></td>
+    <td><a href="$Mdomain/zh_showroom.php?sr_id=$rs[showroom]" target="_blank">$rs[showroom_name]</a></td>
+    <td>$rs[area]</td>
+    <td>$rs[starttime]</td>
+  </tr>
+<!--
+EOT;
+$i++;
+}
+print <<<EOT
+-->
+</table>
+    </td>
+    </tr>
+   
+  <tr>
+    <td width="33%" align="center"> <div class="imgdiv " style="height:60px; width:215px">
+    <a href="zhshow.php?zh_id={$picclistdb[0][zh_id]}" target="_blank" ><img src="{$picclistdb[0][picurl]}"  title="{$picclistdb[0][title]}" border="0" width="215" height="60" onerror="this.style.display='none';"/></a></div>
+    </td>
+    <td width="33%" align="center"><div class="imgdiv " style="height:60px; width:215px">
+    <a href="zhshow.php?zh_id={$picclistdb[1][zh_id]}" target="_blank" ><img src="{$picclistdb[1][picurl]}"  title="{$picclistdb[1][title]}" border="0" width="215" height="60" onerror="this.style.display='none';"/></a></div>
+    </td>
+	<td width="33%" align="center"><div class="imgdiv " style="height:60px; width:215px">
+    <a href="zhshow.php?zh_id={$picclistdb[2][zh_id]}" target="_blank"><img src="{$picclistdb[2][picurl]}"  title="{$picclistdb[2][title]}" border="0" width="215" height="60" onerror="this.style.display='none';"/></a></div>
+    </td>
+  </tr>
+  
+</table>
+
+		
+		
+		
+		
+  </td>
+  </tr>
+</table>
+	
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<div style="margin-top:5px;">
+{$label[zh_bottom]}
+</div>	
+    
+	</td>
+  </tr>
+</table>
+<script language="javascript">change_search_menu(5,'找 展 会');</script>
+<!--
+EOT;
+?>
+-->

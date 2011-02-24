@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td>[<a href="index.php?lfj=$lfj&job=list">模块列表(创建模块)</a>]
+	
+	[<a href="index.php?lfj=$lfj&job=editmodule&id=$id">模型设置</a>] 
+	[<a href="index.php?lfj=$lfj&job=editsort&id=$id">管理模型字段</a>] 
+	[<a href="?lfj=$lfj&job=addfield&id=$id">添加字段</a>]
+      [<a href="index.php?lfj=$lfj&job=tpl&id=$id">本模型生成模板</a>]
+	   
+	</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_tpl" id="form_tpl" method="post" action="?lfj=$lfj&action=$job&page=$page&automaketpl=$automaketpl">
+    <tr class="head" align="left"> 
+      <td colspan="2">模板管理</td>
+    </tr>
+    <tr> 
+      <td width="17%">后台发布页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_post" cols="90" rows="8">$post_tpl</textarea>
+        <br>
+        母模板是:/admin/$post_tpl_file<br>
+        生成模板文件是: /php168/admin_tpl/post_$id.htm</td>
+    </tr><tr> 
+      <td width="17%">前台会员发布页模板:</td>
+      <td width="83%"> 
+        <textarea name="member_tpl_post" cols="90" rows="8">$member_post_tpl</textarea>
+        <br>
+        母模板是:/$member_post_tpl_file<br>
+        生成模板文件是: /php168/member_tpl/post_$id.htm</td>
+    </tr>
+    <tr> 
+      <td width="17%">内容页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_show" cols="90" rows="5">$show_tpl</textarea>
+        <br>
+        母模板是:/$show_tpl_file<br>
+        生成模板文件是: /template/default/bencandy_$id.htm</td>
+    </tr>
+   	 <tr> 
+      <td width="17%">搜索页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_search" cols="90" rows="5">$search_tpl</textarea>
+        <br>
+        母模板是:/$search_tpl_file<br>
+        生成模板文件是: /template/default/search_$id.htm</td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交生成模板">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td colspan="2"><font color="#FF0000">注意:</font><br>
+        1.请务必确认“/template/default/”，“/php168/admin_tpl/”，“/php168/member_tpl/”这几个目录权限可写,否则无法生成模板<br>
+        2.模板生成之后,你可以对他进行风格样式个性化修改. <br>
+        3.母模板选择规则:如果没有私有母模板,就调用公有母模板.如果当前模型没有私有母模板的话,你可以自已创建一个(创建私有模板,目的是为了个性化风格).<br>
+        进入到对应的公有模板目录,建立一个tpl目录,然后把公有母模板文件复制到tpl目录下,对应的修改一下文件名.即加多下画线与对应的ID,如<br>
+        公有模板:/template/default/bencandy.htm<br>
+        私有模板:/template/default/<font color="#FF0000">tpl/</font>bencandy<font color="#FF0000">_100</font>.htm</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function autopost(){
+	document.getElementById("form_tpl").submit();
+}
+$autojump
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

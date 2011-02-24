@@ -1,0 +1,116 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div>{$label[zh_index_banner]}</div>
+<div class="notitle form">
+      <form id="form1" name="form1" method="get" action="?">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="10%"><strong>&nbsp;展会搜索</strong>：</td>
+            <td width="44%"><select name="sid" id="sid">
+              <option value="0">请选择行业</option>
+<!--
+EOT;
+foreach($Fid_db[0] as $key=>$array){
+$ck=$sid==$key?" selected":"";
+print <<<EOT
+-->
+<option value="$key" $ck>{$Fid_db[name][$key]}</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </select>            <select name="province_id" id="province_id">
+              <option value="0">请选择地区</option>
+<!--
+EOT;
+	foreach($area_DB[name] as $key=>$val){
+    $ck=$province_id==$key?" selected":"";
+print <<<EOT
+-->
+	<option value="$key" $ck>$val</option>
+<!--
+EOT;
+	}
+print <<<EOT
+-->
+                                    </select>            <select name="opentime" id="opentime">
+              <option value="0">请选择开展时间</option>
+<!--
+EOT;
+$y=intval(date("Y"));
+for($i=$y;$i<=($y+1);$i++){
+	for($j=1;$j<=12;$j++){
+	 $ck=$opentime=="$i-$j"?" selected":"";
+print <<<EOT
+-->
+	<option value="$i-$j" $ck>{$i}年-{$j}月</option>
+	
+<!--
+EOT;
+	
+	}
+}
+print <<<EOT
+-->
+                                    </select></td>
+            <td width="7%"><strong>关键字：</strong></td>
+            <td width="21%"><input name="keyword" type="text" id="keyword" value="$keyword" size="30" /></td>
+            <td width="18%"><input type="submit" name="button" id="button" value="提交" /></td>
+          </tr>
+        </table>
+      
+      </form>
+</div>
+<table width="100%" cellspacing="0" cellpadding="0"  class="rightDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">展会列表</span><span class="more">
+	
+	<a href="$Mdomain/zh_post.php?job=postzh" target="_blank"><img src="$Murl/images/$STYLE/gif-0645.gif" border="0" />发布展会信息</a>
+	&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td class="content"><table width="100%" align="left" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="3" height="100"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="trA">
+            <td width="160">展会名称</td>
+            <td width="21%">展览馆</td>
+            <td width="12%">地区</td>
+            <td width="9%">开展时间</td>
+            <td width="8%">结束时间</td>
+          </tr>
+          <!--
+EOT;
+
+$i=1;
+foreach($listdb as $rs){
+$trclass=$i%2==0?"trB":"trC";
+print <<<EOT
+-->
+          <tr class="$trclass">
+            <td height="30"><a href="$Mdomain/zhshow.php?zh_id=$rs[zh_id]" target="_blank" title="$rs[title_full]" class="bigfont"><img src="images/$STYLE/title_icon3.gif" border="0" /> $rs[title]</a></td>
+            <td><a href="$Mdomain/zh_showroom.php?sr_id=$rs[showroom]" target="_blank">$rs[showroom_name]</a></td>
+            <td>$rs[area]</td>
+            <td>$rs[starttime]</td>
+            <td>$rs[endtime]</td>
+          </tr>
+          <!--
+EOT;
+$i++;
+}
+print <<<EOT
+-->
+        </table>
+        <div class="page">$showpage</div>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

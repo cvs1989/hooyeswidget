@@ -1,0 +1,44 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+   
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit22" value="选择类型" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=list')">
+      　　 
+      <input type="button" name="Submit2" value="获取调用代码" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=getcode')">
+      　　 </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2" height="23"><font color="#FFFFFF">请复制以下代码贴到网页需要的地方:</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>&nbsp; </td>
+      <td> 
+        <textarea name="postdb[about]" cols="60" rows="5" id="js_1"><SCRIPT src="$webdb[www_url]/do/hack.php?hack=$hack&job=js&cktime=$cktime"></SCRIPT></textarea>
+        <br>
+        <input type="button" name="Submit" value="复制以上代码"  onClick="JM_cc('js_1');alert('复制成功，你可以粘贴在网页代码里！')">
+        <input type="button" name="Submit32" value="查看效果" onClick="window.open('$webdb[www_url]/do/hack.php?hack=$hack&job=test')">
+      </td>
+    </tr>
+  </form>
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

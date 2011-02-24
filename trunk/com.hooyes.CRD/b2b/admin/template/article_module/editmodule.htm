@@ -1,0 +1,156 @@
+<!--
+<?php
+print <<<EOT
+--> <table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td>[<a href="index.php?lfj=$lfj&job=list">模型列表(创建模型)</a>] 
+	
+	[<a href="index.php?lfj=$lfj&job=editmodule&id=$id">模型设置</a>] 
+	[<a href="index.php?lfj=$lfj&job=editsort&id=$id">管理模型字段</a>] 
+	[<a href="?lfj=$lfj&job=addfield&id=$id">添加字段</a>]
+      [<a href="index.php?lfj=$lfj&job=tpl&id=$id">本模型生成模板</a>]
+ 
+	   </td>
+      
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form2" method="post" action="?lfj=$lfj&action=editsort">
+    <tr> 
+      <td class="head" colspan="2">模型设置</td>
+    </tr>
+    <tr> 
+      <td width="32%">模块名称: </td>
+      <td width="68%"> 
+        <input type="text" name="name" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">模块别名: </td>
+      <td width="68%"> 
+        <input type="text" name="postdb[alias]" value="$alias">
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;标题&quot;的名称:</td>
+      <td width="68%"> 
+        <input type="text" name="postdb[title_name]" value="$title_name">
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;内容&quot;的名称:</td>
+      <td width="68%"> 
+        <input type="text" name="postdb[content_name]" value="$content_name">
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;内容&quot;使用的编辑器宽度:</td>
+      <td width="68%"> 
+        <input type="text" name="postdb[edit_w]" size="4" value="$edit_w">
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;内容&quot;使用的编辑器高度:</td>
+      <td width="68%"> 
+        <input type="text" name="postdb[edit_h]" size="4" value="$edit_h">
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">是否启用"内容简介":</td>
+      <td width="68%"> 
+        <input type="radio" name="postdb[description]" value="1" $descriptionDB[1]>
+        禁用 
+        <input type="radio" name="postdb[description]" value="0" $descriptionDB[0]>
+        启用 </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;内容&quot;使用的编辑器类型:</td>
+      <td width="68%"> 
+        <input type="radio" name="postdb[etype]" value="1" $etypeDB[1]>
+        简单 
+        <input type="radio" name="postdb[etype]" value="0" $etypeDB[0]>
+        复杂 </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;内容&quot;是否单页:</td>
+      <td width="68%"> 
+        <input type="radio" name="postdb[morepage]" value="1" $morepageDB[1]>
+        文字内容单页 
+        <input type="radio" name="postdb[morepage]" value="0" $morepageDB[0]>
+        文字内容多页 </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;作者&quot;是否禁用:</td>
+      <td width="68%"> 
+        <input type="radio" name="postdb[no_author]" value="0" $no_authorDB[0]>
+        启用 
+        <input type="radio" name="postdb[no_author]" value="1" $no_authorDB[1]>
+        禁用 </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;来源于&quot;是否禁用:</td>
+      <td width="68%"> 
+        <input type="radio" name="postdb[no_from]" value="0" $no_fromDB[0]>
+        启用 
+        <input type="radio" name="postdb[no_from]" value="1" $no_fromDB[1]>
+        禁用 </td>
+    </tr>
+    <tr> 
+      <td width="32%">表单中&quot;来源网址&quot;是否禁用:</td>
+      <td width="68%"> 
+        <input type="radio" name="postdb[no_fromurl]" value="0" $no_fromurlDB[0]>
+        启用 
+        <input type="radio" name="postdb[no_fromurl]" value="1" $no_fromurlDB[1]>
+        禁用 </td>
+    </tr>
+<!--
+EOT;
+if($rsdb[iftable]){print <<<EOT
+-->
+    <tr>
+      <td width="32%">当前模型使用了独立表,独立表名后缀是:</td>
+      <td width="68%">$rsdb[iftable]</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+    <!--
+    <tr>
+      <td width="32%">有权限使用此模型的用户组:<br>
+        (注:管理员默认有权限) </td>
+      <td width="68%">$allowpost</td>
+    </tr>
+-->
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit2" value="修改当前模型设置">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

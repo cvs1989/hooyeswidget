@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="96%" border="0" cellspacing="0" cellpadding="0" style="margin-left:15px;margin-top:15px;">
+
+              <tr> 
+                <td> 
+	              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+$target=$rs[target]?'_blank':'_self';
+$rs[title]=get_word($rs[full_title],48,0);
+if($key==0&&$page<2){
+$rs[content]=get_word($rs[content],190);
+print <<<EOT
+-->	
+<div style="text-align:center;margin-bottom:5px;"><A style="font-size:17px;font-weight:bold;{$rs[fontweight]}{$rs[fontcolor]}" HREF="bencandy.php?fid=$rs[fid]&id=$rs[aid]"><u>$rs[full_title]</u></A></div>
+<div style="border-bottom:1px dotted #ccc;margin-bottom:14px;padding-bottom:8px;width:99%;color:#666;text-indent:2em;">{$rs[content]} [<A HREF="bencandy.php?fid=$rs[fid]&id=$rs[aid]">ÔÄ¶ÁÈ«ÎÄ</A>]</div>
+
+</td>
+              </tr><tr><td> 
+      <!--
+EOT;
+}else{print <<<EOT
+-->
+				<div style="float:left;width:49%;height:28px;">¡¤<a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="$target" title='$rs[full_title]' style="font-size:13px;{$rs[fontweight]}{$rs[fontcolor]}">$rs[title]</a> </div>
+
+<!--
+EOT;
+}}print <<<EOT
+-->
+
+                </td>
+              </tr>
+            </table>
+            
+<!--
+EOT;
+?>
+-->

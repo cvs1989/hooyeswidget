@@ -1,0 +1,9 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+    <td width="40%" style="line-height:180%;text-align:center;"><b>展会名称</b></td>
+                      
+    <td width="30%" style="line-height:180%;text-align:center;"><b>展会地点</b></td>            
+    <td width="13%" style="line-height:180%;text-align:center;"><b>开展时间</b></td>           
+    <td width="13%" style="line-height:180%;text-align:center;"><b>结束时间</b></td>
+                    </tr>
+                  </table>

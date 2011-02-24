@@ -1,0 +1,229 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<style>
+.indexlistsort .smallsort{
+	color:blue;
+}
+.indexlistsort .bigsort a{
+	font-weight:bold;
+}
+.indexlistsort .smallsort a{
+	color:blue;
+}
+.indexlistsort .smallsort span{
+	display:block;
+}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <!--
+EOT;
+if($job=="email"){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="">
+          <tr> 
+            <td class="head">邮箱验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center"> 
+              <!--
+EOT;
+if(!$rsdb[true_email]){
+print <<<EOT
+-->
+              你的邮箱“{$lfjdb[email]}”还没有通过验证,你现在首次验证的话,将可以获得{$webdb[EmailYzMoney]}积分的奖励<br>
+              <input type="submit" name="Submit2" value="立即验证">
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              你的邮箱已通过验证 
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <input type="hidden" name="act" value="yzemail">
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+      <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($job=="idcard"){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="" enctype="multipart/form-data">
+          <tr> 
+            <td class="head">身份证验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center"> 
+              <!--
+EOT;
+if(!$rsdb[idcard_img]){
+print <<<EOT
+-->
+              你还没有通过身份验证,你现在上传身份证复印件的话,将可以获得{$webdb[IDcardMoney]}积分的奖励<br>
+              <input type="text" name="imgurl" id="imgurl" size="50">
+             <iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='../../upfile.php?fn=uppic&dir=fenlei/card' width=310></iframe> <br>
+              <input type="submit" name="Submit2" value="提交"><SCRIPT LANGUAGE="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	document.getElementById("imgurl").value=url;
+}
+//-->
+</SCRIPT>
+              <!--
+EOT;
+}elseif(!$rsdb[idcard_yz]){print <<<EOT
+-->
+              你的身份证等待管理员的核实验证            <!--
+EOT;
+}else{print <<<EOT
+-->
+              你已通过身份验证 
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <input type="hidden" name="act" value="idcard">
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+      <!--
+EOT;
+}print <<<EOT
+-->
+      <!--
+EOT;
+if($job=="permit"){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="" enctype="multipart/form-data">
+          <tr> 
+            <td class="head">营业执照验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center"> 
+              <!--
+EOT;
+if(!$rsdb[permit_img]){
+print <<<EOT
+-->
+              你还没有通过营业执照验证,你现在上传营业执照复印件的话,将可以获得{$webdb[permitMoney]}积分的奖励<br>
+              <input type="text" name="imgurl" id="imgurl" size="50">
+              <iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='../../upfile.php?fn=uppic&dir=fenlei/card' width=310></iframe> 
+              <br>
+              <input type="submit" name="Submit22" value="提交">
+              <script language="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	document.getElementById("imgurl").value=url;
+}
+//-->
+</script>
+              <!--
+EOT;
+}elseif(!$rsdb[permit_yz]){print <<<EOT
+-->
+              你的营业执照复印件等待管理员的核实验证 
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              你已通过身份验证 
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <input type="hidden" name="act" value="permit">
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+      <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($job=="othercard"){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="" enctype="multipart/form-data">
+          <tr> 
+            <td class="head">其它证件验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center"> 
+              <!--
+EOT;
+if(!$rsdb[othercard_img]){
+print <<<EOT
+-->
+              你还没有通过其它证件验证,你现在上传其它证件复印件的话,将可以获得{$webdb[otherCardMoney]}积分的奖励<br>
+              <input type="text" name="imgurl" id="imgurl" size="50">
+              <iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='../../upfile.php?fn=uppic&dir=fenlei/card' width=310></iframe> 
+              <br>
+              <input type="submit" name="Submit22" value="提交">
+              <script language="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	document.getElementById("imgurl").value=url;
+}
+//-->
+</script>
+              <!--
+EOT;
+}elseif(!$rsdb[othercard_yz]){print <<<EOT
+-->
+              你的其它证件复印件等待管理员的核实验证 
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              你已通过身份验证 
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <input type="hidden" name="act" value="othercard">
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

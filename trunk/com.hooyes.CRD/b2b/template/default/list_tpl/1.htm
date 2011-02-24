@@ -1,0 +1,32 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+              <tr> 
+                <td>
+                  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+$rs[title]=get_word($rs[full_title],42);
+print <<<EOT
+-->
+                  <div style="width:133px;float:left;padding-left:32px;padding-top:8px;"> 
+                    <p><a style="display:block;border:1px solid #ccc;width:120px;height:90px;" href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title='$rs[full_title]'><img width="120" height="90" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'"  src="$rs[picurl]" border="0" style="border:2px solid #fff;"></a></p>
+                    <p style="height:35px;"><a href="bencandy.php?fid=$rs[fid]&id=$rs[aid]" title='$rs[full_title]' style="{$rs[fontweight]}{$rs[fontcolor]}">$rs[title]</a></p>
+                  </div>
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                </td>
+              </tr>
+            </table>
+<!--
+EOT;
+?>
+-->

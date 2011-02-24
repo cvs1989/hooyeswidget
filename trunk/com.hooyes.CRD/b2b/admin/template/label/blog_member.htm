@@ -1,0 +1,245 @@
+<!--
+<?php
+print <<<EOT
+-->
+ 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function post(form){
+	if(form.tplpart_1.value==''&&form.tplpart_2.value==''){
+		alert("模板一不能为空,否则不能正常显示内容");
+		form.tplpart_1.focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>
+<body onload="choose_t($stype)">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=member&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&" onsubmit="return post(this);">
+    <tr class="head" align="center"> 
+      <td colspan="2"> &nbsp; 
+        <!--
+EOT;
+if(!$ch_ifjs){
+print <<<EOT
+-->
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        <script src=template/default/label/js.js></script>
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">页面显示类型:</td>
+      <td width="76%"> 
+        <input type="radio" name="stype" value="4" $stypedb[4] onclick="choose_t(4)">
+        博客名称
+        <!-- <input type="radio" name="stype" value="5" $stypedb[5] onclick="choose_t(5)">
+        头像+自我介绍 -->
+        <input type="radio" name="stype" value="6" $stypedb[6] onclick="choose_t(6)">
+        博客名称+头像</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">显示类型:</td>
+      <td width="76%"> 
+        <input type="radio" name="yz" value="all" $yzdb[all] />
+        全部博客 
+        <input type="radio" name="yz" value="1" $yzdb[1] />
+        推荐博客</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">排行选择:</td>
+      <td width="76%"> 
+        <input type="radio" name="asc" value="DESC" $ascdb[DESC]>
+        降序(常用) 
+        <input type="radio" name="asc" value="ASC" $ascdb[ASC]>
+        升序</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">显示几行:</td>
+      <td width="76%"> 
+        <input name="rowspan" type="text" id="rowspan" value="$rowspan" />
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">显示几列:</td>
+      <td width="76%"> 
+        <input name="colspan" type="text" id="colspan" value="$colspan" />
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">用户名不能超过几个字符:</td>
+      <td width="76%"> 
+        <input name="titlenum" type="text" id="titlenum" value="$titlenum" />
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">超过字数是否用省略号表示:</td>
+      <td width="76%"> 
+        <input type="radio" name="titleflood" value="1" $titleflooddb[1]/>
+        是 
+        <input type="radio" name="titleflood" value="0" $titleflooddb[0]/>
+        否 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">模板1是:<label> </label></td>
+      <td width="76%"> 
+        <table width="43%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="26%"> 
+              <textarea name="tplpart_1" id="tplpart_1" cols="50" rows="4">$tplpart_1</textarea>
+            </td>
+            <td> 
+              <div id=showtypediv_1></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="tpl2" style="display:none;"> 
+      <td width="24%">模板2是:<label></label></td>
+      <td width="76%"> 
+        <table width="43%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="26%"> 
+              <textarea name="tplpart_2" id="tplpart_2" cols="50" rows="4">$tplpart_2</textarea>
+            </td>
+            <td> 
+              <div id=showtypediv_2></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">模板是TABLE布局还是DIV布局:</td>
+      <td width="76%"> 
+        <input type="radio" name="DivTpl" value="0" $divtpldb[0]>
+        Table 
+        <input type="radio" name="DivTpl" value="1" $divtpldb[1]>
+        Div</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="contentnum" style="display:none;"> 
+      <td width="24%">自我介绍显示多少字:</td>
+      <td width="76%"> 
+        <input type="text" name="content_num" size="5" value="$content_num">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%"><label>时间格式:</label></td>
+      <td width="76%"> 
+        <input type="text" name="timeformat" value="$timeformat">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">是否隐藏,暂时不显示:</td>
+      <td width="76%"> 
+        <input type="radio" name="hide" value="1" $hidedb[1]/>
+        隐藏 
+        <input type="radio" name="hide" value="0" $hidedb[0]/>
+        显示</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">更新内容时上方遮蔽层设置:</td>
+      <td width="76%">层宽 
+        <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+        层高 
+        <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+        层的颜色 
+        <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12"  onclick="foreColor_font(this);" />
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+  function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">&nbsp;</td>
+      <td width="76%"><label> 
+        <input type="submit" name="Submit" value="提 交"/>
+        </label> </td>
+    </tr>
+  </form>
+</table>
+<script>
+function cktitle(v,t){
+	if(t==2){
+		if(document.form1.template.value==''){
+			alert("请先选择模板一再选择模板二");return false;
+		}
+	document.form1.template2.value=v
+	}else{
+	document.form1.template.value=v
+	}
+}
+</script>
+<div style="display:none;"> 
+  <form name="form2" method="post" action="" target="phpframe">
+  </form>
+</div>
+<script language="JavaScript">
+<!--
+
+function choose_t(v){
+	if(v==5){document.getElementById('contentnum').style.display='';
+	}else{document.getElementById('contentnum').style.display='none';
+	}
+	document.form2.action="index.php?lfj=$lfj&ch_module=$ch_module&inc=$inc&job=showtplpart&ctype="+v;
+ 	document.form2.submit();
+}
+function M_jumpMenu2(selObj,v){ //v3.0
+  var rs=selObj.options[selObj.selectedIndex].value;
+  if(rs!=''){
+  		if(v==1){
+			if(rs=='-1'){
+				window.open('index.php?lfj=$lfj&ch_module=$ch_module&job=make&tpl_id=tplpart_1','','width=700,height=600,scrollbars=yes,top=100,left=200');
+			}else{
+			//document.form1.tplpart_1.value=rs;
+			window.open("index.php?lfj=$lfj&ch_module=$ch_module&inc=$inc&job=gethtmlcode&divid=tplpart_1&filepath="+rs,target='phpframe');
+			}
+		}else if(v==2){
+			if(rs=='-1'){
+				window.open('index.php?lfj=$lfj&ch_module=$ch_module&job=make&tpl_id=tplpart_2','','width=700,height=600,scrollbars=yes,top=100,left=200');
+			}else{
+			//document.form1.tplpart_2.value=rs;
+			window.open("index.php?lfj=$lfj&ch_module=$ch_module&inc=$inc&job=gethtmlcode&divid=tplpart_2&filepath="+rs,target='phpframe');
+			}
+		}
+  	 
+  }
+}
+function puthtmlcode(obj,code){
+	get_obj(obj).value=code;
+}
+function showtype(rs,t){
+
+if(t==1){
+	showtypediv_1.innerHTML=rs;
+}else{
+	showtypediv_2.innerHTML=rs;
+}
+	
+	
+}
+//-->
+
+</script>
+<iframe id="phpframe" name="phpframe" marginwidth="0" src="about:blank" frameborder="0" height="0" width="0"></iframe> 
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,85 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="?action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">名称:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">属于哪个分类:</td>
+      <td width="76%"> $sort_fup</td>
+    </tr>
+<!--
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">目录名称:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[dirname]" value="$rsdb[dirname]">
+        (只能是字母\数字\下画线,不允许汉字与特殊字符,否则无法访问)<br>
+        是否自动创建目录: 
+        <input type="checkbox" name="createdir" value="1">
+        是<br>
+        <font color="#999999">(创建目录后,你可以用<font color="#0000FF"><a href="{$Mdomain}/">{$Mdomain}/</a>目录名称/</font> 
+        来访问此地区分类的信息)<br>
+        如果你创建成功了,请<a href="$Mdomain/$rsdb[dirname]" target="_blank"><font color="#FF0000">点击查看</font></a> 
+        </font></td>
+    </tr><tr bgcolor="#FFFFFF"> 
+      <td width="24%">二级域名:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[domain]" value="$rsdb[domain]" size="50">
+        <br>
+        (你可以设置二级域名绑定以上目录,但是需要服务器设置绑定并且需要在域名管理那里做设置指向) </td>
+    </tr>    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="24%">模板:<br>
+        (一般留空,即以默认为标准,你可以输入具体的模板路径,为每个城市设置独立的个性化主页) </td>
+      <td width="76%"> 头部模板: 
+        <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+        (如:template/benjing/head.htm)<br>
+        底部模板: 
+        <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+        (如:template/benjing/foot.htm)<br>
+        主页模板: 
+        <input type="text" name="postdb[tpl][index]" value="{$tpl['index']}" id="tpl_index" size="40">
+        (如:template/benjing/index.htm)</td>
+    </tr>
+-->
+	
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

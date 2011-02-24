@@ -1,0 +1,66 @@
+ <!--
+<?php
+print <<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr> <form name="form2" method="post" action="">
+      <td style="line-height:23px;"> 问卷名称:《<b><font color="#FF0000">{$rsdb[name]}</font></b>》</td>
+    </form>
+  </tr>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="?lfj=$lfj&action=$job">
+    <tr bgcolor='#FFFFFF' class="head"> 
+      <td align="center" width="23%"> 会员名称</td>
+      <td align="center" width="36%">提交日期</td>
+      <td width="17%" align="center">当前成绩</td>
+      <td width="11%" align="center">试卷</td>
+      <td width="13%" align="center">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td width="23%"><a href="../member/homepage.php?uid=$rs[student_uid]" target="_blank">{$rs[student_name]}</a></td>
+      <td width="36%" align="center">$rs[posttime] </td>
+      <td width="17%" align="center">{$rs[total_fen]} 分</td>
+      <td width="11%" align="center"><a href="?lfj=$lfj&job=editpaper&student_id=$rs[student_id]&id=$id">批阅</a></td>
+      <td width="13%" align="center"><a href="?lfj=$lfj&action=delete_student&student_id=$rs[student_id]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+  </form>
+</table>
+<table width="99%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td align="center">$showpage</td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+</table><script language="JavaScript">
+<!--
+function MM_jumpMenu(selObj){
+	va=selObj.options[selObj.selectedIndex].value;
+	if(va!=''){
+		//window.location.href='?job=list&classid='+va;
+		document.form2.submit();
+	}
+}
+function MM_jumpMenu2(selObj){
+	va=selObj.options[selObj.selectedIndex].value;
+	if(va!=''){
+		document.form2.submit();
+	}
+}
+//-->
+</script>
+<!--
+EOT;
+?>
+-->

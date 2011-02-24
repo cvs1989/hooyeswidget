@@ -1,0 +1,53 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td align="center" colspan="2">&nbsp;</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center" width="19%">模板名称:</td>
+      <td width="81%">$rsdb[name]</td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td align="center" width="19%">模板路径:</td>
+      <td width="81%">$rsdb[filepath]</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center" width="19%">可回档日期:<br>
+        (点击即可回档) </td>
+      <td width="81%"> 
+        <table width="350" border="0" cellspacing="0" cellpadding="0">
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr> 
+            <td width="125">$rs[posttime]</td>
+            <td width="59"><a href="index.php?lfj=template&job=viewback&id=$id&bid=$rs[bid]" target="_blank">查看</a></td>
+            <td width="64">[<a href="index.php?lfj=template&action=getback&id=$id&bid=$rs[bid]" onClick="return confirm('你确实要回档复原到{$rs[posttime]}之前修改的模板吗?');">回档</a>]</td>
+            <td width="102"><a href="index.php?lfj=template&action=delback&id=$id&bid=$rs[bid]">删除记录</a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center" width="19%">&nbsp;</td>
+      <td width="81%"> 
+        <input type="button" name="Submit" value="清空所有记录" onclick="window.location.href='index.php?lfj=template&action=delallback&id=$id&bid=$rs[bid]'">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,65 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job&id=$id">
+    <tr class="head"> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="23%" height="102">首页显示栏目排序:<br>
+        (<font color="#FF0000">序号小的排在前面</font>) </td>
+      <td width="77%" height="102">
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+	  
+	   序号:
+        <input type="text" name="fiddb[{$rs[fid]}]" size="6" value="$key">
+        栏目名称: 【{$rs[name]}】<br>
+<!--
+EOT;
+}print <<<EOT
+-->	
+		</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="23%" height="50">每个栏目显示多少行:</td>
+      <td width="77%" height="50"> 
+        <input type="text" name="atc_rows" size="6" value="$rows">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="23%" height="25">每行显示几个字符:<br>
+        (一个中文相当于两个字符)</td>
+      <td width="77%" height="25"> 
+        <input type="text" name="atc_leng" size="6" value="$leng">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="23%" height="25">排序方式:</td>
+      <td width="77%" height="25"> 
+        <select name="atc_order">
+          <option value="list" {$orderdb["list"]}>发表时间</option>
+           
+          <option value="hits" {$orderdb["hits"]}>浏览量</option>
+          <option value="rand()" {$orderdb["rand()"]}>随机(数据多时,很影响速度)</option>
+        </select>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="23%">&nbsp;</td>
+      <td width="77%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

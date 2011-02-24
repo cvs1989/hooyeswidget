@@ -1,0 +1,76 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">频道设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>频道目录名(只能是[<font color="#FF0000">a-z0-9_/</font>]):</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="channelDir" value="$channelDir">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>绑定此频道目录的域名:</td>
+      <td bgcolor='#FFFFFF'>
+        <input type="text" name="channelDomain" size="50" value="$channelDomain">
+        (一般留空) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='提 交'>
+        <input type="hidden" name="fid" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job&id=$id">
+    <tr class="head"> 
+      <td>帮助</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>创建频道,系统将自动创建对应的频道目录,并且自动创建四个文件,分别是index.php(默认页),list.php(列表页),bencandy.php(内容页),global.php(公共文件)<br>
+        系统如果不能自动创建目录与复制文件,请手工创建目录,并且手工创建文件,文件内容如下:<br>
+        index.php(默认页) 
+        <textarea name="textarea" cols="80" rows="4"><?php
+\$fid="$fid";
+if(is_file('index.htm')){header('location:index.htm');exit;}
+require_once("list.php");
+?></textarea>
+        <br>
+        list.php(列表页) 
+        <textarea name="textarea2" cols="80" rows="4"><?php
+require_once("global.php");
+require_once(THIS_PATH."list.php");
+?></textarea>
+        <br>
+        bencandy.php(内容页) 
+        <textarea name="textarea" cols="80" rows="4"><?php
+require_once("global.php");
+require_once(THIS_PATH."bencandy.php");
+?></textarea>
+        <br>
+        global.php(公共文件) 
+        <textarea name="textarea3" cols="80" rows="4"><?php
+defined("THIS_PATH") || define("THIS_PATH","../");
+require_once(THIS_PATH."global.php");	
+?></textarea>
+        <br>
+        注意:global.php里边的define("THIS_PATH","../");<font color="#FF0000">../</font>为1级目录频道(如news),2级目录频道就为<font color="#FF0000">../../</font>以此类推(如news/abc)<br>
+        <br>
+        以后如要删除频道.请手工删除目录 </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

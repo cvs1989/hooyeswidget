@@ -1,0 +1,129 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">创建专题</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+      <form action="index.php?lfj=$lfj&action=addsp" method=POST>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="8%">专题名称</td>
+            <td width="92%"> 
+              <input type=text name="title" size=50>
+            </td>
+          </tr>
+          <tr> 
+            <td width="8%">所属分类</td>
+            <td width="92%">{$sort_fid}</td>
+          </tr>
+          <tr> 
+            <td width="8%">&nbsp;</td>
+            <td width="92%"> 
+              <input type=submit value="创 建" name="submit">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+</table>
+
+
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+<form name="form_work" id="form_work" method="post" action="index.php?lfj=html&action=make_SPhtml" target="_blank">
+  <tr align="center" class="head"> 
+    <td width="5%">ID</td>
+    <td width="34%">专题名称</td>
+    <td width="6%">标签</td>
+    <td width="10%">创建者</td>
+    <td width="6%">浏览</td>
+    <td width="6%">文章</td><td width="6%">贴子</td>
+    <td width="6%">设置</td>
+    <td width="5%">推荐</td>
+	<td width="5%">审核</td>
+	<td width="5%">静态</td>
+    <td width="5%">删除</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+    <td align="center">$rs[id]</td>
+    <td>
+      <input type="checkbox" name="idDB[]" value="$rs[id]" checked>
+ <a href="$webdb[www_url]/do/showsp.php?fid=$rs[fid]&id=$rs[id]"  style="color:$rs[titlecolor];" target="_blank">$rs[title]</a></td>
+      <td align="center"><a href="$webdb[www_url]/do/showsp.php?fid=$rs[fid]&id=$rs[id]&jobs=show"><img src="images/icon_updatalabel.gif" border="0"></a></td>
+    <td align="center"><a href="../member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a></td>
+    <td align="center">$rs[hits]</td>
+    <td align="center"><a href="?lfj=$lfj&job=edit_atc&id=$rs[id]"><img src="../member/images/art_icon.gif" alt="管理文章" border="0"></a> $rs[aidnum]</td>
+	<td align="center">
+            <!--
+EOT;
+if($webdb[passport_type]){
+print <<<EOT
+-->
+	<a href="?lfj=$lfj&job=edit_bbs&id=$rs[id]"><img src="../member/images/art_icon.gif" alt="管理贴子" border="0"></a>
+$rs[tidnum]<!--
+EOT;
+}print <<<EOT
+-->
+	</td>
+    <td align="center"><a href="?lfj=$lfj&job=editsp&id=$rs[id]"><img src="../member/images/icon_manage2.gif" border="0" alt="修改设置"></a></td>
+    <td align="center">$rs[com]</td>
+	<td align="center">$rs[_yz]</td>
+      <td align="center"><a href="index.php?lfj=html&action=make_SPhtml&idDB[]=$rs[id]" target="_blank"><img src="images/plub.gif" border="0"></a></td>
+      <td align="center"><a href="?lfj=$lfj&action=delete&id=$rs[id]" onClick="return confirm('你确实要删除吗?不可恢复');"><img src="../member/images/del_icon2.gif" alt="删除" border="0"></a></td>
+  </tr>
+  <!--
+EOT;
+}print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF"> 
+    <td colspan="12" align="center">$showpage<a href="?lfj=$lfj&action=delete&id=$rs[id]" onClick="return confirm('你确实要删除吗?不可恢复');"></a><br>
+      <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <input type="button" name="Submit" value="生成静态页"  onclick="post_s('html');">
+        <input type="button" name="Submit2" value="删除选定专题" onclick="post_s('del');">
+      </td>
+  </tr></form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(e.name!='idDB[]')continue;
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+
+function post_s(t){
+	if(t=='html'){
+		get_obj("form_work").action="index.php?lfj=html&action=make_SPhtml";
+		get_obj("form_work").target="blank";
+		get_obj("form_work").submit();
+	}else if(t=='del'){
+		if(confirm("不可恢复,你确实要删除吗?")){
+			get_obj("form_work").action="index.php?lfj=$lfj&action=delete";
+			get_obj("form_work").target="main";
+			get_obj("form_work").submit();		
+		}
+	}
+}
+//-->
+</SCRIPT><br>
+ 
+<!--
+EOT;
+?>
+-->

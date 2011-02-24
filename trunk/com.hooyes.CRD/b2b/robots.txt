@@ -1,0 +1,18 @@
+#
+# robots.txt for PHP168 CMS
+# Version 2008
+#
+
+User-agent: *
+
+Disallow: /admin/
+Disallow: /cache/
+Disallow: /ewebeditor/
+Disallow: /images/
+Disallow: /inc/
+Disallow: /member/
+Disallow: /php168/
+Disallow: /template/
+Disallow: /upload_files/
+Disallow: /do/
+Disallow: /b/

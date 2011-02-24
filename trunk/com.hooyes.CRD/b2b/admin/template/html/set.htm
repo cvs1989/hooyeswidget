@@ -1,0 +1,161 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=set">
+    <tr class="head"> 
+      <td colspan='2' > 
+        <div align='center'><b><font color="#FFFFFF">静态网页生成设置</font></b></div>
+      </td>
+    </tr>
+     
+    <tr> 
+      <td bgcolor='#FFFFFF' rowspan="3">文章列表页与内容页是否生成静态网页:</td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input type="radio" name="webdbs[NewsMakeHtml]" value="0" $NewsMakeHtml[0] onclick="NewsMakeHtml('0')">
+        不生成静态 
+        <input type="radio" name="webdbs[NewsMakeHtml]" value="1" $NewsMakeHtml[1] onclick="NewsMakeHtml('1')">
+        生成真静态 
+        <input type="radio" name="webdbs[NewsMakeHtml]" value="2" $NewsMakeHtml[2]  onclick="NewsMakeHtml('2')">
+        伪静态 </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="84%" id="NewsMakeHtmlConfig_1"> 真静态列表页的表现形式 
+        <input type="text" name="webdbs[list_filename]" size="50" value="$webdb[list_filename]">
+        默认:“html/{\$fid}/{\$page}.htm”<br>
+        真静态内容页的表现形式 
+        <input type="text" name="webdbs[bencandy_filename]" size="50" value="$webdb[bencandy_filename]">
+        默认:“html/{\$fid}/{\$dirid}/{\$id}/{\$page}.htm”<br>
+        <br>
+        专题真静态列表页的表现形式 
+        <input type="text" name="webdbs[SPlist_filename]" size="50" value="$webdb[SPlist_filename]">
+        默认:“html/special{\$fid}/list{\$page}.htm”<br>
+        专题真静态内容页的表现形式 
+        <input type="text" name="webdbs[SPbencandy_filename]" size="50" value="$webdb[SPbencandy_filename]">
+        默认:“html/special{\$fid}/show{\$id}.htm”<br>
+        <font color="#FF0000">注意事项:</font> <br>
+        生成真静态的话,以上不能为空.</td>
+    </tr>
+    <tr>
+      <td bgcolor='#FFFFFF' width="84%" id="NewsMakeHtmlConfig_2">伪静态列表页的表现形式 
+        <input type="text" name="webdbs[list_filename2]" size="60" value="$webdb[list_filename2]">
+        <br>
+        伪静态内容页的表现形式 
+        <input type="text" name="webdbs[bencandy_filename2]" size="60" value="$webdb[bencandy_filename2]">
+        <br>
+        <br>
+        专题伪静态列表页的表现形式 
+        <input type="text" name="webdbs[SPlist_filename2]" size="60" value="$webdb[SPlist_filename2]">
+        <br>
+        专题伪静态内容页的表现形式 
+        <input type="text" name="webdbs[SPbencandy_filename2]" size="60" value="$webdb[SPbencandy_filename2]">
+        <br>
+        <font color="#FF0000"><b>A类型、</b></font>不修改服务器配置的伪静态实现方式:<br>
+        列表页表现形式输入“list.php?fid-{\$fid}-page-{\$page}.htm”<br>
+        内容页页表现形式输入“bencandy.php?fid-{\$fid}-id-{\$id}-page-{\$page}.htm”<br>
+        专题列表页表现形式输入“listsp.php?fid-{\$fid}-page-{\$page}.htm”<br>
+        专题内容页页表现形式输入“showsp.php?fid-{\$fid}-id-{\$id}-page-{\$page}.htm” <br>
+        <br>
+        <font color="#FF0000"><b>B类型、</b></font>修改服务器配置的伪静态实现方式: <br>
+        <font color="#0000FF">1.必须先配置服务器虚拟机设置</font><br>
+        apache服务器配置参考:修改apache配置文件conf/httd.conf把以下红色这段代码放进去后重启apache服务<br>
+          &lt;VirtualHost *:80&gt;<br>
+          DocumentRoot /home/www_php168<br>
+          ServerName www.php168.com<br>
+        <font color="#FF0000">&lt;IfModule mod_rewrite.c&gt;<br>
+        RewriteEngine On<br>
+        RewriteRule ^(.*)/list-([0-9]+)-([0-9]+)\.htm\$ \$1/list\.php\?fid=\$2&amp;page=\$3<br>
+        RewriteRule ^(.*)/bencandy-([0-9]+)-([0-9]+)-([0-9]+)\.htm\$ \$1/bencandy\.php\?fid=\$2&amp;id=\$3&amp;page=\$4<br>
+        RewriteRule ^(.*)/listsp-([0-9]+)-([0-9]+)\.htm\$ \$1/listsp\.php\?fid=\$2&amp;page=\$3<br>
+        RewriteRule ^(.*)/showsp-([0-9]+)-([0-9]+)-([0-9]+)\.htm\$ \$1/showsp\.php\?fid=\$2&amp;id=\$3&amp;page=\$4 
+        <br>
+        &lt;/IfModule&gt;</font><br>
+        &lt;/VirtualHost&gt;<br>
+        列表页表现形式输入“list-{\$fid}-{\$page}.htm”<br>
+        内容页页表现形式输入“bencandy-{\$fid}-{\$id}-{\$page}.htm” <br>
+        专题列表页表现形式输入“listsp-{\$fid}-{\$page}.htm”<br>
+        专题内容页页表现形式输入“showsp-{\$fid}-{\$id}-{\$page}.htm” <br>
+        注意：如果你没有修改服务器设置的话，请不要输入上面的表现形式，否则前台页面会出错。<br>
+        2.要想首页的标题链接到真静态页或伪静态页,请必须把首页生成静态 <br>
+        <br>
+        <b><font color="#FF0000">C类型、</font></b>如果你使用PHPWIND论坛，并且论坛实现了<font color="#FF0000">-htm-</font>伪静态目录（即已修改过服务器配置，如果没修改过服务器设置，那是不行的）,此时你可以实现跟论坛一样的伪静态表现形式.<br>
+        列表页表现形式输入“list<font color="#FF0000">-htm-</font>fid-{\$fid}-page-{\$page}.htm”<br>
+        内容页页表现形式输入“bencandy<font color="#FF0000">-htm-</font>fid-{\$fid}-id-{\$id}-page-{\$page}.htm” 
+        <br>
+        专题列表页表现形式输入“listsp<font color="#FF0000">-htm-</font>fid-{\$fid}-page-{\$page}.htm”<br>
+        专题内容页页表现形式输入“showsp<font color="#FF0000">-htm-</font>fid-{\$fid}-id-{\$id}-page-{\$page}.htm” 
+        <br>
+        注意：一般用户是不能实现 <font color="#FF0000">-htm-</font>伪静态目录的，因为要修改服务器设置，大部分用户使用的是<font color="#FF0000">.php?</font>伪静态目录，如果你是<font color="#FF0000">.php?</font>伪静态目录的话，你就不能实现C类型的伪静态<br>
+        要实现这种类型，必须确认你的服务器apache配置中存在下面红色这段代码<br>
+        &lt;IfModule mod_rewrite.c&gt;<br>
+        RewriteEngine On<br>
+        <font color="#FF0000">RewriteRule ^(.*)-htm-(.*)\$ \$1\.php\?\$2</font><br>
+        &lt;/IfModule&gt;<br>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+   
+    <tr class="head"> 
+      
+    <td colspan='2' align="left" > <b><font color="#FFFFFF">帮助说明:</font></b></td>
+    </tr>
+  <tr>
+    <td>1.当网站数据比较多的时候,建议生成静态,这样可以很好的加快网站访问速度.同时也有利于百度与谷歌等搜索引擎的收录.<br>
+      2.内容页与列表页的\$page变量指的是分页,不能去掉.<br>
+      3.内容页的分目录布署静态页\$dirid,也尽量不要删除,不删除的话,将会自动按大约每一千个文件自动分目录.优化服务器磁盘索引.当你每个栏目的文章少于3000篇的时候,删除也是影响不大的.可自由把握.<br>
+      4.\$id指的是文章的ID,不可删除.\$fid指的是栏目的FID也是不可删除.<br>
+      5.静态网页后缀名,可根据服务器是否支持.切换成.html或.shtml格式,当然你要切换成.dl或.jav也是可以的.前提是你的服务器必须设置支持才行.<br>
+      6.当栏目是首页时,内容页是首页时,文章小于1000篇时,\$page,\$dirid前面用<font color="#FF0000">-或_</font>间隔时(如果不用这两个符号做间隔的,将不作处理,为兼容以前旧版本考虑),系统程序都特别处理过,自动隐藏了,便于搜索引擎与URL的美观考虑.<br>
+      8.html/可以删除.这样就更美化一些.也更利于搜索引擎.但目录就会生成在根目录下.<br>
+      9.一般情况,如果栏目绑定了域名.就建议生成在网站根目录的再上一级目录.比如../../\$fid/***这样就可以禁止www主域名访问到静态网页.避免主域名与子域名都同时能访问,而被百度判断为作弊.<br>
+      10.以上是默认设置,具体到每个栏目,又可以特殊设置成个性的URL,或绑定栏目的域名.具体到某篇文章,也可以设置文章的特别URL文件名字<br>
+      11.{\$page}{\$fid}{\$id}变量前面 </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function makeIndexHtml(va){
+	if(va=='0'||va==''){
+		document.getElementById("makeindexhtml_1").checked=false;
+		document.getElementById("makeindexhtml_0").checked=true;
+		document.getElementById("MakeIndexHtmlTime").value=0;
+		document.getElementById("IndexHtmlConfig").style.display='none';
+	}else{
+		document.getElementById("makeindexhtml_1").checked=true;
+		document.getElementById("makeindexhtml_0").checked=false;
+		if(document.getElementById("MakeIndexHtmlTime").value==''||document.getElementById("MakeIndexHtmlTime").value==0){
+			document.getElementById("MakeIndexHtmlTime").value=30;
+		}
+		document.getElementById("IndexHtmlConfig").style.display='';
+	}
+}
+//makeIndexHtml('$webdb[MakeIndexHtmlTime]');
+function NewsMakeHtml(va){
+	if(va=='0'||va==''){
+		document.getElementById("NewsMakeHtmlConfig_1").style.display='none';
+		document.getElementById("NewsMakeHtmlConfig_2").style.display='none';
+	}else if(va==2){
+		document.getElementById("NewsMakeHtmlConfig_1").style.display='none';
+		document.getElementById("NewsMakeHtmlConfig_2").style.display='';
+	}else if(va==1){
+		document.getElementById("NewsMakeHtmlConfig_1").style.display='';
+		document.getElementById("NewsMakeHtmlConfig_2").style.display='none';
+	}
+}
+NewsMakeHtml('$webdb[NewsMakeHtml]');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

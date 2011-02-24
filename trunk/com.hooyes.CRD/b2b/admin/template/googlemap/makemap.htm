@@ -1,0 +1,57 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=googlemap">
+    <tr class="head"> 
+      <td><b>Google Sitemaps 介绍</b></td>
+    </tr>
+    <tr > 
+      <td> <b>首先什么是 Google Sitemaps ?</b><br>
+        　　简单的说，Google Sitemap 就是一个包含你网站上公开页面和文档的链接和额外信息的 XML 文件。Google 会阅读这个文件，然后添加其中定义的页面到 
+        Google 索引中。Google Sitemaps 服务是 Google 网站管理员工具的一部分，Google Sitemaps 支持多种语言，所以不用担心你的 
+        Sitemap 的语言问题。<br>
+        <br>
+        <b>你可以用两种方式提交你的 Sitemap </b> <br>
+        　　如果你拥有 Google 账号，你可以使用 <a href="http://www.google.com/webmasters/sitemaps/" target="_blank"><u>Google 
+        Sitemaps</u></a> 服务来提交你的 Sitemap，这个服务可以给你看到关于你网站的很多统计，如使用最多的关键字和爬虫爬你网站时候的问题。 
+        <p>　　如果你没有 Google 账号，也不想注册个，你可以通过“ping” Goolge Sitemaps 服务器来通知 Google 
+          你的 Sitemap 的更新。你需要做的就是通过浏览器访问一次下面这个链接即可：<a href="http://www.google.com/webmasters/sitemaps/ping?sitemap=$webdb[www_url]/sitemap.xml" target="_blank"><u>http://www.google.com/webmasters/sitemaps/ping?sitemap=$webdb[www_url]/sitemap.xml</u></a>，然后 
+          Google 会定期来检查你 Sitemap 的更新，所以你做了一次就可以了，不用再重复。</p>
+      </td>
+    </tr>
+    <tr> 
+      <td align="center"> 
+        <input type="submit" name="Submit" value="生成">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=baidumap">
+    <tr class="head"> 
+      <td><b>百度新闻开放协议 介绍</b></td>
+    </tr>
+    <tr > 
+      <td> <b>使用此开放协议，将会为您的网站带去更多流量!</b> <br>
+        　　《互联网新闻开放协议》是百度新闻搜索制定的搜索引擎新闻源收录标准，网站可将发布的新闻内容制作成遵循此开放协议的XML格式的网页（独立于原有的新闻发布形式）供搜索引擎索引。<br>
+        　　 该协议主要适用于已经成为百度新闻源的网站；如果您的网站尚未成为百度新闻源，<a href="http://news.baidu.com/newsop.html#km" target="_blank"><u>请先申请收录</u></a>。 
+        <p> <b>我如何知道网站是否被百度新闻收录？</b> <br>
+          　　您可以在百度新闻搜索框内输入“site:你的网站域名”查看收录来自您网站的新闻信息。<br>
+          <br>
+          　　生成之后的百度协议网址是:<a href="$webdb[www_url]/baidu_MAP.xml" target="_blank">$webdb[www_url]/baidu_MAP.xml</a></p>
+      </td>
+    </tr>
+    <tr> 
+      <td align="center"> 
+        <input type="submit" name="Submit2" value="生成">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

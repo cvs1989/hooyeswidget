@@ -1,0 +1,61 @@
+<!--
+<?php
+print<<<EOT
+-->
+<script src="images/setday.js"></script>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" target='_blank' method="post" action="?lfj=$lfj&action=make_SPhtml">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">请选择要把哪个分类下的专题全部生成静态页</font></td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="left"> $record 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head2"> 
+            <td width="5%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;" width="42%">分类名称</td>
+            <td  style="border-right:1px solid #fff;" colspan="2">个性静态页URL样式</td>
+            <td width="15%" style="border-right:1px solid #fff;">管理操作</td>
+          </tr>
+          <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;" width="5%"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;" width="42%"> 
+              <input type="checkbox" name="fiddb[]" value="{$rs[fid]}" style="border:0px;" checked>
+              $rs[icon]【<a href='../do/listsp.php?fid=$rs[fid]' target="_blank">{$rs[name]}</a>】</td>
+            <td bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;" width="30%">$rs[filename]</td>
+            <td bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;" width="8%"><a href="index.php?lfj=spsort&job=editsort&fid=index.php?lfj=spsort&job=editsort&fid=$rs[fid]" title="修改设置URL表现形式"><img src="images/edit.png" border="0"></a></td>
+            <td bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;" width="15%">&nbsp; 
+              <!--
+EOT;
+if($rs[havemade]){
+print <<<EOT
+-->
+              <a href="../$rs[filename]" target="_blank" title="查看静态网页"><img src="../member/images/icon_view.gif" border="0"></a> 
+              &nbsp;&nbsp; <a href="?lfj=$lfj&job=del&type=sp&fid=$rs[fid]" title="删除静态网页"><img src="../member/images/del_icon2.gif" border="0"></a> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"> 
+          <input type="submit" name="Submit" value="开始生成静态">
+        </div>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

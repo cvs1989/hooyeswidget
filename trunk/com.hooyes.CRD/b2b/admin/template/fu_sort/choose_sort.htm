@@ -1,0 +1,35 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head" align="center"> 
+      <td width="28%" align="left">模型频道名称</td>
+      <td width="21%"> 现有栏目个数</td>
+      <td width="38%">栏目管理(修改/删除/设置)</td>
+      <td width="13%">创建栏目</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print<<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" style="line-height:180%;" width="28%">{$rs[name]}</td>
+      <td align="center" style="line-height:180%;" width="21%"><b><font color="#FF0000">$rs[NUM]</font></b></td>
+      <td align="center" style="line-height:180%;" width="38%"><a href="index.php?lfj=sort&job=listsort&mid=$rs[id]&only=1"> 
+        管理</a></td>
+      <td align="center" style="line-height:180%;" width="13%"><a href="index.php?lfj=sort&job=addsort&mid=$rs[id]&only=1">创建</a></td>
+    </tr>
+    <!--
+EOT;
+}
+print<<<EOT
+-->
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

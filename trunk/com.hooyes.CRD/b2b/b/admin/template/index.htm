@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>后台管理                                                              powerby www.php168.com</title>
+</HEAD>
+<SCRIPT language=javascript>
+var x=0;
+function switchSysBar(){
+	if(x==0){
+		switchPoint.innerHTML="";
+		document.all("frmMenu").style.display="none";
+		x=1;
+	}else{
+		switchPoint.innerHTML="";
+		document.all("frmMenu").style.display="";
+		x=0;
+	}
+}
+</SCRIPT>
+</head>
+<body scroll="no" style="MARGIN: 0px">
+<div style="position: absolute;top: 0px;left: 0px; z-index: 2; height: 70px;width: 100%">
+<iframe frameborder="0" id="header" name="header" src="./index.php?iframe=head" scrolling="no" style="height: 70px; visibility: inherit; width: 100%; z-index: 1;"></iframe>
+</div>
+<table border="0" cellPadding="0" cellSpacing="0" height="100%" width="100%" style="table-layout: fixed;">
+<tr><td width="195" height="70"></td>
+<td ></td>
+</tr>
+<tr>
+<td width="195">
+<iframe id="mainlu" name="mainlu"  style="HEIGHT:100%; VISIBILITY: inherit; WIDTH: 195px; Z-INDEX: 2" frameborder="0" src="left.php"  scrolling="auto"></iframe>
+</td>
+<td><iframe id="main" name="main" style="height: 100%;visibility: inherit;  width: 100%;z-index: 1" frameborder=0 src="<?=$MainUrl?>"></iframe>
+</td>
+</tr></table>
+</body>
+</html>

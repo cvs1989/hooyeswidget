@@ -1,0 +1,77 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="content">
+  <tr> 
+    <td rowspan="2" width="5%" class="img"> <A target="_blank" HREF="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]"><img src='$rs[icon]' onerror="this.src='$webdb[www_url]/images/default/nobody.gif'" width="60" height="60" border=0></A></td>
+    <td width="95%" class="word" valign="top"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word">
+        <tr> 
+          <td>
+<!--
+EOT;
+if($rs[ifcom]){
+print <<<EOT
+-->
+<img src='$webdb[www_url]/images/default/good_ico.gif' border=0>
+<!--
+EOT;
+}print <<<EOT
+-->
+		  <img src='$webdb[www_url]/images/default/faceicon/$rs[img].gif' onerror="this.src='$webdb[www_url]/images/default/faceicon/1.gif'" border=0>$rs[content]</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="95%" class="info">称呼:<A target="_blank" HREF="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]">$rs[username]</A> 
+      日期:$rs[posttime] <A HREF="{$webdb[www_url]}/do/comment_ajax.php?action=vote&aid=$aid&cid=$rs[cid]&job=agree&iframeID=$iframeID" target="comment_show"><img src="$webdb[www_url]/images/default/good_btn.gif" width=16 height=16 border=0> <font color="#FF0000">{$rs[agree]}</font>票</A> 
+      <A HREF="{$webdb[www_url]}/do/comment_ajax.php?action=vote&aid=$aid&cid=$rs[cid]&job=disagree&iframeID=$iframeID" target="comment_show"><img src="$webdb[www_url]/images/default/bad_btn.gif" width=16 height=16 border=0> <font color="#0000FF">{$rs[disagree]}</font>票</A> 
+      <A HREF="javascript:quotecomment('[quote]引用ID编号为{$rs[cid]},称呼为{$rs[username]}于{$rs[posttime]}发表的  :\\r\\n{$rs[title]}[/quote]\\r\\n')">引用回复</A> 
+      <!--
+EOT;
+if($web_admin||($lfjuid&&$rs[uid]==$lfjuid)){
+print <<<EOT
+-->
+      <A HREF="{$webdb[www_url]}/do/comment_ajax.php?action=del&aid=$aid&cid=$rs[cid]&iframeID=$iframeID" target="comment_show">删除</A> 
+      <!--
+EOT;
+}print <<<EOT
+-->
+      <!--
+EOT;
+if($web_admin&&$rs[ifcom]){
+print <<<EOT
+-->
+      <A HREF="{$webdb[www_url]}/do/comment_ajax.php?action=uncom&aid=$aid&cid=$rs[cid]&iframeID=$iframeID" target="comment_show">取消推荐</A> 
+      <!--
+EOT;
+}elseif($web_admin){print <<<EOT
+-->
+      <A HREF="{$webdb[www_url]}/do/comment_ajax.php?action=com&aid=$aid&cid=$rs[cid]&iframeID=$iframeID" target="comment_show">推荐</A> 
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page">$showpage</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

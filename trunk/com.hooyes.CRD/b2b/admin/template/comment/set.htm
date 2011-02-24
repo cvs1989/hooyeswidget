@@ -1,0 +1,139 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=set">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><font color="#FFFFFF">内容评论设置</font></div>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td> 内容页是否调用显示评论：<br>
+        (这里为总控制台,当这里禁止显示评论后,即使栏目那里设置能显示也无效) </td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[showComment]" value="1" $showComment[1]>
+        是 
+        <input type="radio" name="webdbs[showComment]" value="0" $showComment[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td>是否暂停评论</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[forbidComment]" value="1" $forbidComment[1]>
+        是 
+        <input type="radio" name="webdbs[forbidComment]" value="0" $forbidComment[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td align="left">每页显示几条评论:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[showCommentRows]" class="mmcinb" size="5" value="$webdb[showCommentRows]">
+      </td>
+    </tr><tr bgcolor='#FFFFFF'> 
+      <td align="left">评论时间间隔:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[CommentTime]" class="mmcinb" size="3" value="$webdb[CommentTime]">秒
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td>是否允许游客发表评论:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[allowGuestComment]" value="1" $allowGuestComment[1]>
+        是 
+        <input type="radio" name="webdbs[allowGuestComment]" value="0" $allowGuestComment[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td>游客发表评论是否自动通过审核:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[allowGuestCommentPass]" value="1" $allowGuestCommentPass[1]>
+        是 
+        <input type="radio" name="webdbs[allowGuestCommentPass]" value="0" $allowGuestCommentPass[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td>会员发表评论是否自动通过审核:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[allowMemberCommentPass]" value="1" $allowMemberCommentPass[1]>
+        是 
+        <input type="radio" name="webdbs[allowMemberCommentPass]" value="0" $allowMemberCommentPass[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td> 没通过审核的评论是否也显示出来:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[showNoPassComment]" value="1" $showNoPassComment[1]>
+        是 
+        <input type="radio" name="webdbs[showNoPassComment]" value="0" $showNoPassComment[0]>
+        否 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'>
+      <td>评论排序方式:</td>
+      <td bgcolor='#FFFFFF'>
+        <input type="radio" name="webdbs[CommentOrderType]" value="0" $CommentOrderType[0]>
+        新发表的排在前面 
+        <input type="radio" name="webdbs[CommentOrderType]" value="1" $CommentOrderType[1]>
+        精华排在前面 
+        <input type="radio" name="webdbs[CommentOrderType]" value="2" $CommentOrderType[2]>
+        投票多的排在前面</td>
+    </tr>
+    <!--
+EOT;
+if($SystemModule[log]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+if($SystemModule[down]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+if($SystemModule[photo]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+if($SystemModule[mv]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+if($SystemModule[shop]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+if($SystemModule[music]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+if($SystemModule[flash]){
+print <<<EOT
+-->
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td width='34%'>&nbsp;</td>
+      <td width='70%'> 
+        <input type='submit' name='Submit' value='提交' class=mmcinb>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

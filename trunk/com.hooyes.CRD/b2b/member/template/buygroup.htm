@@ -1,0 +1,104 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 积分购买级别,从购买之日起，有效期为<b><font color="#FF0000">{$webdb[groupTime]}</font></b>天,你现在的级别是“<b><font color="#0000FF">{$ltitle[$lfjdb[groupid]]}</font></b>” 
+            {$lfjdb[C][endtime]}</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tr> 
+                <td height="25"> 
+                  <table width="100%" border="0" cellspacing="1" cellpadding="6">
+                     
+                      <tr align="center"> 
+                        <td width="10%" style="border-bottom:1px solid #ccc;background:#F6F6F6;line-height:21px;">GID</td>
+                        <td width="41%" style="border-bottom:1px solid #ccc;background:#F6F6F6;line-height:21px;">用户组名称</td>
+                        <td width="32%" style="border-bottom:1px solid #ccc;background:#F6F6F6;line-height:21px;">需要积分</td>
+                        <td width="17%" style="border-bottom:1px solid #ccc;background:#F6F6F6;line-height:21px;">购买</td>
+                      </tr>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <tr align="center"> 
+                        <td width="10%" style="line-height:23px;">$rs[gid] </td>
+                        <td width="41%" style="line-height:23px;">$rs[grouptitle]</td>
+                        <td width="32%" style="line-height:23px;">$rs[levelnum]</td>
+                        <td width="17%" style="line-height:23px;"><a href="?job=buy&gid=$rs[gid]#buy">购买</a></td>
+                      </tr>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                     
+                  </table>
+                  <!--
+EOT;
+if($job=='buy'){print <<<EOT
+-->
+                  <a name='buy'></a> 
+                  <table width="100%" border="0" cellspacing="1" cellpadding="6"><form name="form2" method="post" action="?action=buy">
+
+                    <tr> 
+                      <td style="border-bottom:1px solid #ccc;background:#F6F6F6;">你目前的{$webdb[MoneyName]}有 
+                        <img src="images/money.gif"> <b><font color="#0000FF">{$lfjdb[money]}</font></b>{$webdb[MoneyDW]}</td>
+                    </tr>
+                    <tr> 
+                        <td align="center"> 你现在的级别是“<b><font color="#0000FF">{$ltitle[$lfjdb[groupid]]}</font></b>”，{$lfjdb[C][endtime]}你要购买的级别是“{$rsdb[grouptitle]}”,需要积分“{$rsdb[levelnum]}”<br>
+                        <input type="submit" name="Submit3" value="立即购买">
+                        <input type="hidden" name="action" value="buy">
+                          <input type="hidden" name="gid" value="$gid">
+                        </td>
+                    </tr>
+                    <tr> 
+                      <td>&nbsp;</td>
+                    </tr></form>
+                  </table>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>    
+	  
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">相关信息</td>
+        </tr>
+        <tr> 
+          <td class="middle">
+            <table width="100%" border="0" cellspacing="5" cellpadding="0" style="margin:10px 0 20px 5px;">
+              <tr> 
+                <td style="line-height:25px;">1.购买用户级别,需要积分购买,你当前拥有的积分数是 <b><font color="#FF0000">{$lfjdb[money]}</font></b> 
+                  个 <br>
+                        2.如果你的积分不足,你可以用金币兑换积分.<a href="money.php?job=list"><b><font color="#FF0000">立即兑换</font></b></a><br>
+                  3.管理员不能购买级别,因为管理员的级别是最高的.</td>
+              </tr>
+            </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

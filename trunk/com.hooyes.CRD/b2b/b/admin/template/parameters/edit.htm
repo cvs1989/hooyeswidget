@@ -1,0 +1,41 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="2" class="tablewidth"> 
+  <form name="form_work" method="post" action="?">
+    <tr align="center" class="head"> 
+      <td colspan="3" align="left">修改模型</td>
+    </tr>
+	
+	 <tr align="center" class="middle"> 
+      <td width="16%" align="right">模型名称：</td>
+	  <td width="84%" align="left"><input name="name" type="text" id="name" value="$rsdb[name]" /></td>
+	 </tr>
+	 
+	 
+	 <tr align="center" class="middle"> 
+      <td width="16%" align="right">显示名称：</td>
+	  <td width="84%" align="left"><input name="alias" type="text" id="alias" value="$rsdb[alias]" /></td>
+	 </tr>
+	 
+	 
+	 <tr align="center" class="middle"> 
+      <td width="16%" align="right">排序：</td>
+	  <td width="84%" align="left"><input name="listorder" type="text" id="listorder" value="$rsdb[listorder]" /></td>
+	 </tr>
+	 
+	<tr align="center" class="middle"> 
+      <td align="left">&nbsp;</td>
+      <td align="left"><input type="submit" name="Submit" value="保 存" /><input type="button" name="button" value="取 消"  onclick="window.location='?';"/>
+        <input name="action" type="hidden" id="action" value="edit" />
+      <input name="mid" type="hidden" id="mid" value="$rsdb[mid]" /></td>
+	</tr>
+	</form>
+</table>  
+
+<!--
+EOT;
+?>
+-->

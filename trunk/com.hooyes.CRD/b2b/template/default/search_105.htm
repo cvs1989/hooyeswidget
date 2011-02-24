@@ -1,0 +1,125 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">高级搜索</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <form name="form1" method="post" action="?">
+            <td class="middle" align="center"> 
+              <table width="99%" border="0" cellspacing="1" cellpadding="4">
+                <tr align="left"> 
+                  <td width="15%">搜索模型:</td>
+                  <td width="85%">$module_select</td>
+                </tr>
+                <tr align="left"> 
+                  <td width="15%">搜索栏目:</td>
+                  <td width="85%">$fid_select</td>
+                </tr>
+                <tr align="left"> 
+                  <td width="15%">关键字:</td>
+                  <td width="85%"> 
+                    <input type="text" name="keyword" value="$_POST[keyword]$_GET[keyword]">
+                  </td>
+                </tr>
+                <tr align="left"> 
+                  <td width="15%">查找字段类型:</td>
+                  <td width="85%"> 
+                    <input type="radio" name="type" value="title" $typedb[title] style="border:0px;">
+                    标题 
+                    <input type="radio" name="type" value="keyword" $typedb[keyword] style="border:0px;">
+                    标签(关键字) 
+                    <input type="radio" name="type" value="username" $typedb[username] style="border:0px;">
+                    发布者 
+                    <input type="radio" name="type" value="content" $typedb[content] style="border:0px;">
+                    内容 </td>
+                </tr> 
+                <tr align="left"> 
+                  <td width="15%">&nbsp;</td>
+                  <td width="85%"> 
+                    <input type="submit" name="Submit" value="搜索" class="button">
+                    　　<a href="?mid=$mid">重新搜索</a> </td>
+                </tr>
+              </table>
+              
+            </td>
+          </form>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+	  
+              <!--
+EOT;
+if($listdb){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG">搜索结果</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#EFEFEF">
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[fontweight] =($rs[fonttype]==1)?'font-weight:bold;':'';
+$rs[fontcolor]  =$rs[titlecolor]?"color:$rs[titlecolor];":'';
+print <<<EOT
+-->
+              <tr bgcolor="#FFFFFF"> 
+                <td width="5%" align="center">$rs[aid]</td>
+                <td width="51%">·<a href="$rs[url]" target="_blank" title='$rs[full_title]' style="{$rs[fontweight]}{$rs[fontcolor]}">$rs[title]</a></td>
+                <td width="17%" align="center">[<a href="list.php?fid=$rs[fid]" target="_blank">{$rs[fname]}</a>]</td>
+                <td width="10%" align="center">{$rs[username]}</td>
+                <td width="17%" align="center">({$rs[posttime]})</td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td class="page" align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>              <!--
+EOT;
+}
+print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

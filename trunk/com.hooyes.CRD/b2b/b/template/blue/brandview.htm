@@ -1,0 +1,244 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$Murl/images/$STYLE/brand/style.css">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+  <tr>
+    <td>$label[brand_top_ad1]</td>
+  </tr>
+</table>
+
+<div class="leftMain">
+<div class="DAADC0_order">
+  <table width="100%" border="0" cellspacing="5" cellpadding="0">
+    <tr>
+      <td width="9%"><img src="{$Brand_db[picurl][$bid]}"  border="0" width="180" height="60" onerror="this.src='$Murl/images/$STYLE/brandnopic.jpg';" alt="{$Brand_db[name][$bid]}"/></td>
+      <td width="91%" align="left" valign="top" style="line-height:180%;"><strong style="font-size:16px;">{$Brand_db[name][$bid]}</strong><br />
+      <a href="$Mdomain/homepage.php?uid=$rsdb[postuid]" target="_blank">$rsdb[postcompany]</a><br />
+	  $fname 官方网站：<a href="$rsdb[website]" target="_blank">$rsdb[website]</a>	&nbsp;(浏览量：$rsdb[hits] 次) </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-indent:25px; line-height:180%;">
+	 <div style="height:225px; overflow-Y:auto; overflow-X:hidden">$rsdb[description]</div> 
+	  </td>
+      </tr>
+  </table>
+</div>
+</div>
+
+<div class="rightMain">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="brand_news">
+  <tr>
+    <td class="head" align="left"><font style="float:left">品牌视频</font><font style="float:right">&nbsp;</font></td>
+  </tr>
+  <tr>
+    <td class="middle" align="left" valign="top">$rsdb[video_show]</td>
+  </tr>
+  
+</table>
+
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+  <tr>
+    <td>$label[brand_top_ad2]</td>
+  </tr>
+</table>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+  <tr>
+    <td>
+<div class="leftMain">
+
+<div class="DAADC0_order">
+<!--
+EOT;
+$blist=Get_Info($type='level',$rows=10,$leng=16,$fid=0,$mid=0,$ctype=1,$bid);
+foreach($blist as $rs){
+print <<<EOT
+-->
+	<div style="height:140px; float:left; width:120px; text-align:center; margin:5px 10px 5px 5px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+  <tr>
+    <td height="100" bgcolor="#FFFFFF" style="padding:3px;"><a href="$rs[url]" ><img src="$rs[picurl].gif"  width="100" height="100" border="0" onerror="this.src='$Murl/images/$STYLE/nopic.jpg';"; alt="$rs[full_title]"/></a></td>
+  </tr>
+  <tr>
+    <td height="30" bgcolor="#F5F5F5" style="padding-top:2px;"><a href="$rs[url]" title="$rs[full_title]">$rs[title]</a><br />$rs[my_price]</td>
+  </tr>
+</table>
+
+	</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</div>
+
+
+</div>
+<div class="rightMain">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="brand_company">
+  <tr>
+    <td class="head" align="left"><font style="float:left;" class="title">品牌代理商</font><font style="float:right"><a href="$Mdomain/member/?main=agents.php" target="_blank">>>>申请代理</a>&nbsp;</font></td>
+  </tr>
+  <tr>
+    <td class="middle" align="left" valign="top">
+<!--
+EOT;
+if($agents_company){
+print <<<EOT
+-->  <div id=demo style="margin-top:10px;OVERFLOW: hidden; HEIGHT: 270px; ">
+		<div id=demo1>
+<!--
+EOT;
+foreach($agents_company as $rs){
+ print <<<EOT
+-->    
+	<div class="agents_brandlist"><a href="$Mdomain/homepage.php?uid=$rs[uid]&m=agent" target="_blank"><strong>$rs[ag_name]</strong></a><br /><a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank"><font color="#454545">[$rs[companyName]]</font></a></div>
+
+    
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </div><div id=demo2></div></div>
+    
+<!--
+EOT;
+if(count($agents_company)>6){
+print <<<EOT
+-->
+`<script> 
+  var speed  = 1;//滚动速度
+  var rows  = 270;//每行高度
+  var stim  = 300; //停留时间倍数 * speed
+  var stop  = 0; //初始化值，不管
+  var demo2=document.getElementById('demo2');
+  var demo1=document.getElementById('demo1');
+  var demo=document.getElementById('demo');
+  demo2.innerHTML = demo1.innerHTML
+  function Marquee(){
+    if(demo.scrollTop%rows==0 && stop<=stim){
+      stop++;
+      return;
+    }
+    stop = 0;
+    if(demo2.offsetTop-demo.scrollTop<=0)
+      demo.scrollTop-=demo1.offsetHeight
+    else{
+      demo.scrollTop++
+    }
+  }
+
+ var MyMar    = setInterval(Marquee,speed);</script>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<!--
+EOT;
+}else{
+print <<<EOT
+-->    
+	<br /><strong>暂无代理商</strong>.<br /><a href="$Mdomain/member/?main=agents.php" target="_blank">点击这里成为 "{$Brand_db[name][$bid]}"的代理商</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->    
+    
+    </td>
+  </tr>
+</table>
+
+</div>
+
+	
+	</td>
+  </tr>
+</table>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">
+  <tr>
+    <td>$label[brand_top_ad3]</td>
+  </tr>
+</table>
+
+<!--
+EOT;
+foreach($rsdb[vs_fid] as $key){
+$blist=brand_fid_list($bid,$key,8,1);
+if(count($blist)>0){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="brand_hot" >
+  <tr>
+    <td  class="head" >
+	<div class="title">
+	<span class="left">产品：{$Fid_db[name][$key]} &nbsp;<font style="font-weight:100; font-size:12px;">品牌:{$Brand_db[name][$bid]}</font></span>
+	<span class="right"><a href="$Mdomain/member/?main=brand.php">我也要在此展示我的品牌</a></span>
+	</div>
+	</td>
+  </tr>
+  <tr>
+    <td class="middle">
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td width="20%" class="title2">商家名称</td>
+			  <td width="30%" class="title2">产品名称</td>
+			  <td width="8%" class="title2">更新时间</td>
+			  <td width="12%" class="title2">地区</td>
+			  <td width="10%" class="title2">询价</td>
+			  <td width="10%" class="title2">联系方式</td>
+			  <td width="10%" class="title2">服务</td>
+			</tr>
+<!--
+EOT;
+foreach($blist as $rs){
+print <<<EOT
+-->			
+			
+			<tr>
+			  <td class="content"><a href="$Mdomain/homepage.php?uid=$rs[uid]"  target="_blank" title="点击查看“$rs[owner_name]”" style="color:#283C86"><strong>$rs[owner_name_short]</strong></a></td>
+			  <td class="content"><a href="$rs[url]" target="_blank" title='$rs[full_title]' style="color:#E00000; ">$rs[title]</a></td>
+			  <td align="center" class="content">$rs[posttime]</td>
+			  <td align="center" class="content">{$rs[area]}</td>
+			  <td align="center" class="content"><a href="$Mdomain/action.php?action=form1&ids=$rs[id]" target="_blank">点击询价</a></td>
+			  <td align="center" class="content"><a href="$Mdomain/homepage.php?uid=$rs[uid]&m=contactus" target="_blank">联系方式</a></td>
+			  <td align="center" class="content">$rs[services]</td>
+			</tr>
+			
+<!--
+EOT;
+}
+unset($blist);
+print <<<EOT
+-->			
+			
+		  </table>	
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+}
+
+print <<<EOT
+-->
+
+<br  clear="all"/>
+<br  clear="all"/>
+
+<!--
+EOT;
+?>
+-->

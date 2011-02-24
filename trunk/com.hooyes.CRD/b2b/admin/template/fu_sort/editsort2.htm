@@ -1,0 +1,129 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job" onsubmit="">
+    <tr align="center"> 
+      <td colspan="2" class="head">栏目修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"><font color="#0000FF">打开详细选项设置&gt;&gt;&gt;</font><font color="#FF0000"> 
+        [<a href="$webdb[www_url]/list.php?fid=$fid" target="_blank">浏览前台</a>]</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">名称:</td>
+      <td width="80%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">设置为分类或栏目或文章:</td>
+      <td width="80%"> 
+        <input type="radio" name="postdb[type]" value="0" $typedb[0]>
+        栏目 
+        <input type="radio" name="postdb[type]" value="1" $typedb[1]>
+        分类 
+        <input type="radio" name="postdb[type]" value="2" $typedb[2]>
+        单篇文章 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">修改后属于哪个分类:</td>
+      <td width="80%"> $sort_fup</td>
+    </tr>
+    <!--
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%">设置为分类或栏目:</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[type]" value="1" $typedb[1]>
+        分类 
+        <input type="radio" name="postdb[type]" value="0" $typedb[0]>
+        栏目</td>
+    </tr>-->
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="20%">栏目模板:<br>
+        (一般留空,即以默认为标准) </td>
+      <td width="80%"> 头部模板: 
+        <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+        $tpl_head<br>
+        底部模板: 
+        <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+        $tpl_foot<br>
+        内容模板: 
+        <input type="text" name="postdb[tpl][list]" value="{$tpl['list']}" id="tpl_list" size="40">
+        $tpl_list</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr">
+      <td width="20%">静态网页表现形式:
+        <span help=1><br>(留空则以系统默认为标准)<br>
+系统默认是:<br>
+        <font color="#0000FF">$webdb[list_filename]</font><br>
+        你可以随意写一个HTML文件名</span></td>
+      <td width="80%">
+        <input type="text" name="postdb[list_html]" value="$rsdb[list_html]" id="list_html" size="50">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="20%">栏目风格:(仅对部分模板有效)</td>
+      <td width="80%">$style_select</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="20%">文章内容:</td>
+      <td width="80%"> 
+        <input type="hidden" name="postdb[descrip]" id="content" value='$rsdb[descrip]' style="display:;width:500px;">
+        <iframe id="eWebEditor1" src="ewebeditor/ewebeditor.php?id=content&style=standard" frameborder="0" scrolling="no" width="100%" height="450"></iframe> 
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[passwd]">
+        <input type="hidden" name="postdb[jumpurl]">
+        <input type="hidden" name="postdb[forbidshow]" value="1">
+        <input type="hidden" name="postdb[allowpost][]" value="3">
+        <input type="hidden" name="_index_showtitle" value="$_index_showtitle">
+        <input type="hidden" name="index_showtitle" value="0">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+        <input type="hidden" name="postdb[fmid]" value="$rsdb[fmid]">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>头部模板,底部模板,内容模板,更表模板,你都可以自己做一个有个性的,然后在上面输入他们所在的目录即可调用显示.留空的话.将以默认为标准.<br>
+        或者你可以不做头部与底部模板.只做内容模板,此时上面的头部模板与底部模板就得选择&quot;头部白板&quot;,&quot;底部白板&quot;<br>
+        通过做出各种各样的模板,你就可以做出有个性的栏目列表页与内容页,等等.这会变得非常的轻松自如.</td>
+    </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+function set_code(){
+	eWebEditor1.editor.code();
+}
+//document.onmousemove=set_code;
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

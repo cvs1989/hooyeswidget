@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<!--
+<?php
+$GuideFid[$fid]=str_replace("<a href='$webdb[www_url]' class='guide_menu'>&gt;首页</a>","",$GuideFid[$fid]);
+print <<<EOT
+--> 
+<head>
+<title>$titleDB[title]                           powered by www.php168.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+<link href="$webdb[www_url]/images/showsp/default.css" rel="stylesheet" type="text/css" />
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/inc.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/swfobject.js"></SCRIPT>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div class="wrap"> 
+  <div id="nav"> 
+    <div class="logo"><a href="#">LOGO</a></div>
+    <div class="menu">
+<!--
+EOT;
+$i=0;
+$detail=explode("\r\n",$webdb[guide_word]);
+foreach($detail AS $key=>$value){
+$i++;
+$icon=$i>1?'-':'';
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]/$url";
+}
+$blank=$blank?"_blank":'';
+$color=$color?"$color":'';
+print <<<EOT
+-->
+	$icon  <a href="$url" target="$blank" style="color:$color;">$name</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	</div>
+  </div>
+<!--
+EOT;
+if($rsdb[banner]){
+$rsdb[banner]=tempdir($rsdb[banner]);
+print <<<EOT
+-->
+  <div><img src="$rsdb[banner]" onload="this.width='960';"></div>
+  <!--
+EOT;
+}else{
+$str=urlencode($rsdb[title]);
+print <<<EOT
+-->
+<div><img src="$webdb[www_url]/do/fontimg.php?x=&y=&str=$str&c=black&size=30&image=images/showsp/topimg.jpg" width="960" height="150"></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+  <div class="guide">当前位置：<a href="$webdb[www_url]/">{$webdb[webname]}</a> $GuideFid[$fid]</div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="headline">
+    <tr> 
+      <td></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main">
+    <tr> 
+      <td id="left" height="186" valign="top" width="26%"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px;">
+          <tr> 
+            <td align="center"><img src="$rsdb[picurl]" onload="this.width=250;" onerror="this.src='$webdb[www_url]/images/default/noimg.jpg'" > 
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side">
+          <tr> 
+            <td class="head">专题介绍</td>
+          </tr>
+          <tr> 
+            <td class="m" style="text-indent:2em;">$rsdb[content]</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side">
+          <tr> 
+            <td class="head">相关信息</td>
+          </tr>
+          <tr> 
+            <td class="m">责任编辑:{$rsdb[username]} <br>
+              发布时间:{$rsdb[posttime]} <br>
+              浏览:<span id="hits">{$rsdb[hits]}</span>次</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td align="center">$label[spshow3]</td>
+          </tr>
+        </table>
+      </td>
+      <td id="center" height="186" valign="top"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td align="center">$label[mvshow]</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side" align="center">
+          <tr> 
+            <td class="head">$rsdb[title]</td>
+          </tr>
+          <tr> 
+            <td class="m"> 
+ 
+			  
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                   <div style="width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">·$rs[subject]</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td id="right" height="186" valign="top" width="23%"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side">
+          <tr> 
+            <td class="head">最新专题</td>
+          </tr>
+          <tr> 
+            <td class="m"> 
+             <script src="$webdb[www_url]/do/jsspecial.php?fid=$fid&type=new&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]"></script> 
+                
+              
+              </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side">
+          <tr> 
+            <td class="head">热门专题</td>
+          </tr>
+          <tr> 
+            <td class="m"> 
+              <script src="$webdb[www_url]/do/jsspecial.php?fid=$fid&type=hot&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]"></script>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side">
+          <tr> 
+            <td class="head">推荐专题</td>
+          </tr>
+          <tr> 
+            <td class="m"> 
+              <script src="$webdb[www_url]/do/jsspecial.php?fid=$fid&type=com&rows=$webdb[JsListRows]&leng=$webdb[JsListLeng]"></script>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="side">
+          <tr> 
+            <td class="head">广告位</td>
+          </tr>
+          <tr> 
+            <td class="m">{$AD_label['sp_show_ad']} </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="footimg">
+    <tr> 
+      <td class="L">&nbsp;</td>
+      <td class="C">{$webdb[webname]}出品 编辑：{$rsdb[username]}</td>
+      <td class="R">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="8" cellpadding="0" style="border:1px solid #CCCCCC;margin-top:8px;background:#F7F7F7;">
+    <tr>
+      <td bgcolor="E1E1E1" width="2%" align="center" valign="middle" style="VERTICAL-ALIGN:middle;font-size:14px;line-height:150%;color:#5F5F5F;"><b>图<br>
+        片<br>
+        主<br>
+        题</b></td>
+      <td height="120" id="picsubject" width="98%">
+<!--
+EOT;
+foreach($picdb AS $key=>$rs){
+$rs[title]=get_word($rs[full_title]=$rs[title],24);
+if($key>5)break;
+print<<<EOT
+-->
+        <div class="listpic"> <a href="$rs[url]" title="$rs[full_title]" class="img" target="_blank"><img src="$rs[picurl]" border="0" width="120" height="90"></a> 
+          <a href="$rs[url]" target="_blank" class="title" title="$rs[full_title]">$rs[title]</a> </div>
+<!--
+EOT;
+}print<<<EOT
+--> 
+	  </td>
+  </tr>
+</table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="commenttable">
+    <tr> 
+      <td class="td"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td> <div id="comment"></div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="16%"><span class="L">称　　呼:</span><span class="R"></span></td>
+                <td width="84%"><span class="R"> 
+                  <input type="text" name="textfield2" id="comment_username" value="$lfjid">
+                  </span></td>
+              </tr>
+ 
+              <tr> 
+                <td width="16%"><span class="L">验 证 码:</span></td>
+                <td width="84%"> 
+                  <input id="yzImgNum" type="text" name="yzimg" size="8">
+                  <img border="0" id="yz_Img" name="imageField" src="$webdb[www_url]/do/yzimg.php"> 
+                </td>
+              </tr>
+ 
+              <tr> 
+                <td width="16%"><span class="L">内　　容:</span></td>
+                <td width="84%"><span class="R"> 
+                  <textarea name="textfield" cols="50" rows="5" id="comment_content" onKeyDown="quickpost(event)"></textarea>
+                  </span></td>
+              </tr>
+              <tr> 
+                <td width="16%"> 
+                  <script language="JavaScript">
+<!--
+
+getcomment("$webdb[www_url]/do/special_comment_ajax.php?cid=$id");
+cnt = 0;
+function quickpost(event)
+{
+	if((event.ctrlKey && event.keyCode == 13)||(event.altKey && event.keyCode == 83))
+	{
+		cnt++;
+		if (cnt==1){
+			postcomment('$webdb[www_url]/do/special_comment_ajax.php?action=post&cid=$id')
+		}else{
+			alert('内容正在提交...');
+		}
+	}	
+}
+//-->
+</script>
+                </td>
+                <td width="84%"><span class="R"> 
+                  <input type="button" id="comment_submit" name="Submit" value="提交" onClick="postcomment('$webdb[www_url]/do/special_comment_ajax.php?action=post&cid=$id','1')" class="button">
+                  </span></td>
+              </tr>
+            </table>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="footer">
+  <tr> 
+    <td align="center">$webdb[copyright]<br>
+      Copyright@{$webdb[www_url]} all rights reserved <a href="http://www.miibeian.gov.cn" target="_blank">{$webdb[miibeian_gov_cn]}</a> 
+      <br>
+      Powered by <a href="http://www.php168.com" target="_blank">PHP168 {$php168_Edition}</a> 
+      Code &copy; 2003-08 <a href="http://www.php168.com/bbs" target="_blank">PHP168CMS</a> 
+    </td>
+  </tr>
+</table>
+</div>
+</body>
+<!--
+EOT;
+?>
+-->
+</html>

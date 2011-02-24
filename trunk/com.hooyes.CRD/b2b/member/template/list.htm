@@ -1,0 +1,272 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">版主管理</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <form name="form1" method="post" action="?f">
+                <tr align="center" class="head_in"> 
+                  <td width="41%">标 题</td>
+                  <td width="13%">栏 目 </td>
+                  <td width="13%">日期</td>
+                  <td width="12%">署名</td>
+                  <td width="11%">状态</td>
+                  <td width="10%">修改/删除</td>
+                </tr>
+                <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left"> 
+                    <input type="checkbox" name="aidDB[]" value="$rs[aid]">
+                    {$rs[aid]}、<a href="../bencandy.php?fid=$rs[fid]&id=$rs[aid]" target="_blank" title="$rs[full_title]" style="color:$rs[titlecolor];">$rs[title]</a> 
+                  </td>
+                  <td align="center">&nbsp;<a href="../list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+                  <td align="center">$rs[posttime]</td>
+                  <td align="center">&nbsp;$rs[username]</td>
+                  <td align="center">$rs[state]/$rs[levels]</td>
+                  <td align="center"><a href="post.php?job=manage&aid=$rs[aid]">修改</a>/ 
+                    <!--
+EOT;
+if($rs[yz]==2){print <<<EOT
+-->
+                    <a onclick="return confirm('你确实要从回收站清除本文吗?不可恢复')" href="?Type=delete&aidDB[]=$rs[aid]&step=2&forcedel=1">清除</a> 
+                    <!--
+EOT;
+}elseif($webdb[ForceDel]){
+print <<<EOT
+-->
+                    <a onclick="return confirm('你确实要删除本文吗?不可恢复')" href="?Type=delete&aidDB[]=$rs[aid]&step=2&forcedel=1">删除</a> 
+                    <!--
+EOT;
+}else{
+print <<<EOT
+-->
+                    <a   href="?Type=delete&aidDB[]=$rs[aid]&step=2">删除</a> 
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                  </td>
+                </tr>
+                <!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="left" bgcolor="#F2F2F2"> 
+                  <td colspan="6">请选择要操作的栏目$choose_fid</td>
+                </tr>
+                <tr align="center">
+                  <td colspan="6"> $showpage</td>
+                </tr>
+                <tr align="center"> 
+                  <td colspan="6">&nbsp; </td>
+                </tr>
+                <tr align="center"> 
+                  <td colspan="6"> 
+                    <input type="radio" name="Type" value="delete" onclick="choose('del_tr')">
+                    删除 
+                    <input type="radio" name="Type" value="yz" onclick="choose('yz_tr')">
+                    审核操作 
+                    <input type="radio" name="Type" value="leavels" onClick="choose('levels_tr')">
+                    推荐操作 
+                    <input type="radio" name="Type" value="move" onclick="choose('fid_tr')">
+                    移动操作 
+                    <input type="radio" name="Type" value="top" onclick="choose('top_tr')">
+                    置顶 
+                    <input type="radio" name="Type" value="bottom" onclick="choose('bottom_tr')">
+                    沉底 
+                    <input type="radio" name="Type" value="front" onClick="choose('ahead_tr')">
+                    提前 
+                    <input type="radio" name="Type" value="color" onClick="choose('color_tr')">
+                    标题加亮 
+                    <input type="radio" name="Type" value="return" onClick="choose('')">
+                    从回收站取回<br>
+                    <br>
+                    <table width="100%" border="0" cellspacing="1" cellpadding="3" id="work_more" style="border:1px #ccc dotted;">
+                      <tr id="del_tr" align="left"> 
+                        <td width="25%">删除选项</td>
+                        <td width="75%"> 
+                          <input type="radio" name="forcedel" value="1" checked>
+                          彻底删除 
+                          <!--
+EOT;
+if(!$webdb[ForceDel]){print <<<EOT
+-->
+                          <input type="radio" name="forcedel" value="0">
+                          放进回收站 
+                          <!--
+EOT;
+}print <<<EOT
+-->
+                        </td>
+                      </tr>
+                      <tr id="yz_tr" align="left"> 
+                        <td width="25%">审核选项</td>
+                        <td width="75%"> 
+                          <input type="radio" name="T_yz" value="1" checked>
+                          通过审核 
+                          <input type="radio" name="T_yz" value="0">
+                          取消审核 </td>
+                      </tr>
+                      <tr id="levels_tr" align="left"> 
+                        <td width="25%">推荐选项</td>
+                        <td width="75%"> 
+                          <input type="radio" name="levels" value="1" checked>
+                          推荐 
+                          <input type="radio" name="levels" value="0">
+                          取消推荐 </td>
+                      </tr>
+                      <tr id="fid_tr" align="left"> 
+                        <td width="25%">请选择移到哪个栏目:</td>
+                        <td width="75%">$sort_fid </td>
+                      </tr>
+                      <tr id="color_tr" align="left"> 
+                        <td width="25%">标题颜色:</td>
+                        <td width="75%"> 
+                          <select  name="Color">
+                            <option value='' style='background-color:skyblue;color:black'  selected>标题颜色</option>
+                            <option value='black' style='background-color:skyblue;color:black'>黑色</option>
+                            <option value='skyblue' style='color:skyblue'>天蓝</option>
+                            <option value='royalblue' style='color:royalblue'>品蓝</option>
+                            <option value='blue' style='color:blue'>蓝</option>
+                            <option value='darkblue' style='color:darkblue'>暗蓝</option>
+                            <option value='orange' style='color:orange'>橙</option>
+                            <option value='orangered' style='color:orangered'>桔红</option>
+                            <option value='crimson' style='color:crimson'>深红</option>
+                            <option value='red' style='color:red'>红</option>
+                            <option value='firebrick' style='color:firebrick'>棕</option>
+                            <option value='darkred' style='color:darkred'>暗红</option>
+                            <option value='green' style='color:green'>绿色</option>
+                            <option value='limegreen' style='color:limegreen'>灰绿</option>
+                            <option value='seagreen' style='color:seagreen'>海绿</option>
+                            <option value='deeppink' style='color:deeppink'>粉</option>
+                            <option value='tomato' style='color:tomato'>西红柿色</option>
+                            <option value='coral' style='color:coral'>珊瑚色</option>
+                            <option value='purple' style='color:purple'>紫色</option>
+                            <option value='indigo' style='color:indigo'>靛青</option>
+                            <option value='burlywood' style='color:burlywood'>棕木</option>
+                            <option value='sandybrown' style='color:sandybrown'>沙褐</option>
+                            <option value='sienna' style='color:sienna'>土黄</option>
+                            <option value='chocolate' style='color:chocolate'>巧克力色</option>
+                            <option value='teal' style='color:teal'>土绿</option>
+                            <option value='silver' style='color:silver'>银</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr id="top_tr" align="left"> 
+                        <td width="25%">置顶日期:</td>
+                        <td width="75%"> 
+                          <input type="radio" name="toptime" value="86400">
+                          一天 
+                          <input type="radio" name="toptime" value="604800">
+                          一星期 
+                          <input type="radio" name="toptime" value="2592000">
+                          一月 
+                          <input type="radio" name="toptime" value="31536000">
+                          一年 </td>
+                      </tr>
+                      <tr id="ahead_tr" align="left"> 
+                        <td width="25%">提前到哪篇文章的前面:</td>
+                        <td width="75%"> 
+                          <input type="text" name="topid" size="8">
+                          输入文章ID,留空会提到最前</td>
+                      </tr>
+                      <tr id="bottom_tr" align="left"> 
+                        <td width="25%">沉底到哪篇文章的后台:</td>
+                        <td width="75%"> 
+                          <input type="text" name="bottomid" size="8">
+                          输入文章ID,留空会沉到最底下</td>
+                      </tr>
+                      <tr id="sub_tr"> 
+                        <td width="25%">操作理由: </td>
+                        <td width="75%" align="left">
+                          <textarea name="reason" cols="50" rows="5">$reason</textarea>
+                          (若输入理由的话,将短消息通知作者) </td>
+                      </tr>
+                      <tr id="sub_tr">
+                        <td width="25%">&nbsp;</td>
+                        <td width="75%" align="left"><a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+                          <input type="button" name="Submit" value=" 提 交 " onclick="postwork()">
+                          <input type="hidden" name="step" value="2">
+                          <input type="hidden" name="job" value="$job">
+                        </td>
+                      </tr>
+                    </table>
+                    <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postwork(){
+	ckid=false;
+	cktype=false;
+	form=document.form1
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(e.name=='aidDB[]' && e.checked == true){
+			ckid=true;
+		}
+		if(e.name=='Type' && e.checked == true){
+			cktype=true;
+		}
+	}
+	if(ckid==false){
+		alert('请选择一条信息');
+		return false;
+	}
+	if(cktype==false){
+		alert('请选择一个操作类型');
+		return false;
+	}
+	form.submit();
+}
+function CheckAll(va){
+	form=document.form1
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(e.name!='aidDB[]')continue;
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+
+function choose(trid){
+	oo=document.getElementById("work_more").getElementsByTagName("TR");
+	for(var i=0;i<oo.length;i++){
+		if(oo[i].id!=trid&&oo[i].id!='sub_tr'){
+			oo[i].style.display='none';
+		}else{
+			oo[i].style.display='';
+		}
+	}
+	parent.document.getElementById("main").height=parseInt(parent.document.getElementById("main").height)+40;
+}
+choose('');
+//-->
+</SCRIPT>
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

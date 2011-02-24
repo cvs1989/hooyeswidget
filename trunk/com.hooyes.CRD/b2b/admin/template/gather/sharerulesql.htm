@@ -1,0 +1,49 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth"  id="top_menu">
+  <tr>
+    <td>[<a href="index.php?lfj=gather&job=list">采集参数列表</a>] [<a href="index.php?lfj=gather&job=add_title">手工添加新规则</a>] 
+      [<a href="index.php?lfj=gather&job=addrulesql">导入新规则</a>] [<a href="http://bbs.php168.com/thread-bbs-fid-1055.html" target="_blank">下载新规则</a>] 
+    </td>
+  </tr>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+ 
+    <tr  class="head"> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="2">好东西别忘了大家共享分享哦!!</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" align="center">导出的采集规则SQL语句:</td>
+      <td width="78%"><a href="index.php?lfj=$lfj&job=edit_title&id=$rs[id]"> 
+        </a><a href="index.php?lfj=$lfj&action=gather_title&id=$rs[id]"></a> 
+        <textarea name="sqlcode" cols="60" rows="8" id="sqlcode">$SQL</textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" align="center">&nbsp;</td>
+      <td width="78%"> 
+        <input type="button" name="Submit" value="复制" onclick="JM_cc('sqlcode')">
+         <SCRIPT LANGUAGE="JavaScript">
+ <!--
+ function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");
+alert('复制成功,记得与大家分享哦!');
+}
+
+}
+ //-->
+ </SCRIPT>
+      </td>
+    </tr>
+ 
+</table>
+<!--
+EOT;
+?>
+-->

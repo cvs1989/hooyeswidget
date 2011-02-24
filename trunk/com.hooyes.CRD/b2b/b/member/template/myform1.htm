@@ -1,0 +1,212 @@
+<!--
+<?php
+
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head"><a href="?">我收到询价单</a>   | <a href="?hopereply_time=$hopereply_time_s">查看应该在今天之后回复的询价单</a></td>
+        </tr>
+        <tr> 
+          <td class="middle"><form action="?" method="post" name="keyword" style="margin:0">
+	关键字搜索：
+	  <input name="keyword" type="text" id="keyword" value="$keyword" />
+	  <input type="submit" name="Submit" value="搜索" />
+	</form>
+		  	
+<!--
+EOT;
+if(!$action){
+print <<<EOT
+-->
+
+<form action="?" name="myform1" method="post" id="myform1"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word' >
+ 
+                <tr align="center" class="head_in"> 
+                  <td width="2%"><input type="checkbox" name="checkbox" id="checkbox" onclick="CheckAll('listdb[]',this)" /></td>
+                  <td width="41%">询价标题</td>
+                  <td width="18%">商家</td>
+                  <td width="11%">出价</td>
+                  <td width="9%">详细/回复</td>
+                  
+                 
+                  
+                
+                  <td width="9%">询价日期</td>
+                  <td width="10%">打印预览</td>
+                </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  
+                <td colspan="2"  align="left"><input type="checkbox" name="listdb[]" id="listdb_$rs[id]" value="$rs[id]" />
+                <a href="$Mdomain/sell_bencandy.php?fid=$rs[fid]&id=$rs[info_id]" target="_blank" title="$rs[full_title]">$rs[title]</a> $rs[gz]                </td> 
+                  
+                  
+                <td  align="left"><a href="$Mdomain/homepage.php?uid=$rs[owner_uid]" target="_blank">$rs[owner]</a>&nbsp;</td>
+                <td  align="center">$rs[hope_price]元</td>
+                <td align="center"><a href='?action=view&id=$rs[id]'>$rs[reply]</a></td>
+                  
+               
+                  
+                 
+                  <td align="center">$rs[posttime]</td>
+                  <td align="center"><a href="?action=view_print&amp;id=$rs[id]" target="_blank">打印预览</a></td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="10">$showpage </td>
+                </tr>
+                <tr align="center"> 
+                  <td><input type="checkbox" name="checkbox" id="checkbox" onclick="CheckAll('listdb[]',this)" /></td>
+                  <td colspan="9" align="left"><input type="submit" name="button2" id="button2" value="删除选中项"
+                   onclick="if(confirm('确定删除选中项目吗')){document.getElementById('myform1').target='_self';document.getElementById('action').value='del';}else{return false;}" />
+                  <input name="action" type="hidden" id="action" value="del" />
+                 <!-- | 
+                  <select name="viewtype" id="viewtype">
+                    <option value="window">窗口列表</option>
+                    <option value="list">表格列表</option>
+                  </select>-->
+                  <input type="submit" name="button3" id="button3" value="打印选中项"
+                   onclick="document.getElementById('myform1').target='_blank';document.getElementById('action').value='view_print';" /></td>
+                </tr>
+            </table>
+</form>
+<SCRIPT LANGUAGE="JavaScript">
+function postdo(va){
+	document.form_work.action.value=va
+	document.form_work.submit();
+}
+function CheckAll(name,my){
+	var ckbox=document.getElementsByName(name);
+
+	for (var i=0;i<ckbox.length;i++){
+		ckbox[i].checked=my.checked;
+	}
+}
+</SCRIPT> 
+<!--
+EOT;
+}elseif($action=='view'){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" >
+ 
+                <tr align="center" class="head_in"> 
+                <td colspan="2">$rt[title]</td>
+                </tr>
+                  <tr  class='trA'>
+                <td width="150">提交时间：</td>
+                <td  >$rt[posttime]</td>
+                </tr>
+                <tr  class='trA'>
+                <td width="150">对方商家：</td>
+                <td  >$rt[owner]</td>
+                </tr>
+                <tr  class='trA'>
+                  <td>采购数量：</td>
+                  <td>$rt[quantity]</td>
+                </tr>
+                <tr  class='trA'>
+                  <td>希望价格：</td>
+                  <td>$rt[hope_price]元</td>
+                </tr>
+                <tr  class='trA'>
+                  <td>希望了解：</td>
+                  <td>$rt[get_info]</td>
+                </tr>
+                <tr  class='trA'>
+                  <td>内容补充：</td>
+                  <td>$rt[add_content]</td>
+                </tr>
+                <tr  class='trA'>
+                  <td>希望回复：</td>
+                  <td>在$rt[hopereply_time]之前</td>
+                </tr>
+                <tr  class='trA'>
+                  <td>回复内容：</td>
+                  <td><form id="form1" name="form1" method="post" action="?">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="11%">回复内容：<br />$rt[reply_time]</td>
+                        <td width="89%"><textarea name="reply_content" cols="60" rows="5" id="reply_content">$rt[reply_content]</textarea></td>
+                      </tr>
+                      <tr>
+                        <td>参考地址：</td>
+                        <td><input name="reply_cankao" type="text" id="reply_cankao" value="$rt[reply_cankao]" size="60" /></td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="button" id="button" value="回 复" />
+                        <input name="id" type="hidden" id="id" value="$rt[id]" />
+                        <input name="action" type="hidden" id="action" value="reply" /></td>
+                      </tr>
+                    </table>
+                    </form>                  </td>
+                </tr>
+                <tr  class='trA'>
+                  <td>对方联系方式：</td>
+                  <td><table width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="left">联系人：</td>
+                      <td>$contact_info[truename]</td>
+                      <td align="left">联系人职位：</td>
+                      <td >$contact_info[qy_contact_zhiwei]</td>
+                    </tr>
+                    <tr>
+                      <td align="left">公司名称：</td>
+                      <td>$contact_info[company_name]</td>
+                      <td align="left">固定电话：</td>
+                      <td>$contact_info[qy_contact_tel]</td>
+                    </tr>
+                    <tr>
+                      <td align="left">移动电话：</td>
+                      <td>$contact_info[qy_contact_mobile]</td>
+                      <td align="left">邮箱地址：</td>
+                      <td>$contact_info[qy_contact_email]</td>
+                    </tr>
+                    <tr>
+                      <td align="left">传 真：</td>
+                      <td>$contact_info[qy_contact_fax]</td>
+                      <td align="left">Q Q：</td>
+                      <td>$contact_info[qq]</td>
+                    </tr>
+                    
+                  </table></td>
+                </tr>
+                 <tr  class='trA'>
+                  <td>&nbsp;</td>
+                  <td><input type="button" name="button" id="button" value="返回" onclick="window.location='?'" />&nbsp;&nbsp;&nbsp;                  </td>
+                </tr>
+                 <tr  class='trA'>
+                   <td>&nbsp;</td>
+                   <td>如果您想打印此页，请点击这里:<a href="?action=view_print&amp;id=$rs[id]" target="_blank"><strong>打印预览</strong></a></td>
+                 </tr>
+    </table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

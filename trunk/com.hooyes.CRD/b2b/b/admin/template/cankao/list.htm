@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form id="form1" name="form1" method="post" action="?" style="margin:5px">
+  关键字搜索：
+  <input name="keyword" type="text" id="keyword" value="$keyword" />
+  <input name="submit" type="submit" id="submit" value="搜索" />
+</form>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr align="center" class="head"> 
+	<td width="20%" align="left"><strong>来自</strong></td>
+     <td width="29%" align="left"><strong>参考名称</strong></td>
+	<td width="30%" align="left"><strong>简单描述</strong></td>
+    <td width="21%" align="center"><strong>操作</strong></td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+	$rs[contact_info][url_link]=$rs[contact_info][url];
+	$rs[contact_info][url]=$rs[contact_info][url]?"点击查看...":"";
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+     <td height="40"><a href="$Mdomain/homepage.php?uid=$rs[uid]" target="_blank">$rs[companyName]</a></td>
+    <td align="left"><font color="blue">$rs[title]</font><br />
+      <a href="$rs[url]" target="_blank">$rs[url]</a></td>
+	<td align="left">$rs[description]</td>
+    <td align="center"><a href="?action=yz&amp;ck_id=$rs[ck_id]">$rs[yz]</a> | <a href="?action=del&amp;ck_id=$rs[ck_id]"  onclick="return confirm('删除后不能恢复，确定要继续吗？')">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="4"> {$showpage}</td>
+    </tr>
+</table>
+
+<!--
+EOT;
+?>
+-->

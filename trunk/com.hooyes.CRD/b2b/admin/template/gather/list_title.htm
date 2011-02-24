@@ -1,0 +1,257 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth"  id="top_menu">
+  <tr> 
+    <td>[<a href="index.php?lfj=gather&job=list">所有参数列表</a>] [<a href="index.php?lfj=gather&job=add_title">增加新项目</a>] 
+      [<a href="index.php?lfj=gather&job=edit_title&id=$id">修改标题参数</a>] [<a href="index.php?lfj=gather&job=edit_content&id=$id">修改内容参数</a>]</td>
+  </tr><form name="form2" method="post" action="" target="fidiframe">
+</form><iframe id="fidiframe" name="fidiframe" width=0 height=0></iframe>
+</table>
+ 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job&id=$id" onsubmit="return cksub();">
+    <tr  class="head"> 
+      <td colspan="2">&nbsp;<SCRIPT LANGUAGE="JavaScript">
+<!--
+function autosub(){
+	document.form1.testgather.value=1;
+	document.form1.submit();
+}
+
+function CheckAll(va){
+	form=document.form1
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+function choose(va){
+	document.form2.action="index.php?lfj=$lfj&job=showfid&system_type="+va
+	document.form2.submit();
+}
+function showdiv(va){
+	fiddiv.innerHTML=va
+}
+//-->
+</SCRIPT></td>
+    </tr>
+    <tr> 
+      <td width="6%" align="center">序号</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <!--
+EOT;
+$i=-1;
+foreach($urldb AS $key=>$rs){
+list($url,$title)=explode("\t",$rs);
+$i++;
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="6%" align="center">$i</td>
+      <td> 
+        <input type="checkbox" value="1" checked name="postdb[$i]">
+        <a href="$url" target="_blank"> $title </a>
+<!--
+EOT;
+if($showurl){
+print <<<EOT
+--><br>
+$url
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		</td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="2">
+<!--
+EOT;
+if($ruledb[fixsystem]=='article'){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="article" onclick="choose('article');" checked>
+        文章系统 <SCRIPT LANGUAGE="JavaScript">
+<!--
+choose('article');
+//-->
+</SCRIPT>
+
+<!--
+EOT;
+if(ereg("^pwbbs",$webdb[passport_type])){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="phpwind" onClick="choose('phpwind');">
+        PHPWIND论坛
+<!--
+EOT;
+}
+if(ereg("^dzbbs",$webdb[passport_type])){
+print <<<EOT
+-->	
+		<input type="radio" name="system_type" value="discuz" onClick="choose('discuz');">
+        DISCUZ论坛 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <!--
+EOT;
+if($ruledb[fixsystem]=='photo'){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="photo" onclick="choose('photo');" checked>
+        图库 <SCRIPT LANGUAGE="JavaScript">
+<!--
+choose('photo');
+//-->
+</SCRIPT>
+ <!--
+EOT;
+}
+print <<<EOT
+--><!--
+EOT;
+if($ruledb[fixsystem]=='down'){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="down" onClick="choose('down');" checked>
+        软件下载 <SCRIPT LANGUAGE="JavaScript">
+<!--
+choose('down');
+//-->
+</SCRIPT>
+ <!--
+EOT;
+}
+print <<<EOT
+--><!--
+EOT;
+if($ruledb[fixsystem]=='flash'){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="flash" onClick="choose('flash');" checked>
+        FLASH系统<SCRIPT LANGUAGE="JavaScript">
+<!--
+choose('flash');
+//-->
+</SCRIPT>
+<!--
+EOT;
+}
+print <<<EOT
+--> <!--
+EOT;
+if($ruledb[fixsystem]=='mv'){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="mv" onClick="choose('mv');" checked>
+        视频系统 <SCRIPT LANGUAGE="JavaScript">
+<!--
+choose('mv');
+//-->
+</SCRIPT>
+<!--
+EOT;
+}
+print <<<EOT
+--><!--
+EOT;
+if($ruledb[fixsystem]=='music'){
+print <<<EOT
+-->
+        <input type="radio" name="system_type" value="music" onClick="choose('music');" checked>
+        音乐系统 <SCRIPT LANGUAGE="JavaScript">
+<!--
+choose('music');
+//-->
+</SCRIPT>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		</td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="2"><div id="fiddiv">请选择上面的分类</div>$msg</td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="2"><a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <input type="submit" name="Submit" value="开始采集入库" style="background:red;color:#FFF;">
+        <input type="hidden" name="testgather">
+        <br>
+        <input type="checkbox" name="GetFile" value="1">
+        是否把文件/图片采集回来(极影响采集速度,极占用磁盘空间)<br>
+        文件本地化后存放在附件里的哪个目录 
+        <input type="text" name="file_dir">
+        (最好留空)<br>
+        以哪个用户名发表 
+        <input type="text" name="username" value="$userdb[username]">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function cksub(){
+	var ischoose=0;
+	var ischooseId=0;
+	oo=document.body.getElementsByTagName("INPUT");
+	for(var i=0;i<oo.length;i++){
+		if(oo[i].getAttribute("name")=="system_type"){
+			if(oo[i].checked==true){
+				ischoose=1;
+			}
+		}
+	}
+	if(ischoose==0&&document.form1.testgather.value!=1){
+		alert("你没有选择一个栏目,采集的内容将不能入库");
+		return false;
+	}
+	oo=document.body.getElementsByTagName("INPUT");
+	for(var i=0;i<oo.length;i++){
+		if(oo[i].getAttribute("name").indexOf('postdb[')!=-1){
+			if(oo[i].checked==true){
+				ischooseId=1;
+			}
+		}
+	}
+	if(ischooseId==0){
+		alert("你没有选择一个标题,采集会失败");
+		return false;
+	}
+}
+$autosub;
+//-->
+</SCRIPT>
+
+
+
+
+<!--
+EOT;
+?>
+-->

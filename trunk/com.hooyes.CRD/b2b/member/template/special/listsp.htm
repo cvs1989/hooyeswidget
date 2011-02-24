@@ -1,0 +1,85 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">我的专题列表</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+            <table width="98%" border="0" cellspacing="1" cellpadding="3" style="border:1px dotted #ccc;margin:8px;">
+              <tr> 
+                <td width="16%" style="padding:5px;border-right:5px dotted #eee;"><a href="../do/showsp.php?fid=$rs[fid]&id=$rs[id]" target="_blank"><img src="$rs[picurl]" onerror="this.src='../images/default/noimg.jpg'" width="150" height="120" border="0"></a></td>
+                <td width="84%" valign="top" style="padding-left:8px;line-height:130%;">专题名称: 
+                  <a href="../do/showsp.php?fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a> 
+                  <br>
+                  所属分类: <a href="../do/listsp.php?fid=$rs[fid]" target="_blank">$rs[fname]</a><br>
+                  专题性质: 
+            <!--
+EOT;
+if($rs[personal]){
+print <<<EOT
+-->
+私密
+<!--
+EOT;
+}else{print <<<EOT
+-->
+公开
+<!--
+EOT;
+}print <<<EOT
+-->
+				  <br>
+                  创建日期: $rs[posttime]<br>
+                  内容总数: {$rs[NUM]} 篇<br>
+				  审核状态: $rs[_yz]<br>
+                  相关操作: <img src="images/art_icon.gif" width="11" height="13" border="0"> 
+                  <a href="?job=edit_atc&id=$rs[id]">管理文章</a>&nbsp; <img src="images/art_icon.gif" width="11" height="13" border="0"> 
+                  <!--
+EOT;
+if($webdb[passport_type]){
+print <<<EOT
+-->
+                  <a href="?job=edit_bbs&id=$rs[id]">管理贴子</a>&nbsp; <img src="images/post_icon.gif" width="11" height="11"> 
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                  <a href="?job=editsp&id=$rs[id]">修改</a>&nbsp; <img src="images/del_icon.gif" width="13" height="13"> 
+                  <a onClick="return confirm('你确实要删除吗?不可恢复哦!')" href="?job=delsp&id=$rs[id]">删除</a> 
+                  <br>
+                  专题介绍: <font color="#A4A4A4">$rs[content]</font></td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center" class=page>$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,42 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=set">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF">商城设置</font></b></div>
+      </td>
+    </tr>
+     
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>EMS快递收费:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[ShopEmsSend]' name='webdbs[ShopEmsSend]'>
+        元 </td>
+    </tr>
+     <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>其他快递收费:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[ShopOtherSend]' name='webdbs[ShopOtherSend]'>
+        元 </td>
+    </tr><tr> 
+      <td width='28%' bgcolor='#FFFFFF'>平邮收费:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[ShopNormalSend]' name='webdbs[ShopNormalSend]'>
+        元 </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+     
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

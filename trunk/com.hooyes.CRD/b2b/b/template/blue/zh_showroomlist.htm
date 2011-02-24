@@ -1,0 +1,154 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div>{$label[zh_index_banner]}</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="leftMain"></td>
+    <td rowspan="2" valign="top"  class="rightMain">
+
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+    <div class="notitle " style="height:80px"><form id="form1" name="form1" method="get" action="?">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="21%"><strong>&nbsp;展览馆搜索：</strong></td>
+            <td width="14%">&nbsp;</td>
+            <td width="22%">&nbsp;</td>
+            </tr>
+          <tr>
+            <td align="right">地区：</td>
+            <td><select name="province_id" id="province_id">
+              <option value="0">请选择地区</option>
+              <!--
+EOT;
+	foreach($area_DB[name] as $key=>$val){
+    $ck=$key==$province_id?" selected":"";
+print <<<EOT
+-->
+              <option value="$key" $ck>$val</option>
+              <!--
+EOT;
+	}
+print <<<EOT
+-->
+            </select></td>
+            <td>&nbsp;</td>
+            </tr>
+          <tr>
+            <td align="right">关键字：</td>
+            <td><input name="keyword" type="text" id="keyword" value="$keyword" size="20" /></td>
+            <td><input type="submit" name="button" id="button" value="提交" /></td>
+            </tr>
+        </table>
+      
+      </form></div></td>
+    <td width="200" align="right" valign="middle">
+	<div class="zhpost">
+	<p class="postzlg"><a href="$Mdomain/zh_post.php?job=postzlg"><img src="$Murl/images/$STYLE/addzlg.gif" border="0" /></a><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;登记展览馆信息，提高举办展会次数与质量。	</p></div>	</td>
+  </tr>
+</table>
+	
+	
+ 
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" class="zlgDiv">
+  <tr >
+    <td class="head"><span class="L">&nbsp;</span><span class="title">展览馆一览</span><span class="R">&nbsp;</span></td>
+    </tr>
+  <tr>
+    <td class="content">
+    
+<!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+	<a href="$Mdomain/zh_showroom.php?sr_id=$rs[sr_id]" target="_blank" class="showroomlist">
+    <img src="$rs[picurl]"  border="0"  class="picurl" />
+   <br /> 【$rs[area]】<br /> $rs[title]
+    </a>
+<!--
+EOT;
+}
+print <<<EOT
+-->   
+    <div class="page">$showpage</div>
+    </td>
+    </tr>
+    
+</table>
+
+ 
+ 
+ 
+ 
+ </td>
+  </tr>
+
+  <tr>
+    <td class="leftMain" bgcolor="#f5f5f5"><table width="100%" cellspacing="0" cellpadding="0" class="leftDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">按照区域查询</span><span class="R">&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td  class="content">
+
+	
+	 
+<!--
+EOT;
+	foreach($area_DB[name] as $key=>$val){
+print <<<EOT
+-->
+	<div><a style="width:45%; float:left" href="$Mdomain/zh_showroomlist.php?province_id=$key"><img src="$Murl/images/$STYLE/listico.gif"  border="0"/> $val</a></div>
+<!--
+EOT;
+	}
+print <<<EOT
+--> 
+<div><a style="width:45%; float:left" href="$Mdomain/zh_showroomlist.php?province_id=0"><img src="$Murl/images/$STYLE/listico.gif"  border="0"/> 所有地区</a></div>
+</td>
+  </tr>
+</table>
+	<div></div>	
+	
+<table width="100%" cellspacing="0" cellpadding="0" class="leftDiv">
+  <tr>
+    <td class="head"><span class="L">&nbsp;</span><span class="title">推荐展览馆</span><span class="R">&nbsp;</span></span></td>
+  </tr>
+  <tr>
+    <td  class="content">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+
+<!--
+EOT;
+foreach($showrommTopdb as $rs){
+print <<<EOT
+-->
+  <tr>
+    <td width="110"><a href="$Mdomain/zh_showroom.php?sr_id=$rs[sr_id]" target="_blank"><img src="$rs[picurl]" width="100" height="75" border="0"    onerror="this.src='$Murl/images/$STYLE/nopic.jpg';"/></a></td>
+    <td><a href="$Mdomain/zh_showroom.php?sr_id=$rs[sr_id]" target="_blank"><strong>$rs[title]</strong></a><br />$rs[area]<br />$rs[address]</td>
+  </tr>	
+  <tr>
+    <td width="110" height="10"></td>
+    <td></td>
+  </tr>	
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</table> </td>
+  </tr>
+</table>    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->
