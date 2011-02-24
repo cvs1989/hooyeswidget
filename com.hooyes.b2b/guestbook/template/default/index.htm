@@ -1,0 +1,224 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="196" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="guide">
+        <tr> 
+          <td>留言分类: 
+<!--
+EOT;
+foreach($Fid_db[name] AS $key=>$value){
+$color=$key==$fid?'red':'';
+print <<<EOT
+-->
+		  [<a href="./?fid=$key" style="color:$color;">$value</a>] 
+<!--
+EOT;
+}
+$color=$fid?'':'red';
+print <<<EOT
+-->
+		  [<a href="./" style="color:$color;">全部留言</a>]
+		  
+		  
+		  </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="guestbook">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">用户留言</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+--><a name="$rs[id]"></a>
+            <table width="100%" border="0" class="guestbook" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="18%" class="Ftd" rowspan="2" align="center"> 
+                  <div class="icon"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" $rs[onclick] target="_blank"><img src="$rs[icon]" onerror="this.src='$webdb[www_url]/images/default/noface.gif'" width="90" height="90" border="0" ></a></div>
+                  <div class="name"> $rs[username] </div>
+                </td>
+                <td width="82%" class="Ctd" height="75" valign="top"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+                    <tr> 
+                      <td class="content"><img src="$webdb[www_url]/images/default/faceicon/$rs[ico].gif" width="20" height="20"  >$rs[content]</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td width="82%" class="Atd">时间:$rs[posttime]&nbsp;<a href="mailto:$rs[email]"><img src="$webdb[www_url]/images/default/email.gif" width="16" height="16" border="0"></a>&nbsp; 
+                  <a href="mailto:$rs[mail]"></a><a href="javascript:" title="$rs[ip]"><img src="$webdb[www_url]/images/default/ip.gif" width="16" height="16" border="0"></a> 
+                  {$rs['_weburl']} {$rs['_blogurl']} {$rs[oicq]} {$rs[_mobphone]} 
+                  {$rs['delete']}</td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td align="center" class="page">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="guestbook">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">我要留言</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <style type="text/css">
+<!--
+.selected {filter:Alpha(opacity=100);border:1px solid #FF9900}
+.unselected {filter:Alpha(opacity=50);border:1px solid #EDF8DD}
+-->
+</style>
+            <script>
+var prevIcon;
+function icon(num){
+num.className="selected";
+if(typeof(prevIcon)!="undefined"){
+prevIcon.className="unselected";
+}else{
+document.all.firstface.className="unselected";
+}
+if(num.className=="unselected"){
+num.className="selected";
+}
+prevIcon=num;
+document.all.face.value=num.childNodes(0).id ;
+}
+</script>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <form name="form1" method="post" action="?$timestamp">
+                <tr> 
+                  <td width="14%">昵称:</td>
+                  <td width="86%"> 
+                    <input type="text" name="postdb[username]" value="$lfjid">
+                    联系Email: 
+                    <input type="text" name="postdb[email]">
+                    QQ: 
+                    <input type="text" name="postdb[oicq]" size="11">
+                    手机号码: 
+                    <input type="text" name="postdb[mobphone]" size="11">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="14%">个人站网址:</td>
+                  <td width="86%"> 
+                    <input type="text" name="postdb[weburl]" size="35">
+                    个人BLOG网址: 
+                    <input type="text" name="postdb[blogurl]" size="35">
+                  </td>
+                </tr>
+                <!--
+EOT;
+if($webdb[yzImgGuestBook]&&!$web_admin){
+print <<<EOT
+-->
+                <tr> 
+                  <td width="14%">验证码:</td>
+                  <td width="86%"> 
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td width="11%"> 
+                          <input type="text" name="yzimg" size="8">
+                        </td>
+                        <td width="89%"> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<img border="0" id="yz_Img" name="imageField" onclick="this.src=this.src+Math.random();" src="$webdb[www_url]/do/yzimg.php?'+Math.random()+'">');
+//-->
+</SCRIPT>
+						
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr> 
+                  <td width="14%">表情:</td>
+                  <td width="86%"> 
+                    <table border=0 cellspacing=0 cellpadding=0>
+                      <tr> 
+                        <td class="selected" onClick="icon(this)" id="firstface" style="cursor:hand"><img src="$webdb[www_url]/images/default/faceicon/1.gif" width="20" height="20" id="1"></td>
+                        <!--
+EOT;
+for($i=2;$i<15;$i++){
+print <<<EOT
+-->
+                        <td class="unselected" onClick="icon(this)" style="cursor:hand"><img src="$webdb[www_url]/images/default/faceicon/$i.gif" width="20" height="20" id="$i"></td>
+                        <!--
+EOT;
+}
+print <<<EOT
+-->
+                        <td align="center" valign="top"> 
+                          <input name="face" type="hidden" value="1">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="14%">留言内容:</td>
+                  <td width="86%"> 
+                    <textarea name="postdb[content]" cols="80" rows="7"></textarea>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="14%">&nbsp;</td>
+                  <td width="86%"> 
+                    <input type="submit" name="Submit" value="提 交">
+                    <input type="hidden" name="step" value="post">
+                    <input type="hidden" name="fid" value="$fid">
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

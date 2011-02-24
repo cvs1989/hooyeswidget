@@ -1,0 +1,52 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">查看短消息</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <tr align="center" > 
+                <td width="10%" style="border-bottom:1px dotted #ccc;">来自:</td>
+                <td width="90%" align="left" style="border-bottom:1px dotted #ccc;">$rsdb[username] 
+                </td>
+              </tr>
+ 
+              <tr> 
+                <td  align="center" width="10%" style="border-bottom:1px dotted #ccc;">标题:</td>
+                <td align="left" width="90%" style="border-bottom:1px dotted #ccc;">$rsdb[title] </td>
+              </tr>
+              <tr> 
+                <td  align="center" width="10%" style="border-bottom:1px dotted #ccc;">时间:</td>
+                <td align="left" width="90%" style="border-bottom:1px dotted #ccc;">$rsdb[mdate] 
+                </td>
+              </tr>
+              <tr> 
+                <td  align="center" width="10%" style="border-bottom:1px dotted #ccc;">内容:</td>
+                <td align="left" width="90%" style="border-bottom:1px dotted #ccc;">$rsdb[content] 
+                </td>
+              </tr>
+              <tr> 
+                <td  align="center" width="10%" style="border-bottom:1px dotted #ccc;">选项:</td>
+                <td align="left" width="90%" style="border-bottom:1px dotted #ccc;"> 
+                  [<a href="?job=send&username=$rsdb[username]">回复</a>] [<a href="?job=del&mid=$rsdb[mid]">删除</a>] 
+                  [<a href="?job=list">返回</a>] </td>
+              </tr>
+   
+            </table>
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

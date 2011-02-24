@@ -1,0 +1,61 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+    <tr class="head"> 
+      <td width="31%" align="center"><font color="#FFFFFF">模板类型</font></td>
+      <td width="52%" align="center"><font color="#FFFFFF">存 放 路 径 </font></td>
+      <td width="9%" align="center">修改模板</td>
+      <td width="8%" align="center"><font color="#FFFFFF">删除</font></td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width="31%" align="center">$rs[typename]</td>
+      
+    <td width="52%"><a href="../template/default/$rs[filepath]" target="_blank">$rs[filepath]</a></td>
+      <td width="9%" align="center"><a href="index.php?lfj=$lfj&job=editcode&filepath=$rs[filepath]"><img alt='点击修改' src='../member/images/button_edit.png' border=0>修改</a></td>
+      <td width="8%" align="center"><a href="index.php?lfj=$lfj&action=delete2&filepath=$rs[filepath]"  onClick="return confirm('不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0>删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+     
+ 
+</table>
+<!--
+EOT;
+?>
+--><table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head" align="left"> 
+      <td>帮助说明</td>
+    </tr>
+  
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td align="left">1.修改前,请先备份一下,方便还原替换。<br>
+      2.要增加模板,参照原有的,请在对应的目录里增加一个.htm结尾的网页即可<br>
+      3.目录简要说明:<br>
+      \template\default\bencandy_tpl\comment.htm 文章内容页评论发布表单<br>
+      \template\default\bigsort_tpl\ 大分类页的模板样式,mod_开头的是对应的图库、视频等模板样式<br>
+      \template\default\label_tpl\ 标签用的模板存放目录<br>
+      \template\default\list_tpl\ 栏目列表页模板样式,mod_开头的是对应的图库、视频等模板样式<br>
+      \template\default\login_tpl\ 登录框样式<br>
+      \template\default\side_sort\ 列表页子栏目的显示样式<br>
+      \template\default\side_tpl\ 列表页最新、最热主题显示样式<br>
+      \template\default\tpl\ 图库、视频等模型内容页的母模板<br>
+      \template\default\vote_js\ 投票的模板样式<br>
+      \data\admin_tpl\ 后台表布内容的模板样式<br>
+      \data\form_tpl\ 万能表单的样式<br>
+      \data\member_tpl\ 会员发表内容的样式</td>
+    </tr>
+  
+ </table>
+

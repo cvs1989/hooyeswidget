@@ -1,0 +1,149 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color='#FFFFFF'>参数设置</font></b></div>
+      </td>
+    </tr>
+ 
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">站点名称:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[Info_webname]' size='50' value='$webdb[Info_webname]'>
+      </td>
+    </tr> 
+   <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>本系统开放与否:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[module_close]" value="1" $module_close[1]>
+         关闭
+        <input type="radio" name="webdbs[module_close]" value="0" $module_close[0]>
+        开放</td>
+    </tr>
+ 
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">网站热点关键词:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[Info_metakeywords]' size='50' value='$webdb[Info_metakeywords]'>
+      </td>
+    </tr>
+        <tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">首页大分类下显示栏目最多数:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[Index_listsortnum]' size='5' value='$webdb[Index_listsortnum]'>个
+      </td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>当前使用的数据表前缀:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="text" name="webdbs[module_pre]" value="$webdb[module_pre]" readonly size="8">
+        (不可修改,仅供查看) </td>
+    </tr>
+
+		<tr bgcolor="#FFFFFF"> 
+      <td width='26%'> 
+        <div align="left">没有登记商铺的用户是否允许发布信息:</div>
+      </td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_HYpost]" value="1" $Info_HYpost[1]>
+         禁止
+        <input type="radio" name="webdbs[Info_HYpost]" value="0" $Info_HYpost[0]>
+        允许 </td>
+    </tr>
+
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'> 
+        <div align="left">是否允许游客使用搜索功能:</div>
+      </td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_allowGuesSearch]" value="1" $Info_allowGuesSearch[1]>
+        允许 
+        <input type="radio" name="webdbs[Info_allowGuesSearch]" value="0" $Info_allowGuesSearch[0]>
+        禁止</td>
+    </tr> 
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>发表一条信息奖励{$webdb[MoneyName]}:<br>
+        (只有通过审核的,才有奖励) </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[PostInfoMoney]" size="7" value="$webdb[PostInfoMoney]">
+        $webdb[MoneyDW]</td>
+    </tr>
+
+ 
+ 
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>是否显示所有信息:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_ShowNoYz]" value="1" $Info_ShowNoYz[1]>
+        显示所有信息 
+        <input type="radio" name="webdbs[Info_ShowNoYz]" value="0" $Info_ShowNoYz[0]>
+        只显示已审核信息</td>
+    </tr>
+    
+ <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>未审核的评论是否显示出来:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[showNoPassComment]" value="1" $showNoPassComment[1]>
+        显示所有信息 
+        <input type="radio" name="webdbs[showNoPassComment]" value="0" $showNoPassComment[0]>
+        只显示已审核信息</td>
+    </tr>
+	
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>刷新信息的时间间隔:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[UpdatePostTime]" size="4" value="$webdb[UpdatePostTime]">
+        小时(留空,则默认为1小时)</td>
+    </tr>
+    
+     
+   
+     
+ 
+ <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>客户发报价单是否短消息通知求购者:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[order_send_msg]" value="1" $order_send_msg[1]>
+        通知 
+        <input type="radio" name="webdbs[order_send_msg]" value="0" $order_send_msg[0]>
+        不通知</td>
+    </tr>
+ 
+ <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>客户发报价单是否邮件通知求购者:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[order_send_mail]" value="1" $order_send_mail[1]>
+        通知 
+        <input type="radio" name="webdbs[order_send_mail]" value="0" $order_send_mail[0]>
+        不通知</td>
+    </tr>
+ <tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">举报信息的类型:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[Info_ReportDB]" cols="30" rows="8">$webdb[Info_ReportDB]</textarea>
+        每个换一行 </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='submit' name='w' value='保存设置'>
+         </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+--> 

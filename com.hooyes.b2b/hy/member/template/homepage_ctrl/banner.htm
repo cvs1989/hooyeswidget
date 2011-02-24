@@ -1,0 +1,37 @@
+<!--
+<?php
+print <<<EOT
+-->
+        <form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+          <table width="100%" border="0" cellpadding="10" cellspacing="1" bgcolor="#CCCCCC" >
+            <tr>
+              <td width="20%" align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><p><strong>头部通栏招牌图片</strong>：<br />
+              </p></td>
+              <td width="80%" align="left" valign="top" bgcolor="#FFFFFF"><p>
+                  <input name="postfile" type="file" id="postfile" size="30" />
+                  <br />
+                  <img src="$conf[banner_show]"  border="0" width="495" height="60"  class="logo" onerror="this.style.display='none'"/></p>
+                <p>(尺寸990*120,格式只能是JPG,GIF,PNG,文件最大$webdb[homepage_banner_size]k)</p>
+                <p>&nbsp;</p>
+                <p><strong>注意</strong>：此处设置后，头部将不在显示公司名称,推荐您在制作通栏招牌图片的时候加入公司名称;</p>
+                <input name="conf[oldfile]" type="hidden"  value="$conf[banner]" /></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>删除通栏招牌图片</strong></td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"><input name="del_banner" type="checkbox" value="1" onclick="if(this.checked){return confirm('确定要删除吗?');}" />
+                如果您不再想使用通栏图片，选中此项再保存一下,即可删除； </td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT">&nbsp;</td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"><input type="submit" name="button7" id="button11" value="上传" onclick="setindex_left_right()" />
+                <input name="atn" type="hidden" id="atn3" value="$atn" />
+                <input name="step" type="hidden" id="step3" value="1" />
+                <input name="uid" type="hidden" id="uid3" value="$uid" />
+                <input name="conf[hid]" type="hidden" id="conf[hid]" value="$conf[hid]" /></td>
+            </tr>
+          </table>
+        </form>
+<!--
+EOT;
+?>
+-->

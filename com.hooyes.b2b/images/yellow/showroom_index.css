@@ -1,0 +1,294 @@
+.showroom_showzh .side .drag .head{
+	background:url(showroom_side_head.gif);
+}
+.showroom_showzh .side .drag .head .LL{
+	float:left;
+	background:url(showroom_side_l.gif);
+	width:15px;
+	height:30px;
+}
+.showroom_showzh .side .drag .head .RR{
+	float:right;
+	background:url(showroom_side_r.gif);
+	width:10px;
+	height:30px;
+}
+.showroom_showzh .side .drag .head .TAG{
+	float:left;
+	padding-top:8px;
+	font-weight:bold;
+}
+.showroom_showzh .side .drag .CC{
+	border:1px solid #DFDFDF;
+	border-top:0;
+	padding-bottom:20px;
+}
+
+.showroom_showzh .side .drag .search_type{
+	padding:8px 8px 8px 10px;
+}
+
+
+.showroom_showzh .side .drag .search_type .tt{
+	background:url(showroom_side_index_bg.gif) no-repeat;
+	padding-left:30px;
+	padding-top:8px;
+	margin-bottom:15px;
+}
+.showroom_showzh .side .drag .search_type .tt .time{
+	background:#D9D9D9;
+}
+.showroom_showzh .side .drag .search_type .tt .time td{
+	background:#F2F2F2 url(showroom_side_index_bg2.gif) no-repeat;
+	line-height:25px;
+	border:1px solid #fff;
+}
+
+
+.showroom_showzh .side .drag .search_type .tt .area{
+	border:1px solid #D9D9D9;
+	border-bottom:0;
+}
+.showroom_showzh .side .drag .search_type .tt .area td{
+	background: url(showroom_side_index_b20.gif) repeat-y;
+	line-height:28px;
+	border:1px solid #fff;
+	border-top:0;
+	padding:0 5px 0 5px;
+}
+.showroom_showzh .side .drag .search_type .t2{
+	background:url(showroom_side_index_b2.gif) no-repeat;
+}
+.showroom_showzh .side .drag .search_type .t3{
+	background:url(showroom_side_index_b21.gif) no-repeat;
+}
+.showroom_showzh .side .drag .search_type .t3 .time td{
+	background:#F2F2F2;
+}
+
+
+.showroom_showzh .main{
+	padding-left:10px;
+}
+.showroom_showzh .main .drag .head .LL{
+	float:left;
+	background:url(showroom_main_l.gif);
+	width:30px;
+	height:30px;
+}
+.showroom_showzh .main .drag .head .TAG{
+	float:left;
+	background:url(showroom_main_tag.gif);
+	width:107px;
+	height:21px;
+	text-align:center;
+	padding-top:9px;
+	font-weight:bold;
+	letter-spacing:2px;
+	font-size:14px;
+}
+
+.showroom_showzh .main .drag .head .RR{
+	float:right;
+	background:url(showroom_main_rr.gif);
+	width:6px;
+	height:30px;
+}
+.showroom_showzh .main .drag .head{
+	background:url(showroom_main_bg.gif);
+}
+.showroom_showzh .main .drag .CC{
+	border:1px solid #DFDFDF;
+	border-top:0;
+	padding: 20px 20px 20px 20px;
+}
+
+.showroom_showzh .main .drag .CC #list_zh .hh td{
+	color:#0066B0;
+	font-weight:bold;
+	padding-bottom:5px;
+	border-bottom:1px dotted #ddd;
+}
+
+.showroom_showzh .main .drag .CC #list_zh .lt td{
+	line-height:25px;
+}
+.showroom_showzh .main .drag .CC #list_zh .lt .t1 a{
+	display:block;
+	background: url(arrow.gif) no-repeat 0 4px;
+	padding-left:10px;
+}
+.showroom_showzh .main .drag .CC #list_zh .bb td{
+	background:#F6F8FF;
+}
+
+
+#page td{
+	padding:8px;
+}
+/*
+*展会资讯
+*/
+.md10{
+	margin-bottom:10px;
+}
+.showroom_showzh img{
+	border:0;
+}
+div.SidezhBox div.h{
+	height:30px;
+	line-height:30px;
+	background: url(roomh.gif) right top no-repeat;
+}
+div.SidezhBox div.h span{
+	float:left;
+	display:block;
+	background: url(roomh.gif) left top no-repeat;
+	padding-left:15px;
+	font-weight:bold;
+}
+div.SidezhBox div.c{
+	border:#dfdfdf solid 1px;
+	border-top:0;
+	height:151px;
+	padding:0 5px 0 5px;
+}
+div.SidezhBox div.c table{
+	border-bottom:#dfdfdf dotted 1px;
+	margin-bottom:10px;
+	margin-top:5px;
+}
+div.SidezhBox div.c .img{
+	width:40%;
+	text-align:center;
+}
+div.SidezhBox div.c .img img{
+	margin:5px 5px 10px 5px;
+}
+div.SidezhBox div.c .t{
+	width:60%;
+	color:#999;
+	line-height:20px;
+}
+div.SidezhBox div.c .list{
+	line-height:22px;
+	width:90%;
+	height:22px;
+	overflow:hidden;
+	padding-left:15px;
+	background:url(point_ccc.gif) 6px 9px no-repeat;
+}
+/*
+*中间图片
+*/
+div.SlidzhBox{
+	width:400px;
+	height:180px;
+	overflow:hidden;
+	text-align:center;
+	border:#dfdfdf solid 1px;
+}
+/*
+*发布信息登记展馆
+*/
+.showroom_showzh .main .sider{
+	padding-left:10px;
+}
+div.zhaction{
+	border:#FDDB79 solid 1px;
+	height:180px;
+	background:#FFF6D5 url(zhbg1.gif) 5px 5px no-repeat;
+}
+div.zhaction .info{
+	height:80px;
+	padding:10px 0 0 70px;
+	line-height:22px;
+}
+div.zhaction .info span a{
+	font-size:14px;
+	font-weight:bold;
+}
+/*
+*展会列表
+*/
+.drag_table .h{
+	height:35px;
+	line-height:35px;
+	background:url(room_hbg.gif) right top no-repeat;
+}
+.drag_table .h .TAG{
+	display:block;
+	float:left;
+	width:200px;
+	padding-left:50px;
+	background:url(room_hbg.gif) left top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+}
+.drag_table .c{
+	border:#dfdfdf solid 1px;
+	border-top:0;
+	padding:5px 10px 5px 10px;
+}
+.drag_table .c table{
+	line-height:22px;
+}
+.drag_table .c table .h1 td{
+	height:30px;
+	background:url(room_dotted.gif) left 25px repeat-x;
+	color:#B04A00;
+	font-weight:bold;
+}
+.drag_table .c table td.t a{
+	display:block;
+	padding-left:15px;
+	background:url(room_array.gif) 5px 8px no-repeat;
+}
+.drag_table .c table .bg td{
+	background:#FFFDF6;
+}
+
+
+.listzhinfo{
+	background:url(room_dotted.gif) left bottom repeat-x;
+	margin-top:10px;
+}
+.listzhinfo .img{
+	width:30%;
+}
+.listzhinfo .img img{
+	margin-bottom:10px;
+	border:#dfdfdf solid 2px;
+}
+.listzhinfo .t{
+	line-height:18px;
+	color:#999;
+}
+.listzhinfo .t a{
+	color:#999;
+}
+.listzhinfo .t span a{
+	color:#333;
+	font-weight:bold;
+}
+/*
+*推荐展览馆
+*/
+.drag_table .c .list{
+	width:130px;
+	height:90px;
+	overflow:hidden;
+	float:left;
+	text-align:center;
+}
+.drag_table .c .list a{
+	display:block;
+}
+.drag_table .c .list a img{
+	margin:5px auto 10px auto;
+	border:#ccc solid 2px;
+}
+
+#showroom_tt1ad{
+	margin:0px 0 8px 0;
+}

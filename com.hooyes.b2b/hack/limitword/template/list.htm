@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+-->  
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=delete">
+    <tr align="center" class="head"> 
+      <td width="4%">序号</td>
+      <td width="30%">原字符</td>
+      <td width="49%">替换成新字符</td>
+      <td width="17%">删除/修改/添加</td>
+    </tr><!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="4%" align="center">$rs[id]</td>
+      <td width="30%"> 
+        <input type="checkbox" name="iddb[{$rs[id]}]" value="{$rs[id]}">
+        $rs[oldword]</td>
+      <td width="49%"> $rs[newword]</td>
+      <td width="17%" align="center"><a href="index.php?lfj=$lfj&action=delete&iddb[{$rs[id]}]=$rs[id]"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a>&nbsp;<a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a>&nbsp;<a href="index.php?lfj=$lfj&job=add"><img alt='添加关键字' src='../member/images/icon_add.gif' border=0></a></td>
+    </tr>  <!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="4" bgcolor="#FFFFFF"> $showpage </td>
+    </tr> <tr align="center"> 
+      <td colspan="4" bgcolor="#FFFFFF"> <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> 
+        <input type="submit" name="Submit" value="删 除">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form   method="post" action="index.php?lfj=$lfj&action=set">
+    <tr align="left" class="head"> 
+      <td>屏蔽范围设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center"> 
+        <input type="radio" name="webdbs[kill_badword]" value="1" $kill_badword[1]>
+        所有页面内容彻底屏蔽（不推荐） 
+        <input type="radio" name="webdbs[kill_badword]" value="0" $kill_badword[0]>
+        有选择性的屏蔽（推荐） 
+        <input type="submit" name="Submit" value=" 提 交 ">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td align="left"><font color="#FF0000">说明:</font><br>
+        1.选择“彻底屏蔽”的话,效果非常明显,整个页面都将看不到被屏蔽的字词,虽然很强大,但是比较少用.因为除会员发表的内容外.有些地方还是需要显示的,一般不推荐.<br>
+        2.我们推荐启用“有选择性的屏蔽”,用户发表时，会自动替换词语，用户已发表的，虽然不能替换，但在页面显示时会进行替换处理。</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

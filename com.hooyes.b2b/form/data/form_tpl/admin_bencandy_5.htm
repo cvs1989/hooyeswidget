@@ -1,0 +1,64 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <tr> 
+    <td> <a href="$admin_path&file=form_content&job=list&mid=$mid">$fidDB[name]</a></td>
+  </tr>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <tr class="head"> 
+    <td   align="center">查看内容 </td>
+  </tr>
+  <tr> 
+    <td width="100%" height="93" valign="top" class="Main"> 
+      <table width="99%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:8px;">
+        <tr> 
+          <td style="color:#990000;font-weight:bold;font-size:14px;" align="center">$rsdb[title]</td>
+        </tr>
+      </table>
+      <table width="99%" border="0" cellspacing="0" cellpadding="0"  style="margin-bottom:8px;border-bottom:1px solid #ccc;">
+        <tr> 
+          <td align="center"> [ 提交者:{$rsdb[username]} |&nbsp;时间:{$rsdb[posttime]} 
+            ]</td>
+        </tr>
+      </table>
+      <table width="99%" border="0" cellspacing="1" cellpadding="3" >
+        <tr> <td style='border-bottom:1px dotted #ccc;'>公司职位:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[cp_title]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>姓名:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[truename]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>出生日期:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[bday]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>身高:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[height]}&nbsp;CM&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>籍贯:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[native]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>学历:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[school_age]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>专业:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[specialty]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>QQ号码:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[oicq]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>邮箱:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[email]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>手机号码:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[mobphone]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>特长:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[skill]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>身份证号码:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[idcard]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>体育爱好:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[sport]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>家庭电话:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[telephone]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>家庭地址:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[address]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr><tr> <td style='border-bottom:1px dotted #ccc;'>自我评价:</td> <td  style='border-bottom:1px dotted #ccc;'><table width='100%' border='0' cellspacing='0' cellpadding='0' style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;'><tr><td>{$rsdb[content]}&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr> 
+        <tr> 
+          <td width="20%">是否已$fidDB[statename]:</td>
+          <td width="80%"> 
+            <!--
+EOT;
+if($rsdb[yz]){
+print <<<EOT
+-->
+            <a href="$admin_path&file=form_content&job=yz&yz=0&mid=$mid&id=$id"><img alt='是' src="images/check_yes.gif" border="0"></a> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <a href="$admin_path&file=form_content&job=yz&yz=1&mid=$mid&id=$id"><img alt='否' src="images/check_no.gif" border="0"></a> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr>
+ 
+        <tr> 
+          <td width="20%" style='border-top:1px dotted #ccc;'>&nbsp;</td>
+          <td width="80%" style='border-top:1px dotted #ccc;'><a href="$admin_path&file=form_content&job=reply&mid=$mid&id=$id"><img src="images/edit.png" border="0">解答回复</a></td>
+        </tr>
+ 
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

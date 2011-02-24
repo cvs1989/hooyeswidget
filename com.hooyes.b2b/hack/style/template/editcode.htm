@@ -1,0 +1,59 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="myform" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2"> 修改模板</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%"> 模板文件</td>
+      <td width="86%"> <a href="../template/$keywords/{$filename}" target="_blank">/template/$keywords/{$filename}</a></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%">模板代码:</td>
+      <td width="86%"> <Script Language=JavaScript>
+function eWebEditorPopUp(form, field, width, height) {
+	window.open("../ewebeditor/v4.60/popup.htm?style=popup&form="+form+"&field="+field, "", "width="+width+",height="+height+",toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no");
+}
+</Script>
+        <textarea name="code" cols="140" rows="20">$code</textarea>
+        <br>
+        <INPUT TYPE="BUTTON" NAME="btn" VALUE="可视化编辑" ONCLICK="eWebEditorPopUp('myform', 'code', 800, 600)">
+      </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="2"> 
+        <input type="hidden" name="keywords" value="$keywords">
+        <input type="hidden" name="filename" value="$filename">
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head"> 
+      
+    <td  > 帮助说明:</td>
+    </tr>
+  <tr>
+    <td>1.修改前，请备份一下文件。修改后若出错，方便还原替换！</td>
+  </tr>
+</table>

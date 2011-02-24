@@ -1,0 +1,99 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG">请选择一种支付方式</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tr align="center"> 
+                <td height="22" colspan="5"><br>
+                  你需要支付人民币 <b><font color="#FF0000">{$infodb[totalmoney]}</font></b> 
+                  元，请选择一种支付方式！</td>
+              </tr>
+              <tr align="center"> 
+<!--
+EOT;
+if($array[yeepay_id]){print <<<EOT
+-->
+                <td height="10"><img src="../images/default/yeepay_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="yeepay" checked style="border:0px;" id="pay_yee">
+                </td>
+<!--
+EOT;
+}if($array[tenpay_id]){print <<<EOT
+-->
+                <td height="10"><img src="../images/default/tenpay_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="ten" style="border:0px;" id="pay_ten" checked>
+                </td>
+<!--
+EOT;
+}if($array[alipay_id]){print <<<EOT
+-->
+                <td height="10"><img src="../images/default/alipay_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="ali" style="border:0px;" id="pay_ali" checked>
+                </td>
+<!--
+EOT;
+}if($array[pay99_id]){print <<<EOT
+-->
+                <td height="10"><img src="../images/default/99bill_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="99bi" style="border:0px;" id="pay_99bi" checked>
+                </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+              </tr>
+              <tr align="center"> 
+                <td height="74" colspan="5"> 　　<a href="javascript:paytype();"><img src="images/default/next.gif" border="0"></a> 
+                  <script language="JavaScript">
+<!--
+function paytype(){
+	var url='';
+	if(document.getElementById("pay_ten")!=null&&document.getElementById("pay_ten").checked==true){
+		url='tenpay';
+	}
+	else if(document.getElementById("pay_ali")!=null&&document.getElementById("pay_ali").checked==true){
+		url='alipay';
+	}
+	else if(document.getElementById("pay_99bi")!=null&&document.getElementById("pay_99bi").checked==true){
+		url='99pay';
+	}
+	else if(document.getElementById("pay_yee")!=null&&document.getElementById("pay_yee").checked==true){
+		url='yeepay';
+	}
+	window.location.href="olpay.php?pay_code=$pay_code&banktype="+url;
+}
+//-->
+</script>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+ 
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,189 @@
+/*
+*样式初始化开始
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+	padding: 0; 
+	margin: 0; 
+} 
+table{ 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+} 
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul { 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+	font-weight: normal;
+	font-size: 100%; 
+} 
+q:before,q:after { 
+	content:”; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+body{
+	font-size:12px;
+}
+td{
+	vertical-align:top;
+}
+a,a:link,a:visited{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+/*
+*样式初始化结束
+*/
+
+/*
+*头部开始
+*/
+#HeadContainer{
+	height:103px;
+	background:url(head_bg.gif) left top repeat-x;
+	overflow:hidden;
+}
+#HeadContainer .Logo{
+	height:70px;
+	width:20%;
+}
+#HeadContainer .TopRight{
+	height:70px;
+	width:80%;
+}
+#HeadContainer .TopRight .webguide{
+	text-align:right;
+	padding:10px 20px 0 0;
+	line-height:25px;
+	color:#FFF;
+	word-spacing:15px;
+}
+#HeadContainer .TopRight .webguide a{
+	color:#FFF;
+	font-size:14px;
+}
+#HeadContainer .wellcome,#HeadContainer .select{
+	line-height:35px;
+	padding-left:20px;
+	color:#FFF;
+}
+#HeadContainer .wellcome a{
+	color:#FFF;
+}
+#HeadContainer .wellcome span{
+	color:yellow;
+}
+#time{
+	text-align:right;
+	padding-right:20px;
+}
+/*
+*头部结束
+*/
+
+/*
+*主体开始
+*/
+#MainContainer{
+	margin:auto;
+	width:100%;	
+}
+#MainContainer #SideMenu{
+	width:10%;
+	border-right:#FFA6A6 solid 1px;
+	background:#FFF0F8;
+}
+#MainContainer #contentwrap{
+	width:90%;
+}
+/*左边菜单样式*/
+#MainContainer #SideMenu .drage{
+	width:200px;
+}
+#MainContainer #SideMenu .drage div{
+	height:30px;
+	line-height:30px;
+	background:url(head4.gif) left top repeat-x;
+	padding-left:30px;	
+}
+#MainContainer #SideMenu .drage div.action a{
+	padding-right:15px;
+}
+#MainContainer #SideMenu dl{
+	background:url(head4.gif) left top repeat-x;
+	width:200px;
+	border-top:#FF9695 solid 1px;
+}
+#MainContainer #SideMenu dt{
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	padding-left:30px;
+	font-size:14px;
+	font-weight:bold;
+	color:#DD060D;
+	background:url(0ico1.jpg) 12px 10px no-repeat;
+	cursor:pointer;	
+}
+#MainContainer #SideMenu .Show dt{
+	background:url(0ico2.jpg) 12px 10px no-repeat;	
+}
+#MainContainer #SideMenu dd{
+	display:none;
+}
+#MainContainer #SideMenu .Show dd{
+	display:block;
+	line-height:22px;
+	height:22px;
+	overflow:hidden;
+	background:url(arrow.gif) 22px 6px no-repeat;
+	padding-left:40px;
+	
+}
+#MainContainer #SideMenu .Show dd a{
+	font-size:14px;
+	color:#DD060D;
+}
+.inlineserver{
+	border-top:#FF9695 solid 1px;
+	background:#FFF url(inlineserver.gif) 3px 10px no-repeat;
+	padding:10px 5px 10px 75px;
+	height:120px;
+}
+.inlineserver .h{
+	border-bottom:#ccc solid 3px;
+	padding:5px 0 3px 10px;
+	font-size:14px;
+	font-weight:bold;
+	color:#CE2F42;
+	margin-bottom:5px;
+}
+.inlineserver .t,.inlineserver .q{
+	padding-left:20px;
+	color:#E74D4D;
+	line-height:30px;
+	font-weight:bold;
+}
+/*
+*右边内容
+*/
+#member_mainiframe{
+	width:100%;
+}
+/*
+*主体结束
+*/

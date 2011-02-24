@@ -1,0 +1,226 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>            powerby www.qibosoft.com<</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+ <META content=all name=robots>
+<META http-equiv=imagetoolbar content=no>
+<META http-equiv=Pragma content=no-cache>
+<LINK href="images/cutimg/style.css" type=text/css rel=stylesheet>
+<STYLE>
+.rectangle_style {
+	CURSOR: move
+}
+</STYLE>
+<SCRIPT>
+var setdefault = 1;
+var showopacity = 1;
+var canmove = 1;
+var currentImageArray = new Array();
+currentImageArray[0] = new Array("$srcimg");
+currentImageArray[1] = new Array("$srcimg");
+</SCRIPT>
+<SCRIPT language=JavaScript src="images/cutimg/phone.wh.js"></SCRIPT>
+<SCRIPT language=JavaScript>
+pic_wh_arr[0] = new Array($width,$height);
+</SCRIPT>
+<SCRIPT language=JavaScript src="images/cutimg/phone.pic.js"></SCRIPT>
+<SCRIPT language=JavaScript src="images/cutimg/phone.combobox.js"></SCRIPT>
+<SCRIPT language=JavaScript src="images/cutimg/mmsdiy.js"></SCRIPT>
+<SCRIPT>
+var tbw = checkBrowser();
+var currentImage = new Image();
+if (tbw.ie && !tbw.ope && !tbw.ffox && !tbw.maxthon)
+{
+	currentImage.src = currentImageArray[0];
+}
+else
+{
+	currentImage.src = currentImageArray[1];
+//		currentImage.width = "0"
+//		currentImage.height = "0"
+}
+</SCRIPT>
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<CENTER>
+<SCRIPT>
+d_l = 0;
+d_t = 0;
+d_w = 474;
+d_h = 353;
+</SCRIPT>
+  <TABLE cellSpacing=0 cellPadding=0 width=37% border=0>
+    <FORM id=PicEdit name=PicEdit action='$post' method="post"   encType=multipart/form-data >
+      <TBODY> 
+      <TR vAlign=top align=middle> 
+        <TD style="PADDING-BOTTOM: 10px; PADDING-TOP: 3px" align="center"> 
+          <div  style='DISPLAY: none'>
+		
+          <table cellspacing=0 cellpadding=0 width=480 border=0>
+            <tbody> 
+            <tr valign=top> 
+              <td width=7><img height=79 src="images/cutimg/wl_mmsdiy01.gif" 
+            width=7 border=0></td>
+              <td style="PADDING-TOP: 4px" bgcolor=#92d7ff>
+                <table cellspacing=0 cellpadding=0 width=190 border=0>
+                  <tbody> 
+                  <tr> 
+                    <td width=61 height=24>机型选择：</td>
+                    <td>
+                      <select 
+                  onChange="PhoneBrandChange(this.form.PHONE, this.value);OnPhoneModelChange(this.form.PHONE.value);" 
+                  name=BRAND>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td>型号选择：</td>
+                    <td height=24>
+                      <select onChange=OnPhoneModelChange(this.value) 
+                  name=PHONE>
+                      </select>
+                    </td>
+                  </tr>
+                  </tbody> 
+                </table>
+              </td>
+              <td style="PADDING-TOP: 4px" bgcolor=#92d7ff>
+                <table cellspacing=0 cellpadding=0 border=0>
+                  <tbody> 
+                  <tr> 
+                    <td style="PADDING-LEFT: 24px">
+                      <table cellspacing=0 cellpadding=0 width=260 border=0>
+                        <tbody> 
+                        <tr> 
+                          <td height=28>图片按实际尺寸<span id=SizeDesc></span>的 
+                            <input 
+                        class=scaletext id=ScaleVal style="WIDTH: 36px" disabled 
+                        onChange=ImageScale(this.value) size=5 value=100% 
+                        name=ScaleVal>
+                            显示</td>
+                        </tr>
+                        <tr> 
+                          <td align=middle><img height=8 
+                        src="images/cutimg/slidebar.gif" width=209></td>
+                        </tr>
+                        <tr> 
+                          <td align=middle><img class=slidemover id=ScaleBar 
+                        ondrag=dragHandler(sclval) ondragstart=dragHandler() 
+                        style="LEFT: 0px; POSITION: relative; TOP: 0px" height=6 
+                        src="images/cutimg/slidemover.gif" width=11></td>
+                        </tr>
+                        <tr> 
+                          <td align=middle height=34><img style="CURSOR: hand" 
+                        onClick=setDefaultSize() height=19 
+                        src="images/cutimg/wl_mmsdiy_b4.gif" width=60 
+                        border=0>&nbsp; <img style="CURSOR: hand" 
+                        onClick=setOriginSize() height=19 
+                        src="images/cutimg/wl_mmsdiy_b5.gif" width=60 
+                        border=0>&nbsp; <img style="CURSOR: hand" 
+                        onClick=setPhoneSize() height=19 
+                        src="images/cutimg/wl_mmsdiy_b6.gif" width=86 
+                        border=0> </td>
+                        </tr>
+                        </tbody> 
+                      </table>
+                    </td>
+                  </tr>
+                  </tbody> 
+                </table>
+              </td>
+              <td width=6><img height=79 src="images/cutimg/wl_mmsdiy07.gif" 
+            width=6 border=0></td>
+            </tr>
+            </tbody> 
+          </table>
+		  
+		  </div>
+          <img height=4 
+      src="images/cutimg/ccc.gif" width=1><br>
+          <table height=396 cellspacing=1 cellpadding=0 width=479 bgcolor=#777777   border=0>
+            <tbody> 
+            <tr id=PrevTR> 
+              <td valign=center align=middle><br>
+                <br>
+                <br>
+                <font 
+            color=white>图片载入<br>
+                请稍等...</font> </td>
+            </tr>
+            <tr id=EditTR style="VISIBILITY: hidden"> 
+              <td align=middle>
+                <div id=ShowDiv onDblClick=SubmitSend(); title=双击确定 
+            style="VISIBILITY: hidden; BACKGROUND-COLOR: #000000" 
+            align=center><img id=bgImage style="Z-INDEX: 1" name=bgImage> 
+                  <div class=rectangle_style id=selectPicEdit title="" 
+            style="Z-INDEX: 3" align=center valign="middle"><img 
+            class=rectangle_style id=CoverPic> 
+                    <div class=rectangle_style id=PicEditborder></div>
+                  </div>
+                  <div class=handler_style id=HandlerDiv><img height=2 src="" 
+            width=2></div>
+                </div>
+              </td>
+            </tr>
+            </tbody> 
+          </table>
+          <input type="submit" name="Submit" value="确认提交">
+        </TD>
+      </TR>
+      <INPUT type=hidden value=0 name=x>
+      <INPUT type=hidden value=0 name=y>
+      <INPUT type=hidden value=0 name=w>
+      <INPUT type=hidden value=0 name=h>
+      <INPUT type=hidden value=0 name=rw>
+      <INPUT type=hidden value=0 name=rh>
+      <INPUT type=hidden value=100 name=scale>
+      <INPUT type=hidden value=0 name=whr>
+	  <INPUT type=hidden value=cutimg name=action>
+      <INPUT type=hidden value='$srcimg' name=uploadfile>
+
+	  <INPUT type=hidden value='$srcimg' name=uploadfile>
+	  <INPUT type=hidden value='$ch_module' name=ch_module>
+	  <INPUT type=hidden value='$lfj' name=lfj>
+      </TBODY> 
+    </FORM>
+  </TABLE>
+</CENTER>
+<SCRIPT>
+ 
+	BrandInit(document.all.BRAND);
+//	moveTo(0, 0);
+//	resizeTo( screen.width, screen.height );	
+//	window.scroll(0,175);
+</SCRIPT>
+<SCRIPT>//document.body.scroll="auto";window.resizeTo(window.screen.availWidth, window.screen.availHeight);</SCRIPT>
+<SCRIPT>
+//	document.all.nextt.focus();
+</SCRIPT>
+<SCRIPT language=JavaScript src="images/cutimg/mms.diy.js"></SCRIPT>
+<SCRIPT>
+	document.onmousedown = onMouseDrags;
+	document.onmouseup = new Function("dragApproved=false;");
+
+	init();
+	if(currentImage.complete)
+	{
+		ImgShow();
+	}
+	else
+	{
+		currentImage.onload = ImgShow;
+	}
+	focus();
+</SCRIPT>
+</BODY>
+</HTML>
+<!--
+EOT;
+?>
+-->

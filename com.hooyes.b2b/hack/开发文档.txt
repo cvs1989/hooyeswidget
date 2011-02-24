@@ -1,0 +1,24 @@
+插件中心,取一个关键字(比如propagandize)只能是英文或英文+数字或下划线 为目录名放在/hack/目录下
+
+然后在目录里创建如下SQL文件
+/hack/data.sql
+
+在里边放入如下代码
+
+INSERT INTO `p8_hack` (`keywords`, `name`,  `adminurl`,  `class1`, `class2`) VALUES ('propagandize', '推广赚取积分功能',  'index.php?lfj=propagandize&job=list',  'other', '其它功能');
+
+ `class1`, `class2` 这两项值一般不变
+
+然后再把其它用到的数据表,也放在这个文件里
+
+
+\hack\propagandize\admin.php 这是后台调用的文件
+
+\hack\propagandize\member.php 这是会员中心调用的文件,
+
+\hack\propagandize\index.php 这是前台展示功能调用的文件.
+
+\hack\propagandize\member_menu.php  会员中心菜单
+
+以上这4个文件,如果没相应的功能,就不需要创建.
+

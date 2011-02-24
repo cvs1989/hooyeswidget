@@ -1,0 +1,38 @@
+<!--
+<?php
+print <<<EOT
+-->
+        <table width="100%" border="0" cellpadding="10" cellspacing="1" bgcolor="#CCCCCC" class="posttable">
+          <tr>
+            <td width="62%" bgcolor="#F9F9F9"><strong>新闻标题</strong></td>
+            <td width="9%" align="center" bgcolor="#F9F9F9"><strong>审核</strong></td>
+            <td width="11%" align="center" bgcolor="#F9F9F9"><strong>发布时间</strong></td>
+            <td width="8%" align="center" bgcolor="#F9F9F9"><strong>浏览量</strong></td>
+            <td width="10%" align="center" bgcolor="#F9F9F9"><strong>操作</strong></td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+          <tr>
+            <td bgcolor="#FFFFFF"><a href="$Mdomain/homepage.php?uid=$uid&m=newsview&id=$rs[id]" target="_blank">$rs[title]</a></td>
+            <td align="center" bgcolor="#FFFFFF">$rs[yz]</td>
+            <td align="center" bgcolor="#FFFFFF">$rs[posttime]</td>
+            <td align="center" bgcolor="#FFFFFF">$rs[hits]</td>
+            <td align="center" bgcolor="#FFFFFF"><a href="?atn=postnews&id=$rs[id]&uid=$uid" >编辑</a> | <a href="?atn=delnews&id=$rs[id]&uid=$uid" onclick="return confirm('删除后不可恢复，是否继续？');">删除</a></td>
+          </tr>
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+        </table>
+        <br />
+        <p class="page">$showpage</p>
+        <br />
+        <p class="page"><strong>友情提示</strong>：如发现您发布的新闻长期处于‘<font color="#FF0000">审核中</font>’状态，则推荐您查看或修改您的新闻内容，并确定内容是否真实可靠；</p>
+<!--
+EOT;
+?>
+-->

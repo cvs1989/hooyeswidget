@@ -1,0 +1,210 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/buy_index.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="buy_tt1ad">
+  <tr>
+    <td>$label[buy_tt1ad]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index md10">
+  <tr>     
+    <td width="25%" valign="top" class="side"> 
+       <div class="join_site">
+       	   <div class="h"><span>$label[buy_n3]</span></div>
+           
+        <div class="action"> <span><a href="$webdb[www_url]/member/?main=$Murl/member/post_choose.php" target="_blank">发布求购信息</a></span> 
+          <span><a href="$webdb[www_url]/member/?main=$webdb[www_url]/sell/member/post_choose.php" target="_blank">发布供应信息</a></span> 
+          <span><a href="$webdb[www_url]/member/?main=$Murl/member/list.php" target="_blank">管理求购信息</a></span> 
+          <span><a href="$webdb[www_url]/member/?main=$webdb[www_url]/sell/member/list.php" target="_blank">管理产品信息</a></span> 
+        </div>
+           
+        <div class="reg"> <a href="$webdb[www_url]/do/reg.php" target="_blank">立即免费注册会员</a> </div>		   
+       </div>
+    </td>
+    <td width="75%" valign="top" class="main">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="mainleft">
+          <tr>            
+            <td class="Slidetd">
+              <span>$label[buy_roll]</span>
+            </td>
+            <td class="NewsInfo">
+               <div class="NewsSide">
+               	   
+              <div class="h"><span class="l">$label[buy_n8]</span><span class="r">$label[buy_n9]</span></div>
+                   <div class="c">
+                    $label[buy_n1]
+                   </div>
+               </div>
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index md10">
+  <tr>     
+    <td width="25%" valign="top" class="side"> 
+       <div class="sideadtitle">
+       	   $label[buy_n2]
+       </div>
+    </td>
+    <td width="75%" valign="top" class="main">    	
+      <div class="second_ad">$label[buy_adpic]</div>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index md10">
+  <tr>    
+    <td width="25%" valign="top" class="side"> 
+       <table width="100%" cellspacing="0" cellpadding="0" class="ContSide">
+          <tr>
+            
+          <td class="h"><span class="l">$label[buy_n4]</span><span class="r">$label[buy_n5]</span></td>
+          </tr>
+          <tr>
+            <td class="c padding5">
+$label[buy_n10]
+            </td>
+          </tr>
+        </table>
+    </td>
+    <td width="75%" valign="top" class="main">
+        <table width="100%" cellspacing="0" cellpadding="0" class="ContSide">
+          <tr>
+            
+          <td class="h"><span class="l">$label[buy_n6]</span><span class="r"> 
+            $label[buy_n7]</span></td>
+          </tr>
+          <tr>
+            <td class="c">$label[buy_c1]
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index">
+  <tr>    
+    <td width="25%" height="246" valign="top" class="side"> 
+    	<table width="100%" cellspacing="0" cellpadding="0" class="SideRightTable md10">
+          <tr>
+            
+          <td class="h"><span class="l">$label[buy_c2]</span><span class="r">$label[buy_c3]</span></td>
+          </tr>
+          <tr>
+            <td class="c padding5">
+            $label[buy_c4]	
+           
+                          
+            </td>
+          </tr>
+        </table>
+        <table width="100%" cellspacing="0" cellpadding="0" class="SideRightTable">
+          <tr>
+            
+          <td class="h"><span class="l">$label[buy_c5]</span><span class="r">$label[buy_c6]</span></td>
+          </tr>
+          <tr>
+            <td class="c padding5">$label[buy_c7]
+             
+            </td>
+          </tr>
+        </table>
+    </td>
+    <td width="75%" height="246" valign="top" class="main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="all_sort">
+        <tr> 
+          <td class="head"> 
+            <div class="LL"></div>
+            <div class="TAG">$fidDB[name]</div>
+            <div class="RR"><a href="#">发布产品</a></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC" height="200" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="ShowSortTable" onmouseout="HiddenTdBg(this)">
+<!--
+EOT;
+$newarray = array_flip($Fid_db[0]);
+$array = array_chunk($newarray,2);
+$j = 0;
+foreach($array AS $ar){
+$j++;
+$trdisplaybg = $j%2 == 0 ? "class = 'havebg'" : "";
+print <<<EOT
+-->
+              <tr $trdisplaybg>
+<!--
+EOT;
+$i = 0;
+foreach($ar AS $fup){
+$i++;
+print <<<EOT
+-->
+			  
+                <td onmouseover="ShowTdBg(this)">				
+				<div class="big_name"><a href="list.php?fid=$fup">{$Fid_db['name'][$fup]}</a></div>
+				<div class="smll_name">
+<!--
+EOT;
+$y = 0;
+foreach($Fid_db[$fup] AS $fid=>$name){
+$y++;
+$listnum = $webdb[Index_listsortnum]?$webdb[Index_listsortnum]:20;
+if($y>$listnum)break;
+print <<<EOT
+-->
+				<a href="list.php?fid=$fid">{$name}</a> | 
+<!--
+EOT;
+}print <<<EOT
+-->
+					<a href="list.php?fid=$fup" class="more">更多..</a>
+				</div>
+				</td>
+<!--
+EOT;
+}if($i<2){
+print <<<EOT
+-->
+				<td onmouseover="ShowTdBg(this)"><br/></td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+              </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ShowTdBg(TheTd){
+	obj=document.getElementById("ShowSortTable").getElementsByTagName("td");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	TheTd.className='choose';
+}
+function HiddenTdBg(TheTable){
+	obj=TheTable.getElementsByTagName("td");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+}
+//-->
+</SCRIPT>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

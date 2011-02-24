@@ -1,0 +1,34 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="vote_js" style="margin:3px;">
+<form name="formv" method="post" action="$Murl/vote.php?action=vote&cid=$cid" target="_blank">
+  <tr> 
+    <td class="voteabout">&nbsp;&nbsp;$about</td>
+  </tr>
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr class="voteid"> 
+    <td>$rs[type]$rs[title]({$rs[votenum]})</td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+--> 
+  <tr>
+    <td class="votepost" align="center">
+     
+        <input type="submit" name="Submit" title="我要投票"  value="" style="background:url('$webdb[www_url]/images/default/vote_sub.gif');width:44px;height:21px;border:0px;">&nbsp;&nbsp;<input type="button" name="Submit2" title="查看投票" value="" onclick="window.open('$Murl/vote.php?job=show&cid=$cid')" style="background:url('$webdb[www_url]/images/default/vote_view.gif');width:44px;height:21px;border:0px;">
+     
+    </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

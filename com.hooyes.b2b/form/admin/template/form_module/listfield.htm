@@ -1,0 +1,74 @@
+<!--
+<?php
+print <<<EOT
+--> <table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td>[<a href="$admin_path&job=list">模型列表(创建模型)</a>] [<a href="$admin_path&job=set&id=$id">模型设置</a>] 
+      [<a href="$admin_path&job=listfield&id=$id">字段列表</a>] [<a href="$admin_path&job=addfield&id=$id">添加功能字段</a>] 
+      [<a href="$admin_path&job=tpl&id=$id">本模型生成模板</a>] [<a href="../$dirname/form.php?mid=$id" target="_blank">填写表单</a>] 
+      [<a href="$admin_path&file=form_content&job=list&mid=$id">表单内容管理</a>]</td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=editorder&id=$id">
+    <tr class="head" align="center"> 
+      <td width="40%">字段名称</td>
+      <td width="29%">字段ID</td>
+      <td width="17%">排序</td>
+      <td width="7%">修改</td>
+      <td width="7%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width="40%">$rs[title]</td>
+      <td width="29%">$rs[field_name]</td>
+      <td width="17%" align="center"> 
+        <input type="text" name="postdb[{$rs[field_name]}]" size="6" value="$rs[orderlist]">
+      </td>
+      <td width="7%" align="center"> 
+        <p><a href='$admin_path&job=editfield&id=$id&field_name=$rs[field_name]'>管理</a></p>
+      </td>
+      <td width="7%" align="center"><a href="$admin_path&action=delfield&id=$id&field_name=$rs[field_name]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="5"> 
+        <input type="submit" name="Submit" value="修改排序">
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td colspan="5">注意:<font color="#FF0000">排序方式,数值大的排在前面</font></td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

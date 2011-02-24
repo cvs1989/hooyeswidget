@@ -1,0 +1,359 @@
+/***************************产品供应内容页*******************************/
+.supply_view .main{
+	padding-right:10px;
+}
+.supply_view .main .CC{
+	border:1px solid #FDDCB7;
+	border-top:0;
+}
+.supply_view .main .head{
+	height:30px;
+	background:url(supply_view_head_bg.gif);
+}
+.supply_view .main .head .LL{
+	height:30px;
+	width:15px;
+	background:url(supply_view_head_l.gif);
+	float:left;
+}
+.supply_view .main .head .TAG{
+	height:22px;
+	background:url(supply_view_head_tag.gif) right;
+	float:left;
+	padding-right:60px;
+	padding-left:5px;
+	padding-top:8px;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+}
+.supply_view .main .head .RR{
+	height:30px;
+	background:url(supply_view_head_r.gif) right top no-repeat;
+	float:right;
+	line-height:30px;
+	padding-right:10px;
+}
+
+
+
+.supply_view .side .CC{
+	border:1px solid #FDDCB7;
+	border-top:0;
+}
+.supply_view .side .head{
+	height:30px;
+	background:url(supply_view_side_head_bg.gif);
+}
+.supply_view .side .head .LL{
+	height:30px;
+	width:16px;
+	background:url(supply_view_side_head_l.gif);
+	float:left;
+}
+.supply_view .side .head .RR{
+	height:30px;
+	width:7px;
+	background:url(supply_view_side_head_r.gif);
+	float:right;
+}
+.supply_view .side .head .TAG{
+	height:22px;
+	float:left;
+	padding-top:8px;
+	font-size:13px;
+	font-weight:bold;
+	color:#545454;
+}
+/*
+*
+*/
+td.CC div.bencandy_pic{
+	width:30%;
+	height:200px;
+	float:left;
+	text-align:center;
+}
+td.CC div.bencandy_pic a{
+	display:block;
+}
+td.CC div.bencandy_pic a.picurl{
+	background:url(sell_becandy_pic_bg.gif) center top no-repeat;
+	padding:9px;
+	margin-top:20px;
+	margin-bottom:10px;
+}
+td.CC div.describ{
+	width:67%;
+	float:left;
+	padding-top:20px;
+}
+td.CC div.describ div.title{
+	line-height:30px;
+	font-size:18px;
+	font-weight:bold;
+}
+td.CC div.describ div.infoa{
+	line-height:20px;
+	padding-bottom:5px;
+}
+td.CC div.describ div.infob{
+	border-top:#FDDCB7 dotted 1px;
+	border-bottom:#FDDCB7 dotted 1px;
+	height:75px;
+	padding:5px 0 5px 0;
+}
+td.CC div.describ div.infob div{
+	width:49%;
+	float:left;
+	line-height:25px;
+}
+td.CC div.describ div.infob div span{
+	font-size:14px;
+	color:#CC6500;
+}
+td.CC div.shopbuy{
+	width:67%;
+	float:left;
+	padding-top:15px;
+	height:35px;
+}
+td.CC div.shopbuy span{
+	dislay:block;
+	float:left;
+	line-height:35px;
+	font-size:18px;
+	color:#CC6500;
+}
+td.CC div.shopbuy span.input{
+	padding-top:5px;
+}
+td.CC div.shopbuy span.butter{
+	width:135px;
+	height:35px;
+	overflow:hidden;
+	background:url(sell_becandy_submint.gif) center top no-repeat;
+	margin-left:50px;
+	margin-top:-5px;
+}
+td.CC div.shopbuy span.butter a{
+	dislay:block;
+	font-size:18px;
+	font-weight:bold;
+	color:#FFF;
+	text-decoration:none;
+	padding-left:40px;
+	line-height:38px;
+}
+td.CC div.content{
+	clear:both;
+	width:95%;	
+	margin-top:20px;
+	margin-left:18px;
+}
+td.CC div.content div.h{
+	height:26px;
+	line-height:26px;
+	background:url(point.gif) left bottom repeat-x;
+}
+td.CC div.content div.h span{
+	display:block;
+	float:left;
+	height:26px;
+	width:90px;
+	text-align:center;
+	background:url(sell_head.gif) center bottom no-repeat;
+	margin-left:10px;
+	font-weight:bold;
+	font-size:14px;
+}
+td.CC div.content div.c{
+	padding:5px;
+	line-height:20px;
+}
+table#commentTable{
+	margin-top:10px;
+	background:url(supply_view_side_head_bg.gif) left top repeat-x;
+}
+table#commentTable .heada{
+	height:30px;
+	background:url(supply_view_side_head_r.gif) right top no-repeat;
+}
+table#commentTable .heada span{
+	display:block;
+	line-height:30px;
+	background:url(supply_view_side_head_l.gif) left top no-repeat;
+	padding-left:20px;
+	font-size:14px;
+	font-weight:bold;
+}
+table#commentTable  .middle{
+	border:1px solid #FDDCB7;
+	border-top:0;
+}
+table.base_table .headb{
+	height:30px;
+	background:url(supply_view_side_head_bg.gif) left top repeat-x;
+	line-height:30px;
+	padding-left:20px;
+	font-size:14px;
+	font-weight:bold;
+}
+table.base_table .tdl{
+	width:15%;
+	line-height:25px;
+	text-align:right;
+	padding-right:10px;
+}
+table.base_table .tdr{
+	width:85%;
+	padding-top:5px;
+}
+#comment_submit{
+	margin-bottom:15px;
+}
+/*
+*评论部分样式
+*/
+.showcomment{
+	width:95%;
+	border-bottom:#ccc dotted 1px;
+	margin-bottom:5px;
+}
+.showcomment .img{
+	width:90px;
+	height:70px;
+	background:url(sell_becandy_icon.gif) 5px 5px no-repeat;
+}
+.showcomment .img a{
+	display:block;
+	padding:10px 0 0 10px;
+}
+.showcomment .img img{
+	border:0;
+}
+.showcomment .cont{
+	text-align:left;
+	width:89%;
+	padding-top:10px;
+	line-height:18px;
+}
+.showcomment .info{
+	text-align:left;
+	padding-bottom:5px;
+	padding-top:5px;
+	border-top:#CCC solid 1px;
+}
+.showcomment .info span{
+	color:red;
+	font-weight:bold;
+}
+#comment{
+	padding:10px 0 10px 0;
+}
+#comment .page{
+	text-align:center;
+	line-height:25px;
+}
+#comment .nocomment{
+	text-align:center;
+	padding:30px;
+	font-size:20px;
+	color:green;
+}
+.sell_bencandy_r{
+	background:url(supply_view_side_head_bg.gif) left top repeat-x;
+	margin-bottom:10px;
+}
+.sell_bencandy_r .h{
+	height:30px;
+	background:url(supply_view_side_head_r.gif) right top no-repeat;
+	line-height:30px;
+}
+.sell_bencandy_r .h span.l{
+	display:block;
+	background:url(supply_view_side_head_l.gif) left top no-repeat;
+	padding-left:15px;
+	float:left;
+	font-weight:bold;
+}
+.sell_bencandy_r .h span.r{
+	display:block;
+	float:right;
+	padding-right:10px;
+}
+.sell_bencandy_r .c{
+	border:1px solid #FDDCB7;
+	border-top:0;
+	padding:1px;
+}
+.sell_bencandy_r .c .word{
+	padding:10px 10px 0 20px;
+	line-height:30px;
+}
+.sell_bencandy_r .c .word span{
+	padding:0 10px 0 0;
+	float:left;
+	font-size:14px;
+}
+.sell_bencandy_r .c .word input{
+	width:75px;
+	height:30px;
+	border:0;
+	background:url(buy_butter.gif) center top no-repeat;
+	cursor:pointer;
+}
+.sell_bencandy_r .c .note{
+	padding:25px 5px 15px 20px;
+	background:url(room_dotted.gif) left 10px repeat-x;	
+}
+.sell_bencandy_r .c .note span{
+	padding-left:18px;
+	padding-top:2px;
+	background:url(buy_note.gif) left top no-repeat;
+	color:blue;
+}
+.sell_bencandy_r .c div{
+	line-height:25px;
+	padding-left:15px;
+	border-bottom:#efefef solid 1px;
+}
+.sell_bencandy_r .c div.img{
+	text-align:center;
+	padding:10px;
+	border-bottom:0;
+}
+.supply_view .side .CC{
+	padding:10px 5px 10px 5px;
+}
+.supply_view .side .CC div{
+	line-height:20px;
+	background:url(point_ccc.gif) 5px 8px no-repeat;
+	padding-left:15px;
+}
+
+
+.order_do{
+	clear:both;
+	margin:15px;
+}
+.order_do a{
+	float:right;
+	display:block;
+	margin-right:10px;
+	padding-left:22px;
+	background:url(pro_report.gif) no-repeat;
+}
+.order_do a.fav{
+	padding-left:16px;
+	background:url(pro_fav.gif) no-repeat;
+}
+
+#cname{
+	display:block;
+	padding:8px;
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;
+	color:#FF6B00;
+}

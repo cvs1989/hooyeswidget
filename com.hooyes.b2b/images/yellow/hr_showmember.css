@@ -1,0 +1,231 @@
+.showmember .main .drag .CC{
+	border:1px solid #FDDCB7;
+	border-top:0px;
+	padding:12px;
+}
+.showmember .main .drag .head{
+	background:url(showmember_123bg.gif);
+	height:29px;
+}
+.showmember .main .drag .head div{
+	float:right;
+}
+.showmember .main .drag .head .TAG{
+	float:left;
+	background:url(showmember_tag.gif);
+	height:29px;
+	width:110px;
+}
+.showmember .main .drag .head .t3{
+	height:29px;
+	width:6px;
+	background:url(member_t3.gif);
+	margin-left:15px;
+}
+.showmember .main .drag .head .t1,.showmember .main .drag .head .t2{
+	padding:9px 12px 0 19px;
+}
+.showmember .main .drag .head .t2{
+	background:url(member_a1.gif) no-repeat;
+}
+.showmember .main .drag .head .t1{
+	background:url(member_a2.gif) no-repeat;
+	padding-left:23px;
+}
+
+.sh3,.sc3{
+	border:1px solid #FF821E;
+	border-top:0px;
+	border-bottom:0px;
+}
+.sc3{
+	padding:12px;
+	line-height:23px;
+}
+.sh4{
+	border:0px;
+}
+.sc4{
+	border-bottom:1px solid #FF821E;
+}
+.sh3{
+	background:url(member_scbg.gif) repeat-x bottom;
+}
+.sh3 .TG{
+	background:url(member_tg.gif);
+	width:94px;
+	height:13px;
+	margin-left:15px;
+	text-align:center;
+	font-weight:bold;
+	padding-top:5px;
+}
+/*.sc3 .photo{
+	margin:20px;
+}
+.sc3 .photo,.sc3 .mores{
+	float:left;
+	margin:20px;
+}
+.sc3 .mores div{
+	float:left;
+	width:48%;
+}*/
+.sc3 .photo{
+	text-align:center;
+	padding-top:20px;
+	float:left;
+	width:40%;
+}
+.sc3 .photo img{
+	border:4px double #eee;
+}
+.sc3 .mores{
+	float:left;
+	width:50%;
+	padding-top:10px;
+}
+.sc3 .mores div{
+	float:left;
+	width:50%;	
+}
+.sc3 .mores div.lin{
+	width:95%;	
+}
+.scc{
+	padding-bottom:30px;
+}
+
+.print_member{
+	background:url(print_member.gif) no-repeat center;
+	height:29px;
+	margin:20px;
+	cursor: hand;
+}
+.showmember .side .drag{
+	margin-bottom:11px;
+}
+.showmember .side .drag .CC{
+	border:1px solid #FDDCB7;
+}
+
+.showmember .side .drag .head{
+	background:url(hrmember_headbg.gif);
+	height:30px;
+}
+.showmember .side .drag .head .more{
+	float:right;
+	width:13px;
+	height:30px;
+	background:url(member_side_more.gif) no-repeat right;
+}
+.showmember .side .drag .head .TAG{
+	background:url(member_side_tag.gif) no-repeat left;
+	height:20px;
+	width:130px;
+	float:left;
+	color:#545454;
+	font-weight:bold;
+	padding-left:15px;
+	padding-top:10px;
+}
+/*
+*个人基本信息
+*/
+.showmember img{
+	border:0;
+}
+.baseinfo{
+	padding:1px;
+}
+.baseinfo .name{
+	padding:10px;
+	border-bottom:#efefef solid 1px;
+	height:50px;
+	line-height:25px;
+	font-size:20px;
+	font-weight:bold;
+}
+.baseinfo .name span{
+	font-size:16px;
+	color:#ff6400;
+}
+.baseinfo .name img{
+	float:left;
+	margin-right:20px;
+	margin-left:10px;
+}
+.baseinfo .list{
+	border-bottom:#efefef solid 1px;
+	line-height:30px;
+	padding-left:15px;
+	word-spacing:15px;
+}
+.baseinfo .list em{
+	color:#1B4C7A;
+	font-style:normal;
+}
+.baseinfo .list span{
+	color:red;
+}
+.baseinfo .add_hr{
+	padding:10px;
+	text-align:center;
+}
+/*
+*推荐人才
+*/
+.renchai_tz{
+	padding:5px;
+}
+.renchai_tz table td{
+	line-height:30px;
+}
+.renchai_tz table td.l{
+	width:60%;
+}
+.renchai_tz table td.l span{
+	float:left;
+	padding-left:25px;
+}
+.renchai_tz table .h td{
+	font-weight:bold;
+	border-bottom:#dfdfdf solid 1px;
+}
+.renchai_tz table .c a{
+	display:block;
+	background:url(hr_array.gif) 5px 11px no-repeat;
+	padding-left:25px;
+}
+
+/**/
+.notologin{
+	border:#FFCB99 solid 1px;
+	background:#FFF8EE;
+}
+.notologin .word{
+	padding:10px 10px 0 20px;
+	line-height:30px;
+}
+.notologin .word span{
+	padding:0 10px 0 0;
+	float:left;
+	font-size:14px;
+}
+.notologin .word input{
+	width:75px;
+	height:30px;
+	border:0;
+	background:url(buy_butter.gif) center top no-repeat;
+	cursor:pointer;
+}
+.notologin .note{
+	padding:25px 5px 15px 20px;
+	background:url(room_dotted.gif) left 10px repeat-x;	
+}
+.notologin .note span{
+	padding-left:18px;
+	padding-top:2px;
+	background:url(buy_note.gif) left top no-repeat;
+	color:blue;
+}

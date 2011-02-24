@@ -1,0 +1,116 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="200" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$fidDB[name]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width='99%' cellspacing='1' cellpadding='3' bgcolor='#E8E8E8' class="tablewidth formlist_table">
+              <tr class="formlist_head"> 
+                <td  align="center" style="width:30px;">编号</td>
+                           <!--
+EOT;
+if($fidDB[usetitle]){
+print <<<EOT
+-->
+				<td align="center">标题</td>                  
+                <!--
+EOT;
+}
+print <<<EOT
+-->       <td align='center'>姓名</td><td align='center'>籍贯</td> 
+
+                <td  align="center" style="width:90px;">会员帐号</td>
+                <td align="center" style="width:80px;">日期</td>
+                <td  align="center" style="width:40px;">$fidDB[statename]</td>
+                <td align="center" style="width:80px;">操作</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+              <tr bgcolor='#FFFFFF' class="formlist_tr"> 
+                <td align="center" style="width:30px;"> $rs[id]</td>
+                              <!--
+EOT;
+if($fidDB[usetitle]){
+print <<<EOT
+-->
+				<td > $rs[title]</td>
+                  <!--
+EOT;
+}
+print <<<EOT
+-->   
+ <td align='center'>$rs[truename] </td><td align='center'>$rs[native] </td> 
+
+                <td align="center" style="width:90px;"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a></td>
+                <td align="center" style="width:80px;">$rs[posttime] </td>
+                <td align="center" style="width:40px;"> 
+                  <!--
+EOT;
+if($rs[yz]){
+print <<<EOT
+-->
+                  <img alt='是' src="$webdb[www_url]/member/images/check_yes.gif" border="0"> 
+                  <!--
+EOT;
+}else{
+print <<<EOT
+-->
+                  <img alt='否' src="$webdb[www_url]/member/images/check_no.gif" border="0"> 
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                </td>
+                <td align="center" style="width:80px;"><a href="bencandy_form.php?mid=$rs[mid]&id=$rs[id]" target="_blank"><img src="$webdb[www_url]/member/images/icon_view.gif" border="0" alt="查看"></a>
+                  <!--
+EOT;
+if( $web_admin|| ($rs[uid]==$lfjuid&&$lfjuid) ){
+print <<<EOT
+--> 
+<a onClick="return confirm('删除后不可恢复,你确实要删除吗?')" href="form.php?lfj=&action=del&id=$rs[id]&mid=$rs[mid]" target="_blank"><img alt='点击删除' src='$webdb[www_url]/member/images/del_icon2.gif' border=0></a>
+ <!--
+EOT;
+}print <<<EOT
+-->
+				
+				</td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <tr bgcolor='#FFFFFF' class="formlist_page"> 
+                <td colspan="12" align="center"> $showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

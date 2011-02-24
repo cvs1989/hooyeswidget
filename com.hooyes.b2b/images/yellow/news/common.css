@@ -1,0 +1,149 @@
+/*列表栏目名称*/
+.showsortname{
+	background:url(article_elite.gif) no-repeat 0.3em 0;
+	padding-left:0.3em;
+	text-indent:1.5em;
+	font-weight:bold;
+	float:left;
+}
+
+.Side #sonSortName .middle{
+	padding:8px;
+}
+
+
+
+
+
+/******************************************************
+******************************************************
+**列表页小分类页
+******************************************************
+******************************************************/
+
+.listarticle span.title{
+	text-indent: 0.6em;
+	background:url(title_icon3.gif) no-repeat left;
+	background-position: 0em 40%;
+}
+.listarticle span.time{
+	float:right;
+}
+
+.listarticle td{
+	padding:7px 5px 0 5px;
+	border-bottom:1px dashed #ccc;
+}
+.listarticle span{
+	display:block;
+	float:left;
+}
+
+.listpic .img a{
+	width:120px;
+	height:90px;
+	display:block;
+	text-align :center;
+	border:1px #ccc solid;
+	margin-bottom:5px;
+}
+.listpic img{
+	border:1px #FFF solid;
+	width:120px;
+	height:90px;
+}
+.listpic{
+	width:127px;
+	padding:3px 0 3px 4px;
+	float:left;
+}
+.listpic .title{
+	width:127px;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+/*标题+内容*/
+#sort_list .list_sortTC{
+	border-bottom:1px dotted #ccc;
+	width:99%;
+	margin-bottom:10px;
+}
+#sort_list .list_sortTC .content{
+	text-indent:2em;
+}
+/*标题+内容+图片*/
+#sort_list .list_sortTCP{
+	border-bottom:1px dotted #ccc;
+	width:99%;
+	margin-bottom:10px;
+}
+#sort_list .list_sortTCP .pic{
+	padding-bottom:5px;
+	padding-right:8px;
+}
+#sort_list .list_sortTCP .content{
+	text-indent:1em;
+}
+
+
+/*****************************************************************************************
+*****************************************************************************************
+**********评论
+******************************************************************************************
+******************************************************************************************/
+
+#comment .content{
+	width:99%;
+	border:dotted 1px #ddd;
+	margin-bottom:10px;
+}
+#comment .content .word{
+	border-bottom:solid 1px #ddd;
+	padding-left:5px;
+	height:50px;
+}
+#comment .content .img{
+	border-right:dotted 1px #ddd;
+	padding:1em;
+}
+#comment .content .info{
+	padding:2px 0 0 5px;
+}
+
+
+/*******评论页*****/
+#comment_title{
+	height:92px;
+	background:url(comment_title.gif);
+}
+#comment_title td{
+	padding-top:18px;
+}
+
+.quotecomment_div{
+	margin:5px;
+	border:1px dotted #A7CAFA;
+	border-left:2px solid #A7CAFA;
+	color:#ccc;
+}
+
+
+
+
+#showcontent,#showcontent p{
+	font-size:16px;
+	line-height:25px;
+}
+
+.MainTable .Side .dragTable .middle{
+	line-height:23px;
+}
+
+.page{
+	font-size:14px;
+}
+.page a{
+	font-size:14px;
+}

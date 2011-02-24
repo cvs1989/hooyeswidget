@@ -1,0 +1,64 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">询价单</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" class="linetable">
+              <tr align="center" class="head3"> 
+                <td  width="8%">订单号</td>
+                <td >产品名称</td>
+                <td  width="5%">单价</td>
+                <td>询价时间</td>
+                <td>客户</td>
+                <td  width="5%">详情</td>
+                <td  width="3%">改</td>
+                <td  width="3%">删</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+              <tr> 
+                <td class="middle" align="center">$rs[id]</td>
+                <td class="middle" ><a href="../bencandy.php?fid=$rs[fid]&id=$rs[cid]&city_id={$rs[shop][city_id]}" target="_blank">{$rs[shop][title]}</a></td>
+                <td class="middle"  align="center">{$rs[shop][price]}</td>
+                <td class="middle"  align="center">$rs[posttime]</td>
+                <td class="middle" align="center">$rs[username]</td>
+                <td class="middle"  align="center"><a href="joinshow.php?fid=$rs[fid]&id=$rs[id]">查看</a></td>
+                <td class="middle" align="center">$rs[edit]</td>
+                <td class="middle" align="center"><a href="?action=del&id=$rs[id]&fid=$rs[fid]&cid=$rs[cid]">删</a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+      
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center">
+            <p>&nbsp;</p>
+            <p>$showpage</p>
+          </td>
+        </tr>
+      </table></td>
+        </tr>
+        <tr>
+          <td class="foot"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

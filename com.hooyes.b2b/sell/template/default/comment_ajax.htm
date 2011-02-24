@@ -1,0 +1,54 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="showcomment">
+  <tr>
+    <td class="img">
+    	<a onclick="if('0'=='$rs[uid]')return false;" href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank"><img onerror="this.src='$webdb[www_url]/images/yellow/no-icon.gif'" width=45 height="45" src='$rs[icon]'></a>
+    </td>
+    <td class="cont">$rs[content]</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="info">
+    	称呼:<a onclick="if('0'=='$rs[uid]')return false;" href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank"><span>$rs[username]</span></a>&nbsp;&nbsp;
+        日期:<em>{$rs[posttime]}</em>&nbsp;&nbsp;
+<!--
+EOT;
+if($web_admin||($lfjuid&&$rs[uid]==$lfjuid)){
+print <<<EOT
+-->
+      <A HREF="javascript:getcomment('job.php?job=comment_ajax&action=del&fid=$fid&id=$id&cid=$rs[cid]')">删除</A> &nbsp;&nbsp;
+<!--
+EOT;
+}print <<<EOT
+--> 
+		<a HREF="javascript:getcomment('job.php?job=comment_ajax&action=flowers&fid=$fid&id=$id&cid=$rs[cid]')">鲜花</a>(<span>{$rs[flowers]}</span>) &nbsp;&nbsp;
+      <a HREF="javascript:getcomment('job.php?job=comment_ajax&action=egg&fid=$fid&id=$id&cid=$rs[cid]')">鸡蛋</a>(<span>{$rs[egg]}</span>)
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}if($showpage){print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page">$showpage</td>
+  </tr>
+</table>
+<!--
+EOT;
+}if(!$listdb){print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="nocomment">暂时还没有评论</td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

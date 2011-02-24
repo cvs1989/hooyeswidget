@@ -1,0 +1,114 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+//-->
+</SCRIPT>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main" >
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head">
+		 企业认证
+		  </td>
+		</tr>
+	</table>
+	
+	
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+      <tr  class="trA">
+        <td height="80" align="left" valign="middle"  style="padding:10px;" width="54%"><form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1" >
+              <table width="100%" cellspacing="0" cellpadding="5">
+                <tr> 
+                  <td width="21%" height="20" align="right">营业执照扫描件：</td>
+                  <td align="left" valign="top"> 
+                    <input name="postdb[permit_pic]" type="text" id="permit_pic" value="$rsdb[permit_pic]" size="40" />
+					<iframe frameborder=0 height=23 scrolling=no src='$webdb[www_url]/do/upfile.php?fn=upfile&dir=company/renzheng&label=permit_pic' width="310"></iframe>
+                  </td>
+                </tr>
+				<tr> 
+                  <td width="21%" height="20" align="right">国税扫描件：</td>
+                  <td align="left" valign="top"> 
+                    <input name="postdb[guo_tax_pic]" type="text" id="guo_tax_pic" value="$rsdb[guo_tax_pic]" size="40" />
+					<iframe frameborder=0 height=23 scrolling=no src='$webdb[www_url]/do/upfile.php?fn=upfile&dir=company/renzheng&label=guo_tax_pic' width="310"></iframe>
+                  </td>
+                </tr>
+				<tr> 
+                  <td width="21%" height="20" align="right">地税扫描件：</td>
+                  <td align="left" valign="top"> 
+                    <input name="postdb[di_tax_pic]" type="text" id="di_tax_pic" value="$rsdb[di_tax_pic]" size="40" />
+					<iframe frameborder=0 height=23 scrolling=no src='$webdb[www_url]/do/upfile.php?fn=upfile&dir=company/renzheng&label=di_tax_pic' width="310"></iframe>
+                  </td>
+                </tr>
+				<tr> 
+                  <td width="21%" height="20" align="right">组织机构码扫描件：</td>
+                  <td align="left" valign="top"> 
+                    <input name="postdb[organization_pic]" type="text" id="organization_pic" value="$rsdb[organization_pic]" size="40" />
+					<iframe frameborder=0 height=23 scrolling=no src='$webdb[www_url]/do/upfile.php?fn=upfile&dir=company/renzheng&label=organization_pic' width="310"></iframe>
+                  </td>
+                </tr>
+				<tr> 
+                  <td width="21%" height="20" align="right">法人身份证扫描件：</td>
+                  <td align="left" valign="top"> 
+                    <input name="postdb[idcard_pic]" type="text" id="idcard_pic" value="$rsdb[idcard_pic]" size="40" />
+					<iframe frameborder=0 height=23 scrolling=no src='$webdb[www_url]/do/upfile.php?fn=upfile&dir=company/renzheng&label=idcard_pic' width="310"></iframe>
+                  </td>
+                </tr>
+<!--
+EOT;
+if(!$rsdb[renzheng]){print <<<EOT
+-->
+                <tr> 
+                  <td colspan="2" align="center"> 
+                    <input type="submit" name="Submit" value="提交"/>
+                    <input name="action" type="hidden" value="save" />
+                    <input name="uid" type="hidden" value="$uid" />
+                  </td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+              </table>
+			 
+        </form></td>
+        </tr>
+     
+    </table></td>
+  </tr>
+</table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">相关信息</td>
+        </tr>
+        <tr> 
+          <td class="middle">
+            <table width="100%" border="0" cellspacing="5" cellpadding="0" style="margin:10px 0 20px 5px;">
+              <tr> 
+                <td style="line-height:25px;">1.为什么要认证企业? <br>
+                  答:只有通过认证,才更有可信度,别人才更放心的跟你交易,增加你的交易量.<br>
+                  2.只要上传了“营业执照”扫描件就可成为普通认证，只有同时上传了“营业执照、国税、地税、组织机构码”扫描件才能成为银牌认证，只有全部项目都上传，才能成为金牌认证<br>
+                  3.上传之后,需要管理员审核,审核通过之后,就不可以再修改了,审核之前,是可以继续修改的.</td>
+              </tr>
+            </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!--
+EOT;
+?>
+-->	  

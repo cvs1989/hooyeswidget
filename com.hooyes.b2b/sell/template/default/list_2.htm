@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sort_list">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">当前订购人数如下</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[content]=get_word($rs[content],$fidDB[config][listContentNum]>0?$fidDB[config][listContentNum]:150);
+$target=$rs[target]?'_blank':'_self';
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_sortTCP">
+              <tr> 
+                <td width="13%" class="pic"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" title='$rs[full_title]' style="display:block;width:90px;height:90px;border:1px solid #ccc;"><img width="90" height="90" onError="this.src='$webdb[www]/images/default/nopic.jpg'"  src="$rs[picurl]" style="border:1px solid #fff;" border="0"></a></td>
+                <td valign="top" class="title"><b><font color="#CC0000"><span class="TAG">订购</span>者：</font></b> 
+                  <a href="joinshow.php?fid=$fid&id=$rs[id]" target="$target" title='$rs[full_title]' style="color:$rs[titlecolor]"><b>$rs[username]</b></a><br>
+                  <b><font color="#CC0000"><span class="TAG">订购</span>时间：</font></b>{$rs[posttime]}<br>
+                  <!---->
+                  <a href="joinshow.php?fid=$fid&id=$rs[id]">查看详情</a> </td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+             
+            <div class="page">$showpage</div>
+            
+ 
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" >
+        <tr> 
+          <td class="head" height="19"> 
+            <h3 class="L"></h3>
+            <span class="TAG">分类</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 001</td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+      
+      
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

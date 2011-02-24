@@ -1,0 +1,88 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&dirname=$dirname&file=$file&job=work">
+    <tr align="center" class="head"> 
+      <td width="6%">UID</td>
+      <td width="28%">店铺名称</td>
+      <td width="10%">&nbsp;</td>
+      <td width="13%">登记者</td>
+      <td width="8%">浏览</td>
+      <td width="10%">登记日期</td>
+      <td width="8%">审核</td>
+      <td width="7%">推荐</td>
+      <td width="10%">修改/删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center" width="6%">$rs[uid]</td>
+      <td width="28%" > 
+        <input type="checkbox" name="listdb[{$rs[uid]}]" value="$rs[title]">
+        <a href="$webdb[www_url]/home/?uid=$rs[uid]" target='_blank'  style="color:$rs[titlecolor];">$rs[title]</a></td>
+      <td align="center" width="10%">&nbsp;</td>
+      <td align="center" width="13%"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a><a href="list.php?job=list&fid=$rs[fid]"> 
+        </a></td>
+      <td align="center" width="8%">$rs[hits]</td>
+      <td align="center" width="10%">$rs[posttime]</td>
+      <td align="center" width="8%">$rs[ischeck]</td>
+      <td align="center" width="7%">$rs[iscom]</td>
+      <td align="center" width="10%"  ><a href="$Murl/member/homepage_ctrl.php?atn=info&uid=$rs[uid]" target=_blank>修改</a>/<a onclick="return confirm('你确认要删除吗?');" href="$admin_path&action=work&jobs=del&uid=$rs[uid]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage} </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT><br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&job=$job">
+    <tr class="head"> 
+      <td><font color="#FFFFFF">搜索</font></td>
+    </tr>
+    <tr> 
+      <td align="center"> 关键字 
+        <input type="text" name="keyword">
+        <select name="type">
+          <option value="title">店铺名称</option>
+          <option value="id">店铺ID</option>
+          <option value="username">登记者</option>
+        </select>
+        <input type="submit" name="Submit7" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

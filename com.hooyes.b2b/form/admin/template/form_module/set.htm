@@ -1,0 +1,78 @@
+<!--
+<?php
+print <<<EOT
+--> <script src="images/setday.js"></script>
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td>[<a href="$admin_path&job=list">模型列表(创建模型)</a>] [<a href="$admin_path&job=set&id=$id">模型设置</a>] 
+      [<a href="$admin_path&job=listfield&id=$id">字段列表</a>] [<a href="$admin_path&job=addfield&id=$id">添加功能字段</a>] 
+      [<a href="$admin_path&job=tpl&id=$id">本模型生成模板</a>] [<a href="$Murl/form.php?mid=$id" target="_blank">填写表单</a>] 
+      [<a href="$admin_path&file=form_content&job=list&mid=$id">表单内容管理</a>]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head" align="left"> 
+      <td colspan="2">“{$rsdb[name]}”详细设置</td>
+    </tr>
+    <tr> 
+      <td width="21%">名称:</td>
+      <td width="79%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%">截止发布日期:</td>
+      <td width="79%"> 
+        <input type="text" name="postdb[endtime]" onClick="setday(this)" value="$rsdb[endtime]">
+        (留空则不作限制)</td>
+    </tr>
+    <tr>
+      <td width="21%">表单状态名称:</td>
+      <td width="79%"> 是否已 
+        <input type="text" name="postdb[statename]" value="$rsdb[statename]">
+        (如:审核/审批/验证/发货/付款/查阅/录用/处理) </td>
+    </tr>
+    <tr> 
+      <td width="21%">表单是否使用标题:</td>
+      <td width="79%"> 
+        <input type="radio" name="postdb[usetitle]" value="1" $usetitle[1]>
+        使用 
+        <input type="radio" name="postdb[usetitle]" value="0" $usetitle[0]>
+        不使用 </td>
+    </tr>
+    <tr> 
+      <td width="21%">是否允许重复填表:</td>
+      <td width="79%"> 
+        <input type="radio" name="postdb[repeatpost]" value="1" $repeatpost[1]>
+        允许 
+        <input type="radio" name="postdb[repeatpost]" value="0" $repeatpost[0]>
+        不允许 </td>
+    </tr>
+    <tr> 
+      <td width="21%">允许发布的用户组:<br>
+        (留空的话.不限制) </td>
+      <td width="79%">$group_post</td>
+    </tr><tr> 
+      <td width="21%">允许浏览所有内容的用户组:<br>
+        (留空的话.不限制,管理员默认有权限,发布者默认可以查看自己发布的.) </td>
+      <td width="79%">$group_view</td>
+    </tr>
+    <tr> 
+      <td width="21%">附注说明:</td>
+      <td width="79%"> <iframe id="eWebEditor1" name="eWebEditor1"  src="ewebeditor/ewebeditor.php?id=PostAbout&style=standard&etype=1" frameborder="0" scrolling="no" width="550" height="350"></iframe> 
+        <input name="postdb[about]" type="hidden" id="PostAbout" value='$rsdb[about]'>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

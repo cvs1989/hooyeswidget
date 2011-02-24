@@ -1,0 +1,223 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/hy_index.css">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="hy_tt1ad">
+  <tr>
+    <td>$label[hy_tt1ad]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="MainContainer">
+  <tr>    
+    <td width="275"> 
+    	<div id="Join_hy">
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="head"><span class="L">企业商铺</span><span class="R">$label[hy_tb1]</span></td>
+              </tr>
+              <tr>
+                <td class="cont">
+                	<div class="why">$label[hy_title1]</div>
+                    <div class="how">$label[hy_title2]</div>
+                	<div class="at">
+                        <a href="$webdb[www_url]/member/?main=$Murl/member/post_company.php" target="_blank">开通企业商铺</a>
+                        <a href="$webdb[www_url]/member/?main=$Murl/member/homepage_ctrl.php?atn=base" target="_blank">管理企业商铺</a>
+                    </div>
+                </td>
+              </tr>
+            </table>
+        </div>
+    </td>
+    <td width="440" style="padding:0 10px 0 10px;"> 
+    	<div class="hy_main_ad">$label[hy_rollpic]</div>
+    </td>
+    <td width="245"> 
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="container_s1">
+          <tr>
+            
+          <td class="head"><span class="L">$label[hy_j2]</span><span class="R">$label[hy_j1]</span></td>
+          </tr>
+          <tr>
+            <td class="cont titlenum">
+            	
+            $label[hy_a1]
+                 
+            </td>
+          </tr>
+        </table> 
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="MainContainer mt10">
+  <tr>    
+    <td width="28%" class="side">
+      <table width="100%" cellspacing="0" cellpadding="0" class="sidecontainer">
+        <tr> 
+          <td class="head">
+            <div class="TAG">$label[hy_j3]</div>
+            <div class="MORE">$label[hy_j4]</div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC"> 
+            $label[hy_a2]
+            
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="72%" class="main"> 
+       <table width="100%" cellspacing="0" cellpadding="0" class="sidecontainer">
+        <tr> 
+          <td class="head">
+            <div class="TAG">$label[hy_j5]</div>
+            <div class="MORE">$label[hy_j6]</div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="comanycont">
+              <tr>
+                <td class="title">
+                	
+                  $label[hy_a3]
+                    
+                </td>
+                <td class="pic">$label[hy_j8]</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="MainContainer mt10">
+  <tr>    
+    <td width="28%" class="side"> 
+      <table width="100%" cellspacing="0" cellpadding="0" class="sidecontainer">
+        <tr> 
+          <td class="head">
+            <div class="TAG">$label[hy_j9]</div>
+            <div class="MORE">$label[hy_j10]</div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC lsit0_9"> 
+            $label[hy_a5]
+             
+          </td>
+        </tr>
+      </table>
+      <table width="100%" cellspacing="0" cellpadding="0" class="sidecontainer mt10">
+        <tr> 
+          <td class="head">
+            <div class="TAG">$label[hy_d2]</div>
+            <div class="MORE">$label[hy_d3]</div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC lsit0_9a"> 
+           
+           $label[hy_d1]
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="72%" class="main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="all_sort">
+        <tr> 
+          <td class="head"> 
+            <div class="LL"></div>
+            <div class="TAG">公司分类</div>
+            <div class="RR"><a href="$webdb[www_url]/member/?main=$Murl/member/post_company.php" target="_blank">登记企业</a></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC" height="200" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="ShowSortTable" onmouseout="HiddenTdBg(this)">
+<!--
+EOT;
+$newarray = array_flip($Fid_db[0]);
+$array = array_chunk($newarray,2);
+$j = 0;
+foreach($array AS $ar){
+$j++;
+$trdisplaybg = $j%2 == 0 ? "class = 'havebg'" : "";
+print <<<EOT
+-->
+              <tr $trdisplaybg>
+<!--
+EOT;
+$i = 0;
+foreach($ar AS $fup){
+$i++;
+print <<<EOT
+-->
+			  
+                <td onmouseover="ShowTdBg(this)">				
+				<div class="big_name"><a href="list.php?fid=$fup">{$Fid_db['name'][$fup]}</a></div>
+				<div class="smll_name">
+<!--
+EOT;
+$y = 0;
+foreach($Fid_db[$fup] AS $fid=>$name){
+$y++;
+$listnum = $webdb[Index_listsortnum]?$webdb[Index_listsortnum]:20;
+if($y>$listnum)break;
+print <<<EOT
+-->
+				<a href="list.php?fid=$fid">{$name}</a> | 
+<!--
+EOT;
+}print <<<EOT
+-->
+					<a href="list.php?fid=$fup" class="more">更多..</a>
+				</div>
+				</td>
+<!--
+EOT;
+}if($i<2){
+print <<<EOT
+-->
+				<td onmouseover="ShowTdBg(this)"><br/></td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+              </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ShowTdBg(TheTd){
+	obj=document.getElementById("ShowSortTable").getElementsByTagName("td");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	TheTd.className='choose';
+}
+function HiddenTdBg(TheTable){
+	obj=TheTable.getElementsByTagName("td");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+}
+//-->
+</SCRIPT>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

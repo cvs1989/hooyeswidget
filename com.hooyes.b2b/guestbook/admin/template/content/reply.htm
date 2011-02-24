@@ -1,0 +1,35 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr  class="head"> 
+      <td colspan="2"> 
+        <div align='center'><b><font color="#FFFFFF">修改留言</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="7%">署名</td>
+      <td bgcolor='#FFFFFF' width="93%">
+        <input type="text" name="postdb[username]" value="$replydb[username]">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="7%">回复内容</td>
+      <td bgcolor='#FFFFFF' width="93%">
+        <textarea name="postdb[content]" cols="80" rows="12">$replydb[content]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor='#FFFFFF' colspan="2"> 
+        <input  class=mmcinb  type='submit' name='w' value='保存'>
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,87 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="200" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td height="21" class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$rsdb[fname] -&gt; $rsdb[name]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td height="50" class="middle" valign="top"> 
+            <form name="form1" method="post" action="?">
+              <!--
+EOT;
+$i=0;
+foreach($listdb AS $key=>$array){
+$i++;
+$num=count($array);
+$eachfen=$config[fendb][$key]/$num;
+print <<<EOT
+-->
+              <table width="99%" border="0" cellspacing="0" cellpadding="0" class="exam_write_table">
+                <tr> 
+                  <td bgcolor="E3F5FC" style="padding:4px;" class="exam_write_head">{$numDB[$i]}、
+                    
+                    {$paperType[$key]}。 ( 共{$num}题 ,共<font color="#FF0000"><b>{$config[fendb][$key]}</b></font>分,每题<font color="#FF0000">{$eachfen}</font>分 
+                    ) 
+                   
+                  </td>
+                </tr>
+                <tr> 
+                  <td> 
+                    <!--
+EOT;
+$j=0;
+foreach($array AS $rs){
+$j++;
+print <<<EOT
+-->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:8px;" class="exam_write_tb">
+                      <tr> 
+                        <td class="t1">{$j}. {$rs[question]}</td>
+                      </tr>
+                      <tr> 
+                        <td style="padding:4px;" class="t2"> $rs[showcontent] 
+                        </td>
+                      </tr>
+                    </table>
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </td>
+                </tr>
+              </table>
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <div style="padding:10xp;text-align:center;"> 
+                <input type="submit" name="Submit" value="提交" class="button">
+                <input type="hidden" value="postAnswer" name="action">
+                <input type="hidden" value="$id" name="id">
+              </div>
+            </form>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

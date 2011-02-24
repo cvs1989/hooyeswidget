@@ -1,0 +1,345 @@
+<!--
+<?php
+print <<<EOT
+-->
+        <form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="setindex_left_right();">
+          <table width="100%" border="0" cellpadding="10" cellspacing="1" bgcolor="#CCCCCC" class="posttable">
+            <tr> 
+              <td width="20%" align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>整体风格</strong>：</td>
+              <td width="80%" align="left" valign="top" bgcolor="#FFFFFF" height="155"> 
+                <select name="conf[style]" size="10" id="conf_style"  style="float:left;" onchange="change_mystyle(this);">
+                  <!--
+EOT;
+	foreach($homepage_tpl as $key=>$val){
+    $ck=$conf[style]==$key?" selected":"";
+print <<<EOT
+-->
+                  <option   value="$key" $ck >$val</option>
+                  <!--
+EOT;
+	}
+print <<<EOT
+-->
+                </select>
+                <img src="$Murl/images/homepage_style/$conf[style]/icon.jpg"  width="200" height="150" border="0"  style="float:left;" id="shoostyleicon"/> 
+                <script language="javascript">
+        function change_mystyle(my){
+			var style_key=my.options[my.selectedIndex].value;
+<!--
+EOT;
+if(!$groupdb['useHomepageStyle']){
+print <<<EOT
+-->
+			if(style_key.indexOf("vip")>=0){
+				if(confirm('这是VIP商家专属模板，只有VIP商家才能使用！\\r\\n 推荐您加入VIP商家服务，是否现在加入？')){
+					window.location='$webdb[www_url]/member/buygroup.php?job=list';
+				}else{
+					my.selectedIndex=-1;
+					return false;
+				}
+				
+			}
+<!--
+EOT;
+}
+print <<<EOT
+-->
+			document.getElementById('shoostyleicon').src='$Murl/images/homepage_style/'+style_key+'/icon.jpg';
+		}        
+                
+        </script>
+              </td>
+            </tr>
+            <!-- <tr>
+    <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT">正文部分布局：</td>
+    <td align="left" valign="top" bgcolor="#FFFFFF"><input type="radio" name="conf[bodytpl]" id="radio" value="left"  $bodytpl[left]/>
+        <img src="images/$STYLE/ctrl_left.jpg" width="30" height="30" /> 左窄右宽 &nbsp;&nbsp;&nbsp;</td>
+  </tr>-->
+            <!--头部导航设置开始-->
+            <tr> 
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>头部导航设置：</strong> 
+                <br />
+                格式：<br />
+                1.本站的：homepage.php?m=selllist<br />
+                2.外链的要加上 "http://", 如：http://www.qibosoft.com <br>
+                3.要删除某条链接,请把标题,链接地址同时清空,再提交保存一下即可</td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"> 
+                <table width="624" border="0">
+                  <tr> 
+                    <td width="168" align="center">标题</td>
+                    <td width="350" align="center">链接地址</td>
+                    <td width="35" align="center">排序</td>
+                    <td width="53" align="center" >显示</td>
+                  </tr>
+                  <!--
+EOT;
+foreach($h_menu as $key =>$rs){
+print<<<EOT
+-->
+                  <tr> 
+                    <td> 
+                      <input type="text" name="conf[h_title][$key]" value="$rs[title]"/>
+                    </td>
+                    <td> 
+                      <input type="text" name="conf[h_url][$key]" value="$rs[url]"size="50"/>
+                    </td>
+                    <td> 
+                      <input type="text" name="conf[h_order][$key]" value="$rs[order]" size="5" />
+                    </td>
+                    <td align="center"> 
+                      <input name="conf[h_ifshow][$key]" value="1"  type="checkbox" {$rs[ifshow]}/>
+                    </td>
+                  </tr>
+                  <!--
+EOT;
+}
+print<<<EOT
+-->
+                  <tr> 
+                    <td><strong>新加一个</strong> 
+                      <input type="text" name="conf[h_title][$timestamp]" value=""/>
+                    </td>
+                    <td> 
+                      <input type="text" name="conf[h_url][$timestamp]" value=""size="50"/>
+                    </td>
+                    <td> 
+                      <input type="text" name="conf[h_order][$timestamp]" value="" size="5" />
+                    </td>
+                    <td align="center"> 
+                      <input name="conf[h_ifshow][$timestamp]" value="1"  type="checkbox" />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <!--头部导航设置结束-->
+            <tr> 
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>网页窄部分设置</strong>：<br />
+                <br />
+                <img src="$Murl/images/default/index_left_show.jpg" /></td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td width="15%">候选模块<br />
+                      <select name="index_left_hx" size="8" id="index_left_hx" style="width:100px">
+                        
+          $index_left_hx         
+          
+            
+                      </select>
+                    </td>
+                    <td width="13%" align="center" valign="middle"> 
+                      <input type="button" name="button2" id="button2" value="→添加" onclick="action_mod('left','add')" />
+                      <br />
+                      <input type="button" name="button3" id="button3" value="←移除"  onclick="action_mod('left','del')"/>
+                      <br />
+                      <br />
+                      <input type="button" name="button4" id="button4" value="↑上移"  onclick="action_mod('left','up')" />
+                      <br />
+                      <input type="button" name="button5" id="button5" value="↓下移"  onclick="action_mod('left','down')"/>
+                    </td>
+                    <td width="72%"><strong><font color="#FF3300">已经显示模块</font></strong><br />
+                      <select name="conf[index_left][]" size="8" multiple id="index_left" style="width:100px">
+                        
+            $index_left
+            
+            
+            
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+                <script language="javascript">
+      	function action_mod(modname,action){
+			var mod   =document.getElementById("index_"+modname);
+			var mod_hx=document.getElementById("index_"+modname+"_hx");
+			if(action=='add'){ //添加模块
+			   var val=	mod_hx.value;
+			   if(val==''){
+			  	 alert("请先选择一个模块再进行添加。");return false;
+			   }
+			   for( var i=0;i<mod.options.length;i++){
+			   		if(mod.options[i].value==val){
+					alert("此模块已经存在.");return false;
+					}
+			   }
+			    var opt=new Option(mod_hx.options[mod_hx.selectedIndex].text,val);
+                mod.options[mod.options.length]=opt;
+						
+			}else if(action=='del'){
+				
+				if(mod.options.length<2) {
+				   alert("必须保留至少一个模块"); return false;
+				}
+				if(mod.value==''){
+			        alert("请先选择一个模块"); return false;
+				}
+				mod.remove(mod.selectedIndex);
+				
+			}else if(action=='up'){
+				
+				if(mod.value==''){
+			        alert("请先选择一个模块"); return false;
+				}
+				if(mod.selectedIndex<1){
+					alert("已经到顶了"); 
+				}
+				var index=mod.selectedIndex;
+				var upp_text =mod.options[index-1].text;
+				var upp_value=mod.options[index-1].value;
+				var me_text  =mod.options[index].text;
+				var me_value =mod.options[index].value;
+				mod.options[index-1]=new Option(me_text,me_value);
+				mod.options[index]=new Option(upp_text,upp_value);
+				mod.selectedIndex=index-1;
+			}else if(action=='down'){
+				
+				if(mod.value==''){
+			        alert("请先选择一个模块"); return false;
+				}
+				if(mod.selectedIndex == (mod.options.length-1) ){
+					alert("已经是最后了"); 
+				}
+				var index=mod.selectedIndex;
+				var down_text =mod.options[index+1].text;
+				var down_value=mod.options[index+1].value;
+				var me_text  =mod.options[index].text;
+				var me_value =mod.options[index].value;
+				mod.options[index+1]=new Option(me_text,me_value);
+				mod.options[index]=new Option(down_text,down_value);
+				mod.selectedIndex=index+1;
+			}
+		}
+      </script>
+              </td>
+            </tr>
+            <tr> 
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>网页宽部分设置</strong>： 
+                <br />
+                <img src="$Murl/images/default/index_right_show.jpg" /></td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td width="15%">候选模块<br />
+                      <select name="index_right_hx" size="8" id="index_right_hx" style="width:100px">
+                        
+              
+          $index_right_hx
+          
+          
+            
+            
+                      </select>
+                    </td>
+                    <td width="13%" align="center" valign="middle"> 
+                      <input type="button" name="button6" id="button6" value="→添加" onclick="action_mod('right','add')" />
+                      <br />
+                      <input type="button" name="button6" id="button7" value="←移除"  onclick="action_mod('right','del')"/>
+                      <br />
+                      <br />
+                      <input type="button" name="button6" id="button8" value="↑上移"  onclick="action_mod('right','up')" />
+                      <br />
+                      <input type="button" name="button6" id="button9" value="↓下移"  onclick="action_mod('right','down')"/>
+                    </td>
+                    <td width="72%"><strong><font color="#FF3300">已经显示模块</font></strong><br />
+                      <select name="conf[index_right][]" size="8" multiple  id="index_right" style="width:100px">
+                        
+              
+            $index_right
+            
+            
+            
+            
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr> 
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>主页显示设置</strong>：</td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                  <tr> 
+                    <td width="13%">留 言 本</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][guestbook]" type="text" size="5" value="{$conf[listnum][guestbook]}" />
+                      条</td>
+                  </tr>
+                  <tr> 
+                    <td width="13%">访客足迹</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][visitor]" type="text" size="5" value="{$conf[listnum][visitor]}" />
+                      位</td>
+                  </tr>
+                  <tr> 
+                    <td width="13%">新闻动态</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][newslist]" type="text" size="5" value="{$conf[listnum][newslist]}" />
+                      条</td>
+                  </tr>
+                  <tr> 
+                    <td width="13%">我的商友</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][friendlink]" type="text" size="5" value="{$conf[listnum][friendlink]}" />
+                      个</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr> 
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT"><strong>列表页显示设置</strong>：</td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                  <tr> 
+                    <td width="13%">留 言 本</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][Mguestbook]" type="text" size="5" value="{$conf[listnum][Mguestbook]}" />
+                      条 </td>
+                  </tr>
+                  <tr> 
+                    <td width="13%">新闻动态</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][Mnewslist]" type="text" size="5" value="{$conf[listnum][Mnewslist]}" />
+                      条</td>
+                  </tr>
+                  <tr> 
+                    <td width="13%">访客足迹</td>
+                    <td width="87%"> 
+                      <input name="conf[listnum][Mvisitor]" type="text" size="5" value="{$conf[listnum][Mvisitor]}" />
+                      位</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr> 
+              <td align="left" valign="top" bgcolor="#f9f9f9" class="tdT">&nbsp;</td>
+              <td align="left" valign="top" bgcolor="#FFFFFF"> 
+                <input type="submit" name="button" id="button" value="保 存" />
+                <input name="atn" type="hidden" id="atn" value="$atn" />
+                <input name="step" type="hidden" id="step" value="1" />
+                <input name="uid" type="hidden" id="uid" value="$uid" />
+                <input name="conf[hid]" type="hidden" id="conf[hid]" value="$conf[hid]" />
+                <input name="conf[rid]" type="hidden" id="conf[rid]" value="$conf[rid]" />
+              </td>
+            </tr>
+          </table>
+          <script language="javascript">
+function setindex_left_right()
+{
+	var mod_left    =document.getElementById("index_left");
+	var mod_right   =document.getElementById("index_right");
+	 for( var i=0;i<mod_left.options.length;i++){
+	 	mod_left.options[i].selected=" selected";
+	 }
+	 for( var j=0;j<mod_right.options.length;j++){
+	 	mod_right.options[j].selected=" selected";
+	 }
+
+}
+</script>
+        </form>
+<!--
+EOT;
+?>
+-->

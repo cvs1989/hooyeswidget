@@ -1,0 +1,49 @@
+<html>
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>会员操作平台</title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/member/images/red/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/inc.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<body>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function get_obj(obj){
+   return document.getElementById(obj);
+}
+document.write('<div class="wrap" id="wrapID">');
+//-->
+</SCRIPT>
+<!--
+EOT;
+if($linkdb){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="guide">
+  <tr>
+    <td>
+<!--
+EOT;
+foreach($linkdb AS $name=>$url){
+print <<<EOT
+-->
+	[<a href="$url" target="{$link_blank[$name]}">$name</a>] 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

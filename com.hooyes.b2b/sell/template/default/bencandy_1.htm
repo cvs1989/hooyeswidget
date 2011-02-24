@@ -1,0 +1,241 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/sell_becandy.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_view">
+  <tr> 
+    <td width="75%" height="246" valign="top" class="main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="head">
+            <div class="LL"></div>
+            <div class="TAG"><a editurl='$city_url/job.php?job=doinfo&fid=$fid&id=$id&atc=do'>$fidDB[name]</a></div>
+            <div class="RR">
+            	<a href="$webdb[www_url]/member/?main=$Murl/member/post.php?fid=$fid">发布</a> 
+<!--
+EOT;
+if($web_admin||$lfjuid==$rsdb[uid]){print <<<EOT
+-->
+                <a href="$webdb[www_url]/member/?main=$Murl/member/post.php?job=edit&fid=$fid&id=$id">修改</a>
+                <a href="$webdb[www_url]/member/?main=$Murl/member/post.php?action=del&fid=$fid&id=$id">删除</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC"> 
+            <div class="bencandy_pic">
+            	<a href="$city_url/job.php?job=show_img&fid=$fid&id=$id" class="picurl" target="_blank">
+                <img src='$rsdb[picurl]' onError="this.src='$webdb[www_url]/images/default/nopic.jpg'" border="0" width="160" height="115">
+                </a>
+                <a href="$city_url/job.php?job=show_img&fid=$fid&id=$id" class="but" target="_blank">共{$rsdb[picnum]}图</a>
+            </div>
+            <div class="describ">
+            	<div class="title">{$rsdb[title]}</div> 
+                <div class="infoa">发布时间:<a editurl='$Murl/job.php?job=bencandy&fid=$fid&id=$id&act=do'>$rsdb[posttime]</a>　&nbsp;&nbsp; 浏览量：{$rsdb[hits]}次</div>
+                <div class="infob">
+                	<div><span>单价：</span>{$rsdb[price]} 元/{$rsdb[my_units]}</div>
+<!--
+EOT;
+if($rsdb['order_min']){print <<<EOT
+-->
+                    <div><span>最小起订：</span>{$rsdb[order_min]} {$rsdb[my_units]}</div>
+<!--
+EOT;
+}if($rsdb['order_max']){print <<<EOT
+-->
+                    <div><span>最大供货：</span>{$rsdb[order_max]} {$rsdb[my_units]}</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                  
+<!--
+EOT;
+if($rsdb['shoptype']){print <<<EOT
+--> 
+				    <div><span>型号：</span>{$rsdb[shoptype]}   </div>
+<!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['send_day']){print <<<EOT
+--> 
+				    <div><span>发货期限：</span>{$rsdb[send_day]}   </div>
+<!--
+EOT;
+}print <<<EOT
+--><!---->
+
+                </div>
+             </div>
+             <div class="shopbuy"> 
+                <form name="buyform" id="buyform" method="post" target="_blank" action="join.php?fid=$fid&cid=$id">
+                  <span class="input"><input type="hidden" name="hownum" size="8" value="1">
+                </span> <span class="butter"><a href="javascript:;" onClick="postbuy()">点击询价</a> 
+                </span> 
+                <script language="JavaScript">
+<!--
+function postbuy(){
+document.getElementById("buyform").submit();
+}
+//-->
+</script>
+                </form>
+             </div>
+			 
+            <div class="order_do"> <a href="job.php?job=report&fid=$fid&id=$id" class="report" target="_blank">举报此信息</a> 
+              <a href="job.php?job=collect&id=$id" class="fav" target="_blank">收藏此信息</a> 
+            </div>
+             <div class="content">
+             	<div class="h"><span>详细信息</span></div>
+                <div class="c"><table width="100%" cellspacing="0" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word' align="center">
+              <tr> 
+                <td>$rsdb[content]</td>
+              </tr>
+            </table></div>
+             </div>
+			 
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="commentTable">
+        <tr> 
+          <td class="heada"><span class="TAG">评论</span></td>
+        </tr>
+        <tr> 
+          <td class="middle">
+          	 <div id="comment"></div>
+          	 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="base_table">
+             	<tr>
+                	<td class="headb" colspan="2">添加评论</td>
+                </tr>
+<!--
+EOT;
+$displaystyle = $lfjid ? "style=\"display:none;\"" : "";
+print <<<EOT
+-->
+             	<tr $displaystyle>
+                	<td class="tdl">称　　呼:</td>
+                    <td class="tdr"><input type="text" name="textfield2" id="comment_username" value="$lfjid"></td>
+                </tr>
+<!--
+EOT;
+if(!$web_admin&&!$groupdb[comment_img]){
+$webdb[yzImgComment]=1;
+print <<<EOT
+-->
+                <tr>
+                	<td class="tdl">验 证 码:</td>
+                    <td class="tdr">
+                    	<input id="yzImgNum" type="text" name="yzimg" size="8" onFocus="commentyzimg()">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function commentyzimg(){
+	if(/yzimg\.php/.test(document.getElementById("yz_Img").src)==false){
+		document.getElementById("yz_Img").style.display='';
+		document.getElementById("yz_Img").src='$webdb[www_url]/do/yzimg.php?'+Math.random();
+	}
+	
+}
+
+document.write('<img border="0" id="yz_Img" name="imageField" onclick="this.src=this.src+Math.random();" src="" style="display:none;">');
+//-->
+</SCRIPT>
+                    </td>
+                </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+				<tr>
+                	<td class="tdl">内　　容:</td>
+                    <td class="tdr"><textarea name="textfield" cols="70" rows="8" id="comment_content" onKeyDown="quickpost(event)"></textarea></td>
+                </tr>
+                <tr>
+                	<td class="tdl">
+<script language="JavaScript">
+<!--
+getcomment("job.php?job=comment_ajax&fid=$fid&id=$id");
+cnt = 0;
+function quickpost(event)
+{
+	if((event.ctrlKey && event.keyCode == 13)||(event.altKey && event.keyCode == 83))
+	{
+		cnt++;
+		if (cnt==1){
+			post_comment();
+		}else{
+			alert('内容正在提交...');
+		}
+	}	
+}
+function post_comment(){
+	postcomment('job.php?job=comment_ajax&action=post&fid=$fid&id=$id','$webdb[yzImgComment]');
+	if(document.getElementById("yz_Img")!=null){
+		//document.getElementById("yz_Img").src="$webdb[www_url]/do/yzimg.php?"+Math.random();;
+		document.getElementById("yz_Img").src='';
+		document.getElementById("yz_Img").style.display='none';
+	}
+}
+//-->
+</script>
+                    </td>
+                    <td class="tdr"><input type="button" id="comment_submit" name="Submit" value="提交" onClick="post_comment();"></td>
+                </tr>
+             </table>	
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%" height="246" valign="top" class="side">
+    	<div class="sell_bencandy_r">
+        	<div class="h"><span class="l">企业信息</span><!--span class="r"><a href="#">查看商家</a></span--></div>
+            <div class="c"><span id="cname">$companydb[title]</span>
+			<div>认证情况:{$renzhengDB[$companydb[renzheng]]}</div>
+            	<div>发布者ID:<a href="$webdb[www_url]/member/homepage.php?uid=$rsdb[uid]"  onClick="if($rsdb[uid]==0)return false;" target="_blank"><span>$rsdb[username]</span></a></div>
+                <div>联系人:$companydb[qy_contact]</div>
+                <div>联系电话:$companydb[qy_contact_tel]</div>
+				<div>传真:$companydb[qy_contact_fax]</div>
+                <div>联系邮箱:$companydb[qy_contact_email]</div>
+               
+                <div class="img"><a href="$webdb[www_url]/home/?uid=$rsdb[uid]" target="_blank"><img src="images/default/goshop.gif" border="0"></a></div>
+            </div>
+        </div> 
+     
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="head"> 
+            <div class="LL"></div>
+            <div class="TAG">最新供应信息</div>
+            <div class="RR"></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC"> 
+<!--
+EOT;
+$array=list_title('new',10);
+foreach($array AS $rs){print <<<EOT
+-->
+            <div><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a></div> 
+<!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

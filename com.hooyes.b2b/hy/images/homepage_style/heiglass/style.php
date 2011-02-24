@@ -1,0 +1,3 @@
+<?php
+$homepage_tpl['heiglass']="ºÚÉ«ÖÊ¸Ð";
+?>

@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan="2" height="23">创建投票</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>&nbsp; </td>
+      <td> 
+        <textarea name="postdb[about]" cols="60" rows="5" id="js_1"><SCRIPT src="$webdb[www_url]/$dirname/vote.php?job=js&cid=$cid"></SCRIPT></textarea>
+        <br>
+        <input type="button" name="Submit" value="复制以上代码"  onClick="JM_cc('js_1');alert('复制成功，你可以粘贴在网页代码里！')">
+        <input type="button" name="Submit3" value="修改一下" onclick="window.location.href='$admin_path&job=edit&cid=$cid'">
+        <input type="button" name="Submit32" value="查看效果" onClick="window.open('$webdb[www_url]/$dirname/vote.php?job=js&cid=$cid&step=show')">
+      </td>
+    </tr>
+  </form>
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+function addvote(){
+	var str='';
+	num=document.getElementById('addnum').value;
+	num=parseInt(num);
+	n=document.getElementById('num_s').value;
+	document.getElementById('num_s').value=num+parseInt(n);
+	min=parseInt(n)+1;
+	max=parseInt(n)+num+1;
+	for(var i=min;i<max;i++){
+		str+='<br>第'+i+'项 标题:<input type="text" name="votedb['+i+'][title]"> 票数:<input type="text" name="votedb['+i+'][votenum]" size="10">';
+	}
+	document.getElementById('morevote').innerHTML+=str;
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

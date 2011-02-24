@@ -1,0 +1,57 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="200" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$fidDB[name]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width='99%' cellspacing='1' cellpadding='3' bgcolor='#E8E8E8' class="tablewidth formlist_table">
+              <tr class="formlist_head"> 
+                <td  align="center" style="width:30px;">编号</td>
+                <td align='center'>职位名称</td><td align='center'>招聘人数</td><td align='center'>工作经验要求</td><td align='center'>性别要求</td><td align='center'>学历要求</td> 
+                <td align="center" style="width:40px;">详情</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+              <tr bgcolor='#FFFFFF' class="formlist_tr"> 
+                <td align="center" style="width:30px;"> $rs[id]</td>
+                <td align='center'>$rs[workplace] </td><td align='center'>$rs[nums] 人</td><td align='center'>$rs[wageyear] </td><td align='center'>$rs[asksex] </td><td align='center'>$rs[schoo_age] 以上</td> 
+                <td align="center" style="width:40px;"><a href="$webdb[www_url]/do/bencandy_form.php?mid=$rs[mid]&id=$rs[id]" target="_blank"><img src="$webdb[www_url]/member/images/icon_view.gif" border="0" alt="查看"></a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <tr bgcolor='#FFFFFF' class="formlist_page"> 
+                <td colspan="12" align="center"> $showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

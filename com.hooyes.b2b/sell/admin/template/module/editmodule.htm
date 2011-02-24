@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form2" method="post" action="$admin_path&action=$job">
+    <tr> 
+      <td class="head" colspan="2">模型设置</td>
+    </tr>
+    <tr> 
+      <td width="21%">模型名称: </td>
+      <td width="79%"> 
+        <input type="text" name="name" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%">母模板:(你可以定义个性化母模板,默认请留空)</td>
+      <td width="79%">列表页母模板: 
+        <input type="text" name="tpldb[list]" size="50" value="$tpldb[list]">
+        <br>
+        内容页母模板: 
+        <input type="text" name="tpldb[show]" size="50" value="$tpldb[show]">
+        <br>
+        发布页母模板: 
+        <input type="text" name="tpldb[post]" size="50" value="$tpldb[post]">
+        <br>
+        搜索页母模板: 
+        <input type="text" name="tpldb[search]" size="50" value="$tpldb[search]">
+      </td>
+    </tr>
+     
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit2" value="修改当前模型设置">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table> 
+<!--
+EOT;
+?>
+-->

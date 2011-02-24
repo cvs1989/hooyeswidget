@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=reply&mid=$mid&id=$id">
+    <tr class="head" align="left"> 
+      <td colspan="2">回复内容</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td align="left" width='15%'>内容:</td>
+      <td width="85%" align="left"> <iframe id="eWebEditor1" name="eWebEditor1"  src="ewebeditor/ewebeditor.php?id=content&style=standard&etype=1" frameborder="0" scrolling="no" width="600" height="250"></iframe> 
+        <input name="postdb[content]" type="hidden" id="content" value='$rsdb[content]'>
+      </td>
+    </tr>
+		  <!--
+EOT;
+if($IS_BIZ){print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td align="left" width='15%'>&nbsp;</td>
+      <td width="85%" align="left">
+        <input type="checkbox" name="send_sms" value="1">
+        手机短信通知,管理员对此问题已作解答.</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td align="left" width='15%'>&nbsp;</td>
+      <td width="85%" align="left">
+        <input type="button" name="Submit" value="返回" onClick="window.location.href='$admin_path&job=view&mid=$mid&id=$id';">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <input type="submit" name="Submit2" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

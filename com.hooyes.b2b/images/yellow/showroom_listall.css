@@ -1,0 +1,146 @@
+img{
+	border:0;
+}
+/***************************产品供应排序页*******************************/
+.listalltable .main{
+	padding-right:10px;
+}
+.listalltable .side{
+	width:25%;
+}
+/*
+*商品列表
+*/
+.dragTable .head{
+	height:30px;
+	background:url(head1.gif) right top no-repeat;
+}
+.dragTable .head span{
+	display:block;
+	padding:5px 10px 0 10px;
+	float:left;
+	line-height:25px;
+}
+.dragTable .head span.FL{
+	width:120px;
+	background:url(head1.gif) left top no-repeat;
+	padding-left:15px;
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+}
+.dragTable .head span.FR{
+	float:right;
+}
+.dragTable .head span.FR a{
+	display:block;
+	float:left;
+	width:95px;
+	background:url(butter0.gif) center 1px no-repeat;
+	text-align:center;
+	font-weight:bold;
+	color:#888;
+}
+.dragTable .head span.FR a.ch{
+	background:url(buttercha.gif) center 1px no-repeat;
+	color:#F00;
+}
+.dragTable .cont{
+	border:#FDDCB7 solid 1px;
+	border-top:0;
+	padding:5px;
+}
+.dragTable .cont .img{
+	width:140px;
+	text-align:center;
+}
+.dragTable .cont .info{
+	width:480px;
+}
+.dragTable .cont .renzheng{
+	text-align:center;
+}
+.dragTable .cont .listhead{
+	border-bottom:#FFBC5B dotted 1px;
+	line-height:25px;
+	margin:5px auto 0 auto;
+}
+.dragTable .cont .listhead td{
+	color:#B75200;
+	font-weight:bold;
+}
+.dragTable .cont .listshop{
+	border-bottom:#ddd dotted 1px;
+}
+.dragTable .cont .listshop td{
+	vertical-align:middle;
+}
+.dragTable .cont .listshop .img{
+	padding:5px 0 5px 0;
+}
+.dragTable .cont .listshop .img a{
+	display:block;
+	width:120px;
+	height:90px;
+	border:#ddd solid 1px;
+	padding:1px;
+	margin:auto;
+}
+.dragTable .cont .listshop .info{
+	vertical-align:top;
+	line-height:22px;
+}
+.dragTable .cont .listshop .info .title{
+	margin-top:3px;
+	height:22px;
+	overflow:hidden;
+}
+.dragTable .cont .listshop .info .title a{
+	font-size:14px;
+	font-weight:bold;
+	color:#00349A;
+}
+.dragTable .cont .listshop .info .company a{
+	color:green;
+}
+.dragTable .cont .listshop .info .more{
+	color:#999;
+}
+.dragTable .cont .page{
+	line-height:30px;
+	text-align:center;
+	margin-top:5px;
+}
+.dragTable .cont .page a{
+	border:#DDD solid 1px;
+	padding:5px 5px 3px 5px;
+}
+/*
+*团购分类
+*/
+.sortcontainer .head{
+	background:url(tuangou_lhead.gif) right bottom;
+	height:38px;
+}
+.sortcontainer .head span{
+	display:block;
+	float:left;
+	background:url(tuangou_lhead.gif) left bottom no-repeat;
+	padding:8px 50px 0 30px;
+	line-height:30px;
+	font-size:14px;
+	font-weight:bold;
+}
+.sortcontainer .cont{
+	border-left:#FDCB7F solid 1px;
+	border-right:#FDCB7F solid 1px;
+}
+.sortcontainer .cont .listsort{
+	border-bottom:#FDCB7F solid 1px;	
+	background:url(tuangou_array.gif) 200px 10px no-repeat;
+}
+.sortcontainer .cont .listsort a{
+	display:block;
+	padding:8px 0 5px 20px;
+	text-decoration:none;
+}

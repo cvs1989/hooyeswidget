@@ -1,0 +1,111 @@
+<!--
+<?php
+
+if(!$action){
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main" > 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 友情链接管理 [<A HREF="cankao.php?action=add" style="color:red;">新创建一个友情链接</A>] 
+          </td>
+        </tr>
+        <tr  class="trA"> 
+          <td height="80" align="left" valign="middle" style="padding:10px;">	
+            <table width="100%" cellspacing="0" cellpadding="0">
+              <tr class="head_in"> 
+                <td width="32%" align="center"><strong><font color="#FF0000">网站名称</font></strong></td>
+                <td align="left"> 
+                  <div align="center"><font color="#FF0000"><strong>描述</strong></font></div>
+                </td>
+                <td width="20%" align="center"><strong><font color="#FF0000">操作</font></strong></td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+              <tr> 
+                <td align="center" style="line-height:21px;"><a href="$rs[url]" target="_blank">$rs[title]</a></td>
+                <td align="left" style="line-height:21px;">$rs[description]</td>
+                <td align="center" style="line-height:21px;"><a href="?action=add&amp;ck_id=$rs[ck_id]">编辑</a> 
+                  | <a href="?action=del&amp;ck_id=$rs[ck_id]" onclick="return confirm('删除后不能恢复，确定要继续吗？')">删除</a></td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table>
+            <p>$showpage</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p > </p>
+<!--
+EOT;
+}elseif($action=='add'){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main" > 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 友情链接 </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr  class="trA"> 
+          <td height="80" align="left" valign="middle"  style="padding:10px;" width="54%">
+            <form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1" >
+              <input name="action" type="hidden" id="action" value="save_add" />
+              <table width="726" cellspacing="0" cellpadding="5">
+                <tr> 
+                  <td width="21%" height="20" align="right">友情链接：</td>
+                  <td width="38%" align="left" valign="top">
+                    <input name="title" type="text" id="title" value="$rsdb[title]" size="40" />
+                  </td>
+                  <td width="41%" align="left" valign="top">比如：网站名称 (最多40个字符) 
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="20" align="right">网址：</td>
+                  <td align="left" valign="top">
+                    <input name="url" type="text" id="url" value="$rsdb[url]" size="40" />
+                  </td>
+                  <td align="left" valign="top">http://开头 </td>
+                </tr>
+                <tr> 
+                  <td height="20" align="right">描述：</td>
+                  <td align="left" valign="top">
+                    <textarea name="description" cols="40" rows="5" id="description">$rsdb[description]</textarea>
+                  </td>
+                  <td align="left" valign="top">简单描述，最多400个字符</td>
+                </tr>
+                <tr> 
+                  <td colspan="3" align="center">
+                    <input type="submit" name="Submit" value="提交保存"/>
+                    <input type="button" name="Submit2" value="放 弃"  onclick="window.location='?';"/>
+                    <input name="action" type="hidden" id="action" value="save_add" />
+                    <input name="ck_id" type="hidden" id="ck_id" value="$ck_id" />
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

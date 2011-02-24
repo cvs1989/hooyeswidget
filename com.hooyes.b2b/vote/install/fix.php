@@ -1,0 +1,9 @@
+<?php
+
+return array(
+	'name'=>'Í¶Æ±Ä£¿é',
+	'pre'=>'vote_',
+	'setup'=>2,
+);
+
+?>

@@ -1,0 +1,33 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+     <tr class="head"> 
+      
+    <td align="center" width="33%">表单模型</td>
+      
+    <td width="51%" align="center">记录</td>
+      
+    <td width="16%" align="center">管理内容</td>
+    </tr>
+    <!--
+EOT;
+foreach($Mdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      
+    <td align="left" width='33%'>$rs[name] </td>
+    <td width="51%" align="center"><b><font color="#FF0000">{$rs[NUM]}</font></b>条</td>
+    <td width="16%" align="center"><a href="$admin_path&job=list&mid=$rs[id]">管理</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+--> 
+</table>
+<!--
+EOT;
+?>
+-->

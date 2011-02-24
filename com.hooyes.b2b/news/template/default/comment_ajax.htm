@@ -1,0 +1,49 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="content">
+  <tr> 
+    <td rowspan="2" width="5%" class="img"> <A HREF="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]" target="_blank"><img border=0 src='$rs[icon]' onerror="this.src='$webdb[www_url]/images/default/nobody.gif'" width="60" height="60"></A></td>
+    <td width="95%" class="word" valign="top"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word">
+        <tr> 
+          <td>$rs[content]</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="95%" class="info">ID:{$rs[cid]} 称呼:{$rs[username]} 日期:{$rs[posttime]} <A HREF="javascript:getcomment('{$Mdomain}/comment_ajax.php?action=vote&id=$id&cid=$rs[cid]&posttype=ajax&job=agree')">支持:<font color="#FF0000">{$rs[agree]}</font>票</A> 
+      <A HREF="javascript:getcomment('{$Mdomain}/comment_ajax.php?action=vote&id=$id&cid=$rs[cid]&posttype=ajax&job=disagree')">反对:<font color="#0000FF">{$rs[disagree]}</font>票</A> <A HREF="javascript:quotecomment('[quote]引用ID编号为{$rs[cid]},称呼为{$rs[username]}于{$rs[posttime]}发表的  :\\r\\n{$rs[title]}[/quote]\\r\\n')">引用回复</A> 
+      <!--
+EOT;
+if($rs[ifadmin]){
+print <<<EOT
+-->
+      <A HREF="javascript:getcomment('{$Mdomain}/comment_ajax.php?action=del&id=$id&cid=$rs[cid]')">删除</A> 
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page">$showpage</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

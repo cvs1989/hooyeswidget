@@ -1,0 +1,262 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/v7/wn/common.css">
+<script src="$webdb[www_url]/images/default/setday.js"></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"><a href='bencandy.php?fid=$fid&id=$id&rid=$rid'>$rsdb[title]</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script>
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+</script>
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" id="bigtable">
+              <form name="FORM" method="post" action="?action=$atc" enctype="multipart/form-data">
+                
+                <tr> 
+                  <td colspan="2"> 
+                    <input type="checkbox" name="checkbox2" value="checkbox" onclick="showmoretr();">
+                    <font color="#0000FF">点击输入更多详细内容</font></td>
+                </tr>
+                <tr> 
+                  <td width="18%">标题:<font color=red>(必填)</font></td>
+                  <td width="82%"> 
+                    <input type="text" name="postdb[title]" id="atc_title" size="50" value="$rsdb[title]">
+                  </td>
+                </tr>
+                <!--
+EOT;
+if(!$web_admin){
+print <<<EOT
+-->
+                <tr> 
+                  <td><span class="L">验证码:<font color=red>(必填)</font></span></td>
+                  <td> 
+                    <input id="yzImgNum" type="text" name="yzimg" size="8">
+                    <img border="0" id="yz_Img" name="imageField" src="$webdb[www_url]/do/yzimg.php"> 
+                  </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+
+                <!--
+EOT;
+if(count($city_DB[name])>1){
+print <<<EOT
+-->
+                <tr> 
+                  <td>所在城市</td>
+                  <td> 
+                    <select name="city_id">
+<!--
+EOT;
+foreach($city_DB[name] AS $key=>$value){
+if($job=='edit'){
+	$city_id=$rsdb[city_id];
+}
+$ckk=$city_id==$key?'selected':'';
+print <<<EOT
+-->
+                      <option value="$key" $ckk>$value</option>
+ <!--
+EOT;
+}
+print <<<EOT
+-->
+                    </select>
+                  </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr class="moretr"> 
+                  <td width="18%">关键字:</td>
+                  <td width="82%"> 
+                    <input type="text" name="postdb[keywords]" value="$rsdb[keywords]" size="40">
+                    多个关键词,用空格分开</td>
+                </tr>
+                <tr  class="moretr"> 
+                  <td width="18%">版权信息:</td>
+                  <td width="82%"> 文章作者: 
+                    <input type="text" name="postdb[author]"  size="10" value="$rsdb[author]">
+                    　来源网站: 
+                    <input type="text" name="postdb[copyfrom]" size="15" value="$rsdb[copyfrom]">
+                    　 来源网址: 
+                    <input type="text" name="postdb[copyfromurl]" size="40" value="$rsdb[copyfromurl]">
+                  </td>
+                </tr>
+                <!--
+EOT;
+if( $web_admin || ($lfjid&&in_array($lfjid,explode(",",$fidDB[admin]))) ){
+print <<<EOT
+-->
+                <!--
+EOT;
+}print <<<EOT
+-->
+                <!--
+EOT;
+if($webdb[UseArea]){
+$rsdb[cityid] && $cityid=$rsdb[cityid];
+print <<<EOT
+-->
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr> 
+                  <td width="18%">缩略图片: 
+                    <script language="JavaScript">
+<!--
+function choosef(i,t){
+	if(t=='out'){
+		document.getElementById("out_url"+i).style.display='';
+		document.getElementById("in_url"+i).style.display='none';
+	}else{
+		document.getElementById("out_url"+i).style.display='none';
+		document.getElementById("in_url"+i).style.display='';
+	}
+} 
+-->
+</script>
+                  </td>
+                  <td width="82%"> 
+                    <input type="text" name="postdb[picurl]" size="40" id="out_url1" value="$rsdb[picurl]">
+                    <input type="file" name="local_file1" id="in_url1" style="display:none;">
+                    <input type="radio" name="ftype[1]" value="out" checked onclick="choosef(1,'out')">
+                    网络文件 <a style="display:$none;"> 
+                    <input type="radio" name="ftype[1]" value="in" onclick="choosef(1,'in')">
+                    本地文件</a> </td>
+                </tr>
+                <tr> 
+                  <td width="18%">内容类型: </td>
+                  <td width="82%"> 
+                    <input type="radio" name="isiframe" value="0" onclick="chooseiframe('0');" $isiframe[0]>
+                    站内信息 
+                    <input type="radio" name="isiframe" value="1" onclick="chooseiframe('1');" $isiframe[1]>
+                    框架外部网页 
+                    <input type="radio" name="isiframe" value="2" onclick="chooseiframe('2');" $isiframe[2]>
+                    跳转到外部网站 
+                    <div id="iframeurl_div" style="display:none;">框架地址: 
+                      <input type="text" name="postdb[iframeurl]" size="60" value="$rsdb[iframeurl]">
+                      http://开头 </div>
+                    <div id="jumpurl_div" style="display:none;">跳转网址: 
+                      <input type="text" name="postdb[jumpurl]" size="60" value="$rsdb[jumpurl]">
+                      http://开头 </div>
+                  </td>
+                </tr>
+                 
+                <tr id="content_div"> 
+                  <td >内容:<br>
+                  </td>
+                  <td >
+		<textarea style="display:none;" id="content1" name="postdb[content]">$rsdb[content]</textarea>		  
+ 
+<script type="text/javascript">
+CKEDITOR.replace( 'content1',
+{
+width:'100%',
+height:'300px',
+filebrowserBrowseUrl : '$webdb[www_url]/ewebeditor/ckfinder/ckfinder.html',
+filebrowserImageBrowseUrl : '$webdb[www_url]/ewebeditor/ckfinder/ckfinder.html?Type=Images',
+filebrowserFlashBrowseUrl : '$webdb[www_url]/ewebeditor/ckfinder/ckfinder.html?Type=Flash',
+filebrowserUploadUrl : '$webdb[www_url]/ewebeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+filebrowserImageUploadUrl : '$webdb[www_url]/ewebeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+filebrowserFlashUploadUrl : '$webdb[www_url]/ewebeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+});
+</script>
+                    <!-- <br>
+                    <input type="checkbox" name="GetOutPic" value="1">
+                    是否将文章中的外部图片采集回来（网速慢时，很影响速度）-->
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="18%">&nbsp;</td>
+                  <td width="82%"> 
+                    <input type="submit" name="Submit" value="提 交" class='submit'>
+                    <input type="hidden" name="fid" value="$fid">
+                    <input type="hidden" name="id" value="$id">
+                    <input type="hidden" name="fid_bak1" value="$rsdb[fid_bak1]">
+                    <input type="hidden" name="fid_bak2" value="$rsdb[fid_bak2]">
+                    <input type="hidden" name="fid_bak3" value="$rsdb[fid_bak3]">
+                    <input type="hidden" name="rid" value="$rid">
+                    <script language="JavaScript">
+<!--
+function chooseiframe(t){
+	if(t=='1'){
+		document.getElementById("iframeurl_div").style.display='';
+		document.getElementById("jumpurl_div").style.display='none';
+		document.getElementById("content_div").style.display='none';
+	}else if(t=='2'){
+		document.getElementById("iframeurl_div").style.display='none';
+		document.getElementById("jumpurl_div").style.display='';
+		document.getElementById("content_div").style.display='none';
+	}else{
+		document.getElementById("iframeurl_div").style.display='none';
+		document.getElementById("jumpurl_div").style.display='none';
+		document.getElementById("content_div").style.display='';
+	}
+}
+chooseiframe('$chooseiframe');
+ 
+function showmoretr(){
+	var MainTable=document.getElementById("bigtable");
+	oo=MainTable.getElementsByTagName("TR");
+	for(var i=0;i<oo.length;i++){
+		if(oo[i].className=='moretr'){
+			if(oo[i].style.display=='none'){
+				oo[i].style.display='';
+			}else{
+				oo[i].style.display='none';
+			}
+		}
+	}
+	if(parent.document.getElementById('member_mainiframe')!=null){
+		parent.document.getElementById('member_mainiframe').height=parseInt(parent.document.getElementById('member_mainiframe').height)+300;
+	}
+}
+showmoretr();
+
+
+ 
+//-->
+</SCRIPT>
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->
