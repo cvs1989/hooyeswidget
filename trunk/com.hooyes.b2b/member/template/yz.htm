@@ -1,0 +1,252 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <!--
+EOT;
+if($job=='email'){print <<<EOT
+-->
+     
+      <br>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="?">
+          <tr> 
+            <td class="head">邮箱验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center" height="80"> 
+              <!--
+EOT;
+if($lfjdb[email_yz]!=1){print <<<EOT
+-->
+              <input type="text" name="email" value="$lfjdb[email]">
+              <input type="submit" name="Submit" value="立即验证">
+              <input type="hidden" name="action" value="email">
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              你的邮箱已通过验证“<font color="#FF0000"><b>{$lfjdb[email]}</b></font>” 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+      <br>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        
+          <tr> 
+            <td class="head">说明</td>
+          </tr>
+          <tr> 
+            
+          <td class="middle" style="padding:5px;" align="left">1、验证邮箱，不仅可以提高信誉度，同时还可以得到{$webdb[YZ_EmailMoney]}个积分的奖励。<br>
+              <!--
+EOT;
+if(!$webdb[EditYzEmail]){print <<<EOT
+--> 2、邮箱验证之后，不可以再修改，你务必注意！   <!--
+EOT;
+}print <<<EOT
+--></td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        
+      </table>
+      <!--
+EOT;
+}elseif($job=='mob'||$action=='mobphone'){print <<<EOT
+-->
+	  
+	  
+      <br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="?">
+          <tr> 
+            <td class="head">手机号码验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center" height="80"> 
+              <!--
+EOT;
+if($action=="mobphone"){print <<<EOT
+-->
+              请输入你的手机收到的验证码 
+              <input type="text" name="yznum" size="13" >
+              <input type="submit" name="Submit" value="提交">
+              <br>
+              <br>
+              注意:手机接收短信需要一段时间,请耐心等候 
+              <input type="hidden" name="mobphone" value="$mobphone">
+              <input type="hidden" name="action" value="mobphone2">
+              <input type="hidden" name="md5code" value="$md5code">
+              <!--
+EOT;
+}elseif(!$lfjdb[mob_yz]){print <<<EOT
+-->
+              <input type="text" name="mobphone" value="$lfjdb[mobphone]" size="13">
+              <input type="submit" name="Submit" value="立即验证">
+              <input type="hidden" name="action" value="mobphone">
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              你的手机号码已通过验证“<b><font color="#FF0000">{$lfjdb[mobphone]}</font></b>” 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">说明</td>
+        </tr>
+        <tr> 
+          <td class="middle" style="padding:5px;" align="left">1、验证手机号码，不仅可以提高信誉度，同时还可以得到{$webdb[YZ_MobMoney]}个积分的奖励。<br>
+		  2、手机号码,只有管理员才有权限查看,请放心。<br>
+            <!--
+EOT;
+if(!$webdb[EditYzMob]){print <<<EOT
+-->
+            3、手机号码之后，不可以再修改，你务必注意！ 
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"></td>
+        </tr>
+      </table>
+      <!--
+EOT;
+}elseif($job=='idcard'){print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <form name="form1" method="post" action="?">
+          <tr> 
+            <td class="head">身份验证</td>
+          </tr>
+          <tr> 
+            <td class="middle" style="padding:5px;" align="center"> 
+              <script>
+function upfile(url,name,size,ty){
+	document.getElementById("telephoneid").value=url;
+}
+</script>
+              <!--
+EOT;
+if($lfjdb[idcard_yz]!=1){print <<<EOT
+-->
+              
+              <table width="71%" border="0" cellspacing="6" cellpadding="0">
+                <!--
+EOT;
+if($lfjdb[idcard_yz]==-1){print <<<EOT
+-->
+                <tr align="left"> 
+                  <td colspan="2"><b><font color="#FF0000">提示：</font></b>你的资料正在审核当中，目前你还可以继续修改完善。 
+                  </td>
+                </tr>
+                <!--
+EOT;
+}print <<<EOT
+-->
+                <tr> 
+                  <td width="28%" align="left">真实姓名(<font color="#FF0000">*</font>):</td>
+                  <td width="72%"> 
+                    <input type="text" name="truename" value="$lfjdb[truename]" size="15">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="28%" align="left">身份证号码(<font color="#FF0000">*</font>):</td>
+                  <td width="72%"> 
+                    <input type="text" name="idcard"  value="$lfjdb[idcard]" size="25">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="28%" align="left">身份证复印件:</td>
+                  <td width="72%"> 
+                    <input type="text" name="idcardpic" id="telephoneid" size="40" readonly value="$idcardpic">
+                    <a href='javascript:' onClick='window.open("../do/upfile.php?fn=upfile&dir=idcard","","width=350,height=50,top=200,left=400")'>点击上传图片</a> 
+                  </td>
+                </tr>
+                <tr align="left"> 
+                  <td colspan="2">注意:身份证复印件为可选项, 但建议你上传,这样将更容易通过管理员的审核,否则有可能审核不通过! 
+                  </td>
+                </tr>
+              </table>
+              <input type="submit" name="Submit" value="立即验证">
+              <!--
+EOT;
+}elseif($lfjdb[idcard_yz]==1){
+$idcardpic=tempdir("idcard/$lfjuid.jpg");
+print <<<EOT
+-->
+              <a href="$rsdb[idcardpic]" target="_blank"><img src="$idcardpic" width="150" onload="if(this.height>200)this.height=200;" border="0"></a> 
+              <br>
+              已通过验证 
+              <!--
+EOT;
+}print <<<EOT
+-->
+              <input type="hidden" name="action" value="idcard">
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"></td>
+          </tr>
+        </form>
+      </table>    
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">说明</td>
+        </tr>
+        <tr> 
+          <td class="middle" style="padding:5px;" align="left">1、身份验证，不仅可以提高信誉度，同时还可以得到{$webdb[YZ_IdcardMoney]}个积分的奖励。<br>
+            2、身份验证不是系统自动审核的，而是管理员人工审核的，所以你务必认真填写，否则不会被通过。<br>
+			 3、身份证相关隐私资料,只有管理员才有权限查看,请放心。<br>
+            <!--
+EOT;
+if(!$webdb[EditYzIdcard]){print <<<EOT
+-->
+            4、身份成功验证之后，不可以再修改，你务必注意！ 
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"></td>
+        </tr>
+      </table>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

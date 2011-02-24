@@ -1,0 +1,103 @@
+<!--
+<?php
+$ordertype = $ordertype ? $ordertype : "rid";
+$select[$ordertype] = "ch";
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/hy_listall.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="listalltable">
+  <tr>
+    <td class="main">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+          <tr>
+            <td class="head">
+            	<span class="FL">商家列表</span>
+                <span class="FR">
+                	<a href="listall.php?ordertype=" class="$select[rid]">最新商家</a>
+                    <a href="listall.php?ordertype=hits" class="$select[hits]">热门商家</a>
+                    <a href="listall.php?ordertype=levelstime" class="$select[levelstime]">推荐商家</a>
+                </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="cont">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listhead">
+              <tr> 
+                <td class="img">&nbsp;</td>
+                <td class="info">商家简介</td>
+                <td class="renzheng">商家认证</td>
+              </tr>
+            </table>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+//$target=$rs[target]?'_blank':'_self';
+//$url=get_info_url('',$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="listshop">
+              <tr> 
+                <td class="img"><a href="$webdb[www_url]/home/?uid=$rs[uid]" target="_blank"><img src="$rs[picurl]" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg'" width="120" height="90"/></a></td>
+                <td class="info"> 
+                  <div class="title"><a href="$webdb[www_url]/home/?uid=$rs[uid]" target="_blank" title='$rs[full_title]'>$rs[title]</a></div>
+                  <div class="sort">所属分类：{$rs[fname]}</div>
+                  <div class="more"> 发布日期：{$rs[posttime]} </div>
+                  <div class="more"> 关注度：{$rs[hits]}人次   发布者:{$rs[username]}</div>
+                </td>
+                <td class="renzheng"><img alt="{$renzhengDB[$rs[renzheng]]}" src="$webdb[www_url]/images/yellow/company_renzheng{$rs[renzheng]}.gif"></td>
+              </tr>
+            </table>		
+<!--
+EOT;
+}if($showpage){print <<<EOT
+-->
+			  <div class="page">$showpage</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+    </td>
+    <td class="side">
+    	<div class="shopsort">
+        	<div class="head"><span>商家分类</span></div>
+            <div class="cont">
+<!--
+EOT;
+$j=0;
+foreach($Fid_db[0] AS $key=>$name){
+$j++;
+$name=get_word($name,20);
+print <<<EOT
+-->
+				
+          <div class="bigsort list$j"><a href="list.php?fid=$key" target="_blank">$name</a></div>
+                
+          <div class="sort"> 
+            <!--
+EOT;
+foreach($Fid_db[$key] AS $fid=>$name ){
+$name=get_word($name,24);
+print <<<EOT
+-->
+            <a href="list.php?fid=$fid" target="_blank">$name</a> | 
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

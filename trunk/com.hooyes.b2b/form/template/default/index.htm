@@ -1,0 +1,145 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="200" valign="top" width="75%" class="Main"> 
+      
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+  <tr> 
+          <td height="21" class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">◊Ó–¬ ‘æÌ</span> 
+            <h3 class="R"></h3>
+           </td>
+        </tr>
+        <tr> 
+          <td height="50" class="middle" valign="top"> 
+		    <table width="99%" border="0" cellspacing="1" cellpadding="3" bgcolor="#dddddd" class="formlist_table">
+              <tr align="center" class="formlist_head"> 
+                <td width="20%" style="padding:2px;">∑÷¿‡</td>
+                <td width="68%" style="padding:2px;"> ‘æÌ√˚≥∆</td>
+                <td style="padding:2px;" width="12%">øº ‘</td>
+              </tr>
+              <!--
+EOT;
+foreach($newpaper AS $key=>$rs){print <<<EOT
+-->
+              <tr bgcolor="#FFFFFF" class="formlist_tr"> 
+                <td width="20%" align="center" style="padding:2px;"><a href="list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+                <td width="68%" style="padding:2px;">$rs[name]</td>
+                <td align="center" style="padding:2px;" width="12%"><a href="exam_write.php?id=$rs[id]" target="_blank"><u>øº ‘</u></a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+            <table width="99%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+  <tr> 
+          <td height="21" class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">Õ∆ºˆ ‘æÌ</span> 
+            <h3 class="R"></h3>
+           </td>
+        </tr>
+        <tr> 
+          <td height="50" class="middle" valign="top"> 
+		    <table width="99%" border="0" cellspacing="1" cellpadding="3" bgcolor="#dddddd" class="formlist_table">
+              <tr align="center" class="formlist_head"> 
+                <td width="20%" style="padding:2px;">∑÷¿‡</td>
+                <td width="68%" style="padding:2px;"> ‘æÌ√˚≥∆</td>
+                <td style="padding:2px;" width="12%">øº ‘</td>
+              </tr>
+              <!--
+EOT;
+foreach($compaper AS $key=>$rs){print <<<EOT
+-->
+              <tr bgcolor="#FFFFFF" class="formlist_tr"> 
+                <td width="20%" align="center" style="padding:2px;"><a href="list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+                <td width="68%" style="padding:2px;">$rs[name]</td>
+                <td align="center" style="padding:2px;" width="12%"><a href="exam_write.php?id=$rs[id]" target="_blank"><u>øº ‘</u></a></td>
+              </tr>
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+            <table width="99%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table></td>
+    <td valign="top" width="25%" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG"> ‘æÌ∑÷¿‡</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle ListAllSort" valign="top" align="left"> 
+            <!--
+EOT;
+foreach($Fid_db[0] AS $key=>$name){
+print <<<EOT
+-->
+            <div style="background:#eee;width:99%;"><a href="list.php?fid=$key" style="color:red;" target="_blank">$name</a></div>
+			
+			<div style="padding:5px 0 5px 0;"> 
+              <!--
+EOT;
+foreach($Fid_db[$key] AS $key2=>$name2){
+print <<<EOT
+-->
+              <a href="list.php?fid=$key2" target="_blank">$name2</a> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

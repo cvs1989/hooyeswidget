@@ -1,0 +1,57 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="index.php?lfj=$lfj&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">前台会员功能菜单管理</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>排序的规则是,数值大的排在前面<br>
+            注意：不设置某个会员组的菜单，则使用默认的，若指定后，就不使用默认的,以这里设置的为标准<br>
+            <br>
+            请选择一个用户组的菜单进行管理:$select_group</li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" class="head"> 
+            <td  style="border-right:1px solid #fff;" width="34%">菜单名称</td>
+            <td  style="border-right:1px solid #fff;" width="25%">所属用户组</td>
+            <td width="13%" style="border-right:1px solid #fff;">排序</td>
+            <td width="13%" style="border-right:1px solid #fff;">修改</td>
+            <td width="15%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td bgcolor="#FFFFFF" width="34%" style="border-bottom:1px dotted #ccc;color:$rs[color];"> 
+              $rs[icon]【{$rs[name]}】</td>
+            <td bgcolor="#FFFFFF" width="25%" style="border-bottom:1px dotted #ccc;color:$rs[color];" align="center">$rs[grouptitle]</td>
+            <td width="13%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[id]}]' value='$rs[list]' size='5' maxlength="4">
+            </td>
+            <td width="13%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="15%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="?lfj=$lfj&action=delete&id=$rs[id]&gid=$gid" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <a href="javascript:" onClick="CheckAll('all')"> </a>
+          <input type="submit" name="Submit2" value="修改排序"  >
+          <input type="hidden" name="gid" value="$gid">
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<br>
+<!--
+EOT;
+?>
+-->

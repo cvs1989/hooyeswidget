@@ -1,0 +1,72 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="$admin_path&action=delete">
+    <tr class="head"> 
+      <td width="4%" align="center">序号 </td>
+      <td width="33%" align="center">留言内容</td>
+      <td width="10%" align="center">审核与否</td>
+      <td width="8%" align="center">分类</td>
+      <td width="10%" align="center">昵称</td>
+      <td width="7%" align="center">IP来源</td>
+      <td width="9%" align="center">会员性质</td>
+      <td width="19%" align="center">删 看 改 回复</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="4%" align="center">$rs[id]</td>
+      <td width="33%"> 
+        <input type="checkbox" name="listdb[{$rs[id]}]" value="{$rs[id]}">
+        $rs[content]</td>
+      <td align="center" width="10%">$rs[ifyz]</td>
+      <td align="center" width="8%"><a href="$admin_path&job=list&fid=$rs[fid]">{$Fid_db[name][$rs[fid]]}</a></td>
+      <td width="10%" align="center"><a href="../member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a> 
+      </td>
+      <td width="7%" align="center">$rs[ip]</td>
+      <td width="9%" align="center">$rs[ismember]</td>
+      <td width="19%" align="center"><a href="$admin_path&action=delete&id=$rs[id]" ><img alt='点击删除' src='../member/images/del_icon2.gif' border="0"></a> 
+        <a href="$admin_path&job=show&id=$rs[id]" target="_blank"><img alt='点击查看' src='../member/images/icon_info.gif' border="0"></a> 
+        <a href="$admin_path&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border="0"></a> 
+        <a href="$admin_path&job=reply&id=$rs[id]"><img alt='点击回复' src='../member/images/post2.gif' border="0"></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="8" align="center"> $showpage </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="8" align="center"> <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <input type="submit" name="Submit" value="批量删除">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+ 
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT
+><!--
+EOT;
+?>
+-->

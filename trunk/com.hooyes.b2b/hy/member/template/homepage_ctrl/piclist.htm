@@ -1,0 +1,50 @@
+<!--
+<?php
+print <<<EOT
+-->
+ 
+ 
+        <form action="?&uid=$uid" method="post" name="a">
+          <table width="100%" cellpadding="5" cellspacing="1" >
+            <tr>
+              <td width="102" height="100" align="center" valign="middle"  style="border-bottom:1px solid #CCCCCC;"><img src="$rsdb[faceurl].gif"  style="border:2px #CCCCCC solid;" width="90" height="90" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg';"/></td>
+              <td width="713"    style="border-bottom:1px solid #CCCCCC;"><strong>$rsdb[name]</strong><br />
+                $rsdb[remarks] <br />
+                <a href="?atn=pic_upload&uid=$uid&psid=$psid"><img src="$Murl/images/default/userpicupload.gif"  border="0"/></a>
+                <p>
+                  <input type="submit" name="button16" id="button16" value="编辑选中项" onclick="document.getElementById('myaction').value='pic_edit';" />
+                  <input type="submit" name="button17" id="button17" value="删除选中项" onclick="if(confirm('确定删除选中项目吗？')){document.getElementById('myaction').value='pic_del';}else{return false;}"/>
+                  <input type="submit" name="button16" id="button16" value="设为图集封面" onclick="document.getElementById('myaction').value='pic_fm';" />
+                  <input type="button" name="button16" id="button16" value="返回图库" onclick="window.location='?atn=pic&uid=$uid';" />
+                  <input name="atn" type="hidden" id="myaction" value="pic_del" />
+                  <input name="psid" type="hidden" id="psid" value="$psid" />
+                </p></td>
+            </tr>
+            <tr>
+              <td colspan="2" align="left" valign="top" height="330"><div>
+                  <!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+                  <li style="float:left; width:100px; height:130px; word-wrap: break-word; word-break: normal; text-align:center; margin:10px 10px 0px 5px;"> <a href="$Mdomain/homepage.php?uid=$rs[uid]&m=pics&psid=$rs[psid]&pid=$rs[pid]" target="_blank"><img src="$rs[url].gif"  style="border:1px #CCCCCC solid;" width="90" height="90"  onerror="this.src='$Murl/images/default/userpicdefault.gif';" /></a>
+                    <p style="height:50px;">
+                      <input type="checkbox" name="pids[]" value="$rs[pid]" />
+                      $rs[title]</p>
+                  </li>
+                  <!--
+EOT;
+}
+print <<<EOT
+-->
+                </div></td>
+            </tr>
+            <tr>
+              <td  colspan="2" align="center" valign="middle"><div class="page">$showpage</div></td>
+            </tr>
+          </table>
+        </form>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,96 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" id="top_menu">
+  <tr> 
+    <td>[<a href="$admin_path&job=list">模型列表(创建模型)</a>] [<a href="$admin_path&job=set&id=$id">模型设置</a>] 
+      [<a href="$admin_path&job=listfield&id=$id">字段列表</a>] [<a href="$admin_path&job=addfield&id=$id">添加功能字段</a>] 
+      [<a href="$admin_path&job=tpl&id=$id">本模型生成模板</a>] [<a href="$Murl/form.php?mid=$id" target="_blank">填写表单</a>] 
+      [<a href="$admin_path&file=form_content&job=list&mid=$id">表单内容管理</a>]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_tpl" id="form_tpl" method="post" action="$admin_path&action=$job&page=$page&automaketpl=$automaketpl">
+    <tr class="head" align="left"> 
+      <td colspan="2">模板管理</td>
+    </tr>
+    <tr> 
+      <td width="17%">发布页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_post" cols="90" rows="8">$post_tpl</textarea>
+        <br>
+        母模板:/$dirname/admin/$post_tpl_file<br>
+        模板将保存在:/$dirname/data/form_tpl/post_$id.htm </td>
+    </tr>
+    <tr> 
+      <td width="17%">前台内容页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_show" cols="90" rows="5">$show_tpl</textarea>
+        <br>
+        母模板:/$dirname/admin/$show_tpl_file <br>
+        模板将保存在:/$dirname/data/form_tpl/bencandy_$id.htm</td>
+    </tr><tr> 
+      <td width="17%">后台内容页模板:</td>
+      <td width="83%"> 
+        <textarea name="admin_tpl_show" cols="90" rows="5">$admin_show_tpl</textarea>
+        <br>
+        母模板:/$dirname/admin/$admin_show_tpl_file <br>
+        模板将保存在:/$dirname/data/form_tpl/admin_bencandy_$id.htm</td>
+    </tr>
+   	 <tr> 
+      <td width="17%">前台列表页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_list" cols="90" rows="5">$list_tpl</textarea>
+        <br>
+        母模板:/$dirname/admin/$list_tpl_file<br>
+        新模板将保存在:/$dirname/data/form_tpl/list_$id.htm</td>
+    </tr><tr> 
+      <td width="17%">后台列表页模板:</td>
+      <td width="83%"> 
+        <textarea name="admin_tpl_list" cols="90" rows="5">$admin_list_tpl</textarea>
+        <br>
+        母模板:/$dirname/admin/$admin_list_tpl_file<br>
+        模板将保存在:/$dirname/data/form_tpl/admin_list_$id.htm</td>
+    </tr>
+<!--
+EOT;
+if($IS_BIZ){print <<<EOT
+-->
+	<tr> 
+      <td width="17%">搜索页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_search" cols="90" rows="5">$search_tpl</textarea>
+        <br>
+        母模板:/$dirname/admin/$search_tpl_file<br>
+        模板将保存在:/$dirname/data/form_tpl/search_$id.htm</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交生成模板">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td colspan="2">注意:<br>
+        1.请务必确认/$dirname/data/form_tpl/这个目录权限可写,否则无法生成模板<br>
+        2.母模板存放在 /$dirname/admin/template/form_module/tpl/ 这个目录里边,其中bencandy.htm是前台内容页,list.htm是前台列表页,post.htm内容发布提交页,admin_list.htm是后台列表页,admin_bencandy.htm是后台内容页,这些都是通用母模板,要想为某个表单创建私有模板的话,你可以对应的复制一个出来,重新命名,比如list_2.htm,也就是文件名加多下画线与ID号即可.模板生成规则是:如果没有私有模板,就调用公用模板.</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function autopost(){
+	document.getElementById("form_tpl").submit();
+}
+$autojump
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,38 @@
+<!--
+<?php
+print <<<EOT
+-->
+        <form action="?atn=pic_edit_save&uid=$uid&psid=$psid" method="post" name="a">
+          <table width="100%" cellpadding="5" cellspacing="1" >
+            <tr>
+              <td  colspan="2" align="left" valign="middle"><strong>批量修改图片信息</strong></td>
+            </tr>
+            <!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+            <tr>
+              <td   align="left" valign="top" width="100"><a href="$Mdomain/homepage.php?uid=$uid&m=showpic&pid=$rs[pid]" target="_blank"><img src="$rs[url].gif"  style="border:1px #CCCCCC solid;" width="90" height="90"  onerror="this.src='$Murl/images/default/userpicdefault.gif';" /></a> </td>
+              <td align="left" valign="top"><input type="hidden" name="pids[{$rs[pid]}]" value="$rs[pid]" />
+                描述：
+                <input name="title[$rs[pid]]" type="text" id="title_$rs[pid]" value="$rs[title]" size="30" />
+                (最多16个字) <br />
+                <br />
+                排序：
+                <input name="orderlist[$rs[pid]]" type="text" id="title_$rs[pid]" size="5" value="$rs[orderlist]" /></td>
+            </tr>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </table>
+          <center>
+            <input name="sss" type="submit" value="保 存" style="padding:5px;" />
+          </center>
+        </form>
+<!--
+EOT;
+?>
+-->

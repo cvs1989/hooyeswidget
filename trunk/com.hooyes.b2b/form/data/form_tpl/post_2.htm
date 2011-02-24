@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+--> <script src="images/default/setday.js"></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$fidDB[name]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script>
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+</script><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="padding-bottom:10px;">$fidDB[about]</td>
+  </tr>
+</table>
+            <table width="99%" border="0" cellspacing="5" cellpadding="5" id="bigtable">
+              <form name="FORM" method="post" action="?action=$atc" enctype="multipart/form-data">
+                
+<!--
+EOT;
+if($fidDB[usetitle]){print <<<EOT
+-->
+				<tr> 
+                  <td width="18%">标题:<font color=red>(必填)</font></td>
+                  <td width="82%"> 
+                    <input type="text" name="postdb[title]" id="atc_title" size="50" value="$rsdb[title]">
+                  </td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+                <tr> <td >职位名称:<br></td> <td > <input type='text' name='postdb[workplace]' id='atc_workplace' size='30' value='$rsdb[workplace]'> </td></tr><tr> <td >招聘人数:<br></td> <td > <input type='text' name='postdb[nums]' id='atc_nums' size='4' value='$rsdb[nums]'> 人</td></tr><tr><td >职位描述及要求:<br></td><td ><textarea name='postdb[jobrequire]' id='atc_jobrequire' cols='70' rows='8'>$rsdb[jobrequire]</textarea></td></tr><tr> <td >工作经验要求:<font color=red>(必填)</font><br></td> <td ><input style='border:0px;' type='radio' name='postdb[wageyear]' value='应届毕业生' {$rsdb[wageyear]['应届毕业生']}>应届毕业生<input style='border:0px;' type='radio' name='postdb[wageyear]' value='一年以上' {$rsdb[wageyear]['一年以上']}>一年以上<input style='border:0px;' type='radio' name='postdb[wageyear]' value='两年以上' {$rsdb[wageyear]['两年以上']}>两年以上<input style='border:0px;' type='radio' name='postdb[wageyear]' value='三年以上' {$rsdb[wageyear]['三年以上']}>三年以上</td></tr><tr> <td >工作地点:<br></td> <td > <input type='text' name='postdb[workwhere]' id='atc_workwhere' size='10' value='$rsdb[workwhere]'> </td></tr><tr> <td >薪水待遇:<br></td> <td > <input type='text' name='postdb[wage]' id='atc_wage' size='10' value='$rsdb[wage]'> </td></tr><tr> <td >性别要求:<br></td> <td ><input style='border:0px;' type='radio' name='postdb[asksex]' value='1' {$rsdb[asksex]['1']}>男<input style='border:0px;' type='radio' name='postdb[asksex]' value='2' {$rsdb[asksex]['2']}>女<input style='border:0px;' type='radio' name='postdb[asksex]' value='0' {$rsdb[asksex]['0']}>不限</td></tr><tr> <td >学历要求:<br></td><td > <select name='postdb[schoo_age]' id='atc_schoo_age'><option value='小学' {$rsdb[schoo_age]['小学']}>小学</option><option value='中学' {$rsdb[schoo_age]['中学']}>中学</option><option value='中专' {$rsdb[schoo_age]['中专']}>中专</option><option value='高中' {$rsdb[schoo_age]['高中']}>高中</option><option value='大专' {$rsdb[schoo_age]['大专']}>大专</option><option value='本科' {$rsdb[schoo_age]['本科']}>本科</option><option value='硕士' {$rsdb[schoo_age]['硕士']}>硕士</option><option value='博士' {$rsdb[schoo_age]['博士']}>博士</option></select>以上</td> </tr> 
+                <tr> 
+                  <td width="18%">&nbsp;</td>
+                  <td width="82%"> 
+                    <input type="submit" name="Submit" value="提 交" >
+                    <input type="hidden" name="mid" value="$mid">
+                    <input type="hidden" name="id" value="$id">
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

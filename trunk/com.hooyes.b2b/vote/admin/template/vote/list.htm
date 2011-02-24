@@ -1,0 +1,42 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head" align="center"> 
+      <td width="6%">序号 </td>
+      <td width="24%">投票项目</td>
+      <td width="49%">描 述</td>
+      <td width="21%">删 / 改 / 查看 / 获取代码</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td width="6%">$rs[cid]</td>
+      <td width="24%">$rs[name]</td>
+      <td width="49%">$rs[about] </td>
+      <td width="21%"><a href="$admin_path&action=delete&cid=$rs[cid]&aid=$rs[aid]"  onclick="return confirm('删除后不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+        / <a href="$admin_path&job=edit&cid=$rs[cid]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> / <a href="$webdb[www_url]/$dirname/vote.php?job=show&cid=$rs[cid]" target="_blank"><img alt='浏览' src='../member/images/icon_view.gif' border=0></a> 
+        / <a href="$admin_path&job=make&cid=$rs[cid]"><img alt='获取JS代码' src='../member/images/art_icon.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="4"> $showpage </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="4">&nbsp; </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

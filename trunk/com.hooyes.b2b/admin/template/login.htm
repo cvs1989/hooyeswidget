@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<!--
+<?php
+print <<<EOT
+-->
+<title>{$webdb[webname]}后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2900.3132" name=GENERATOR>
+<style type="text/css">
+<!--
+ 
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+
+	font-size: 12px;
+}
+
+//-->
+</style>
+</HEAD>
+<BODY bgColor=#006599 leftMargin=0 topMargin=0  marginheight="0" 
+marginwidth="0">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY> 
+  <TR> 
+    <TD  
+      height=600><BR>
+      <BR>
+      <BR>
+      <BR>
+      <TABLE class=tableborder cellSpacing=0 cellPadding=0 width=427 
+      align=center border=0>
+        <TBODY> 
+        <TR> 
+          <TD background="$webdb[admin_url]/images/login/index_hz01.gif" colSpan=3 height=64>&nbsp; </TD>
+        </TR>
+        <TR> 
+          <TD style="FONT-SIZE: 1px; LINE-HEIGHT: 1px" width=3 
+          background="$webdb[admin_url]/images/login/index_hz02.gif"></TD>
+          <TD style="BORDER-TOP: #666666 1px double" vAlign=top 
+          background="$webdb[admin_url]/images/login/index_hz03.gif" height=162><BR>
+            <BR>
+            
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="adminlogin" align="center">
+              <form name="form1" method="post" action="">
+                <tr> 
+                  <td width="33%" align="right" class="td">帐 号:</td>
+                  <td width="67%" class="td"> 
+                    <input type="text" name="loginname" size="20" style="border:1px solid #0D5C95;background:#fff;width:140px;height:21px;">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="33%" align="right" class="td">密 码:</td>
+                  <td width="67%" class="td"> 
+                    <input type="password" name="loginpwd" size="21" style="border:1px solid #0D5C95;background:#fff;width:140px;height:21px;">
+                  </td>
+                </tr>
+                <!--
+EOT;
+if($webdb[web_open]&&$webdb[yzImgAdminLogin]){
+$path=$Murl?$webdb[www_url]:'..';
+print <<<EOT
+-->
+                <tr> 
+                  <td width="33%" align="right" class="td" valign="middle">验 证 
+                    码:</td>
+                  <td width="67%">
+                    <input type="text" name="yzimg" size="8" style="border:1px solid #0D5C95;background:#fff;width:70px;height:21px;">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<img border="0" id="yz_Img" name="imageField" onclick="this.src=this.src+Math.random();" src="$path/do/yzimg.php?'+Math.random()+'">');
+//-->
+</SCRIPT>
+                    </td>
+                </tr>
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr> 
+                  <td width="33%" class="td">&nbsp;</td>
+                  <td width="67%" class="td"> 
+                    <input type=image height=33 width=83 src="$webdb[admin_url]/images/login/index_hz04.gif" name="Submit">
+                  
+                  </td>
+                </tr>
+              </form>
+            </table>
+            
+          </TD>
+          <TD style="FONT-SIZE: 1px; LINE-HEIGHT: 1px" width='3' background="$webdb[admin_url]/images/login/index_hz02.gif"></TD>
+          
+        </TR>
+        <TR> 
+          <TD background="$webdb[admin_url]/images/login/index_hz05.gif" colSpan=3 height=127>&nbsp; </TD>
+        </TR>
+        </TBODY>
+      </TABLE>
+    </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>
+<!--
+EOT;
+?>
+-->

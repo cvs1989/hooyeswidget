@@ -1,0 +1,46 @@
+<!--
+<?php
+print <<<EOT
+--><script type="text/javascript" src="$webdb[www_url]/ewebeditor/ckeditor/ckeditor.js"></script>
+ 
+        <form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+           
+
+<textarea style="display:none;" id="content1" name="content">$content</textarea>		  
+ 
+<script type="text/javascript">
+CKEDITOR.replace( 'content1',
+{
+width:'100%',
+height:'300px',
+filebrowserBrowseUrl : '$webdb[www_url]/ewebeditor/ckfinder/ckfinder.html',
+filebrowserImageBrowseUrl : '$webdb[www_url]/ewebeditor/ckfinder/ckfinder.html?Type=Images',
+filebrowserFlashBrowseUrl : '$webdb[www_url]/ewebeditor/ckfinder/ckfinder.html?Type=Flash',
+filebrowserUploadUrl : '$webdb[www_url]/ewebeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+filebrowserImageUploadUrl : '$webdb[www_url]/ewebeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+filebrowserFlashUploadUrl : '$webdb[www_url]/ewebeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+});
+</script>
+		  
+		  
+		  
+          <input name="atn" type="hidden" id="atn" value="$atn" />
+          <input name="step" type="hidden" id="step" value="1" />
+          <input name="uid" type="hidden" id="uid" value="$uid" />
+		  <div style="line-height:20px;"><strong>企业资质辅助说明</strong><br />(比如：插入关于企业资质的图片,可以使用<strong><font color="#669900">荣誉证书，获奖证书，营业执照</font></strong>等比较有说服力的证件照片或者扫描件,<a href="?atn=pic&amp;uid=$uid"><strong><font color="#FF0000">点击这里先上传</font></strong></a>)</div>
+<div>
+<!--include
+EOT;
+	//导入绑定图片功能
+   require(Mpath.'template/default/bd_pics.htm');
+    
+print <<<EOT
+include-->
+</div>
+       <br> 
+	   <input type="submit" name="button10" id="button10" value="提 交" style="padding:5px; clear:both;" />
+        </form>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,60 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">文章管理</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <form name="form1" method="post" action="?f">
+                <tr align="center" class="head_in"> 
+                  <td width="40%">标 题</td>
+                  <td width="12%">栏 目 </td>
+                  <td width="12%">日期</td>
+                  <td width="9%">署名</td>
+                  <td width="16%">状态</td>
+                  <td width="11%">修改/删除</td>
+                </tr>
+                <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="40%"> 
+                    <input type="checkbox" name="aidDB[]" value="$rs[aid]">
+                    {$rs[id]}、<a href="$Mdomain/bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank" title="$rs[full_title]" style="color:$rs[titlecolor];">$rs[title]</a> <span style="color:#999;">({$city_DB[name][$rs[city_id]]})</span>
+                  </td>
+                  <td align="center" width="12%">&nbsp;<a href="$Mdomain/list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+                  <td align="center" width="12%">$rs[posttime]</td>
+                  <td align="center" width="9%">&nbsp;$rs[username]</td>
+                  <td align="center" width="16%">$rs[state]/$rs[levels]</td>
+                  <td align="center" width="11%"><a href="post.php?job=edit&fid=$rs[fid]&id=$rs[id]&rid=$rs[rid]">修改</a>/ 
+                    <a href="post.php?action=del&fid=$rs[fid]&id=$rs[id]&rid=$rs[rid]">删除</a></td>
+                </tr>
+                <!--
+EOT;
+}print <<<EOT
+-->
+              
+                <tr align="center"> 
+                  <td colspan="6"> $showpage</td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

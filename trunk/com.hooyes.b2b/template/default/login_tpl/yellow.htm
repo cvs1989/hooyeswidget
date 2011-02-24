@@ -1,0 +1,27 @@
+<!--
+<?php
+if($lfjid){print <<<EOT
+--> <div class="login_in">&nbsp;欢迎你回来:<font style="color:#FF6A00;">$lfjid</font> 
+       $MSG   <a href="$webdb[www_url]/member/homepage.php?uid=$lfjuid" target="_blank" style="color:#005BC2">个人信息</a> 
+      <a href="$webdb[www_url]/member/" target="_blank" style="color:#005BC2">会员中心</a>  
+      <a href="$webdb[www_url]/member/index.php?main=userinfo.php?job=edit" target="_blank" style="color:#005BC2">修改资料</a> 
+      <a href="$webdb[www_url]/do/login.php?action=quit" style="color:#005BC2">安全退出</a> </div>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+   <form class="login_form" name="form_login" method="post" action="$webdb[www_url]/do/login.php">
+     <span class='L_passport'>&nbsp;通行证 |</span> <span class="wri"> 帐号：
+        <input type="text" name="username" class="login_name">
+        </span> <span class="wri"> 密码：
+        <input type="password" name="password" class="login_pwd">
+        </span> <span class="L_sub"> 
+        <input type="submit" name="Submit" value="登录" class="login_sub">
+        </span> <span class="L_reg"> <a href="$webdb[www_url]/do/reg.php">注册</a> 
+        | <a href="$webdb[www_url]/do/login.php">登录</a></span><input type="hidden" name="step" value="2">
+      <input class="radio" type="hidden" name="cookietime" value="86400" > 	   
+  </form>
+ <!--
+EOT;
+}?>
+-->

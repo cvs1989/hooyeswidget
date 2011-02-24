@@ -1,0 +1,55 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td width="5%" align="center"><font color="#FFFFFF">序号 </font></td>
+      <td width="12%" align="center"><font color="#FFFFFF">模板类型</font></td>
+      <td width="20%" align="center"><font color="#FFFFFF">名称</font></td>
+      <td width="36%" align="center"><font color="#FFFFFF">存 放 路 径 </font></td>
+      <td width="10%" align="center">可回档</td>
+      <td width="9%" align="center">修改模板</td>
+      <td width="8%" align="center"><font color="#FFFFFF">删除</font></td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="5%" align="center">$rs[id]</td>
+      <td width="12%">$rs[typename]</td>
+      <td width="20%">$rs[name]</td>
+      <td width="36%">$rs[filepath] </td>
+      <td width="10%" align="center">$rs[NUM] </td>
+      <td width="9%" align="center"><a href="index.php?lfj=template&job=edit&id=$rs[id]&notop=1"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+      <td width="8%" align="center"><a href="index.php?lfj=$lfj&action=delete&id=$rs[id]"  onClick="return confirm('模板会一起被删除,不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="7" align="center"> $showpage </td>
+    </tr>
+  </form>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head" align="left"> 
+      <td>帮助说明</td>
+    </tr>
+  
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td align="left">1.这里创建的模板是提供给发表文章、修改栏目、发布独立页时候选择调用的。<br>
+      2.为防止误修改模板,系统会在修改模板的时候,自动备份之前的模板,以供回档。</td>
+    </tr>
+  
+ </table>
+<!--
+EOT;
+?>
+-->

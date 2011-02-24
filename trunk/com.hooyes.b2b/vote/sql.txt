@@ -1,0 +1,9 @@
+ALTER TABLE `p8_vote` RENAME `p8_vote_element` ;
+ALTER TABLE `p8_vote_config` RENAME `p8_vote_topic` ;
+
+CREATE TABLE `p8_vote_config` (
+`c_key` varchar( 50 ) NOT NULL default '',
+`c_value` text NOT NULL ,
+`c_descrip` text NOT NULL ,
+PRIMARY KEY ( `c_key` ) 
+) TYPE = MYISAM ;

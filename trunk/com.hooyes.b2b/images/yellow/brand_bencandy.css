@@ -1,0 +1,168 @@
+.MainContainer img{
+	border:0;
+}
+.MainContainer .MainL{
+	padding-right:10px;
+}
+.md10{
+	margin-bottom:10px;
+}
+/*
+*右边样式
+*/
+.sidertable{
+	background:url(showroom_side_head.gif) left top repeat-x;
+}
+.sidertable .h{
+	background:url(showroom_side_r.gif) right top no-repeat;
+	height:30px;
+	line-height:30px;
+}
+.sidertable .h .l{
+	background:url(showroom_side_l.gif) left top no-repeat;
+	float:left;
+	padding-left:10px;
+	font-weight:bold;
+}
+.sidertable .h .r{
+	float:right;
+	padding-right:10px;
+}
+.sidertable .c {
+	border:#B7D8FD solid 1px;
+	border-top:0;
+	padding:5px;
+}
+.sidertable .c .list {
+	width:90%;
+	height:22px;
+	overflow:hidden;
+	line-height:22px;
+	padding-left:15px;
+	background:url(point_ccc.gif) 5px 9px no-repeat;
+}
+.sidertable .c .lista {
+	height:65px;
+	background:url(room_dotted.gif) left bottom repeat-x;
+	overflow:hidden;
+}
+.sidertable .c .lista  a{
+	display:block;
+	float:left;
+}
+.sidertable .c .lista a.img{
+	background:url(brand_listpicbg.gif) center 5px no-repeat;
+	width:60%;
+	text-align:center;
+	padding:10px 0 0 0;
+	height:50px;
+}
+.sidertable .c .lista a.t{
+	width:35%;
+	height:50px;
+	overflow:hidden;
+	padding-top:5px;
+	line-height:25px;
+	font-weight:bold;
+}
+.sidertable .c .l1 {
+	background:url(sn0-9b.gif) -2px top no-repeat;
+}
+.sidertable .c .l2 {
+	background:url(sn0-9b.gif) -2px -20px no-repeat;
+}
+.sidertable .c .l3 {
+	background:url(sn0-9b.gif) -2px -40px no-repeat;
+}
+.sidertable .c .l4 {
+	background:url(sn0-9b.gif) -2px -60px no-repeat;
+}
+.sidertable .c .l5 {
+	background:url(sn0-9b.gif) -2px -80px no-repeat;
+}
+.sidertable .c .l6 {
+	background:url(sn0-9b.gif) -2px -100px no-repeat;
+}
+.sidertable .c .l7 {
+	background:url(sn0-9b.gif) -2px -120px no-repeat;
+}
+.sidertable .c .l8 {
+	background:url(sn0-9b.gif) -2px -140px no-repeat;
+}
+.sidertable .c .l9 {
+	background:url(sn0-9b.gif) -2px -160px no-repeat;
+}
+.sidertable .c .l10 {
+	background:url(sn0-9b.gif) -2px -180px no-repeat;
+}
+/*
+*左边主体样式
+*/
+.brand_piclist .h{
+	background:url(brand_headb.gif) right top no-repeat;
+	line-height:35px;
+	line-height:35px;
+}
+.brand_piclist .h span{
+	display:block;
+	float:left;
+}
+.brand_piclist .h span.l{
+	background:url(brand_headb.gif) left top no-repeat;
+	width:115px;
+	text-align:center;
+	color:#FFF;
+	font-size:14px;
+	font-weight:bold;
+}
+.brand_piclist .c{
+	border:#dfdfdf solid 1px;
+	border-top:0;
+	padding:5px;
+}
+.brand_base {
+	width:95%;	
+	margin-top:20px;
+}
+.brand_base .word{
+	width:60%;	
+	line-height:30px;
+	padding-left:15px;
+}
+.brand_base .word span{
+	font-weight:bold;
+}
+.brand_base .pic{
+	width:40%;	
+	text-align:center;
+}
+.brand_base .pic .b{
+	height:70px;
+	padding:10px 0 20px 0;
+}
+.brand_base .pic .b img{
+	border:4px double #EEE;
+
+}
+.brand_content{
+	width:95%;
+	margin-top:10px;
+}
+.brand_content .h1{
+	height:30px;
+	background:url(brand_bottom.gif) left bottom repeat-x;
+}
+.brand_content .h1 span{
+	display:block;
+	height:25px;
+	padding-top:5px;
+	width:120px;
+	line-height:25px;
+	background:url(sell_head.gif) center bottom no-repeat;
+	text-align:center;
+	font-weight:bold;
+}
+.brand_content .c1{
+	padding:10px 0 10px 0;
+	line-height:20px;
+}

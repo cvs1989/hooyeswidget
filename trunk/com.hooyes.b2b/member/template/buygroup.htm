@@ -1,0 +1,585 @@
+<!--
+<?php
+$width=floor(80/count($listdb)).'%';
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 使用{$webdb[MoneyName]}购买级别,从购买之日起，有效期为<b><font color="#FF0000">{$webdb[groupTime]}</font></b>天,你现在的级别是“<b><font color="#0000FF">{$ltitle[$lfjdb[groupid]]}</font></b>” 
+            {$lfjdb[C][endtime]}</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tr> 
+                <td height="25">  <!--
+EOT;
+if($job=='buy'){print <<<EOT
+-->
+                    
+                  <table width="100%" border="0" cellspacing="1" cellpadding="6">
+                    <form name="form2" method="post" action="?action=buy">
+                      <tr> 
+                        <td style="border-bottom:1px solid #ccc;background:#F6F6F6;height:25px;">你目前的{$webdb[MoneyName]}有 
+                          <img src="images/money.gif"> <b><font color="#0000FF">{$lfjdb[money]}</font></b>{$webdb[MoneyDW]}</td>
+                      </tr>
+                      <tr> 
+                        <td align="center" style="height:40px;"> 你现在的级别是“<b><font color="#0000FF">{$ltitle[$lfjdb[groupid]]}</font></b>”，{$lfjdb[C][endtime]}你要购买的级别是“{$rsdb[grouptitle]}”,需要{$webdb[MoneyName]}“{$rsdb[levelnum]}”{$webdb[MoneyDW]}<br>
+                    
+                          <input type="button" name="Submit32" value="点击返回" onclick="history.back(-1)">      <input type="submit" name="Submit3" value="立即购买">
+                          <input type="hidden" name="action" value="buy">
+                          <input type="hidden" name="gid" value="$gid">
+						  
+<!--
+EOT;
+if($lfjdb[money]<$rsdb[levelnum]){print <<<EOT
+-->			  
+                          <br>
+                          <b><font color="#FF0000"><img src="$webdb[www_url]/images/default/notice.jpg"> 
+                          注意: </font></b>你目前的{$webdb[MoneyName]}仅有{$lfjdb[money]}{$webdb[MoneyDW]},不足{$rsdb[levelnum]}{$webdb[MoneyDW]},无法购买当前这个级别:{$rsdb[grouptitle]},请先<a href="money.php?job=list"><font color="#0000FF">充值</font></a> 
+                          <!--
+EOT;
+}print <<<EOT
+-->
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td>&nbsp;</td>
+                      </tr>
+                    </form>
+                  </table> <!--
+EOT;
+}else{print <<<EOT
+-->
+                  <table  border="0" cellspacing="1" cellpadding="6"  width="100%" bgcolor="#EBEBEB">
+                    <tr align="center"> 
+                      <td width="20%" style="background:#F6F6F6;line-height:21px;">&nbsp;</td>
+                      <!--
+EOT;
+
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="background:#F6F6F6;line-height:21px;" width="$width">$rs[grouptitle]</td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">所需{$webdb[MoneyName]}</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" ><b><font color="#FF0000">{$rs[levelnum]}</font></b> 
+                        {$webdb[MoneyDW]}</td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+					
+					
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">是否允许申请商铺</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][allow_get_homepage]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+					
+					
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">商铺二级域名</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][use2domain]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">商铺VIP专属风格</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][useHomepageStyle]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">24小时内最多可发几条供应信息</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_sell_num]){print <<<EOT
+-->
+                        {$rs[g][post_sell_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">24小时内最多可发几条求购信息</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_buy_num]){print <<<EOT
+-->
+                        {$rs[g][post_buy_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">商铺允许发布共多少条新闻</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_news_num]){print <<<EOT
+-->
+                        {$rs[g][post_news_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">图库允许发布共多少张图</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_photo_num]){print <<<EOT
+-->
+                        {$rs[g][post_photo_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">允许发布多少条招聘信息</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_hr_num]){print <<<EOT
+-->
+                        {$rs[g][post_hr_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">允许发布多少条展会信息</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_zhanghui_num]){print <<<EOT
+-->
+                        {$rs[g][post_zhanghui_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">允许登记多少个展览馆</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_ZLG_num]){print <<<EOT
+-->
+                        {$rs[g][post_ZLG_num]} 个 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">允许发布多少条报价单</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_baojiadian_num]){print <<<EOT
+-->
+                        {$rs[g][post_baojiadian_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">允许发布多少条询价单</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_xunjiadian_num]){print <<<EOT
+-->
+                        {$rs[g][post_xunjiadian_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">允许发布多少个品牌</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_pingpai_num]){print <<<EOT
+-->
+                        {$rs[g][post_pingpai_num]} 个 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">收藏夹容量</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_info_collection_num]){print <<<EOT
+-->
+                        {$rs[g][post_info_collection_num]} 条 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">是否允许查看求购信息中的商家联系资料</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][view_buy_view_contact]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">发布供应产品信息是否自动通过审核</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][sell_postauto_yz]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">发布求购产品信息是否自动通过审核</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][buy_postauto_yz]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">发布品牌是否自动通过审核</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][post_pingpai_yz]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">投稿是否自动通过审核</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;" > 
+                        <!--
+EOT;
+if($rs[g][PassContribute]){print <<<EOT
+-->
+                        <img src="images/bigtrue.gif"> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="0%" style="height:40px;">会员空间容量</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$SpaceSize=number_format($webdb[totalSpace]+$rs[g][totalspace],2);
+print <<<EOT
+-->
+                      <td style="height:40px;" > {$SpaceSize} M </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                    <tr align="center" bgcolor="#FFFFFF"> 
+                      <td width="20%" style="height:40px;">&nbsp;</td>
+                      <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+                      <td style="height:40px;"> 
+                        <!--
+EOT;
+if($rs[levelnum]){print <<<EOT
+-->
+                        <a href="?job=buy&gid=$rs[gid]#buy"><img src="images/buybutton.gif" border="0" alt="购买"></a> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                      <!--
+EOT;
+}print <<<EOT
+-->
+                    </tr>
+                  </table>
+                 
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">相关信息</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="0" style="margin:10px 0 20px 5px;">
+              <tr> 
+                <td style="line-height:25px;">1.购买用户级别,需要{$webdb[MoneyName]}购买,你当前拥有的{$webdb[MoneyName]}数是 
+                  <b><font color="#FF0000">{$lfjdb[money]}</font></b> 个 <br>
+                  2.如果你的{$webdb[MoneyName]}不足,你可以先在线充值.<a href="money.php?job=list"><b><font color="#FF0000">在线充值</font></b></a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

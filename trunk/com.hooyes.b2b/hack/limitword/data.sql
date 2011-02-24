@@ -1,0 +1,3 @@
+INSERT INTO `qb_hack` (`keywords`, `name`, `isclose`, `author`, `config`, `htmlcode`, `hackfile`, `hacksqltable`, `adminurl`, `about`, `class1`, `class2`, `list`, `linkname`, `isbiz`) VALUES ('limitword_list', '不良词语过滤', 0, '', '', '', '', '', 'index.php?lfj=limitword&job=list', '', 'other', '内容模型插件功能', 9, '', 0);
+
+INSERT INTO `qb_hack` (`keywords`, `name`, `isclose`, `author`, `config`, `htmlcode`, `hackfile`, `hacksqltable`, `adminurl`, `about`, `class1`, `class2`, `list`, `linkname`, `isbiz`) VALUES ('limitword_replace', '字符替换', 0, '', '', '', '', '', 'index.php?lfj=limitword&job=replace', '', 'other', '内容模型插件功能', 6, '', 0);

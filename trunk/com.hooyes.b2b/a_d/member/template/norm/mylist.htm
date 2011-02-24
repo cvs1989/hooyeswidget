@@ -1,0 +1,64 @@
+<!--
+<?php
+print <<<EOT
+-->
+<style type="text/css">
+<!--
+.dragTable{
+	margin-top:5px;	
+}
+.dragTable a{
+	color:#333;
+}
+.dragTable .trh td{
+	height:25px;
+	vertical-align:middle;
+	text-align:center;
+	background:#DDD;
+	border-right:#FFF solid 1px;
+}
+.dragTable .trc td{
+	padding:5px;
+	border-bottom:#DDD dotted 1px;	
+	text-align:center;
+	color:#666;
+}
+-->
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+  <tr>
+  	<td class="head">我投放的广告</td>
+  </tr>
+  <tr>
+  	<td class="middle">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="trh">
+            <td width="20%">广告位名称</td>
+            <td width="40%">开始日期 / 结束日期</td>
+            <td width="25%">审核与否</td>
+            <td width="15%">修改 / 删除</td>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+		  <tr class="trc">
+            <td align="left">$rs[name]</td>
+            <td>$rs[u_begintime] / $rs[u_endtime]</td>
+            <td>$rs[_ifyz]</td>
+            <td><a href="?job=edit&u_id=$rs[u_id]" onclick="$rs[alert]">修改</a> / <a href="?action=del&u_id=$rs[u_id]"  onclick="return confirm('你确认要删除吗?不可恢复')">删除</a></td>
+          </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

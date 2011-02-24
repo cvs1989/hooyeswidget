@@ -1,0 +1,55 @@
+<!--
+<?php
+$is_MathYZ[intval($webdb[is_MathYZ])]='checked';
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF">验证码复杂度设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>图片文字辨认复杂度:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[YzImg_difficult]" value="0" $YzImg_difficult[0]>
+        简单
+<input type="radio" name="webdbs[YzImg_difficult]" value="1" $YzImg_difficult[1]>
+        复杂</td>
+    </tr><tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否为数学运算:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[is_MathYZ]" value="0" $is_MathYZ[0]>
+        不是数据运算 
+        <input type="radio" name="webdbs[is_MathYZ]" value="1" $is_MathYZ[1]>
+        是数学运算 (设置为数学运算的话,以下两项设置无效)</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否区分字母大小写:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[YzImg_letter_differ]" value="0" $YzImg_letter_differ[0]>
+        不区分
+<input type="radio" name="webdbs[YzImg_letter_differ]" value="1" $YzImg_letter_differ[1]>
+        区分 </td>
+    </tr>
+    
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>验证码随机抽取的字符:<br>
+        如:0123456789qwertyuiDFGHJLBNM (不能是中文)</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[YzImg_string]" value="$webdb[YzImg_string]" size="60">
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

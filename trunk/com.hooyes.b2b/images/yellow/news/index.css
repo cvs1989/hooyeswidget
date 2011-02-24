@@ -1,0 +1,385 @@
+.MainContainer{
+	clear:both;
+}
+.MainContainer td{
+	vertical-align:top;
+}
+/**********************************************************
+*头部文章
+************************************************************/
+.MainContainer .toparticle{
+	border:#DFE4E8 solid 1px;
+	padding:10px;
+}
+.MainContainer .toparticle .list{
+	width:242px;
+	height:22px;
+	line-height:22px;
+	overflow:hidden;
+	float:left;
+}
+.MainContainer .toparticle .list a{
+	float:left;
+}
+.MainContainer .toparticle .list a.sort{
+	margin:0 5px 0 10px;
+	color:#2898C0;
+}
+/**********************************************************
+*第二部分
+************************************************************/
+.MainContainer .SideL{
+	width:240px;
+	padding-right:10px;
+}
+/*
+*文章排行
+*/
+.sidetable .head{
+	height:35px;
+	background:url(tophead.gif) right top no-repeat;
+	padding-right:10px;
+}	
+.sidetable .head span{
+	display:block;
+	padding:5px 0 0 15px;
+	width:120px;
+	float:left;
+	line-height:30px;
+	background:url(tophead.gif) left top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+}
+.sidetable .head  a{
+	float:right;
+	padding-top:5px;
+	line-height:30px;
+}
+.sidetable .cont{
+	border:#DDD solid 1px;
+	border-top:0;
+	padding:5px;
+}
+.sidetable .list1,.sidetable .list2,.sidetable .list3,.sidetable .list4,
+.sidetable .list5,.sidetable .list6,.sidetable .list7,.sidetable .list8{
+	border-bottom:#DDD dotted 1px;
+	line-height:18px;
+	padding:5px 5px 3px 40px;
+	color:#999;
+}
+.sidetable .cont .t {
+	height:19px;
+	overflow:hidden;
+}
+.sidetable .cont .t a{
+	color:#2898C0;
+}
+.sidetable .cont .m span{
+	color:#333;
+}
+.sidetable .list1{
+	background:url(num1-8.gif) 5px 8px no-repeat;
+}
+.sidetable .list2{
+	background:url(num1-8.gif) 5px -40px no-repeat;
+}
+.sidetable .list3{
+	background:url(num1-8.gif) 5px -85px no-repeat;
+}
+.sidetable .list4{
+	background:url(num1-8.gif) 5px -130px no-repeat;
+}
+.sidetable .list5{
+	background:url(num1-8.gif) 5px -178px no-repeat;
+}
+.sidetable .list6{
+	background:url(num1-8.gif) 5px -223px no-repeat;
+}
+.sidetable .list7{
+	background:url(num1-8.gif) 5px -268px no-repeat;
+}
+.sidetable .list8{
+	background:url(num1-8.gif) 5px -315px no-repeat;
+}
+/*
+*主要文章标题
+*/
+.maincontent .td1{
+	width:280px;
+	padding:10px 10px 0 10px;
+	background:url(corner_tl.gif) left top no-repeat;
+}
+.maincontent .td2{
+	padding:10px 10px 0 0;
+	background:url(corner_tr.gif) right top no-repeat;
+}
+.maincontent .td3{
+	padding:5px 10px 10px 10px;
+	background:url(corner_dl.gif) left bottom no-repeat;
+}
+.maincontent .td4{
+	padding:5px 10px 10px 5px;
+	background:url(corner_dr.gif) right bottom no-repeat;
+}
+/*
+*幻灯片
+*/
+.slidecontainer{
+	width:280px;
+	height:190px;
+	overflow:hidden;
+}
+/*
+*幻灯片右边内容
+*/
+.mainarticle{
+	background:#FFF;
+	padding:0 5px 0 5px;
+}
+.mainarticle .c{
+	display:none;
+}
+
+.mainarticle .d{
+	float:right;
+}
+
+.mainarticle div span{
+	float:left;
+}
+.mainarticle div span.d{
+	color:#999;
+	padding-right:1px;
+}
+.mainarticle div span.t a{
+	color:#666;
+}
+.mainarticle .list2,.mainarticle .list3,.mainarticle .list4,.mainarticle .list5{
+	clear:both;
+	height:25px;
+	line-height:25px;
+	padding-right:10px;
+	overflow:hidden;
+}
+.mainarticle div.list2 span.t ,.mainarticle div.list3 span.t,.mainarticle div.list4 span.t,.mainarticle div.list5 span.t{
+	background:url(icon3.gif) no-repeat 4px;
+	padding-left:15px;
+}
+.mainarticle .list1{
+	height:85px;
+	border-bottom:#ddd solid 1px;
+	margin-bottom:8px;
+}
+.mainarticle .list1 .d{
+	display:none;
+}	
+.mainarticle .list1 .t{
+	width:100%;
+	padding-bottom:5px;
+}
+.mainarticle .list1 .t a{
+	font-size:14px;
+	font-weight:bold;
+}
+.mainarticle .list1 .c{
+	width:100%;
+	display:block;
+	line-height:18px;
+	color:#777;
+}
+.mainarticle .list1 .c a{
+	color:#c00;
+}
+/*
+*最近更新
+*/
+.TheNewest,.Boutique{
+	background:#FFF;
+}
+.TheNewest .head,.Boutique .head{
+	border-bottom:#DDD solid 1px;
+	height:25px;
+	line-height:25px;
+}
+.TheNewest .head span,.Boutique .head span{
+	float:left;
+	padding-left:20px;
+	background:url(icon2.gif) 3px 7px no-repeat;
+	font-size:14px;
+	font-weight:bold;
+}
+.TheNewest .head a,.Boutique .head a{
+	float:right;
+}
+.TheNewest .cont,.Boutique .cont{
+	padding:5px;
+}
+.TheNewest .cont .list{
+	height:27px;
+	line-height:27px;
+	overflow:hidden;
+	padding-left:15px;
+	background:url(icon3.gif) 3px 10px no-repeat;
+}
+.TheNewest .cont .list a{
+	float:left;
+	color:#666;
+}
+.TheNewest .cont .list span{
+	float:right;
+	color:#999;
+}
+/*
+*精品文章
+*/
+.Boutique .cont .list{
+	width:45%;
+	height:27px;
+	line-height:27px;
+	float:left;
+	padding-left:15px;
+	padding-right:5px;
+	overflow:hidden;
+	background:url(icon3.gif) 3px 10px no-repeat;
+}
+.Boutique .cont .list a{
+	color:#666;
+}
+/*
+*推荐文章
+*/
+.sidetable .listtc{
+	border-bottom:#DDD dotted 1px;
+	padding:5px 5px 3px 5px;
+}
+.sidetable .listtc .t{
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	padding-left:15px;
+	background:url(icon4.gif) 3px 6px no-repeat;
+}
+.sidetable .listtc .c{
+	line-height:18px;
+	color:#777;
+}
+/*
+*文章评论
+*/
+.sidetable .listtc .t1{
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	color:#999;
+}
+.sidetable .listtc .t1 span{
+	color:#333;
+}
+.sidetable .listtc .t1 a{
+	color:#2898C0;
+}
+/*
+*插图文章
+*/
+.sidetable2 .head{
+	height:35px;
+	background:url(headbg.gif) right top no-repeat;
+}
+.sidetable2 .head .FL{
+	padding:5px 0 0 30px;
+	line-height:30px;
+	background:url(headbg.gif) left top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+}
+.sidetable2 .head .FR{
+	padding:5px 10px 0 0;
+	line-height:30px;
+}
+.sidetable2 .cont{
+	border:#DDD solid 1px;
+	border-top:0;
+}
+.sidetable2 .cont .listpic{
+	width:147px;
+	height:150px;
+	overflow:hidden;
+	float:left;
+}
+.sidetable2 .cont .listpic div{
+	text-align:center;
+	line-height:20px;
+}
+.sidetable2 .cont .listpic div.img a{
+	display:block;
+	width:120px;
+	height:90px;
+	border:#DDD solid 1px;
+	padding:1px;
+	margin:15px auto 8px auto;
+}
+.sidetable2 .cont .listpic div.t{
+	height:20px;
+	padding:0 10px 0 10px;
+	overflow:hidden;
+}
+.sidetable2 .cont .listpic div.t a{
+	color:#2898C0;
+}
+/*
+*文章故事
+*/
+.Otherarticle{
+	width:348px;
+	padding:10px;
+}
+.Otherarticle .pic_word{
+	border-bottom:#DDD solid 1px;
+	margin-bottom:8px;
+}
+.Otherarticle .pic_word .pic{
+	width:10%;
+	padding:0 10px 10px 5px;
+}
+.Otherarticle .pic_word .pic a{
+	display:block;
+	width:80px;
+	height:60px;
+	border:#DDD solid 1px;
+	padding:1px;
+}
+.Otherarticle .pic_word .t{
+	padding-bottom:5px;
+	padding-top:5px;
+}
+.Otherarticle .pic_word .c{
+	line-height:18px;
+	color:#999;
+}
+.Otherarticle .pic_word .c a{
+	color:#c00;
+}
+.Otherarticle .list{
+	height:26px;
+	line-height:26px;
+	padding-left:12px;
+	padding-right:5px;
+	overflow:hidden;
+	background:url(icon5.gif) 3px 10px no-repeat;
+}
+.Otherarticle .list a{
+	float:left;
+	color:#666;
+}
+.Otherarticle .list a.sort{
+	color:#2898C0;
+	margin-right:5px;
+}
+.Otherarticle .list span{
+	float:right;
+	color:#999;
+}
+
+#bottomAD{
+	margin-top:4px;
+}

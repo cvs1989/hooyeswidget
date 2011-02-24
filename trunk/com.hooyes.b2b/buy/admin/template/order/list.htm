@@ -1,0 +1,68 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path&">
+    <tr align="center" class="head"> 
+      <td width="5%" >单号</td>
+      <td width="37%" >咨询产品</td>
+      <td width="18%" >期望单价</td>
+      <td width="10%" >报价商家</td>
+      <td width="15%" > 报价时间</td>
+      <td width="7%" >详情</td>
+      <td width="8%" >删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+    <tr> 
+      <td class="middle" valign="top" width="5%" align="center">$rs[id]</td>
+      <td class="middle" valign="top" width="37%"><a href="$Murl/bencandy.php?fid=$rs[fid]&id=$rs[cid]&city_id={$rs[shop][city_id]}" target="_blank"> 
+        <input type="checkbox" name="iddb[]" value="$rs[id]">
+        {$rs[shop][title]}</a></td>
+      <td class="middle" valign="top" width="18%" align="center">{$rs[shop][price]}</td>
+      <td class="middle" valign="top" width="10%" align="center">$rs[username]</td>
+      <td class="middle" valign="top" width="15%" align="center">$rs[posttime]</td>
+      <td class="middle" valign="top" width="7%" align="center"><a href="$Murl/member/joinshow.php?id=$rs[id]" target="_blank">查看</a></td>
+      <td class="middle" valign="top" width="8%" align="center"><a href="$admin_path&act=del&iddb[]=$rs[id]">删</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7"> {$showpage}</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7"> <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> 
+        <input type="button" name="Submit" value="删除" onclick="postdo()">
+        <input type="hidden" name="act" value="del">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(){
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

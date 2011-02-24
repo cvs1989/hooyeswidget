@@ -1,0 +1,74 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div id="footer" style="clear:both;">
+<form name="form2" method="POST" target="_blank" action="$webdb[www_url]/sell/search.php?action=search&mid=1" id="main_a_serach" onsubmit="return check_search(this)">
+	<div id="selectsearch">
+    	<a href="javascript:;" onClick="selectsearch(this,'sell')" class="choose">供应</a> |
+        <a href="javascript:;" onClick="selectsearch(this,'buy')">求购</a> |
+        <a href="javascript:;" onClick="selectsearch(this,'company')">公司</a> |
+        <a href="javascript:;" onClick="selectsearch(this,'news')">资讯</a> |
+        <a href="javascript:;" onClick="selectsearch(this,'job')">人才</a> |
+        <a href="javascript:;" onClick="selectsearch(this,'zh')">展会</a> 
+    </div>
+    <div id="Footsearchinput">
+    	<span class="input"><input type="text" id="fkeyword" name="keyword"/></span>
+        <span class="submit"><input type="submit" name="Submit" value="找一下 "/></span>
+         
+    </div>
+   </form>
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function check_search(obj){
+		if(document.getElementById("fkeyword").value==''){
+			alert('关键字不能为空!');
+			return false;
+		}
+	}
+function selectsearch(theA,word){
+	obj=document.getElementById("selectsearch").getElementsByTagName("a");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	theA.className='choose';
+		if(word=='sell'){
+			document.getElementById('main_a_serach').action="$webdb[www_url]/sell/search.php?action=search&mid=1";
+		}else if(word=='buy'){
+			document.getElementById('main_a_serach').action="$webdb[www_url]/buy/search.php?action=search&mid=1";
+		}else if(word=='company'){
+			document.getElementById('main_a_serach').action="$webdb[www_url]/hy/search.php?action=search";
+		}else if(word=='job'){
+			document.getElementById('main_a_serach').action="$webdb[www_url]/hr/search.php?action=search&mid=1";
+		}else if(word=='zh'){
+			document.getElementById('main_a_serach').action="$webdb[www_url]/showroom/search.php?action=search&mid=1";
+		}else if(word=='news'){
+			document.getElementById('main_a_serach').action="$webdb[www_url]/news/search.php?action=search&";
+		}
+}
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+clickEdit.init();
+//-->
+</SCRIPT>
+<div id="copyright">
+$webdb[copyright]<br>
+      Copyright@{$webdb[www_url]} all rights reserved <a href="http://www.miibeian.gov.cn" target="_blank">{$webdb[miibeian_gov_cn]}</a> 
+      <br>
+      Powered by <a href="http://www.qibosoft.com" target="_blank">qibosoft {$qibosoft_Edition}</a> 
+      Code &copy; 2003-10 <a href="http://bbs.qibosoft.com/" target="_blank">qibosoft</a> 
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('</div>');
+//-->
+</SCRIPT>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

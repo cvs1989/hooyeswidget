@@ -1,0 +1,66 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">购买空间容量</td>
+        </tr>
+        <tr> 
+          <td class="middle" style="padding:5px;"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <form name="form1" method="post" action="?action=buy">
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" colspan="2" style="line-height:24px;">你当前已用空间：<font color="#0000FF"> $lfjdb[usespace]</font> 
+                    M(兆) <br>
+                    可用空间大小： $space_system + $space_group + $space_user - $lfjdb[usespace] 
+                    = $lfjdb[totalspace] M(兆)<br>
+                    空间计算方式： 系统默认容量 + 用户组默认容量 + 自身容量 - 已用空间 = 可用空间大小<br>
+                    购买空间容量,需要消费{$webdb[MoneyName]},你当前拥有的{$webdb[MoneyName]}数是 <b><font color="#FF0000">{$lfjdb[money]}</font></b> 
+                    {$webdb[MoneyDW]} , 如果你的{$webdb[MoneyName]}不足,你可以在线充值.<a href="money.php?job=list"><b><font color="#FF0000">我要充值</font></b></a> 
+                    <br>
+                    每1M(兆)容量的空间,需要消费 <b><font color="#0000FF">{$webdb[BuySpacesizeMoney]}</font></b> 
+                    个积分
+<!--
+EOT;
+if($groupdb[AllowUploadMax]){print <<<EOT
+-->
+					<br>
+                    <font color="#FF0000"><b>提醒:</b></font> 你所在用户组,可以无限制上传文件,所以没必要购买空间容量 
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="21%">你要购买多少M(兆)空间:</td>
+                  <td align="left" width="79%"> 
+                    <input type="text" name="spacesize" size="5">
+                    M(兆)</td>
+                </tr>
+                <tr bgcolor="#FFFFFF"> 
+                  <td  align="left" width="21%">&nbsp;</td>
+                  <td align="left" width="79%"> 
+                    <input type="submit" name="Submit" value="立即购买">
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+ 
+<!--
+EOT;
+?>
+-->

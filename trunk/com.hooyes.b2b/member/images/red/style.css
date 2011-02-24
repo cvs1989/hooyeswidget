@@ -1,0 +1,551 @@
+/*
+*样式初始化开始
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+	padding: 0; 
+	margin: 0; 
+} 
+table{ 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+} 
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul { 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+	font-weight: normal;
+	font-size: 100%; 
+} 
+q:before,q:after { 
+	content:”; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+body{
+	font-size:12px;
+}
+td{
+	vertical-align:top;
+	font-size:12px;
+}
+a,a:link,a:visited{
+	text-decoration:none;
+	color:#333;
+}
+a:hover{
+	text-decoration:underline;
+}
+/*
+*样式初始化结束
+*/
+.wrap{
+	width:98% !important;
+	width:99%;
+	padding:10px 0 0 10px;
+}
+#guide{
+	border:1px #FFA6A6 solid;
+	margin-bottom:10px;
+	font-size:12px;
+}
+#guide td{
+	padding:8px 10px 5px 10px;
+	color:#DD060D;
+}
+#guide td a{
+	color:#DD060D;
+}
+.dragTable{
+	width:100%;
+	margin-bottom:10px;
+	overflow:hide;
+	border:1px #FFA6A6 solid;	
+}
+.dragTable .head{
+	background:url(head3.gif) left bottom repeat-x;
+	height:28px;
+	line-height:28px;
+	padding:0 10px 0 10px;
+	font-weight:bold;
+	border-bottom:1px #FFA6A6 solid;
+}
+.dragTable .middle table{
+	width:99%;
+	margin:5px auto;
+}
+.dragTable .middle table td{
+	line-height:20px;
+}
+/*
+*综合信息页面开始
+*/
+.BaseInfo{
+	border:#FF9900 solid 1px;
+	height:90px;
+	background:url(notice.jpg) 15px 10px no-repeat;
+	margin-bottom:10px;
+}
+.BaseInfo td{
+	padding-left:100px;
+}
+.BaseInfo td div{
+	padding-top:10px;
+}
+.BaseInfo .group{
+	font-size:14px;
+	font-weight:bold;
+	color:#DD060D;
+}
+.dragTable .middle .InfoMore{
+	width:100%;
+	margin:0;	
+	border:#D4EAF1 solid 1px;
+	background:#F5FBFF;
+}
+.dragTable .middle .InfoMore td{
+	border:#D4EAF1 solid 1px;
+	vertical-align:middle;
+	line-height:30px;
+}
+.dragTable .middle .InfoMore td em{
+	color:red;
+	font-weight:bold;
+}
+.dragTable .middle .InfoMore td a{
+	color:blue;
+}
+.InfoMore td.TD1{
+	width:10%;
+	text-align:right;
+	padding-right:10px;
+}
+.dragTable .middle .InfoMore td.TD1 span{
+	padding-left:15px;
+	background:url(arrow1.gif) 5px 3px no-repeat;
+}
+.dragTable .middle .InfoMore td.TD2,.dragTable .middle .InfoMore td.TD3{
+	width:45%;
+	padding-left:10px;
+}
+.dragTable .middle .InfoMore td.TD3{
+	word-spacing:10px;
+}
+.dragTable .middle .ActionTips{
+	width:100%;
+	margin:0;
+}
+.dragTable .ActionTips td{
+	background:url(red_bg2.gif);
+	padding:5px;
+	border:#fff solid 1px;
+}
+.dragTable .ActionTips div{
+	display:block;
+	width:19%;
+	height:40px;
+	line-height:40px;
+	overflow:hidden;
+	float:left;
+}
+.dragTable .ActionTips div a{
+	font-size:14px;
+	font-weight:bold;
+	color:red;
+	padding-left:40px;
+}
+.dragTable .ActionTips div.home{
+	background:url(icon_home.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.set{
+	background:url(icon_set.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.sell{
+	background:url(icon_sell.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.buy{
+	background:url(icon_buy.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.coll{
+	background:url(icon_coll.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.pic{
+	background:url(icon_pic.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.bz{
+	background:url(icon_bz.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.sz{
+	background:url(icon_sz.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.tg{
+	background:url(icon_tg.gif) 15px 8px no-repeat;
+}
+.dragTable .ActionTips div.money{
+	background:url(icon_money.gif) 15px 8px no-repeat;
+}
+.dragTable .Tips{
+	height:40px;
+	line-height:40px;
+	background:url(icon_hand.jpg) 30px 10px no-repeat;
+	padding-left:60px;
+}
+.dragTable .Tips span{
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	color:blue;
+}
+.dragTable .Tips input{
+	margin-top:8px;
+	margin-left:5px;
+	cursor:pointer;
+}
+.dragTable .Tips em{
+	color:red;
+}
+.dragTable .TipsTable{
+	border:#CCC solid 1px;
+	margin:5px auto;
+}
+.dragTable .TipsTable td{
+	padding:5px;
+	border:#CCC solid 1px;
+}
+.dragTable .TipsTable td.Td1{
+	width:10%;
+	text-align:right;
+	font-weight:bold;
+}
+.dragTable .TipsTable em{
+	color:red;
+	font-weight:bold;
+}
+.dragTable .TipsTable a{
+	color:blue;
+}
+
+
+.dragTable .Services_Tz td{
+	padding:5px;
+}
+.dragTable .Services_Tz div{
+	display:block;
+	width:30%;
+	height:40px;
+	line-height:40px;
+	overflow:hidden;
+	float:left;
+}
+.dragTable .Services_Tz div a{
+	font-weight:bold;
+	padding-left:45px;
+}
+.dragTable .Services_Tz div.dl{
+	background:url(icon_dl.gif) 15px 8px no-repeat;
+}
+.dragTable .Services_Tz div.zh{
+	background:url(icon_zh.gif) 15px 8px no-repeat;
+}
+.dragTable .Services_Tz div.job{
+	background:url(icon_job.gif) 15px 8px no-repeat;
+}
+.dragTable .Services_Tz div.site{
+	background:url(icon_site.gif) 15px 8px no-repeat;
+}
+.dragTable .Services_Tz div.tg{
+	background:url(icon_tg1.gif) 15px 8px no-repeat;
+}
+.dragTable .Services_Tz div.dome{
+	background:url(icon_dome.gif) 15px 8px no-repeat;
+}
+/*
+*综合信息页面结束
+*/
+.FootContainer{
+	border-top:#ccc solid 1px;
+	text-align:center;
+	padding:10px 0 30px 0;
+	color:#666;
+	font-size:14px;
+}
+
+/******************************************************/
+.head_in{
+	background:#eee;
+}
+.head_in td{
+	line-height:23px;
+}
+
+input{
+	border:1px solid #7F9DB9;
+}
+
+.trA TD{
+	background:#fff;
+	border-bottom:1px dotted #ccc;
+	line-height:21px;
+}
+.trB TD{
+	background:#F7F7F7;
+	border-bottom:1px dotted #ccc;
+	line-height:21px;
+}
+
+
+.borderTable{
+	background:#F2F2F2;
+}
+.borderTable td{
+	background:#fff;
+	padding-left:5px;
+	VERTICAL-ALIGN: ;
+}
+
+.input_text,.input_textarea{
+	border:1px solid #A0B5FC;
+	background:#FBFBFF;
+}
+.submit{
+	color:#333;
+	background:url(bt_bg.gif);
+	height:21px;
+	border:1px solid #555;
+	letter-spacing:2px;
+}
+
+
+#myinfo{
+	border:1px solid #B5CCE3;
+	border-top:0px;
+}
+#myinfo .top{
+	height:35px;
+	background:url(myinfobg.gif);
+}
+#myinfo .img,#myinfo .about{
+	float:left;
+}
+#myinfo .middle{
+	padding:5px;
+}
+ 
+#myinfo .about{
+	padding-left:10px;
+	line-height:190%;
+}
+
+#newsdongtai .top{
+	height:34px;
+	background:url(newsdt.gif);
+	padding-left:150px;
+}
+#newsdongtai .middle{
+	padding-top:5px;
+}
+#newsdongtai .middle div{
+	float:left;
+	width:49%;
+	height:17px;
+	margin-bottom:4px;
+}
+ 
+#newsdongtai div.msg{
+	background:url(icon_msg.gif) no-repeat 0px 0px;
+	padding-left:22px;
+}
+ 
+#ifcompany{
+	margin-top:3px;
+	border-top:1px dotted #ccc;
+	padding-top:5px;
+	padding-left:20px;
+	background:url(icon_favitorie.gif) no-repeat 0px 5px;
+}
+
+#spaceTable{
+	border-top:1px dotted #ccc;
+	margin-top:5px;
+}
+#spaceTable td{
+	padding-top:6px;
+	line-height:180%;
+}
+
+.mapimg .list_pic{
+	width:130px;
+	float:left;
+	margin-top:10px;
+}
+.mapimg .list_pic .img a{
+	display:block;
+	width:100px;
+	height:75px;
+	border:1px solid #ccc;
+}
+.mapimg .list_pic .img img{
+	width:100px;
+	height:75px;
+	border:3px solid #fff;
+}
+.mapimg .list_pic .t{
+	padding-top:7px;
+	padding-bottom:9px;
+}
+
+
+
+#map_art{
+	width:99%;
+	margin:5px auto;
+	border:#C8D7E1 solid 1px;
+}
+#map_art .top{
+	height:26px;
+	background:url(map_headbg.gif);
+	line-height:26px;
+}
+
+#map_art .top .L{
+	padding-left:10px;
+	color:#006699;
+	font-weight:bold;
+	letter-spacing:2px;
+	float:left;
+}
+
+#map_art .top .R{
+	float:right;
+	padding-right:10px;
+	padding-left:22px;
+	color:#163A84;
+	background:url(post1.gif) no-repeat;
+}
+
+#map_art .middle{
+	height:50px;
+}
+#map_art .page{
+	padding:8px;
+}
+#map_art .middle .list td{
+	padding:9px 10px 5px 20px;
+}
+#map_art .middle .list .a1{
+	background:url(pidian.gif) no-repeat 10px 14px;
+	padding-bottom:0px;
+}
+#map_art .middle .list .a2{
+	padding-top:0px;
+}
+#map_art .middle .t1{
+	background:#FBFBFB url(iidian.gif) repeat-x bottom;
+}
+#map_art .middle .t2{
+	background: url(iidian.gif) repeat-x bottom;
+}
+
+#map_art .middle .list .a2 span.about,#map_art .middle .list .a2 span.about a{
+	color:#777;	
+}
+
+
+#list_sort .manage_article{
+	background:url(art_icon.gif) no-repeat 0px 1px;
+	padding-left:15px;
+}
+#list_sort .post_article{
+	background:url(post_icon.gif) no-repeat 0px 2px;
+	padding-left:15px;
+}
+
+#baidusearch td a{
+	font-size:14px;
+	margin-left:10px;
+	color:#C60700;
+}
+
+
+/*发表页*/
+#post_top{
+	padding:0px;
+	padding-top:9px;
+	height:22px;
+	border-bottom:#99D3FB solid 2px;
+}
+#post_top span{
+	width:75px;
+	padding-top:2px;
+	height:20px;
+	display:block;
+	float:left;
+	margin-right:3px;
+	text-align:center;
+	background:url(../../../images/default/button_b.gif);
+	cursor:hand;
+}
+#post_top .choosebutton{
+	color:#fff;
+	font-weight:bold;
+	background:url(../../../images/default/button_a.gif);
+}
+
+/**自定义表单**/
+.formlist_head td{
+	line-height:24px;
+	color:red;
+	background:#eee;
+}
+.formlist_tr td{
+	line-height:26px;
+}
+.formlist_table{
+	background:#eee;
+}
+
+
+
+/*内表格*/
+.linetable{
+	background:#eee;
+}
+.linetable td{
+	line-height:24px;
+	background:#fff;
+}
+.linetable .head3 td{
+	color:red;
+	background:#eee;
+}
+
+/************************************评论样式***************************/
+
+#comment .content,#comment_show .content{
+	width:99%;
+	border:dotted 1px #ddd;
+	margin-bottom:10px;
+}
+#comment .content .word,#comment_show .content .word{
+	border-bottom:solid 1px #eee;
+	padding-left:5px;
+	height:50px;
+}
+#comment .content .img,#comment_show .content .img{
+	border-right:dotted 1px #ddd;
+	padding:1em;
+}
+#comment .content .info,#comment_show .content .info{
+	padding:2px 0 0 5px;
+}

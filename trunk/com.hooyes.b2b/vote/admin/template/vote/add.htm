@@ -1,0 +1,135 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ <script src="../images/default/setday.js"></script>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan="2" height="23">创建投票</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">投票项目名称: </td>
+      <td width="84%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]" size="40">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">投票类型:</td>
+      <td width="84%"> 
+        <input type="radio" name="postdb[type]" value="1" $rsdb_type[1]>
+        单选
+<input type="radio" name="postdb[type]" value="2" $rsdb_type[3]>
+        多选 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">是否做时间限制:<br>
+        不做限制请留空,否则请输入限制每次投票的时间间隔</td>
+      <td width="84%"> 
+        <input type="text" name="postdb[limittime]" value="$rsdb[limittime]" size="10">
+        单位分钟 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">是否限制IP重复投票:</td>
+      <td width="84%"> 
+        <input type="radio" name="postdb[limitip]" value="1" $rsdb_type[4]>
+        限制 
+        <input type="radio" name="postdb[limitip]" value="0" $rsdb_type[5]>
+        不限制</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">是否禁止游客投票:</td>
+      <td width="84%"> 
+        <input type="radio" name="postdb[forbidguestvote]" value="1" $rsdb_type[4]>
+        限制 
+        <input type="radio" name="postdb[forbidguestvote]" value="0" $rsdb_type[5]>
+        不限制</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">投票的时间期限:<br>
+        (留空不做限制)</td>
+      <td width="84%">开始日期: 
+        <input type="text" name="postdb[begintime]" value="$rsdb[begintime]" size="20"  onClick="setday(this)">
+        格式:2007-02-02 12:12:23<br>
+        结束日期: 
+        <input type="text" name="postdb[endtime]" value="$rsdb[endtime]" size="20"  onClick="setday(this)">
+        格式:2007-02-02 12:12:23 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td> 投票描述:</td>
+      <td> 
+        <textarea name="postdb[about]" cols="60" rows="5">$rsdb[about]</textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2">投票选项 
+        <input type="text" name="textfield" value="1" size="5" id="addnum">
+        <input type="button" name="Submit3" value="再增加几项" onclick="addvote();">
+        <input type="hidden" name="hiddenField" value="5" id="num_s">
+      </td>
+    </tr>
+   
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"> 第1项 标题: 
+        <input type="text" name="votedb[1][title]"> 票数:<input type="text" name="votedb[1][votenum]" size="10">
+        图片: 
+        <input type="text" name="votedb[1][img]" value="$rs[img]" size="15" id="img1">
+        <a href='javascript:' onClick='window.open("upfile.php?fn=upfile&dir=vote&label=img1","","width=350,height=50,top=200,left=400")'>上传</a><br>
+        第2项 标题: 
+        <input type="text" name="votedb[2][title]"> 票数:<input type="text" name="votedb[2][votenum]" size="10">
+        图片: 
+        <input type="text" name="votedb[2][img]" value="$rs[img]" size="15" id="img2">
+        <a href='javascript:' onClick='window.open("upfile.php?fn=upfile&dir=vote&label=img2","","width=350,height=50,top=200,left=400")'>上传</a><br>
+        第3项 标题: 
+        <input type="text" name="votedb[3][title]"> 票数:<input type="text" name="votedb[3][votenum]" size="10">
+        图片: 
+        <input type="text" name="votedb[3][img]" value="$rs[img]" size="15" id="img3">
+        <a href='javascript:' onClick='window.open("upfile.php?fn=upfile&dir=vote&label=img3","","width=350,height=50,top=200,left=400")'>上传</a><br>
+        第4项 标题: 
+        <input type="text" name="votedb[4][title]"> 票数:<input type="text" name="votedb[4][votenum]" size="10">
+        图片: 
+        <input type="text" name="votedb[4][img]" value="$rs[img]" size="15" id="img4">
+        <a href='javascript:' onClick='window.open("upfile.php?fn=upfile&dir=vote&label=img4","","width=350,height=50,top=200,left=400")'>上传</a><br>
+        第5项 标题: 
+        <input type="text" name="votedb[5][title]"> 票数:<input type="text" name="votedb[5][votenum]" size="10">
+        图片: 
+        <input type="text" name="votedb[5][img]" value="$rs[img]" size="15" id="img5">
+        <a href='javascript:' onClick='window.open("upfile.php?fn=upfile&dir=vote&label=img5","","width=350,height=50,top=200,left=400")'>上传</a> 
+        <div id="morevote"></div>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="center"> 
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提 交">
+        <script language="JavaScript">
+<!--
+function upfile(url,name,size,label){	
+	document.getElementById(label).value=url;
+}	
+//-->
+</script>
+      </td>
+    </tr>
+  </form>
+</table><SCRIPT LANGUAGE="JavaScript">
+<!--
+function addvote(){
+	var str='';
+	num=document.getElementById('addnum').value;
+	num=parseInt(num);
+	n=document.getElementById('num_s').value;
+	document.getElementById('num_s').value=num+parseInt(n);
+	min=parseInt(n)+1;
+	max=parseInt(n)+num+1;
+	for(var i=min;i<max;i++){
+		str+='<br>第'+i+'项 标题:<input type="text" name="votedb['+i+'][title]"> 票数:<input type="text" name="votedb['+i+'][votenum]" size="10">  图片:<input type="text" size="15" name="votedb['+i+'][img]"><a href=\'javascript:\' onClick=\'window.open("upfile.php?fn=upfile&dir=vote&label=img$key","","width=350,height=50,top=200,left=400")\'>上传</a>';
+	}
+	document.getElementById('morevote').innerHTML+=str;
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

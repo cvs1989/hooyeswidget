@@ -1,0 +1,101 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth" id="top_menu">
+  <tr>
+    <td> $fidDB[name] 
+  <!--
+EOT;
+if($IS_BIZ){print <<<EOT
+-->
+	[<A HREF="../$dirname/form_search.php?mid=$mid" target="_blank">搜索</A>]
+<!--
+EOT;
+}print <<<EOT
+-->
+	</td>
+  </tr>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path&action=delete">
+    <tr class="head"> 
+      <td width="6%" align="center">ID </td>
+      <td align='center'>投诉类型</td><td align='center'>你的称呼</td> 
+      <td width="11%" align="center">用户</td>
+      <td width="11%" align="center">日期</td>
+	  <td width="7%" align="center">$fidDB[statename]</td>
+      <td width="17%" align="center">查看 / 修改 / 删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td width='6%' align="left"> 
+        <input type="checkbox" name="iddb[{$rs[id]}]" value="$rs[id]">
+        $rs[id]</td>        
+      <td align='center'>$rs[advicetype] </td><td align='center'>$rs[truename] </td> 
+      <td width="11%" align="center"><a href="../member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a></td>
+      <td width="11%" align="center">$rs[posttime] </td>
+	  <td width="7%" align="center"><!--
+EOT;
+if($rs[yz]){
+print <<<EOT
+-->
+            <a href="$admin_path&file=form_content&job=yz&yz=0&mid=$mid&id=$rs[id]"><img alt='是' src="images/check_yes.gif" border="0"></a> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <a href="$admin_path&file=form_content&job=yz&yz=1&mid=$mid&id=$rs[id]"><img alt='否' src="images/check_no.gif" border="0"></a> 
+            <!--
+EOT;
+}
+print <<<EOT
+--></td>
+      <td width="17%" align="center"><a href="$admin_path&job=view&mid=$rs[mid]&id=$rs[id]"><img src="../member/images/icon_view.gif" border="0"></a> &nbsp;
+        <a href="../$dirname/form.php?lfj=$lfj&job=edit&id=$rs[id]&mid=$rs[mid]" target="_blank"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a>  &nbsp;
+        <a href="$admin_path&action=delete&id=$rs[id]" onClick="return confirm('删除后不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td colspan="12" align="center"> $showpage</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td colspan="12" align="center"> <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+        <input type="submit" name="Submit" value="删除">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+
+

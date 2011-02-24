@@ -1,0 +1,63 @@
+<!--
+<?php 
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="100" valign="top" class="Main"> 
+       
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="map_art">
+        <tr> 
+          <td class="top"><span class="L">我发布的产品信息</span><span class="R"><a href="post_choose.php">发布产品</a></span></td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list $rs[cl]">
+              <tr> 
+                <td class="a1"><a href="$Murl/bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a> 
+                  ({$rs[posttime]}) </td>
+              </tr>
+              <tr> 
+                <td align="right" class="a2" style="padding-top:5px;"><span class="about"> 
+                  模型:{$module_db[$rs[mid]]} 栏目:<a href="$Murl/list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a> 
+                  浏览({$rs[hits]}) 评论({$rs[comments]})</span> [{$rs[update]}] [{$rs[dotop]}] 
+                  [<a href="post.php?job=edit&fid=$rs[fid]&id=$rs[id]">修改]</a> 
+                  [<a href="post.php?action=del&fid=$rs[fid]&id=$rs[id]" onClick="return confirm('你确认要删除吗?不可恢复');">删除</a>]</td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td align="center" class="page">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 帮助说明 (你目前的积分有:<b><font color="#FF0000">{$lfjdb[money]}</font></b>点)</td>
+        </tr>
+        <tr> 
+          <td class="middle" style="padding:5px;line-height:150%;">1.刷新,即代表更新信息的发布日期为当前日期,刷新后会排在当前栏目的前面.每条信息的刷新时间间隔为<b><font color="#FF0000">{$webdb[UpdatePostTime]}</font></b>小时.<br>
+            2.置顶,即把某条信息在所在栏目固定在前面显示.置顶有效日期为<b><font color="#FF0000">{$webdb[Info_TopDay]}</font></b>天,收费为<b><font color="#FF0000">{$webdb[Info_TopMoney]}</font></b>积分</td>
+        </tr>
+        <tr> 
+          <td class="foot"> </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

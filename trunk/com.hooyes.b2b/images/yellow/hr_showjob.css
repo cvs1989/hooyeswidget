@@ -1,0 +1,161 @@
+.jobtable .side .drag .head{
+	background:url(showroom_side_head.gif);
+}
+.jobtable .side .drag .head .LL{
+	float:left;
+	background:url(showroom_side_l.gif);
+	width:15px;
+	height:30px;
+}
+.jobtable .side .drag .head .RR{
+	float:right;
+	background:url(showroom_side_r.gif);
+	width:10px;
+	height:30px;
+}
+.jobtable .side .drag .head .TAG{
+	float:left;
+	padding-top:8px;
+	font-weight:bold;
+}
+.jobtable .side .drag .CC{
+	border:1px solid #DFDFDF;
+	border-top:0;
+	border-bottom:0;
+	padding-bottom:20px;
+	padding-top:10px;
+}
+.jobtable .side .drag .CC .top{
+	line-height:25px;
+	height:70px;
+	background:url(company_renzheng.gif) no-repeat;
+	padding-left:65px;
+	padding-top:8px;
+	font-size:14px;
+	margin-left:12px;
+}
+
+.jobtable .side .drag .CC .compnaytype0{
+	background:url(company_renzheng.gif) no-repeat;
+}
+.jobtable .side .drag .CC .compnaytype1{
+	background:url(company_renzheng1.gif) no-repeat;
+}
+.jobtable .side .drag .CC .compnaytype2{
+	background:url(company_renzheng2.gif) no-repeat;
+}
+.jobtable .side .drag .CC .compnaytype3{
+	background:url(company_renzheng3.gif) no-repeat;
+}
+
+.jobtable .side .drag .CC .view_company{
+	background:url(hr_view_company.gif) no-repeat center;
+	cursor: hand;
+	height:33px;
+}
+
+.jobtable .side .drag .morejob{
+	border:1px solid #DFDFDF;
+	border-top:0;
+}
+
+.jobtable .side .drag .morejob div{
+	line-height:22px;
+	color:#2575B8;
+	padding-left:12px;
+}
+.jobtable .side .drag .morejob div a{
+	color:#2575B8;
+}
+
+.jobtable .side .drag .head2{
+	background:#F4F7FA url(supply_list_icon.gif) no-repeat 8px 5px;
+	height:18px;
+	padding-top:6px;
+	padding-left:25px;
+	border:1px solid #DFDFDF;
+	border-top:0;
+	border-bottom:0;
+	font-weight:bold;
+	color:#2575B8;
+}
+.jobtable .side .drag .list_c{
+	border-bottom:1px solid #DFDFDF;
+}
+.jobtable .main{
+	padding-left:10px;
+}
+.jobtable .main .drag .head .LL{
+	float:left;
+	background:url(showroom_main_l.gif);
+	width:30px;
+	height:30px;
+}
+.jobtable .main .drag .head .TAG{
+	float:left;
+	background:url(showroom_main_tag.gif);
+	width:107px;
+	height:21px;
+	text-align:center;
+	padding-top:9px;
+	font-weight:bold;
+	letter-spacing:2px;
+	font-size:14px;
+}
+
+.jobtable .main .drag .head .RR{
+	float:right;
+	background:url(showroom_main_rr.gif);
+	width:6px;
+	height:30px;
+}
+.jobtable .main .drag .head{
+	background:url(showroom_main_bg.gif);
+}
+.jobtable .main .drag .CC{
+	border:1px solid #DFDFDF;
+	border-top:0;
+	padding: 20px 20px 20px 20px;
+}
+
+.jobtable .main .drag .base div{
+	float:left;
+	width:31%;
+	line-height:25px;
+}
+
+
+
+.jobtable .main .drag .btable{
+	margin-top:10px;
+}
+.jobtable .main .drag .btable .h3{
+	background:url(hr_jobline.gif) repeat-x 6px;
+}
+.jobtable .main .drag .btable .h3 .TAG2{
+	background:#fff;
+	width:80px;
+	line-height:25px;
+	font-weight:bold;
+}
+.jobtable .main .drag .btable .c{
+	padding-top:5px;
+	padding-left:5px;
+	line-height:21px;
+}
+.jobtable .main .drag .CC .title{
+	margin-bottom:6px;
+}
+
+.jobtable .main .drag .CC .appli{
+	height:33px;
+	background:url(hr_appli.gif) no-repeat center;
+	margin:5px;
+	cursor:hand;
+}
+
+.jobtable .main .drag .CC .foot_do{
+	height:33px;
+	background:url(hr_appli2.gif) no-repeat center;
+	margin:5px;
+}

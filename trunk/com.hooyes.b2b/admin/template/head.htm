@@ -1,0 +1,62 @@
+<html>
+<head>
+<!--
+<?php
+$_admin_url=eregi('^http:',$webdb[admin_url])?$webdb[admin_url]:$webdb[www_url]."/".$webdb[admin_url];
+print <<<EOT
+-->
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="$_admin_url/images/style.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/inc.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function get_obj(obj){
+   return document.getElementById(obj);
+}
+//-->
+</SCRIPT>
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/ckeditor/ckeditor.js"></script>
+</head>
+<body >
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" align="center">
+  <tr>
+    <td class="head">&nbsp; </td>
+  </tr>
+   
+</table><div align="center"> 
+
+
+<!--
+EOT;
+if($linkdb){
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth" style="margin-top:5px;">
+  <tr bgcolor='#FFFFFF'> 
+    <td bgcolor="#FFFFFF">&nbsp;
+<!--
+EOT;
+foreach($linkdb AS $name=>$url){
+print <<<EOT
+-->
+	[<a href="$url" target="$blank" style="color:$color;">$name</a>] 
+<!--
+EOT;
+}
+print <<<EOT
+--></td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+
+<!--
+EOT;
+?>
+-->

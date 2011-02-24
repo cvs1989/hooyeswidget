@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>会员中心 </title>
+<link rel="stylesheet" type="text/css" href="images/red/css.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<script type="text/javascript">
+function SetCwinHeight(){
+	var obj=document.getElementById("member_mainiframe"); //iframe id
+	if (document.getElementById){
+		if (obj && !window.opera){
+			if (obj.contentDocument && obj.contentDocument.body.offsetHeight){
+				obj.height = obj.contentDocument.body.offsetHeight;
+			}else if(obj.Document && obj.Document.body.scrollHeight){
+				obj.height = obj.Document.body.scrollHeight;
+			}
+			if(obj.height<1400){
+				obj.height=1400;
+			}
+		}else {
+			obj.height = 1400;
+		}
+		//navigator.userAgent.toLowerCase().indexOf("msie 8.0") != -1
+		//obj.document.getElementById("footer").style.display='none';
+	}
+}
+</script>
+<body>
+<div id="Iframe"> 
+<div id="HeadContainer">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="Logo"><a href="index.php?SystemId=$SystemId"><img src="images/red/logo.gif" border="0"></a></td>
+    <td class="TopRight">
+    	<div class="webguide">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]$webdb[path]/$url";
+}
+print <<<EOT
+-->
+          <span><a href="$url" target="_blank">$name</a></span> 
+<!--
+EOT;
+}print <<<EOT
+-->
+		</div> 
+      
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="wellcome">
+    	欢迎你回来:<span>$lfjid</span> 
+        <A HREF="$webdb[www_url]/member/homepage.php?uid=$lfjuid" target=_blank>个人信息</A>
+        <a href="../do/login.php?action=quit"><span>安全退出</span></a>
+    </td>
+    <td class="select">
+    	<div id="time"><span id="liveclock"></span> 
+<script language="javascript" type="text/javascript"> 
+function qb_time() 
+{ 
+	var Digital=new Date();
+	var hours=Digital.getHours();
+	var minutes=Digital.getMinutes();
+	var seconds=Digital.getSeconds();
+	var year=Digital.getFullYear();
+	var month=Digital.getMonth()+1; 
+	var day=Digital.getDate();	
+	if(month<=9) month="0"+month;
+	if(day<=9) day="0"+day;
+	if(minutes<=9) minutes="0"+minutes;
+	if(seconds<=9) seconds="0"+seconds ;
+	myclock="当前时间: "+year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+	if(document.layers){
+		document.layers.liveclock.document.write(myclock);
+		document.layers.liveclock.document.close();
+	}else {
+		document.getElementById('liveclock').innerHTML=myclock;
+	}
+	setTimeout("qb_time()",1000) 
+} 
+qb_time(); 
+//--> 
+</script>
+        </div>
+    </td>
+  </tr>
+</table>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="MainContainer">
+  <tr>
+    <td id="SideMenu">
+    	<table width="100%" cellspacing="0" cellpadding="0" class="drage">
+          <tr> 
+            <td>
+<!--
+EOT;
+foreach($base_menudb AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if(strstr($array2[link],'../')||strstr($array2[link],'homepage.php')){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}print<<<EOT
+
+              <div><A HREF='$array2[link]' onclick="self.scroll(0,0);" target='$target'>$MenuName</A></div>-->
+<!--
+EOT;
+}print <<<EOT
+-->
+				<div class="action">
+                	<A href="javascript:;" onclick="ShowAll();">全部展开</A>
+                    <A href="javascript:;" onclick="HiddenAll();">全部收缩</A>
+                </div>
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+$jj = 0;
+foreach($menudb AS $SortName=>$array){
+$jj++;
+print<<<EOT
+-->
+        <dl id="TheDl{$jj}"> 
+           <dt onclick='showson("TheDl{$jj}")'>$SortName</dt>
+<!--
+EOT;
+foreach($array AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if(strstr($array2[link],'../')){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}
+print<<<EOT
+-->
+          <dd><A HREF='$array2[link]' onclick="self.scroll(0,0);" target='$target'>$MenuName</A></dd>
+<!--
+EOT;
+}print<<<EOT
+-->
+        </dl>
+<!--
+EOT;
+}print<<<EOT
+--> 
+<!--
+EOT;
+foreach($menu_GpartDB AS $SortName=>$array){
+$jj++;
+print<<<EOT
+-->
+        <dl id="TheDl{$jj}"> 
+            <dt onclick='showson("TheDl{$jj}")'>$array[name]</dt>
+<!--
+EOT;
+foreach($array[son] AS $k2=>$rs){
+if($rs[target]){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}
+print<<<EOT
+-->
+              <dd><a href='$rs[linkurl]' onclick="self.scroll(0,0);" target='$target'>$rs[name]</a></dd>
+<!--
+EOT;
+}print<<<EOT
+-->
+        </dl>
+<!--
+EOT;
+}print<<<EOT
+-->
+		<div class="inlineserver">
+        	<div class="h">在线客服</div>
+            $webdb[member_contact]
+        </div>
+    </td>
+    <td id="contentwrap" width="85%">
+    	<iframe width="100%" name="member_mainiframe" id="member_mainiframe" height="100"  onload="Javascript:SetCwinHeight();self.scroll(0,0);" scrolling="no" marginwidth=0 marginheight=0 frameborder="0" src="$MainUrl"></iframe>
+    </td>
+  </tr>
+</table>
+</div>
+<SCRIPT language=javascript>
+function showson(ss){
+	if (document.getElementById(ss).className==''){
+		document.getElementById(ss).className = 'Show';
+	}else{
+		document.getElementById(ss).className = '';
+	}
+}
+
+var objDl=document.getElementById("SideMenu").getElementsByTagName("dl");
+function ShowAll(){	
+	for(var i=0;i< objDl.length;i++ ){
+		objDl[i].className='Show';
+	}
+}
+function HiddenAll(){	
+	for(var i=0;i< objDl.length;i++ ){
+		objDl[i].className='';
+	}
+}
+</script>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

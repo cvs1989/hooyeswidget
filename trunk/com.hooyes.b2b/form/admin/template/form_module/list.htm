@@ -1,0 +1,134 @@
+<!--
+<?php
+print<<<EOT
+-->
+
+<table  width=100% cellspacing=1 cellpadding=3  class="tablewidth" style='display:'>
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">创建新的表单模型</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+      <form action="$admin_path&action=addmodule" method=POST>
+        <span class=bold>创建新模型--</span>&nbsp;名称 
+        <input type=text name="name" size=10>
+        <input type=submit value="创 建" name="submit">
+      </form>
+    </td>
+  <tr>
+ 
+</table>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑模型</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">数值大的排在前面</font></li>
+          <li><font color="#FF0000">所有操作,必须手工点击生成模板后,前台才能生效</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head"> 
+            <td width="5%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;" width="30%">表单模型名称</td>
+			 
+            <td width="8%" style="border-right:1px solid #fff;">表单</td>
+            <td width="8%" style="border-right:1px solid #fff;">综合设置</td>
+            <td width="6%" style="border-right:1px solid #fff;">排序</td>
+            <td width="9%" style="border-right:1px solid #fff;">字段设置</td>
+            <td width="12%" style="border-right:1px solid #fff;">生成模板</td>
+            <td width="5%" style="border-right:1px solid #fff;">数据</td>
+			<td  style="border-right:1px solid #fff;" width="8%">内容管理</td>
+            <td width="9%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="5%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[id]</font></b></td>
+            <td bgcolor="#FFFFFF"  style="border-bottom:1px dotted #ccc;"> 
+              
+              【<a href='../$dirname/list_form.php?mid=$rs[id]' target="_blank">{$rs[name]}</a>】
+<!--
+EOT;
+if($IS_BIZ){print <<<EOT
+-->
+[<a href='../$dirname/form_search.php?mid=$rs[id]' target="_blank">搜</A>]
+<!--
+EOT;
+}print <<<EOT
+-->
+			  </td>
+			 
+            <td   bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <a href="../$dirname/form.php?mid=$rs[id]" target="_blank"><img src="../member/images/icon_add.gif" alt="填写表单" border="0"> 
+              填写</a></td>
+            <td  bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&job=set&id=$rs[id]"><img src="../member/images/icon_manage2.gif" alt="修改表单设置" border="0"> 
+              设置</a></td>
+            <td  bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[id]}]' value='$rs[list]' size='5'>
+            </td>
+            <td   bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <a href='$admin_path&job=listfield&id=$rs[id]'><img src="../member/images/button_field.gif" alt="修改字段" border="0"> 
+              字段 </a> </td>
+            <td  bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&job=tpl&id=$rs[id]"><img src="../member/images/icon_html.gif" alt="生成模板" border="0"> 
+              生成模板</a></td>
+            <td bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">{$rs[NUM]}条</td> 
+			<td   bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <a href="$admin_path&file=form_content&job=list&mid=$rs[id]" ><img src="../member/images/art_icon.gif" alt="管理表单" border="0"> 管理</a></td>
+            <td   bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&action=delete&id=$rs[id]" onclick="return confirm('你确实要删除吗?不可恢复');"><img src="../member/images/button_drop.png" border="0"> 
+              删除</a> </td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center">$showpage<br>
+          <a href="javascript:" onClick="CheckAll('all')"> </a><a href="javascript:" onClick='CheckAll()'></a> 
+          <input type="button" name="Submit2" value="修改排序" onclick="postlist('list')"> 
+		  
+<!--
+EOT;
+if($IS_BIZ){print <<<EOT
+-->
+		  <input type="button" name="Submit22" value="批量生成模板" onClick="postlist('automaketpl')">
+<!--
+EOT;
+}print <<<EOT
+-->
+		  
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="$admin_path&action=editlist";
+	}else if(t=='automaketpl'){
+		document.formlist.action="$admin_path&job=tpl&automaketpl=1";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

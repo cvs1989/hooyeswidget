@@ -1,0 +1,79 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="myform" method="post" action="index.php?lfj=$lfj&action=$job" enctype="multipart/form-data">
+    <tr class="head"> 
+      <td colspan="2">模板管理</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">模板保存路径:</td>
+      <td width="84%"> 
+        <input type="text" name="postdb[filepath]" value="$rsdb[filepath]" size="60" id="filepath">
+        (不能使用汉字) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">模板名称:</td>
+      <td width="84%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+        (可以使用汉字) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$none;"> 
+      <td width="16%">适用哪个类型:</td>
+      <td width="84%"> 
+        <input type="radio" name="postdb[type]" value="1" $rsdb_type[1] >
+        主页 
+        <input type="radio" name="postdb[type]" value="2" $rsdb_type[2] >
+        列表页 
+        <input type="radio" name="postdb[type]" value="3" $rsdb_type[3] >
+        内容页 <br>
+        <input type="radio" name="postdb[type]" value="7" $rsdb_type[7] >
+        网页头部 
+        <input type="radio" name="postdb[type]" value="8" $rsdb_type[8] >
+        网页底部<br>
+        <input type="radio" name="postdb[type]" value="9" $rsdb_type[9] >
+        独立页 
+        <input type="radio" name="postdb[type]" value="11" $rsdb_type[11] >
+        系统专题页</td>
+    </tr>
+     
+ 
+    <tr bgcolor="#FFFFFF" style="display:$none;" id="edittpl"> 
+      <td>模板HTML代码:<br>
+        <br>
+        (提示:<font color="#0000FF">建议复制里边的代码在你的Dreamweaver软件里编辑好再粘贴进来</font>) </td>
+      <td> 
+        <script language=JavaScript>
+function eWebEditorPopUp(form, field, width, height) {
+	window.open("../ewebeditor/v4.60/popup.htm?style=popup&form="+form+"&field="+field, "", "width="+width+",height="+height+",toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no");
+}
+</script>
+        <textarea name="postdb[code]" cols="120" rows="17" id="code">$code</textarea>
+        <br>
+        <input type="BUTTON" name="btn" value="可视化编辑" onClick="eWebEditorPopUp('myform', 'code', 800, 600)">
+      </td>
+    </tr>
+ 
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="center"> 
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提 交">
+        <input type="hidden" name="obj_id" value="$obj_id">
+      </td>
+    </tr>
+  </form>
+</table>
+<div style="display:none;"><iframe id="Iframe" name="Iframe" src="about:blank"></iframe></div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_type(type){
+	window.open("index.php?lfj=$lfj&job=$job&type="+type+"&filepath="+get_obj('filepath').value,target='_self');
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

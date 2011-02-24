@@ -1,0 +1,36 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center">请选择一个风格：{$style_select}<br>
+      <br>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td width="17%" align="center"><font color="#FFFFFF">名称</font></td>
+    <td align="center" width="64%"><font color="#FFFFFF">存 放 路 径 </font></td>
+    <td width="11%" align="center">修改模板</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+    <td width="17%" align="left">$rs[name]</td>
+    <td width="64%"><a href="../template/$keywords/$rs[file]" target="_blank">/template/$keywords/$rs[file]</a></td>
+    <td width="11%" align="center"><a href="index.php?lfj=$lfj&job=editcode&keywords=$keywords&filename=$rs[file]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+  </tr>
+  <!--
+EOT;
+}print <<<EOT
+-->
+</table>
+<!--
+EOT;
+?>
+-->

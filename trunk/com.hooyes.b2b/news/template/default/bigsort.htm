@@ -1,0 +1,184 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/news/common.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="AutoRows">
+        <!--
+EOT;
+$moreline=$webdb[InfoListSonline]>0?$webdb[InfoListSonline]:2;
+$array=array_chunk($listdb_moresort,$moreline);
+$moretdwidth=floor(100/$moreline)."%";
+$moreline>1&&$moretimedisplay='none';
+foreach($array AS $key2=>$array2){
+print <<<EOT
+-->
+        <tr> 
+          <!--
+EOT;
+$iii=0;
+foreach($array2 AS $key=>$rss){
+$iii++;
+if($moreline>1&&$iii%$moreline==1){
+$tbstyle=" style='padding-right:2px;' ";
+}elseif($moreline>1&&$iii%$moreline==0){
+$tbstyle=" style='padding-left:2px;' ";
+}else{
+$tbstyle=" ";
+}
+print <<<EOT
+-->
+          <td width="$moretdwidth" $tbstyle> 
+            <table border="0" cellspacing="0" cellpadding="0" class="dragTable" width="100%">
+              <tr> 
+                <td class="head"> 
+                  <h3 class="L"></h3>
+                  <span class="TAG"><a href="list.php?fid=$rss[fid]">$rss[name]</A></span> 
+                  <h3 class="R"></h3>
+                  <span class="more" style="float:right;"><a href="list.php?fid=$rss[fid]">更多...</A></span> 
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <!--
+EOT;
+foreach($rss[article] AS $key1=>$rs){
+print <<<EOT
+-->
+                    <tr class="list_tr"> 
+                      <td class="list_title"><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a></td>
+                      <td align="right" class="list_time" style="display:$moretimedisplay;">({$rs[posttime]})&nbsp;&nbsp;</td>
+                    </tr>
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td class="foot"> 
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </tr>
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </table>
+      <!--****************************大分类显示子栏目结束****************************-->
+    </td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="sonSortName">
+        <tr> 
+          <td class="head" height="19"> 
+            <h3 class="L"></h3>
+            <span class="TAG">相关栏目</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--****************************相关栏目名称开始****************************-->
+            <!--
+EOT;
+$webdb[InfoListsortnameline]>0 || $webdb[InfoListsortnameline]=1;
+$Listsortnameline=floor(94/$webdb[InfoListsortnameline]).'%';
+$array=$listdb_moresort?$Fid_db[$fid]:$Fid_db[$fidDB[fup]];
+foreach($array AS $key=>$value){
+print <<<EOT
+-->
+            <div class="showsortname" style="width:$Listsortnameline;"><a href="list.php?fid=$key">$value</a></div>
+            <!--
+EOT;
+}print <<<EOT
+-->
+            <!--****************************相关栏目名称结束****************************-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">热门文章</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--
+EOT;
+$array=Get_Info($type='hot',$webdb[InfoJsListRows]>0?$webdb[InfoJsListRows]:8,$webdb[InfoJsListLeng]>0?$webdb[InfoJsListLeng]:28,$fid,$mid=0,1);
+foreach($array AS $rs){
+print <<<EOT
+-->
+            ·<a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a><br>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">推荐文章</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--
+EOT;
+$array=Get_Info($type='level',$webdb[InfoJsListRows]>0?$webdb[InfoJsListRows]:8,$webdb[InfoJsListLeng]>0?$webdb[InfoJsListLeng]:28,$fid,$mid=0,1);
+foreach($array AS $rs){
+print <<<EOT
+-->
+            ·<a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a><br>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

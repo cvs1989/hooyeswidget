@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+--> <script src="images/default/setday.js"></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">$fidDB[name]</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <script>
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+</script><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="padding-bottom:10px;">$fidDB[about]</td>
+  </tr>
+</table>
+            <table width="99%" border="0" cellspacing="5" cellpadding="5" id="bigtable">
+              <form name="FORM" method="post" action="?action=$atc" enctype="multipart/form-data">
+                
+<!--
+EOT;
+if($fidDB[usetitle]){print <<<EOT
+-->
+				<tr> 
+                  <td width="18%">标题:<font color=red>(必填)</font></td>
+                  <td width="82%"> 
+                    <input type="text" name="postdb[title]" id="atc_title" size="50" value="$rsdb[title]">
+                  </td>
+                </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+                <tr> <td >姓名:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[truename]' id='atc_truename' size='10' value='$rsdb[truename]'> </td></tr><tr> <td >性别:<br></td> <td ><input style='border:0px;' type='radio' name='postdb[sex]' value='1' {$rsdb[sex]['1']}>男<input style='border:0px;' type='radio' name='postdb[sex]' value='2' {$rsdb[sex]['2']}>女<input style='border:0px;' type='radio' name='postdb[sex]' value='0' {$rsdb[sex]['0']}>保密</td></tr><tr> <td >年龄:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[age]' id='atc_age' size='2' value='$rsdb[age]'> 岁</td></tr><tr> <td >联系电话:<br></td> <td > <input type='text' name='postdb[mobphone]' id='atc_mobphone' size='12' value='$rsdb[mobphone]'> </td></tr><tr> <td >参赛歌曲:<font color=red>(必填)</font><br></td> <td > <input type='text' name='postdb[my_song]' id='atc_my_song' size='30' value='$rsdb[my_song]'> </td></tr><tr> <td >职业:<br></td><td > <select name='postdb[metier]' id='atc_metier'><option value='程序员' {$rsdb[metier]['程序员']}>程序员</option><option value='销售' {$rsdb[metier]['销售']}>销售</option><option value='文员' {$rsdb[metier]['文员']}>文员</option><option value='工程师' {$rsdb[metier]['工程师']}>工程师</option><option value='其它' {$rsdb[metier]['其它']}>其它</option></select></td> </tr> 
+                <tr> 
+                  <td width="18%">&nbsp;</td>
+                  <td width="82%"> 
+                    <input type="submit" name="Submit" value="提 交" >
+                    <input type="hidden" name="mid" value="$mid">
+                    <input type="hidden" name="id" value="$id">
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

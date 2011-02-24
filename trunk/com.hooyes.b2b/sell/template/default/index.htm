@@ -1,0 +1,226 @@
+<!--
+<?php
+
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/sell_index.css"><table width="100%" border="0" cellspacing="0" cellpadding="0" id="sell_tt1ad">
+  <tr>
+    <td>$label[sell_tt1ad]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index md10">
+  <tr> 
+    <td width="75%" valign="top" class="main">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="mainleft">
+          <tr>
+            <td class="NewsInfo">
+               <div class="NewsSide">
+               	   
+              <div class="h"><span class="l">$label[sell_tt1]</span><span class="r">$label[sell_tt2]</span></div>
+                   <div class="c">
+                   
+ <!--
+EOT;
+$array=list_title('new',8);
+foreach($array AS $rs){
+$rs[title]=get_word($rs[title],30);
+print <<<EOT
+-->
+             		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="t"> <a href="bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a></td>
+                            
+                    <td class="d"><font color="#FF0000">{$rs[price]}</font>元/{$rs[my_units]}</td>
+                          </tr>
+                        </table>
+<!--
+EOT;
+}print <<<EOT
+-->
+                   </div>
+               </div>
+            </td>
+            <td class="Slidetd">
+              <span>$label[sell_roll]</span>
+            </td>
+          </tr>
+        </table>
+    </td>
+    <td width="25%" valign="top" class="side"> 
+       <div class="join_site">
+       	   <div class="h"><span>加入115钢铁网</span></div>
+           
+        <div class="c"> <span><a href="$webdb[www_url]/member/?main=$Murl/member/post_choose.php" target="_blank"><img src="$webdb[www_url]/images/yellow/sell_reg1.gif" border="0"/></a></span> 
+          <span class="b"><a href="$webdb[www_url]/member/?main=$Murl/member/list.php" style="color:#FF6400;" target="_blank">我发布的产品</a></span>	
+          <span><a href="$webdb[www_url]/member/?main=$Murl/member/order.php?job=list" target="_blank">收到的询价单</a> | <a href="$webdb[www_url]/member/?main=$Murl/member/order.php?job=mylist" target="_blank">发出的询价单</a></span>	
+          <span><a href="$webdb[www_url]/member/?main=$webdb[www_url]/buy/member/post_choose.php" target="_blank"><img src="$webdb[www_url]/images/yellow/sell_reg2.gif" border="0"/></a></span> 
+          <span class="b"><a href="$webdb[www_url]/member/?main=$webdb[www_url]/buy/member/list.php" style="color:#328600;" target="_blank">我发布的求购信息</a></span>	
+          <span><a href="$webdb[www_url]/member/?main=$webdb[www_url]/buy/member/order.php?job=list" target="_blank">收到的报价单</a> | <a href="$webdb[www_url]/member/?main=$webdb[www_url]/buy/member/order.php?job=mylist" target="_blank">发出的报价单</a></span>	
+        </div>
+       </div>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index md10">
+  <tr> 
+    <td width="75%" valign="top" class="main">
+    	
+      <div class="second_ad">$label[sell_tt3]</div>
+    </td>
+    <td width="25%" valign="top" class="side">
+      <div class="sideadtitle">$label[sell_tb3]</div>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index md10">
+  <tr> 
+    <td width="75%" valign="top" class="main">
+        <table width="100%" cellspacing="0" cellpadding="0" class="ContSide">
+          <tr>
+            
+          <td class="h"><span class="l">$label[sell_tt4]</span><span class="r">$label[sell_tt5]</span></td>
+          </tr>
+          <tr>
+            <td class="c">$label[sell_ts4]
+            </td>
+          </tr>
+        </table>
+    </td>
+    <td width="25%" valign="top" class="side"> 
+       <table width="100%" cellspacing="0" cellpadding="0" class="ContSide">
+          <tr>
+            
+          <td class="h"><span class="l">$label[sell_tt6]</span><span class="r">$label[sell_tt7]</span></td>
+          </tr>
+          <tr>
+            <td class="c padding5">$label[sell_tt8]
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_index">
+  <tr> 
+    <td width="75%" height="246" valign="top" class="main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="all_sort">
+        <tr> 
+          <td class="head"> 
+            <div class="LL"></div>
+            <div class="TAG">$fidDB[name]</div>
+            <div class="RR"><a href="$webdb[www_url]/member/?main=$Murl/member/post_choose.php" target="_blank">发布产品</a></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC" height="200" valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="ShowSortTable" onmouseout="HiddenTdBg(this)">
+<!--
+EOT;
+$newarray = array_flip($Fid_db[0]);
+$array = array_chunk($newarray,2);
+$j = 0;
+foreach($array AS $ar){
+$j++;
+$trdisplaybg = $j%2 == 0 ? "class = 'havebg'" : "";
+print <<<EOT
+-->
+              <tr $trdisplaybg>
+<!--
+EOT;
+$i = 0;
+foreach($ar AS $fup){
+$i++;
+print <<<EOT
+-->
+			  
+                <td onmouseover="ShowTdBg(this)">				
+				<div class="big_name"><a href="list.php?fid=$fup">{$Fid_db['name'][$fup]}</a></div>
+				<div class="smll_name">
+<!--
+EOT;
+$y = 0;
+foreach($Fid_db[$fup] AS $fid=>$name){
+$y++;
+$listnum = $webdb[Index_listsortnum]?$webdb[Index_listsortnum]:20;
+if($y>$listnum)break;
+print <<<EOT
+-->
+				<a href="list.php?fid=$fid">{$name}</a> | 
+<!--
+EOT;
+}print <<<EOT
+-->
+					<a href="list.php?fid=$fup" class="more">更多..</a>
+				</div>
+				</td>
+<!--
+EOT;
+}if($i<2){
+print <<<EOT
+-->
+				<td onmouseover="ShowTdBg(this)"><br/></td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+              </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ShowTdBg(TheTd){
+	obj=document.getElementById("ShowSortTable").getElementsByTagName("td");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	TheTd.className='choose';
+}
+function HiddenTdBg(TheTable){
+	obj=TheTable.getElementsByTagName("td");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+}
+//-->
+</SCRIPT>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%" height="246" valign="top" class="side"> 
+    	<table width="100%" cellspacing="0" cellpadding="0" class="SideRightTable md10">
+          <tr>
+            
+          <td class="h"><span class="l">$label[sell_newss]</span><span class="r">$label[sell_news2]</span></td>
+          </tr>
+          <tr>
+            <td class="c padding5">
+                        $label[sell_newss3]  
+            </td>
+          </tr>
+        </table>
+        <table width="100%" cellspacing="0" cellpadding="0" class="SideRightTable">
+          <tr>
+            
+          <td class="h"><span class="l">$label[sell_v3]</span><span class="r">$label[sell_v4]</span></td>
+          </tr>
+          <tr>
+            <td class="c padding5">
+            $label[sell_v5]	
+                       
+            </td>
+          </tr>
+        </table>
+    
+       
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

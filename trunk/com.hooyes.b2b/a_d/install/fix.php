@@ -1,0 +1,10 @@
+<?php
+
+return array(
+	'name'=>'¹ã¸æÄ£¿é',
+	'pre'=>'ad_',
+	'setup'=>2,
+	'forbid_del'=>1,
+);
+
+?>

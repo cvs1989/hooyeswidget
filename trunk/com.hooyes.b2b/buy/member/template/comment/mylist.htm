@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+--><SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable"> <form name="form_work" method="post" action="?action=del">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+            <td class="head">我发表的评论</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+              <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+                <tr align="center" class="head_in"> 
+                  <td width="66%">评论部分内容</td>
+                  <td width="13%">评论者</td>
+                  <td width="13%">评论日期</td>
+                  <td width="8%">删除</td>
+                </tr>
+                <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr class='trA' onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+                  <td  align="left" width="66%"> 
+                    <input type="checkbox" name="ciddb[]" value="$rs[cid]">
+                    {$rs[cid]}、<a href="$rs[url]" target="_blank" title="$rs[full_title]">$rs[title]</a> 
+                  </td>
+                  <td align="center" width="13%">$rs[username]</td>
+                  <td align="center" width="13%">$rs[posttime]</td>
+                  <td align="center" width="8%"><a href="?action=del&ciddb[]=$rs[cid]">删除</a></td>
+                </tr>
+                <!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="5">$showpage</td>
+                </tr>
+                <tr align="center">
+                  <td colspan="5"><a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a>
+                    <input type="submit" name="Submit" value="删除">
+                  </td>
+                </tr>
+              </table>
+          </td>
+        </tr><tr><td class="foot"></td></tr>
+      </table>
+    </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

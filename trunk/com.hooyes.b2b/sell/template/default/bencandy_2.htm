@@ -1,0 +1,128 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">询价用户资料详情如下</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" style="line-height:23px;"> <b>咨询产品: </b><a href="bencandy.php?fid={$rsdb[shop][fid]}&id={$rsdb[shop][id]}&city_id={$rsdb[shop][city_id]}" target="_blank">{$rsdb[shop][title]}</a><br>
+            <b>咨询者UID:</b> <a href="$webdb[www_url]/member/homepage.php?uid=$rsdb[uid]" target="_blank"> 
+            $rsdb[username]</a><br>
+            <b>咨询时间:</b> $rsdb[posttime]<br>
+            <!--
+EOT;
+if($rsdb['ask_title']){print <<<EOT
+-->
+            <span><b>询价标题: </b></span>{$rsdb[ask_title]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['order_num']){print <<<EOT
+-->
+            <span><b>订货总量: </b></span>{$rsdb[order_num]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['hope_price']){print <<<EOT
+-->
+            <span><b>期望价格: </b></span>{$rsdb[hope_price]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['hope_know']){print <<<EOT
+-->
+            <span><b>还想了解: </b></span>{$rsdb[hope_know]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['content']){print <<<EOT
+-->
+            <span><b>补充信息: </b></span>{$rsdb[content]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['hope_reply']){print <<<EOT
+-->
+            <span><b>我希望: </b></span>{$rsdb[hope_reply]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['ask_username']){print <<<EOT
+-->
+            <span><b>联系人姓名: </b></span>{$rsdb[ask_username]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['ask_phone']){print <<<EOT
+-->
+            <span><b>联系电话: </b></span>{$rsdb[ask_phone]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['ask_mobphone']){print <<<EOT
+-->
+            <span><b>联系手机: </b></span>{$rsdb[ask_mobphone]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['ask_email']){print <<<EOT
+-->
+            <span><b>联系邮箱: </b></span>{$rsdb[ask_email]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!--
+EOT;
+if($rsdb['ask_qq']){print <<<EOT
+-->
+            <span><b>联系QQ: </b></span>{$rsdb[ask_qq]} <br>
+            <!--
+EOT;
+}print <<<EOT
+--><!---->
+            <br>
+			
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+   
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

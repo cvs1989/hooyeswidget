@@ -1,0 +1,57 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head">短消息管理</td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="1" cellpadding="3" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+              <form name="form1" method="post" action="?f">
+                <tr align="center" class="head_in"> 
+                  <td width="6%" style="line-height:180%;">id</td>
+                  <td width="48%" style="line-height:180%;">标 题</td>
+                  <td width="12%" style="line-height:180%;">发件人</td>
+                  <td width="15%" style="line-height:180%;">时间</td>
+                  <td width="9%" style="line-height:180%;"> 状态</td>
+                  <td width="10%" style="line-height:180%;">删除</td>
+                </tr>
+                <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <tr> 
+                  <td  align="center" width="6%" style="border-bottom:1px dotted #ccc;line-height:180%;"> 
+                    {$rs[mid]}</td>
+                  <td  align="left" width="48%" style="border-bottom:1px dotted #ccc;line-height:180%;"><a href="?job=read&mid=$rs[mid]" title="$rs[full_title]" style="color:$rs[titlecolor];">$rs[title]</a> 
+                  </td>
+                  <td align="center" width="12%" style="border-bottom:1px dotted #ccc;line-height:180%;"><a href="userinfo.php?uid=$rs[fromuid]" target="_blank">$rs[username]</a></td>
+                  <td align="center" width="15%" style="border-bottom:1px dotted #ccc;line-height:180%;">$rs[mdate]</td>
+                  <td align="center" width="9%" style="border-bottom:1px dotted #ccc;line-height:180%;"> $rs[state]</td>
+                  <td align="center" width="10%" style="border-bottom:1px dotted #ccc;line-height:180%;"><a href="?job=del&mid=$rs[mid]">删除</a></td>
+                </tr>
+                <!--
+EOT;
+}print <<<EOT
+-->
+                <tr align="center"> 
+                  <td colspan="6">$showpage</td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

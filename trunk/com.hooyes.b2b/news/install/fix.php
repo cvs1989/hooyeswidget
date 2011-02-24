@@ -1,0 +1,9 @@
+<?php
+
+return array(
+	'name'=>'ÍòÄÜÎÄÕÂ',
+	'pre'=>'wn_',
+	'setup'=>1,
+);
+
+?>

@@ -1,0 +1,120 @@
+<!--
+<?php 
+print <<<EOT
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--//
+function displaymore(){
+	document.getElementById("listselect").style.display="block";
+	document.getElementById("showselect").className="onclick";
+}
+function noselect(){
+	alert("这是大分类,请选择小栏目！");
+	return (false);
+}
+function thisselect(fid,name){
+	document.getElementById("showselect").className="unclick";
+	document.getElementById("listselect").style.display="none";
+	document.getElementById('postform').action = "post.php?fid="+fid;
+	document.getElementById('thefid').value = fid;
+	document.getElementById('showselect').innerHTML = "&nbsp;&nbsp;"+name;
+}
+function juge(theForm){
+	if (document.getElementById('thefid').value == "")
+	{
+		alert("请选择相应的栏目！");
+		document.getElementById('thefid').focus();
+		return (false);
+	}
+}
+function Hiddenbox(theDiv){
+	//theDiv.style.display="none";
+	document.getElementById("listselect").style.display="none";
+}
+//-->
+</SCRIPT>
+<style type="text/css">
+<!--
+.formtable td{
+	width:50%;
+	padding:10px;
+}
+.formtable td.ltd {
+	padding:10px 0 10px 50px;
+}
+.formtable td.ltd div{
+	width:300px;
+	line-height:25px;
+	padding-left:10px;
+	padding-right:10px;
+	border:#CCC solid 1px;
+	text-align:left;
+}
+.formtable td.ltd div#showselect{
+	font-weight:bold;
+	cursor:pointer;
+}
+.formtable td.ltd div.onclick{
+	border-bottom:0;
+}
+.formtable td.ltd div#listselect{
+	border-top:0;
+	position:absolute;
+	background:#FFF;
+	height:300px;
+	overflow:auto;
+	z-index:1000;
+}
+.formtable td.ltd div#listselect a{
+	display:block;
+	line-height:20px;
+	margin-bottom:1px;
+	background:#eee;
+}
+.formtable td.ltd div#listselect a:hover{
+	background:blue;
+	color:#FFF;
+	text-decoration:none;
+}
+.formtable td.ltd div#listselect a.b{
+	color:#999;
+}
+-->
+</style>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="100" valign="top" class="Main">       
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="map_art">
+        <tr> 
+          <td class="top"><span class="L">请选择一个分类</span></td>
+        </tr>
+        <tr> 
+        <form  name="form" method="post" action="" id="postform"  onSubmit="return juge(this)">
+          <td class="middle" valign="top">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+              <tr>
+                <td class="ltd">
+                	<div id="showselect" class="unclick" onClick="displaymore()">&nbsp;&nbsp;请选择一个分类</div>
+                    <div id="listselect" style="display:none;">
+                    	{$listsort}
+                    </div>
+                </td>
+                <td class="rtd">
+                	<input type="submit" name="button" id="button" value="下一步" />
+                    <input name="fid" type="hidden" id="thefid" value="" />
+                </td>
+              </tr>
+          </table>
+          </td>
+          </form>
+        </tr>
+      </table>
+       
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,109 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/company_list.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="supply_list">
+  <tr> 
+    <td width="75%" height="246" valign="top" class="main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="filtate_sort">
+        <tr>
+          <td height="50"><div class="bigword">分类</div>
+            <div class="sonname">
+<!--
+EOT;
+$array=$Fid_db[$fid]?$Fid_db[$fid]:$Fid_db[$fidDB[fup]];
+foreach($array AS $fkey=>$fvalue){
+$color=$fid==$fkey?'red':'';
+print <<<EOT
+-->
+			<a href="list.php?fid=$fkey" style="color:$color;">$fvalue</a>
+ <!--
+EOT;
+}print <<<EOT
+-->
+			</div>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="head">
+            <div class="LL"></div>
+            <div class="TAG">$fidDB[name]</div>
+            <div class="RR"></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC" height="200" valign="top">
+            <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" id="top_list">
+              <tr>
+                <td style="width:150px;">&nbsp;</td>
+                <td>公司名称</td>
+                <td style="width:100px;" align="center">登记日期</td>
+                <td style="width:100px;" align="center">商家认证</td>
+              </tr>
+            </table><div id="line"></div><!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+			 <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" class="list_pro">
+              <tr>
+                <td style="width:150px;" class="pic"><a href="$webdb[www_url]/home/?uid=$rs[uid]" target="_blank"><img src="$rs[picurl]" onError="this.src='$webdb[www_url]/images/default/nopic.jpg'" border="0" width="120" height="90"></a></td>
+                <td valign="top">
+                  <div class="title"><a href="$webdb[www_url]/home/?uid=$rs[uid]" target="_blank">$rs[title]</a></div>
+                  
+                  <div class="other">日期:{$rs[posttime]} 浏览:{$rs[hits]}次 发布者:{$rs[username]} 
+                     
+                  </div>
+				  <div class="other2"> <b>经营模式:</b>{$rs[qy_saletype]} <b>企业类型:</b>{$rs[qy_cate]} 
+                    <b>所属分类:</b>{$rs[fname]} </div>
+				  </td>
+                <td style="width:100px;" align="center">
+                  <div class="price">$rs[posttime]</div>
+                  </td>
+                <td style="width:100px;" align="center"> 
+				
+				<img class="check_company" alt="{$renzhengDB[$rs[renzheng]]}" src="$webdb[www_url]/images/yellow/company_renzheng{$rs[renzheng]}.gif">
+				</td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="page">
+              <tr>
+                <td align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%" height="246" valign="top" class="side"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="head"> 
+            <div class="LL"></div>
+            <div class="TAG">推荐企业</div>
+            <div class="RR"></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="CC"> 
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

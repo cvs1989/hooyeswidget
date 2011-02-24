@@ -1,0 +1,232 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/news.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--//
+function ShowTabs(ID,CssType,FID,EID)
+{
+	for (i=FID;i<EID;i++)
+	{
+		if(i == ID)
+		{
+			document.getElementById("Mune" + i).className="Out" + CssType;
+			document.getElementById("Tab" + i).style.display="";
+		}
+		else
+		{
+			document.getElementById("Mune" + i).className="Over" + CssType;
+			document.getElementById("Tab" + i).style.display="none";
+		}
+	}
+}
+//-->
+</SCRIPT>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="newsmenutb"> 
+  <tr>   
+	<td>
+    	<div class="logo"><img src="$webdb[www_url]/images/$STYLE/nlogo.gif" width="110" height="45"/></div>
+       $label[news_0]
+    </td>
+  </tr>
+</table>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="MainContainer mt10">
+  <tr>
+    <td class="lefttd">
+    	<div class="newsmaximg">
+        	$label[news_rollpic]
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="container_s1 mt10">
+          <tr>
+            <td class="head">
+            	<span class=Out0 id=Mune1 onMouseOver=ShowTabs(1,0,1,3)>$label[news_k3]</span>
+                <span class=Over0 id=Mune2 onMouseOver=ShowTabs(2,0,1,3)>$label[news_k4]</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="cont">
+            	<div id="Tab1">
+                   $label[news_2_0]
+                </div>
+                <div id="Tab2" style="display:none;">
+                    $label[news_2_1]
+                </div>
+            </td>
+          </tr>
+        </table>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="container_s1 mt10">
+          <tr>
+            <td class="head"><span class="L">$label[news_k5]</span></td>
+          </tr>
+          <tr>
+            
+          <td class="cont titlenum"> 
+            $label[news_3]
+            </td>
+          </tr>
+        </table>           
+    </td>
+    <td class="centertd centerbg">
+    	<div class="newscenterbox">
+        	<div class="lighttitle">
+            	$label[news_1]		
+			</div>
+			<div class="centerlist">
+            	$label[news_1_1]	
+                
+            </div>
+            <div class="centerlist">
+           	     $label[news_1_2]
+            </div>
+            <div class="centerlist">
+                 $label[news_1_3]
+            </div>
+            <div class="centerlist">
+            	 $label[news_1_4]
+            </div>
+        </div>
+    </td>
+    <td class="righttd">
+    	<div class="container_s2">
+        	<div class="head">
+            	<span class="La"> $label[news_k1]</span>
+            </div>
+            <div class="cont">
+                     $label[news_4]
+                </div>
+        </div>
+        <div class="container_s2 mt10">
+        	<div class="head">
+            	<span class="Lb">$label[news_k2]</span>
+            </div>
+            <div class="cont">
+                $label[news_5]
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacing"><tr><td></td></tr></table>
+                
+          
+                 $label[news_6]
+            </div>
+        </div>
+    </td>
+  </tr>
+</table>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="MainContainer mt10">
+  <tr>
+	<td>$label[red_news_banner1]</td>
+  </tr>
+</table>
+<div class="NewsMainHead_a">
+	<span>$label[news_k7]</span>
+</div>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="MainContainer">
+  <tr>
+	<td class="lefttd">
+    	<div class="container_s2">
+        	<div class="head">
+            	<span class="L">$label[news_k8]</span>
+            </div>
+            <div class="cont listc">
+            	
+          $label[news_7]	
+            </div>
+        </div>
+    </td>
+    <td class="centertd">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="container_s1">
+          <tr>
+            <td class="head">
+            	<span class="spacing">报价$label[news_k14]</span>
+            	<span class=Out1 id=Mune3 onMouseOver=ShowTabs(3,1,3,8)>$label[news_k15]</span>
+                <span class=Over1 id=Mune4 onMouseOver=ShowTabs(4,1,3,8)>$label[news_k16]</span>
+                <span class=Over1 id=Mune5 onMouseOver=ShowTabs(5,1,3,8)>$label[news_k17]</span>
+                <span class=Over1 id=Mune6 onMouseOver=ShowTabs(6,1,3,8)>$label[news_k18]</span>
+                <span class=Over1 id=Mune7 onMouseOver=ShowTabs(7,1,3,8)></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="cont">
+            	<div id="Tab3" class="morecont">$label[news_8_1]</div>
+                	 	        
+              
+                
+                <div id="Tab4" class="morecont" style="display:none;">$label[news_8_2]</div>
+                <div id="Tab5" class="morecont" style="display:none;">$label[news_8_3]</div>
+                <div id="Tab6" class="morecont" style="display:none;">$label[news_8_4]</div>
+                <div id="Tab7" class="morecont" style="display:none;"></div>
+            </td>
+          </tr>
+        </table>
+    </td>
+    <td class="righttd">
+    	<div class="container_s2">
+        	<div class="head">
+            	<span class="L">$label[news_k9]</span>
+            </div>
+            <div class="cont">
+            $label[news_9]	
+            </div>
+        </div>
+    </td>
+  </tr>
+</table>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="MainContainer mt10">
+  <tr>
+	<td class="photohead"><span>图片新闻</span></td>
+  </tr>
+  <tr>
+	<td class="photocont">
+    	
+      $label[news_10]
+        
+    </td>
+  </tr>
+</table>
+<div class="NewsMainHead_a">
+	<span>$label[news_k10]</span>
+</div>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="MainContainer">
+  <tr>
+	<td width="36%">
+    	<div class="container_s2">
+        	<div class="head">
+            	<span class="L">$label[news_k13]</span>
+            </div>
+            <div class="cont">
+            $label[news_13]	
+            </div>
+        </div>
+    </td>
+    <td width="39%" style="padding:0 10px 0 10px;">
+    	<div class="container_s2">
+        	<div class="head">
+            	<span class="L">$label[news_k12]</span>
+            </div>
+            <div class="cont">
+            
+               $label[news_12]	
+            </div>
+        </div>
+    </td>
+    <td width="25%">
+    	<div class="container_s2">
+        	<div class="head">
+            	<span class="L">$label[news_k11]</span>
+            </div>
+            <div class="cont">
+                
+          $label[news_11]	
+            </div>
+        </div>
+    </td>
+  </tr>
+</table>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="MainContainer mt10">
+  <tr>
+	<td>$label[red_news_banner2]</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

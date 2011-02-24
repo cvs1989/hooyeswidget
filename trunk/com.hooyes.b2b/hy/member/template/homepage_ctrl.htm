@@ -1,0 +1,164 @@
+<!--
+<?php
+print <<<EOT
+-->
+<style>
+
+td, div {
+	font-size:12px;
+}
+a {
+	font-size: 12px;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+p {
+	margin:0px;
+	padding:0px
+}
+form{ margin:0px;}
+
+
+ 
+.ctrlTable{ border-bottom:2px #3662A1 solid; margin-bottom:0px;}
+.menu {
+	height:26px;
+	border-right:1px #3662A1 solid;
+	border-top:1px #3662A1 solid;
+	border-left:1px #e0e0e0 solid;
+	text-align:center;
+	float:left;
+	width:70px;
+	background:url($webdb[www_url]/member/images/infolistbg2.jpg) repeat-x;
+	font-weight:bold;
+}
+.menu a:link{ color:#3662A1; margin:0px;line-height:26px; }
+.menu a:visited{ color:#3662A1; margin:0px;line-height:26px; }
+.menu a:hover{ color:#3662A1; margin:0px;line-height:26px; }
+.menu a:active{ color:#3662A1; margin:0px;line-height:26px; }
+
+.menu_$atn{
+	background-color:#FFFFFF;
+	border-bottom:0;
+	background:url($webdb[www_url]/member/images/infolistbg1.jpg) repeat-x;
+}
+.menu_$atn a:link{ color:#ffffff; margin:0px;line-height:26px; }
+.menu_$atn a:visited{ color:#ffffff; margin:0px;line-height:26px; }
+.menu_$atn a:hover{ color:#ffffff; margin:0px;line-height:26px; }
+.menu_$atn a:active{ color:#ffffff; margin:0px;line-height:26px; }
+
+ 
+.posttable{background:#B2D5F5;}
+.posttable td{padding:3px;}
+</style>
+
+<!--
+EOT;
+if(!$companydb[picurl] || 
+   !$companydb[city_id] || 
+   !$companydb[my_trade] || 
+   !$companydb[qy_cate] || 
+   !$companydb[qy_saletype] || 
+   !$companydb[qy_createtime] || 
+   !$companydb[qy_pro_ser] ||
+   !$companydb[my_buy] ||
+   !$companydb[qy_regplace]){  //是否有公司资料完成提示
+print <<<EOT
+-->
+	<table width="100%" cellspacing="0" cellpadding="0"  style="border:1px solid #B2D5F5;margin:10px 0 10px 0;"  >
+    <tr>
+      <td width="2%" rowspan="2" valign="top"><img src="$webdb[www_url]/member/images/notice.jpg"  border="0"/></td>
+      <td width="98%" height="30"><a href="$Murl/member/homepage_ctrl.php?atn=info">
+ 		<strong>您的公司资料尚未完善，建议您继续完善您的公司资料。</strong>
+	  </a></td>
+    </tr>
+    <tr>
+      <td height="50" valign="top">
+      1.公司资料越完善，客户对您的信任度越高。<br />
+      2.完善公司资料，潜在客户更容易找到您。<br />
+      3.<a href="$Murl/member/homepage_ctrl.php?atn=base">基本设置</a>中可以管理您的商铺界面，让您的商铺界面更美观大方。</td>
+    </tr>
+  </table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+
+
+<table width="100%" border="0"   cellpadding="0" cellspacing="0"  class="ctrlTable" style="margin-top:5px;">
+  <tr>
+    <td   valign="top" align="left" >
+	<div style=" ">
+	 <div class="menu menu_info"><a href="?atn=info&uid=$uid">公司资料</a></div>
+	 <div class="menu menu_info2"><a href="?atn=info2&uid=$uid">公司介绍</a></div>
+	 <div class="menu menu_contactus"><a href="?atn=contactus&uid=$uid">联系方式</a></div>
+	 <div class="menu menu_base"><a href="?atn=base&uid=$uid">模板设置</a></div>
+     <div class="menu menu_banner"><a href="?atn=banner&uid=$uid">横幅设置</a></div>
+	 <div class="menu menu_pic menu_pic_upload menu_piclist menu_pic_edit"><a href="?atn=pic&uid=$uid">公司图库</a></div>
+      <div class="menu menu_news"><a href="?atn=news&uid=$uid">新闻管理</a></div>
+      <div class="menu menu_postnews"><a href="?atn=postnews&uid=$uid">发布新闻</a></div>     
+	   
+	   
+	 <!--
+EOT;
+if($webdb[vipselfdomain]){
+print <<<EOT
+-->
+	  <div class="menu menu_mydomain"><a href="?atn=mydomain&uid=$uid">二级域名</a></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	 </div>
+      </td>
+	  </tr>
+	  </table>
+<table width="100%" border="0"  cellpadding="0" cellspacing="0"  class="ctrlTable">
+  <tr>
+    <td   valign="top" align="left" >    
+    <div>
+
+<!--include
+EOT;
+if($atn&&eregi("^([_a-z0-9]+)$",$atn)&&is_file(dirname(__FILE__)."/"."homepage_ctrl/$atn.htm")){
+	require(dirname(__FILE__)."/"."homepage_ctrl/$atn.htm");
+}
+print <<<EOT
+include-->
+ 
+        
+      </div>
+      <p>&nbsp;</p>
+      </td>
+  </tr>
+</table>
+ <p style="height:500px">
+ <script>
+	function showcity(m){
+		var fup=m.options[m.selectedIndex].value;
+		document.getElementById('frame_city').src='$Murl/job.php?job=getcity2&fup='+fup+'&name=city_id&showspan=city_span';
+	}
+	</script>
+<iframe id='frame_city' src='' style='height:1px; widht:1px; display:none' /></iframe>
+ </p>
+	  
+<!--
+EOT;
+?>
+-->

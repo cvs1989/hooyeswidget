@@ -1,0 +1,238 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head">
+            个人资料
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+
+            <!--
+EOT;
+if($job=='edit'){
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <form name="form1" method="post" action="?job=edit&" enctype="multipart/form-data" onsubmit="return ckregdatapost();">
+                <tr> 
+                  <td height="25"> 
+                    <table width="100%" border="0" cellspacing="1" cellpadding="6">
+                      <tr> 
+                        <td colspan="2" style="border-bottom:1px solid #ccc;background:#eee;line-height:21px;">以下为重要信息</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">帐号:</td>
+                        <td width="72%"> $lfjid </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">邮箱:</td>
+                        <td width="72%"> 
+                          <input type="text" name="email" style="width:130px;" value="$lfjdb[email]" $ipunt_email>
+                          忘记密码时,取回密码使用 </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">新密码:</td>
+                        <td width="72%"> 
+                          <input type="password" name="password" style="width:130px;">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">重复输入密码:</td>
+                        <td width="72%"> 
+                          <input type="password" name="password2" style="width:130px;">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">旧密码:</td>
+                        <td width="72%"> 
+                          <input type="password" name="old_password" style="width:130px;">
+                          (如果修改密码或邮箱,必须输入旧密码) </td>
+                      </tr>
+                      <tr> 
+                        <td colspan="2">
+						<script src="$webdb[www_url]/images/default/setday.js"></script>
+						<SCRIPT LANGUAGE="JavaScript">
+<!--
+var filed_id='';
+var filed_name='';
+function ckregdata(a,b){
+	filed_id=a;
+	filed_name=b;
+}
+function ckregdatapost(){
+	id_array=filed_id.split(',');
+	name_array=filed_name.split(',');
+	for(var i=0;i<id_array.length;i++){
+		if(id_array[i]!=''&&document.getElementById(id_array[i]).value==''){
+			alert("“"+name_array[i]+'”不能为空');
+			document.getElementById(id_array[i]).focus();
+			return false;
+		}
+	}
+}
+/*如要为页面布局考虑的话，你可以把template\default\regfield.htm里边的内容复制过来，然后把以下两行删除即可*/
+document.write('<div id="showRegDiv"></div>');
+AJAX.get("showRegDiv","$webdb[www_url]/do/regfield.php?job=reg");
+//-->
+</SCRIPT></td>
+                      </tr>
+                    </table>
+                    <table width="100%" border="0" cellspacing="5" cellpadding="6">
+                      <tr> 
+                        <td colspan="2" style="border-bottom:1px solid #ccc;background:#eee;line-height:21px;">以下为选填信息</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">个人头像:</td>
+                        <td width="72%"> <span id="icon_web"> 
+                          <input type="text" name="icon" style="width:250px;" value="$lfjdb[icon]">
+                          </span> <span id="icon_file" style="display:none;"> 
+                          <input type="file" name="postfile">
+                          </span> 
+                          <input type="radio" name="icon_type" value="old" checked onclick="document.getElementById('icon_web').style.display='';document.getElementById('icon_file').style.display='none';">
+                          网络地址 
+                          <input type="radio" name="icon_type" value="new"  onclick="document.getElementById('icon_web').style.display='none';document.getElementById('icon_file').style.display='';">
+                          重新上传 </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">生日:</td>
+                        <td width="72%"> 
+                          <input type="text" name="bday" style="width:130px;" value="$lfjdb[bday]">
+                          格式为1981-08-13</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">所在城市:</td>
+                        <td width="72%">
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/select_menu.js"></SCRIPT>
+						
+						<SCRIPT LANGUAGE="JavaScript">
+<!--
+var input_value='$lfjdb[cityid]';
+var input_name='cityid';
+var select_type='2';
+var file='../do/ajax_select.php';
+var DIV_idb='DIV_idb'+Math.random();
+var input_idb='input_idb'+Math.random();
+document.write("<span id='"+DIV_idb+"'></span>");
+document.write("<input type='hidden' id='"+input_idb+"' name='"+input_name+"'  size='5' value='"+input_value+"'>");
+get_div_S(DIV_idb,DIV_idb,input_idb,select_type,'',input_value);
+//-->
+</SCRIPT>
+
+
+</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">性别:</td>
+                        <td width="72%"> 
+                          <input type="radio" name="sex" value="0" $sex_db[0]>
+                          保密 
+                          <input type="radio" name="sex" value="1" $sex_db[1]>
+                          男 
+                          <input type="radio" name="sex" value="2" $sex_db[2]>
+                          女 </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">QQ:</td>
+                        <td width="72%"> 
+                          <input type="text" name="oicq" style="width:130px;" value="$lfjdb[oicq]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">MSN:</td>
+                        <td width="72%"> 
+                          <input type="text" name="msn" style="width:130px;" value="$lfjdb[msn]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">个人主页:</td>
+                        <td width="72%"> 
+                          <input type="text" name="homepage" style="width:250px;" value="$lfjdb[homepage]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">自我介绍:</td>
+                        <td width="72%"> 
+                          <textarea name="introduce" cols="50" rows="5">$lfjdb[introduce]</textarea>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">联系地址:</td>
+                        <td width="72%"> 
+                          <input type="text" name="address" style="width:250px;" value="$lfjdb[address]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">邮政编码:</td>
+                        <td width="72%"> 
+                          <input type="text" name="postalcode" style="width:130px;" value="$lfjdb[postalcode]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">联系电话:</td>
+                        <td width="72%"> 
+                          <input type="text" name="telephone" style="width:130px;" value="$lfjdb[telephone]">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">联系手机:</td>
+                        <td width="72%"> 
+                          <input type="text" name="mobphone" style="width:130px;" value="$lfjdb[mobphone]" $ipunt_mob>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">身份证号码:</td>
+                        <td width="72%"> 
+                          <input type="text" name="idcard" style="width:250px;" value="$lfjdb[idcard]" $ipunt_idcard>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">真实姓名:</td>
+                        <td width="72%"> 
+                          <input type="text" name="truename" style="width:130px;" value="$lfjdb[truename]" $ipunt_idcard>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%">&nbsp;</td>
+                        <td width="72%">&nbsp;</td>
+                      </tr>
+                    </table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td align="center"> 
+                          <input type="submit" name="Submit3" value="提 交">
+                          <input type="hidden" name="step" value="2">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </form>
+            </table>
+ 
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->
