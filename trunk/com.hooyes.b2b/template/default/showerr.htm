@@ -5,6 +5,7 @@
 print <<<EOT
 -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <style type="text/css">
 a {
 	font-size: 13px;
@@ -91,11 +92,22 @@ body{
 #footer td,#footer td a{
 	color:#9A9A9A;
 }
+.LoginBanner{
+background:url($webdb[www_url]/images/default/Login_pic_bg.jpg);
+width:572px; height:185px; line-height:185px; text-align:center; font-size:25px;
+}
+.LoginBannerR{
+background:url($webdb[www_url]/images/default/Login_pic_bg.jpg);
+width:49px; height:185px;
+}
+.LoginBox
+{
+    background:url($webdb[www_url]/images/default/login_bg.jpg);
+   
+}
 </style>
 <title>$webdb[webname]</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
-
 <body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
  <SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/inc.js"></SCRIPT>
 <table width="850" border="0" cellspacing="0" cellpadding="0" align="center" id="topTable">
@@ -124,42 +136,23 @@ EOT;
 <table width="850" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td width="572" height="296" valign="top">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="LeftTable">
-        <tr>
-          <td height="130" width="24%" class="L"></td>
-          <td height="130" width="76%" align="left" valign="top"> 
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="MsgTable">
-              <tr>
-                <td align="center" class='title'>信息提示:</td>
-              </tr>
-              <tr>
-                <td style="line-height:150%;"><div style="border:0px dotted #ccc;width:92%;padding:5px;">$showerrMsg</div></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <table width="100%" border="0" cellspacing="12" cellpadding="12">
-        <tr>
-          <td align="center">
-<SCRIPT LANGUAGE="JavaScript">
+      <div class="LoginBanner">$showerrMsg
+	  <SCRIPT LANGUAGE="JavaScript">
 <!--
 if(document.referrer==''&&window.self==window.top){
 	document.write('<input type="button" name="Submit" value="点击关闭本网页" class="post_bt" onclick="window.self.close();"> <input type="button" name="Submit" value="返回网站首页" class="post_bt" onclick="top.location.href=\'$webdb[www_url]/\';"> ');
 }else{
 var num=0;
-document.write('<input type="button" name="Submit" value="点击返回" class="post_bt" onclick="history.back(-1);if(num>0)top.location.href=\'$FROMURL\';num++;">');
+document.write('<a href="javascript:void(0);" onclick="history.back(-1);if(num>0)top.location.href=\'$FROMURL\';num++;">返回</a>');
 }
 //-->
 </SCRIPT>
-		  
-		  
-		  </td>
-        </tr>
-      </table>
+	  </div>
+ 
     </td>
     <td width="229" height="296" valign="top">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="118" style="border:1px solid #AAAAAA;" id="CenterTable">
+      <div class="LoginBox">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="118" style="border:1px solid #AAAAAA;"  id="CenterTable">
         <tr>
           <td bgcolor="#FFFFFF" height="274" align="left" valign="top">
 <!--
@@ -167,7 +160,7 @@ EOT;
 if(!$lfjid){print <<<EOT
 -->
 		  
-            <table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin:10px;">
+            <table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin:10px;"  >
               <form name="form1" method="post" action="$webdb[www_url]/do/login.php">
                 <tr> 
                   <td><b><font  style="font-size:14px;color:#000000;">登录通行证</font></b></td>
@@ -197,7 +190,7 @@ if(!$lfjid){print <<<EOT
                 </tr><input type="hidden" name="step" value="2">
       <input class="radio" type="hidden" name="cookietime" value="86400" >
                 <tr> 
-                  <td align="right" height="38"><a href="$webdb[www_url]/do/sendpwd.php" style="text-decoration: underline;">忘记密码,取回&gt;&gt;</a></td>
+                  <td align="right" height="38"><a href="$webdb[www_url]/do/sendpwd.php" style="text-decoration: underline;">忘记密码?</a></td>
                 </tr>
                 <tr> 
                   <td align="right" > 
@@ -213,7 +206,7 @@ if(!$lfjid){print <<<EOT
                   </td>
                 </tr>
                 <tr>
-                  <td align="center" height="32" >拥有通行证,整个网站畅通无阻!</td>
+                  <td align="center" height="32" >拥有通行证,整个网站畅通无阻。</td>
                 </tr>
               </form>
             </table>
@@ -262,13 +255,10 @@ EOT;
 -->   </td>
         </tr>
       </table>
+      </div>
     </td>
     <td width="49" height="296" valign="top">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="RightTable">
-        <tr>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
+      <div class="LoginBannerR"></div>
     </td>
   </tr>
 </table>
@@ -293,16 +283,7 @@ EOT;
 	  </td>
   </tr>
 </table>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-function set_Table(){
-	h=document.getElementById("LeftTable").offsetHeight;
-	if(window.ActiveXObject==null)h=h-20;
-	document.getElementById("RightTable").style.height=h+'px';
-}
-set_Table()
-//-->
-</SCRIPT>
+
 </body>
 </html>
 <!--

@@ -5,11 +5,11 @@
 print <<<EOT
 -->
 <head>
-<title>{$rsdb[username]}的个人主页                     Powered By www.qibosoft.com</title>
-<link rel="stylesheet" type="text/css" href="images/default/css.css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<meta name="keywords" content="CMS">
+<meta name="keywords" content="hooyes">
 <meta name="description" content="整站系统">
+<title>{$rsdb[username]}的个人主页</title>
+<link rel="stylesheet" type="text/css" href="images/default/css.css">
 </head>
 <body bgcolor="#FFFFFF" text="#000000">
 <SCRIPT LANGUAGE="JavaScript" src="../images/default/inc.js"></SCRIPT>
@@ -77,7 +77,7 @@ EOT;
 <table width="990" border="0" cellspacing="0" cellpadding="0" align="center" id="h_body">
   <tr> 
     <td height="291" valign="top" width="700" class="main"> 
-      <div id="comarticle">今日导读：<a href="../news/bencandy.php?fid=$comDB[fid]&id=$comDB[id]" target="_blank">$comDB[title]</a></div>
+     <!-- <div id="comarticle">今日导读：<a href="../news/bencandy.php?fid=$comDB[fid]&id=$comDB[id]" target="_blank">[title]</a></div> -->
       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:15px;">
         <tr> 
           <td width="22%"><a href="#" style="border:1px solid #D2D2D2;width:150px;height:150px;display:block;"> 
@@ -368,11 +368,10 @@ EOT;
   </tr>
 </table>
 <table width="990" border="0" cellspacing="0" cellpadding="0" align="center" id="h_footer">
-  <tr>
-    <td align="center"> Powered by <a href="http://www.qibosoft.com" target="_blank">qibosoft 
-      $qibosoft_Edition</a> Code &copy; 2003-10 <a href="http://bbs.qibosoft.com/" target="_blank">qibosoft</a></td>
-  </tr>
-</table>
+<tr>
+ <td> &copy 2011</td>
+</tr>
+  </table>
 </body>
 </html>
 <!--
