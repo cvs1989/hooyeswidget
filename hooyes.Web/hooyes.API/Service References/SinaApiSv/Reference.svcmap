@@ -18,13 +18,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9122/SinaApiService/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://cdn.hooyes.com:9122/SinaApiService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SinaApiService.wsdl" MetadataType="Wsdl" ID="99a2a2f2-ebad-4ee6-9feb-c37572be65a6" SourceId="1" SourceUrl="http://localhost:9122/SinaApiService/?wsdl" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="e7bd2d79-bb20-4f68-bac7-705364cd65d4" SourceId="1" SourceUrl="http://localhost:9122/SinaApiService/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="dae286c0-a7d9-486c-ad1a-057b6099ad2a" SourceId="1" SourceUrl="http://localhost:9122/SinaApiService/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="3f7fce6f-7fb2-4ab0-8fc6-d6a87d1e4a46" SourceId="1" SourceUrl="http://localhost:9122/SinaApiService/?disco" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="d29e289e-dccc-4edd-83ad-6192c9dd081c" SourceId="1" SourceUrl="http://cdn.hooyes.com:9122/SinaApiService/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="d9e03e84-5ab3-4052-b9dc-ef0aff1cc340" SourceId="1" SourceUrl="http://cdn.hooyes.com:9122/SinaApiService/?xsd=xsd0" />
+    <MetadataFile FileName="item21.xsd" MetadataType="Schema" ID="b5baa01c-80d9-4100-9a2d-753f92d10f2e" SourceId="1" SourceUrl="http://cdn.hooyes.com:9122/SinaApiService/?xsd=xsd1" />
+    <MetadataFile FileName="SinaApiService1.wsdl" MetadataType="Wsdl" ID="6e511c13-090b-4c26-a5d8-52d5f4bf4c65" SourceId="1" SourceUrl="http://cdn.hooyes.com:9122/SinaApiService/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
