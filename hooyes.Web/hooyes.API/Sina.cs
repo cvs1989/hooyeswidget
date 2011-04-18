@@ -15,11 +15,11 @@ namespace hooyes.API
         }
         public string update(string message)
         {
-            return update("hooyes@sina.com","rgbjyss","json",message);
+            return update("hooyes@sina.com","","json",message);
         }
         public string user_timeline()
         {
-            string a=client.user_timeline("hooyes@sina.com", "rgbjyss", "json");
+            string a=client.user_timeline("hooyes@sina.com", "", "json");
             return a;
         }
     }
