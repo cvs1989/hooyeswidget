@@ -60,6 +60,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\t\OpenSinaApi04-18-2011\OpenSinaApi\oAuthSina\oAuthSina.csproj">
+      <Project>{407C3459-3EE2-4D28-BB68-0EFD84774040}</Project>
+      <Name>oAuthSina</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

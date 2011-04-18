@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
+using LeoShi.Soft.OpenSinaAPI;
 namespace hooyes.WCF.Service
 {
     // 注意: 如果更改此处的接口名称 "ISinaApiService"，也必须更新 App.config 中对 "ISinaApiService" 的引用。
@@ -54,6 +54,6 @@ namespace hooyes.WCF.Service
         /*发布一条微博信息*/
         [OperationContract]
         string statuses_update(string userid, string passwd, string format, string status);
-
+        
     }
 }

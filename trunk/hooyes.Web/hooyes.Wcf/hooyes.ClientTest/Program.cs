@@ -9,10 +9,16 @@ namespace hooyes.ClientTest
     {
         static void Main(string[] args)
         {
-            hooyes.WCF.Service.SinaApiService sa = new WCF.Service.SinaApiService("hooyes@sina.com", "rgbjyss");
-           string s= sa.statuses_update("xml","腾讯的客服太搞了，瞎送我一月会员");
-           s = sa.statuses_update("xml", "别想太多未来的问题");
-           Console.Write(s);
+           // hooyes.WCF.Service.SinaApiService sa = new WCF.Service.SinaApiService("hooyes@sina.com", "rgbjyss");
+           //string s= sa.statuses_update("xml","我打算建一个新浪微博的WCF怎么样？");
+           ////s = sa.statuses_update("xml", "别想太多未来的问题");
+
+            hooyes.WCF.Service.Sv sa = new WCF.Service.Sv();
+
+           // //var httpRequest = sa.CreateHttpRequest(
+           // httpRequest.GetRequestToken();
+           // string url = httpRequest.GetAuthorizationUrl();
+           //Console.Write(s);
 
            Console.Read();
         }

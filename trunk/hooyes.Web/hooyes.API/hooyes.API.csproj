@@ -55,19 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\SinaApiSv\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SinaApiSv\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SinaApiSv\SinaApiService.wsdl" />
+    <None Include="Service References\SinaApiSv\SinaApiService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SinaApiSv\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SinaApiSv\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SinaApiSv\configuration91.svcinfo" />
@@ -76,10 +67,19 @@
     <None Include="Service References\SinaApiSv\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\SinaApiSv\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SinaApiSv\item21.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SinaApiSv\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SinaApiSv\item1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

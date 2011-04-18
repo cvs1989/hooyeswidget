@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hooyes.WCF.Host", "hooyes.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hooyes.ClientTest", "hooyes.ClientTest\hooyes.ClientTest.csproj", "{3B62DB5D-9AA8-4DE7-B33A-D3A210934699}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oAuthSina", "..\..\..\t\OpenSinaApi04-18-2011\OpenSinaApi\oAuthSina\oAuthSina.csproj", "{407C3459-3EE2-4D28-BB68-0EFD84774040}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{3B62DB5D-9AA8-4DE7-B33A-D3A210934699}.Release|Mixed Platforms.Build.0 = Release|x86
 		{3B62DB5D-9AA8-4DE7-B33A-D3A210934699}.Release|x86.ActiveCfg = Release|x86
 		{3B62DB5D-9AA8-4DE7-B33A-D3A210934699}.Release|x86.Build.0 = Release|x86
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Release|Any CPU.Build.0 = Release|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{407C3459-3EE2-4D28-BB68-0EFD84774040}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

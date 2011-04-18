@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Xml;
 using System.Web;
+using LeoShi.Soft.OpenSinaAPI;
 namespace hooyes.WCF.Service
 {
     public class SinaApiService : oAuthSina,ISinaApiService
@@ -194,5 +195,13 @@ namespace hooyes.WCF.Service
             }
         }
 
+        
+
+
+
+        //public BaseHttpRequest CreateHttpRequest(Method method)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

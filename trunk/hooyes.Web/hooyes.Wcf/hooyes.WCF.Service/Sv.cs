@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using LeoShi.Soft.OpenSinaAPI;
 
 namespace hooyes.WCF.Service
 {
@@ -17,6 +18,16 @@ namespace hooyes.WCF.Service
         {
             string FileName="E:\\wcf.txt";
             File.WriteAllBytes(FileName, file);
+        }
+
+
+        public BaseHttpRequest CreateHttpRequest(Method method)
+        {
+            if (method == Method.GET)
+            {
+                return new HttpGet();
+            }
+            return new HttpPost();
         }
     }
 }

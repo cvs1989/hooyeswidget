@@ -23,7 +23,7 @@ namespace hooyes.WCF.Host
         {
             ServiceHost host = new ServiceHost(typeof(WCF.Service.SinaApiService));
             host.Open();
-            Console.WriteLine("Sina service is running...");
+            Console.WriteLine("t service is running...");
             Console.ReadKey();
             host.Close();
         }
