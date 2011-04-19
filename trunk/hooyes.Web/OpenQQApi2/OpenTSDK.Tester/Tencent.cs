@@ -72,7 +72,7 @@ namespace OpenTSDK.Tester
         }
 
         /// <summary>
-        /// 在已知道Access Token和Access Secret情况下调用API的示例
+        /// 在已知道Access Token和Access Secret情况下调用API的示例 
         /// </summary>
         public static void Test()
         {
@@ -89,7 +89,7 @@ namespace OpenTSDK.Tester
 
             Twitter twitter = new Twitter(oauth);
             //var data2 = twitter.Add("铁盒的钥匙我找不到!沉在盒子里的是你给我的快乐，我很想记得，可是我记不得", @"C:\Users\hooyes\Pictures\58.gif", "127.0.0.1");
-            var data2 = twitter.Add("前面右转的第二排，街角上就有了。谢谢。不会。", "127.0.0.1");
+            var data2 = twitter.Add("让我们半兽人的眼神单纯。", "207.6.14.22");
             if (data2.Ret == 0)
              {
                  //删除刚发的微博
