@@ -9,11 +9,17 @@ namespace Tweet
     {
         static void Main(string[] args)
         {
-            string statusText = "天灰灰，会不会让我忘了你是谁";
-            T.QQ(statusText);
-            T.Sina(statusText);
+            //string statusText = "天灰灰，会不会让我忘了你是谁";
+            //T.QQ(statusText);
+            //T.Sina(statusText);
 
-            Console.ReadLine();
+            //db.MaxTimeline("hooyes", 1303230632);
+
+            sTimer.Run();
+
+            //Console.WriteLine(db.MaxTimeline("hooyes"));
+
+            //Console.Read();
             //T.SinaRun();
         }
     }
