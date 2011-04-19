@@ -49,10 +49,35 @@ namespace Tweet
             var url = "http://api.t.sina.com.cn/statuses/update.json?";
             var r= httpRequest.Request(url, "status=" + HttpUtility.UrlEncode(statusText));
 
-            Console.Write(r);
+            Console.Write("OK");
             //Console.Read();
         }
 
+        public static void QQTimeLine()
+        {
+            //实例化OAuth对象
+            string appKey = "3ab2872742234704925c33dec507f9bb";
+            string appSecret = "f6cd03eb8734e8f64b98bef6ce8d546a";
+            OAuth oauth = new OAuth(appKey, appSecret);
+            oauth.Token = "91c8a7555f694dd3bd7a55178dfa952d";            //Access Token
+            oauth.TokenSecret = "2e01aa675faf5764d59564537f142f51";      //Access Secret
+
+            //根据OAuth对象实例化API接口
+            Timeline api = new Timeline(oauth);
+            var data = api.GetBroadcast_timeline(PageFlag.First, 0, 1);
+
+            long maxTimeline = db.MaxTimeline("hooyes");
+            if (data.Tweets.Length > 0)
+            {
+                if (data.Tweets[0].Timestamp > maxTimeline)
+                {
+                    Sina(data.Tweets[0].Origtext);
+                    maxTimeline=data.Tweets[0].Timestamp;
+                    db.MaxTimeline("hooyes", maxTimeline);
+                }
+            }
+            
+        }
         public static void RunSina()
         {
             var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.GET) as HttpGet;
