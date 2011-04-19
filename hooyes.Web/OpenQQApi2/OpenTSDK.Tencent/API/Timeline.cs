@@ -26,6 +26,18 @@ namespace OpenTSDK.Tencent.API
         { }
 
         #region 主页时间线
+        public TimelineData GetBroadcast_timeline(PageFlag pageflag, long pagetime, int reqnum, int Lastid=0)
+        {
+            //return this.GetHomeTimeline("http://open.t.qq.com/api/statuses/broadcast_timeline", pageflag, pagetime, reqnum);
+            string requestUrl = "http://open.t.qq.com/api/statuses/broadcast_timeline";
+            Parameters parameters = new Parameters();
+            parameters.Add("format", this.ResponseDataFormat.ToString().ToLower());
+            parameters.Add("pageflag", (int)pageflag);
+            parameters.Add("pagetime", pagetime);
+            parameters.Add("reqnum", reqnum);
+            parameters.Add("lastid", Lastid);
+            return this.GetResponseData<TimelineData>(requestUrl, parameters);
+        }
         /// <summary>
         /// 采用默认API请求地址获取主页时间线数据
         /// </summary>
