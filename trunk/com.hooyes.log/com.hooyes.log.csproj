@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>com.hooyes.log</RootNamespace>
     <AssemblyName>Log</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -32,6 +32,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +55,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -89,6 +91,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +106,14 @@
     <ProjectReference Include="..\com.hooyes.widget\com.hooyes.widget.csproj">
       <Project>{56D348E2-E510-4031-9168-69A3827D3547}</Project>
       <Name>com.hooyes.widget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hooyes.Web\OpenQQApi2\OpenTSDK.Tencent\OpenTSDK.Tencent.csproj">
+      <Project>{31AADDB4-BE12-4B89-A807-3EBFB3B5D20C}</Project>
+      <Name>OpenTSDK.Tencent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hooyes.Web\OpenSinaApi\oAuthSina\oAuthSina.csproj">
+      <Project>{407C3459-3EE2-4D28-BB68-0EFD84774040}</Project>
+      <Name>oAuthSina</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
