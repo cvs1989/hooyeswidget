@@ -23,8 +23,8 @@ namespace Tweet
             //Console.Read();
             //T.SinaRun();
             //Test1();
-
             Task.Run();
+            //sTimer.Run();
             //Test1();
 
         }

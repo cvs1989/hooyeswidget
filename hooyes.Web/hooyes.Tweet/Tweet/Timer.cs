@@ -16,7 +16,7 @@ namespace Tweet
         public void TT(object o, ElapsedEventArgs e)
         {
             //
-            T.QQTimeLine();
+            Task.Run();
             
         }
         public void Clock(object o, ElapsedEventArgs e)
