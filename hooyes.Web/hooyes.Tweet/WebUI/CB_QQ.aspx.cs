@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LeoShi.Soft.OpenSinaAPI;
 using OpenTSDK.Tencent;
+using Tweet.Core;
 public partial class CB_QQ : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -23,7 +24,19 @@ public partial class CB_QQ : System.Web.UI.Page
             {
                 Session["QQ_oauth_token"] = oauth.Token;
                 Session["QQ_oauth_token_secret"] = oauth.TokenSecret;
+                Session["QQ_user_id"] = name;
 
+                DictEntity dt = new DictEntity();
+                dt.App = "QQ";
+                dt.UserID = name;
+                dt.Key = "Token";
+                dt.Value = oauth.Token;
+                Dict.Save(dt);
+                dt.Key = "TokenSecret";
+                dt.Value = oauth.TokenSecret;
+                Dict.Save(dt);
+
+                T.SaveRelation();
                 Response.Write(oauth.TokenSecret);
             }
 

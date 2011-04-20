@@ -11,6 +11,7 @@ namespace LeoShi.Soft.OpenSinaAPI
         private const string RequestToken = "http://api.t.sina.com.cn/oauth/request_token";
         private const string OauthToken = "oauth_token";
         private const string OauthTokenSecret = "oauth_token_secret";
+        private const string OuathUserID = "user_id";
 
 
         public override string Request(string uri, string postData)
@@ -28,6 +29,10 @@ namespace LeoShi.Soft.OpenSinaAPI
         {
             SetTokenAndTokenSecret(AccessToken);
         }
+        public void GetAccessToken(out string user_id)
+        {
+            SetTokenAndTokenSecret(AccessToken,out user_id);
+        }
 
         private void SetTokenAndTokenSecret(string url)
         {
@@ -43,6 +48,24 @@ namespace LeoShi.Soft.OpenSinaAPI
             {
                 TokenSecret = queryString[OauthTokenSecret];
             }
+        }
+        private void SetTokenAndTokenSecret(string url,out string user_id)
+        {
+            user_id = null;
+            var response = Request(url, string.Empty);
+
+            if (response.Length <= 0) return;
+            var queryString = HttpUtility.ParseQueryString(response);
+            if (queryString[OauthToken] != null)
+            {
+                Token = queryString[OauthToken];
+            }
+            if (queryString[OauthTokenSecret] != null)
+            {
+                TokenSecret = queryString[OauthTokenSecret];
+            }
+            user_id = queryString[OuathUserID];
+           
         }
 
         public void GetRequestToken()
