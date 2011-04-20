@@ -6,19 +6,66 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LeoShi.Soft.OpenSinaAPI;
 using OpenTSDK.Tencent;
+using OpenTSDK.Tencent.Objects;
 
 public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
+            {
+                T.SaveRelation();
+                string script = @"<script>
+                 finish();
+                </script>";
+                ClientScript.RegisterStartupScript(this.Page.GetType(), "Finish", script);
+            }
+            if (HttpContext.Current.Session["QQ_user_id"] != null)
+            {
+                string appKey = "e40ccbe09c4945e08dc255a98fea1188";
+                string appSecret = "9f786428568a9b44036d955b7c6b9196";
+                OAuth oauth = new OAuth(appKey, appSecret);
+                //string name;
+                oauth.Token = (string)Session["QQ_oauth_token"];
+                oauth.TokenSecret = (string)Session["QQ_oauth_token_secret"];   //Access Secret
+                OpenTSDK.Tencent.API.User api = new OpenTSDK.Tencent.API.User(oauth);
 
+                UserProfileData<UserProfile> data = api.GetProfile();
+
+
+                if (data != null)
+                {
+                    string script = @"<script>
+                  var QQ_NickName='{0}';
+                  var QQ_Head='{1}';
+                  QQisLogin();
+                </script>";
+                    script = string.Format(script, data.Profile.NickName, data.Profile.Head);
+                    ClientScript.RegisterStartupScript(this.Page.GetType(), "QQ", script);
+
+                }
+                //根据OAuth对象实例化API接口
+            }
+
+            if (HttpContext.Current.Session["Sina_user_id"] != null)
+            {
+                var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST);
+                httpRequest.Token = "e7ddeb2263a81443cdf2dc7c4cb9fda2";// Session["oauth_token"].ToString();
+                httpRequest.TokenSecret = "39df48c9cc65369a7cfe75cde2abf2b8";// Session["oauth_token_secret"].ToString();
+                var url = "http://api.t.sina.com.cn/users/show.json?";
+                var r = httpRequest.Request(url, "id=" + (string)HttpContext.Current.Session["Sina_user_id"]);
+                string script = @"<script>
+                  var sina={0};
+                  SinaisLogin();
+                </script>";
+                script = string.Format(script, r);
+                ClientScript.RegisterStartupScript(this.Page.GetType(), "Sina", script);
+            }
+        }
     }
-    protected void tbtn_Click(object sender, EventArgs e)
-    {
-        T t = new T();
-        t.QQ(Text1.Text, null);
-        t.Sina(Text1.Text, null);
-    }
+ 
     protected void ConnectSinaBtn_Click(object sender, EventArgs e)
     {
         var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.GET) as HttpGet;
@@ -44,4 +91,6 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect(url);
         }
     }
+
+
 }
