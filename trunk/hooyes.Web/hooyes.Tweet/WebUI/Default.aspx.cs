@@ -26,12 +26,13 @@ public partial class _Default : System.Web.UI.Page
         string url = httpRequest.GetAuthorizationUrl();
         Session["oauth_token"] = httpRequest.Token;
         Session["oauth_token_secret"] = httpRequest.TokenSecret;
-        Response.Redirect(url + "&oauth_callback=http://t.hooyes.com/CB_Sina.aspx");
+        string callback = "http://t.hooyes.com/CB_Sina.aspx";
+        Response.Redirect(url + "&oauth_callback=" + callback);
     }
     protected void ConnectQQBtn_Click(object sender, EventArgs e)
     {
         string callback = "http://t.hooyes.com/CB_QQ.aspx";
-       // string callback = "http://localhost:8786/WebUI/CB_QQ.aspx";
+        //callback = "http://localhost:8786/WebUI/CB_QQ.aspx";
         string appKey = "e40ccbe09c4945e08dc255a98fea1188";
         string appSecret = "9f786428568a9b44036d955b7c6b9196";
         OAuth oauth = new OAuth(appKey, appSecret);

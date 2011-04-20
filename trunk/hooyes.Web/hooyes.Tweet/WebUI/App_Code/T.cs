@@ -5,6 +5,7 @@ using System.Web;
 using LeoShi.Soft.OpenSinaAPI;
 using OpenTSDK.Tencent.API;
 using OpenTSDK.Tencent;
+using Tweet.Core;
 
 
 /// <summary>
@@ -12,8 +13,10 @@ using OpenTSDK.Tencent;
 /// </summary>
 public class T
 {
+
 	public T()
 	{
+        
 		//
 		// TODO: Add constructor logic here
 		//
@@ -72,5 +75,20 @@ public class T
 
         return true;
         //Console.Read();
+    }
+
+    public static bool SaveRelation()
+    {
+        if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
+        {
+            RelationEntity et = new RelationEntity();
+            et.App = "QQ";
+            et.UserID = (string)HttpContext.Current.Session["QQ_user_id"];
+            et.SubApp = "Sina";
+            et.SubUserID = (string)HttpContext.Current.Session["Sina_user_id"];
+            // RelationEntity et = new RelationEntity();
+            Relation.Save(et);
+        }
+        return true;
     }
 }

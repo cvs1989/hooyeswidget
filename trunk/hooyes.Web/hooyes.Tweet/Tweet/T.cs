@@ -52,6 +52,21 @@ namespace Tweet
             Console.Write("OK");
             //Console.Read();
         }
+        public static void SinaTimeLine()
+        {
+
+            ////实例化OAuth对象
+            //string appKey = "3472084219";
+            //string appSecret = "54cae7d23876c298eaaf5cb0d14d0cd9";
+            //OAuth oauth = new OAuth(appKey, appSecret);
+            //oauth.Token = "e7ddeb2263a81443cdf2dc7c4cb9fda2";            //Access Token
+            //oauth.TokenSecret = "39df48c9cc65369a7cfe75cde2abf2b8";      //Access Secret
+
+            ////根据OAuth对象实例化API接口
+            //Timeline api = new Timeline(oauth);
+            //string url = "http://api.t.sina.com.cn/statuses/user_timeline.xml";
+            //var data = api.GetHomeTimeline(url, PageFlag.First, 0, 1);
+        }
 
         public static void QQTimeLine()
         {

@@ -10,7 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "..\WebUI\", "{1FFEC100-A374-4C00-912C-A14B08521039}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{407C3459-3EE2-4D28-BB68-0EFD84774040}|OpenSinaAPI.dll;{31AADDB4-BE12-4B89-A807-3EBFB3B5D20C}|OpenTSDK.Tencent.dll;"
+		ProjectReferences = "{407C3459-3EE2-4D28-BB68-0EFD84774040}|OpenSinaAPI.dll;{31AADDB4-BE12-4B89-A807-3EBFB3B5D20C}|OpenTSDK.Tencent.dll;{08A40DC4-13A9-401D-914F-72389B2F949E}|Tweet.Core.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/WebUI"
 		Debug.AspNetCompiler.PhysicalPath = "..\WebUI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebUI\"
@@ -28,6 +28,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "..\WebUI\", "{1FFE
 		VWDPort = "8786"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tweet.Core", "..\T.Core\Tweet.Core.csproj", "{08A40DC4-13A9-401D-914F-72389B2F949E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,16 @@ Global
 		{1FFEC100-A374-4C00-912C-A14B08521039}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{1FFEC100-A374-4C00-912C-A14B08521039}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{1FFEC100-A374-4C00-912C-A14B08521039}.Release|x86.ActiveCfg = Debug|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{08A40DC4-13A9-401D-914F-72389B2F949E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
