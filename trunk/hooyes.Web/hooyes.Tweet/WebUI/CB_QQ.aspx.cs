@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using LeoShi.Soft.OpenSinaAPI;
 using OpenTSDK.Tencent;
 using Tweet.Core;
+using OpenTSDK.Tencent.API;
+using OpenTSDK.Tencent.Objects;
 public partial class CB_QQ : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -26,6 +28,9 @@ public partial class CB_QQ : System.Web.UI.Page
                 Session["QQ_oauth_token_secret"] = oauth.TokenSecret;
                 Session["QQ_user_id"] = name;
 
+
+
+
                 DictEntity dt = new DictEntity();
                 dt.App = "QQ";
                 dt.UserID = name;
@@ -36,8 +41,28 @@ public partial class CB_QQ : System.Web.UI.Page
                 dt.Value = oauth.TokenSecret;
                 Dict.Save(dt);
 
-                T.SaveRelation();
-                Response.Write(oauth.TokenSecret);
+                //MaxTimeline
+                Timeline api = new Timeline(oauth);
+                var data = api.GetBroadcast_timeline(PageFlag.First, 0, 1);
+                if (data.Tweets.Length > 0)
+                {
+                    OpenTSDK.Tencent.Objects.Tweet tw = data.Tweets[0];
+                    if (tw.Timestamp > 0)
+                    {
+                        DictEntity dtT = new DictEntity();
+                        dtT.App = "QQ";
+                        dtT.Key = "MaxTimeline";
+                        dtT.UserID = name;
+                        dtT.Value = tw.Timestamp.ToString();
+                        Dict.Save(dtT);
+                    }
+                }
+
+                //T.SaveRelation();
+
+
+                //Response.Write(oauth.TokenSecret);
+                Response.Redirect("Default.aspx");
             }
 
         }

@@ -33,8 +33,9 @@ public partial class CB_Sina : System.Web.UI.Page
             dt.Key = "TokenSecret";
             dt.Value = httpRequest.TokenSecret;
             Dict.Save(dt);
-            T.SaveRelation();
-            Response.Write(httpRequest.TokenSecret);
+            //T.SaveRelation();
+            //Response.Write(httpRequest.TokenSecret);
+            Response.Redirect("Default.aspx");
         }
     }
 }
