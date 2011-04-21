@@ -15,14 +15,7 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
-            {
-                WebUtility.SaveRelation();
-                string script = @"<script>
-                 finish();
-                </script>";
-                ClientScript.RegisterStartupScript(this.Page.GetType(), "Finish", script);
-            }
+            
             if (HttpContext.Current.Session["QQ_user_id"] != null)
             {
                 string appKey = "e40ccbe09c4945e08dc255a98fea1188";
@@ -66,6 +59,15 @@ public partial class _Default : System.Web.UI.Page
                 </script>";
                 script = string.Format(script, r);
                 ClientScript.RegisterStartupScript(this.Page.GetType(), "Sina", script);
+            }
+
+            if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
+            {
+                WebUtility.SaveRelation();
+                string script = @"<script>
+                 finish();
+                </script>";
+                ClientScript.RegisterStartupScript(this.Page.GetType(), "Finish", script);
             }
         }
     }
