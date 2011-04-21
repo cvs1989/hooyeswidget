@@ -5,12 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style>
-    .none
-    {
-    	display:none;
-    }
-    img{ border:none;}
+    <style type="text/css">
+    .none{display:none;}
+     img{ border:none;}
     .nav{ width:800px;margin:0 auto; margin-bottom:20px; }
     .MainBox{ width:810px; margin:0 auto; height:230px; }
     .MainBox .left{ float:left; width:250px;}
@@ -32,7 +29,7 @@
         function QQisLogin() {
             $("#QQ_login").hide();
             $("#QQ").show();
-            $("#QQ_img").removeAttr("src").attr("src", QQ_Head+"/100");
+            $("#QQ_img").removeAttr("src").attr("src", QQ_Head+"/50");
             $("#QQ_span").html(QQ_NickName);
         }
         function SinaisLogin() {
@@ -75,7 +72,7 @@
      </div>
     </div>
     <div class="clear"></div>
-    <div id="ok" class="navOK none">设置完成！</div>
+    <div id="ok" class="navOK none">设置完成！您可以发条微博试试看</div>
     <div>
      
      
