@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using LeoShi.Soft.OpenSinaAPI;
 using OpenTSDK.Tencent;
 using OpenTSDK.Tencent.Objects;
+using Tweet.Core;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -16,7 +17,7 @@ public partial class _Default : System.Web.UI.Page
         {
             if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
             {
-                T.SaveRelation();
+                WebUtility.SaveRelation();
                 string script = @"<script>
                  finish();
                 </script>";
@@ -73,13 +74,12 @@ public partial class _Default : System.Web.UI.Page
         string url = httpRequest.GetAuthorizationUrl();
         Session["oauth_token"] = httpRequest.Token;
         Session["oauth_token_secret"] = httpRequest.TokenSecret;
-        string callback = "http://t.hooyes.com/CB_Sina.aspx";
+        string callback = Constant.AppCallBackDomain + "/CB_Sina.aspx";
         Response.Redirect(url + "&oauth_callback=" + callback);
     }
     protected void ConnectQQBtn_Click(object sender, EventArgs e)
     {
-        string callback = "http://t.hooyes.com/CB_QQ.aspx";
-        //callback = "http://localhost:8786/WebUI/CB_QQ.aspx";
+        string callback =Constant.AppCallBackDomain+ "/CB_QQ.aspx";
         string appKey = "e40ccbe09c4945e08dc255a98fea1188";
         string appSecret = "9f786428568a9b44036d955b7c6b9196";
         OAuth oauth = new OAuth(appKey, appSecret);
