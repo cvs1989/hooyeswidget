@@ -43,8 +43,11 @@ public partial class _Default : System.Web.UI.Page
                   var QQ_Head='{1}';
                   QQisLogin();
                 </script>";
-                    script = string.Format(script, data.Profile.NickName, data.Profile.Head);
-                    ClientScript.RegisterStartupScript(this.Page.GetType(), "QQ", script);
+                    if (data.Profile != null)
+                    {
+                        script = string.Format(script, data.Profile.NickName, data.Profile.Head);
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "QQ", script);
+                    }
 
                 }
                 //根据OAuth对象实例化API接口

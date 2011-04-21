@@ -12,7 +12,7 @@ namespace Tweet.Core
     {
         
         /// <summary>
-        /// 注册报警邮件收件人
+        /// 回调的域名
         /// </summary>
         public static string AppCallBackDomain
         {
@@ -25,6 +25,20 @@ namespace Tweet.Core
                     config = "http://t.hooyes.com";
                 }
                 return config;
+            }
+        }
+
+        public static int QQRequestNum
+        {
+            get
+            {
+                int ivalue = 2;
+                string config = ConfigurationManager.AppSettings.Get("QQRequestNum");
+                if (!string.IsNullOrEmpty(config))
+                {
+                    ivalue = Convert.ToInt32(config);
+                }
+                return ivalue;
             }
         }
        
