@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using Tweet.Core;
+using OpenTSDK.Tencent;
+using OpenTSDK.Tencent.Objects;
 
 namespace Tweet
 {
@@ -10,23 +13,26 @@ namespace Tweet
     {
         static void Main(string[] args)
         {
-            //string statusText = "天灰灰，会不会让我忘了你是谁";
-            //T.QQ(statusText);
-            //T.Sina(statusText);
+            //Task.RunTestLog();
+            sTimer.Run();
+        }
+        static void Test5()
+        {
 
-            //db.MaxTimeline("hooyes", 1303230632);
+         #region Sina TO QQ
+         XmlDocument sinaT=   Task.GetSinaUserTimeline("495718f5f9003448215b34482f4306fd", "23c7f928db274dd8c82bc00e99193db4", "9474059463");
 
-            //sTimer.Run();
-            //T.SinaTimeLine();
-            //Console.WriteLine(db.MaxTimeline("hooyes"));
+         XmlNodeList x = sinaT.SelectNodes("/statuses/status");
 
-            //Console.Read();
-            //T.SinaRun();
-            //Test1();
-            Task.Run();
-            //sTimer.Run();
-            //Test1();
+         foreach (XmlNode xn in x)
+         {
+             decimal id = Util.GetXmlNodeValue<decimal>(xn.SelectSingleNode("id"));
+             string text = Util.GetXmlNodeValue<string>(xn.SelectSingleNode("text")); ;
 
+           TweetOperateResult QQresult=  Task.QQ(text, "2fcaf70e590d4b14a6a6d6e36771b77f", "181939ffc5901da5e84ccdf69bd0746f");
+
+         }
+            #endregion
         }
         static void Test4()
         {
