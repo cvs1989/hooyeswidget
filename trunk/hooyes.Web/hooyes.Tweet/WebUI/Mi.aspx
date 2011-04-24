@@ -1,0 +1,87 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Mi.aspx.cs" Inherits="Mi" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>悄悄喜欢你</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+ <div class="formBox none" id="Container">
+ 
+    <div class="boxTitle">输入你悄悄喜欢的人的微博帐号...</div>
+    <div id="A_1">
+    <div class="appTips"><asp:TextBox ID="TextBox1" MaxLength="20" CssClass="sl" runat="server"></asp:TextBox>
+            <asp:Button ID="BtnSumbit" runat="server" OnClientClick="return I()" CssClass="button" Text="提交" 
+                onclick="BtnSumbit_Click" />
+        </div>
+ </div>
+    <div id="A_2">
+    <div class="appTips">请静静的等待...或许哪一天你真的等到了你的真爱
+    <div><a href="javascript:void(0);" onclick="C()">换个对象</a></div>
+    </div>
+    </div>
+
+    <div id="A_3">
+    <div class="appTips">
+    <a id="Sina_login" href="javascript:void(0)" onclick="A()" >
+       <img src="img/sinaLogin.png" />
+     </a>
+       <asp:Button ID="ConnectSinaBtn" runat="server" CssClass="none" Text="连接Sina" 
+            onclick="ConnectSinaBtn_Click" />
+    </div>
+    </div>
+    
+    <div class="appTips">把你自己暗恋对象的微博帐号悄悄地输入到系统，如果她（他）有一天也在系统中输入你的微博帐号，系统就会就把真相大白告诉你们两个，祝天下有情人终成眷属！</div>
+</div>
+    
+  
+    
+    </form>
+<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //var json = { isLogin: false, love: '' };
+    function A() {
+            //alert(1);
+            $("#ConnectSinaBtn").click();
+        }
+    function I() {
+        var v = $("#TextBox1").val();
+        if (v == "" || v==null) {
+            alert("你要输入个帐号哦");
+            return false;
+        }
+        return true;
+    }
+    function C() {
+        $("#A_1").show();
+        $("#A_2").hide();
+    }
+    function Page_Load() {
+       
+        if (json.isLogin) {
+            if (json.love == "") {
+                $("#A_1").show();
+                $("#A_2").hide();
+            } else {
+                $("#A_1").hide();
+                $("#A_2").show();
+            }
+            $("#A_3").hide();
+        } else {
+            $("#A_1").hide();
+            $("#A_2").hide();
+            $("#A_3").show();
+        }
+    }
+
+    Page_Load();
+
+    $("#Container").fadeIn("slow");
+</script>
+</body>
+</html>
