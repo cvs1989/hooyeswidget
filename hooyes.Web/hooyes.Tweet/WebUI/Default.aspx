@@ -106,8 +106,11 @@
     </div>
     </form>
 
-    <div class="foot">Copyright &copy; 2010 - 2012 HOOYES. All Rights Reserved.<br />
-<a href="http://www.miibeian.gov.cn/?from=www.hooyes.com" target="_blank">京ICP备05002153号</a> 西狐Inc&nbsp;&nbsp;<a href="http://www.hooyes.com" target="_blank">版权所有</a> QQ:227046</div>
-
+    <div class="foot">Copyright &copy; 2010 - 2012 HOOYES. All Rights Reserved.<br />
+
+<a href="http://www.miibeian.gov.cn/?from=www.hooyes.com" target="_blank">京ICP备05002153号</a> 西狐Inc&nbsp;&nbsp;<a href="http://www.hooyes.com" target="_blank">版权所有</a> QQ:227046</div>
+
+
+
 </body>
 </html>

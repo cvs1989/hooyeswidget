@@ -43,16 +43,16 @@ namespace Tweet.Core
         }
        
         /// <summary>
-        /// 100 mins toll free + 950 1st month fee free
+        /// 图片临时路径 E:\
         /// </summary>
-        public static string PromotionExtraCreditFormalDesc
+        public static string ImagesTempRoot
         {
             get
             {
-                string config = ConfigurationManager.AppSettings.Get("PromotionExtraCreditFormalDesc");
+                string config = ConfigurationManager.AppSettings.Get("ImagesTempRoot");
                 if (string.IsNullOrEmpty(config))
                 {
-                    config = "100 mins toll free + 950 1st month fee free";
+                    config = "E:\\";
                 }
                 return config;
             }

@@ -15,6 +15,7 @@ namespace Tweet
         {
             //Task.RunTestLog();
             sTimer.Run();
+            //Task.Run();
         }
         static void Test5()
         {

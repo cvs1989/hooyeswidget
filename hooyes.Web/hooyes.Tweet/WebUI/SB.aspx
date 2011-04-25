@@ -13,7 +13,7 @@
     
  <div class="formBox none" id="Container">
  
-    <div class="boxTitle">输入你最讨厌的人的微博帐号...</div>
+    <div class="boxTitle">输入你最讨厌的人的腾讯微博帐号...</div>
     <div id="A_1">
     <div class="appTips"><asp:TextBox ID="TextBox1" MaxLength="20" CssClass="sl" runat="server"></asp:TextBox>
             <asp:Button ID="BtnSumbit" runat="server" OnClientClick="return I()" CssClass="button" Text="提交" 
@@ -35,7 +35,7 @@
     </div>
     </div>
     
-    <div class="appTips">把你自己最讨厌对象的微博帐号悄悄地输入到系统，如果她（他）有一天也在系统中输入你的微博帐号，系统就会悄悄出面调解你们的矛盾，大家和气生财。</div>
+    <div class="appTips">把你自己最讨厌对象的腾讯微博帐号悄悄地输入到系统，如果她（他）有一天也在系统中输入你的腾讯微博帐号，系统就会悄悄出面调解你们的矛盾，大家和气生财。</div>
 </div>
     
   
