@@ -6,7 +6,6 @@
 <head runat="server">
     <title>悄悄喜欢你</title>
     <link href="css/base.css" rel="stylesheet" type="text/css" />
-    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,9 +14,18 @@
  
     <div class="boxTitle">输入你悄悄喜欢的人的新浪微博帐号...</div>
     <div id="A_1">
-    <div class="appTips"><asp:TextBox ID="TextBox1" MaxLength="20" CssClass="sl" runat="server"></asp:TextBox>
+    <div class="appTips">
+    <div id="Acct">
+     <img id="Sina_img" class="avatar" src="" /><br />
+         <span id="Sina_span"></span>
+   <a href="javascript:void(0);" onclick="A()">换个帐号登录</a>&nbsp;
+   <a href="Mi_logout.aspx">退出</a>
+   <br />
+   </div>
+    <asp:TextBox ID="TextBox1" MaxLength="20" CssClass="sl" runat="server"></asp:TextBox>
             <asp:Button ID="BtnSumbit" runat="server" OnClientClick="return I()" CssClass="button" Text="提交" 
                 onclick="BtnSumbit_Click" />
+                
         </div>
  </div>
     <div id="A_2">
@@ -27,8 +35,8 @@
     </div>
 
     <div id="A_3">
-    <div class="appTips">
-   请先新浪微博授权: <a id="Sina_login" href="javascript:void(0)" onclick="A()" >
+    <div class="appTips auth">
+   使用本功能请使用新浪微博授权<br /><a id="Sina_login" href="javascript:void(0)" onclick="A()" >
        <img src="img/sinaLogin.png" />
      </a>
        <asp:Button ID="ConnectSinaBtn" runat="server" CssClass="none" Text="连接Sina" 
@@ -49,7 +57,12 @@
             //alert(1);
             $("#ConnectSinaBtn").click();
         }
-    function I() {
+        function I() {
+            if (!json.isLogin) {
+                alert("请点击下方新浪微博授权后使用");
+                $("#A_3").addClass("Foc");
+                return false;
+            }
         var v = $("#TextBox1").val();
         if (v == "" || v==null) {
             alert("你要输入个帐号哦");
@@ -62,8 +75,9 @@
         $("#A_2").hide();
     }
     function Page_Load() {
-       
+
         if (json.isLogin) {
+            SinaisLogin();
             if (json.love == "") {
                 $("#A_1").show();
                 $("#A_2").hide();
@@ -73,13 +87,23 @@
             }
             $("#A_3").hide();
         } else {
-            $("#A_1").hide();
+        $("#Acct").hide();
+            $("#A_1").show();
             $("#A_2").hide();
             $("#A_3").show();
         }
     }
+    function SinaisLogin() {
+        //$("#Sina_login").hide();
+        //$("#Sina").show();
+        if (sina.screen_name) {
+            $("#Sina_img").removeAttr("src").attr("src", sina.profile_image_url);
+            $("#Sina_span").html(sina.screen_name);
+        }
+    }
 
     Page_Load();
+
 
     $("#Container").fadeIn("slow");
 </script>
