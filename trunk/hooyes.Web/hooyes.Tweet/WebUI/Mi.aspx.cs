@@ -27,15 +27,18 @@ public partial class Mi : System.Web.UI.Page
     }
     protected void BtnSumbit_Click(object sender, EventArgs e)
     {
-        DictEntity dt = new DictEntity();
-        dt.App = "Sina";
-        dt.UserID = Convert.ToString(Session["Sina_user_id"]);
-        dt.Key = Convert.ToString(Session["Sina_user_id"]);
-        dt.Value = TextBox1.Text.Replace("'", "") ;
-       
-        Dict.Save(dt);
+        if (Session["Sina_user_id"] != null)
+        {
+            DictEntity dt = new DictEntity();
+            dt.App = "Sina";
+            dt.UserID = Convert.ToString(Session["Sina_user_id"]);
+            dt.Key = Convert.ToString(Session["Sina_user_id"]);
+            dt.Value = TextBox1.Text.Replace("'", "");
 
-        Response.Redirect("Mi.aspx");
+            Dict.Save(dt);
+
+            Response.Redirect("Mi.aspx");
+        }
     }
     protected void initPage()
     {
@@ -63,6 +66,21 @@ public partial class Mi : System.Web.UI.Page
         </script>";
         script = string.Format(script, json);
         ClientScript.RegisterClientScriptBlock(this.GetType(), "xx", script);
+
+        if (HttpContext.Current.Session["Sina_user_id"] != null)
+        {
+            
+            var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST);
+            httpRequest.Token = Convert.ToString(Session["oauth_token"]);
+            httpRequest.TokenSecret = Convert.ToString(Session["oauth_token_secret"]);
+            string url = "http://api.t.sina.com.cn/users/show.json?";
+            string r = httpRequest.Request(url, "id=" + (string)HttpContext.Current.Session["Sina_user_id"]);
+            string script2 = @"<script>
+                  var sina={0};
+                </script>";
+            script2 = string.Format(script2, r);
+            ClientScript.RegisterClientScriptBlock(this.Page.GetType(), "Sina", script2);
+        }
 
     }
 }

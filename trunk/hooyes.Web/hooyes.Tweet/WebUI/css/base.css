@@ -19,3 +19,7 @@ body{font-family:Arial,Verdana,Tahoma;font-size:12px;color:#666666;background-co
 .share p{margin-bottom:10px;}
   img{ border:none;}
   .none{ display:none;}
+  .auth{ text-align:center; line-height:30px;}
+  .Foc{border:1px solid #BBE1F1;
+ background-color: #EEFAFF
+ }

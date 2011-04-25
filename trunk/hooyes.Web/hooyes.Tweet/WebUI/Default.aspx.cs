@@ -49,8 +49,8 @@ public partial class _Default : System.Web.UI.Page
             if (HttpContext.Current.Session["Sina_user_id"] != null)
             {
                 var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST);
-                httpRequest.Token = "e7ddeb2263a81443cdf2dc7c4cb9fda2";// Session["oauth_token"].ToString();
-                httpRequest.TokenSecret = "39df48c9cc65369a7cfe75cde2abf2b8";// Session["oauth_token_secret"].ToString();
+                httpRequest.Token = (string)Session["oauth_token"];
+                httpRequest.TokenSecret = (string)Session["oauth_token_secret"];
                 var url = "http://api.t.sina.com.cn/users/show.json?";
                 var r = httpRequest.Request(url, "id=" + (string)HttpContext.Current.Session["Sina_user_id"]);
                 string script = @"<script>
@@ -59,6 +59,7 @@ public partial class _Default : System.Web.UI.Page
                 </script>";
                 script = string.Format(script, r);
                 ClientScript.RegisterStartupScript(this.Page.GetType(), "Sina", script);
+
             }
 
             if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
