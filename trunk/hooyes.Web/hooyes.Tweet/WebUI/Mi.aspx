@@ -13,7 +13,7 @@
     
  <div class="formBox none" id="Container">
  
-    <div class="boxTitle">输入你悄悄喜欢的人的微博帐号...</div>
+    <div class="boxTitle">输入你悄悄喜欢的人的新浪微博帐号...</div>
     <div id="A_1">
     <div class="appTips"><asp:TextBox ID="TextBox1" MaxLength="20" CssClass="sl" runat="server"></asp:TextBox>
             <asp:Button ID="BtnSumbit" runat="server" OnClientClick="return I()" CssClass="button" Text="提交" 
@@ -28,7 +28,7 @@
 
     <div id="A_3">
     <div class="appTips">
-    <a id="Sina_login" href="javascript:void(0)" onclick="A()" >
+   请先新浪微博授权: <a id="Sina_login" href="javascript:void(0)" onclick="A()" >
        <img src="img/sinaLogin.png" />
      </a>
        <asp:Button ID="ConnectSinaBtn" runat="server" CssClass="none" Text="连接Sina" 
@@ -36,7 +36,7 @@
     </div>
     </div>
     
-    <div class="appTips">把你自己暗恋对象的微博帐号悄悄地输入到系统，如果她（他）有一天也在系统中输入你的微博帐号，系统就会就把真相大白告诉你们两个，祝天下有情人终成眷属！</div>
+    <div class="appTips">把你自己暗恋对象的<b>新浪微博帐号</b>悄悄地输入到系统，如果她（他）有一天也在系统中输入你的<b>新浪微博帐号</b>，系统就会就把真相大白告诉你们两个，祝天下有情人终成眷属！</div>
 </div>
     
   

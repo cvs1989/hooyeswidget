@@ -8,6 +8,8 @@ using OpenTSDK.Tencent;
 using OpenTSDK.Tencent.Objects;
 using Tweet.Core;
 using System.Xml;
+using System.Net;
+using System.IO;
 using NLog;
 
 namespace Tweet
@@ -87,7 +89,29 @@ namespace Tweet
                                {
                                    string Token = Sub["Token"];
                                    string TokenSecret = Sub["TokenSecret"];
-                                   decimal Tid = Sina(tw.Origtext, Token, TokenSecret);
+                                   decimal Tid = 0;
+                                   string pic = string.Empty;
+                                   //只发原创
+                                   if (tw.Type == 1)
+                                   {
+                                       if (string.IsNullOrEmpty(tw.Image))
+                                       {
+                                           Tid = Sina(tw.Origtext, Token, TokenSecret);
+                                       }
+                                       else
+                                       {
+                                           pic = GetHttpFile(tw.Image + "/2000");
+                                           if (!string.IsNullOrEmpty(pic))
+                                           {
+                                               Tid = Sina(tw.Origtext, Token, TokenSecret, pic);
+                                           }
+                                           else
+                                           {
+                                               Tid = Sina(tw.Origtext, Token, TokenSecret);
+                                           }
+                                       }
+                                   }
+
                                    //dt.Value = tw.Timestamp.ToString();
                                    if (maxTimelineTemp < tw.Timestamp)
                                    {
@@ -138,14 +162,37 @@ namespace Tweet
                        foreach (XmlNode xn in x)
                        {
                            decimal id = Util.GetXmlNodeValue<decimal>(xn.SelectSingleNode("id"));
-                           string text = Util.GetXmlNodeValue<string>(xn.SelectSingleNode("text")); ;
+                           string text = Util.GetXmlNodeValue<string>(xn.SelectSingleNode("text")); 
 
-                           TweetOperateResult QQresult = Task.QQ(text, Main["Token"], Main["TokenSecret"]);
-
-                           if (maxTimelineTemp2 < QQresult.Timestamp)
+                           string original_pic=string.Empty;
+                           try
                            {
-                               maxTimelineTemp2 = QQresult.Timestamp;
+                               original_pic = Util.GetXmlNodeValue<string>(xn.SelectSingleNode("original_pic"));
+
+                               if (!string.IsNullOrEmpty(original_pic))
+                               {
+                                   original_pic = GetHttpFile(original_pic);
+                               }
                            }
+                           catch (Exception ex)
+                           {
+                               log.Warn("{0},{1}", ex.Message, ex.StackTrace);
+                           }
+
+                           XmlNode retweeted_status=  xn.SelectSingleNode("//retweeted_status");
+
+                           TweetOperateResult QQresult = null;
+                           //转播的不发啦
+                           if (retweeted_status == null)
+                           {
+                               QQresult = Task.QQ(text, Main["Token"], Main["TokenSecret"], original_pic);
+                               if (maxTimelineTemp2 < QQresult.Timestamp)
+                               {
+                                   maxTimelineTemp2 = QQresult.Timestamp;
+                               }
+                           }
+
+                          
                            if (MaxIdTemp2 < (long)id)
                            {
                                MaxIdTemp2 = id;
@@ -177,7 +224,7 @@ namespace Tweet
            }
 
        }
-       public static TweetOperateResult QQ(string statusText, string Token, string TokenSecret)
+       public static TweetOperateResult QQ(string statusText, string Token, string TokenSecret,string pic=null)
        {
            //实例化OAuth对象
            string appKey = "e40ccbe09c4945e08dc255a98fea1188";
@@ -190,7 +237,7 @@ namespace Tweet
 
            Twitter twitter = new Twitter(oauth);
            //var data2 = twitter.Add("铁盒的钥匙我找不到!沉在盒子里的是你给我的快乐，我很想记得，可是我记不得", @"C:\Users\hooyes\Pictures\58.gif", "127.0.0.1");
-           var data2 = twitter.Add(statusText, "207.6.14.22");
+           var data2 = twitter.Add(statusText,pic,"207.6.14.22");
            if (data2.Ret == 0)
            {
                //删除刚发的微博
@@ -199,6 +246,10 @@ namespace Tweet
            else
            {
                Console.WriteLine("发布失败");
+           }
+           if (!string.IsNullOrEmpty(pic))
+           {
+               File.Delete(pic);
            }
            return data2;
 
@@ -222,6 +273,24 @@ namespace Tweet
            return id;
            //Console.Read();
        }
+       public static decimal Sina(string statusText, string Token, string TokenSecret,string pic)
+       {
+           var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST) as HttpPost; 
+           httpRequest.Token = Token;
+           httpRequest.TokenSecret = TokenSecret;
+           string url = "http://api.t.sina.com.cn/statuses/upload.xml?";
+           var data = httpRequest.RequestWithPicture(url, "status=" + HttpUtility.UrlEncode(statusText),pic);
+
+           XmlDocument xml = new XmlDocument();
+           xml.LoadXml(data);
+
+           XmlNode xn = xml.SelectSingleNode("/status/id");
+
+           decimal id = Util.GetXmlNodeValue<decimal>(xn);
+           Console.WriteLine("sid:{0}", id);
+           File.Delete(pic);
+           return id;
+       }
        public static XmlDocument GetSinaUserTimeline(string Token, string TokenSecret, string since_id)
        {
            XmlDocument xml = new XmlDocument();
@@ -236,6 +305,14 @@ namespace Tweet
            xml.LoadXml(data);
 
            return xml;
+       }
+       public static string GetHttpFile(string fileUrl)
+       {
+           string fileName = Guid.NewGuid().ToString() + ".jpg";
+           fileName=Path.Combine(Constant.ImagesTempRoot, fileName);
+           WebClient wc = new WebClient();
+           wc.DownloadFile(fileUrl, fileName);
+           return fileName;
        }
     }
 }
