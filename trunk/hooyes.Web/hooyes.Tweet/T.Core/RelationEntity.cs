@@ -11,5 +11,7 @@ namespace Tweet.Core
         public string UserID { get; set; }
         public string SubApp { get; set; }
         public string SubUserID { get; set; }
+        public int Enabled { get; set; }
+        public int UpdateCount { get; set; }
     }
 }
