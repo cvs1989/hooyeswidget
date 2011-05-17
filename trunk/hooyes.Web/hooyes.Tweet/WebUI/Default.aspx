@@ -10,7 +10,11 @@
     .none{display:none;}
      img{ border:none;}
     .nav{ width:800px;margin:0 auto; margin-bottom:20px; margin-top:30px; border:1px solid #BBE1F1;
- background-color: #EEFAFF; font-size:14px; padding:10px; line-height:22px;}
+ background-color: #EEFAFF; font-size:14px; padding:10px; line-height:22px;
+ border-radius: 5px; 
+ border: 5px solid #FFFFFF;
+ box-shadow: 1px 1px 5px #333333;
+ }
     .MainBox{ width:810px; margin:0 auto; height:230px; margin-top:60px; }
     .MainBox .left{ float:left; width:250px;}
     .MainBox .center{ float:left; width:300px;}
@@ -111,6 +115,9 @@
 <a href="http://www.miibeian.gov.cn/?from=www.hooyes.com" target="_blank">京ICP备05002153号</a> 西狐Inc&nbsp;&nbsp;<a href="http://www.hooyes.com" target="_blank">版权所有</a> QQ:227046</div>
 
 
+<div id="cnzzcount_f_hooyes" class="foot" style="display:none">
+<script type="text/javascript" src="http://s22.cnzz.com/stat.php?id=199582&web_id=199582" language="JavaScript"></script>
+</div>
 
 </body>
 </html>

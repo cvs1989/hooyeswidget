@@ -81,5 +81,8 @@
 
     $("#Container").fadeIn("slow");
 </script>
+<div id="cnzzcount_f_hooyes" class="foot" style="display:none">
+<script type="text/javascript" src="http://s22.cnzz.com/stat.php?id=199582&web_id=199582" language="JavaScript"></script>
+</div>
 </body>
 </html>
