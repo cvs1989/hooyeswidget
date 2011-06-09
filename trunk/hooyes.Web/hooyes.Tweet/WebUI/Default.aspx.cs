@@ -51,7 +51,7 @@ public partial class _Default : System.Web.UI.Page
                 var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST);
                 httpRequest.Token = (string)Session["oauth_token"];
                 httpRequest.TokenSecret = (string)Session["oauth_token_secret"];
-                var url = "http://api.weibo.com/users/show.json?";
+                var url = "http://api.t.sina.com.cn/users/show.json?";
                 var r = httpRequest.Request(url, "id=" + (string)HttpContext.Current.Session["Sina_user_id"]);
                 string script = @"<script>
                   var sina={0};
