@@ -6,9 +6,12 @@ namespace LeoShi.Soft.OpenSinaAPI
     public class HttpGet : BaseHttpRequest
     {
         private const string GET = "GET";
-        private const string AccessToken = "http://api.t.sina.com.cn/oauth/access_token";
-        private const string AUTHORIZE = "http://api.t.sina.com.cn/oauth/authorize";
-        private const string RequestToken = "http://api.t.sina.com.cn/oauth/request_token";
+        //private const string AccessToken = "http://api.t.sina.com.cn/oauth/access_token";
+        //private const string AUTHORIZE = "http://api.t.sina.com.cn/oauth/authorize";
+        //private const string RequestToken = "http://api.t.sina.com.cn/oauth/request_token";
+        private const string AccessToken = "http://api.weibo.com/oauth/access_token";
+        private const string AUTHORIZE = "http://api.weibo.com/oauth/authorize";
+        private const string RequestToken = "http://api.weibo.com/oauth/request_token";
         private const string OauthToken = "oauth_token";
         private const string OauthTokenSecret = "oauth_token_secret";
         private const string OuathUserID = "user_id";
