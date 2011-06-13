@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>微同步</title>
+    <title>微同步  -- 微博云同步</title>
     <style type="text/css">
     body{font-size:14px; }
     .none{display:none;}
@@ -70,7 +70,7 @@
     
     <div class="nav">
     在您建立绑定后， 以后在发腾讯微博的时候，同时“微同步”帮你复制一份到你的新浪微博上。<br />
-    同理，你在发新浪微博的时候，同时“微同步”帮你复制一份到你的腾讯微博上。快来体验吧!
+    同理，你在发新浪微博的时候，同时“微同步”帮你复制一份到你的腾讯微博上。无需客户端，云同步，快来体验吧!
     </div>
     <div class="MainBox">
    <div class="left"><a id="Sina_login" href="javascript:void(0)" onclick="A()">
@@ -112,7 +112,9 @@
 
     <div class="foot">Copyright &copy; 2010 - 2012 HOOYES. All Rights Reserved.<br />
 
-<a href="http://www.miibeian.gov.cn/?from=www.hooyes.com" target="_blank">京ICP备05002153号</a> 西狐Inc&nbsp;&nbsp;<a href="http://www.hooyes.com" target="_blank">版权所有</a> QQ:227046</div>
+<a href="http://www.miibeian.gov.cn/?from=www.hooyes.com" target="_blank">京ICP备05002153号</a> 西狐 <a href="http://www.hooyes.com" target="_blank">版权所有</a> 
+<br />官方新浪微博:<a href="http://weibo.com/hooyes" target="_blank">@hooyes</a> 腾讯微博 <a href="http://t.qq.com/hooyes" target="_blank">@hooyes</a>
+QQ:227046</div>
 
 
 <div id="cnzzcount_f_hooyes" class="foot" style="display:none">
