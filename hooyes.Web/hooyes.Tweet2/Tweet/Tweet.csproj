@@ -57,14 +57,6 @@
     <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\OpenQQApi2\OpenTSDK.Tencent\Tweet.Tencent.csproj">
-      <Project>{31AADDB4-BE12-4B89-A807-3EBFB3B5D20C}</Project>
-      <Name>Tweet.Tencent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenSinaApi\oAuthSina\Tweet.Sina.csproj">
-      <Project>{407C3459-3EE2-4D28-BB68-0EFD84774040}</Project>
-      <Name>Tweet.Sina</Name>
-    </ProjectReference>
     <ProjectReference Include="..\T.Core\Tweet.Core.csproj">
       <Project>{08A40DC4-13A9-401D-914F-72389B2F949E}</Project>
       <Name>Tweet.Core</Name>
