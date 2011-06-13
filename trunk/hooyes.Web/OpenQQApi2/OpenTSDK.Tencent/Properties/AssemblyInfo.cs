@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("OpenTSDK.Tencent")]
-[assembly: AssemblyDescription("腾讯微博SDK，此SDK基于LGPL协议发布。项目地址：http://code.google.com/p/txopent/")]
+[assembly: AssemblyTitle("Tweet.Tencent")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("http://code.google.com/p/txopent/")]
-[assembly: AssemblyProduct("OpenTSDK.Tencent")]
-[assembly: AssemblyCopyright("Copyright © kingthy 2011")]
+[assembly: AssemblyCompany("www.hooyes.com")]
+[assembly: AssemblyProduct("Tweet.Tencent")]
+[assembly: AssemblyCopyright("Copyright © hooyes 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.2")]
+[assembly: AssemblyFileVersion("1.0.0.2")]

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Web;
-
+using Tweet.Core;
 namespace LeoShi.Soft.OpenSinaAPI
 {
     public abstract class BaseHttpRequest : oAuthBase,IHttpRequestMethod
@@ -21,7 +21,7 @@ namespace LeoShi.Soft.OpenSinaAPI
             {
                 if (string.IsNullOrEmpty(_appKey))
                 {
-                    _appKey = ConfigurationManager.AppSettings["app_key"];
+                    _appKey = Constant.app_key_sina;
                 }
                 return _appKey;
             }
@@ -33,7 +33,7 @@ namespace LeoShi.Soft.OpenSinaAPI
             {
                 if (string.IsNullOrEmpty(_appSecret))
                 {
-                    _appSecret = ConfigurationManager.AppSettings["app_secret"];
+                    _appSecret = Constant.app_secret_sina;
                 }
                 return _appSecret;
             }
