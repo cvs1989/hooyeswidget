@@ -30,6 +30,8 @@ namespace Tweet.Core
                 , new SqlParameter("@SubUserID", dict.SubUserID)
                  );
 
+            TempSync(dict);
+
             return x;
 
         }
@@ -105,6 +107,22 @@ namespace Tweet.Core
             }
             dr.Close();
             return lt;
+        }
+
+        public static void TempSync(RelationEntity dict)
+        {
+            try
+            {
+                string sql = "update dvbbs8.dbo.OAuth_Relation set Enabled=2 where UserID=@UserID";
+                int x = SqlHelper.ExecuteNonQuery(SqlHelper.Local, CommandType.Text, sql
+                     , new SqlParameter("@UserID", dict.UserID)
+                     );
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
         }
 
     }
