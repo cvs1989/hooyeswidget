@@ -22,57 +22,81 @@ public partial class _Default : System.Web.UI.Page
 
                 if (HttpContext.Current.Session["QQ_user_id"] != null)
                 {
-                    string appKey = Constant.app_key_QQ;
-                    string appSecret = Constant.app_secret_QQ;
-                    OAuth oauth = new OAuth(appKey, appSecret);
-                    //string name;
-                    oauth.Token = (string)Session["QQ_oauth_token"];
-                    oauth.TokenSecret = (string)Session["QQ_oauth_token_secret"];   //Access Secret
-                    OpenTSDK.Tencent.API.User api = new OpenTSDK.Tencent.API.User(oauth);
-
-                    UserProfileData<UserProfile> data = api.GetProfile();
-
-
-                    if (data != null)
+                    if (Session["QQ_script"] == null)
                     {
-                        string script = @"<script>
+                        string appKey = Constant.app_key_QQ;
+                        string appSecret = Constant.app_secret_QQ;
+                        OAuth oauth = new OAuth(appKey, appSecret);
+                        //string name;
+                        oauth.Token = (string)Session["QQ_oauth_token"];
+                        oauth.TokenSecret = (string)Session["QQ_oauth_token_secret"];   //Access Secret
+                        OpenTSDK.Tencent.API.User api = new OpenTSDK.Tencent.API.User(oauth);
+
+                        UserProfileData<UserProfile> data = api.GetProfile();
+
+
+                        if (data != null)
+                        {
+                            string script = @"<script>
                   var QQ_NickName='{0}';
                   var QQ_Head='{1}';
                   QQisLogin();
                 </script>";
-                        if (data.Profile != null)
-                        {
-                            script = string.Format(script, data.Profile.NickName, data.Profile.Head);
-                            ClientScript.RegisterStartupScript(this.Page.GetType(), "QQ", script);
-                        }
+                            if (data.Profile != null)
+                            {
+                                script = string.Format(script, data.Profile.NickName, data.Profile.Head);
+                                Session["QQ_script"] = script;
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "QQ", script);
+                            }
 
+                        }
                     }
-                    //根据OAuth对象实例化API接口
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "QQ", (string)Session["QQ_script"]);
+                    }
+                    
                 }
 
                 if (HttpContext.Current.Session["Sina_user_id"] != null)
                 {
-                    var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST);
-                    httpRequest.Token = (string)Session["oauth_token"];
-                    httpRequest.TokenSecret = (string)Session["oauth_token_secret"];
-                    var url = "http://api.t.sina.com.cn/users/show.json?";
-                    var r = httpRequest.Request(url, "id=" + (string)HttpContext.Current.Session["Sina_user_id"]);
-                    string script = @"<script>
+                    if (Session["Sina_script"] == null)
+                    {
+                        var httpRequest = HttpRequestFactory.CreateHttpRequest(Method.POST);
+                        httpRequest.Token = (string)Session["oauth_token"];
+                        httpRequest.TokenSecret = (string)Session["oauth_token_secret"];
+                        var url = "http://api.t.sina.com.cn/users/show.json?";
+                        var r = httpRequest.Request(url, "id=" + (string)HttpContext.Current.Session["Sina_user_id"]);
+                        string script = @"<script>
                   var sina={0};
                   SinaisLogin();
                 </script>";
-                    script = string.Format(script, r);
-                    ClientScript.RegisterStartupScript(this.Page.GetType(), "Sina", script);
+                        script = string.Format(script, r);
+                        Session["Sina_script"] = script;
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "Sina", script);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "Sina", (string)Session["Sina_script"]);
+                    }
 
                 }
 
                 if (HttpContext.Current.Session["QQ_user_id"] != null && HttpContext.Current.Session["Sina_user_id"] != null)
                 {
-                    WebUtility.SaveRelation();
-                    string script = @"<script>
+                    if (Session["Common_script"] == null)
+                    {
+                        WebUtility.SaveRelation();
+                        string script = @"<script>
                  finish();
                 </script>";
-                    ClientScript.RegisterStartupScript(this.Page.GetType(), "Finish", script);
+                        Session["Common_script"] = script;
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "Finish", script);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "Finish", (string)Session["Common_script"]);
+                    }
                 }
             }
         }

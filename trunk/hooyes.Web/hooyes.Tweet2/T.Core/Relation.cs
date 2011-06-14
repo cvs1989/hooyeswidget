@@ -113,7 +113,7 @@ namespace Tweet.Core
         {
             try
             {
-                string sql = "update dvbbs8.dbo.OAuth_Relation set Enabled=2 where UserID=@UserID";
+                string sql = "update dvbbs8.dbo.OAuth_Relation set Enabled=Enabled+1,UpdateCount=UpdateCount+1,UpdateTime=getdate() where UserID=@UserID";
                 int x = SqlHelper.ExecuteNonQuery(SqlHelper.Local, CommandType.Text, sql
                      , new SqlParameter("@UserID", dict.UserID)
                      );
