@@ -17,9 +17,92 @@ body{font-family:Arial,Verdana,Tahoma;font-size:12px;color:#666666;background-co
 .copyright{margin:0 auto;text-align:center;margin-top:10px;color:#999;}
 .share{margin:10px 10px 0 10px;}
 .share p{margin-bottom:10px;}
-  img{ border:none;}
-  .none{ display:none;}
-  .auth{ text-align:center; line-height:30px;}
-  .Foc{border:1px solid #BBE1F1;
- background-color: #EEFAFF
- }
+img{ border:none;}
+.none{ display:none;}
+.auth{ text-align:center; line-height:30px;}
+.Foc{border:1px solid #BBE1F1;background-color: #EEFAFF}
+body{font-size: 14px;}
+.none{display: none;}
+img{border: none;}
+a{ text-decoration:none;}
+.nav{
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    border: 1px solid #BBE1F1;
+    background-color: #FFF;
+    font-size: 14px;
+    padding: 10px;
+    line-height: 22px;
+    border-radius: 5px;
+    border: 5px solid #FFFFFF;
+    box-shadow: 1px 1px 5px #333333;
+}
+.MainBox{
+    width: 810px;
+    margin: 0 auto;
+    height: 230px;
+    margin-top: 60px;}
+.MainBox .left
+{
+    float: left;
+    width: 250px;
+     height:180px;
+    text-align:center;
+    
+}
+.MainBox .left .tx{ margin-top:90px; display:block;}
+.MainBox .center{
+    float: left;
+    width: 300px;
+    text-align:center;
+    height:180px;
+    background:url('../img/sync1.png') no-repeat center;
+    }
+.MainBox .right
+{
+     height:180px;
+    float: left;
+    width: 250px;
+    text-align:center;
+}
+.MainBox .right .tx{ margin-top:90px; display:block;}
+.navOK{
+    font-size: 14px;
+    width: 800px;
+    margin: 0 auto;
+    margin-top:10px;
+    margin-bottom: 20px;
+    height: 50px;
+    border: 1px solid #FFCC00;
+    line-height: 50px;
+    text-align:center;
+    background-color: #FFF;
+    border-radius: 5px;
+    border: 5px solid #FFFFFF;
+    box-shadow: 1px 1px 5px #333333;
+    }
+.clear{clear: both;}
+.avatar{
+    border: solid 5px #BBE1F1;
+    padding: 5px;}
+.foot{
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 0px;
+    line-height: 24px;
+    margin: 0px;
+    padding-left: 0px;
+    width: 100%;
+    padding-right: 0px;
+    float: left;
+    color: #9e9e9e;
+    clear: both;
+    padding-top: 18px;}
+.foot A:link{ color: #9e9e9e; text-decoration: none;}
+.foot A:visited{color: #9e9e9e; text-decoration: none;}
+.foot A:active{color: #9e9e9e;text-decoration: none;}
+.foot A:hover{text-decoration: underline;}
+.shareTo{ height:18px; line-height:18px; text-align:center}
+ 
