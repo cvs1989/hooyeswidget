@@ -50,7 +50,7 @@
             </a>
             <div id="Sina" class="none">
                 新浪微博<br />
-                <img id="Sina_img" class="avatar" src="" /><br />
+                <img id="Sina_img" class="avatar" src="img/sinaLogin.png" /><br />
                 <span id="Sina_span"></span>
             </div>
         </div>
@@ -63,7 +63,7 @@
             </a>
             <div id="QQ" class="none">
                 腾讯微博<br />
-                <img id="QQ_img" class="avatar" src="" /><br />
+                <img id="QQ_img" class="avatar" src="img/qqLogin.png" /><br />
                 <span id="QQ_span"></span>
             </div>
         </div>
