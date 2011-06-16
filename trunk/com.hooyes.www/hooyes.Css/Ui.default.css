@@ -1,0 +1,40 @@
+﻿/* CSS 布局 */
+body{
+	font-family:微软雅黑; font-size:medium;
+}
+a{text-decoration:none;}
+#masthead {
+}
+#top_nav { 
+height:25px;
+}
+#top_nav ul{ margin:0px; list-style-type:none;
+	}
+#top_nav ul li{ float:left; margin-left:10px;
+	}
+#top_nav ul li a{ display:block;}
+#top_nav ul li a span{ 
+	}
+}
+#mood{ clear:both;}
+#mood ul{margin:0px; background-color:blue}
+#page_content { clear:both;
+height:330px; overflow:hidden;
+}
+#page_content ul li{
+	 list-style-type:circle}
+#footer { text-align:center;
+}
+#contactInner{
+	 height:26px; line-height:26px;
+}
+#contactInner img{
+	 border:0px;vertical-align:text-bottom
+}
+ .Common3{
+ margin: 0px auto;
+ margin-bottom:20px;
+ border:1px solid #BBE1F1;
+ background-color: #EEFAFF
+ }
+ 

@@ -1,0 +1,12 @@
+﻿
+/* -- hooyes 2009-8-22-- */
+#header{ width:100% !important }
+#header .wrap{}
+#header .wrap h2{ }
+#header #umenu{ border-bottom: #e6e6e6 1px solid; padding-bottom: 0px; margin: 0px; padding-left: 0px; width: 100%; padding-right: 0px; background: #f8f8f8 !important; height: 22px; font-size: 12px; padding-top: 0px; text-align:right;}
+#header #menu{margin: 0px auto!important; width: 910px; background: url(navbgnew1125.gif) no-repeat; height: 34px; float:left !important;}
+#header #menu li{background:none; text-align:center;width:60px !important; border:0px; height:32px; FONT-SIZE: 14px; FONT-WEIGHT: bold; TEXT-DECORATION: none}
+#header #menu li.current a{  background:none; border:0px;  text-align:center !important; color:#000 !important;}
+#header #menu a{border:0px ; height:32px; line-height:32px;width:60px !important;  color: #ffffff !important;}
+#header #menu a:hover{border:none;background:none;color:#000000 !important;}
+

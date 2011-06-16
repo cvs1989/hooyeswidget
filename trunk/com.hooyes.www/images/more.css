@@ -1,0 +1,51 @@
+TD IMG {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+TD P.p1 {
+	LINE-HEIGHT: 23px; WIDTH: 90%; FLOAT: left; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+TD P.p2 {
+	LINE-HEIGHT: 23px; WIDTH: 310px; FLOAT: left; FONT-SIZE: 14px
+}
+TD P.p3 {
+	LINE-HEIGHT: 20px; FLOAT: right; FONT-SIZE: 13px
+}
+TD P IMG.down {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; PADDING-TOP: 0px
+}
+A.pc_button {
+	TEXT-ALIGN: center; COLOR: #266392; TEXT-DECORATION: underline
+}
+A.pc_button:hover {
+	TEXT-ALIGN: center; COLOR: #266392; TEXT-DECORATION: underline
+}
+FONT {
+	LINE-HEIGHT: 23px
+}
+TR {
+	TEXT-ALIGN: left
+}
+TD {
+	TEXT-ALIGN: left
+}
+B {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; FLOAT: left; COLOR: #000000; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.f12px {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+.f14px {
+	FONT-SIZE: 14px
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A.pblue {
+	FLOAT: left; COLOR: #266392; TEXT-DECORATION: underline
+}
+A.pblue1 {
+	COLOR: #266392; TEXT-DECORATION: none
+}
+A.gray {
+	COLOR: #74809a; TEXT-DECORATION: none
+}

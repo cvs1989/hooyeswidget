@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function x() {
+            x1();
+            document.getElementById("A").value = "";
+        }
+        function x1() {
+            document.getElementById("B").value += document.getElementById("A").value;
+            document.getElementById("C").value =Math.ceil( eval(document.getElementById("B").value));
+        }
+
+    </script>
+</head>
+<body>
+输入：<input type="text" id="A" /> 
+    <input id="Button1" type="button" onclick="x()" value="计算" />
+<br />
+公式：<input type="text" id="B" />
+<br />
+结果：<input type="text" id="C" />
+</body>
+</html>
