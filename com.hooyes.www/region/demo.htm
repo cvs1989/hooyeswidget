@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>hooyes json Tester JSON 数据,实现省市县三级联动下拉菜单</title>
+    <script type="text/javascript" src="hooyes.Script/jquery.js"></script>
+    <script type="text/javascript" src="hooyes.Script/Citys.Demo.js"></script>
+    <script type="text/javascript" src="hooyes.Script/RegisterAdapter.js"></script>
+    <link href="hooyes.Css/hooyes.Region.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    function Test(){
+    var a=$('#'+SelectProvinceId).val();
+    var b=$('#'+SelectCityId).val();
+    var c=$('#'+SelectCountyId).val();
+    var midId=c||b||a;
+    
+    $('#xx').html('');
+    $('#xxx').html('');
+    $('#xx').html('三个下拉菜单的值:'+$('#form1').serialize());
+    $('#xxx').html('最后一个有效下拉菜单的值:'+midId);
+    
+    }
+    </script>
+<style type="text/css">
+select{ color:#000;}
+</style>
+</head>
+<body>
+<form id="form1" action="" name="form1">
+<select id="Select1" name="Select1"></select>
+<select id="Select2" name="Select2"></select>
+<select id="Select3" name="Select3"></select>
+<input id="hooyesBtn" type="button" onclick="Test()" value="看看值" />
+</form>
+<span id="xx"></span>
+<hr />
+<span id="xxx"></span>
+<div id="footer">&copy <a href='http://www.hooyes.com' target="_blank">hooyes</a> 2009</div>
+<!-- 51.la 统计 -->
+<div id="stat" style="display:none"></div>
+<script type="text/javascript">
+//51.la stat
+setTimeout(function(){
+var a7751tf="51la";var a7751pu="";var a7751pf="51la";var a7751su=window.location;var a7751sf=document.referrer;var a7751of="";var a7751op="";var a7751ops=1;var a7751ot=1;var a7751d=new Date();var a7751color="";if (navigator.appName=="Netscape"){a7751color=screen.pixelDepth;} else {a7751color=screen.colorDepth;}
+try{a7751tf=top.document.referrer;}catch(e){}
+try{a7751pu =window.parent.location;}catch(e){}
+try{a7751pf=window.parent.document.referrer;}catch(e){}
+try{a7751ops=document.cookie.match(new RegExp("(^| )AJSTAT_ok_pages=([^;]*)(;|$)"));a7751ops=(a7751ops==null)?1: (parseInt(unescape((a7751ops)[2]))+1);var a7751oe =new Date();a7751oe.setTime(a7751oe.getTime()+60*60*1000);document.cookie="AJSTAT_ok_pages="+a7751ops+ ";path=/;expires="+a7751oe.toGMTString();a7751ot=document.cookie.match(new RegExp("(^| )AJSTAT_ok_times=([^;]*)(;|$)"));if(a7751ot==null){a7751ot=1;}else{a7751ot=parseInt(unescape((a7751ot)[2])); a7751ot=(a7751ops==1)?(a7751ot+1):(a7751ot);}a7751oe.setTime(a7751oe.getTime()+365*24*60*60*1000);document.cookie="AJSTAT_ok_times="+a7751ot+";path=/;expires="+a7751oe.toGMTString();}catch(e){}
+a7751of=a7751sf;if(a7751pf!=="51la"){a7751of=a7751pf;}if(a7751tf!=="51la"){a7751of=a7751tf;}a7751op=a7751pu;try{lainframe}catch(e){a7751op=a7751su;}
+document.getElementById("stat").insertAdjacentHTML('afterBegin','<img style="width:0px;height:0px" src="http://web.51.la/go.asp?svid=8&id=397751&tpages='+a7751ops+'&ttimes='+a7751ot+'&tzone='+(0-a7751d.getTimezoneOffset()/60)+'&tcolor='+a7751color+'&sSize='+screen.width+','+screen.height+'&referrer='+escape(a7751of)+'&vpage='+escape(a7751op)+'" />');
+},2000)
+</script>
+<!-- 51.la 统计 -->
+</body>
+</html>

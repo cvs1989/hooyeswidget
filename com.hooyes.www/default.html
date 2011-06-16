@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>西狐网 - 西狐官方网站 2011</title>
+<meta content="text/html; charset=gb2312" http-equiv="Content-Type" />
+<meta name="google-site-verification" content="VcG6drvaWMNfW34RzhOWYvEOz1FzEvt69rTgvlGOwho" />
+<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />
+<meta name="keywords" content="西狐网,hooyes,下载,hooyes, 技术,心情,.net技术,web2.0,西狐软件,bs软件" />
+<meta name="description" content="西狐网络中心,技术,心情,西狐同学录,西狐软件">
+<link rel="stylesheet" type="text/css" href="images/desktopindex.css" />
+<link rel="stylesheet" type="text/css" href="images/more.css" />
+<script type="text/javascript">
+var gtopTab="one";
+function $id(id){
+	return document.getElementById(id);	
+}
+
+function changesTab(tab_id){
+	if (tab_id==gtopTab){
+		return;	
+	}else{
+		$id(gtopTab).className="unselect";	
+		$id(tab_id).className="select";
+		$id("tab_"+gtopTab).style.display="none";
+		$id("tab_"+tab_id).style.display="block";
+		gtopTab=tab_id;
+	}
+}
+</script>
+
+<script type="text/javascript">
+var $ = function (id) {
+	return "string" == typeof id ? document.getElementById(id) : id;
+};
+
+var Extend = function(destination, source) {
+	for (var property in source) {
+		destination[property] = source[property];
+	}
+	return destination;
+}
+
+var CurrentStyle = function(element){
+	return element.currentStyle || document.defaultView.getComputedStyle(element, null);
+}
+
+var Bind = function(object, fun) {
+	var args = Array.prototype.slice.call(arguments).slice(2);
+	return function() {
+		return fun.apply(object, args.concat(Array.prototype.slice.call(arguments)));
+	}
+}
+
+var Tween = {
+	Quart: {
+		easeOut: function(t,b,c,d){
+			return -c * ((t=t/d-1)*t*t*t - 1) + b;
+		}
+	},
+	Back: {
+		easeOut: function(t,b,c,d,s){
+			if (s == undefined) s = 1.70158;
+			return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+		}
+	},
+	Bounce: {
+		easeOut: function(t,b,c,d){
+			if ((t/=d) < (1/2.75)) {
+				return c*(7.5625*t*t) + b;
+			} else if (t < (2/2.75)) {
+				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+			} else if (t < (2.5/2.75)) {
+				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+			} else {
+				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+			}
+		}
+	}
+}
+
+
+//容器对象,滑动对象,切换数量
+var SlideTrans = function(container, slider, count, options) {
+	this._slider = $(slider);
+	this._container = $(container);//容器对象
+	this._timer = null;//定时器
+	this._count = Math.abs(count);//切换数量
+	this._target = 0;//目标值
+	this._t = this._b = this._c = 0;//tween参数
+	
+	this.Index = 0;//当前索引
+	
+	this.SetOptions(options);
+	
+	this.Auto = !!this.options.Auto;
+	this.Duration = Math.abs(this.options.Duration);
+	this.Time = Math.abs(this.options.Time);
+	this.Pause = Math.abs(this.options.Pause);
+	this.Tween = this.options.Tween;
+	this.onStart = this.options.onStart;
+	this.onFinish = this.options.onFinish;
+	
+	var bVertical = !!this.options.Vertical;
+	this._css = bVertical ? "top" : "left";//方向
+	
+	//样式设置
+	var p = CurrentStyle(this._container).position;
+	p == "relative" || p == "absolute" || (this._container.style.position = "relative");
+	this._container.style.overflow = "hidden";
+	this._slider.style.position = "absolute";
+	
+	this.Change = this.options.Change ? this.options.Change :
+		this._slider[bVertical ? "offsetHeight" : "offsetWidth"] / this._count;
+};
+SlideTrans.prototype = {
+  //设置默认属性
+  SetOptions: function(options) {
+	this.options = {//默认值
+		Vertical:	true,//是否垂直方向（方向不能改）
+		Auto:		true,//是否自动
+		Change:		0,//改变量
+		Duration:	50,//滑动持续时间
+		Time:		10,//滑动延时
+		Pause:		4000,//停顿时间(Auto为true时有效)
+		onStart:	function(){},//开始转换时执行
+		onFinish:	function(){},//完成转换时执行
+		Tween:		Tween.Quart.easeOut//tween算子
+	};
+	Extend(this.options, options || {});
+  },
+  //开始切换
+  Run: function(index) {
+	//修正index
+	index == undefined && (index = this.Index);
+	index < 0 && (index = this._count - 1) || index >= this._count && (index = 0);
+	//设置参数
+	this._target = -Math.abs(this.Change) * (this.Index = index);
+	this._t = 0;
+	this._b = parseInt(CurrentStyle(this._slider)[this.options.Vertical ? "top" : "left"]);
+	this._c = this._target - this._b;
+	
+	this.onStart();
+	this.Move();
+  },
+  //移动
+  Move: function() {
+	clearTimeout(this._timer);
+	//未到达目标继续移动否则进行下一次滑动
+	if (this._c && this._t < this.Duration) {
+		this.MoveTo(Math.round(this.Tween(this._t++, this._b, this._c, this.Duration)));
+		this._timer = setTimeout(Bind(this, this.Move), this.Time);
+	}else{
+		this.MoveTo(this._target);
+		this.Auto && (this._timer = setTimeout(Bind(this, this.Next), this.Pause));
+	}
+  },
+  //移动到
+  MoveTo: function(i) {
+	this._slider.style[this._css] = i + "px";
+  },
+  //下一个
+  Next: function() {
+	this.Run(++this.Index);
+  },
+  //上一个
+  Previous: function() {
+	this.Run(--this.Index);
+  },
+  //停止
+  Stop: function() {
+	clearTimeout(this._timer); this.MoveTo(this._target);
+  }
+};
+</script>
+<meta name=GENERATOR content="MSHTML 8.00.6001.18783">
+<link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/hooyes/rss" />
+<link id="RSDLink" title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/hooyes/rsd.xml" />
+<link rel="shortcut icon" href="images/favicon.ico" />
+</head>
+<body>
+<div id=main>
+<div id=plink>
+<div id="plink_padder">
+<SPAN class="sp1">
+
+
+<a class="gray f12" href="http://www.dawnark.com/index.php" target="_blank">DawnArk Software</a>
+<a class="gray f12" href="http://www.xiao3.org" target="_blank">小桑博客</a>
+<a class="gray f12" href="http://hooyes.cnblogs.com" >西狐博客</a>
+<a 
+style="BEHAVIOR: url(#default#homepage)" class="gray f12" 
+onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.hooyes.com/');return(false);" 
+href="http://www.hooyes.com/">设为首页</a></SPAN> </div></div>
+
+<div id=top><img border=0 src="images/910x70hooyes.jpg" width=910 height=70  alt="西狐网logo"
+useMap=#Map /> <MAP id=Map name=Map><AREA href="http://www.hooyes.com/" shape=rect 
+  coords=2,2,440,68></MAP></div>
+  
+<div class=clears></div>
+<div class=nav><SPAN><A id=one class=select onclick=changesTab(this.id); 
+href="javascript:void(0);">首页</A>
+<a href="http://hooyes.cnblogs.com" class="unselect">西狐博客</a>
+<a id="lovewall" href="http://t.qq.com/hooyes" target="_blank" class="unselect">西狐微博</a>
+<a id="A1" href="http://t.hooyes.com" target="_blank" class="unselect">微博同步</a>
+<a id=two class=unselect 
+onclick=changesTab(this.id); href="javascript:void(0);">更多</A></SPAN></div>
+<div id=tab_one class=content>
+<div id=left>
+<div class=padder>
+<div id=idContainer2 class=container>
+<TABLE id=idSlider2 border=0 cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD class=td_f><A href="http://www.hooyes.com"><IMG 
+      src="images/hefei.jpg"></A></TD>
+    <TD class=td_f><A href="http://www.hooyes.com/"><IMG 
+      src="images/tree.jpg"></A></TD>
+      </TR>
+      </TBODY>
+      </TABLE>
+<UL id=idNum class=num></UL>
+</div>
+</div>
+<script type="text/javascript">
+
+//new SlideTrans("idContainer", "idSlider", 3).Run();
+
+///////////////////////////////////////////////////////////
+
+var forEach = function(array, callback, thisObject){
+	if(array.forEach){
+		array.forEach(callback, thisObject);
+	}else{
+		for (var i = 0, len = array.length; i < len; i++) { callback.call(thisObject, array[i], i, array); }
+	}
+}
+
+var st = new SlideTrans("idContainer2", "idSlider2",2, { Vertical: false });
+
+var nums = [];
+//插入数字
+for(var i = 0, n = st._count - 1; i <= n;){
+	(nums[i] = $("idNum").appendChild(document.createElement("li"))).innerHTML = ++i;
+}
+
+forEach(nums, function(o, i){
+	o.onmouseover = function(){ o.className = "on"; st.Auto = false; st.Run(i); }
+	o.onmouseout = function(){ o.className = ""; st.Auto = true; st.Run(); }
+})
+
+//设置按钮样式
+st.onStart = function(){
+	forEach(nums, function(o, i){ o.className = st.Index == i ? "on" : ""; })
+}
+
+//$("idAuto").onclick = function(){
+	//if(st.Auto){
+		//st.Auto = false; st.Stop(); this.value = "自动";
+	//}else{
+		//st.Auto = true; st.Run(); this.value = "停止";
+	//}
+//}
+//$("idNext").onclick = function(){ st.Next(); }
+//$("idPre").onclick = function(){ st.Previous(); }
+
+//$("idTween").onchange = function(){
+	//switch (parseInt(this.value)){
+		//case 2 :
+			//st.Tween = Tween.Bounce.easeOut; break;
+		//case 1 :
+			//st.Tween = Tween.Back.easeOut; break;
+		//default :
+			//st.Tween = Tween.Quart.easeOut;
+	//}
+//}
+
+
+st.Run();
+</script>
+
+<div class="title_pc">
+<H1>西狐作品</H1>
+<P>工作与生活，让您更轻松</P></div>
+<div class="padder1 desktop">
+<ul>
+ <li>
+    <span class=biglogo2><a href="http://t.hooyes.com" 
+  target=_blank><img border=0 src="images/clouds.png" width=32 
+  height=32></a></span> <span class=text>
+  <p><a class="blue1 f14a" href="http://t.hooyes.com" 
+  target=_blank>微博同步</a><img style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px" src="images/new.gif">&nbsp;
+  <font style="font-size: 14px; font-weight: normal" color=#333333>云计算应用, 无需客户端！新浪微博与腾讯微博云同步</font> </p>
+  <p style="float: left"><font color=#828284>更新日期：2011-05-23</font></p>
+  <p 
+  style="padding-bottom: 0px; padding-left: 32px; padding-right: 0px; float: left; padding-top: 0px"><img 
+  src="images/smalldownload.gif" width=9 height=10><a class="blue1 f13" 
+  href="http://t.hooyes.com" 
+  target=_blank>马上使用</a>&nbsp;&nbsp; </p></span></li>
+    <li>
+    <span class=biglogo2><a href="http://download.csdn.net/source/1193638" 
+  target=_blank><img border=0 src="images/32.gif" width=32 
+  height=32></a></span> <span class=text>
+  <p><a class="blue1 f14a" href="http://download.csdn.net/source/1193638" 
+  target=_blank>下拉菜单三级联动js插件</a>&nbsp;
+  <font style="font-size: 14px; font-weight: normal" color=#333333> json+jquery+html省市县三级联动</font> </p>
+  <p style="float: left"><font color=#828284>更新日期：2010-12-28</font></p>
+  <p 
+  style="padding-bottom: 0px; padding-left: 32px; padding-right: 0px; float: left; padding-top: 0px"><img 
+  src="images/smalldownload.gif" width=9 height=10><a class="blue1 f13" 
+  href="http://download.csdn.net/source/1193638" 
+  target=_blank>下载</a>&nbsp;&nbsp; </p></span></li>
+
+
+    <li><span class=biglogo2><a href="http://www.downcode.com/downcode/j_7163.shtml" 
+  target=_blank><img border=0 src="images/32.gif" width=32 
+  height=32></a></span> <span class=text>
+  <p><a class="blue1 f14a" href="http://www.downcode.com/downcode/j_7163.shtml" 
+  target=_blank>西狐同学录sp2</a>&nbsp;
+  <font style="font-size: 14px; font-weight: normal" color=#333333> 个性化班级同学录,最佳选择,代码完全开源</font> </p>
+  <p style="float: left"><font color=#828284>更新日期：2009-07-11</font></p>
+  <p 
+  style="padding-bottom: 0px; padding-left: 32px; padding-right: 0px; float: left; padding-top: 0px"><img 
+  src="images/smalldownload.gif" width=9 height=10><a class="blue1 f13" 
+  href="http://www.downcode.com/downcode/j_7163.shtml" 
+  target=_blank>下载</a>&nbsp;&nbsp; </p></span></li>
+  
+      <li><span class=biglogo2><a href="http://downcode.com/downcode/j_5397.shtml" 
+  target=_blank><img border=0 src="images/32.gif" width=32 
+  height=32></a></span> <span class=text>
+  <p><a class="blue1 f14a" href="http://downcode.com/downcode/j_5397.shtml" 
+  target=_blank>西狐同学录sp1</a>&nbsp;
+  <font style="font-size: 14px; font-weight: normal" color=#333333> 西狐同学录,最初始版本</font> </p>
+  <p style="float: left"><font color=#828284>更新日期：2004-06-23</font></p>
+  <p 
+  style="padding-bottom: 0px; padding-left: 32px; padding-right: 0px; float: left; padding-top: 0px"><img 
+  src="images/smalldownload.gif" width=9 height=10><a class="blue1 f13" 
+  href="http://downcode.com/downcode/j_5397.shtml" 
+  target=_blank>下载</a>&nbsp;&nbsp; </p></span></li>
+  
+ </ul></div>
+ </div>
+<div id=right class="hslice">
+<div class=title_pc1>
+<h1>
+<a id="IP"></a>
+</h1>
+<!--
+<SPAN class=more><A class="blue f13" 
+onclick="changesTab('two');" 
+href="javascript:void(0);">更多&gt;&gt;</A></SPAN> 
+-->
+</div>
+<div class="padder2" >
+<ul class="upicinfo">
+  <!--<LI><SPAN class=logoinfo><IMG src="images/smallttmobil.gif"><A 
+  class="blue1 f13" 
+  href="www.hooyes.com" 
+  target=_blank>Test</A></SPAN><SPAN class=down><IMG 
+  src="images/smalldownload.gif" width=9 height=10><A class="blue1 f13" 
+  href="http://hooyes.cnblogs.com">dl</A></SPAN> </LI>-->
+ 
+
+</ul>
+<!--google-->
+<script type="text/javascript"><!--
+google_ad_client = "pub-0313767761297833";
+/* 180x150, 创建于 09-7-10 */
+google_ad_slot = "6684415673";
+google_ad_width = 180;
+google_ad_height = 150;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!--google-->
+</div>
+<div class=clears></div>
+<div class=title_pc1>
+<H1 class="entry-title">微博</H1></div>
+<div class=padder3>
+<UL id="id_apiPane" class="u01 entry-content">
+<!--
+  <LI class=red><A class="red f12" href="http://web.hooyes.com/" 
+  target=_blank>Test hooyes</A> </LI>
+-->
+
+</UL>
+ <!--Taotao-->
+<iframe frameborder="0" scrolling="no" src="http://v.t.qq.com/show/show.php?n=hooyes&w=0&h=448&fl=1&l=30&o=17&c=1&si=4d59d6010cc8ba70e8f6e576d83cf0b5dfe4a6d3" width="100%" height="348"></iframe>
+ <!--Taotao-->
+ </div>
+<div class="clears"></div>
+</div>
+</div>
+<div id="tab_two" class="content">
+<!--第二个tabs-->
+Comming Soon
+ </div>
+ 
+<div class="foot">Copyright &copy; 2004 - 2011 HOOYES. All Rights Reserved.<br />
+<a href="http://www.miibeian.gov.cn/?from=www.hooyes.com" target="_blank">京ICP备05002153号</a> 西狐Inc&nbsp;&nbsp;<a href="http://www.hooyes.com" target="_blank">版权所有</a> QQ:227046</div>
+
+</div>
+<script type="text/javascript" src="http://ip.hooyes.com/ipaddress"></script>
+<script type="text/javascript">
+$id("IP").innerHTML="您的IP "+IPData[0]+" 地区:"+IPData[2];
+</script>
+<!-- 统计 -->
+<div id="stat" style="display:none">
+<script src="http://s21.cnzz.com/stat.php?id=228175&web_id=228175"  type="text/javascript"></script>
+</div>
+<!-- 统计 -->
+
+
+<!-- Cache Server 电信IP:202.91.246.16 网通IP:202.91.232.16 -->
+<!-- Cache Time 14:21 2011-5-23 -->
+</body></html>

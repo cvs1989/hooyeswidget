@@ -1,0 +1,477 @@
+﻿/* for www.hooyes.com  blog 2009.8.4 update 10:02 2009/12/4 */
+body {
+	text-align:center;	
+	background:#FFF;	
+	color:#333;
+	font-size:13px;
+	font-family:'Lucida Grande', Verdana, Arial, Sans-Serif;
+	margin:0 auto;
+	padding:0;
+	
+}
+.cnblogs_code{
+ border:1px solid #A9C9E2;
+ background-color: #E8F5FE;
+word-break:break-all;
+
+}
+#form1 {
+	text-align:center;
+	display:block;
+	margin:0;
+	padding:0;
+	
+	height:100%;
+}
+#hooyesBlogContainer
+{
+	 width:910px; 
+	 margin:0px auto !important;
+}
+a:visited,
+a:active,
+a:link {
+	color:#0066FF;
+	text-decoration:none;
+}
+a:hover {
+	color:#88BBFF;
+	text-decoration:underline;
+	}
+
+table
+{
+	width:80%;
+}
+
+#header {
+	color:#fff;
+	height:0;
+	width:760;
+	border:0;
+	margin:0;
+	padding:0;
+	display:none
+}
+
+#header a {
+	color:#fff;
+	position:relative;
+	top:80;
+	font-size:40;
+}
+
+h1 
+{
+	font-size : 1.5em;		
+	color: #000000;
+	padding-left: 100px;
+	height: 20px;	
+	margin : 0px;
+	padding-bottom: 30px;
+	font-family: "Courier New", Verdana, monospace;
+	text-align:left;
+	
+}
+
+#tagline 
+{
+     position:absolute;
+     text-align:left;
+     font-size: 13px;
+     color: black !important;
+     padding-left: 105px;
+     top:120px;        
+}
+
+h1 a:visited,
+h1 a:active,
+h1 a:link {
+	text-decoration:none;
+	color:#0066FF;
+	font-family:Times New Roman, monospace;
+	font-size:26px;
+}
+
+h1 a:hover {
+	color:Silver;
+	text-decoration:none;
+}
+
+
+p.date img {
+     
+}
+
+p.date
+{
+	color: #000000;
+	font-size: 10pt;
+	font-weight: bold;
+	padding-right: 0px;
+	padding-left: 0px;
+	font-weight: bold;
+	font-size: 1em;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	border-bottom: #aaa 0px solid;
+	margin: 10px 0px 0px 5px;
+}
+
+.post {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 10pt;
+	line-height:150%;
+}
+
+.postTitle {
+	border-bottom: 0px dotted #D6D6D6;
+	color: #000000;
+	font-size: 10pt;
+	margin : 10px 0px;
+	margin-top: 10px;
+	font-weight: bold;
+	margin-bottom:5px;
+}
+
+.postText {
+	font-size: 10pt;
+	line-height:150%;
+	padding-left:5px;
+}
+
+.postFoot,p.postFoot
+{
+	margin : 10px 0px;
+	border-bottom: 0px dotted #D6D6D6;
+	color : #999;
+	text-align: right;
+	font-size: 9pt;
+	margin-bottom:10px;
+}
+
+h2 {
+	margin-top : 10px;
+	font-size : 1.1em;
+}
+
+h5 
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+blockquote {
+	font-style : italic;
+}
+
+p.postfoot {
+	font-size : 0.75em;
+}
+
+#main 
+{
+	margin-left : 10px;
+	/*position: absolute;*/
+	margin-top: 0px;
+	background-color: #FFFFFF;
+	border-right: 0px dotted #000000;
+	padding-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom: 40px;
+	font-size: 10pt;
+	width:600px !important;
+	float:left;
+	text-align:left;
+	padding:1px 10px 73px 20px;
+	margin:10 0;
+	background-color:transparent;
+	
+}
+
+#rightmenu {
+	float : right;	
+	text-align:left;	
+	margin-top: 10px;	
+	background-color:transparent;
+	font-size:9pt;
+	width:225px !important;	
+	padding-bottom : 20px;
+	margin-left: 5px;
+	padding-left: 0px;
+	margin-right:0px;
+	
+}
+
+#rightmenu h3 {
+	 
+	 border-bottom: 1px dotted #D6D6D6 !important;
+}
+/*
+#rightmenu h3 {
+background-color: transparent;
+	border: none;
+	border-bottom: 1px dotted #D6D6D6;
+	color: red;
+	font-size: 10pt;
+	margin: 10px 0px 0px 0px;
+	padding: 2px 5px;}
+#rightmenu ul {
+	list-style : none;
+	margin : 0px;
+	padding : 5px;	
+	border : 0px solid #69A;
+}
+
+#rightmenu li {
+	 padding-bottom:3px;
+}*/
+
+#rightmenu h3 {
+	background-color:transparent;
+	border:none;
+	border:0;
+	color:#000000;
+	font-size:9pt;
+	margin:10 0 0 0;
+	padding:2px 5px 0px;
+}
+
+#rightmenu ul {
+	border:none;
+	list-style:none;
+	margin:0;
+	padding:5px;
+	font-size:9pt;
+}
+
+#rightmenu li {
+	font-size:9pt;
+}
+
+#footer {
+	border-top : 0px solid #7AC;
+	padding-top : 20px;
+	text-align : center;
+	font-size : 0.8em;	
+	/*position : absolute;
+	bottom: 5px;*/
+}
+input.text {
+	width : 300px;	
+}
+
+textarea {
+	width : 300px;
+	height : 200px;	
+}
+
+#comments {
+	color:#888;
+	padding-left:10;
+	padding-right:40;
+	font-size:10pt;
+}
+
+#comments h4 span {
+	color : #999;
+}
+
+#comments h4 {
+	margin : 0px;
+	font-size : 0.9em;
+}
+
+p {
+	margin : 10px 0px;
+}
+
+h3 {
+	font-size : 1.2em;
+	border-bottom : 1px solid #AAA;
+}
+
+h3 {
+	font-size: 10pt;
+	border-bottom: 1px dotted #D6D6D6;
+	color: #000000;
+	background-color: transparent;
+}
+
+#relatedlinks ul {
+	list-style : none;
+	margin-left : 10px;
+	padding : 0px;
+}
+
+.Cal
+{
+	border : 1px dotted #D6D6D6;
+	width:90%;
+	font-family:Arial;
+	font-size: 12px;
+	margin-top:10px;
+	height:150px;
+	 	
+}
+
+.CalTitle
+{
+	background-color :#FFF;
+	border-color:#ADF;
+	font-family:Arial;
+	font-size: 13px;
+	color : #06A;	
+	border-bottom: 1px dotted #D6D6D6;
+	margin-left : 0px;
+	padding : 0px;
+	height:100%;
+}
+
+.CalOtherMonthDay
+{
+	color:#808080;
+	
+}
+
+.CalSelector
+{
+	
+}
+
+.CalNextPrev
+{
+	
+}
+
+.CalDayHeader
+{
+	
+}
+
+.CalSelectedDay
+{
+	
+}
+
+.CalWeekendDay
+{
+	
+}
+.CalTodayDay
+{
+	color : red;
+}
+
+
+
+
+div.commentform {
+	color: #888;
+	padding-left: 10px;
+	padding-right: 40px;
+	font-size: 10pt;	
+}
+
+#relatedlinks ul {
+	list-style: none;
+	margin-left: 10px;
+	padding: 0px;
+}
+
+h1 a:visited,
+h1 a:active,
+h1 a:link {
+	color: #000000;
+	font-size: 13pt;
+	text-decoration: none;
+}
+
+h1 a:hover {
+	color: Silver;
+	text-decoration: none;
+}
+
+#blogtopad
+{
+    position:absolute;
+    top:5px;
+    left:240px; 
+    float:left;
+}
+
+
+h3 {
+	font-size:10pt;
+	border-bottom:0px dotted #D6D6D6;
+	color:#000000;
+	background-color:transparent;
+}
+
+
+blockquote {
+	background-color:transparent;
+	border:1px solid #F4F4F4;
+	color:#5B5B5B;
+	font-size:10pt;
+	font-style:normal;
+	line-height:150%;
+	padding:0 11px 0 11px;
+}
+.dateTitle {
+	border:0;
+	color:#000000;
+	font-size:13pt;
+	font-weight:bold;
+	padding:0;
+	margin:0;
+}
+
+p.date img {
+	vertical-align:middle;
+}
+input,label {
+	color:Gray;
+	font-family:Verdana;
+	font-size:10pt;
+}
+input.text {
+	width:381px;
+}
+li {
+	font-size:10pt;
+	font-style:normal;
+}
+span.highlight {
+	background-color:transparent;
+}
+td {
+	font-size:10pt;
+}
+textarea {
+	color:#000000;
+	font-size:10pt;
+	height:200;
+	width:300;
+}
+
+
+#relatedlinks ul {
+	list-style:none;
+	margin-left:10;
+	padding:0;
+}
+
+code {
+	font-family:"Courier New", Courier, monospace;
+	font-size:10pt;
+}
+.listitem {
+	border-bottom:1px dotted #E4E4E4;
+	padding-bottom:3px;
+	padding-top:3px;
+}
+
