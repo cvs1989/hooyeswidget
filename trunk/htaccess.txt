@@ -1,7 +1,7 @@
-<IfModule mod_rewrite.c>
+﻿<IfModule mod_rewrite.c>
 RewriteEngine On
 
-#产品详情
+#产品详情 
 RewriteRule ^goods/([0-9]+)/?$ index.php?app=goods&id=$1 [L]
 RewriteRule ^goods/([0-9]+)/([^/]+)/?$ index.php?app=goods&id=$1&act=$2 [L]
 RewriteRule ^goods/([0-9]+)/([^/]+)/page_([^/]+)/?$ index.php?app=goods&id=$1&act=$2&page=$3 [L]
