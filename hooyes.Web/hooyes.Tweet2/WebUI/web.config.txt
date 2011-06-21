@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+	<appSettings>
+		<add key="app_key_sina" value="5472084218"/>
+		<add key="app_secret_sina" value="34cae7d23876c298eaae5cb0d14d0cd9"/>
+    <add key="app_key_QQ" value="3ab1872742234704925c33dac507f9bb"/>
+    <add key="app_secret_QQ" value="f6cd03eb8734e8f64b98baf6ce8d546a"/>
+    <add key="ConnectionString" value="server=TestDB.local.hooyes.com;database=iTalkBBWeb;uid=italkbbweb;pwd=cb13946"/>
+    <add key="AppCallBackDomain" value="http://localhost:8786/WebUI"/>
+	</appSettings>
+	<system.web>
+		<compilation debug="true" targetFramework="4.0"/>
+	</system.web>
+</configuration>
