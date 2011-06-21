@@ -8,10 +8,10 @@
     <userSettings>
         <Oauth4Desktop.Properties.Settings>
             <setting name="app_key" serializeAs="String">
-                <value>3472084219</value>
+                <value>1472084219</value>
             </setting>
             <setting name="app_secret" serializeAs="String">
-                <value>54cae7d23876c298eaaf5cb0d14d0cd9</value>
+                <value>54fae7d23876c298eaaf5cb0d14d01d9</value>
             </setting>
         </Oauth4Desktop.Properties.Settings>
     </userSettings>
