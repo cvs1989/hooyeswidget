@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2011-12-18
+-- Update date: 2011-12-19
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyCourses]
@@ -16,18 +16,20 @@ AS
 	IF EXISTS( SELECT * FROM [My_Courses] 	 WHERE MID = @MID
 		 and CID = @CID)
 	BEGIN
-		SELECT @Minutes = [Second]/60  from [My_Courses] WHERE MID = @MID
-			 and CID = @CID
 		UPDATE [My_Courses]
 		   SET 
-			   [Minutes] = @Minutes
-			  ,[Second]  = [Second]  + @Second
+			   [Second]  = [Second]  + @Second
 			  ,[Status] = @Status
 		 WHERE MID = @MID
 			 and CID = @CID
+		UPDATE [My_Courses]
+			SET [Minutes] = [Second]/60
+		WHERE MID = @MID
+			and CID = @CID
 	END
 	ELSE
 	BEGIN
+		SET @Minutes = @Second / 60
 		INSERT INTO [My_Courses]
 			   ([MID]
 			   ,[CID]
