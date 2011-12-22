@@ -105,5 +105,8 @@
     <Build Include="Procedure\Update_MyCourses.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Get_MyCoursesList.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
