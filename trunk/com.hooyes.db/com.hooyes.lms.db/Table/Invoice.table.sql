@@ -4,6 +4,7 @@
 	[MID] [int] NOT NULL,
 	[IDSN] [varchar](30) NOT NULL,
 	[Name] [varchar](50) NOT NULL,
+	[Amount] money NOT NULL,
 	[Title] [varchar](100) NOT NULL,
 	[Tel] [varchar](20) NOT NULL,
 	[Province] [varchar](10) NOT NULL,
