@@ -114,5 +114,23 @@
     <Build Include="Procedure\Update_Invoice.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Get_MyPaper.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Update_MyQuestion.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Task_EvalutePaper.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Update_Report.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Get_Report.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Task_ResetPaper.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
