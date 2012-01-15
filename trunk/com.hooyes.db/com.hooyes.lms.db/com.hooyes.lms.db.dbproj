@@ -132,5 +132,8 @@
     <Build Include="Procedure\Task_ResetPaper.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Get_MyContents.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
