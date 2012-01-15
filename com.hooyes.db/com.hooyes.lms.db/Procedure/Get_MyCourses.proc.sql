@@ -3,12 +3,21 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2011-12-18
+-- Update date: 2012-01-15
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyCourses]
-	@MID int
+	 @MID int
 	,@CID int
 AS
-	 SELECT * FROM  dbo.My_Courses WHERE MID = @MID and CID = @CID
+	SELECT c.CID
+		,c.Name
+		,myc.Minutes
+		,myc.Second
+		,myc.Status 
+	FROM My_Courses myc 
+		inner join Courses c on c.CID = myc.CID
+	WHERE myc.MID = @MID 
+		and c.CID = @CID
+		and myc.CID = @CID
 RETURN 0
