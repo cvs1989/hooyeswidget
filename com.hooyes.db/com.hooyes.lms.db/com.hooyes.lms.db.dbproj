@@ -135,5 +135,8 @@
     <Build Include="Procedure\Get_MyContents.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Update_Member.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
