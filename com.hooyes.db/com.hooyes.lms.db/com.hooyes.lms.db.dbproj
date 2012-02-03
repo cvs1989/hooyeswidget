@@ -147,5 +147,8 @@
     <Build Include="Procedure\Update_MSessions.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Get_MSessions.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
