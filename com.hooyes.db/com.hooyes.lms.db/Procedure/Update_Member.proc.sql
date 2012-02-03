@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-02
--- Update date: 2012-02-02
+-- Update date: 2012-02-03
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Member]
@@ -12,8 +12,8 @@ CREATE PROCEDURE [dbo].[Update_Member]
 	,@IDCard varchar(20) 
 	,@IDSN varchar(30) 
 	,@Year int  = 2012
-	,@Type int  = 0
-	,@Level int = 0
+	,@Type int  = -1
+	,@Level int = -1
 AS
 	IF @MID <= 0
 	BEGIN

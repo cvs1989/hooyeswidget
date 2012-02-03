@@ -138,5 +138,14 @@
     <Build Include="Procedure\Update_Member.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Update_Setting.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\MSessions.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Update_MSessions.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
