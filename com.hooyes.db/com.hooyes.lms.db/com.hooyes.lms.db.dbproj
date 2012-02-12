@@ -150,5 +150,8 @@
     <Build Include="Procedure\Get_MSessions.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Update_MyCourses_Validate.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
