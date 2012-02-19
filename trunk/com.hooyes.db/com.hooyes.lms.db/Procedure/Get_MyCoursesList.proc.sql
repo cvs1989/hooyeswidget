@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-22
--- Update date: 2012-02-07
+-- Update date: 2012-02-19
 -- Desc:
 -- @Type 0 行政 1 企业
 -- Cate  0 选修 1 必修  
@@ -41,5 +41,5 @@ SELECT * FROM (
 	WHERE c.Year = @Year
 		and (c.Type = @Type or c.Type = 3)
 	) as tb
-	order by Cate desc,Sort desc,CID asc
+	order by Cate desc,Sort asc,CID asc
 RETURN 0

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-01-03
--- Update date: 2012-02-15
+-- Update date: 2012-02-19
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Report]
@@ -17,9 +17,18 @@ AS
 	IF EXISTS(SELECT * FROM Report WHERE MID = @MID)
 		BEGIN
 			UPDATE Report 
-			SET Score = ISNULL(@Score,Score)
-				,Compulsory = ISNULL(@Compulsory,Compulsory)
-				,Elective = ISNULL(@Elective,Elective)
+			SET Score = CASE  
+							WHEN Score < @Score OR Score IS null THEN @Score
+							ELSE Score
+					    END
+				,Compulsory = CASE
+								WHEN Compulsory < @Compulsory OR Compulsory IS null THEN @Compulsory
+								ELSE  Compulsory
+							  END
+				,Elective =  CASE 
+								WHEN Elective < @Elective OR Elective IS null THEN @Elective
+								ELSE Elective
+							 END
 				,Status = ISNULL(@Status,Status)
 				,Memo = ISNULL(@Memo,Memo)
 			WHERE MID = @MID

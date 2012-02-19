@@ -156,5 +156,17 @@
     <Build Include="Procedure\Task_EvaluteCourses.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Delete_Courses.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Task_EvaluteContents.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Check_Phone.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Get_CoursesList.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
