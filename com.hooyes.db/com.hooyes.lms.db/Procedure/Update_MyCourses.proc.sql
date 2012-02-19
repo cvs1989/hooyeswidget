@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2011-12-19
+-- Update date: 2012-02-18
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyCourses]
@@ -19,7 +19,7 @@ AS
 		UPDATE [My_Courses]
 		   SET 
 			   [Second]  = [Second]  + @Second
-			  ,[Status] = @Status
+			  
 		 WHERE MID = @MID
 			 and CID = @CID
 		UPDATE [My_Courses]
@@ -41,6 +41,10 @@ AS
 			   ,@CID
 			   ,@Minutes
 			   ,@Second
-			   ,@Status)
+			   ,0)
 	END
+
+	EXECUTE Task_EvaluteContents @MID,@CID
+
+	EXECUTE Task_EvaluteCourses @MID
 RETURN 0

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-15
--- Update date: 2012-02-15
+-- Update date: 2012-02-18
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvaluteCourses]
@@ -15,13 +15,17 @@ AS
 		   ,@Elective decimal
 	SELECT @Year = [Year],@Type = [Type] FROM Member WHERE MID = @MID
 	SELECT
-		@Compulsory = SUM(  CASE Cate WHEN 1 THEN  GMinutes ELSE 0 END ) / 60
-		,@Elective  = SUM(  CASE Cate WHEN 0 THEN  GMinutes ELSE 0 END ) / 60
+		@Compulsory = SUM(  CASE Cate WHEN 1 THEN  CLength ELSE 0 END )
+		,@Elective  = SUM(  CASE Cate WHEN 0 THEN  GMinutes ELSE 0 END ) / 45
 	FROM (
 			SELECT 
 				 c.CID
+				,CLength = CASE
+				   WHEN Status = 1 THEN c.Length
+				  ELSE 0
+				 END 
 				,GMinutes = CASE
-				   WHEN Status = 1 THEN c.Length * 60
+				   WHEN Status = 1 THEN c.Length * 45
 				  ELSE ISNULL(myc.Minutes,0)
 				 END 
 				,c.Length

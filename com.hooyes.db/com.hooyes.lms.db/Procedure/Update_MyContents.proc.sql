@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2011-12-18
+-- Update date: 2012-02-18
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyContents]
@@ -23,13 +23,23 @@ AS
 		   SET 
 			   [Minutes] = [Minutes] + @Minutes
 			  ,[Second]  = [Second]  + @Second
-			  ,[Status] = @Status
+			  ,[Status] = CASE [Status] 
+						  WHEN 1 THEN 1
+						  ELSE @Status
+						  END
 		 WHERE MID = @MID
 			 and CID = @CID
 			 and CCID = @CCID
+		UPDATE [My_Contents]
+			SET [Minutes] = [Second]/60
+		 WHERE MID = @MID
+			 and CID = @CID
+			 and CCID = @CCID
+
 	END
 	ELSE
 	BEGIN
+	  SET @Minutes = @Second / 60
 		INSERT INTO [My_Contents]
 			   ([MID]
 			   ,[CID]
