@@ -19,17 +19,7 @@ CREATE PROCEDURE [dbo].[Update_Invoice]
 	,@Address varchar(300)
 	,@Zip varchar(10)
 AS
-	IF @IID <= 0 
-	BEGIN
-		DECLARE @SID int
-		EXECUTE [Get_Seed] 
-		   @ID = 3
-		  ,@Value = @SID OUTPUT
-		SET @IID = @SID
-		INSERT INTO [Invoice]([IID] ,[MID],[IDSN],[Name],[Amount],[Title],[Tel],[Province],[City],[Address],[Zip])
-		       VALUES (@IID,@MID,@IDSN,@Name,@Amount,@Title,@Tel,@Province,@City,@Address,@Zip)
-	END
-	ELSE
+	IF EXISTS(SELECT * FROM Invoice WHERE MID = @MID)
 	BEGIN
 		UPDATE [Invoice]
 		SET 
@@ -41,6 +31,16 @@ AS
 			,[City] = @City 
 			,[Address] = @Address 
 			,[Zip] = @Zip 
-		WHERE IID = @IID
+		WHERE MID = @MID
+	END
+	ELSE
+	BEGIN
+		DECLARE @SID int
+		EXECUTE [Get_Seed] 
+		   @ID = 3
+		  ,@Value = @SID OUTPUT
+		SET @IID = @SID
+		INSERT INTO [Invoice]([IID] ,[MID],[IDSN],[Name],[Amount],[Title],[Tel],[Province],[City],[Address],[Zip])
+		       VALUES (@IID,@MID,@IDSN,@Name,@Amount,@Title,@Tel,@Province,@City,@Address,@Zip)
 	END
 RETURN 0
