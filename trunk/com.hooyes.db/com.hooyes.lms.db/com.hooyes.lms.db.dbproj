@@ -168,5 +168,8 @@
     <Build Include="Procedure\Get_CoursesList.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Get_Invoice.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
