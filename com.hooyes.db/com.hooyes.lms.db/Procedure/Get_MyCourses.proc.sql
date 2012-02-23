@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-02-12
+-- Update date: 2012-02-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyCourses]
@@ -17,6 +17,7 @@ AS
 		,Second = ISNULL(b.Second,0)
 		,Status = ISNULL(b.Status,0)
 		,Validate = ISNULL(b.Validate,0)
+		,Length = ISNULL(a.Length,0)
 	FROM 
 	(SELECT * FROM Courses WHERE CID = @CID) AS a
 		LEFT OUTER JOIN 
