@@ -174,5 +174,8 @@
     <Build Include="Procedure\Get_MemberList.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\Check_Hours.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
