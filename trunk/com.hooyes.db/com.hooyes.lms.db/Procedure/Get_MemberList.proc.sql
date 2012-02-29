@@ -2,13 +2,13 @@
 GO
 -- =============================================
 -- Author:		hooyes
--- Create date: 2011-12-18
--- Update date: 2011-12-18
+-- Create date: 2012-02-29
+-- Update date: 2012-02-29
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MemberList]
 	
 AS
-	SELECT * FROM Member WHERE MID > 10000
+	SELECT * FROM Member 
 	ORDER BY ID desc
 RETURN 0
