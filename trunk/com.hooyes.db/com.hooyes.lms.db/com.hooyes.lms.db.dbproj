@@ -60,6 +60,7 @@
     <Folder Include="Procedure" />
     <Folder Include="Table" />
     <Folder Include="Data" />
+    <Folder Include="Procedure\M" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -175,6 +176,12 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Procedure\Check_Hours.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\M\M_Get_Member.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\M\M_Update_Courses.proc.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>
