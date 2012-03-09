@@ -1,23 +1,32 @@
-﻿DROP PROC [M_Get_Member]
+﻿DROP PROC [M_Get_MemberList]
 GO
 -- =============================================
 -- Author:		hooyes
--- Create date: 2012-03-03
+-- Create date: 2012-03-06
 -- Update date: 2012-03-06
 -- Desc:
 -- =============================================
-CREATE PROCEDURE [dbo].[M_Get_Member]
-	@keyword varchar(30) 
+CREATE PROCEDURE [dbo].[M_Get_MemberList]
+	
 AS
 	SELECT 
-		 TOP 100
 		 IID = isnull(I.IID,0)
 		,Status = isnull(R.Status,0)
 		,minutes = isnull(R.minutes,0)
 		,Score = isnull(R.Score,0)
-		,M.*
+		,ID = M.ID - 43
+		,M.[MID]
+		,M.[Name]
+		,M.[IDCard]
+		,M.[IDSN]
+		,M.[Year]
+		,M.[Type]
+		,M.[Level]
+		,M.[Phone]
+		,M.[RegDate]
 	FROM Member M
 		left join Invoice I on I.MID = M.MID
 		left join Report R on R.MID = M.MID
-	WHERE (M.IDSN  like @keyword OR M.IDCard like @keyword OR M.Name like @keyword)
+	WHERE M.MID > 10000
+	ORDER BY M.ID desc
 RETURN 0

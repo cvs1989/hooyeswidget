@@ -184,5 +184,8 @@
     <Build Include="Procedure\M\M_Update_Courses.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\M\M_Get_MemberList.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>

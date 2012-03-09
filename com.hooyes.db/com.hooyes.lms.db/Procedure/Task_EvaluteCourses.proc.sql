@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-15
--- Update date: 2012-02-29
+-- Update date: 2012-03-06
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvaluteCourses]
@@ -13,6 +13,7 @@ AS
 		   ,@Year int = 2012
 		   ,@Compulsory decimal
 		   ,@Elective decimal
+		   ,@Minutes decimal
 	SELECT @Year = [Year],@Type = [Type] FROM Member WHERE MID = @MID
 	SELECT
 		@Compulsory = SUM(  CASE Cate WHEN 1 THEN  CLength ELSE 0 END )
@@ -45,9 +46,19 @@ AS
 				and (c.Type = @Type or c.Type = 3)
 		) AS tb
 
+	/*  总的学时数 */
+	SELECT @Minutes = SUM( CASE 
+                 WHEN myc.Status = 1 THEN c.Length * 45
+                 ELSE myc.Minutes
+				 END )
+	FROM My_Courses myc 
+		inner join Courses c on c.CID = myc.CID
+	WHERE myc.MID = @MID
+
 		EXECUTE [Update_Report] 
 		         @MID = @MID
 				,@Compulsory  = @Compulsory
 				,@Elective    = @Elective
+				,@Minutes     = @Minutes
 
 RETURN 0
