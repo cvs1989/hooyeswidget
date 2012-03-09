@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-02-18
+-- Update date: 2012-03-06
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyContents]
@@ -14,6 +14,10 @@ CREATE PROCEDURE [dbo].[Update_MyContents]
 	@Second decimal = 0,
 	@Status int =0
 AS
+	IF @Minutes < 0 
+		SET @Minutes = 0
+	IF @Second < 0 
+		SET @Second = 0
 
 	IF EXISTS( SELECT * FROM [My_Contents] 	 WHERE MID = @MID
 		 and CID = @CID

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-02-18
+-- Update date: 2012-03-06
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyCourses]
@@ -13,6 +13,8 @@ CREATE PROCEDURE [dbo].[Update_MyCourses]
 	@Status int =0
 AS
 	DECLARE	@Minutes int = 0
+	IF @Second < 0 
+		SET @Second = 0
 	IF EXISTS( SELECT * FROM [My_Courses] 	 WHERE MID = @MID
 		 and CID = @CID)
 	BEGIN

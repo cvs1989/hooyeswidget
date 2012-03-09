@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-01-03
--- Update date: 2012-02-19
+-- Update date: 2012-03-06
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Report]
@@ -12,6 +12,7 @@ CREATE PROCEDURE [dbo].[Update_Report]
 	@Compulsory decimal = null,
 	@Elective decimal = null,
 	@Status int = null,
+	@Minutes decimal = null,
 	@Memo varchar(100) = null
 AS
 	IF EXISTS(SELECT * FROM Report WHERE MID = @MID)
@@ -29,13 +30,14 @@ AS
 								WHEN Elective < @Elective OR Elective IS null THEN @Elective
 								ELSE Elective
 							 END
+				,Minutes = ISNULL(@Minutes,Minutes)
 				,Status = ISNULL(@Status,Status)
 				,Memo = ISNULL(@Memo,Memo)
 			WHERE MID = @MID
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Report(MID,Score,Compulsory,Elective,Status,Memo) 
-			VALUES(@MID,@Score,@Compulsory,@Elective,@Status,@Memo)
+			INSERT INTO Report(MID,Score,Compulsory,Elective,Status,Minutes,Memo) 
+			VALUES(@MID,@Score,@Compulsory,@Elective,@Status,@Minutes,@Memo)
 		END
 RETURN 0
