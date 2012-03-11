@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-03-06
+-- Update date: 2012-03-11
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyContents]
@@ -14,10 +14,20 @@ CREATE PROCEDURE [dbo].[Update_MyContents]
 	@Second decimal = 0,
 	@Status int =0
 AS
+	DECLARE @diff decimal 
 	IF @Minutes < 0 
 		SET @Minutes = 0
 	IF @Second < 0 
 		SET @Second = 0
+
+	/* 时间校对 */
+	SELECT @diff = DATEDIFF(SECOND,LDate,GETDATE())
+	FROM [My_Contents] WHERE MID = @MID
+		 and CID = @CID
+		 and CCID = @CCID
+	IF @Second > @diff 
+		SET @Second = @diff 
+
 
 	IF EXISTS( SELECT * FROM [My_Contents] 	 WHERE MID = @MID
 		 and CID = @CID
@@ -36,6 +46,7 @@ AS
 			 and CCID = @CCID
 		UPDATE [My_Contents]
 			SET [Minutes] = [Second]/60
+			   ,[LDate] = GETDATE()
 		 WHERE MID = @MID
 			 and CID = @CID
 			 and CCID = @CCID
@@ -43,6 +54,8 @@ AS
 	END
 	ELSE
 	BEGIN
+	  IF @Second > 120
+		 SET @Second = 120
 	  SET @Minutes = @Second / 60
 		INSERT INTO [My_Contents]
 			   ([MID]
@@ -50,14 +63,16 @@ AS
 			   ,[CCID]
 			   ,[Minutes]
 			   ,[Second]
-			   ,[Status])
+			   ,[Status]
+			   ,[LDate])
 		 VALUES
 			   (@MID
 			   ,@CID
 			   ,@CCID
 			   ,@Minutes
 			   ,@Second
-			   ,@Status)
+			   ,@Status
+			   ,GETDATE())
 	END
 
 	EXECUTE [Update_MyCourses] 
