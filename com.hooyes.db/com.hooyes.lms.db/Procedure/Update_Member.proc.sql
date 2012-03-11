@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-02
--- Update date: 2012-02-03
+-- Update date: 2012-03-10
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Member]
@@ -16,6 +16,12 @@ CREATE PROCEDURE [dbo].[Update_Member]
 	,@Level int = -1
 AS
 	IF @MID <= 0
+	BEGIN
+	IF EXISTS( SELECT * FROM [Member] WHERE IDSN = @IDSN )
+	BEGIN
+		SELECT @MID = MID FROM [Member] WHERE IDSN = @IDSN
+	END
+	ELSE
 	BEGIN
 		DECLARE @SID int
 		EXECUTE [Get_Seed] 
@@ -38,6 +44,7 @@ AS
 			   ,@Year
 			   ,@Type
 			   ,@Level)
+	END
 	END
 	ELSE
 	BEGIN
