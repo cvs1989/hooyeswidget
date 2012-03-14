@@ -3,13 +3,18 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-02-23
+-- Update date: 2012-03-14
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyCourses]
 	 @MID int
 	,@CID int
 AS
+
+	EXECUTE Task_EvaluteContents @MID,@CID
+
+	EXECUTE Task_EvaluteCourses @MID
+
 	SELECT 
 		a.CID
 		,a.Name
@@ -23,4 +28,6 @@ AS
 		LEFT OUTER JOIN 
 	(SELECT *FROM My_Courses WHERE CID = @CID and MID = @MID ) AS b
 	ON a.CID = b.CID
+
+
 RETURN 0
