@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-18
--- Update date: 2012-03-03
+-- Update date: 2012-03-17
 -- Desc: 评估一门课程是否可以取得学时
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvaluteContents]
@@ -36,7 +36,7 @@ AS
 		inner join Courses c on c.CID = myc.CID
 	WHERE myc.MID = @MID 
 		and myc.CID = @CID
-		and myc.Minutes > c.ActMinutes
+		and (myc.Minutes >= c.ActMinutes OR myc.Minutes>= c.Length*45)
 
 
 	/* 满足此2条件，课程完成 */
