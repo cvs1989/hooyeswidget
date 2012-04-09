@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-03-11
+-- Update date: 2012-04-09
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyContents]
@@ -15,10 +15,31 @@ CREATE PROCEDURE [dbo].[Update_MyContents]
 	@Status int =0
 AS
 	DECLARE @diff decimal 
+			,@Code int
+			,@Message varchar(200)
 	IF @Minutes < 0 
 		SET @Minutes = 0
 	IF @Second < 0 
 		SET @Second = 0
+
+	/* 检查是否是欺诈 Code = 0 正常*/
+	EXECUTE [Check_Fraud] 
+			   @MID
+			  ,@CID
+			  ,@CCID
+			  ,@Minutes
+			  ,@Second
+			  ,@Status
+			  ,@Code OUTPUT
+			  ,@Message OUTPUT
+
+	IF @Code != 0 
+	BEGIN
+		SET @Minutes = 0
+		SET @Second = 0 
+		SET @Status = 0 
+	END
+		
 
 	/* 时间校对 */
 	SELECT @diff = DATEDIFF(SECOND,LDate,GETDATE())
@@ -26,7 +47,11 @@ AS
 		 and CID = @CID
 		 and CCID = @CCID
 	IF @Second > @diff 
+	BEGIN
+		SET @Message = STR(@CID) + ' ' + STR(@CCID) + ' ' + STR(@Second) + ' ' + STR(@diff) + ' '+ STR(@Status)
 		SET @Second = @diff 
+		EXECUTE SLog @MID, 101, @Message
+	END
 
 
 	IF EXISTS( SELECT * FROM [My_Contents] 	 WHERE MID = @MID
