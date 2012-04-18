@@ -190,11 +190,20 @@
     <Build Include="Procedure\M\M_Get_InvoiceList.proc.sql">
       <SubType>Code</SubType>
     </Build>
+<<<<<<< .mine
+    <Build Include="Procedure\M\M_Check_Login.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\Admin.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+=======
     <Build Include="Procedure\Check_Fraud.proc.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Procedure\SLog.proc.sql">
       <SubType>Code</SubType>
     </Build>
+>>>>>>> .r299
   </ItemGroup>
 </Project>
