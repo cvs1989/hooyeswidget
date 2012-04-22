@@ -3,30 +3,25 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-03-06
--- Update date: 2012-03-06
+-- Update date: 2012-04-21
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_MemberList]
-	
+	@PageSize int = 100,
+	@CurrentPage int = 1
 AS
-	SELECT 
-		 IID = isnull(I.IID,0)
-		,Status = isnull(R.Status,0)
-		,minutes = isnull(R.minutes,0)
-		,Score = isnull(R.Score,0)
-		,ID = M.ID - 43
-		,M.[MID]
-		,M.[Name]
-		,M.[IDCard]
-		,M.[IDSN]
-		,M.[Year]
-		,M.[Type]
-		,M.[Level]
-		,M.[Phone]
-		,M.[RegDate]
-	FROM Member M
-		left join Invoice I on I.MID = M.MID
-		left join Report R on R.MID = M.MID
-	WHERE M.MID > 10000
-	ORDER BY M.ID desc
-RETURN 0
+	DECLARE @Records int = 0
+	SET @CurrentPage = @CurrentPage - 1;
+	IF @CurrentPage < 0 
+		SET @CurrentPage = 0
+	EXEC ZGetRecordByPageV3
+		@TableNames ='v_m_member',     
+		@PrimaryKey ='MID',           
+		@Fields   ='',                 
+		@PageSize = @PageSize,         
+		@CurrentPage = @CurrentPage,   
+		@Filter  = '',           
+		@Group  = '',                  
+		@Order  = ' MID DESC'   
+	  
+RETURN @Records
