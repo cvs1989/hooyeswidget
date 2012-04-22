@@ -3,30 +3,25 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-03-11
--- Update date: 2012-03-11
+-- Update date: 2012-04-22
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_InvoiceList]
-	
+	@PageSize int = 100,
+	@CurrentPage int = 1
 AS
-	SELECT 
-		 M.Name
-		,M.Type
-		,M.Year
-		,ID = I.ID
-		,[IID]
-		,MID = I.MID
-		,IDSN = I.IDSN
-		,M.IDCard
-		,NameContact = I.Name
-		,Amount = CAST( I.[Amount] as decimal(10,0))
-		,I.[Title]
-		,I.[Tel]
-		,I.[Province]
-		,I.[City]
-		,I.[Address]
-		,I.[Zip]
-	FROM Invoice I 
-		inner join Member M on M.MID = I.MID
+	DECLARE @Records int = 0
+	SET @CurrentPage = @CurrentPage - 1;
+	IF @CurrentPage < 0 
+		SET @CurrentPage = 0
+	EXEC ZGetRecordByPageV3
+		@TableNames ='v_m_invoice',     
+		@PrimaryKey ='IID',           
+		@Fields   ='',                 
+		@PageSize = @PageSize,         
+		@CurrentPage = @CurrentPage,   
+		@Filter  = '',           
+		@Group  = '',                  
+		@Order  = ' IID DESC'   
 
 RETURN 0
