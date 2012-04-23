@@ -217,5 +217,11 @@
     <Build Include="Procedure\M\M_Get_InvoiceListCount.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Table\MemberImport.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\M\M_Import_Member.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
