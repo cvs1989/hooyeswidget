@@ -223,5 +223,14 @@
     <Build Include="Procedure\M\M_Import_Member.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\M\M_Task_MemberCredit.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\M\M_Import_MemberCredit.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\MemberCredit.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
