@@ -232,5 +232,8 @@
     <Build Include="Table\MemberCredit.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\M\M_Get_CreditList.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
