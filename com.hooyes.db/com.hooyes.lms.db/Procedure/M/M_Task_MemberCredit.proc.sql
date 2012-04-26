@@ -56,7 +56,11 @@ AS
 		-- 更新成绩
 	  IF NOT EXISTS(SELECT * FROM Report WHERE MID = @MID and Score>=60)
 	  BEGIN
-		EXECUTE [Update_Report] @MID,75
+
+		DECLARE @score int = 65
+		SELECT @score = @score + RAND()*21
+
+		EXECUTE [Update_Report] @MID,@score
 	  END
 
 	END
@@ -65,7 +69,7 @@ AS
 		SET flag = 1 
 	WHERE ID = @ID
     
-	SELECT @MID,@Year,@Type,@ID
+
 	FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID
     END
 	CLOSE MCursor 
