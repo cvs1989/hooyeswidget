@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-18
--- Update date: 2012-04-18
+-- Update date: 2012-05-08
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Check_Login]
@@ -12,15 +12,17 @@ CREATE PROCEDURE [dbo].[M_Check_Login]
 	,@Code int = 0 output
 	,@Message varchar(200) = '' output
 AS
-	DECLARE @AID int
-	SELECT @AID = AID 
+	DECLARE @AID int,
+			@Tag varchar(20)
+	SELECT @AID = AID,
+		   @Tag = Tag
 	FROM [Admin] 
 	WHERE [Login] = @LoginID 
 	and [Password] = sys.fn_VarBinToHexStr(hashbytes('md5',@LoginPWD+'lms'+convert(varchar,AID)))
 	IF @AID is not null
 	BEGIN
 		SET @Code = 0
-		SET @Message = 'Success'
+		SET @Message = @Tag
 	END
 	ELSE
 	BEGIN
