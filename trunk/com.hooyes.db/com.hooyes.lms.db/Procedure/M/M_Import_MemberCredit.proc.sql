@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2012-04-26
+-- Update date: 2012-07-10
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Import_MemberCredit]
@@ -16,6 +16,8 @@ CREATE PROCEDURE [dbo].[M_Import_MemberCredit]
 		,@Message varchar(200) = '' output
 AS
 	DECLARE @flag int = 0 
+	SET @IDCard = LTRIM(RTRIM(@IDCard))
+	SET @IDSN   = LTRIM(RTRIM(@IDSN))
 	IF NOT EXISTS(SELECT * FROM MemberCredit WHERE [IDSN] = @IDSN AND [IDCard] = @IDCard AND flag = 1)
 	BEGIN
 		SET @flag = 0
