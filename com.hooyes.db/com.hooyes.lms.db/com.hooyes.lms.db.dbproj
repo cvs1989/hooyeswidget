@@ -235,5 +235,17 @@
     <Build Include="Procedure\M\M_Get_CreditList.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Procedure\M\M_Import_Invoice.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\M\M_Task_Invoice.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\M\M_Get_InvoiceImportList.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\InvoiceImport.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
