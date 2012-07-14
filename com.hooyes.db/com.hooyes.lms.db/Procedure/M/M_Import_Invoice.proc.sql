@@ -3,11 +3,11 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-12
--- Update date: 2012-07-12
+-- Update date: 2012-07-14
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Import_Invoice]
-	 @SN int = 0 output
+	 @SN decimal = 0 output
 	,@IDCard varchar(20)
 	,@IDSN varchar(30)
 	,@Name varchar(50)
