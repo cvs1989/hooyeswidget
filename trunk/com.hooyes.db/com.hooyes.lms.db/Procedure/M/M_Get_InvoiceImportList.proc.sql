@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-12
--- Update date: 2012-07-12
+-- Update date: 2012-07-14
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_InvoiceImportList]
@@ -17,7 +17,7 @@ AS
 		[金额] = MC.Amount,
 		[发票抬头] = MC.Title,
 		[电话] = MC.Tel,
-		[地址] = MC.Address,
+		[地址] = LEFT(MC.Address,3) +'...',
 		[邮编] = MC.Zip,
 		[状态]= CASE MC.flag
 				 WHEN 0 THEN '未处理'
@@ -27,4 +27,5 @@ AS
 				END
 	FROM InvoiceImport MC
 		LEFT JOIN Member  M ON MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN
+	WHERE MC.SN = @SN
 RETURN 0
