@@ -15,5 +15,20 @@ namespace com.hooyes.app.AngryApple
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string resultFile = "";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.InitialDirectory = "D://Patch";
+            openFileDialog1.Filter = "All files (*.*)|*.*|Excel files (*.xls)|*.xls";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                resultFile = openFileDialog1.FileName;
+                textBox1.Text = resultFile;
+            }
+        }
     }
 }
