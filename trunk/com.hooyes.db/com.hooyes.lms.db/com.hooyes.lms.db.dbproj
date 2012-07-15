@@ -61,6 +61,7 @@
     <Folder Include="Table" />
     <Folder Include="Data" />
     <Folder Include="Procedure\M" />
+    <Folder Include="Procedure\S" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -245,6 +246,12 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Table\InvoiceImport.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\S\S_Import_MemberCredit.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Clear_MSessions.proc.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

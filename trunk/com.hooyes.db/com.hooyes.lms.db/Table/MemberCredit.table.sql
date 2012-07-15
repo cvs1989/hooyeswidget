@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[MemberCredit](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[SN] [int] NULL,
+	[SN] [decimal](18, 0) NOT NULL,
 	[sID] [int] NULL,
 	[MID] [int] NULL,
 	[Name] [varchar](50) NULL,
@@ -12,8 +12,10 @@
 	[Phone] [varchar](20) NULL,
 	[tstamp] [datetime] NULL,
 	[flag] [int] NULL,
+	[tag] [int] NULL,
  CONSTRAINT [PK_MemberCredit] PRIMARY KEY CLUSTERED 
 (
+	[SN] ASC,
 	[IDCard] ASC,
 	[IDSN] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -29,3 +31,4 @@ GO
 
 ALTER TABLE [dbo].[MemberCredit] ADD  CONSTRAINT [DF_MemberCredit_flag]  DEFAULT ((0)) FOR [flag]
 GO
+
