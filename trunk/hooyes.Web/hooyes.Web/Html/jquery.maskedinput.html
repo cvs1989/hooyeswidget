@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.maskedinput-1.2.2.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#phone").mask("?999-999-9999");
+            // $("#form").validate();
+            //            var opts2 = {
+            //            rules: {
+            //              phone: { required: true, digits: true, rangelength: [10, 10]}
+            //        };
+            //        var moboform = $("#form1").validate(jQuery.extend(opts2));
+
+            var a = { "list": [{ "id": "15782", "name": "贡院9号", "coordx_encode": "116.437633", "coordy_encode": "39.915968", "price_show": "55000元", "price": "55000", "sale_type": "30" }, { "id": "10994", "name": "\u5efa\u56fd\u56fd\u9645\u516c\u5bd3", "coordx_encode": "116.436618", "coordy_encode": "39.916398", "price_show": "25000元", "price": "25000", "sale_type": "50"}], "num": 2 };
+            //alert(a.list);
+        });
+    </script>
+</head>
+<body>
+<form id="form1" action="" >
+<input type="text" id="phone" name="phone" class="" />
+<button id="btn">取值</button>
+</form>
+</body>
+</html>
