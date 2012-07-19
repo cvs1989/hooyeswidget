@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-09
--- Update date: 2012-04-09
+-- Update date: 2012-07-19
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[SLog]
@@ -11,12 +11,12 @@ CREATE PROCEDURE [dbo].[SLog]
 	@Code int = 0,
 	@Message varchar(200)
 AS
-	INSERT INTO [Log]
-			   ([MID]
-			   ,[Code]
-			   ,[Message])
-		 VALUES
-			   (@MID
-			   ,@Code
-			   ,@Message)
+	--INSERT INTO [Log]
+	--		   ([MID]
+	--		   ,[Code]
+	--		   ,[Message])
+	--	 VALUES
+	--		   (@MID
+	--		   ,@Code
+	--		   ,@Message)
 RETURN 0
