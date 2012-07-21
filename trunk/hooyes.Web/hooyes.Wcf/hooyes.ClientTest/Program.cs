@@ -9,7 +9,7 @@ namespace hooyes.ClientTest
     {
         static void Main(string[] args)
         {
-           // hooyes.WCF.Service.SinaApiService sa = new WCF.Service.SinaApiService("hooyes@sina.com", "rgbjyss");
+           // hooyes.WCF.Service.SinaApiService sa = new WCF.Service.SinaApiService("hooyes@sina.com", "x");
            //string s= sa.statuses_update("xml","我打算建一个新浪微博的WCF怎么样？");
            ////s = sa.statuses_update("xml", "别想太多未来的问题");
 
