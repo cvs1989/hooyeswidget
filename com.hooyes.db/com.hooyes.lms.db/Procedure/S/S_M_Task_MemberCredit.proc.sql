@@ -1,38 +1,44 @@
-﻿DROP PROC [M_Task_MemberCredit]
+﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
 -- Author:		hooyes
--- Create date: 2012-04-25
+-- Create date: 2012-07-22
 -- Update date: 2012-07-22
 -- Desc:
 -- =============================================
-CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
+CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
 
 AS
 	DECLARE @MID int,
 			@Year int,
 			@Type int,
-			@ID int
+			@ID int,
+			@M_Type int,
+			@M_Phone varchar(50)
 	DECLARE MCursor CURSOR FOR
 
 	SELECT M.MID,
 		   M.Year,
 		   M.Type,
-		   MC.ID
+		   MC.ID,
+		   MC.Type,
+		   MC.Phone
 	FROM  MemberCredit MC
 	inner join Member M on (MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN)
-	WHERE flag = 0 
-		and tag != 100
+	WHERE flag = 0
+	and tag = 100
 	ORDER by MC.tstamp 
 
 	OPEN MCursor 
-    FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID
+    FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID,@M_Type,@M_Phone
     WHILE (@@FETCH_STATUS = 0)
     BEGIN
 
 	-- 2012 年的学员
 	IF @Year = 2012
 	BEGIN
+		IF @Type = -1
+			SET @Type = @M_Type
 		IF @Type = 0
 		BEGIN
 			EXECUTE [M_Update_Courses] @MID,6001
@@ -138,11 +144,26 @@ AS
 
 
 	UPDATE MemberCredit
-		SET flag = 1 
+		SET flag = 1,MID = @MID
 	WHERE ID = @ID
+
+	-- 更新电话和类型
+	UPDATE Member
+		SET Phone = CASE  
+					WHEN Phone IS NULL THEN @M_Phone
+					WHEN Phone ='' THEN @M_Phone
+					ELSE
+						 Phone
+					END 
+		,   [Type]  = CASE
+					  WHEN [Type] = -1 THEN @M_Type
+					  ELSE 
+						 [type]
+					  END
+	WHERE MID = @MID
     
 
-	FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID
+	FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID,@M_Type,@M_Phone
     END
 	CLOSE MCursor 
 	DEALLOCATE MCursor 
