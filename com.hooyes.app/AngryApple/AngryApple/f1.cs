@@ -5,7 +5,7 @@ namespace com.hooyes.app.AngryApple
 {
     public partial class f1 : Form
     {
-        Loading l = new Loading();
+        Loading l;
         public string key = string.Empty;
         public f1()
         {
@@ -24,16 +24,6 @@ namespace com.hooyes.app.AngryApple
                 textBox1.Text = resultFile;
                 EnabledBtn(true);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-            var SN = U.CreateSN();
-            var dt = D.B(textBox1.Text, SN);
-            dataGridView1.DataSource = dt;
-            
-            
         }
 
         private void f1_Load(object sender, EventArgs e)
@@ -68,12 +58,27 @@ namespace com.hooyes.app.AngryApple
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            ProgressShow(true);
+            EnabledBtn(false);
+            var SN = U.CreateSN();
+            var dt = D.B(textBox1.Text, SN, key);
+            dataGridView1.DataSource = dt;
+            EnabledBtn(true);
+            ProgressShow(false);
+
+
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             ProgressShow(true);
+            EnabledBtn(false);
             var SN = U.CreateSN();
-            var dt = D.B(textBox1.Text, SN);
+            var dt = D.B(textBox1.Text, SN, key);
             dataGridView1.DataSource = dt;
+            EnabledBtn(true);
             ProgressShow(false);
         }
 
@@ -87,6 +92,11 @@ namespace com.hooyes.app.AngryApple
         {
             if (b)
             {
+                if (l == null)
+                {
+                    l = new Loading();
+                }
+                l.TopLevel = true;
                 l.Show();
             }
             else

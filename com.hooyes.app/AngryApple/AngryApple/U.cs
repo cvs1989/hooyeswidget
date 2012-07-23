@@ -18,6 +18,9 @@ namespace com.hooyes.app.AngryApple
             string r = string.Empty;
             switch (N)
             {
+                case 101:
+                    r = "未经授权";
+                    break;
                 case 0:
                     r = "登录成功";
                     break;
