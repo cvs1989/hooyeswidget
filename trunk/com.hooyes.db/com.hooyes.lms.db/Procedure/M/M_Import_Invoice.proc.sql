@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-12
--- Update date: 2012-07-14
+-- Update date: 2012-07-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Import_Invoice]
@@ -45,7 +45,7 @@ AS
 		SET @flag = 2
 
 		SELECT @Code = 200,
-			   @Message = 'EXISTS'+STR(@IDSN)
+			   @Message = 'EXISTS'+CONVERT(varchar(20),@IDSN)
 	END
 	INSERT INTO [InvoiceImport]([IID],[SN] ,[IDCard],[IDSN],[Name],[Amount],[Title],[Tel],[Province],[City],[Address],[Zip],[flag])
 		VALUES (@IID,@SN,@IDCard,@IDSN,@Name,@Amount,@Title,@Tel,@Province,@City,@Address,@Zip,@flag)

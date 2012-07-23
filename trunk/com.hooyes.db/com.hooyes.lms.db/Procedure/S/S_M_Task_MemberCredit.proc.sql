@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-07-22
+-- Update date: 2012-07-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -25,8 +25,8 @@ AS
 		   MC.Phone
 	FROM  MemberCredit MC
 	inner join Member M on (MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN)
-	WHERE flag = 0
-	and tag = 100
+	WHERE MC.flag = 0
+	and MC.tag = 100
 	ORDER by MC.tstamp 
 
 	OPEN MCursor 
@@ -41,23 +41,23 @@ AS
 			SET @Type = @M_Type
 		IF @Type = 0
 		BEGIN
-			EXECUTE [M_Update_Courses] @MID,6001
-			EXECUTE [M_Update_Courses] @MID,6002
-			EXECUTE [M_Update_Courses] @MID,6005
-			EXECUTE [M_Update_Courses] @MID,6006
-			EXECUTE [M_Update_Courses] @MID,6007
-			EXECUTE [M_Update_Courses] @MID,6008
-			EXECUTE [M_Update_Courses] @MID,6009
-			EXECUTE [M_Update_Courses] @MID,6010
+			EXECUTE [S_M_Update_Courses] @MID,6001
+			EXECUTE [S_M_Update_Courses] @MID,6002
+			EXECUTE [S_M_Update_Courses] @MID,6005
+			EXECUTE [S_M_Update_Courses] @MID,6006
+			EXECUTE [S_M_Update_Courses] @MID,6007
+			EXECUTE [S_M_Update_Courses] @MID,6008
+			EXECUTE [S_M_Update_Courses] @MID,6009
+			EXECUTE [S_M_Update_Courses] @MID,6010
 		END
 
 		IF @Type = 1
 		BEGIN
-			EXECUTE [M_Update_Courses] @MID,6003
-			EXECUTE [M_Update_Courses] @MID,6004
-			EXECUTE [M_Update_Courses] @MID,6024
-			EXECUTE [M_Update_Courses] @MID,6025
-			EXECUTE [M_Update_Courses] @MID,6026
+			EXECUTE [S_M_Update_Courses] @MID,6003
+			EXECUTE [S_M_Update_Courses] @MID,6004
+			EXECUTE [S_M_Update_Courses] @MID,6024
+			EXECUTE [S_M_Update_Courses] @MID,6025
+			EXECUTE [S_M_Update_Courses] @MID,6026
 		END
 
 		-- 更新成绩
@@ -77,20 +77,20 @@ AS
 	BEGIN
 		IF @Type = 0
 		BEGIN
-			EXECUTE [M_Update_Courses] @MID,3001
-			EXECUTE [M_Update_Courses] @MID,3002
-			EXECUTE [M_Update_Courses] @MID,3003
-			EXECUTE [M_Update_Courses] @MID,3004
-			EXECUTE [M_Update_Courses] @MID,3005
-			EXECUTE [M_Update_Courses] @MID,3006
+			EXECUTE [S_M_Update_Courses] @MID,3001
+			EXECUTE [S_M_Update_Courses] @MID,3002
+			EXECUTE [S_M_Update_Courses] @MID,3003
+			EXECUTE [S_M_Update_Courses] @MID,3004
+			EXECUTE [S_M_Update_Courses] @MID,3005
+			EXECUTE [S_M_Update_Courses] @MID,3006
 		END
 
 		IF @Type = 1
 		BEGIN
-			EXECUTE [M_Update_Courses] @MID,3007
-			EXECUTE [M_Update_Courses] @MID,3008
-			EXECUTE [M_Update_Courses] @MID,3009
-			EXECUTE [M_Update_Courses] @MID,3010
+			EXECUTE [S_M_Update_Courses] @MID,3007
+			EXECUTE [S_M_Update_Courses] @MID,3008
+			EXECUTE [S_M_Update_Courses] @MID,3009
+			EXECUTE [S_M_Update_Courses] @MID,3010
 		END
 
 	END
@@ -98,49 +98,52 @@ AS
 	-- 2010 年的学员
 	IF @Year = 2010
 	BEGIN
-			EXECUTE [M_Update_Courses] @MID,3011
-			EXECUTE [M_Update_Courses] @MID,3012
-			EXECUTE [M_Update_Courses] @MID,3013
-			EXECUTE [M_Update_Courses] @MID,3014
-			EXECUTE [M_Update_Courses] @MID,3015
+			EXECUTE [S_M_Update_Courses] @MID,3011
+			EXECUTE [S_M_Update_Courses] @MID,3012
+			EXECUTE [S_M_Update_Courses] @MID,3013
+			EXECUTE [S_M_Update_Courses] @MID,3014
+			EXECUTE [S_M_Update_Courses] @MID,3015
 	END
 
 	-- 2009 年的学员
 	IF @Year = 2009
 	BEGIN
-			EXECUTE [M_Update_Courses] @MID,3016
-			EXECUTE [M_Update_Courses] @MID,3017
-			EXECUTE [M_Update_Courses] @MID,3018
-			EXECUTE [M_Update_Courses] @MID,3019
+			EXECUTE [S_M_Update_Courses] @MID,3016
+			EXECUTE [S_M_Update_Courses] @MID,3017
+			EXECUTE [S_M_Update_Courses] @MID,3018
+			EXECUTE [S_M_Update_Courses] @MID,3019
 	END
 	-- 2008 年的学员
 	IF @Year = 2008
 	BEGIN
-			EXECUTE [M_Update_Courses] @MID,3020
-			EXECUTE [M_Update_Courses] @MID,3021
-			EXECUTE [M_Update_Courses] @MID,3022
-			EXECUTE [M_Update_Courses] @MID,3023
-			EXECUTE [M_Update_Courses] @MID,3024
+			EXECUTE [S_M_Update_Courses] @MID,3020
+			EXECUTE [S_M_Update_Courses] @MID,3021
+			EXECUTE [S_M_Update_Courses] @MID,3022
+			EXECUTE [S_M_Update_Courses] @MID,3023
+			EXECUTE [S_M_Update_Courses] @MID,3024
 	END
 	-- 2007 年的学员
 	IF @Year = 2007
 	BEGIN
-			EXECUTE [M_Update_Courses] @MID,3025
-			EXECUTE [M_Update_Courses] @MID,3026
-			EXECUTE [M_Update_Courses] @MID,3027
-			EXECUTE [M_Update_Courses] @MID,3028
+			EXECUTE [S_M_Update_Courses] @MID,3025
+			EXECUTE [S_M_Update_Courses] @MID,3026
+			EXECUTE [S_M_Update_Courses] @MID,3027
+			EXECUTE [S_M_Update_Courses] @MID,3028
 	END
 
 	-- 2006 年的学员
 	IF @Year = 2006
 	BEGIN
-			EXECUTE [M_Update_Courses] @MID,3029
-			EXECUTE [M_Update_Courses] @MID,3030
-			EXECUTE [M_Update_Courses] @MID,3031
-			EXECUTE [M_Update_Courses] @MID,3032
-			EXECUTE [M_Update_Courses] @MID,3033
-			EXECUTE [M_Update_Courses] @MID,3034
+			EXECUTE [S_M_Update_Courses] @MID,3029
+			EXECUTE [S_M_Update_Courses] @MID,3030
+			EXECUTE [S_M_Update_Courses] @MID,3031
+			EXECUTE [S_M_Update_Courses] @MID,3032
+			EXECUTE [S_M_Update_Courses] @MID,3033
+			EXECUTE [S_M_Update_Courses] @MID,3034
 	END
+
+	-- 评估
+	EXECUTE [Task_EvaluteCourses] @MID
 
 
 	UPDATE MemberCredit
