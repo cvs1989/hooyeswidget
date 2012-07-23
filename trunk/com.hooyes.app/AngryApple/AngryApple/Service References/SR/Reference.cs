@@ -364,7 +364,7 @@ namespace com.hooyes.app.AngryApple.SR {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/I", ReplyAction="http://tempuri.org/IService1/IResponse")]
-        com.hooyes.app.AngryApple.SR.R I(com.hooyes.app.AngryApple.SR.M1 mc);
+        com.hooyes.app.AngryApple.SR.R I(com.hooyes.app.AngryApple.SR.M1 mc, string k);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/V", ReplyAction="http://tempuri.org/IService1/VResponse")]
         com.hooyes.app.AngryApple.SR.R V(string k);
@@ -397,8 +397,8 @@ namespace com.hooyes.app.AngryApple.SR {
                 base(binding, remoteAddress) {
         }
         
-        public com.hooyes.app.AngryApple.SR.R I(com.hooyes.app.AngryApple.SR.M1 mc) {
-            return base.Channel.I(mc);
+        public com.hooyes.app.AngryApple.SR.R I(com.hooyes.app.AngryApple.SR.M1 mc, string k) {
+            return base.Channel.I(mc, k);
         }
         
         public com.hooyes.app.AngryApple.SR.R V(string k) {

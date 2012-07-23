@@ -5,6 +5,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/com.hooyes.lms.Svc.Model" minOccurs="0" name="mc" nillable="true" type="q1:M1" />
+        <xs:element minOccurs="0" name="k" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

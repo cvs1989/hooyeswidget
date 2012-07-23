@@ -3,11 +3,11 @@ namespace com.hooyes.app.AngryApple
 {
     public class I
     {
-        public static R S(M1 m)
+        public static R S(M1 m,string k)
         {
             var r = new R();
             var c = new Service1Client();
-            var r1 = c.I(m);
+            var r1 = c.I(m, k);
             r.Code = r1.Code;
             r.Value = r1.Value;
             r.SN = r1.SN;

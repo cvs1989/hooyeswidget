@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -7,7 +8,7 @@ namespace com.hooyes.app.AngryApple
 {
     public class D
     {
-        public static R A(string f,decimal SN)
+        public static R A(string f,decimal SN,string k)
         {
             var r = new R();
             string SQL = "select * from [sheet1$]";
@@ -28,7 +29,7 @@ namespace com.hooyes.app.AngryApple
                         m.Name = string.Empty;
                         m.SN = SN;
                         m.Type = 1;
-                        var r1 = I.S(m);
+                        var r1 = I.S(m, k);
                         log.Info("{0},{1}", r1.Code, r1.Message);
                     }
                 }
@@ -43,7 +44,7 @@ namespace com.hooyes.app.AngryApple
 
             return r;
         }
-        public static DataTable B(string f, decimal SN)
+        public static DataTable B(string f, decimal SN,string k)
         {
 
             var dt = new DataTable();
@@ -56,7 +57,7 @@ namespace com.hooyes.app.AngryApple
             var dr = E.ExcuteReader(f, SQL);
             while (dr.Read())
             {
-                
+                Thread.Sleep(4);   
                 try
                 {
                     if (dr["身份证号"] != DBNull.Value && dr["报名序号"] != DBNull.Value)
@@ -70,7 +71,7 @@ namespace com.hooyes.app.AngryApple
                         m.Name = string.Empty;
                         m.SN = SN;
                         m.Type = 1;
-                        var r1 = I.S(m);
+                        var r1 = I.S(m, k);
 
                         var row = dt.NewRow();
                         row["身份证号"] = dr["身份证号"].ToString();
