@@ -18,23 +18,31 @@ namespace com.hooyes.app.AngryApple
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            string key = textBox1.Text;
-            if (string.IsNullOrEmpty(key))
+            try
             {
-                MessageBox.Show("请输入授权码");
-                return;
+                string key = textBox1.Text;
+                if (string.IsNullOrEmpty(key))
+                {
+                    MessageBox.Show("请输入授权码");
+                    return;
+                }
+                var r = I.V(key);
+                if (r.Code == 0)
+                {
+                    Login.ActiveForm.Hide();
+                    var f1 = new f1();
+                    f1.key = textBox1.Text;
+                    f1.Show();
+                }
+                else
+                {
+                    MessageBox.Show("授权码错误");
+                }
             }
-            var r = I.V(key);
-            if (r.Code == 0)
+            catch (Exception ex)
             {
-                Login.ActiveForm.Hide();
-                var f1 = new f1();
-                f1.key = textBox1.Text;
-                f1.Show();
-            }
-            else
-            {
-                MessageBox.Show("授权码错误");
+                MessageBox.Show(ex.Message);
+                log.Info("{0},{1}","login", ex.Message);
             }
         }
 
