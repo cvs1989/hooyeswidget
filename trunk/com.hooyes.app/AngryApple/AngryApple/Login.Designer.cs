@@ -35,17 +35,25 @@
             // 
             // login_btn
             // 
-            this.login_btn.Location = new System.Drawing.Point(156, 81);
+            this.login_btn.BackColor = System.Drawing.Color.Transparent;
+            this.login_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.login_btn.FlatAppearance.BorderSize = 0;
+            this.login_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.login_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.login_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.login_btn.ForeColor = System.Drawing.Color.Transparent;
+            this.login_btn.Image = ((System.Drawing.Image)(resources.GetObject("login_btn.Image")));
+            this.login_btn.Location = new System.Drawing.Point(159, 80);
             this.login_btn.Name = "login_btn";
-            this.login_btn.Size = new System.Drawing.Size(93, 33);
+            this.login_btn.Size = new System.Drawing.Size(93, 51);
             this.login_btn.TabIndex = 0;
-            this.login_btn.Text = "验证";
-            this.login_btn.UseVisualStyleBackColor = true;
+            this.login_btn.UseVisualStyleBackColor = false;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 43);
+            this.textBox1.Location = new System.Drawing.Point(134, 55);
+            this.textBox1.MaxLength = 100;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 21);
             this.textBox1.TabIndex = 1;
