@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2012-07-10
+-- Update date: 2012-07-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Import_MemberCredit]
@@ -29,7 +29,7 @@ AS
 		SET @flag = 2
 
 		SELECT @Code = 200,
-			   @Message = 'EXISTS'+STR(@IDSN)
+			   @Message = 'EXISTS'+CONVERT(varchar(20),@IDSN)
 	END
 	INSERT INTO [MemberCredit]([SN],[Name],[IDCard],[IDSN],[Year],[flag]) 
 	VALUES (@SN

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-23
--- Update date: 2012-04-23
+-- Update date: 2012-07-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Import_Member]
@@ -32,7 +32,7 @@ AS
 	ELSE
 	BEGIN
 		SELECT @Code = 200,
-			   @Message = 'EXISTS'+STR(@IDSN)
+			   @Message = 'EXISTS'+CONVERT(varchar(20),@IDSN)
 	END
 
 RETURN 0

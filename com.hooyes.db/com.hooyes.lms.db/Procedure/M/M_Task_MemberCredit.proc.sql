@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2012-07-22
+-- Update date: 2012-07-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
@@ -21,8 +21,8 @@ AS
 		   MC.ID
 	FROM  MemberCredit MC
 	inner join Member M on (MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN)
-	WHERE flag = 0 
-		and tag != 100
+	WHERE MC.flag = 0 
+		and MC.tag != 100
 	ORDER by MC.tstamp 
 
 	OPEN MCursor 

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-14
--- Update date: 2012-07-22
+-- Update date: 2012-07-23
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Import_MemberCredit]
@@ -63,7 +63,7 @@ AS
 	BEGIN
 
 		SELECT @Code = 200,
-			   @Message = 'EXISTS'+STR(@IDSN)
+			   @Message = 'EXISTS'+CONVERT(varchar(20),@IDSN)
 
 		SELECT @Status = r.Status FROM Report r 
 			inner join Member m on r.MID = m.MID 

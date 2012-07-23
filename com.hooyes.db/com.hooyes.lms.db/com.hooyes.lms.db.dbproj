@@ -257,5 +257,17 @@
     <Build Include="Procedure\S\S_M_Task_MemberCredit.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Table\Member.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\S\S_M_Update_Courses.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\S\S_Update_Member.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\S\S_Get_SubmitList.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
