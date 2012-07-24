@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace com.hooyes.app.AngryApple
 {
     public partial class f1 : Form
     {
-        Loading l;
+        delegate void HandleInterfaceUpdateDelegate();
+        HandleInterfaceUpdateDelegate interfaceUpdateHandle;
+        Thread td;  
+        
         public string key = string.Empty;
         public f1()
         {
             InitializeComponent();
+            interfaceUpdateHandle = new HandleInterfaceUpdateDelegate(StartPro); //实例化委托对象  
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -54,32 +59,16 @@ namespace com.hooyes.app.AngryApple
             var d = E.ExcuteDataset(textBox1.Text, "select * from [sheet1$]");
 
             dataGridView1.DataSource = d.Tables[0];
-            
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            ProgressShow(true);
-            EnabledBtn(false);
-            var SN = U.CreateSN();
-            var dt = D.B(textBox1.Text, SN, key);
-            dataGridView1.DataSource = dt;
-            EnabledBtn(true);
-            ProgressShow(false);
-
-
+            ProcessData();
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            ProgressShow(true);
-            EnabledBtn(false);
-            var SN = U.CreateSN();
-            var dt = D.B(textBox1.Text, SN, key);
-            dataGridView1.DataSource = dt;
-            EnabledBtn(true);
-            ProgressShow(false);
+            ProcessData();
         }
 
         private void EnabledBtn(bool b)
@@ -88,22 +77,31 @@ namespace com.hooyes.app.AngryApple
             button3.Enabled = b;
             button4.Enabled = b;
         }
-        private void ProgressShow(bool b)
+
+        private void ProcessData()
         {
-            if (b)
-            {
-                if (l == null)
-                {
-                    l = new Loading();
-                }
-                l.TopLevel = true;
-                l.Show();
-            }
-            else
-            {
-                l.Hide();
-            }
+            this.Invoke(interfaceUpdateHandle);
+            //ProgressShow(true);
+            EnabledBtn(false);
+            var SN = U.CreateSN();
+            var dt = D.B(textBox1.Text, SN, key);
+            dataGridView1.DataSource = dt;
+            EnabledBtn(true);
+            //ProgressShow(false);
+            td.Abort();
+
         }
 
+        private void chang()
+        {
+            Loading l = new Loading();
+            l.ShowDialog();
+        }
+
+        public void StartPro()
+        {
+            td = new Thread(chang);
+            td.Start();
+        } 
     }
 }

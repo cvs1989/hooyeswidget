@@ -69,5 +69,30 @@ namespace com.hooyes.lms.Svc.DAL
             }
             return m;
         }
+
+        public static R Credit()
+        {
+            var m = new R();
+            try
+            {
+                SqlParameter[] param =
+                {
+                    
+                };
+                
+                var r = SqlHelper.ExecuteNonQuery(SqlHelper.Local, CommandType.StoredProcedure, "S_M_Task_MemberCredit", param);
+                m.Code = 0;
+                m.Value = Convert.ToInt32(param[0].Value);
+                m.Message = "sucess";
+            }
+            catch (Exception ex)
+            {
+                m.Code = 300;
+                m.Message = ex.Message;
+                log.Fatal(ex.Message);
+                log.FatalException(ex.Message, ex);
+            }
+            return m;
+        }
     }
 }

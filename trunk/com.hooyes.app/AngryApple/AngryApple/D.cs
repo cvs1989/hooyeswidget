@@ -57,7 +57,7 @@ namespace com.hooyes.app.AngryApple
             var dr = E.ExcuteReader(f, SQL);
             while (dr.Read())
             {
-                Thread.Sleep(4);   
+                Thread.Sleep(300);   
                 try
                 {
                     if (dr["身份证号"] != DBNull.Value && dr["报名序号"] != DBNull.Value)

@@ -13,6 +13,9 @@ namespace LMSMonitor
         {
             try
             {
+                log.Info("credit");
+                Update.Credit();
+                log.Info("run");
                 Task.Run();
             }
             catch (Exception ex)
