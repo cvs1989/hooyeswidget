@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2012-07-23
+-- Update date: 2012-07-24
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
@@ -22,7 +22,7 @@ AS
 	FROM  MemberCredit MC
 	inner join Member M on (MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN)
 	WHERE MC.flag = 0 
-		and MC.tag != 100
+		and (MC.tag != 100 or MC.tag is null)
 	ORDER by MC.tstamp 
 
 	OPEN MCursor 
@@ -49,7 +49,7 @@ AS
 		BEGIN
 			EXECUTE [M_Update_Courses] @MID,6003
 			EXECUTE [M_Update_Courses] @MID,6004
-			EXECUTE [M_Update_Courses] @MID,6024
+			EXECUTE [M_Update_Courses] @MID,6030
 			EXECUTE [M_Update_Courses] @MID,6025
 			EXECUTE [M_Update_Courses] @MID,6026
 		END
