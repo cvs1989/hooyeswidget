@@ -46,6 +46,11 @@ namespace com.hooyes.app.AngryApple
             }
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+            label1.Text =System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(2);
+        }
+
 
     }
 }
