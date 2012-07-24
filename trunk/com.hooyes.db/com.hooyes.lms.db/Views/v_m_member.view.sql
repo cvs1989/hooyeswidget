@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-21
--- Update date: 2012-04-21
+-- Update date: 2012-07-24
 -- Desc:
 -- =============================================
 CREATE VIEW [dbo].[v_m_member]
@@ -27,3 +27,4 @@ AS
 		left join Invoice I on I.MID = M.MID
 		left join Report R on R.MID = M.MID
 	WHERE M.MID > 10000
+	AND M.Tag = 0

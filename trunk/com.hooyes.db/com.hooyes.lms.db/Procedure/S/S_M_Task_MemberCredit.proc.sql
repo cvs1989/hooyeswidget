@@ -27,6 +27,7 @@ AS
 	inner join Member M on (MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN)
 	WHERE MC.flag = 0
 	and MC.tag = 100
+	and DATEDIFF(HOUR,M.RegDate,GETDATE())>= 36
 	ORDER by MC.tstamp 
 
 	OPEN MCursor 
