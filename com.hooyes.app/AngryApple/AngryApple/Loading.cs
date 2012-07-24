@@ -11,9 +11,11 @@ namespace com.hooyes.app.AngryApple
 {
     public partial class Loading : Form
     {
+       
         public Loading()
         {
             InitializeComponent();
         }
+
     }
 }
