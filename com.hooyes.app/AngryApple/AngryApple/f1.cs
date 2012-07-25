@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -6,16 +7,38 @@ namespace com.hooyes.app.AngryApple
 {
     public partial class f1 : Form
     {
-        delegate void HandleInterfaceUpdateDelegate();
-        HandleInterfaceUpdateDelegate interfaceUpdateHandle;
-        Thread td;  
         
         public string key = string.Empty;
+        private delegate void SetPos(int Value, int Maximum, bool Finish, string Message, DataTable dt);
         public f1()
         {
             InitializeComponent();
-            interfaceUpdateHandle = new HandleInterfaceUpdateDelegate(StartPro); //实例化委托对象  
         }
+
+        private void SetTextMessage(int Value, int Maximum, bool Finish, string Message, DataTable dt)
+        {
+            if (this.InvokeRequired)
+            {
+                SetPos setpos = new SetPos(SetTextMessage);
+                this.Invoke(setpos, new object[] { Value, Maximum, Finish, Message, dt });
+            }
+            else
+            {
+                this.panel1.Show();
+                this.EnabledBtn(false);
+                this.label1.Text = string.Format("{0}/{1}", Value, Maximum);
+                this.label2.Text = Message;
+                this.progressBar1.Value = Value;
+                this.progressBar1.Maximum = Maximum;
+                if (Finish)
+                {
+                    dataGridView1.DataSource = dt;
+                    this.panel1.Hide();
+                    this.EnabledBtn(true);
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             string resultFile = "";
@@ -33,12 +56,9 @@ namespace com.hooyes.app.AngryApple
 
         private void f1_Load(object sender, EventArgs e)
         {
-            //textBox1.Text = key;
             dataGridView1.Dock = DockStyle.Right;
+            panel1.Hide();
             EnabledBtn(false);
-            //l.Show();
-            
-           
         }
 
         private void f1_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,11 +84,11 @@ namespace com.hooyes.app.AngryApple
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ProcessData();
+            StartProcess();
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            ProcessData();
+            StartProcess();
         }
 
         private void EnabledBtn(bool b)
@@ -78,30 +98,29 @@ namespace com.hooyes.app.AngryApple
             button4.Enabled = b;
         }
 
-        private void ProcessData()
+        private void StartProcess()
         {
-            this.Invoke(interfaceUpdateHandle);
-            //ProgressShow(true);
-            EnabledBtn(false);
+            dataGridView1.DataSource = null;
+            string t = textBox1.Text;
+            parm p = new parm();
+            p.k = key;
+            p.t = t;
+            Thread th2 = new Thread(new ParameterizedThreadStart(ProcessData));
+            th2.Start(p);
+        }
+
+        private void ProcessData(object data)
+        {
+
+            parm d = data as parm;
             var SN = U.CreateSN();
-            var dt = D.B(textBox1.Text, SN, key);
-            dataGridView1.DataSource = dt;
-            EnabledBtn(true);
-            //ProgressShow(false);
-            td.Abort();
-
+            var dt = D.B(d.t, SN, d.k, SetTextMessage);
         }
 
-        private void chang()
-        {
-            Loading l = new Loading();
-            l.ShowDialog();
-        }
-
-        public void StartPro()
-        {
-            td = new Thread(chang);
-            td.Start();
-        } 
+    }
+    public class parm
+    {
+        public string t { get; set; }
+        public string k { get; set; }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 
 namespace com.hooyes.app.AngryApple
 {
@@ -27,8 +23,14 @@ namespace com.hooyes.app.AngryApple
                 case 1:
                     r = "已学完";
                     break;
-                case 200:
+                case 5:
                     r = "正在学习中";
+                    break;
+                case 200:
+                    r = "序号或身份证错";
+                    break;
+                case 201:
+                    r = "序号或身份证错";
                     break;
                 case 202:
                     r = "序号或身份证错";

@@ -8,6 +8,7 @@ namespace com.hooyes.app.AngryApple
 {
     public class D
     {
+        public delegate void SetPos(int Value, int Maximum, bool Finish, string Message, DataTable dt);
         public static R A(string f,decimal SN,string k)
         {
             var r = new R();
@@ -44,22 +45,27 @@ namespace com.hooyes.app.AngryApple
 
             return r;
         }
-        public static DataTable B(string f, decimal SN,string k)
+        public static DataTable B(string f, decimal SN, string k, SetPos s)
         {
-
+            string Message = "";
             var dt = new DataTable();
+
             dt.Columns.Add("身份证号", System.Type.GetType("System.String"));
             dt.Columns.Add("报名序号", System.Type.GetType("System.String"));
             dt.Columns.Add("教育年份", System.Type.GetType("System.String"));
             dt.Columns.Add("手机", System.Type.GetType("System.String"));
             dt.Columns.Add("状态");
             string SQL = "select * from [sheet1$]";
-            var dr = E.ExcuteReader(f, SQL);
-            while (dr.Read())
+            var dataSet = E.ExcuteDataset(f, SQL);
+            DataTable dt2 = dataSet.Tables[0];
+            int Max = dt2.Rows.Count;
+            for (int i = 0; i < dt2.Rows.Count; i++)
             {
-                Thread.Sleep(300);   
                 try
                 {
+                    var dr = dt2.Rows[i];
+                    Message = string.Format("正在处理：{0}",dr["报名序号"].ToString());
+                    s(i, Max, false, Message, dt);
                     if (dr["身份证号"] != DBNull.Value && dr["报名序号"] != DBNull.Value)
                     {
                         var m = new SR.M1();
@@ -86,6 +92,7 @@ namespace com.hooyes.app.AngryApple
                             log.Info("{0},{1}", r1.Code, r1.Message);
                         }
                     }
+                    Thread.Sleep(300);
                 }
                 catch (Exception ex1)
                 {
@@ -93,8 +100,8 @@ namespace com.hooyes.app.AngryApple
                 }
 
             }
-            dr.Close();
-            dr.Dispose();
+            Message = "完成";
+            s(Max, Max, true, Message, dt);
 
             return dt;
         }
