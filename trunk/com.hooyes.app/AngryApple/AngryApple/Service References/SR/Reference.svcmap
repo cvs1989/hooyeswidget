@@ -23,11 +23,11 @@
     <MetadataSource Address="http://dev.hooyes.com/henanSvc/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="f6ad235c-9079-481c-83e1-e3cbc18f7e7b" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="365374cd-19e9-4067-b07a-cff485236b15" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?disco" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="4ef6f25d-383f-4ff5-8e1e-bdfb0df5b2ac" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="eff5e5bc-8939-4901-9227-f6e61a87e613" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="78fb620e-a9d6-4552-91cb-feb7f5bab032" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="233b8742-9195-4ddf-91be-855f2518221b" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="0d3e1027-10a1-45b9-908e-2282d42adba6" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?disco" />
+    <MetadataFile FileName="Service111.xsd" MetadataType="Schema" ID="ce0cfebe-c997-4cb5-8631-964f89232a3c" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service112.xsd" MetadataType="Schema" ID="2038dec6-9de5-4af7-b1a6-3b16644e0f90" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="eaecc97c-dac7-429f-97dd-ed91566ab7a7" SourceId="1" SourceUrl="http://dev.hooyes.com/henanSvc/Service1.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
