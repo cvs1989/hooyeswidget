@@ -62,7 +62,7 @@ AS
 	ELSE
 	BEGIN
 
-		SELECT @Code = 200,
+		SELECT @Code = 5,
 			   @Message = 'EXISTS'+CONVERT(varchar(20),@IDSN)
 
 		SELECT @Status = r.Status FROM Report r 
