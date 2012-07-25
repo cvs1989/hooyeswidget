@@ -124,13 +124,13 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SR\Service1.wsdl" />
-    <None Include="Service References\SR\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\SR\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SR\Service12.xsd">
+    <None Include="Service References\SR\Service111.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SR\Service112.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -139,9 +139,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SR\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SR\Service1.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SR\configuration91.svcinfo" />
@@ -157,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple.ico" />
+    <None Include="Service References\SR\Service1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
