@@ -269,5 +269,14 @@
     <Build Include="Procedure\S\S_Get_SubmitList.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Table\Report.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Procedure\Update_Timeline.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\Timeline.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-04-09
+-- Update date: 2012-07-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyContents]
@@ -21,6 +21,10 @@ AS
 		SET @Minutes = 0
 	IF @Second < 0 
 		SET @Second = 0
+
+	EXECUTE [Update_Timeline]
+		@MID    = @MID
+	   ,@Second  = @Second
 
 	/* 检查是否是欺诈 Code = 0 正常*/
 	EXECUTE [Check_Fraud] 
@@ -105,5 +109,8 @@ AS
 	  ,@CID    = @CID
 	  ,@Second  = @Second
 	  ,@Status  = @Status
+
+
+
 
 RETURN 0

@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-01-03
--- Update date: 2012-03-06
+-- Update date: 2012-07-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Report]
@@ -33,6 +33,11 @@ AS
 				,Minutes = ISNULL(@Minutes,Minutes)
 				,Status = ISNULL(@Status,Status)
 				,Memo = ISNULL(@Memo,Memo)
+				,UpdateDate = GETDATE()
+				,CommitDate = CASE 
+								WHEN @Status = 1 THEN GETDATE()
+								ELSE CommitDate
+							  END 
 			WHERE MID = @MID
 		END
 	ELSE
