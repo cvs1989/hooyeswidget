@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-07-23
+-- Update date: 2012-07-25
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -56,7 +56,7 @@ AS
 		BEGIN
 			EXECUTE [S_M_Update_Courses] @MID,6003
 			EXECUTE [S_M_Update_Courses] @MID,6004
-			EXECUTE [S_M_Update_Courses] @MID,6024
+			EXECUTE [S_M_Update_Courses] @MID,6030
 			EXECUTE [S_M_Update_Courses] @MID,6025
 			EXECUTE [S_M_Update_Courses] @MID,6026
 		END
