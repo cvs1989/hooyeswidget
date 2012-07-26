@@ -82,7 +82,7 @@ namespace com.hooyes.lms.Svc.DAL
                 
                 var r = SqlHelper.ExecuteNonQuery(SqlHelper.Local, CommandType.StoredProcedure, "S_M_Task_MemberCredit", param);
                 m.Code = 0;
-                m.Value = Convert.ToInt32(param[0].Value);
+                //m.Value = Convert.ToInt32(param[0].Value);
                 m.Message = "sucess";
             }
             catch (Exception ex)

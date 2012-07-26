@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using com.hooyes.lms.Svc.DAL;
 
 namespace LMSMonitor
@@ -13,10 +10,29 @@ namespace LMSMonitor
         {
             try
             {
-                log.Info("credit");
-                Update.Credit();
-                log.Info("run");
-                Task.Run();
+                if (args.Length > 0)
+                {
+                    string cmd = args[0].ToLower();
+                    switch (cmd)
+                    {
+                        case "-credit":
+                            log.Info("credit");
+                            Update.Credit();
+                            break;
+                        case "-commit":
+                            log.Info("commit");
+                            Task.Run();
+                            break;
+                        default:
+                            log.Info("cmd error");
+                            break;
+                    }
+                }
+                else
+                {
+                    log.Info("no args");
+                }
+                
             }
             catch (Exception ex)
             {
