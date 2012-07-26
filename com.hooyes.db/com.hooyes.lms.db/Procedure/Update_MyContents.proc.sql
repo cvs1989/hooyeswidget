@@ -1,6 +1,7 @@
 ﻿DROP PROC [Update_MyContents]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2011-12-18
 -- Update date: 2012-07-26
@@ -110,6 +111,9 @@ AS
 	  ,@Second  = @Second
 	  ,@Status  = @Status
 
+	EXECUTE [Update_Timeline]
+	@MID    = @MID
+	,@Record  = @Second
 
 
 

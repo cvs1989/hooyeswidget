@@ -1,9 +1,10 @@
 ﻿DROP PROC [M_Task_MemberCredit]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2012-07-24
+-- Update date: 2012-07-27
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
@@ -136,6 +137,8 @@ AS
 			EXECUTE [M_Update_Courses] @MID,3034
 	END
 
+	-- 评估
+	EXECUTE [Task_EvaluteCourses] @MID
 
 	UPDATE MemberCredit
 		SET flag = 1 
