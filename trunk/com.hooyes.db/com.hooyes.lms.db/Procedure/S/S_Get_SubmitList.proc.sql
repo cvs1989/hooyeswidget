@@ -1,15 +1,17 @@
 ﻿DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-07-23
--- Update date: 2012-07-23
+-- Update date: 2012-07-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Get_SubmitList]
-
+	@count int = 1
 AS
 	SELECT 
+		TOP(@count)
 	     M.MID
 		,M.IDSN
 		,M.IDCard

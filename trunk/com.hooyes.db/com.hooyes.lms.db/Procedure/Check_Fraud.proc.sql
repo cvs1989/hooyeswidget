@@ -1,6 +1,7 @@
 ﻿DROP PROC [Check_Fraud]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-04-09
 -- Update date: 2012-07-26
@@ -19,6 +20,7 @@ AS
 	DECLARE @Is_Current int = 0
 			,@diff decimal 
 			,@DayID int = 0
+    SET @DayID = CONVERT(int, CONVERT(varchar(8),GETDATE(),112))
 
 	IF EXISTS(SELECT * FROM Member WHERE MID = @MID AND Year = 2012)
 		SET @Is_Current = 1
@@ -40,7 +42,17 @@ AS
 			
 	END
 
-	/* 到当前时间 */
+	/* 时间的有效性。 */
+	IF EXISTS(
+		SELECT *
+		FROM Timeline
+		WHERE DATEDIFF(s,CreateDate,GETDATE())+120 < [Record]
+		AND MID = @MID 
+		AND DayID = @DayID
+	)
+	BEGIN
+		SET @Code = 101
+	END
 
 	IF @Code ! = 0 
 	BEGIN

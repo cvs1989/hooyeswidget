@@ -1,13 +1,14 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-07-25
+-- Update date: 2012-07-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
-
+	@count int = 1
 AS
 	DECLARE @MID int,
 			@Year int,
@@ -17,7 +18,8 @@ AS
 			@M_Phone varchar(50)
 	DECLARE MCursor CURSOR FOR
 
-	SELECT M.MID,
+	SELECT TOP(@count)
+		   M.MID,
 		   M.Year,
 		   M.Type,
 		   MC.ID,
