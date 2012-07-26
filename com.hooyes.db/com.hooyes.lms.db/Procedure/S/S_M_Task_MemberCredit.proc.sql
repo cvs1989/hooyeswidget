@@ -1,14 +1,14 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-07-26
+-- Update date: 2012-07-27
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
-	@count int = 1
+	@count int = 5
 AS
 	DECLARE @MID int,
 			@Year int,
@@ -30,7 +30,7 @@ AS
 	WHERE MC.flag = 0
 	and MC.tag = 100
 	and DATEDIFF(HOUR,M.RegDate,GETDATE())>= 36
-	ORDER by MC.tstamp 
+	ORDER by MC.Year asc, MC.tstamp asc
 
 	OPEN MCursor 
     FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID,@M_Type,@M_Phone
