@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-04-09
--- Update date: 2012-04-10
+-- Update date: 2012-07-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Fraud]
@@ -18,6 +18,7 @@ CREATE PROCEDURE [dbo].[Check_Fraud]
 AS
 	DECLARE @Is_Current int = 0
 			,@diff decimal 
+			,@DayID int = 0
 
 	IF EXISTS(SELECT * FROM Member WHERE MID = @MID AND Year = 2012)
 		SET @Is_Current = 1
@@ -38,6 +39,8 @@ AS
 		END
 			
 	END
+
+	/* 到当前时间 */
 
 	IF @Code ! = 0 
 	BEGIN
