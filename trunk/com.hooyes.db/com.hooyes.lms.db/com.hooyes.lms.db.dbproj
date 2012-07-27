@@ -278,5 +278,32 @@
     <Build Include="Table\Timeline.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Table\Contents.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\Courses.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\My_Contents.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\My_Courses.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\My_Question.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\Question.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\Seed.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\Log.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Table\CoursesImport.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
