@@ -4,6 +4,7 @@
 	[CreateDate] [datetime] NULL,
 	[UpdateDate] [datetime] NULL,
 	[Second] [float] NULL,
+	[Record] [float] NULL,
  CONSTRAINT [PK_Timeline] PRIMARY KEY CLUSTERED 
 (
 	[MID] ASC,
@@ -17,4 +18,7 @@ ALTER TABLE [dbo].[Timeline] ADD  CONSTRAINT [DF_Timeline_CreateDate]  DEFAULT (
 GO
 
 ALTER TABLE [dbo].[Timeline] ADD  CONSTRAINT [DF_Timeline_Second]  DEFAULT ((0)) FOR [Second]
+GO
+
+ALTER TABLE [dbo].[Timeline] ADD  CONSTRAINT [DF_Timeline_Record]  DEFAULT ((0)) FOR [Record]
 GO
