@@ -1,7 +1,7 @@
 ﻿DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2012-07-23
 -- Update date: 2012-07-27
@@ -17,7 +17,7 @@ AS
 		,M.IDCard
 		,M.RegDate
 		,M.Year
-		,R.Score
+		,Score    = ISNULL(R.Score,0)
 		,Compulsory = ISNULL(R.Compulsory,8)
 		,Elective = ISNULL(R.Elective,18)
 		,Status = ISNULL(R.Status,0)
