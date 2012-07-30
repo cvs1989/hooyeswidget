@@ -1,14 +1,14 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.4
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-07-27
+-- Update date: 2012-07-30
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
-	@count int = 5
+	@count int = 22
 AS
 	DECLARE @MID int,
 			@Year int,
