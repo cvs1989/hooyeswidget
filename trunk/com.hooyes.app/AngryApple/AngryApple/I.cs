@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using com.hooyes.app.AngryApple.SR;
@@ -37,6 +38,17 @@ namespace com.hooyes.app.AngryApple
             r.Message = r1.Message;
             c.Close();
             return r;
+        }
+        public static DataSet Summary(string k)
+        {
+            Binding bind;
+            EndpointAddress remoteAddress;
+            BE(url, out bind, out remoteAddress);
+            var r = new R();
+            var c = new Service1Client(bind, remoteAddress);
+            var r1 = c.Summary(k);
+            c.Close();
+            return r1;
         }
         private static void BE(string uri, out Binding bind, out EndpointAddress address)
         {

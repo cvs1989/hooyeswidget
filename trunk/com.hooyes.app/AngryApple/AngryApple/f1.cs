@@ -117,6 +117,11 @@ namespace com.hooyes.app.AngryApple
             var dt = D.B(d.t, SN, d.k, SetTextMessage);
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = D.S(key).Tables[0];
+        }
+
     }
     public class parm
     {

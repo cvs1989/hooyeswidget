@@ -105,5 +105,9 @@ namespace com.hooyes.app.AngryApple
 
             return dt;
         }
+        public static DataSet S(string k)
+        {
+            return I.Summary(k);
+        }
     }
 }
