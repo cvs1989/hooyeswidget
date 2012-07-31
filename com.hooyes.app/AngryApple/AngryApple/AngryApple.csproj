@@ -111,6 +111,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,14 +124,17 @@
     <None Include="Service References\SR\com.hooyes.app.AngryApple.SR.R.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SR\Service1.wsdl" />
+    <None Include="Service References\SR\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SR\Service11.wsdl" />
     <None Include="Service References\SR\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SR\Service111.xsd">
+    <None Include="Service References\SR\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SR\Service112.xsd">
+    <None Include="Service References\SR\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -154,7 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple.ico" />
-    <None Include="Service References\SR\Service1.disco" />
+    <None Include="Service References\SR\Service11.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

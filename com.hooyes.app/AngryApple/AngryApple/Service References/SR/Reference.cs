@@ -368,6 +368,9 @@ namespace com.hooyes.app.AngryApple.SR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/V", ReplyAction="http://tempuri.org/IService1/VResponse")]
         com.hooyes.app.AngryApple.SR.R V(string k);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Summary", ReplyAction="http://tempuri.org/IService1/SummaryResponse")]
+        System.Data.DataSet Summary(string k);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -403,6 +406,10 @@ namespace com.hooyes.app.AngryApple.SR {
         
         public com.hooyes.app.AngryApple.SR.R V(string k) {
             return base.Channel.V(k);
+        }
+        
+        public System.Data.DataSet Summary(string k) {
+            return base.Channel.Summary(k);
         }
     }
 }
