@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.4
+-- Version:     1.0.0.5
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-07-30
+-- Update date: 2012-08-06
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -29,7 +29,7 @@ AS
 	inner join Member M on (MC.IDCard = M.IDCard AND MC.IDSN = M.IDSN)
 	WHERE MC.flag = 0
 	and MC.tag = 100
-	and DATEDIFF(HOUR,M.RegDate,GETDATE())>= 36
+	and DATEDIFF(HOUR,M.RegDate,GETDATE())>= 18
 	ORDER by MC.Year asc, MC.tstamp asc
 
 	OPEN MCursor 
