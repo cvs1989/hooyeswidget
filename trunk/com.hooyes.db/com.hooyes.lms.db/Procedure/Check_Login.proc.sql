@@ -1,9 +1,10 @@
 ﻿DROP PROC [Check_Login]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-03-12
+-- Update date: 2012-08-08
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Login]
@@ -18,6 +19,10 @@ AS
 	BEGIN
 		SET @Code = 0
 		SET @Message = 'success'
+		IF EXISTS(SELECT * FROM dbo.Report WHERE MID = @MID)
+		BEGIN
+			EXECUTE Task_EvaluteCourses @MID
+		END
 	END
 	ELSE
 	BEGIN
