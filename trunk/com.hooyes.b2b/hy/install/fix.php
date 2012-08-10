@@ -1,9 +1,0 @@
-<?php
-
-return array(
-	'name'=>'»ÆÒ³Ä£¿é',
-	'pre'=>'hy_',
-	'setup'=>1,
-);
-
-?>

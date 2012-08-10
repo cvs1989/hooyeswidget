@@ -1,9 +1,0 @@
-<?php
-
-return array(
-	'name'=>'ÁôÑÔ±¾',
-	'pre'=>'guestbook_',
-	'setup'=>1,
-);
-
-?>
