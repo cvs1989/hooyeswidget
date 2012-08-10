@@ -1,3 +1,0 @@
-<?php
-$homepage_tpl['vip_blue2']="ÎµÀ¶ÃÎÏë(vip)";
-?>
