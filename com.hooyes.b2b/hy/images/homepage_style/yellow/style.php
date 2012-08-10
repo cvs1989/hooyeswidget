@@ -1,3 +1,0 @@
-<?php
-$homepage_tpl['yellow']="»ÆÉ«Ö÷Ìâ";
-?>
