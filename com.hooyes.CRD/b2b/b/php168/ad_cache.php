@@ -1,3 +1,0 @@
-<?php
-$AD_label['info_show']=stripslashes("¹ã¸æÕÐ×â,»¶Ó­ÇÀ¶©");
-$AD_label['info_list']=stripslashes("¹ã¸æÕÐ×âÖÐ");
