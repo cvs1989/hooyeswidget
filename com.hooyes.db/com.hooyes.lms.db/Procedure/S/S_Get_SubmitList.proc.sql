@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
--- Version:     1.0.0.5
+-- Version:     1.0.0.6
 -- Author:		hooyes
 -- Create date: 2012-07-23
--- Update date: 2012-08-06
+-- Update date: 2012-08-15
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Get_SubmitList]
@@ -14,7 +14,7 @@ AS
 	UPDATE TOP(5) Member
 	SET Tag = 0 
 	WHERE Tag = 100
-	and DATEDIFF(DAY,regdate,GETDATE())>3
+	and DATEDIFF(DAY,regdate,GETDATE())>5
 
 	SELECT 
 		TOP(@count)
