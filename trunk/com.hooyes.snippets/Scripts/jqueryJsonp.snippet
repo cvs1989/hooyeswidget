@@ -1,0 +1,38 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>JqueryJsonp</Title>
+    <Author>hooyes</Author>
+    <Shortcut>function</Shortcut>
+    <Description>Code snippet for a JqueryJsonp</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+
+      </Literal>
+    </Declarations>
+    <Code Language="JavaScript">
+      <![CDATA[
+        var url = "http://suggestion.baidu.com/su?wd=hoo";
+        var data = { p: 3, t: new Date().valueOf() }
+        $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            jsonp: 'cb',
+            jsonpCallback: 'fn',
+            data: data,
+            success: function (data, textStatus, jqXHR) {
+                alert(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
