@@ -54,12 +54,6 @@
     <Compile Include="Thrift\ThriftHandle.cs" />
     <Compile Include="Thrift\ThriftIOException.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hadoop.Model\Hadoop.Model.csproj">
-      <Project>{4E371A99-FD17-42EB-BEDB-2A0DC61DD370}</Project>
-      <Name>Hadoop.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
