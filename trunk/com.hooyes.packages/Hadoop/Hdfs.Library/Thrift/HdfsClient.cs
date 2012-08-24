@@ -174,6 +174,63 @@ namespace Hdfs.Library
            return result;
        }
 
+       public byte[] Open(ThriftHadoopFileSystem.Client client, string path)
+       {
+           
+           long fileLength = client.stat(new Pathname() { pathname = path }).Length;
+           byte[] result = new byte[fileLength];
+
+           List<byte> lt = new List<byte>();
+
+           if (client != null)
+           {
+               ThriftHandle th = client.open(new Pathname() { pathname = path });
+              
+               long totalBytes = 0;
+               int readLength = 1024 * 1024;
+               try
+               {
+                   UTF8Encoding utf8 = new UTF8Encoding(false, true);
+
+                   while (true)
+                   {
+                       int needRead = readLength;
+                       if (fileLength - totalBytes < readLength)
+                       {
+                           needRead = (int)(fileLength - totalBytes);
+                       }
+                       if (needRead <= 0)
+                           break;
+
+                       byte[] fileBuffer = client.read(th, totalBytes, readLength);
+
+
+                       byte[] myfileBuffer = Encoding.Convert(utf8, Encoding.GetEncoding("iso-8859-1"), fileBuffer);
+
+                       foreach (byte b in myfileBuffer)
+                       {
+                           lt.Add(b);
+                       }
+
+                       totalBytes += readLength;
+
+                   }
+               }
+               catch (Exception ex)
+               {
+                   throw ex;
+               }
+               finally
+               {
+                   
+                   if (client != null)
+                       client.close(th);
+               }
+
+           }
+           result = lt.ToArray();
+           return result;
+       }
 
        //上传文件
        public bool Create(ThriftHadoopFileSystem.Client client, string localPath, string path)

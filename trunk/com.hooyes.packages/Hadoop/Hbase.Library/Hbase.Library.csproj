@@ -40,7 +40,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Thrift">
-      <HintPath>..\Dll\Thrift.dll</HintPath>
+      <HintPath>..\lib\Thrift.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
