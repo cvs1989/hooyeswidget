@@ -12,7 +12,11 @@ namespace com.hooyes.lms
         public static string Send(string data, string url)
         {
             log.Info("{0},{1}", data, url);
-            return Send(Encoding.GetEncoding("UTF-8").GetBytes(data), url);
+            // return Send(Encoding.GetEncoding("UTF-8").GetBytes(data), url);
+            /* GET  */
+            string sUrl = string.Format("{0}?{1}", url, data);
+            return Send(sUrl);
+            
         }
 
         public static string Send(byte[] data, string url)
@@ -46,6 +50,15 @@ namespace com.hooyes.lms
             }
             responseStream.Close();
             log.Info("{0}", str);
+            return str;
+        }
+
+        public static string Send(string url)
+        {
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+            string str = wc.DownloadString(url);
+            log.Info(str);
             return str;
         }
     }
