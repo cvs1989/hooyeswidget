@@ -69,7 +69,7 @@ namespace com.hooyes.lms.Svc.DAL
             var SList = Get.MSubmitList();
             foreach (var S in SList)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 try
                 {
                     var m = new Member();
