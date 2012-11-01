@@ -16,12 +16,14 @@ namespace LMSMonitor
                     switch (cmd)
                     {
                         case "-credit":
-                            log.Info("credit");
+                            log.Info("credit.start");
                             Update.Credit();
+                            log.Info("credit.end");
                             break;
                         case "-commit":
-                            log.Info("commit");
+                            log.Info("commit.start");
                             Task.Run();
+                            log.Info("commit.end");
                             break;
                         default:
                             log.Info("cmd error");
