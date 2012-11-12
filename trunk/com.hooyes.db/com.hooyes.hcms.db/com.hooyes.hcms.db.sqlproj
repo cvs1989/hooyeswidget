@@ -67,4 +67,7 @@
     <None Include="Procedure\ZGetRecordByPageV3.proc.sql" />
     <None Include="Procedure\M\M_Check_Login.proc.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedure\Get_Content_Count.sql" />
+  </ItemGroup>
 </Project>
