@@ -1,7 +1,7 @@
 ﻿DROP PROC [Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2011-12-18
 -- Update date: 2012-11-20
@@ -13,7 +13,7 @@ CREATE PROCEDURE [dbo].[Check_Login]
 	,@Code int = 0 output
 	,@Message varchar(200) = '' output
 AS
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 	DECLARE @MID int
 	IF @LoginID is null OR @LoginPWD is null 
 	BEGIN

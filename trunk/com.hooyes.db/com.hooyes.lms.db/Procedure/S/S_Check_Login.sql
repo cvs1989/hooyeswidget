@@ -1,7 +1,7 @@
 ﻿DROP PROC [S_Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.0
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-11-20
 -- Update date: 2012-11-20
