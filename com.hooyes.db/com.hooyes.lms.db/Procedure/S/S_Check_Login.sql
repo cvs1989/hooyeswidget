@@ -1,19 +1,19 @@
-﻿DROP PROC [Check_Login]
+﻿DROP PROC [S_Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.0
 -- Author:		hooyes
--- Create date: 2011-12-18
+-- Create date: 2012-11-20
 -- Update date: 2012-11-20
 -- Desc:
 -- =============================================
-CREATE PROCEDURE [dbo].[Check_Login]
+CREATE PROCEDURE [dbo].[S_Check_Login]
 	 @LoginID varchar(30) = null
 	,@LoginPWD varchar(20) = null
 	,@Code int = 0 output
 	,@Message varchar(200) = '' output
 AS
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 	DECLARE @MID int
 	IF @LoginID is null OR @LoginPWD is null 
 	BEGIN
@@ -28,10 +28,6 @@ AS
 		BEGIN
 			SET @Code = 0
 			SET @Message = 'success'
-			IF EXISTS(SELECT * FROM dbo.Report WHERE MID = @MID)
-			BEGIN
-				EXECUTE Task_EvaluteCourses @MID
-			END
 		END
 		ELSE
 		BEGIN
