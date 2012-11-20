@@ -341,6 +341,7 @@
     <Build Include="Procedure\S\S_Get_Summary.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <None Include="Procedure\S\S_Check_Login.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
