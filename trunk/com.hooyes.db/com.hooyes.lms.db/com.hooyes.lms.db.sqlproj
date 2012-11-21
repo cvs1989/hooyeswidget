@@ -155,9 +155,9 @@
     <Build Include="Procedure\Update_MyQuestion.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\Task_EvalutePaper.proc.sql">
+    <None Include="Procedure\Task_EvalutePaper.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\Update_Report.proc.sql">
       <SubType>Code</SubType>
     </Build>
@@ -257,9 +257,9 @@
     <Build Include="Procedure\M\M_Import_Member.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\M\M_Task_MemberCredit.proc.sql">
+    <None Include="Procedure\M\M_Task_MemberCredit.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\M\M_Import_MemberCredit.proc.sql">
       <SubType>Code</SubType>
     </Build>
@@ -287,9 +287,9 @@
     <Build Include="Procedure\Clear_MSessions.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\S\S_M_Task_MemberCredit.proc.sql">
+    <None Include="Procedure\S\S_M_Task_MemberCredit.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Table\Member.table.sql">
       <SubType>Code</SubType>
     </Build>
