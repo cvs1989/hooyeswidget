@@ -1,9 +1,10 @@
 ﻿DROP PROC [Task_EvalutePaper]
 GO
 -- =============================================
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-01-02
--- Update date: 2012-01-03
+-- Update date: 2012-11-21
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvalutePaper]
@@ -12,7 +13,7 @@ AS
 	/* 1.判题是否正确 */
 	DECLARE  @QID int
 			,@Answer nvarchar(50)
-	DECLARE CusCursor CURSOR FOR
+	DECLARE CusCursor CURSOR LOCAL STATIC FOR
 	SELECT QID,Answer FROM MY_Question WHERE MID = @MID
 	OPEN CusCursor 
     FETCH NEXT FROM CusCursor INTO @QID,@Answer
