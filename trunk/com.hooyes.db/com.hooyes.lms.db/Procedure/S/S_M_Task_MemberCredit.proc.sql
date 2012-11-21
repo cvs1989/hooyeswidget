@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.5
+-- Version:     1.0.0.6
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2012-08-06
+-- Update date: 2012-11-21
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -16,7 +16,7 @@ AS
 			@ID int,
 			@M_Type int,
 			@M_Phone varchar(50)
-	DECLARE MCursor CURSOR FOR
+	DECLARE MCursor CURSOR LOCAL STATIC FOR
 
 	SELECT TOP(@count)
 		   M.MID,

@@ -1,10 +1,10 @@
 ﻿DROP PROC [M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2012-07-27
+-- Update date: 2012-11-21
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
@@ -14,7 +14,7 @@ AS
 			@Year int,
 			@Type int,
 			@ID int
-	DECLARE MCursor CURSOR FOR
+	DECLARE MCursor CURSOR LOCAL STATIC FOR
 
 	SELECT M.MID,
 		   M.Year,
