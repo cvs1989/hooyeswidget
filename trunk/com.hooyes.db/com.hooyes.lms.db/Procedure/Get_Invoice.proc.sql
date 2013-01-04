@@ -2,7 +2,7 @@
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-22
--- Update date: 2012-03-03
+-- Update date: 2013-01-04
 -- Desc:
 -- =============================================
 GO
@@ -21,6 +21,7 @@ AS
 		,[City]
 		,[Address]
 		,[Zip]
+		,[CreateDate]
 	FROM [dbo].[Invoice]
 	WHERE MID = @MID
 RETURN 0

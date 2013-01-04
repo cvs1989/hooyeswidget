@@ -11,6 +11,7 @@
 	[City] [varchar](10) NOT NULL,
 	[Address] [varchar](300) NOT NULL,
 	[Zip] [varchar](10) NOT NULL,
+	[CreateDate] [datetime] NULL,
  CONSTRAINT [PK_Invoice_1] PRIMARY KEY CLUSTERED 
 (
 	[IID] ASC
