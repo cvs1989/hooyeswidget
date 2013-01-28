@@ -25,6 +25,12 @@ namespace LMSMonitor
                             Task.Run();
                             log.Info("commit.end");
                             break;
+                        case "-sms":
+                            log.Info("sms.start");
+                            int Rows = Convert.ToInt32(args[1]);
+                            Task.RunSMS(0,0,Rows);
+                            log.Info("sms.end");
+                            break;
                         default:
                             log.Info("cmd error");
                             break;

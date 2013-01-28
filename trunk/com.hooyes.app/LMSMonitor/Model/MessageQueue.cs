@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace com.hooyes.lms.LMSMonitor.Model
+namespace com.hooyes.lms.Svc.Model
 {
    public class MessageQueue
     {
@@ -13,5 +13,11 @@ namespace com.hooyes.lms.LMSMonitor.Model
         /// 手机
         /// </summary>
         public string Phone { get; set; }
+        /// <summary>
+        /// 消息
+        /// </summary>
+        public string Message { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

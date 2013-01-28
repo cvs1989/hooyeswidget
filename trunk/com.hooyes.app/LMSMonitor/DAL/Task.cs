@@ -64,6 +64,10 @@ namespace com.hooyes.lms.Svc.DAL
             }
             return r;
         }
+        private static R SendSMS(string Phone, string Message)
+        {
+            return API.SMSx.PushToPhone(Phone, Message);
+        }
         public static void Run()
         {
             var SList = Get.MSubmitList();
@@ -89,6 +93,33 @@ namespace com.hooyes.lms.Svc.DAL
 
                     CommitReport(m, r);
 
+                }
+                catch (Exception ex)
+                {
+                    log.Fatal("{0},{1}", ex.Message, ex.StackTrace);
+                }
+
+            }
+        }
+        public static void RunSMS(int DayID, int Flag, int Rows)
+        {
+            var SList = Get.MessageQueue(DayID, Flag, Rows);
+            foreach (var S in SList)
+            {
+                Thread.Sleep(512);
+                try
+                {
+                    log.Info("P:{0},M:{1}", S.Phone,S.Message);
+                    var r = SendSMS(S.Phone, S.Message);
+                    if (r.Code == 0)
+                    {
+                        Update.MessageQueue(S.DayID,1000, S.MID);
+                    }
+                    else
+                    {
+                        log.Error("{0},{1},{2},{3}:{4}", S.DayID, S.MID, S.Phone, r.Code, r.Message);
+                        Update.MessageQueue(S.DayID, r.Code, S.MID);
+                    }
                 }
                 catch (Exception ex)
                 {

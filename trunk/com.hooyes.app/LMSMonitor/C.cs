@@ -10,5 +10,6 @@ namespace com.hooyes.lms
         public static readonly string SCHOOLID = ConfigurationManager.AppSettings.Get("schoolId");
         public static readonly string SCHOOLPAS = ConfigurationManager.AppSettings.Get("schoolPas");
         public static readonly string SCHOOLURL = ConfigurationManager.AppSettings.Get("schoolUrl");
+        public static readonly string SMSTOKEN = ConfigurationManager.AppSettings.Get("SMSTOKEN");
     }
 }
