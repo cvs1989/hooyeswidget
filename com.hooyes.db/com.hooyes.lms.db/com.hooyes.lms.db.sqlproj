@@ -342,6 +342,10 @@
       <SubType>Code</SubType>
     </Build>
     <None Include="Procedure\S\S_Check_Login.sql" />
+    <None Include="Procedure\M\M_Task_Add_MessageQueue.sql" />
+    <None Include="Procedure\M\M_Get_MessageQueue.sql" />
+    <None Include="Procedure\M\M_Update_MessageQueue.sql" />
+    <Build Include="Table\MessageQueue.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
