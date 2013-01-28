@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2013-01-27
--- Update date: 2013-01-27
+-- Update date: 2013-01-28
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_MessageQueue]
@@ -12,7 +12,7 @@ CREATE PROCEDURE [dbo].[M_Get_MessageQueue]
 	@Rows int = 10
 AS
 	IF @DayID = 0 
-		SET  @DayID  = CONVERT(VARCHAR(10),GETDATE(),112)
-
-    SELECT TOP(@Rows) * FROM MessageQueue WHERE Flag = @Flag AND DayID = @DayID
+		SELECT TOP(@Rows) * FROM MessageQueue WHERE Flag = @Flag 
+	ELSE
+        SELECT TOP(@Rows) * FROM MessageQueue WHERE Flag = @Flag AND DayID = @DayID
 RETURN 0
