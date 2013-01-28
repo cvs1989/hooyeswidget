@@ -69,6 +69,7 @@
     <Compile Include="DAL\Task.cs" />
     <Compile Include="DAL\Update.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\MessageQueue.cs" />
     <Compile Include="Model\MSubmit.cs" />
     <Compile Include="Model\R.cs" />
     <Compile Include="Model\Report.cs" />
