@@ -94,5 +94,32 @@ namespace com.hooyes.lms.Svc.DAL
             }
             return m;
         }
+
+        public static R MessageQueue(int DayID, int Flag,int MID)
+        {
+            var m = new R();
+            try
+            {
+                SqlParameter[] param =
+                {
+                    new SqlParameter("@DayID",DayID),
+                    new SqlParameter("@Flag",Flag),
+                    new SqlParameter("@MID",MID)
+                };
+
+                var r = SqlHelper.ExecuteNonQuery(SqlHelper.Local, CommandType.StoredProcedure, "M_Update_MessageQueue", param);
+                m.Code = 0;
+                m.Message = "sucess";
+                
+            }
+            catch (Exception ex)
+            {
+                m.Code = 300;
+                m.Message = ex.Message;
+                log.Fatal(ex.Message);
+                log.FatalException(ex.Message, ex);
+            }
+            return m;
+        }
     }
 }
