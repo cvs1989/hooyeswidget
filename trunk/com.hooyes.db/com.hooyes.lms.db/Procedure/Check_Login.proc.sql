@@ -1,10 +1,10 @@
 ﻿DROP PROC [Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.3
+-- Version:     1.0.0.4
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-11-20
+-- Update date: 2013-02-27
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Login]
@@ -23,7 +23,12 @@ AS
 	END
 	ELSE
 	BEGIN
-		SELECT @MID = MID FROM Member WHERE IDSN = @LoginID and IDCard = @LoginPWD
+		SELECT @MID = MID 
+		FROM Member 
+		WHERE IDSN = @LoginID 
+				AND IDCard = @LoginPWD
+				AND ([ExpireDate] >=GETDATE() OR [ExpireDate] IS NULL)
+						
 		IF @MID is not null
 		BEGIN
 			SET @Code = 0
@@ -35,7 +40,11 @@ AS
 		END
 		ELSE
 		BEGIN
-			IF EXISTS(select * from dbo.Member where IDSN = @LoginID)
+			IF EXISTS(select 1 
+				from dbo.Member 
+				where IDSN = @LoginID 
+						AND ([ExpireDate] >=GETDATE() OR [ExpireDate] IS NULL)
+						)
 			BEGIN
 				SET @Code = 201
 				SET @Message = 'LoginID or LoginPWD incorrect'
