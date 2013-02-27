@@ -9,6 +9,7 @@
 	[Level] [int] NULL,
 	[Phone] [varchar](20) NULL,
 	[RegDate] [datetime] NULL,
+	[ExpireDate] [datetime] NULL,
 	[Tag] [int] NULL,
  CONSTRAINT [PK_Member] PRIMARY KEY CLUSTERED 
 (
