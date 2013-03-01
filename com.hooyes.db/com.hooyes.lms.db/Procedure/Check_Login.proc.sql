@@ -1,10 +1,10 @@
 ﻿DROP PROC [Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.5
+-- Version:     1.0.0.6
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2013-02-28
+-- Update date: 2013-03-01
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Login]
@@ -48,6 +48,15 @@ AS
 			BEGIN
 				SET @Code = 201
 				SET @Message = 'LoginID or LoginPWD incorrect'
+			END
+			ELSE IF EXISTS(select 1 
+				from dbo.Member 
+				where IDSN = @LoginID 
+						AND [ExpireDate] <=GETDATE()
+						)
+			BEGIN
+				SET @Code = 202
+				SET @Message = 'LoginID or LoginPWD Expired'
 			END
 			ELSE
 			BEGIN
