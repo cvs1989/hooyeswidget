@@ -55,7 +55,7 @@ AS
 						AND [ExpireDate] <=GETDATE()
 						)
 			BEGIN
-				SET @Code = 202
+				SET @Code = 203
 				SET @Message = 'LoginID or LoginPWD Expired'
 			END
 			ELSE
