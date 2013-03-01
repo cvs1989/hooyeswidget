@@ -1,10 +1,10 @@
 ﻿DROP PROC [Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.4
+-- Version:     1.0.0.5
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2013-02-27
+-- Update date: 2013-02-28
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Login]
