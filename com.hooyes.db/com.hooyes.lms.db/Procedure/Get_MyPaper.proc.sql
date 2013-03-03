@@ -1,9 +1,10 @@
 ﻿DROP PROC [Get_MyPaper]
 GO
 -- =============================================
+-- Version:     1.0.0.6
 -- Author:		hooyes
 -- Create date: 2012-01-02
--- Update date: 2012-02-18
+-- Update date: 2012-03-02
 -- Desc: @Type 用户类型 0 行政事业类 1 企业类
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyPaper]
@@ -25,6 +26,10 @@ AS
 
 	DECLARE  @CID1 int = 6001
 			,@CID2 int = 6003
+
+IF @Year = 2012
+BEGIN
+
 	IF @Type = 0
 	BEGIN
 		SET @CID1 = 6001
@@ -52,6 +57,38 @@ AS
 	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
 	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 3
 	ORDER BY NEWID()
+END
+
+IF @Year = 2013
+BEGIN
+
+	IF @Type = 0
+	BEGIN
+		SET @CID1 = 6101
+		SET @CID2 = 6102
+	END
+	IF @Type = 1
+	BEGIN
+		SET @CID1 = 6113
+		SET @CID2 = 6114
+	END
+    
+	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
+	SELECT TOP 5 * FROM Question WHERE CID = @CID1 and Cate = 1
+	ORDER BY NEWID()
+
+	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
+	SELECT TOP 5 * FROM Question WHERE CID = @CID1 and Cate = 3
+	ORDER BY NEWID()
+
+
+	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
+	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 1
+	ORDER BY NEWID()
+
+	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
+	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 3
+	ORDER BY NEWID() END
 	
 	SELECT * FROM @Question order by Cate asc
 
