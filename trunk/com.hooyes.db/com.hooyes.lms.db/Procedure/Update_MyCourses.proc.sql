@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-03-06
+-- Update date: 2013-04-03
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyCourses]
@@ -46,7 +46,7 @@ AS
 			   ,0)
 	END
 
-	EXECUTE Task_EvaluteContents @MID,@CID
+	-- EXECUTE Task_EvaluteContents @MID,@CID
 
-	EXECUTE Task_EvaluteCourses @MID
+	-- EXECUTE Task_EvaluteCourses @MID
 RETURN 0
