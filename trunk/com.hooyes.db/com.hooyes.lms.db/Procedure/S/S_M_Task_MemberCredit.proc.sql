@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.7
+-- Version:     1.0.0.8
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2013-04-02
+-- Update date: 2013-04-08
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -68,7 +68,7 @@ AS
 	  IF NOT EXISTS(SELECT * FROM Report WHERE MID = @MID and Score>=60)
 	  BEGIN
 
-		
+		SET @score  = 60
 		SELECT @score = @score + RAND()*21
 
 		EXECUTE [Update_Report] @MID,@score
@@ -106,7 +106,7 @@ AS
 	  IF NOT EXISTS(SELECT * FROM Report WHERE MID = @MID and Score>=60)
 	  BEGIN
 
-		
+		SET @score  = 60
 		SELECT @score = @score + RAND()*21
 
 		EXECUTE [Update_Report] @MID,@score
