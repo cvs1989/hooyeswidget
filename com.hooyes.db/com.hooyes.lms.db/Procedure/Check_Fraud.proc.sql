@@ -1,10 +1,10 @@
 ﻿DROP PROC [Check_Fraud]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2012-04-09
--- Update date: 2013-03-11
+-- Update date: 2013-04-11
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Fraud]
@@ -18,7 +18,6 @@ CREATE PROCEDURE [dbo].[Check_Fraud]
 	@Message varchar(200) = '' output
 AS
 	DECLARE @Is_Current int = 0
-			,@diff decimal 
 			,@DayID int = 0
     SET @DayID = CONVERT(int, CONVERT(varchar(8),GETDATE(),112))
 
@@ -31,13 +30,8 @@ AS
 			SELECT * FROM My_Courses WHERE MID = @MID and CID= @CID and Validate = 1
 		)
 		BEGIN
-			SELECT @diff = DATEDIFF(SECOND,LDate,GETDATE())
-			FROM [My_Contents] WHERE MID = @MID
-				 and CID = @CID
-				 and CCID = @CCID
-
 			SET @Code = 100
-			SET @Message = STR(@CID) + ' ' + STR(@CCID) + ' ' + STR(@Second) + ' '+ STR(@diff)+ ' '+ STR(@Status)
+			SET @Message = 'Need Validate!'
 		END
 			
 	END
@@ -52,12 +46,10 @@ AS
 	)
 	BEGIN
 		SET @Code = 101
+		SET @Message = 'Fraud!'
 	END
 
-	IF @Code ! = 0 
-	BEGIN
-		EXECUTE SLog @MID, @Code, @Message
-	END
+
 
 
 RETURN 0

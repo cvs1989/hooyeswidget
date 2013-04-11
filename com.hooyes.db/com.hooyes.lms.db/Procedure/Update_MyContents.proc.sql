@@ -1,10 +1,10 @@
 ﻿DROP PROC [Update_MyContents]
 GO
 -- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2012-07-26
+-- Update date: 2013-04-11
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_MyContents]
@@ -47,42 +47,31 @@ AS
 		
 
 	/* 时间校对 */
-	SELECT @diff = DATEDIFF(SECOND,LDate,GETDATE())
+	SELECT @diff = ISNULL(DATEDIFF(SECOND,LDate,GETDATE()),@Second)
 	FROM [My_Contents] WHERE MID = @MID
 		 and CID = @CID
 		 and CCID = @CCID
 	IF @Second > @diff 
 	BEGIN
-		SET @Message = STR(@CID) + ' ' + STR(@CCID) + ' ' + STR(@Second) + ' ' + STR(@diff) + ' '+ STR(@Status)
+		SET @Message = ''
 		SET @Second = @diff 
-		EXECUTE SLog @MID, 101, @Message
+		
 	END
 
 
-	IF EXISTS( SELECT * FROM [My_Contents] 	 WHERE MID = @MID
-		 and CID = @CID
-		 and CCID = @CCID )
-	BEGIN
-		UPDATE [My_Contents]
-		   SET 
-			   [Minutes] = [Minutes] + @Minutes
-			  ,[Second]  = [Second]  + @Second
-			  ,[Status] = CASE [Status] 
-						  WHEN 1 THEN 1
-						  ELSE @Status
-						  END
-		 WHERE MID = @MID
-			 and CID = @CID
-			 and CCID = @CCID
-		UPDATE [My_Contents]
-			SET [Minutes] = [Second]/60
-			   ,[LDate] = GETDATE()
-		 WHERE MID = @MID
-			 and CID = @CID
-			 and CCID = @CCID
-
-	END
-	ELSE
+	UPDATE [My_Contents]
+		SET 
+			[Minutes] = ([Second]  + @Second)/60
+			,[Second]  = [Second]  + @Second
+			,[Status] = CASE [Status] 
+						WHEN 1 THEN 1
+						ELSE @Status
+						END
+			,[LDate] = GETDATE()                        
+		WHERE MID = @MID
+			and CID = @CID
+			and CCID = @CCID
+	IF @@ROWCOUNT = 0
 	BEGIN
 	  IF @Second > 120
 		 SET @Second = 120
@@ -112,8 +101,8 @@ AS
 	  ,@Status  = @Status
 
 	EXECUTE [Update_Timeline]
-	@MID    = @MID
-	,@Record  = @Second
+			 @MID    = @MID
+			,@Record  = @Second
 
 
 
