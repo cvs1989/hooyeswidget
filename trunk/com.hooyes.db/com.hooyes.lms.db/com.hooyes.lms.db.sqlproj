@@ -131,15 +131,15 @@
     <Build Include="Procedure\Get_Courses.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\Update_MyContents.proc.sql">
+    <None Include="Procedure\Update_MyContents.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\Get_MyCourses.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\Update_MyCourses.proc.sql">
+    <None Include="Procedure\Update_MyCourses.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\Get_MyCoursesList.proc.sql">
       <SubType>Code</SubType>
     </Build>
@@ -305,9 +305,9 @@
     <Build Include="Table\Report.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\Update_Timeline.proc.sql">
+    <None Include="Procedure\Update_Timeline.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Table\Timeline.table.sql">
       <SubType>Code</SubType>
     </Build>
