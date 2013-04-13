@@ -7,7 +7,7 @@ namespace com.hooyes.app.AngryApple
 {
     public class I
     {
-        public static string url = "http://wcf.hooyes.net/LMSSvc/Service1.svc";
+        public static string url = "http://116.255.145.207/LMSSvc/Service1.svc";
         public static R S(M1 m,string k)
         {
             Binding bind;
