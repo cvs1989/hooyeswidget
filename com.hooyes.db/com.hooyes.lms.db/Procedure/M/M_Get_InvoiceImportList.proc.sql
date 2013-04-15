@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-12
--- Update date: 2012-07-31
+-- Update date: 2013-04-15
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_InvoiceImportList]
@@ -16,9 +16,7 @@ AS
 		[收件人] = CASE WHEN MC.flag = 2 THEN I.Name
 				   ELSE MC.Name
 				   END,
-		[金额] = CASE WHEN MC.flag = 2 THEN I.Amount
-				 ELSE MC.Amount
-				 END,
+		[金额] =  I.Amount,
 		[发票抬头] = CASE WHEN MC.flag = 2 THEN I.Title
 					ELSE MC.Title
 					END ,
