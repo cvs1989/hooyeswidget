@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.8
+-- Version:     1.0.0.9
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2013-04-08
+-- Update date: 2013-04-25
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -48,7 +48,7 @@ AS
 			EXECUTE [S_M_Update_Courses] @MID,6101
 			EXECUTE [S_M_Update_Courses] @MID,6102
 			EXECUTE [S_M_Update_Courses] @MID,6108
-			EXECUTE [S_M_Update_Courses] @MID,6107
+			EXECUTE [S_M_Update_Courses] @MID,6112
 			EXECUTE [S_M_Update_Courses] @MID,6109
 			EXECUTE [S_M_Update_Courses] @MID,6110
 		END
@@ -57,10 +57,9 @@ AS
 		BEGIN
 			EXECUTE [S_M_Update_Courses] @MID,6113
 			EXECUTE [S_M_Update_Courses] @MID,6114
-			EXECUTE [S_M_Update_Courses] @MID,6125
 			EXECUTE [S_M_Update_Courses] @MID,6127
-			EXECUTE [S_M_Update_Courses] @MID,6130
-			EXECUTE [S_M_Update_Courses] @MID,6131
+			EXECUTE [S_M_Update_Courses] @MID,6128
+			EXECUTE [S_M_Update_Courses] @MID,6133
 			EXECUTE [S_M_Update_Courses] @MID,6134
 		END
 
