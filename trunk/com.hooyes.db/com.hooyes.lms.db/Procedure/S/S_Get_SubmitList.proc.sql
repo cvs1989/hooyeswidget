@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
--- Version:     1.0.0.6
+-- Version:     1.0.0.7
 -- Author:		hooyes
 -- Create date: 2012-07-23
--- Update date: 2012-08-15
+-- Update date: 2013-05-14
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Get_SubmitList]
@@ -31,5 +31,6 @@ AS
 		inner join MemberCredit MC ON M.MID = MC.MID and MC.flag = 1 and MC.tag = 100
 		inner join Report R ON R.MID = M.MID and (R.Status = 0 OR R.Status is null)
 	WHERE DATEDIFF(HOUR,M.RegDate,GETDATE())>= 18
+		  and (M.ExpireDate is null or M.ExpireDate>=GETDATE())
 	ORDER BY M.Year asc,M.RegDate asc
 RETURN 0
