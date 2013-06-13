@@ -1,10 +1,10 @@
 ﻿DROP PROC [S_M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.9
+-- Version:     1.0.1.0
 -- Author:		hooyes
 -- Create date: 2012-07-22
--- Update date: 2013-04-25
+-- Update date: 2013-06-13
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_M_Task_MemberCredit]
@@ -116,6 +116,8 @@ AS
 	-- 2011 年的学员
 	IF @Year = 2011
 	BEGIN
+		IF @Type = -1
+			SET @Type = @M_Type
 		IF @Type = 0
 		BEGIN
 			EXECUTE [S_M_Update_Courses] @MID,3001
