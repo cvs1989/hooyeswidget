@@ -1,9 +1,10 @@
 ﻿DROP VIEW [v_m_member]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-04-21
--- Update date: 2012-07-24
+-- Update date: 2013-06-16
 -- Desc:
 -- =============================================
 CREATE VIEW [dbo].[v_m_member]
@@ -23,6 +24,7 @@ AS
 		,M.[Level]
 		,M.[Phone]
 		,M.[RegDate]
+		,R.CommitDate
 	FROM Member M
 		left join Invoice I on I.MID = M.MID
 		left join Report R on R.MID = M.MID

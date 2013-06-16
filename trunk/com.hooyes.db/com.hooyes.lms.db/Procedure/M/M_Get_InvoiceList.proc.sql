@@ -1,6 +1,7 @@
 ﻿DROP PROC [M_Get_InvoiceList]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-03-11
 -- Update date: 2012-04-22
@@ -8,7 +9,8 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_InvoiceList]
 	@PageSize int = 100,
-	@CurrentPage int = 1
+	@CurrentPage int = 1,
+	@Filter varchar(700) = ''
 AS
 	DECLARE @Records int = 0
 	SET @CurrentPage = @CurrentPage - 1;
@@ -20,7 +22,7 @@ AS
 		@Fields   ='',                 
 		@PageSize = @PageSize,         
 		@CurrentPage = @CurrentPage,   
-		@Filter  = '',           
+		@Filter  = @Filter,           
 		@Group  = '',                  
 		@Order  = ' IID DESC'   
 

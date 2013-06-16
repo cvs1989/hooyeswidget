@@ -218,12 +218,12 @@
     <Build Include="Procedure\M\M_Update_Courses.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\M\M_Get_MemberList.proc.sql">
+    <None Include="Procedure\M\M_Get_MemberList.proc.sql">
       <SubType>Code</SubType>
-    </Build>
-    <Build Include="Procedure\M\M_Get_InvoiceList.proc.sql">
+    </None>
+    <None Include="Procedure\M\M_Get_InvoiceList.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\M\M_Check_Login.proc.sql">
       <SubType>Code</SubType>
     </Build>
@@ -239,18 +239,18 @@
     <Build Include="Procedure\ZGetRecordByPageV3.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Views\v_m_member.view.sql">
+    <None Include="Views\v_m_member.view.sql">
       <SubType>Code</SubType>
-    </Build>
-    <Build Include="Procedure\M\M_Get_MemberListCount.proc.sql">
+    </None>
+    <None Include="Procedure\M\M_Get_MemberListCount.proc.sql">
       <SubType>Code</SubType>
-    </Build>
-    <Build Include="Views\v_m_invoice.view.sql">
+    </None>
+    <None Include="Views\v_m_invoice.view.sql">
       <SubType>Code</SubType>
-    </Build>
-    <Build Include="Procedure\M\M_Get_InvoiceListCount.proc.sql">
+    </None>
+    <None Include="Procedure\M\M_Get_InvoiceListCount.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Table\MemberImport.table.sql">
       <SubType>Code</SubType>
     </Build>
