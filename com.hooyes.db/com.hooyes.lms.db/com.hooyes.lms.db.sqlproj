@@ -346,6 +346,7 @@
     <None Include="Procedure\M\M_Get_MessageQueue.sql" />
     <None Include="Procedure\M\M_Update_MessageQueue.sql" />
     <Build Include="Table\MessageQueue.sql" />
+    <None Include="Procedure\M\M_Update_Invoice.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
