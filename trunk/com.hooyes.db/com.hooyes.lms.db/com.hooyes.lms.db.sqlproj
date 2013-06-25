@@ -224,9 +224,9 @@
     <None Include="Procedure\M\M_Get_InvoiceList.proc.sql">
       <SubType>Code</SubType>
     </None>
-    <Build Include="Procedure\M\M_Check_Login.proc.sql">
+    <None Include="Procedure\M\M_Check_Login.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Table\Admin.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -347,6 +347,7 @@
     <None Include="Procedure\M\M_Update_MessageQueue.sql" />
     <Build Include="Table\MessageQueue.sql" />
     <None Include="Procedure\M\M_Update_Invoice.sql" />
+    <None Include="Procedure\M\M_Update_Password.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

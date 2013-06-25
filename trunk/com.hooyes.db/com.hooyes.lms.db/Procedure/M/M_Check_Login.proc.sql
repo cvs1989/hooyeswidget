@@ -1,9 +1,10 @@
 ﻿DROP PROC [M_Check_Login]
 GO
 -- =============================================
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-04-18
--- Update date: 2012-05-08
+-- Update date: 2013-06-25
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Check_Login]
@@ -19,6 +20,7 @@ AS
 	FROM [Admin] 
 	WHERE [Login] = @LoginID 
 	and [Password] = sys.fn_VarBinToHexStr(hashbytes('md5',@LoginPWD+'lms'+convert(varchar,AID)))
+	AND [Level]>=0
 	IF @AID is not null
 	BEGIN
 		SET @Code = 0
