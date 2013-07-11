@@ -80,10 +80,10 @@ namespace com.hooyes.app.AngryApple
                         var r1 = I.S(m, k);
 
                         var row = dt.NewRow();
-                        row["身份证号"] = dr["身份证号"].ToString();
-                        row["报名序号"] = dr["报名序号"].ToString();
-                        row["教育年份"] = dr["教育年份"].ToString();
-                        row["手机"] = dr["手机"].ToString();
+                        row["身份证号"] = dr["身份证号"].ToString().Trim();
+                        row["报名序号"] = dr["报名序号"].ToString().Trim();
+                        row["教育年份"] = dr["教育年份"].ToString().Trim();
+                        row["手机"] = dr["手机"].ToString().Trim();
                         row["状态"] = U.N2S(r1.Code);
                         dt.Rows.Add(row);
 
