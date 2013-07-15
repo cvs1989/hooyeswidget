@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-07-14
--- Update date: 2012-07-23
+-- Update date: 2013-07-13
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Import_MemberCredit]
@@ -15,6 +15,7 @@ CREATE PROCEDURE [dbo].[S_Import_MemberCredit]
 		,@sType varchar(20)
 		,@Type  int = 0
 		,@Phone varchar(20)
+		,@Tag int = 100
 		,@Code int = 0 output
 		,@Message varchar(200) = '' output
 AS
@@ -22,7 +23,7 @@ AS
 			@Status int = 0
 	SET @IDCard = LTRIM(RTRIM(@IDCard))
 	SET @IDSN   = LTRIM(RTRIM(@IDSN))
-	IF NOT EXISTS(SELECT * FROM MemberCredit WHERE [IDSN] = @IDSN AND [IDCard] = @IDCard AND tag = 100)
+	IF NOT EXISTS(SELECT * FROM MemberCredit WHERE [IDSN] = @IDSN AND [IDCard] = @IDCard AND tag = @Tag)
 	BEGIN
 		SELECT @Code = 0,
 			@Message = 'success'
@@ -56,7 +57,7 @@ AS
 			,@Type
 			,@Phone
 			,@flag
-			,100
+			,@Tag
 			)
 	END
 	ELSE

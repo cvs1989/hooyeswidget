@@ -281,9 +281,9 @@
     <Build Include="Table\InvoiceImport.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\S\S_Import_MemberCredit.proc.sql">
+    <None Include="Procedure\S\S_Import_MemberCredit.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\Clear_MSessions.proc.sql">
       <SubType>Code</SubType>
     </Build>
@@ -296,9 +296,9 @@
     <Build Include="Procedure\S\S_M_Update_Courses.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\S\S_Update_Member.proc.sql">
+    <None Include="Procedure\S\S_Update_Member.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Procedure\S\S_Get_SubmitList.proc.sql">
       <SubType>Code</SubType>
     </Build>
