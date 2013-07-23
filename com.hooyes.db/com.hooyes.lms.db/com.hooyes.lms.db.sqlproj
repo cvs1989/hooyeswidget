@@ -299,9 +299,9 @@
     <None Include="Procedure\S\S_Update_Member.proc.sql">
       <SubType>Code</SubType>
     </None>
-    <Build Include="Procedure\S\S_Get_SubmitList.proc.sql">
+    <None Include="Procedure\S\S_Get_SubmitList.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <Build Include="Table\Report.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -338,9 +338,9 @@
     <Build Include="Table\CoursesImport.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Procedure\S\S_Get_Summary.proc.sql">
+    <None Include="Procedure\S\S_Get_Summary.proc.sql">
       <SubType>Code</SubType>
-    </Build>
+    </None>
     <None Include="Procedure\S\S_Check_Login.sql" />
     <None Include="Procedure\M\M_Task_Add_MessageQueue.sql" />
     <None Include="Procedure\M\M_Get_MessageQueue.sql" />
