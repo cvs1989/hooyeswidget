@@ -13,7 +13,8 @@
 	[tstamp] [datetime] NULL,
 	[flag] [int] NULL,
 	[tag] [int] NULL,
- CONSTRAINT [PK_MemberCredit] PRIMARY KEY CLUSTERED 
+ [Token] VARCHAR(100) NULL, 
+    CONSTRAINT [PK_MemberCredit] PRIMARY KEY CLUSTERED 
 (
 	[SN] ASC,
 	[IDCard] ASC,

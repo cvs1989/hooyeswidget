@@ -1,9 +1,10 @@
 ﻿DROP PROC [S_Import_MemberCredit]
 GO
 -- =============================================
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-07-14
--- Update date: 2013-07-13
+-- Update date: 2013-07-25
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Import_MemberCredit]
@@ -14,16 +15,25 @@ CREATE PROCEDURE [dbo].[S_Import_MemberCredit]
 		,@Year  int = 0
 		,@sType varchar(20)
 		,@Type  int = 0
-		,@Phone varchar(20)
+		,@Phone varchar(20) = NULL
 		,@Tag int = 100
+		,@Token varchar(100) =''
 		,@Code int = 0 output
 		,@Message varchar(200) = '' output
 AS
 	DECLARE @flag int = 0,
-			@Status int = 0
+			@Status int = 0,
+			@S_Token varchar(100)
 	SET @IDCard = LTRIM(RTRIM(@IDCard))
 	SET @IDSN   = LTRIM(RTRIM(@IDSN))
-	IF NOT EXISTS(SELECT * FROM MemberCredit WHERE [IDSN] = @IDSN AND [IDCard] = @IDCard AND tag = @Tag)
+	SET @S_Token = sys.fn_VarBinToHexStr(hashbytes('md5',@Token))
+
+	IF @Tag = 0 
+	BEGIN
+       SET @Tag = 100  
+    END  
+
+	IF NOT EXISTS(SELECT * FROM MemberCredit WHERE [IDSN] = @IDSN AND [IDCard] = @IDCard AND tag = @Tag AND Token = @S_Token)
 	BEGIN
 		SELECT @Code = 0,
 			@Message = 'success'
@@ -47,7 +57,7 @@ AS
 		END
 
 		-- 加入队列
-		INSERT INTO [MemberCredit]([SN],[Name],[IDCard],[IDSN],[Year],[sType],[Type],[Phone],[flag],[tag]) 
+		INSERT INTO [MemberCredit]([SN],[Name],[IDCard],[IDSN],[Year],[sType],[Type],[Phone],[flag],[tag],[Token]) 
 		VALUES (@SN
 			,@Name
 			,@IDCard
@@ -58,6 +68,7 @@ AS
 			,@Phone
 			,@flag
 			,@Tag
+			,@S_Token
 			)
 	END
 	ELSE
