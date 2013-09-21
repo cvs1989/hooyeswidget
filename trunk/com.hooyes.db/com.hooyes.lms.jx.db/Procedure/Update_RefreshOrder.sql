@@ -2,12 +2,12 @@
 -- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2013-09-16
--- Update date: 2013-09-16
+-- Update date: 2013-09-17
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_RefreshOrder]
     @MID INT ,
-    @OrderID INT ,
+    @ID INT ,
     @Code INT = 0 OUTPUT ,
     @Message NVARCHAR(4000) = '' OUTPUT
 AS 
@@ -20,7 +20,7 @@ AS
     SELECT  @Amount = Amount
     FROM    Orders
     WHERE   MID = @MID
-            AND ID = @OrderID
+            AND ID = @ID
             AND [Status] < 10
 
     EXECUTE [Get_Balance] @MID = @MID, @Amount = @B_Amount OUTPUT,
@@ -48,7 +48,7 @@ AS
             Credit = @Credit ,
             UpdateDate = GETDATE()
     WHERE   MID = @MID
-            AND ID = @OrderID
+            AND ID = @ID
     IF @@ROWCOUNT = 1 
         BEGIN
             SET @Code = 0
