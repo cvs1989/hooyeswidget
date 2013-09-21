@@ -2,15 +2,18 @@
 -- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2013-09-14
--- Update date: 2013-09-16
+-- Update date: 2013-09-19
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_CreateOrder]
     @MID INT ,
     @Tags VARCHAR(100) ,     --- Products ID 
-    @Memo VARCHAR(200) = NULL
+    @Memo VARCHAR(200) = NULL ,
+    @OrderID VARCHAR(20) = '' OUTPUT ,
+    @Code INT = 0 OUTPUT ,
+    @Message NVARCHAR(4000) = '' OUTPUT
 AS 
-    DECLARE @OrderID INT = 0 ,
+    DECLARE @ID INT = 0 ,
         @Amount MONEY ,
         @Cash MONEY ,
         @Credit MONEY ,
@@ -18,14 +21,19 @@ AS
         @B_Cash MONEY ,
         @B_Rebate MONEY
 
-    SELECT  @OrderID = ID
+    SELECT  @ID = ID ,
+            @OrderID = OrderID
     FROM    Orders
     WHERE   MID = @MID
             AND Tags = @Tags
             AND [Status] < 10
-    IF @OrderID = 0 
+    IF @ID = 0 
         BEGIN
-            EXECUTE [Get_Seed] @ID = 4, @Value = @OrderID OUTPUT
+            EXECUTE [Get_Seed] @ID = 4, @Value = @ID OUTPUT
+            /* @OrderID 产生逻辑   长度限制为16位*/
+
+            SET @OrderID = CONVERT(VARCHAR(8), GETDATE(),112)  + CONVERT(VARCHAR(8), 1000000 + @ID)
+            
             SELECT  @Amount = ISNULL(SUM(Price), 0)
             FROM    Products
             WHERE   ID IN ( SELECT  value
@@ -55,6 +63,7 @@ AS
             INSERT  INTO [dbo].[Orders]
                     ( [ID] ,
                       [MID] ,
+                      [OrderID] ,
                       [Amount] ,
                       [Cash] ,
                       [Credit] ,
@@ -64,8 +73,9 @@ AS
                       [UpdateDate] ,
                       [Memo]
                     )
-            VALUES  ( @OrderID ,
+            VALUES  ( @ID ,
                       @MID ,
+                      @OrderID ,
                       @Amount ,
                       @Cash ,
                       @Credit ,
@@ -75,5 +85,13 @@ AS
                       GETDATE() ,
                       @Memo
                     )
+
+            SET @Code = 0
+            SET @Message = 'success'   
         END
-    RETURN @OrderID
+    ELSE 
+        BEGIN
+            SET @Code = 1
+            SET @Message = 'refresh order'   
+        END      
+    RETURN @ID

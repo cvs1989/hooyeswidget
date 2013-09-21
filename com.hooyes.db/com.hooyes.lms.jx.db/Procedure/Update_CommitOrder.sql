@@ -2,12 +2,12 @@
 -- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2013-09-16
--- Update date: 2013-09-16
+-- Update date: 2013-09-17
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_CommitOrder]
     @MID INT ,
-    @OrderID INT ,
+    @ID INT ,
     @Cash MONEY ,
     @Credit MONEY ,
     @Code INT = 0 OUTPUT ,
@@ -18,7 +18,7 @@ AS
         DECLARE @Tags VARCHAR(100) 
         SELECT  @Tags = Tags
         FROM    Orders
-        WHERE   ID = @OrderID
+        WHERE   ID = @ID
                 AND Cash = @Cash
                 AND Credit = @Credit
                 AND [Status] < 10
@@ -33,7 +33,7 @@ AS
                         SELECT  MID = @MID ,
                                 PID = p.PID ,
                                 CreateDate = GETDATE() ,
-                                Memo = @OrderID
+                                Memo = @ID
                         FROM    dbo.split(@Tags, ',') t
                                 INNER JOIN Products p ON CONVERT(INT, t.[value]) = p.ID
                         WHERE   NOT EXISTS ( SELECT 1
@@ -44,7 +44,7 @@ AS
                     BEGIN
                         UPDATE  Orders
                         SET     [Status] = 10
-                        WHERE   ID = @OrderID
+                        WHERE   ID = @ID
                                 AND MID = @MID
 					/* 余额扣款 */
                         IF @Credit > 0 

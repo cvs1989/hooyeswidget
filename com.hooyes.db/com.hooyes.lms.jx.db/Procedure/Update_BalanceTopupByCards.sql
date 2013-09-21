@@ -2,7 +2,7 @@
 -- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2013-09-16
--- Update date: 2013-09-16
+-- Update date: 2013-09-17
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_BalanceTopupByCards]
@@ -22,7 +22,8 @@ AS
                 BEGIN TRANSACTION
                 EXECUTE [Update_BalanceTopup] @MID, 0, @Amount
                 UPDATE  Cards
-                SET     [Status] = 10
+                SET     [Status] = 10,
+				        [UpdateDate] = GETDATE()
                 WHERE   SN = @SN
                 EXECUTE [Update_AddTransactions] @MID = @MID,
                     @Amount = @Amount, @Cate = 1, @Source = @SN, @Memo = NULL
