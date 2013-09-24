@@ -1,14 +1,13 @@
 ﻿-- =============================================
 -- Version:     1.0.0.1
 -- Author:		hooyes
--- Create date: 2012-01-03
+-- Create date: 2012-09-24
 -- Update date: 2013-09-24
 -- Desc:
 -- =============================================
-CREATE PROCEDURE [dbo].[Get_Report]
-	@MID int = 0,
-	@Year int = 2013
-AS
+CREATE PROCEDURE [dbo].[Get_MyReport] 
+   @MID INT = 0
+AS 
     SELECT  [ID],
 	        [MID] ,
             [Year] ,
@@ -21,7 +20,9 @@ AS
 			CreateDate,
 			UpdateDate,
 			CommitDate
-	 FROM [Report]
-	 WHERE [MID] = @MID
-	      AND [Year] = @Year
-RETURN 0
+    FROM    [Report]
+    WHERE   [MID] = @MID
+	ORDER BY [Year] DESC
+	      
+	      
+    RETURN 0
