@@ -1,11 +1,11 @@
 ﻿-- DROP PROC [Get_Invoice]
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-02-22
--- Update date: 2013-01-04
+-- Update date: 2013-09-26
 -- Desc:
 -- =============================================
-GO
 CREATE PROCEDURE [dbo].[Get_Invoice]
 	@MID int = 0 
 AS
@@ -14,7 +14,7 @@ AS
 		,[MID]
 		,[IDSN]
 		,[Name]
-		,[Amount] = CONVERT(decimal(10,0),[Amount])
+		,[Amount] 
 		,[Title]
 		,[Tel]
 		,[Province]
@@ -24,4 +24,5 @@ AS
 		,[CreateDate]
 	FROM [dbo].[Invoice]
 	WHERE MID = @MID
+	ORDER BY IID DESC
 RETURN 0

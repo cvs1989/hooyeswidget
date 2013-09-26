@@ -2,7 +2,7 @@
 -- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2013-09-16
--- Update date: 2013-09-17
+-- Update date: 2013-09-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_CommitOrder]
@@ -22,6 +22,7 @@ AS
                 AND Cash = @Cash
                 AND Credit = @Credit
                 AND [Status] < 10
+				AND (Cash> 0 OR Credit>0)
         IF @Tags IS NOT NULL 
             BEGIN
                 INSERT  INTO [My_Products]
