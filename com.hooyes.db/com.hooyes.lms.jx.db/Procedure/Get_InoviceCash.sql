@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2013-09-25
--- Update date: 2013-09-26
+-- Update date: 2013-09-27
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_InoviceCash]
@@ -14,7 +14,7 @@ AS
         @InvoiceAmount MONEY = 0,
 		@RetAmount MONEY = 0
 	
-    SELECT  @Cash = SUM(Cash)
+    SELECT  @Cash = ISNULL(SUM(Cash),0)
     FROM    dbo.Orders
     WHERE   MID = @MID
             AND [Status] = 10
