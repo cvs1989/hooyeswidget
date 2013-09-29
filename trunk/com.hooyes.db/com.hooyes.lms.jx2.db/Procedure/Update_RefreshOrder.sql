@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2013-09-16
--- Update date: 2013-09-17
+-- Update date: 2013-09-29
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_RefreshOrder]
@@ -22,42 +22,49 @@ AS
     WHERE   MID = @MID
             AND ID = @ID
             AND [Status] < 10
-
-    EXECUTE [Get_Balance] @MID = @MID, @Amount = @B_Amount OUTPUT,
-        @Cash = @B_Cash OUTPUT, @Rebate = @B_Rebate OUTPUT
+    IF @Amount > 0 
+        BEGIN
+            EXECUTE [Get_Balance] @MID = @MID, @Amount = @B_Amount OUTPUT,
+                @Cash = @B_Cash OUTPUT, @Rebate = @B_Rebate OUTPUT
   
     /* 余额优先抵扣 */
-    SET @Cash = @Amount
-    SET @Credit = 0
-    IF @B_Amount > 0 
-        BEGIN
-            IF @B_Amount > @Amount 
+            SET @Cash = @Amount
+            SET @Credit = 0
+            IF @B_Amount > 0 
                 BEGIN
-                    SET @Credit = @Amount  
-                    SET @Cash = 0   
-                END   
+                    IF @B_Amount > @Amount 
+                        BEGIN
+                            SET @Credit = @Amount  
+                            SET @Cash = 0   
+                        END   
+                    ELSE 
+                        BEGIN
+                            SET @Credit = @B_Amount  
+                            SET @Cash = @Amount - @Credit	   
+                        END  
+                END      
+		
+            UPDATE  Orders
+            SET     Cash = @Cash ,
+                    Credit = @Credit ,
+                    UpdateDate = GETDATE()
+            WHERE   MID = @MID
+                    AND ID = @ID
+            IF @@ROWCOUNT = 1 
+                BEGIN
+                    SET @Code = 0
+                    SET @Message = 'success'
+                END
             ELSE 
                 BEGIN
-                    SET @Credit = @B_Amount  
-                    SET @Cash = @Amount - @Credit	   
+                    SET @Code = -1
+                    SET @Message = 'Error'
                 END  
-        END      
-		
-    UPDATE  Orders
-    SET     Cash = @Cash ,
-            Credit = @Credit ,
-            UpdateDate = GETDATE()
-    WHERE   MID = @MID
-            AND ID = @ID
-    IF @@ROWCOUNT = 1 
-        BEGIN
-            SET @Code = 0
-            SET @Message = 'success'
         END
     ELSE 
         BEGIN
-            SET @Code = -1
-            SET @Message = 'Error'
+            SET @Code = 0
+            SET @Message = 'Order Not Found'  
         END  
 	 
 

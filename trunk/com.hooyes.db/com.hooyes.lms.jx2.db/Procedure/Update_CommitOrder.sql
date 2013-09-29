@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2013-09-16
--- Update date: 2013-09-26
+-- Update date: 2013-09-29
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_CommitOrder]
@@ -22,7 +22,9 @@ AS
                 AND Cash = @Cash
                 AND Credit = @Credit
                 AND [Status] < 10
-				AND (Cash> 0 OR Credit>0)
+                AND ( Cash > 0
+                      OR Credit > 0
+                    )
         IF @Tags IS NOT NULL 
             BEGIN
                 INSERT  INTO [My_Products]
@@ -44,7 +46,8 @@ AS
                 IF @@ROWCOUNT > 0 
                     BEGIN
                         UPDATE  Orders
-                        SET     [Status] = 10
+                        SET     [Status] = 10 ,
+                                UpdateDate = GETDATE()
                         WHERE   ID = @ID
                                 AND MID = @MID
 					/* 余额扣款 */
@@ -75,6 +78,6 @@ AS
     BEGIN CATCH
         ROLLBACK   
         SET @Code = -100
-        SET @Message = 'Transaction Error:'+ERROR_MESSAGE()
+        SET @Message = 'Transaction Error:' + ERROR_MESSAGE()
     END CATCH  
     RETURN 0
