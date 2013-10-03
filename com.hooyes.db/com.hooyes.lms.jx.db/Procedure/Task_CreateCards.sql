@@ -1,9 +1,9 @@
 ﻿-- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2013-09-26
--- Update date: 2013-09-26
--- Desc:
+-- Update date: 2013-09-30
+-- Desc: 长度 13 
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_CreateCards]
     @Amount MONEY = 0 ,
@@ -19,11 +19,11 @@ AS
             AND @Amount > 0
           ) 
         BEGIN
-            SELECT  @SN =CONVERT(varchar(12), CONVERT(DECIMAL,ROUND(RAND() * 1000000000000, 0)))
+            SELECT  @SN =CONVERT(varchar(13), CONVERT(DECIMAL,ROUND(RAND() * 10000000000000, 0)))
             IF NOT EXISTS ( SELECT  1
                             FROM    [Cards]
                             WHERE   SN = @SN ) 
-				AND LEN(@SN) = 12
+				AND LEN(@SN) = 13
                 BEGIN
                     INSERT  INTO [Cards]
                             ( [SN] ,

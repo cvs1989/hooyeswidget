@@ -3,7 +3,7 @@ GO
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-03-06
--- Update date: 2012-04-27
+-- Update date: 2013-10-02
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Get_MemberList]
@@ -17,12 +17,12 @@ AS
 		SET @CurrentPage = 0
 	EXEC ZGetRecordByPageV3
 		@TableNames ='v_m_member',     
-		@PrimaryKey ='MID',           
+		@PrimaryKey ='ID',           
 		@Fields   ='',                 
 		@PageSize = @PageSize,         
 		@CurrentPage = @CurrentPage,   
 		@Filter  = @Filter,           
 		@Group  = '',                  
-		@Order  = ' MID DESC'   
+		@Order  = ' ID DESC'   
 	  
 RETURN @Records
