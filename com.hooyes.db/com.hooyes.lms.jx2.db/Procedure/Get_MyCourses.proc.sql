@@ -1,15 +1,15 @@
 ﻿-- DROP PROC [Get_MyCourses]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2013-09-29
+-- Update date: 2013-10-05
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyCourses] @MID INT, @CID INT
 AS 
-    DECLARE @Year INT 
+
 
     SELECT  a.CID ,
             a.Name ,
@@ -29,12 +29,6 @@ AS
                                         AND MID = @MID
                             ) AS b ON a.CID = b.CID
 
-    SELECT  @Year = [Year]
-    FROM    Courses
-    WHERE   CID = @CID
 
-    EXECUTE Task_EvaluteContents @MID, @CID
-
-    EXECUTE Task_EvaluteCourses @MID, @Year
 
     RETURN 0

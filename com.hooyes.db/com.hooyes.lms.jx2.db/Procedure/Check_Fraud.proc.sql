@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [Check_Fraud]
 GO
 -- =============================================
--- Version:     1.0.0.3
+-- Version:     1.0.0.4
 -- Author:		hooyes
 -- Create date: 2012-04-09
--- Update date: 2013-04-11
+-- Update date: 2013-10-05
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Fraud]
@@ -21,6 +21,7 @@ AS
 			,@DayID int = 0
     SET @DayID = CONVERT(int, CONVERT(varchar(8),GETDATE(),112))
 
+	/*
 	IF EXISTS(SELECT * FROM Member WHERE MID = @MID AND Year >= 2012)
 		SET @Is_Current = 1
 	/* 2012以后的 年学员,需要验证 Validate = 1 方可以计时 */
@@ -35,6 +36,7 @@ AS
 		END
 			
 	END
+    */  
 
 	/* 时间的有效性。 */
 	IF EXISTS(

@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [M_Update_Invoice]
 GO
 -- =============================================
--- Version: 1.0.0.1
+-- Version: 1.0.0.2
 -- Author:		hooyes
 -- Create date: 2013-06-18
--- Update date: 2013-06-18
+-- Update date: 2013-10-03
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Update_Invoice]
@@ -22,7 +22,8 @@ CREATE PROCEDURE [dbo].[M_Update_Invoice]
 AS 
     IF EXISTS ( SELECT  *
                 FROM    Invoice
-                WHERE   MID = @MID ) 
+                WHERE   MID = @MID 
+				AND IID = @IID ) 
         BEGIN
             UPDATE  [Invoice]
             SET     [Name] = @Name ,
@@ -34,6 +35,7 @@ AS
                     [Address] = @Address ,
                     [Zip] = @Zip
             WHERE   MID = @MID
+			AND IID = @IID
         END
     ELSE 
         BEGIN
@@ -41,11 +43,7 @@ AS
             EXECUTE [Get_Seed] @ID = 3, @Value = @SID OUTPUT
             SET @IID = @SID
 
-            IF @IDSN = ''
-                OR @IDSN IS NULL 
-                BEGIN
-                  SELECT @IDSN = IDSN FROM Member WHERE MID = @MID              
-                END      
+            
 
             INSERT  INTO [Invoice]
                     ( [IID] ,
@@ -58,7 +56,8 @@ AS
                       [Province] ,
                       [City] ,
                       [Address] ,
-                      [Zip]
+                      [Zip],
+					  [CreateDate]
                     )
             VALUES  ( @IID ,
                       @MID ,
@@ -70,7 +69,8 @@ AS
                       @Province ,
                       @City ,
                       @Address ,
-                      @Zip
+                      @Zip,
+					  GETDATE()
                     )
         END
     RETURN 0

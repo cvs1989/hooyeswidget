@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [Update_Report]
 GO
 -- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-01-03
--- Update date: 2013-09-12
+-- Update date: 2013-10-05
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Report]
@@ -27,17 +27,8 @@ AS
                                       OR Score IS NULL THEN @Score
                                  ELSE Score
                             END ,
-                    Compulsory = CASE WHEN Compulsory < @Compulsory
-                                           OR Compulsory IS NULL
-                                      THEN @Compulsory
-                                      ELSE Compulsory
-                                 END ,
-                    Elective = CASE WHEN Elective < @Elective
-                                         OR Elective IS NULL THEN @Elective
-                                    ELSE Elective
-                               END ,
-                    Minutes = ISNULL(@Minutes, Minutes) ,
-                    Status = ISNULL(@Status, Status) ,
+                    [Minutes] = ISNULL(@Minutes, [Minutes]) ,
+                    [Status] = ISNULL(@Status, [Status]) ,
                     Memo = ISNULL(@Memo, Memo) ,
                     UpdateDate = GETDATE() ,
                     CommitDate = CASE WHEN @Status = 1 THEN GETDATE()
