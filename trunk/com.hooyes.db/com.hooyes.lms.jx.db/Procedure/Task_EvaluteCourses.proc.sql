@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-02-15
--- Update date: 2013-09-12
+-- Update date: 2013-10-04
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvaluteCourses]
