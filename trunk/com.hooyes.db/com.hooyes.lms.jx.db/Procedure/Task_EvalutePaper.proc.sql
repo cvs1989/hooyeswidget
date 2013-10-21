@@ -50,6 +50,7 @@ AS /* 1.判题是否正确 */
     DECLARE @b FLOAT
     DECLARE @c FLOAT
     DECLARE @Score INT
+	DECLARE @Status INT
     SELECT  @a = COUNT(status)
     FROM    dbo.My_Question
     WHERE   MID = @MID
@@ -62,8 +63,12 @@ AS /* 1.判题是否正确 */
         BEGIN
             SET @c = @b / ( @a + @b ) 
             SET @Score = @c * 100
+			IF @Score >=60
+			BEGIN
+                SET @Status = 1   
+            END          
             EXECUTE [Update_Report] @MID = @MID, @Year = @Year,
-                @Score = @Score
+                @Score = @Score,@Status = @Status
         END
     ELSE 
         BEGIN
