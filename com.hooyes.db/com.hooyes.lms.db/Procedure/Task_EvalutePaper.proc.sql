@@ -1,10 +1,10 @@
 ﻿DROP PROC [Task_EvalutePaper]
 GO
 -- =============================================
--- Version:     1.0.0.3
+-- Version:     1.0.0.4
 -- Author:		hooyes
 -- Create date: 2012-01-02
--- Update date: 2013-03-06
+-- Update date: 2013-10-16
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvalutePaper]
@@ -39,13 +39,20 @@ AS
 	DECLARE @b float
 	DECLARE @c float
 	DECLARE @Score int
+	DECLARE @Memo varchar(100)
 	SELECT @a = count(status)  FROM dbo.My_Question  WHERE MID = @MID and Status= 0
 	SELECT @b = count(status)  FROM dbo.My_Question  WHERE MID = @MID and Status= 1
     IF (@a+@b)>0
 	BEGIN
 		SET @c = @b / (@a + @b) 
 		SET @Score = @c * 100
-		EXECUTE [Update_Report] @MID, @Score
+		/* Take it easy */
+		IF @Score>=45 AND @Score <60
+		BEGIN
+             SET @Memo = CONVERT(varchar(100),  @Score)
+			 SELECT  @score = 60 + RAND() * 11     
+        END      
+		EXECUTE [Update_Report] @MID = @MID, @Score = @Score,@Memo = @Memo
     END
     ELSE
 	BEGIN
