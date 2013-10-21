@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [Update_Invoice]
 GO
 -- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2011-12-25
--- Update date: 2013-09-26
+-- Update date: 2013-10-11
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Invoice]
