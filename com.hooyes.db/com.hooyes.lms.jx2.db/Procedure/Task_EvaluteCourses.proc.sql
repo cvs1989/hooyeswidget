@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.4
 -- Author:		hooyes
 -- Create date: 2012-02-15
--- Update date: 2013-10-04
+-- Update date: 2013-10-12
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Task_EvaluteCourses]
@@ -14,9 +14,9 @@ AS
     /* jx 没有必选修 */
 
 	/*  @Year 总的学时数 */
-    SELECT  @Minutes = SUM(CASE WHEN myc.Status = 1 THEN c.Length * 45
+    SELECT  @Minutes = ISNULL(SUM(CASE WHEN myc.Status = 1 THEN c.Length * 45
                                 ELSE myc.Minutes
-                           END)
+                           END),0)
     FROM    My_Courses myc
             INNER JOIN Courses c ON c.CID = myc.CID
     WHERE   myc.MID = @MID
@@ -26,7 +26,11 @@ AS
                 FROM    Report
                 WHERE   MID = @MID
                         AND [Year] = @Year
-                        AND [Minutes] != @Minutes ) 
+                        AND ([Minutes] != @Minutes OR [Minutes] is null) )
+        OR NOT EXISTS ( SELECT  1
+                        FROM    Report
+                        WHERE   MID = @MID
+                                AND [Year] = @Year ) 
         BEGIN
 
             EXECUTE [Update_Report] @MID = @MID, @Year = @Year,
