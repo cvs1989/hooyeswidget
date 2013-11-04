@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.7
+-- Version:     1.0.0.8
 -- Author:		hooyes
 -- Create date: 2012-01-02
--- Update date: 2013-09-25
+-- Update date: 2013-10-22
 -- Desc: jx No @Type
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyPaper]
@@ -14,11 +14,11 @@ AS
         (
           [QID] [int] NOT NULL ,
           [CID] [int] NOT NULL ,
-          [Subject] [nvarchar](200) NOT NULL ,
-          [A] [nvarchar](100) NULL ,
-          [B] [nvarchar](100) NULL ,
-          [C] [nvarchar](100) NULL ,
-          [D] [nvarchar](100) NULL ,
+          [Subject] [nvarchar](300) NOT NULL ,
+          [A] [nvarchar](255) NULL ,
+          [B] [nvarchar](255) NULL ,
+          [C] [nvarchar](255) NULL ,
+          [D] [nvarchar](255) NULL ,
           [Answer] [nvarchar](50) NOT NULL ,
           [Score] [int] NOT NULL ,
           [Cate] [int] NULL
