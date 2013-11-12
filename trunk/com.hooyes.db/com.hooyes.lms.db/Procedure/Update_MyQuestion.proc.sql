@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_MyQuestion]
+﻿-- DROP PROC [Update_MyQuestion]
 GO
 -- =============================================
 -- Author:		hooyes

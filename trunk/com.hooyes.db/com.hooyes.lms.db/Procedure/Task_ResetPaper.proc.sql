@@ -1,4 +1,4 @@
-﻿DROP PROC [Task_ResetPaper]
+﻿-- DROP PROC [Task_ResetPaper]
 GO
 -- =============================================
 -- Author:		hooyes

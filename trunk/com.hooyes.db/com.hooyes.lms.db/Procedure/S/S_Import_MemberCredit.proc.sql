@@ -1,4 +1,4 @@
-﻿DROP PROC [S_Import_MemberCredit]
+﻿-- DROP PROC [S_Import_MemberCredit]
 GO
 -- =============================================
 -- Version:     1.0.0.2

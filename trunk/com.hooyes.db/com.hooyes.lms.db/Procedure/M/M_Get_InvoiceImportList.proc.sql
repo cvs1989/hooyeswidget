@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Get_InvoiceImportList]
+﻿-- DROP PROC [M_Get_InvoiceImportList]
 GO
 -- =============================================
 -- Author:		hooyes

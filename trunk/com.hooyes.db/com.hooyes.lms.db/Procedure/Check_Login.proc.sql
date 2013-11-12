@@ -1,4 +1,4 @@
-﻿DROP PROC [Check_Login]
+﻿-- DROP PROC [Check_Login]
 GO
 -- =============================================
 -- Version:     1.0.0.6

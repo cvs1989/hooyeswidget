@@ -1,4 +1,4 @@
-﻿DROP PROC [Task_EvaluteContents]
+﻿-- DROP PROC [Task_EvaluteContents]
 GO
 -- =============================================
 -- Author:		hooyes

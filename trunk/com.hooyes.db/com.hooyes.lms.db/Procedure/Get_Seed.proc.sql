@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_Seed]
+﻿-- DROP PROC [Get_Seed]
 GO
 -- =============================================
 -- Author:		hooyes

@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_Timeline]
+﻿-- DROP PROC [Update_Timeline]
 GO
 -- =============================================
 -- Version:     1.0.0.2

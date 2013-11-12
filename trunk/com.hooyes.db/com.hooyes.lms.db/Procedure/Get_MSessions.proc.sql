@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_MSessions]
+﻿-- DROP PROC [Get_MSessions]
 GO
 -- =============================================
 -- Author:		hooyes

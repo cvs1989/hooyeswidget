@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Task_Add_MessageQueue]
+﻿-- DROP PROC [M_Task_Add_MessageQueue]
 GO
 -- =============================================
 -- Author:		hooyes

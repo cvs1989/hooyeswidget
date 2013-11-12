@@ -1,4 +1,4 @@
-﻿DROP PROC [Check_Hours]
+﻿-- DROP PROC [Check_Hours]
 GO
 -- =============================================
 -- Author:		hooyes

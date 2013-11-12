@@ -1,4 +1,4 @@
-﻿DROP PROC [SLog]
+﻿-- DROP PROC [SLog]
 GO
 -- =============================================
 -- Author:		hooyes

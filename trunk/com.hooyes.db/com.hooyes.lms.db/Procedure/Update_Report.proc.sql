@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_Report]
+﻿-- DROP PROC [Update_Report]
 GO
 -- =============================================
 -- Author:		hooyes

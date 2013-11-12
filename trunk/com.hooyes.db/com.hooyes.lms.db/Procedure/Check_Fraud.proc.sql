@@ -1,4 +1,4 @@
-﻿DROP PROC [Check_Fraud]
+﻿-- DROP PROC [Check_Fraud]
 GO
 -- =============================================
 -- Version:     1.0.0.3

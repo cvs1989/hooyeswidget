@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_Invoice]
+﻿-- DROP PROC [Update_Invoice]
 GO
 -- =============================================
 -- Author:		hooyes

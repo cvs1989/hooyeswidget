@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_Report]
+﻿-- DROP PROC [Get_Report]
 GO
 -- =============================================
 -- Author:		hooyes

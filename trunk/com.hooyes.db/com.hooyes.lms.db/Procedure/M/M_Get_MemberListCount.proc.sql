@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Get_MemberListCount]
+﻿-- DROP PROC [M_Get_MemberListCount]
 GO
 -- =============================================
 -- Author:		hooyes

@@ -1,4 +1,4 @@
-﻿DROP PROC [S_Get_SubmitList]
+﻿-- DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
 -- Version:     1.0.0.8

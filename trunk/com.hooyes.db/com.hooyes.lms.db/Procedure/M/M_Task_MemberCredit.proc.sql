@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Task_MemberCredit]
+﻿-- DROP PROC [M_Task_MemberCredit]
 GO
 -- =============================================
 -- Version:     1.0.0.5

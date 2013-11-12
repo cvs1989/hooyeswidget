@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Get_MessageQueue]
+﻿-- DROP PROC [M_Get_MessageQueue]
 GO
 -- =============================================
 -- Author:		hooyes

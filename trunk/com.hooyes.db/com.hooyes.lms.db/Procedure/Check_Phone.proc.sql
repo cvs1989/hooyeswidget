@@ -1,4 +1,4 @@
-﻿DROP PROC [Check_Phone]
+﻿-- DROP PROC [Check_Phone]
 GO
 -- =============================================
 -- Author:		hooyes

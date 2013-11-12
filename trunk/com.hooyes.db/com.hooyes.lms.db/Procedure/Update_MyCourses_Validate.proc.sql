@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_MyCourses_Validate]
+﻿-- DROP PROC [Update_MyCourses_Validate]
 GO
 -- =============================================
 -- Author:		hooyes

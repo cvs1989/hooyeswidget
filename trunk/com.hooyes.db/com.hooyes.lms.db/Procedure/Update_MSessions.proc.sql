@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_MSessions]
+﻿-- DROP PROC [Update_MSessions]
 GO
 -- =============================================
 -- Author:		hooyes

@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Get_CreditList]
+﻿-- DROP PROC [M_Get_CreditList]
 GO
 -- =============================================
 -- Author:		hooyes

@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_Invoice]
+﻿-- DROP PROC [Get_Invoice]
 -- =============================================
 -- Author:		hooyes
 -- Create date: 2012-02-22
