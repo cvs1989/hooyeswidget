@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Import_MemberCredit]
+﻿-- DROP PROC [M_Import_MemberCredit]
 GO
 -- =============================================
 -- Author:		hooyes

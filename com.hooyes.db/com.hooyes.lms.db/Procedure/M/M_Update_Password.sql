@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Update_Password]
+﻿-- DROP PROC [M_Update_Password]
 GO
 -- =============================================
 -- Version:     1.0.0.1

@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Update_Courses]
+﻿-- DROP PROC [M_Update_Courses]
 GO
 -- =============================================
 -- Version:     1.0.0.1

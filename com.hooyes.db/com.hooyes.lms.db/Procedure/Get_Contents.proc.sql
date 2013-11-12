@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_Contents]
+﻿-- DROP PROC [Get_Contents]
 GO
 -- =============================================
 -- Author:		hooyes

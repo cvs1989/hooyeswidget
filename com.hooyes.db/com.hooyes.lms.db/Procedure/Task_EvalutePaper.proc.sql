@@ -1,4 +1,4 @@
-﻿DROP PROC [Task_EvalutePaper]
+﻿-- DROP PROC [Task_EvalutePaper]
 GO
 -- =============================================
 -- Version:     1.0.0.4

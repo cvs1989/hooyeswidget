@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Update_Invoice]
+﻿-- DROP PROC [M_Update_Invoice]
 GO
 -- =============================================
 -- Version: 1.0.0.1

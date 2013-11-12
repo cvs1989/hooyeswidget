@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_Courses]
+﻿-- DROP PROC [Get_Courses]
 GO
 -- =============================================
 -- Author:		hooyes

@@ -1,13 +1,11 @@
-﻿-- DROP PROC [M_Get_InvoiceList]
-GO
--- =============================================
+﻿-- =============================================
 -- Version:     1.0.0.1
 -- Author:		hooyes
--- Create date: 2012-03-11
--- Update date: 2013-06-16
+-- Create date: 2013-11-08
+-- Update date: 2013-11-08
 -- Desc:
 -- =============================================
-CREATE PROCEDURE [dbo].[M_Get_InvoiceList]
+CREATE PROCEDURE [dbo].[M_Get_SurveyList]
 	@PageSize int = 100,
 	@CurrentPage int = 1,
 	@Filter varchar(700) = ''
@@ -17,13 +15,12 @@ AS
 	IF @CurrentPage < 0 
 		SET @CurrentPage = 0
 	EXEC ZGetRecordByPageV3
-		@TableNames ='v_m_invoice',     
-		@PrimaryKey ='IID',           
+		@TableNames ='Survey',     
+		@PrimaryKey ='ID',           
 		@Fields   ='',                 
 		@PageSize = @PageSize,         
 		@CurrentPage = @CurrentPage,   
 		@Filter  = @Filter,           
 		@Group  = '',                  
-		@Order  = ' IID DESC'   
-
+		@Order  = ' ID DESC'   
 RETURN 0

@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Import_Member]
+﻿-- DROP PROC [M_Import_Member]
 GO
 -- =============================================
 -- Author:		hooyes

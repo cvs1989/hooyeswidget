@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Get_InvoiceListCount]
+﻿-- DROP PROC [M_Get_InvoiceListCount]
 GO
 -- =============================================
 -- Version:     1.0.0.1

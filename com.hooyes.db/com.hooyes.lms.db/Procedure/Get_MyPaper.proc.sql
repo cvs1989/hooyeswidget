@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_MyPaper]
+﻿-- DROP PROC [Get_MyPaper]
 GO
 -- =============================================
 -- Version:     1.0.0.6
@@ -88,7 +88,10 @@ BEGIN
 
 	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
 	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 3
-	ORDER BY NEWID() END
+	ORDER BY NEWID() 
+
+
+END
 	
 	SELECT * FROM @Question order by Cate asc
 

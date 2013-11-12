@@ -1,4 +1,4 @@
-﻿DROP PROC [Task_EvaluteCourses]
+﻿-- DROP PROC [Task_EvaluteCourses]
 GO
 -- =============================================
 -- Author:		hooyes

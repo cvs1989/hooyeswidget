@@ -1,4 +1,4 @@
-﻿DROP PROC [Clear_MSessions]
+﻿-- DROP PROC [Clear_MSessions]
 GO
 -- =============================================
 -- Version:     1.0.0.1

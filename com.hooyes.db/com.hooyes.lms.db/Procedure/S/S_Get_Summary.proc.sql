@@ -1,4 +1,4 @@
-﻿DROP PROC [S_Get_Summary]
+﻿-- DROP PROC [S_Get_Summary]
 GO
 -- =============================================
 -- Version:     1.0.0.1

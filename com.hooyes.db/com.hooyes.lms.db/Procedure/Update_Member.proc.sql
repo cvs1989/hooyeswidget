@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_Member]
+﻿-- DROP PROC [Update_Member]
 GO
 -- =============================================
 -- Author:		hooyes

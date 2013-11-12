@@ -1,4 +1,4 @@
-﻿DROP PROC ZGetRecordByPageV3
+﻿-- DROP PROC ZGetRecordByPageV3
 GO
 -- =============================================
 /*

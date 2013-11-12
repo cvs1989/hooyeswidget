@@ -1,4 +1,4 @@
-﻿DROP PROC [Delete_Courses]
+﻿-- DROP PROC [Delete_Courses]
 GO
 -- =============================================
 -- Author:		hooyes

@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_MyContents]
+﻿-- DROP PROC [Update_MyContents]
 GO
 -- =============================================
 -- Version:     1.0.0.2

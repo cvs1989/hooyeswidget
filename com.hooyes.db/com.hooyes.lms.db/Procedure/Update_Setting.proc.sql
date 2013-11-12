@@ -1,4 +1,4 @@
-﻿DROP PROC [Update_Setting]
+﻿-- DROP PROC [Update_Setting]
 GO
 -- =============================================
 -- Author:		hooyes

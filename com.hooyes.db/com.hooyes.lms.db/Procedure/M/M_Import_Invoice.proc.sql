@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Import_Invoice]
+﻿-- DROP PROC [M_Import_Invoice]
 GO
 -- =============================================
 -- Author:		hooyes

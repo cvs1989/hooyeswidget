@@ -1,4 +1,4 @@
-﻿DROP PROC [Get_Member]
+﻿-- DROP PROC [Get_Member]
 GO
 -- =============================================
 -- Author:		hooyes

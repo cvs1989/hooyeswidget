@@ -1,4 +1,4 @@
-﻿DROP PROC [M_Task_Invoice]
+﻿-- DROP PROC [M_Task_Invoice]
 GO
 -- =============================================
 -- Author:		hooyes
