@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [M_Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2012-04-18
--- Update date: 2013-06-25
+-- Update date: 2013-11-12
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Check_Login]
@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[M_Check_Login]
 	,@Message varchar(200) = '' output
 AS
 	DECLARE @AID int,
-			@Tag varchar(20)
+			@Tag varchar(200)
 	SELECT @AID = AID,
 		   @Tag = Tag
 	FROM [Admin] 
