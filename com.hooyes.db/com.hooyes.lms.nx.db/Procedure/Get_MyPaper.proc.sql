@@ -1,99 +1,82 @@
-﻿-- DROP PROC [Get_MyPaper]
-GO
--- =============================================
--- Version:     1.0.0.6
+﻿-- =============================================
+-- Version:     1.0.0.8
 -- Author:		hooyes
 -- Create date: 2012-01-02
--- Update date: 2012-03-02
--- Desc: @Type 用户类型 0 行政事业类 1 企业类
+-- Update date: 2013-10-22
+-- Desc: jx No @Type
 -- =============================================
 CREATE PROCEDURE [dbo].[Get_MyPaper]
-	@MID int = 0,
-	@Year int = 0,
-	@Type int = 0 
-AS
-	 DECLARE @Question TABLE  (
-		[QID] [int] NOT NULL,
-		[CID] [int] NOT NULL,
-		[Subject] [nvarchar](200) NOT NULL,
-		[A] [nvarchar](100) NULL,
-		[B] [nvarchar](100) NULL,
-		[C] [nvarchar](100) NULL,
-		[D] [nvarchar](100) NULL,
-		[Answer] [nvarchar](50) NOT NULL,
-		[Score] [int] NOT NULL,
-		[Cate] [int] NULL)
-
-	DECLARE  @CID1 int = 6001
-			,@CID2 int = 6003
-
-IF @Year = 2012
-BEGIN
-
-	IF @Type = 0
-	BEGIN
-		SET @CID1 = 6001
-		SET @CID2 = 6003
-	END
-	IF @Type = 1
-	BEGIN
-		SET @CID1 = 6001
-		SET @CID2 = 6004
-	END
-
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID1 and Cate = 1
-	ORDER BY NEWID()
-
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID1 and Cate = 3
-	ORDER BY NEWID()
+    @MID INT = 0 ,
+    @Year INT = 0 ,
+    @Type INT = 0
+AS 
+    DECLARE @Question TABLE
+        (
+          [QID] [int] NOT NULL ,
+          [CID] [int] NOT NULL ,
+          [Subject] [nvarchar](300) NOT NULL ,
+          [A] [nvarchar](255) NULL ,
+          [B] [nvarchar](255) NULL ,
+          [C] [nvarchar](255) NULL ,
+          [D] [nvarchar](255) NULL ,
+          [Answer] [nvarchar](50) NOT NULL ,
+          [Score] [int] NOT NULL ,
+          [Cate] [int] NULL
+        )
 
 
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 1
-	ORDER BY NEWID()
-
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 3
-	ORDER BY NEWID()
-END
-
-IF @Year = 2013
-BEGIN
-
-	IF @Type = 0
-	BEGIN
-		SET @CID1 = 6101
-		SET @CID2 = 6102
-	END
-	IF @Type = 1
-	BEGIN
-		SET @CID1 = 6113
-		SET @CID2 = 6114
-	END
-    
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID1 and Cate = 1
-	ORDER BY NEWID()
-
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID1 and Cate = 3
-	ORDER BY NEWID()
+    DECLARE @Tags VARCHAR(100) ,
+        @Count INT = 0 ,
+        @Cate INT = 1    --- 目前 1,2,3
 
 
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 1
-	ORDER BY NEWID()
+    WHILE ( @Cate < 4 ) 
+        BEGIN
+            SET @Tags ='0' 
+			SET @Count = 0
+			
+            SELECT  @Tags = Tags ,
+                    @Count = [Count]
+            FROM    dbo.QuestionConfig
+            WHERE   [Year] = @Year
+                    AND [Cate] = @Cate
+            INSERT  INTO @Question
+                    ( [QID] ,
+                      [CID] ,
+                      [Subject] ,
+                      [A] ,
+                      [B] ,
+                      [C] ,
+                      [D] ,
+                      [Answer] ,
+                      [Score] ,
+                      [Cate]
+                    )
+                    SELECT TOP ( @Count )
+                            [QID] ,
+                            [CID] ,
+                            [Subject] ,
+                            [A] ,
+                            [B] ,
+                            [C] ,
+                            [D] ,
+                            [Answer] ,
+                            [Score] ,
+                            [Cate]
+                    FROM    Question
+                    WHERE   [Cate] = @Cate
+                            AND CID IN ( SELECT [value]
+                                         FROM   [split](@Tags, ',') )
+				    ORDER BY NEWID()
+            SET @Cate = @Cate + 1
+        END
 
-	INSERT INTO @Question([QID],[CID],[Subject],[A],[B],[C],[D],[Answer],[Score],[Cate])
-	SELECT TOP 5 * FROM Question WHERE CID = @CID2 and Cate = 3
-	ORDER BY NEWID() 
 
 
-END
 	
-	SELECT * FROM @Question order by Cate asc
+    SELECT  *
+    FROM    @Question
+    ORDER BY Cate ASC
 
  
-RETURN 0
+    RETURN 0

@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [Check_Login]
 GO
 -- =============================================
--- Version:     1.0.0.6
+-- Version:     1.0.0.7
 -- Author:		hooyes
 -- Create date: 2011-12-18
--- Update date: 2013-03-01
+-- Update date: 2013-09-21
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Login]
@@ -25,24 +25,21 @@ AS
 	BEGIN
 		SELECT @MID = MID 
 		FROM Member 
-		WHERE IDSN = @LoginID 
-				AND IDCard = @LoginPWD
+		WHERE [Login] = @LoginID 
+				AND [Password] = sys.fn_VarBinToHexStr(hashbytes('md5',@LoginPWD+'lms'+convert(varchar,MID)))
 				AND ([ExpireDate] >=GETDATE() OR [ExpireDate] IS NULL)
 						
 		IF @MID is not null
 		BEGIN
 			SET @Code = 0
 			SET @Message = 'success'
-			IF EXISTS(SELECT * FROM dbo.Report WHERE MID = @MID)
-			BEGIN
-				EXECUTE Task_EvaluteCourses @MID
-			END
+			
 		END
 		ELSE
 		BEGIN
 			IF EXISTS(select 1 
 				from dbo.Member 
-				where IDSN = @LoginID 
+				where [Login] = @LoginID 
 						AND ([ExpireDate] >=GETDATE() OR [ExpireDate] IS NULL)
 						)
 			BEGIN
@@ -51,7 +48,7 @@ AS
 			END
 			ELSE IF EXISTS(select 1 
 				from dbo.Member 
-				where IDSN = @LoginID 
+				where [Login] = @LoginID 
 						AND [ExpireDate] <=GETDATE()
 						)
 			BEGIN
@@ -60,7 +57,7 @@ AS
 			END
 			ELSE
 			BEGIN
-				SET @Code = 200
+				SET @Code = 205     --- Code = 200 时将检查API
 				SET @Message = 'LoginID not exists'
 			END
 			SET @MID = -1
