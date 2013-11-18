@@ -1,32 +1,31 @@
-﻿--DROP VIEW [v_m_member]
-GO
--- =============================================
--- Version:     1.0.0.1
+﻿-- =============================================
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2012-04-21
--- Update date: 2013-06-16
+-- Update date: 2013-10-02
 -- Desc:
 -- =============================================
 CREATE VIEW [dbo].[v_m_member]
-AS 
-	SELECT 
-		 IID = isnull(I.IID,0)
-		,Status = isnull(R.Status,0)
-		,minutes = isnull(R.minutes,0)
-		,Score = isnull(R.Score,0)
-		,ID = ROW_NUMBER() OVER(order by M.MID asc)
-		,M.[MID]
-		,M.[Name]
-		,M.[IDCard]
-		,M.[IDSN]
-		,M.[Year]
-		,M.[Type]
-		,M.[Level]
-		,M.[Phone]
-		,M.[RegDate]
-		,R.CommitDate
-	FROM Member M
-		left join Invoice I on I.MID = M.MID
-		left join Report R on R.MID = M.MID
-	WHERE M.MID > 10000
-	AND M.Tag = 0
+AS
+    SELECT  IID = 0 ,
+            Status = ISNULL(R.Status, 0) ,
+            minutes = ISNULL(R.minutes, 0) ,
+            Score = ISNULL(R.Score, 0) ,
+            ID = ROW_NUMBER() OVER ( ORDER BY myp.ID ASC, M.MID ASC ) ,
+            M.[MID] ,
+            M.[Name] ,
+            M.[IDCard] ,
+            M.[IDSN] ,
+            [Year] = ISNULL(myp.PID, 0) ,
+            M.[Type] ,
+            M.[Level] ,
+            M.[Phone] ,
+            M.[RegDate] ,
+            R.CommitDate
+    FROM    Member M
+            INNER JOIN dbo.My_Products myp ON myp.MID = M.MID
+            LEFT OUTER JOIN Report R ON R.MID = M.MID
+                                        AND myp.PID = R.Year
+    WHERE  M.Tag = 0
+	--AND   M.MID > 10000
+           

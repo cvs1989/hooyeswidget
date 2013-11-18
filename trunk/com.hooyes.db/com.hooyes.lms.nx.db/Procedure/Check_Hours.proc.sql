@@ -1,19 +1,20 @@
 ﻿-- DROP PROC [Check_Hours]
 GO
 -- =============================================
+-- Version:     1.0.0.1
 -- Author:		hooyes
 -- Create date: 2012-02-29
--- Update date: 2012-02-29
+-- Update date: 2013-09-12
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Check_Hours]
-	 @MID int 
-	,@Code int = 0 output
-	,@Message varchar(200) = '' output
-AS
-	DECLARE @H int
-	SELECT @H = DATEPART(hour,getdate())
-
+    @MID INT ,
+    @Code INT = 0 OUTPUT ,
+    @Message VARCHAR(200) = '' OUTPUT
+AS 
+    DECLARE @H INT
+    SELECT  @H = DATEPART(hour, GETDATE())
+	/*
 	IF @H >= 23  or @H < 7 
 	BEGIN
 		SELECT @Code = 1
@@ -24,5 +25,7 @@ AS
 		SELECT @Code = 0
 			  ,@Message ='normal'
 	END
-	
-RETURN 0
+	*/
+    SELECT  @Code = 1 ,
+            @Message = 'pass time'
+    RETURN 0
