@@ -1,20 +1,21 @@
 ﻿-- =============================================
--- Version:     1.0.0.1
+-- Version:     1.0.0.2
 -- Author:		hooyes
 -- Create date: 2012-02-02
--- Update date: 2013-10-02
+-- Update date: 2013-11-26
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Member]
     @MID INT OUTPUT ,
     @Login VARCHAR(50) ,
-    @Password VARCHAR(50) =NULL,
+    @Password VARCHAR(50) = NULL ,
     @Name VARCHAR(50) = '' ,
     @IDCard VARCHAR(20) = '' ,
     @IDSN VARCHAR(30) = '' ,
     @Year INT = 0 ,
     @Type INT = 0 ,
     @Level INT = 0 ,
+    @Phone VARCHAR(20) = '' ,
     @Flag INT = 0 ,
     @RegionCode INT = 0
 AS 
@@ -47,6 +48,7 @@ AS
                               [Year] ,
                               [Type] ,
                               [Level] ,
+                              [Phone] ,
                               [Flag] ,
                               [RegionCode]
                             )
@@ -59,6 +61,7 @@ AS
                               @Year ,
                               @Type ,
                               @Level ,
+							  @Phone ,
                               @Flag ,
                               @RegionCode
                             )
