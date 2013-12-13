@@ -1,139 +1,185 @@
 ﻿-- DROP PROC [M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.6
+-- Version:     1.0.0.7
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2013-12-05
+-- Update date: 2013-12-08
 -- Desc:  jx
 -- =============================================
-CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
+CREATE PROCEDURE [dbo].[M_Task_MemberCredit] @count INT = 100
 AS 
     DECLARE @MID INT ,
         @Year INT ,
         @Type INT ,
         @ID INT ,
-        @score INT = 65
+        @score INT = 0 ,
+        @int_order_id INT
     DECLARE MCursor CURSOR LOCAL STATIC
     FOR
-        SELECT  M.MID ,
+        SELECT TOP ( @count )
+                M.MID ,
                 MC.Year ,
                 M.Type ,
                 MC.ID
         FROM    MemberCredit MC
-                INNER JOIN Member M ON ( MC.IDCard = M.IDCard
-                                         AND MC.IDSN = M.IDSN
-                                       )
+                INNER JOIN Member M ON MC.IDCard = M.IDCard
         WHERE   MC.flag = 0
-        ORDER BY MC.tstamp 
+        ORDER BY MC.ID
 
     OPEN MCursor 
     FETCH NEXT FROM MCursor INTO @MID, @Year, @Type, @ID
     WHILE ( @@FETCH_STATUS = 0 ) 
         BEGIN
+            /* 订单与产品 */
+            IF NOT EXISTS ( SELECT  1
+                            FROM    My_Products
+                            WHERE   MID = @MID
+                                    AND PID = @Year ) 
+                BEGIN
+                
+                    EXECUTE [Get_Seed] @ID = 4, @Value = @int_order_id OUTPUT
+                    INSERT  INTO [dbo].[Orders]
+                            ( [ID] ,
+                              [MID] ,
+                              [OrderID] ,
+                              [Amount] ,
+                              [Cash] ,
+                              [Credit] ,
+                              [Status] ,
+                              [Tags] ,
+                              [CreateDate] ,
+                              [UpdateDate] ,
+                              [Memo]
+                            )
+                            SELECT  [ID] = @int_order_id ,
+                                    [MID] = @MID ,
+                                    [OrderID] = 0 ,
+                                    [Amount] = CASE WHEN @Year = YEAR(GETDATE())
+                                                    THEN 44
+                                                    ELSE 60
+                                               END ,
+                                    [Cash] = 0 ,
+                                    [Credit] = CASE WHEN @Year = YEAR(GETDATE())
+                                                    THEN 44
+                                                    ELSE 60
+                                               END ,
+                                    [Status] = 10 ,
+                                    [Tags] = ( SELECT   ID
+                                               FROM     dbo.Products
+                                               WHERE    PID = @Year
+                                             ) ,
+                                    [CreateDate] = GETDATE() ,
+                                    [UpdateDate] = GETDATE() ,
+                                    [Memo] = 'C'        
+                    INSERT  INTO [dbo].[My_Products]
+                            ( [MID] ,
+                              [PID] ,
+                              [CreateDate] ,
+                              [Memo]
+									
+                            )
+                            SELECT  [MID] = @MID ,
+                                    [PID] = @Year ,
+                                    [CreateDate] = GETDATE() ,
+                                    [Memo] = 'C'
+                    
+                END
+		    /* 课时 */
+            IF NOT EXISTS ( SELECT  1
+                            FROM    dbo.Report
+                            WHERE   MID = @MID
+                                    AND [Year] = @Year
+                                    AND Minutes >= 1080 ) 
+                BEGIN
+	
+                    IF @Year = 2013 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 13001
+                            EXECUTE [M_Update_Courses] @MID, 13002
+                            EXECUTE [M_Update_Courses] @MID, 13003
+                            EXECUTE [M_Update_Courses] @MID, 13009
+                            EXECUTE [M_Update_Courses] @MID, 13010
+                        END    
+                    IF @Year = 2012 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 12001
+                            EXECUTE [M_Update_Courses] @MID, 12002
+                            EXECUTE [M_Update_Courses] @MID, 12003
+                            EXECUTE [M_Update_Courses] @MID, 12004
+                            EXECUTE [M_Update_Courses] @MID, 12005
+                            EXECUTE [M_Update_Courses] @MID, 12006
+                        END
+                    IF @Year = 2011 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 11001
+                            EXECUTE [M_Update_Courses] @MID, 11002
+                            EXECUTE [M_Update_Courses] @MID, 11003
+                   
+                        END
+                    IF @Year = 2010 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 10001
+                            EXECUTE [M_Update_Courses] @MID, 10002
+                        END
+                    IF @Year = 2009 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 9001
+                            EXECUTE [M_Update_Courses] @MID, 9002
+                            EXECUTE [M_Update_Courses] @MID, 9003
+                        END
+                    IF @Year = 2008 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 8001
+                            EXECUTE [M_Update_Courses] @MID, 8002
+                        END
+                    IF @Year = 2007 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 7001
+                            EXECUTE [M_Update_Courses] @MID, 7002
+                            EXECUTE [M_Update_Courses] @MID, 7003
+                        END
+                    IF @Year = 2006 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 6001
+                            EXECUTE [M_Update_Courses] @MID, 6002
+                            EXECUTE [M_Update_Courses] @MID, 6003
+                            EXECUTE [M_Update_Courses] @MID, 6004
+                        END
   
-	-- 2013 年的学员
-            IF @Year = 2013 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 6101
-                    EXECUTE [M_Update_Courses] @MID, 6102
-                    EXECUTE [M_Update_Courses] @MID, 6108
-                    EXECUTE [M_Update_Courses] @MID, 6112
-                    EXECUTE [M_Update_Courses] @MID, 6109
-                    EXECUTE [M_Update_Courses] @MID, 6110
-                END    
-
-	-- 2012 年的学员
-            IF @Year = 2012 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 6001
-                    EXECUTE [M_Update_Courses] @MID, 6002
-                    EXECUTE [M_Update_Courses] @MID, 6005
-                    EXECUTE [M_Update_Courses] @MID, 6006
-                    EXECUTE [M_Update_Courses] @MID, 6007
-                    EXECUTE [M_Update_Courses] @MID, 6008
-                    EXECUTE [M_Update_Courses] @MID, 6009
-                    EXECUTE [M_Update_Courses] @MID, 6010
-                END
-
-	-- 2011 年的学员
-            IF @Year = 2011 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 3001
-                    EXECUTE [M_Update_Courses] @MID, 3002
-                    EXECUTE [M_Update_Courses] @MID, 3003
-                    EXECUTE [M_Update_Courses] @MID, 3004
-                    EXECUTE [M_Update_Courses] @MID, 3005
-                    EXECUTE [M_Update_Courses] @MID, 3006
-
-                END
-
-	-- 2010 年的学员
-            IF @Year = 2010 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 3011
-                    EXECUTE [M_Update_Courses] @MID, 3012
-                    EXECUTE [M_Update_Courses] @MID, 3013
-                    EXECUTE [M_Update_Courses] @MID, 3014
-                    EXECUTE [M_Update_Courses] @MID, 3015
-                END
-
-	-- 2009 年的学员
-            IF @Year = 2009 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 3016
-                    EXECUTE [M_Update_Courses] @MID, 3017
-                    EXECUTE [M_Update_Courses] @MID, 3018
-                    EXECUTE [M_Update_Courses] @MID, 3019
-                END
-	-- 2008 年的学员
-            IF @Year = 2008 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 3020
-                    EXECUTE [M_Update_Courses] @MID, 3021
-                    EXECUTE [M_Update_Courses] @MID, 3022
-                    EXECUTE [M_Update_Courses] @MID, 3023
-                    EXECUTE [M_Update_Courses] @MID, 3024
-                END
-	-- 2007 年的学员
-            IF @Year = 2007 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 3025
-                    EXECUTE [M_Update_Courses] @MID, 3026
-                    EXECUTE [M_Update_Courses] @MID, 3027
-                    EXECUTE [M_Update_Courses] @MID, 3028
-                END
-
-	-- 2006 年的学员
-            IF @Year = 2006 
-                BEGIN
-                    EXECUTE [M_Update_Courses] @MID, 3029
-                    EXECUTE [M_Update_Courses] @MID, 3030
-                    EXECUTE [M_Update_Courses] @MID, 3031
-                    EXECUTE [M_Update_Courses] @MID, 3032
-                    EXECUTE [M_Update_Courses] @MID, 3033
-                    EXECUTE [M_Update_Courses] @MID, 3034
-                END
-    
-	-- 更新成绩
-            IF NOT EXISTS ( SELECT  *
+                    IF @Year = 2005 
+                        BEGIN
+                            EXECUTE [M_Update_Courses] @MID, 5001
+                            EXECUTE [M_Update_Courses] @MID, 5002
+                            EXECUTE [M_Update_Courses] @MID, 5003
+                        END                      
+  
+                                       
+                END 
+	        /* 成绩 */
+            IF NOT EXISTS ( SELECT  1
                             FROM    Report
                             WHERE   MID = @MID
+                                    AND [Year] = @Year
                                     AND Score >= 60 ) 
                 BEGIN
 
-                    SET @score = 60
+                    SET @score = 65
                     SELECT  @score = @score + RAND() * 21
 
-                    EXECUTE [Update_Report] @MID, @score
-                END
-	-- 评估
-            EXECUTE [Task_EvaluteCourses] @MID
+                    EXECUTE [Update_Report] @MID = @MID, @Year = @Year,
+                        @score = @score, @Status = 1
 
+                    UPDATE  dbo.Report
+                    SET     CommitDate = GETDATE()
+                    WHERE   MID = @MID
+                            AND Year = @Year 
+                END
+            EXECUTE [Task_EvaluteCourses] @MID = @MID, @Year = @Year   
             UPDATE  MemberCredit
-            SET     flag = 1
+            SET     flag = 1 ,
+                    MID = @MID
             WHERE   ID = @ID
-    
 
             FETCH NEXT FROM MCursor INTO @MID, @Year, @Type, @ID
         END
