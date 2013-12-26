@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.3
+-- Version:     1.0.0.4
 -- Author:		hooyes
 -- Create date: 2012-04-21
--- Update date: 2013-10-02
+-- Update date: 2013-12-20
 -- Desc:
 -- =============================================
 CREATE VIEW [dbo].[v_m_member]
@@ -21,6 +21,7 @@ AS
             M.[Level] ,
             M.[Phone] ,
             M.[RegDate] ,
+			M.RegionCode ,
             R.CommitDate
     FROM    Member M
             INNER JOIN dbo.My_Products myp ON myp.MID = M.MID
