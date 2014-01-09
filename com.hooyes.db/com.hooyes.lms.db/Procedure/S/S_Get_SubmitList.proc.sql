@@ -1,15 +1,15 @@
 ﻿-- DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
--- Version:     1.0.0.9
+-- Version:     1.0.1.0
 -- Author:		hooyes
 -- Create date: 2012-07-23
--- Update date: 2013-12-31
+-- Update date: 2014-01-06
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[S_Get_SubmitList] @count INT = 22
 AS 
-    UPDATE TOP ( 5 )
+    UPDATE TOP ( 15 )
             Member
     SET     Tag = 0
     WHERE   Tag = 100
