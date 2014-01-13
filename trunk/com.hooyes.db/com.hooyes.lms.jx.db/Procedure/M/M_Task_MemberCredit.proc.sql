@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.7
+-- Version:     1.0.0.8
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2013-12-08
+-- Update date: 2014-01-10
 -- Desc:  jx
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Task_MemberCredit] @count INT = 100
@@ -14,7 +14,8 @@ AS
         @Type INT ,
         @ID INT ,
         @score INT = 0 ,
-        @int_order_id INT
+        @int_order_id INT,
+		@Flag_Year int  = 2013
     DECLARE MCursor CURSOR LOCAL STATIC
     FOR
         SELECT TOP ( @count )
@@ -55,12 +56,12 @@ AS
                             SELECT  [ID] = @int_order_id ,
                                     [MID] = @MID ,
                                     [OrderID] = 0 ,
-                                    [Amount] = CASE WHEN @Year = YEAR(GETDATE())
+                                    [Amount] = CASE WHEN @Year >= @Flag_Year
                                                     THEN 44
                                                     ELSE 60
                                                END ,
                                     [Cash] = 0 ,
-                                    [Credit] = CASE WHEN @Year = YEAR(GETDATE())
+                                    [Credit] = CASE WHEN @Year >= @Flag_Year
                                                     THEN 44
                                                     ELSE 60
                                                END ,
