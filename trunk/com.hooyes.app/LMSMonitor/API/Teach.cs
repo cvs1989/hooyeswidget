@@ -27,7 +27,7 @@ namespace com.hooyes.lms.API
             }
             catch (Exception ex)
             {
-                log.Fatal(ex.Message);
+                log.Warn(ex.Message);
             }
             return r;
         }
@@ -56,7 +56,7 @@ namespace com.hooyes.lms.API
             }
             catch (Exception ex)
             {
-                log.Fatal(ex.Message);
+                log.Warn(ex.Message);
             }
             return r;
         }
@@ -79,7 +79,7 @@ namespace com.hooyes.lms.API
             }
             catch (Exception ex)
             {
-                log.Fatal(ex.Message);
+                log.Warn(ex.Message);
             }
             return r;
         }
