@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [M_Task_MemberCredit]
 GO
 -- =============================================
--- Version:     1.0.0.5
+-- Version:     1.0.0.6
 -- Author:		hooyes
 -- Create date: 2012-04-25
--- Update date: 2013-04-25
+-- Update date: 2014-03-28
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Task_MemberCredit]
@@ -31,6 +31,42 @@ AS
     FETCH NEXT FROM MCursor INTO @MID,@Year,@Type,@ID
     WHILE (@@FETCH_STATUS = 0)
     BEGIN
+    
+	-- 2014 年的学员
+	IF @Year = 2014
+	BEGIN
+		IF @Type = 0
+		BEGIN
+            /* 14031,14032,14002,14003,14006,14015 */      
+			EXECUTE [M_Update_Courses] @MID,14031
+			EXECUTE [M_Update_Courses] @MID,14032
+			EXECUTE [M_Update_Courses] @MID,14002
+			EXECUTE [M_Update_Courses] @MID,14003
+			EXECUTE [M_Update_Courses] @MID,14006
+			EXECUTE [M_Update_Courses] @MID,14015
+		END
+
+		IF @Type = 1
+		BEGIN
+		    /* 14016,14017,14018,14023,14030 */
+			EXECUTE [M_Update_Courses] @MID,14016
+			EXECUTE [M_Update_Courses] @MID,14017
+			EXECUTE [M_Update_Courses] @MID,14018
+			EXECUTE [M_Update_Courses] @MID,14023
+			EXECUTE [M_Update_Courses] @MID,14030
+		END
+
+		-- 更新成绩
+	  IF NOT EXISTS(SELECT * FROM Report WHERE MID = @MID and Score>=60)
+	  BEGIN
+
+		SET @score  = 60
+		SELECT @score = @score + RAND()*21
+
+		EXECUTE [Update_Report] @MID,@score
+	  END
+
+	END    
   
 	-- 2013 年的学员
 	IF @Year = 2013
