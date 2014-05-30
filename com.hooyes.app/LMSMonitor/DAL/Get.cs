@@ -32,6 +32,7 @@ namespace com.hooyes.lms.Svc.DAL
                         m.Score = Convert.ToInt32(dr["Score"]);
                         m.Compulsory = Convert.ToDecimal(dr["Compulsory"]);
                         m.Elective = Convert.ToDecimal(dr["Elective"]);
+                        m.Minutes = Convert.ToDecimal(dr["Minutes"]);
                         m.Status = Convert.ToInt32(dr["Status"]);
                         l.Add(m);
                     }
