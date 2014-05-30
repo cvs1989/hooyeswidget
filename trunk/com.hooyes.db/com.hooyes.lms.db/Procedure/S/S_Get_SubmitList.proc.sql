@@ -1,13 +1,13 @@
 ﻿-- DROP PROC [S_Get_SubmitList]
 GO
 -- =============================================
--- Version:     1.0.1.0
+-- Version:     1.0.1.1
 -- Author:		hooyes
 -- Create date: 2012-07-23
--- Update date: 2014-01-06
+-- Update date: 2014-05-14
 -- Desc:
 -- =============================================
-CREATE PROCEDURE [dbo].[S_Get_SubmitList] @count INT = 22
+CREATE PROCEDURE [dbo].[S_Get_SubmitList] @count INT = 100
 AS 
     UPDATE TOP ( 15 )
             Member
@@ -24,7 +24,8 @@ AS
             Score = ISNULL(R.Score, 0) ,
             Compulsory = ISNULL(R.Compulsory, 8) ,
             Elective = ISNULL(R.Elective, 18) ,
-            Status = ISNULL(R.Status, 0)
+            [Status] = ISNULL(R.Status, 0),
+			[Minutes] =ISNULL(R.Minutes,0)
     FROM    Member M
             INNER JOIN Report R ON R.MID = M.MID
                                    AND ( R.Status = 0

@@ -24,16 +24,16 @@ namespace com.hooyes.lms.Svc.DAL
                     para.endTeachDate = DateTime.Now.ToString("yyyy-MM-dd");
                     para.isPass = "Unpass";
 
-                    if (m.Year == 2012)
+                    if (m.Year >= 2012)
                     {
-                        if (re.Score >= 60 && (re.Elective + re.Compulsory) * 45 >= 1080)
+                        if (re.Score >= 60 && re.Minutes >= 1080)
                         {
                             para.isPass = "Pass";
                         }
                     }
                     else
                     {
-                        if ((re.Elective + re.Compulsory) * 45 >= 1080)
+                        if (re.Minutes >= 1080)
                         {
                             para.isPass = "Pass";
                         }
@@ -90,6 +90,7 @@ namespace com.hooyes.lms.Svc.DAL
                     r.Elective = S.Elective;
                     r.Status = S.Status;
                     r.Score = S.Score;
+                    r.Minutes = S.Minutes;
 
                     CommitReport(m, r);
 

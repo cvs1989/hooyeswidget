@@ -1,8 +1,8 @@
 ﻿-- =============================================
--- Version:     1.0.0.4
+-- Version:     1.0.0.5
 -- Author:		hooyes
 -- Create date: 2012-04-21
--- Update date: 2013-12-20
+-- Update date: 2014-05-24
 -- Desc:
 -- =============================================
 CREATE VIEW [dbo].[v_m_member]
@@ -22,7 +22,8 @@ AS
             M.[Phone] ,
             M.[RegDate] ,
 			M.RegionCode ,
-            R.CommitDate
+            R.CommitDate ,
+			PayDate = myp.CreateDate
     FROM    Member M
             INNER JOIN dbo.My_Products myp ON myp.MID = M.MID
             LEFT OUTER JOIN Report R ON R.MID = M.MID
