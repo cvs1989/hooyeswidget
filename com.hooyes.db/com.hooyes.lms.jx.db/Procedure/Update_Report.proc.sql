@@ -1,10 +1,10 @@
 ﻿-- DROP PROC [Update_Report]
 GO
 -- =============================================
--- Version:     1.0.0.2
+-- Version:     1.0.0.3
 -- Author:		hooyes
 -- Create date: 2012-01-03
--- Update date: 2013-10-05
+-- Update date: 2014-06-30
 -- Desc:
 -- =============================================
 CREATE PROCEDURE [dbo].[Update_Report]
@@ -23,7 +23,7 @@ AS
 				AND [Year] = @Year ) 
         BEGIN
             UPDATE  Report
-            SET     Score = CASE WHEN Score < @Score
+            SET     Score = CASE WHEN 0 <= @Score
                                       OR Score IS NULL THEN @Score
                                  ELSE Score
                             END ,
