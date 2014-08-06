@@ -95,16 +95,15 @@ namespace com.hooyes.lms.Svc.DAL
             return m;
         }
 
-        public static R MessageQueue(int DayID, int Flag,int MID)
+        public static R MessageQueue(int ID, int Flag)
         {
             var m = new R();
             try
             {
                 SqlParameter[] param =
                 {
-                    new SqlParameter("@DayID",DayID),
-                    new SqlParameter("@Flag",Flag),
-                    new SqlParameter("@MID",MID)
+                    new SqlParameter("@ID",ID),
+                    new SqlParameter("@Flag",Flag)
                 };
 
                 var r = SqlHelper.ExecuteNonQuery(SqlHelper.Local, CommandType.StoredProcedure, "M_Update_MessageQueue", param);
