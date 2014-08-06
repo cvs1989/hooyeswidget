@@ -59,8 +59,8 @@ namespace com.hooyes.lms.Svc.DAL
             {
                 SqlParameter[] param =
                 {
-                    new SqlParameter("@DayID",DayID),
                     new SqlParameter("@Flag",Flag),
+                    new SqlParameter("@DayID",DayID),
                     new SqlParameter("@Rows",Rows)
                 };
                 var dr = SqlHelper.ExecuteReader(SqlHelper.Local, CommandType.StoredProcedure, "M_Get_MessageQueue", param);
@@ -70,18 +70,16 @@ namespace com.hooyes.lms.Svc.DAL
                     {
                         var m = new MessageQueue();
                         m.ID = Convert.ToInt32(dr["ID"]);
-                        m.MID = Convert.ToInt32(dr["MID"]);
-                        m.DayID = Convert.ToInt32(dr["DayID"]);
                         m.Phone = Convert.ToString(dr["Phone"]);
                         m.Message = Convert.ToString(dr["Message"]);
+                        if (dr["MID"] != DBNull.Value)
+                            m.MID = Convert.ToInt32(dr["MID"]);
+                        if (dr["DayID"] != DBNull.Value)
+                            m.DayID = Convert.ToInt32(dr["DayID"]);
                         if (dr["CreateDate"] != DBNull.Value)
-                        {
                             m.CreateDate = Convert.ToDateTime(dr["CreateDate"]);
-                        }
                         if (dr["UpdateDate"] != DBNull.Value)
-                        {
                             m.UpdateDate = Convert.ToDateTime(dr["UpdateDate"]);
-                        }
                         l.Add(m);
                     }
                     catch (Exception ex1)

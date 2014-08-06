@@ -110,16 +110,16 @@ namespace com.hooyes.lms.Svc.DAL
                 Thread.Sleep(512);
                 try
                 {
-                    log.Info("P:{0},M:{1}", S.Phone,S.Message);
-                    var r = SendSMS(S.Phone, S.Message);
+                    log.Info("ID:{0},P:{1}", S.ID,S.Phone);
+                    var r = SendSMS(S.Phone.Trim(), S.Message);
                     if (r.Code == 0)
                     {
-                        Update.MessageQueue(S.DayID,1000, S.MID);
+                        Update.MessageQueue(S.ID,1);
                     }
                     else
                     {
-                        log.Error("{0},{1},{2},{3}:{4}", S.DayID, S.MID, S.Phone, r.Code, r.Message);
-                        Update.MessageQueue(S.DayID, r.Code, S.MID);
+                        log.Error("{0},{1},{2},{3}:{4}", S.ID, S.DayID, S.Phone, r.Code, r.Message);
+                        Update.MessageQueue(S.ID, r.Code);
                     }
                 }
                 catch (Exception ex)
